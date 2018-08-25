@@ -37,17 +37,18 @@ set $right l
 floating_modifier Mod1
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty -e 'tmux'
 # Currently not i3-sensible-terminal working
 #bindsym $mod+Return exec i3-sensible-terminal
 # start terminal in same location
-bindsym $mod+Shift+Return exec alacritty --working-directory "$(xcwd)"
+bindsym $mod+Shift+Return exec alacritty --working-directory "$(xcwd)" -e 'tmux'
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-  bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
+bindsym $mod+z exec rofi -show window
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
