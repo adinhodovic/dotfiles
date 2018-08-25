@@ -1,0 +1,24 @@
+---
+- name: Symlink i3
+  file:
+    src: "~/.dotfiles/i3"
+    dest: "~/.i3/config"
+    state: link
+
+- name: Symlink tmux
+  file:
+    src: "~/.dotfiles/tmux.conf"
+    dest: "~/.tmux.conf"
+    state: link
+
+- name: Symlink vimrc
+  file:
+    src: "~/.dotfiles/vimrc"
+    dest: "~/.config/nvim/init.vim"
+    state: link
+
+- name: Symlink zshrc
+  file:
+    src: "~/.dotfiles/zshrc"
+    dest: "~/.zshrc"
+    state: link
