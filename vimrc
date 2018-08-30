@@ -2,51 +2,50 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.fzf
-call vundle#begin()
+call plug#begin('~/.local/share/nvim/plugged')
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
-Plugin 'junegunn/fzf.vim'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
+Plug 'junegunn/fzf.vim'
+Plug 'VundleVim/Vundle.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'vim-syntastic/syntastic'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-Plugin 'flazz/vim-colorschemes'
-Plugin 'hail2u/vim-css3-syntax'
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+Plug 'flazz/vim-colorschemes'
+Plug 'hail2u/vim-css3-syntax'
+" plgin on GitHub repo
+Plug 'tpope/vim-fugitive'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+Plug 'git://git.wincent.com/command-t.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'jiangmiao/auto-pairs'                   " Automatically add (){}<>
-Plugin 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'jiangmiao/auto-pairs'                   " Automatically add (){}<>
+Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
 
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
-Plugin 'airblade/vim-gitgutter'                 " Show changed git lines
-Plugin 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
-Plugin 'ascenator/L9', {'name': 'newL9'}
+Plug 'airblade/vim-gitgutter'                 " Show changed git lines
+Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
+Plug 'ascenator/L9', {'name': 'newL9'}
 
 
 "HTML"
-Plugin 'Valloric/MatchTagAlways'                " Show matching html/xml tags
+Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
 "JSX"
-Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'othree/yajs'
-Plugin 'b4b4r07/vim-ansible-vault'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs'
+Plug 'b4b4r07/vim-ansible-vault'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
 
 "Dani"
 "pasting from outside

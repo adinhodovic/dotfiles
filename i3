@@ -202,6 +202,6 @@ bar {
 # Please remove the following exec line:
 #######################################################################
 exec --no-startup-id setxkbmap -option caps:swapescape
-exec --no-startup-id feh --bg-scale /home/adin/mostar.jpg
+exec --no-startup-id feh --bg-scale /home/adin/.dotfiles/images/mostar.jpg
 exec --no-startup-id nm-applet
 exec i3-config-wizard
