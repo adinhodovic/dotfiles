@@ -9,8 +9,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " let Vundle manage Vundle, required
 Plug 'junegunn/fzf.vim'
 Plug 'VundleVim/Vundle.vim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
+Plug 'Valloric/YouCompleteMe'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.

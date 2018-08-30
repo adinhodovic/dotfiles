@@ -1,4 +1,0 @@
-AddKeysToAgent yes
-
-Host *
-    IdentityFile ~/.ssh/id_rsa

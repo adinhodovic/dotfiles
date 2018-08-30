@@ -174,7 +174,7 @@ for_window [class="^.*"] border pixel 2
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	font pango:DejaVu Sans Mono 12
+	font pango:DejaVu Sans Mono 9 
 	position top
         status_command i3status
 

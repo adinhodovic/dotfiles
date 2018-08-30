@@ -36,7 +36,7 @@ zmodload -a zsh/zprof zprof
 
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="aphrodite"
+ZSH_THEME="robbyrussell"
 
 plugins=(
   ssh-agent
@@ -51,6 +51,7 @@ if [ -n "$TMUX" ]; then
   tmux copy-mode
 fi
 }
+
 # Paste from clipboard
 vi-append-x-selection-before () {
 RBUFFER="$(xclip -o)$RBUFFER"
@@ -116,6 +117,7 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 alias tmux="tmux -2"
 # Todo: Write a function instead
 alias cd.="cd .."
+alias t="task"
 alias cd..="cd ../.."
 alias cd...="cd ../../.."
 alias cd....='cd ../../../..'
