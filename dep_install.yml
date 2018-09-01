@@ -1,0 +1,57 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+    #install neovim
+    - aur: name=neovim skip_installed=true
+
+    #install rofi
+    - aur: name=rofi skip_installed=true
+
+    #install xorg
+    - aur: name=xorg skip_installed=true
+
+    #install tmux
+    - aur: name=tmux skip_installed=true
+
+    #install networkmanager
+    - aur: name=networkmanager skip_installed=true
+
+    #install np-applet
+    - aur: name=network-manager-applet skip_installed=true
+
+    #install enpass-bin
+    - aur: name=enpass-bin skip_installed=true
+
+    #install chromium
+    - aur: name=chromium skip_installed=true
+
+    #install i3-gaps
+    - aur: name=i3-gaps skip_installed=true
+
+    # graphics
+    - aur: name=xf86-video-intel
+
+    # taskwarrior
+    - aur: name=task
+
+    # yamllint
+    - aur: name=yamllint
+
+    # docker
+    - aur: name=docker-git
+
+    # docker-compose
+    - aur: name=docker-compose
+
+    - name: add me to docker group
+      become: true
+      user:
+        name: adin
+        groups: docker
+        append: true
+      tags: docker
+
+
+

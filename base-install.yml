@@ -1,0 +1,29 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+    - name: check the keys
+      shell: pacman-key --populate archlinux
+
+    - name: make install dir
+      file:
+        path: /home/adin/tempinstall
+        state: directory
+        owner: adin
+
+    - name: clone yay
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: /home/adin/tempinstall/yay
+
+    - name: makepackage
+      shell:  makepkg -si /home/adin/tempinstall/yay
+
+    - name: clone ansible-aur
+      git:
+        repo: https://github.com/kewlfft/ansible-aur.git
+        dest: /home/adin/.ansible/plugins/modules/aur
+        version: master
+
