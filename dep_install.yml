@@ -2,6 +2,11 @@
 
 - hosts: 127.0.0.1
   connection: local
+  #vars_prompt:
+  #  - name: docker deps
+  #    prompt: "Remove make dependecies after install? [y/N]"
+  #    default: "y"
+
   tasks:
     #install neovim
     - aur: name=neovim skip_installed=true
@@ -30,20 +35,29 @@
     #install i3-gaps
     - aur: name=i3-gaps skip_installed=true
 
+    #install i3-gaps
+    - aur: name=i3status skip_installed=true
+
+    #install i3-gaps
+    - aur: name=i3blocks skip_installed=true
+
+    #install i3-gaps
+    - aur: name=i3lock skip_installed=true
+
     # graphics
-    - aur: name=xf86-video-intel
+    - aur: name=xf86-video-intel skip_installed=true
 
     # taskwarrior
-    - aur: name=task
+    - aur: name=task skip_installed=true
 
     # yamllint
-    - aur: name=yamllint
+    - aur: name=yamllint skip_installed=true
 
     # docker
-    - aur: name=docker-git
+    # - aur: name=docker-git skip_installed=true
 
     # docker-compose
-    - aur: name=docker-compose
+    - aur: name=docker-compose skip_installed=true
 
     - name: add me to docker group
       become: true
@@ -53,5 +67,57 @@
         append: true
       tags: docker
 
+    # lightdm
+    #- aur: name=lightdm skip_installed=true
 
+    # lightdm
+    #$ deps- aur: name=lightdm-webkit-greeter skip_installed=true
 
+    # lightdm-litarvan
+    #-$deps aur: name=lightdm-webkite-theme-litarvan skip_installed=true
+
+    # terraform
+    - aur: name=terraform skip_installed=true
+
+    # aws-cli
+    - aur: name=aws-cli skip_installed=true
+
+    # gcloud
+    - aur: name=google-cloud-sdk skip_installed=true
+
+    # hub-git
+    - aur: name=hub-git skip_installed=true
+
+    # fzf
+    - aur: name=fzf-git skip_installed=true
+
+    # nvim-ycm
+    - aur: name=neovim-youcompleteme-core-git skip_installed=true
+
+    # fd
+    - aur: name=fd skip_installed=true
+
+    # diff-so-fany
+    - aur: name=diff-so-fancy skip_installed=true
+
+    # setup d-f-s
+    - name: setup dfs
+      shell: git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+
+    # nodejs
+    - aur: name=nodejs skip_installed=true
+
+    # alacritty
+    - aur: name=alacritty-git skip_installed=true
+
+    # httpie
+    - aur: name=httpie skip_installed=true
+
+    # awless
+    - aur: name=awless skip_installed=true
+
+    # dropbox
+    - aur: name=dropbox skip_installed=true
+
+    # dropbox
+    - aur: name=openssh skip_installed=true
