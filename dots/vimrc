@@ -2,16 +2,14 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.fzf
 call plug#begin('~/.local/share/nvim/plugged')
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
-Plug 'junegunn/fzf.vim'
 Plug 'VundleVim/Vundle.vim'
 Plug 'vim-syntastic/syntastic'
-Plug 'Valloric/YouCompleteMe'
-
+Plug '~/.fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 Plug 'flazz/vim-colorschemes'

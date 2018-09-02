@@ -6,6 +6,13 @@
     state: link
     force: true
 
+- name: Symlink ssh
+  file:
+    src: "/home/adin/.dotfiles/dots/config.ssh"
+    dest: "/home/adin/.ssh/config"
+    state: link
+    force: true
+
 - name: Symlink tmux
   file:
     src: "/home/adin/.dotfiles/dots/tmux.conf"
@@ -44,7 +51,7 @@
 - name: Symlink alacritty
   file:
     src: "/home/adin/.dotfiles/dots/alacritty.yml"
-    dest: "/home/adin/.alacritty"
+    dest: "/home/adin/.config/alacritty/alacritty.yml"
     state: link
     force: true
 

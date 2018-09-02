@@ -1,5 +1,4 @@
 ---
-
 - hosts: 127.0.0.1
   connection: local
   #vars_prompt:
@@ -10,7 +9,10 @@
   tasks:
     #install neovim
     - aur: name=neovim skip_installed=true
-    
+
+    # install oh-my-zsh
+    - aur: name=oh-my-zsh-git skip_installed=true
+
     #install xorg-xinit/start
     - aur: name=xorg-xinit skip_installed=true
 
@@ -122,5 +124,23 @@
     # dropbox
     - aur: name=dropbox skip_installed=true
 
-    # dropbox
+    # openssh
     - aur: name=openssh skip_installed=true
+
+    # rg
+    - aur: name=ripgrep skip_installed=true
+
+    # rg
+    - aur: name=powerline-fonts-git skip_installed=true
+
+    - name: vim-plug
+      shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    - name: nvim-setup
+      shell: nvim +PlugInstall +qall +silent
+
+    - say:
+        msg: "chmod id_rsa now"
+        voice: Zarvox
+      delegate_to: localhost

@@ -5,5 +5,5 @@
   tasks:
 
     - name: start lightdm
-      shell: systemctl start lightdm.service
+      shell: systemctl enable lightdm.service
 
