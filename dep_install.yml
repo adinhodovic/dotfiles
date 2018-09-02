@@ -128,6 +128,18 @@
     - aur: name=ripgrep skip_installed=true
 
     # rg
+    - aur: name=slack-desktop skip_installed=true
+
+    # rg
+    - aur: name=whatsapp-desktop skip_installed=true
+
+    # pwr manager
+    - aur: name=xfce4-power-manager skip_installed=true
+
+    # rg
+    - aur: name=glibc skip_installed=true
+
+    # rg
     - aur: name=powerline-fonts-git skip_installed=true
 
     - name: vim-plug
