@@ -10,6 +10,9 @@
   tasks:
     #install neovim
     - aur: name=neovim skip_installed=true
+    
+    #install xorg-xinit/start
+    - aur: name=xorg-xinit skip_installed=true
 
     #install rofi
     - aur: name=rofi skip_installed=true

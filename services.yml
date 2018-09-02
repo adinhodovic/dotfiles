@@ -1,0 +1,10 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  become: true
+  tasks:
+
+    - name: start lightdm
+      shell: systemctl start lightdm.service
+

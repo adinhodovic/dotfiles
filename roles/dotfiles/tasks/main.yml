@@ -1,24 +1,73 @@
 ---
 - name: Symlink i3
   file:
-    src: "~/.dotfiles/i3"
-    dest: "~/.i3/config"
+    src: "/home/adin/.dotfiles/dots/i3"
+    dest: "/home/adin/.i3/config"
     state: link
+    force: true
 
 - name: Symlink tmux
   file:
-    src: "~/.dotfiles/tmux.conf"
-    dest: "~/.tmux.conf"
+    src: "/home/adin/.dotfiles/dots/tmux.conf"
+    dest: "/home/adin/.tmux.conf"
     state: link
+    force: true
 
 - name: Symlink vimrc
   file:
-    src: "~/.dotfiles/vimrc"
-    dest: "~/.config/nvim/init.vim"
+    src: "/home/adin/.dotfiles/dots/vimrc"
+    dest: "/home/adin/.config/nvim/init.vim"
     state: link
+    force: true
 
-- name: Symlink zshrc
+- name: Symlink zsrhc
   file:
-    src: "~/.dotfiles/zshrc"
-    dest: "~/.zshrc"
+    src: "/home/adin/.dotfiles/dots/zshrc"
+    dest: "/home/adin/.zshrc"
     state: link
+    force: true
+
+- name: Symlink lightdm
+  file:
+    src: "/home/adin/.dotfiles/dots/lightdm.conf"
+    dest: "/etc/lightdm/lightdm.conf"
+    state: link
+    force: true
+
+- name: Symlink lightdm-webkit
+  file:
+    src: "/home/adin/.dotfiles/dots/lightdm-webkit2-greeter.conf"
+    dest: "/etc/lightdm/lightdm-webkit2-greeter.conf"
+    state: link
+    force: true
+
+- name: Symlink alacritty
+  file:
+    src: "/home/adin/.dotfiles/dots/alacritty.yml"
+    dest: "/home/adin/.alacritty"
+    state: link
+    force: true
+
+- name: Symlink locale.conf
+  file:
+    src: "/home/adin/.dotfiles/dots/locale.conf"
+    dest: "/etc/locale.conf"
+    state: link
+    force: true
+
+- name: Symlink locale.gen
+  file:
+    src: "/home/adin/.dotfiles/dots/locale.gen"
+    dest: "/etc/locale.gen"
+    state: link
+    force: true
+
+- name: locale-gen
+  shell: locale-gen
+
+- name: Symlink xinit-rc
+  file:
+    src: "/home/adin/.dotfiles/dots/xinitrc"
+    dest: "/home/adin/.xinitrc"
+    state: link
+    force: true
