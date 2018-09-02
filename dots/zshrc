@@ -252,6 +252,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 export TERMINAL=/usr/bin/alacritty
 
-[ -f ~/usr/bin/fzf ] && source ~/usr/bin/fzf
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
