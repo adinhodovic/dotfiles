@@ -93,9 +93,6 @@
     # hub-git
     - aur: name=hub-git skip_installed=true
 
-    # fzf
-    - aur: name=fzf-git skip_installed=true
-
     # nvim-ycm
     - aur: name=neovim-youcompleteme-core-git skip_installed=true
 
@@ -139,6 +136,9 @@
 
     - name: nvim-setup
       shell: nvim +PlugInstall +qall +silent
+
+    - name: fzf install
+      shell: ~/.fzf/install
 
     - say:
         msg: "chmod id_rsa now"
