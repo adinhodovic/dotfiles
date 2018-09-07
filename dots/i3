@@ -122,6 +122,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+bindsym $mod+m exec "~/.dotfiles/scripts/fuzzy_lock.sh"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -204,4 +206,4 @@ bar {
 exec --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id feh --bg-scale /home/adin/.dotfiles/images/mostar.jpg
 exec --no-startup-id nm-applet
-exec i3-config-wizard
+exec xautolock -time 15 -locker '~/.dotfiles/scripts/fuzzy_lock.sh' &
