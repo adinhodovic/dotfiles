@@ -253,3 +253,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 export TERMINAL=/usr/bin/alacritty
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/adin/ganache/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/adin/ganache/node_modules/tabtab/.completions/electron-forge.zsh
