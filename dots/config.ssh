@@ -1,4 +1,8 @@
 AddKeysToAgent yes
 
 Host *
-    IdentityFile ~/.ssh/ambrosus_deployer_rsa
+    IdentityFile ~/.ssh/id_rsa
+
+Host hermes0
+    ProxyJump foo
+    LocalForward 33389 rdp:3389

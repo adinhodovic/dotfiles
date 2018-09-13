@@ -11,6 +11,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'jremmen/vim-ripgrep'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 Plug 'flazz/vim-colorschemes'
@@ -83,6 +84,8 @@ nnoremap b :e #<cr>
 nnoremap - :Buffers<cr>
 nnoremap <M-=> :Files<cr>
 nnoremap <M--> :GitFiles<cr>
+nnoremap <M-q> :q<cr>
+nnoremap <M-r> :Rg<cr>
 nnoremap H :History:<cr>
 cnoremap H :History:<cr>
 nnoremap r :History<cr>

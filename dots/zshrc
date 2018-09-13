@@ -116,8 +116,10 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 # Allows 256 colors as background in terminal, used for Vi
 alias tmux="tmux -2"
 # Todo: Write a function instead
-alias cd.="cd .."
+
 alias t="task"
+alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
+alias cd.="cd .."
 alias cd..="cd ../.."
 alias cd...="cd ../../.."
 alias cd....='cd ../../../..'
@@ -248,12 +250,63 @@ zstyle '*' single-ignored show
 
 ### Source plugins
 ##################
+zle     -N     fzf-ssh
+
+function sync {
+  local_dir=$1
+
+  # user@remote:dir
+  remote=$2
+
+  remote_server=$(echo "$remote" | awk -F ':' '{print $1}')
+  remote_dir=$(echo "$remote" | awk -F ':' '{print $2}')
+  ssh "$remote_server" "rm -rf $remote_dir"
+
+  rsync -avz "$local_dir/" "$remote"
+  while inotifywait -e modify -r "$local_dir"; do
+    notify-send "Syncing $local_dir..." -i network-transmit-receive
+    rsync -avz "$local_dir/" "$remote"
+    pkill xfce4-notifyd
+  done
+}
+
+function fzf-docker-logs {
+  matches=$(docker ps --format 'table {{ .Names }}\t{{ .Image }}')
+  selection=$(echo $matches | fzf --header-lines=1 | awk '{print $1}')
+  if [ ! -z $selection ]; then
+    args="${@:-"--tail 100 -f"}"
+    BUFFER="docker logs $args $selection"
+    zle accept-line
+  fi
+}
+zle -N fzf-docker-logs
+ function fzf-docker-exec {
+  matches=$(docker ps --format 'table {{ .Names }}\t{{ .Image }}')
+  selection=$(echo $matches | fzf --header-lines=1 | awk '{print $1}')
+  if [ ! -z $selection ]; then
+    cmd="${@:-"sh -c 'bash || sh'"}"
+    BUFFER="docker exec -it $selection $cmd"
+    zle accept-line
+  fi
+}
+zle -N fzf-docker-exec
+ fcommit() {
+  local commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
+  local commit=$(echo "$commits" | fzf --tac +s -m -e --ansi --reverse) &&
+  echo -n $(echo "$commit" | sed "s/ .*//")
+}
+bindkey -M vicmd '\-'   fzf-file-widget
+bindkey -M vicmd '^r'   fzf-history-widget
+bindkey -M viins '^r'   fzf-history-widget
+bindkey -M vicmd '^s'   fzf-ssh
+bindkey -M viins '^s'   fzf-ssh
+bindkey -M vicmd '^l'   fzf-docker-logs
+bindkey -M viins '^l'   fzf-docker-logs
+bindkey -M vicmd '^x'   fzf-docker-exec
+bindkey -M viins '^x'   fzf-docker-exec
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export TERMINAL=/usr/bin/alacritty
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /home/adin/ganache/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/adin/ganache/node_modules/tabtab/.completions/electron-forge.zsh
