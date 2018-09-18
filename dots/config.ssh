@@ -1,8 +1,5 @@
 AddKeysToAgent yes
 
 Host *
-    IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa.pub
 
-Host hermes0
-    ProxyJump foo
-    LocalForward 33389 rdp:3389

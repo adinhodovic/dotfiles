@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-server='adin@18.202.14.14'
+server='ubuntu@34.254.239.115'
 
 function sync {
   rsync -avz ~/work/ambrosus/ambrosus-ops/ansible "$server:~/" \
