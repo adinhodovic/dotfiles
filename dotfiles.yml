@@ -1,3 +1,4 @@
+# This file setups all dotfiles
 ---
 - name: Setup dotfiles
   hosts: 127.0.0.1
