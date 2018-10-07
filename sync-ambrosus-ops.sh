@@ -1,30 +1,24 @@
 #!/usr/bin/env bash
 set -e
 
-#server='10.0.144.79'
-#proxy='52.210.164.117'
-#function sync {
-#  rsync 'ssh -o "ProxyCommand ssh -A $proxy -W %h:%p"' -avz ~/work/ambrosus/ambrosus-#ops/ansible "$server:~/" \
-#    --exclude=ambrosus-ops/.git/ \
-#    --exclude=ambrosus-ops/terraform
-#}
-
-server='ubuntu@52.210.95.251'
+server='ubuntu@34.240.181.137'
 
 function sync {
-  rsync -avz ~/work/ambrosus/ambrosus-ops/ansible "$server:~/" \
+  rsync -avz ~/work/ambrosus/ambrosus-ops "$server:~/" \
     --exclude=ambrosus-ops/.git/ \
     --exclude=ambrosus-ops/terraform
+  rsync -avz ~/.ssh/ambrosus_deployer_rsa "$server:~/.ssh/"
+  rsync -avz ~/.vault-password "$server:~/"
 }
 
-echo 'Removing server ~/ansible'
-ssh "$server" "rm -rf ~/ansible"
+echo 'Removing server ~/ambrosus-ops'
+ssh "$server" "rm -rf ~/ambrosus-ops"
 
-echo Performing initial sync
+echo 'Performing initial sync'
 sync
 
-while inotifywait -e modify -r ambrosus-ops/ansible/*; do
-  notify-send 'Syncing to amb-ops...' -i network-transmit-receive
+while inotifywait -e modify -r ~/work/ambrosus/ambrosus-ops/*; do
+ notify-send 'Syncing to amb-ops...' -i network-transmit-receive
   sync
   pkill xfce4-notifyd
 done
