@@ -106,6 +106,10 @@
     - name: setup dfs
       shell: git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 
+    # setup nvim as git editor
+    - name: setup git editor
+      shell: git config --global core.editor "nvim"
+
     # nodejs
     - aur: name=nodejs skip_installed=true
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-server='ubuntu@34.240.181.137'
+server='52.16.114.112'
 
 function sync {
   rsync -avz ~/work/ambrosus/ambrosus-ops "$server:~/" \
