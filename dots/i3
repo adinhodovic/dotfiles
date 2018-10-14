@@ -200,7 +200,6 @@ bar {
 #
 # i3-config-wizard will not launch if there already is a config file
 # in ~/.i3/config.
-#
 # Please remove the following exec line:
 #######################################################################
 exec --no-startup-id setxkbmap -option caps:swapescape
