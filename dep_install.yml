@@ -31,6 +31,9 @@
     #install feh
     - aur: name=feh skip_installed=true
 
+    #install osprober
+    - aur: name=os-prober skip_installed=true
+
     #install tmux
     - aur: name=tmux skip_installed=true
 
@@ -197,5 +200,10 @@
 
     - say:
         msg: "chmod id_rsa now"
+        voice: Zarvox
+      delegate_to: localhost
+
+    - say:
+        msg: "run os-prober"
         voice: Zarvox
       delegate_to: localhost
