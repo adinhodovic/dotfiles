@@ -22,6 +22,15 @@
     #install xorg
     - aur: name=xorg skip_installed=true
 
+    #install dns-utils
+    - aur: name=dnsutils skip_installed=true
+
+    #install dunst
+    - aur: name=dunst skip_installed=true
+
+    #install feh
+    - aur: name=feh skip_installed=true
+
     #install tmux
     - aur: name=tmux skip_installed=true
 
@@ -113,6 +122,21 @@
     # nodejs
     - aur: name=nodejs skip_installed=true
 
+    # yarn
+    - name: Install yarn
+      npm:
+        name: yarn
+        global: yes
+
+    # scrot screenshot
+    - aur: name=scrot skip_installed=true
+
+    # imagemagick
+    - aur: name=imagemagick skip_installed=true
+
+    # tldr
+    - aur: name=tldr-nodejs skip_installed=true
+
     # alacritty
     - aur: name=alacritty-git skip_installed=true
 
@@ -130,6 +154,21 @@
 
     # rg
     - aur: name=ripgrep skip_installed=true
+
+    # rsync
+    - aur: name=rsync skip_installed=true
+
+    # unzip
+    - aur: name=unzip skip_installed=true
+
+    # snap
+    - aur: name=snapd skip_installed=true
+
+    # spotify
+    - aur: name=spotify skip_installed=true
+
+    # alsamixer utils
+    - aur: name=alsamixer-utils skip_installed=true
 
     # rg
     - aur: name=slack-desktop skip_installed=true

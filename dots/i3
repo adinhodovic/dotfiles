@@ -202,7 +202,8 @@ bar {
 # in ~/.i3/config.
 # Please remove the following exec line:
 #######################################################################
+exec --no-startup-id dunst
 exec --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id feh --bg-scale /home/adin/.dotfiles/images/mostar.jpg
 exec --no-startup-id nm-applet
-exec xautolock -time 15 -locker '~/.dotfiles/scripts/fuzzy_lock.sh' &
+exec xautolock -time 15 -corners -000 -locker '~/.dotfiles/scripts/fuzzy_lock.sh' &
