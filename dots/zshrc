@@ -36,7 +36,7 @@ zmodload -a zsh/zprof zprof
 
 export ZSH=/usr/share/oh-my-zsh
 
-ZSH_THEME="agnoster"
+ZSH_THEME="theunraveler"
 
 plugins=(
   ssh-agent
