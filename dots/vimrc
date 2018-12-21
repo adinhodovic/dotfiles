@@ -3,38 +3,30 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.local/share/nvim/plugged')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-" let Vundle manage Vundle, required
 Plug 'VundleVim/Vundle.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
+Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
+Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jremmen/vim-ripgrep'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
 Plug 'flazz/vim-colorschemes'
 Plug 'hail2u/vim-css3-syntax'
-" plgin on GitHub repo
 Plug 'tpope/vim-fugitive'
-" Git plugin not hosted on GitHub
 Plug 'git://git.wincent.com/command-t.git'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'jiangmiao/auto-pairs'                   " Automatically add (){}<>
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
-
 Plug 'Lokaltog/vim-easymotion'
-
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
-Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'ascenator/L9', {'name': 'newL9'}
-
-
 "HTML"
 Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
 "JSX"
@@ -43,6 +35,14 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/yajs'
 Plug 'b4b4r07/vim-ansible-vault'
+
+"-----------------------------------------
+" Terraform
+"-----------------------------------------
+Plug 'b4b4r07/vim-ansible-vault'
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
+"-----------------------------------------
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -128,6 +128,24 @@ set cmdwinheight=1
 
 set cursorline
 hi CursorLine ctermbg=236 guibg=#242321
+
+"-----------------------------------------
+" LanguageClient
+"-----------------------------------------
+let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_serverCommands = {
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ 'typescript': ['javascript-typescript-stdio'],
+      \ 'python':     ['pyls'],
+      \ 'ruby':       ['solargraph', 'stdio']
+      \ }
+
+autocmd filetype javascript,typescript,python,ruby nnoremap <silent>gd :call LanguageClient_textDocument_definition()<CR>
+autocmd filetype javascript,typescript,python,ruby nnoremap <silent> <leader>t :call LanguageClient_textDocument_hover()<CR>
+autocmd filetype javascript,typescript nnoremap <silent> <leader>gr :call LanguageClient_textDocument_references()<CR>
+autocmd filetype go nnoremap <silent>gd <Plug>(go-def)
+autocmd filetype go nmap <leader>t <Plug>(go-info)
+autocmd filetype go nnoremap <buffer> <leader>fs :GoFillStruct<cr>
 
 " Auto-pairs
 "-----------------------------------------
@@ -519,19 +537,45 @@ function! ClangCheckImpl(cmd)
   let g:clang_check_last_cmd = a:cmd
 endfunction
 
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"/let g:ycm_confirm_extra_conf = 0
+"-----------------------------------------
+" YCM
+"-----------------------------------------
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_server_python_interpreter = '/usr/bin/python3.7'
+let g:ycm_filetype_blacklist = {
+      \'notes': 1,
+      \'unitte': 1,
+      \'tagtbar': 1,
+      \'pantdoc': 1,
+      \'qf': 1,
+      \'vimtwiki': 1,
+      \'inftolog': 1,
+      \'maitl': 1}
+" Opts: menu, menuone, longest, preview
+" Avoid preview to use completion  engine lookups, otherwise it tends to lag.
+" Avoid longest as it disables you from typing
+set completeopt=menuone
 
+" Ycm Erlang hack: completion shouldn't close on typing
+autocmd FileType erlang let g:ycm_cache_omnifunc = 0
+autocmd FileType c,cpp,java,php,ruby,python,javascript,typescript let g:ycm_cache_omnifunc = 1
 
-function! ClangCheck()
-  let l:filename = expand('%')
-  if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
-    call ClangCheckImpl("clang-check " . l:filename)
-  elseif exists("g:clang_check_last_cmd")
-    call ClangCheckImpl(g:clang_check_last_cmd)
-  else
-    echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
-  endif
-endfunction
+let g:ycm_semantic_triggers =  {
+      \   'c' : ['->', '.'],
+      \   'objc' : ['->', '.'],
+      \   'ocaml' : ['.', '#'],
+      \   'cpp,objcpp' : ['->', '.', '::'],
+      \   'perl' : ['->'],
+      \   'php' : ['->', '::'],
+      \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go,typescript' : ['.'],
+      \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
+      \   'ruby' : ['.', '::'],
+      \   'erlang' : [':'],
+      \ }
 
-nmap <silent> <F5> :call ClangCheck()<CR><CR>
+"-----------------------------------------
+" Eclim Java, Scala
+"-----------------------------------------
+let g:EclimCompletionMethod = 'omnifunc'
+"-----------------------------------------
