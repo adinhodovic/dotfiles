@@ -19,6 +19,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jremmen/vim-ripgrep'
 Plug 'flazz/vim-colorschemes'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'neomake/neomake'                        " NeoMake
+Plug 'leafgarland/typescript-vim'             " Typescript syntax
 Plug 'tpope/vim-fugitive'
 Plug 'git://git.wincent.com/command-t.git'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -47,7 +49,29 @@ Plug 'juliosueiras/vim-terraform-completion'
 " All of your Plugins must be added before the following line
 call plug#end()
 
-"Dani"
+"-----------------------------------------
+" `nocindent smartindent` will allow us to omit semicolons and jump to the next line without auto indentation
+" for Javascript/Typescript
+autocmd FileType typescript,javascript,terraform,jinja2  setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
+autocmd FileType coffee                 setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType css,scss,stylus        setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType vim                    setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType tex                    setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType yaml,docker-compose    setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType json                   setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType snippets               setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType jade                   setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType html,htmldjango        setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType python                 setlocal  shiftwidth=4 tabstop=4 expandtab
+autocmd FileType go                     setlocal  shiftwidth=4 tabstop=4 noexpandtab
+autocmd FileType make                   setlocal  shiftwidth=4 tabstop=4 noexpandtab
+autocmd FileType sh,bash,zsh,readline,nginx,conf setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
+autocmd FileType php                    setlocal  shiftwidth=4 tabstop=4 expandtab
+autocmd FileType markdown               setlocal  shiftwidth=4 tabstop=4 expandtab
+autocmd FileType ruby                   setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType lua                    setlocal  shiftwidth=2 tabstop=2 expandtab
+autocmd FileType sshconfig              setlocal  shiftwidth=4 tabstop=4 expandtab
+
 "pasting from outside
 set clipboard=unnamedplus
 let mapleader = ","
@@ -574,6 +598,85 @@ let g:ycm_semantic_triggers =  {
       \   'erlang' : [':'],
       \ }
 
+"-----------------------------------------
+" FixMyJS
+"-----------------------------------------
+function! LintConfigExists()
+  if &filetype == 'typescript'
+    let tslintFiles = ['tslint.yml', 'tslint.yaml', 'tslint.json']
+    for tslintFile in tslintFiles
+      if filereadable(tslintFile)
+        return 1
+      endif
+    endfor
+  elseif &filetype == 'javascript'
+    let eslintFiles = ['.eslintrc.json', '.eslintrc.js', '.eslintrc.yml', '.eslintrc']
+    for eslintFile in eslintFiles
+      if filereadable(eslintFile)
+        return 1
+      endif
+    endfor
+  endif
+
+  return 0
+endfunction
+
+fu! LintAndFix()
+  if LintConfigExists() == 0
+    return
+  endif
+
+  if &filetype == 'typescript'
+    let cmd = 'tslint -p tsconfig.json --fix'
+  else
+    let cmd = printf('eslint --fix %s', expand('%'))
+  endif
+
+  function! LintAndFixCallback(job_id, data, event)
+    Neomake
+    edit
+  endfunction
+
+  call jobstart(cmd, {'on_exit': 'LintAndFixCallback'})
+endfu
+"-----------------------------------------
+" Neomake
+"-----------------------------------------
+let g:neomake_list_height = 8
+let g:neomake_open_list = 2
+let g:neomake_python_python_exe = 'python3'
+
+let g:neomake_typescript_tslint_maker = {
+    \ 'args': ['--project', 'tsconfig.json'],
+    \ 'append_file': 0,
+    \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
+    \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = getcwd() . '/node_modules/.bin/eslint'
+let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
+
+autocmd BufWritePost * call BufWritePostNeomake()
+func BufWritePostNeomake()
+  let neomake_bufwritepost_filetypes = [
+  \ 'python', 'bash', 'lua', 'go', 'ruby', 'ansible', 'sh', 'yaml', 'dockerfile'
+  \]
+  let neomake_lint_and_fix_filetypes = ['javascript', 'typescript']
+
+  if count(neomake_lint_and_fix_filetypes, &filetype)
+    call LintAndFix()
+  elseif count(neomake_bufwritepost_filetypes, &filetype)
+    Neomake
+  endif
+endfunc
+
+autocmd BufWritePre * if &ft == 'go' | exec 'GoImports' | endif
+"-----------------------------------------
+" juliosueiras/vim-terraform-completion
+"-----------------------------------------
+autocmd filetype terraform noremap <buffer><silent> gd :call terraformcomplete#JumpRef()<CR>
+autocmd filetype terraform noremap <buffer><silent><Leader>o :call terraformcomplete#LookupAttr()<CR>
+autocmd filetype terraform noremap <buffer><silent> K :call terraformcomplete#OpenDoc()<CR>
+let g:neomake_terraform_enabled_makers = ['terraform_validate', 'tflint']
 "-----------------------------------------
 " Eclim Java, Scala
 "-----------------------------------------

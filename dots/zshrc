@@ -312,6 +312,9 @@ bindkey -M vicmd '^x'   fzf-docker-exec
 bindkey -M viins '^x'   fzf-docker-exec
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+[ -f ~/.aws/profile ] && export AWS_PROFILE=$(cat ~/.aws/profile)
+[ -f ~/.aws/region ]  && export AWS_DEFAULT_REGION=$(cat ~/.aws/region)
+
 export TERMINAL=/usr/bin/alacritty
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
