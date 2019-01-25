@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" disable python 2.*
+let g:python3_host_prog = '/usr/bin/python'
+
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'VundleVim/Vundle.vim'
@@ -15,8 +18,8 @@ Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jremmen/vim-ripgrep'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'flazz/vim-colorschemes'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'neomake/neomake'                        " NeoMake
@@ -663,7 +666,6 @@ func BufWritePostNeomake()
   let neomake_lint_and_fix_filetypes = ['javascript', 'typescript']
 
   if count(neomake_lint_and_fix_filetypes, &filetype)
-    call LintAndFix()
   elseif count(neomake_bufwritepost_filetypes, &filetype)
     Neomake
   endif
