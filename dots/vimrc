@@ -1,5 +1,6 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype plugin indent on    " required
+" Sets how many lines of history VIM has to remember
+set history=700
 
 " disable python 2.*
 let g:python3_host_prog = '/usr/bin/python'
@@ -67,6 +68,7 @@ autocmd FileType jade                   setlocal  shiftwidth=2 tabstop=2 expandt
 autocmd FileType html,htmldjango        setlocal  shiftwidth=2 tabstop=2 expandtab
 autocmd FileType python                 setlocal  shiftwidth=4 tabstop=4 expandtab
 autocmd FileType go                     setlocal  shiftwidth=4 tabstop=4 noexpandtab
+autocmd FileType erlang                 setlocal  shiftwidth=4 tabstop=4 noexpandtab
 autocmd FileType make                   setlocal  shiftwidth=4 tabstop=4 noexpandtab
 autocmd FileType sh,bash,zsh,readline,nginx,conf setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
 autocmd FileType php                    setlocal  shiftwidth=4 tabstop=4 expandtab
@@ -75,9 +77,13 @@ autocmd FileType ruby                   setlocal  shiftwidth=2 tabstop=2 expandt
 autocmd FileType lua                    setlocal  shiftwidth=2 tabstop=2 expandtab
 autocmd FileType sshconfig              setlocal  shiftwidth=4 tabstop=4 expandtab
 
+
+autocmd FileType javascript,typescript,css,perl,nginx noremap ;; :call InsertSemicolons()<CR>
+
 "pasting from outside
 set clipboard=unnamedplus
 let mapleader = ","
+"-----------------------------------------
 " EasyMotion
 "-----------------------------------------
 let g:EasyMotion_keys = 'hgjfkdls;a'
@@ -89,6 +95,7 @@ let g:EasyMotion_use_upper = 1
 map f <Plug>(easymotion-bd-fl)
 map t <Plug>(easymotion-bd-tl)
 map s <Plug>(easymotion-sn)
+"-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
 nnoremap <leader>c :call NERDComment(0, "toggle")<CR>
@@ -103,30 +110,56 @@ let g:NERDSpaceDelims = 1
 set number
 
 let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-x': 'vsplit',
-      \ 'ctrl-z': 'split' }
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'vsplit',
+  \ 'ctrl-z': 'split' }
 let g:fzf_layout = {'up': '~40%'}
+let g:fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
 nnoremap b :e #<cr>
 nnoremap - :Buffers<cr>
+nnoremap = :call FzfGitChangedFilesFromMaster()<cr>
 nnoremap <M-=> :Files<cr>
 nnoremap <M--> :GitFiles<cr>
-nnoremap <M-q> :q<cr>
-nnoremap <M-r> :Rg<cr>
 nnoremap H :History:<cr>
 cnoremap H :History:<cr>
-nnoremap r :History<cr>
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+function! FzfGitChangedFilesFromMaster()
+  let root = split(system('git rev-parse --show-toplevel'), '\n')[0]
+  if v:shell_error
+    echom 'Not in git repo'
+    return
+  endif
+  
+  let default_remote_branch = split(system("git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"), '\n')[0]
+  let cmd_diff_files = printf('git --no-pager diff origin/%s --name-only', default_remote_branch)
+  let diff_files = split(system(cmd_diff_files), '\n')
 
-map <Up> <nop>
-map <Down> <nop>
-map <Left> <nop>
-map <Right> <nop>
+  let untracked_files = split(system('git ls-files --others --exclude-standard'), '\n')
+  let files = diff_files + untracked_files
 
+  let wrapped = fzf#wrap({
+  \ 'source':  files,
+  \ 'dir':     root,
+  \ 'options': '--ansi --multi --bind=alt-a:select-all --nth 2..,.. --tiebreak=index --prompt "GitFiles?> " --preview ''sh -c "(git diff origin/master --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500"''',
+  \ 'up':      '50%',
+  \})
+  call fzf#run(wrapped)
+endfunction
+
+"-----------------------------------------
+" vim-oblique
+"-----------------------------------------
+let g:oblique#incsearch_highlight_all=1
+
+"-----------------------------------------
+" Movement
+"-----------------------------------------
+let mapleader = ","
+noremap <leader>q q
+" Execute macro over a visual selection
+xnoremap <leader>q :'<,'>:normal @q<CR>
+" Copy til end of line (default is entire line - use `Y` for entire line instead)
+nnoremap Y yg_
 " Movement
 noremap q b
 " Movement begin/end of line
@@ -134,13 +167,9 @@ noremap Q ^
 noremap W g_
 noremap $ <nop>
 noremap ^ <nop>
-
-map <F7> mzgg=G`z
-
-"Spacing"
-execute "nnoremap <space> :" . &cedit . "a"
-execute "xnoremap <space> :" . &cedit . "a"
-
+" Move to next screen (vim) line instead of file line. Useful for long lines that span over two vim lines
+noremap j gj
+noremap k gk
 nnoremap : <nop>
 execute "nnoremap <space> :" . &cedit . "a"
 execute "xnoremap <space> :" . &cedit . "a"
@@ -152,6 +181,13 @@ execute "xnoremap ? ?" . &cedit . "a"
 nnoremap<C-w> :q<cr>
 autocmd CmdwinEnter * nnoremap <buffer> <C-w> :q<cr>
 set cmdwinheight=1
+" Easier semicolon insertion
+autocmd FileType javascript,typescript,css,perl,nginx noremap ;; :call InsertSemicolons()<CR>
+
+nmap m %
+vmap m %
+
+map <F7> mzgg=G`z
 
 set cursorline
 hi CursorLine ctermbg=236 guibg=#242321
@@ -174,6 +210,7 @@ autocmd filetype go nnoremap <silent>gd <Plug>(go-def)
 autocmd filetype go nmap <leader>t <Plug>(go-info)
 autocmd filetype go nnoremap <buffer> <leader>fs :GoFillStruct<cr>
 
+"-----------------------------------------
 " Auto-pairs
 "-----------------------------------------
 let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
@@ -184,10 +221,39 @@ let g:AutoPairsShortcutFastWrap = ''
 let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutToggle = ''
 
-filetype plugin indent on    " required
-filetype indent on
-" Sets how many lines of history VIM has to remember
-set history=700
+"-----------------------------------------
+" NERDCommenter
+"-----------------------------------------
+nnoremap <leader>c :call NERDComment(0, "toggle")<CR>
+vnoremap <leader>c :call NERDComment(0, "toggle")<CR>
+" Add a space before any comment
+let g:NERDSpaceDelims = 1
+"-----------------------------------------
+" NERDTree
+"-----------------------------------------
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$', '\.db$']
+noremap <F5> :NERDTreeToggle<CR>
+" Open nerdtree on start
+"autocmd vimenter * NERDTree
+" Open NERDTree on enter and use the non-nerdtree window
+" Go to previous (last accessed) window.
+"autocmd VimEnter * wincmd p
+" When exiting: Close nerdtree if its the only window left
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
+"-----------------------------------------
+
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 " Set to auto read when a file is changed from the outside
@@ -684,3 +750,20 @@ let g:neomake_terraform_enabled_makers = ['terraform_validate', 'tflint']
 "-----------------------------------------
 let g:EclimCompletionMethod = 'omnifunc'
 "-----------------------------------------
+" Random funcs
+"-----------------------------------------
+command! StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
+fun! <SID>StripTrailingWhitespaces()
+  if &ft =~ 'vim'
+    return
+  endif
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+" Strip trailing whitespace
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
