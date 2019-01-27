@@ -178,7 +178,7 @@ for_window [class="^.*"] border pixel 2
 bar {
   font pango:DejaVu Sans Mono 10
 	position top
-  status_command exec ~/.dotfiles/files/i3-barista
+  status_command exec ~/.dotfiles/i3/i3-barista
 
 	colors {
 		background #000000

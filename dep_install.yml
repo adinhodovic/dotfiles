@@ -192,9 +192,6 @@
     # bat
     - aur: name=bat skip_installed=true
 
-    # ttf-font-awesome
-    - aur: name=ttf-font-awesome skip_installed=true
-
     # material design icons
     - aur: name=ttf-material-design-icons-git skip_installed=true
 
@@ -209,6 +206,13 @@
         ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Free-Solid-900.otf" /usr/share/fonts/OTF/
         ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Free-Regular-400.otf" /usr/share/fonts/OTF/
         ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Brands-Regular-400.otf" /usr/share/fonts/OTF/
+        git clone --depth 1 https://github.com/google/material-design-icons
+        ln -s $PWD/material-design-icons/iconfont/MaterialIcons-Regular.ttf /usr/share/fonts/TTF
+
+        git clone --depth 1 https://github.com/Templarian/MaterialDesign-Webfont
+        ln -s $PWD/MaterialDesign-Webfont/fonts/materialdesignicons-webfont.ttf /usr/share/fonts/TTF/
+        git clone --depth 1 https://github.com/ionic-team/ionicons
+        ln -s $PWD/ionicons/docs/fonts/ionicons.ttf /usr/share/fonts/TTF
 
 
     # vimplug
