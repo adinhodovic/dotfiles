@@ -174,21 +174,44 @@
     # alsamixer utils
     - aur: name=alsamixer-utils skip_installed=true
 
-    # rg
+    # slack
     - aur: name=slack-desktop skip_installed=true
 
-    # rg
+    # whatsapp
     - aur: name=whatsapp-desktop skip_installed=true
 
     # pwr manager
     - aur: name=xfce4-power-manager skip_installed=true
 
-    # rg
+    # glibc
     - aur: name=glibc skip_installed=true
 
-    # rg
+    # powerline fonts
     - aur: name=powerline-fonts-git skip_installed=true
 
+    # bat
+    - aur: name=bat skip_installed=true
+
+    # ttf-font-awesome
+    - aur: name=ttf-font-awesome skip_installed=true
+
+    # material design icons
+    - aur: name=ttf-material-design-icons-git skip_installed=true
+
+    # ttf-ionicons
+    - aur: name=ttf-ionicons skip_installed=true
+
+    - name: fonts
+      shell: >|
+        git clone --depth 1 https://github.com/stephenhutchings/typicons.font
+        ln -s ./fonts/typicons.font/src/font/typicons.ttf /usr/share/fonts/TTF
+        git clone --depth 1 https://github.com/FortAwesome/Font-Awesome
+        ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Free-Solid-900.otf" /usr/share/fonts/OTF/
+        ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Free-Regular-400.otf" /usr/share/fonts/OTF/
+        ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Brands-Regular-400.otf" /usr/share/fonts/OTF/
+
+
+    # vimplug
     - name: vim-plug
       shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -198,6 +221,7 @@
 
     - name: fzf install
       shell: ~/.fzf/install
+
 
       # important stuff
     - say:
