@@ -38,6 +38,7 @@ export ZSH=/usr/share/oh-my-zsh
 
 ZSH_THEME="theunraveler"
 
+zstyle :omz:plugins:ssh-agent agent-forwarding on
 plugins=(
   ssh-agent
 )
@@ -399,3 +400,6 @@ export TERMINAL=/usr/bin/alacritty
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# added by travis gem
+[ -f /home/adin/.travis/travis.sh ] && source /home/adin/.travis/travis.sh

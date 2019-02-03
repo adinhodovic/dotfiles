@@ -9,8 +9,7 @@ function sync {
     --exclude=ambrosus-ops/terraform/environments/dev/.terraform/ \
     --exclude=ambrosus-ops/terraform/environments/ops/.terraform/ \
     --exclude=ambrosus-ops/terraform/environments/test/.terraform/
-  rsync -avz ~/.ssh/ambrosus_deployer_rsa "$server:~/.ssh/"
-  rsync -avz ~/.vault-password "$server:~/"
+  rsync -avz ~/.vault_password "$server:~/"
 }
 
 echo 'Removing server ~/ambrosus-ops'
