@@ -38,10 +38,12 @@ export ZSH=/usr/share/oh-my-zsh
 
 ZSH_THEME="theunraveler"
 
-zstyle :omz:plugins:ssh-agent agent-forwarding on
 plugins=(
   ssh-agent
 )
+
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+
 source $ZSH/oh-my-zsh.sh
 
 scripts_to_source=(
