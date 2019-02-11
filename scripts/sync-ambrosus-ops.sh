@@ -9,7 +9,6 @@ function sync {
     --exclude=ambrosus-ops/terraform/environments/dev/.terraform/ \
     --exclude=ambrosus-ops/terraform/environments/ops/.terraform/ \
     --exclude=ambrosus-ops/terraform/environments/test/.terraform/
-  rsync -avz ~/.vault_password "$server:~/"
 }
 
 echo 'Removing server ~/ambrosus-ops'
