@@ -13,6 +13,7 @@
 // limitations under the License.
 
 // sample-bar demonstrates a sample i3bar built using barista.
+// TODO: Customize barista
 package main
 
 import (
