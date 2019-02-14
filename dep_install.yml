@@ -180,7 +180,7 @@
     # whatsapp
     - aur: name=whatsapp-desktop skip_installed=true
 
-    # pwr manager
+    # power manager
     - aur: name=xfce4-power-manager skip_installed=true
 
     # glibc
