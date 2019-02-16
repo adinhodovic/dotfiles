@@ -198,6 +198,9 @@
     # ttf-ionicons
     - aur: name=ttf-ionicons skip_installed=true
 
+    # simplescreenrecorder
+    - aur: name=simplescreenrecorder skip_installed=true
+
     - name: fonts
       shell: >|
         git clone --depth 1 https://github.com/stephenhutchings/typicons.font
