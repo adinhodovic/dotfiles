@@ -14,6 +14,7 @@
 
 // sample-bar demonstrates a sample i3bar built using barista.
 // TODO: Customize barista
+// TODO: Fix google calender error
 package main
 
 import (
