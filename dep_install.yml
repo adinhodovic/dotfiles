@@ -2,64 +2,64 @@
 ---
 - hosts: 127.0.0.1
   connection: local
-  #vars_prompt:
+  # vars_prompt:
   #  - name: docker deps
   #    prompt: "Remove make dependecies after install? [y/N]"
   #    default: "y"
 
   tasks:
-    #install neovim
+    # install neovim
     - aur: name=neovim skip_installed=true
 
     # install oh-my-zsh
     - aur: name=oh-my-zsh-git skip_installed=true
 
-    #install xorg-xinit/start
+    # install xorg-xinit/start
     - aur: name=xorg-xinit skip_installed=true
 
-    #install rofi
+    # install rofi
     - aur: name=rofi skip_installed=true
 
-    #install xorg
+    # install xorg
     - aur: name=xorg skip_installed=true
 
-    #install dns-utils
+    # install dns-utils
     - aur: name=dnsutils skip_installed=true
 
-    #install dunst
+    # install dunst
     - aur: name=dunst skip_installed=true
 
-    #install feh
+    # install feh
     - aur: name=feh skip_installed=true
 
-    #install osprober
+    # install osprober
     - aur: name=os-prober skip_installed=true
 
-    #install tmux
+    # install tmux
     - aur: name=tmux skip_installed=true
 
-    #install networkmanager
+    # install networkmanager
     - aur: name=networkmanager skip_installed=true
 
-    #install np-applet
+    # install np-applet
     - aur: name=network-manager-applet skip_installed=true
 
-    #install enpass-bin
+    # install enpass-bin
     - aur: name=enpass-bin skip_installed=true
 
-    #install chromium
+    # install chromium
     - aur: name=chromium skip_installed=true
 
-    #install i3-gaps
+    # install i3-gaps
     - aur: name=i3-gaps skip_installed=true
 
-    #install i3-gaps
+    # install i3-gaps
     - aur: name=i3status skip_installed=true
 
-    #install i3-gaps
+    # install i3-gaps
     - aur: name=i3blocks skip_installed=true
 
-    #install i3-gaps
+    # install i3-gaps
     - aur: name=i3lock skip_installed=true
 
     # graphics
@@ -86,13 +86,13 @@
       tags: docker
 
     # lightdm
-    #- aur: name=lightdm skip_installed=true
+    # - aur: name=lightdm skip_installed=true
 
     # lightdm
-    #$ deps- aur: name=lightdm-webkit-greeter skip_installed=true
+    # $ deps- aur: name=lightdm-webkit-greeter skip_installed=true
 
     # lightdm-litarvan
-    #-$deps aur: name=lightdm-webkite-theme-litarvan skip_installed=true
+    # -$deps aur: name=lightdm-webkite-theme-litarvan skip_installed=true
 
     # terraform
     - aur: name=terraform skip_installed=true
@@ -130,7 +130,7 @@
     - name: Install yarn
       npm:
         name: yarn
-        global: yes
+        global: true
 
     # scrot screenshot
     - aur: name=scrot skip_installed=true
@@ -201,8 +201,12 @@
     # simplescreenrecorder
     - aur: name=simplescreenrecorder skip_installed=true
 
+    # simplescreenrecorder
+    - aur: name=unrar skip_installed=true
+
     - name: fonts
-      shell: >|
+      # yamllint disable
+      shell: >
         git clone --depth 1 https://github.com/stephenhutchings/typicons.font
         ln -s ./fonts/typicons.font/src/font/typicons.ttf /usr/share/fonts/TTF
         git clone --depth 1 https://github.com/FortAwesome/Font-Awesome
@@ -216,12 +220,13 @@
         ln -s $PWD/MaterialDesign-Webfont/fonts/materialdesignicons-webfont.ttf /usr/share/fonts/TTF/
         git clone --depth 1 https://github.com/ionic-team/ionicons
         ln -s $PWD/ionicons/docs/fonts/ionicons.ttf /usr/share/fonts/TTF
+      # yamllint enable
 
 
     # vimplug
     - name: vim-plug
-      shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      # yamllint disable-line
+      shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     - name: nvim-setup
       shell: nvim +PlugInstall +qall +silent
