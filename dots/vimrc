@@ -11,6 +11,7 @@ Plug 'junegunn/vim-easy-align'                " Align code around arbitrary char
 Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
+Plug 'mattn/emmet-vim'
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
@@ -94,13 +95,6 @@ set wrap "Wrap lines
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"css stuff
-augroup VimCSS3Syntax
-  autocmd!
-
-  autocmd FileType css setlocal iskeyword+=-
-augroup END
-
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -395,6 +389,11 @@ nnoremap <silent> <F8> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :noh
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CSS & HTML
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,jsx,tsx EmmetInstall
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
