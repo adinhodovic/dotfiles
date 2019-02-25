@@ -267,7 +267,20 @@ zstyle '*' single-ignored show
 
 ### Source plugins
 ##################
-zle     -N     fzf-ssh
+stty stop undef
+function fzf-ssh {
+  all_matches=$(grep -P -r "Host\s+\w+" ~/.ssh/ | grep -v '\*')
+  only_host_parts=$(echo "$all_matches" | awk '{print $NF}')
+  selection=$(echo "$only_host_parts" | fzf)
+  echo $selection
+
+  if [ ! -z $selection ]; then
+    BUFFER="ssh $selection"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+zle -N fzf-ssh
 
 function sync {
   local_dir=$1
