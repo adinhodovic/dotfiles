@@ -394,6 +394,19 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,jsx,tsx EmmetInstall
+"-----------------------------------------
+" GitGutter
+"-----------------------------------------
+let g:gitgutter_max_signs=9999
+hi SignColumn guibg=black ctermbg=black
+nnoremap ggn :GitGutterNextHunk<cr>
+nnoremap ggp :GitGutterPrevHunk<cr>
+nmap <Leader>s <Plug>GitGutterStageHunk
+nmap <Leader>u <Plug>GitGutterUndoHunk
+"-----------------------------------------
+" Fugitive
+"-----------------------------------------
+command! Gdom Gdiff origin/master
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
