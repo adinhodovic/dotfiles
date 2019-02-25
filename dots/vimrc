@@ -34,9 +34,9 @@ Plug 'ascenator/L9', {'name': 'newL9'}
 Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
 "JSX"
 Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/yajs'
 Plug 'b4b4r07/vim-ansible-vault'
 
 "-----------------------------------------
