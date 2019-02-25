@@ -201,7 +201,7 @@
     # simplescreenrecorder
     - aur: name=simplescreenrecorder skip_installed=true
 
-    # simplescreenrecorder
+    # unrar
     - aur: name=unrar skip_installed=true
 
     - name: fonts
