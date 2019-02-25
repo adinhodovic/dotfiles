@@ -1,7 +1,3 @@
-filetype plugin indent on    " required
-" Sets how many lines of history VIM has to remember
-set history=1000
-
 " disable python 2.*
 let g:python3_host_prog = '/usr/bin/python'
 
@@ -52,6 +48,12 @@ Plug 'juliosueiras/vim-terraform-completion'
 
 " All of your Plugins must be added before the following line
 call plug#end()
+
+"-----------------------------------------
+" History
+"-----------------------------------------
+" Sets how many lines of history VIM has to remember
+set history=1000
 
 "-----------------------------------------
 " Spelling
@@ -167,30 +169,15 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Enable syntax highlighting
 syntax enable
-colorscheme molokai
+set background=dark
 
-silent! colorscheme badwolf
+silent! colorscheme molokai
+
 hi clear SpellBad
 hi SpellBad ctermfg=DarkRed term=undercurl
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-  set guioptions-=T
-  set guioptions+=e
-  set t_Co=256
-  set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-
+filetype plugin indent on
 "-----------------------------------------
 " `nocindent smartindent` will allow us to omit semicolons and jump to the next line without auto indentation
 " for Javascript/Typescript
