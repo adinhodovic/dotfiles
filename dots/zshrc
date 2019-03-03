@@ -411,6 +411,9 @@ function sync {
 }
 compdef sync=scp
 
+# Add direnv
+eval "$(direnv hook zsh)"
+
 export TERMINAL=/usr/bin/alacritty
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

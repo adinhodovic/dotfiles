@@ -4,7 +4,7 @@ set -e
 server='52.16.114.112'
 
 function sync {
-  rsync -avz ~/work/ambrosus/ambrosus-ops "$server:~/" \
+  rsync -avz ~/company/honeylogic/ops "$server:~/" \
     --exclude=ambrosus-ops/.git/ \
     --exclude=ambrosus-ops/terraform/environments/dev/.terraform/ \
     --exclude=ambrosus-ops/terraform/environments/ops/.terraform/ \
