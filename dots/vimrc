@@ -12,6 +12,7 @@ Plug 'junegunn/vim-oblique'                   " Colors search result and sets no
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'mattn/emmet-vim'
+Plug 'ap/vim-css-color'
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
@@ -121,7 +122,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -246,7 +247,7 @@ function! FzfGitChangedFilesFromMaster()
     echom 'Not in git repo'
     return
   endif
-  
+
   let default_remote_branch = split(system("git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"), '\n')[0]
   let cmd_diff_files = printf('git --no-pager diff origin/%s --name-only', default_remote_branch)
   let diff_files = split(system(cmd_diff_files), '\n')
@@ -394,6 +395,7 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,jsx,tsx EmmetInstall
+
 "-----------------------------------------
 " GitGutter
 "-----------------------------------------
@@ -629,6 +631,8 @@ let g:ycm_semantic_triggers =  {
       \   'perl' : ['->'],
       \   'php' : ['->', '::'],
       \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go,typescript' : ['.'],
+      \   'css': [ 're!^', 're!^\s+', ': ' ],
+      \   'scss': [ 're!^', 're!^\s+', ': ' ],
       \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
       \   'ruby' : ['.', '::'],
       \   'erlang' : [':'],
