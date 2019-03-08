@@ -77,6 +77,7 @@
     # docker-compose
     - aur: name=docker-compose skip_installed=true
 
+# add docker group
     - name: add me to docker group
       become: true
       user:
