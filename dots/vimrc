@@ -172,10 +172,11 @@ silent! colorscheme molokai
 
 hi clear SpellBad
 hi SpellBad ctermfg=DarkRed term=undercurl
-filetype plugin indent on
 "-----------------------------------------
 " `nocindent smartindent` will allow us to omit semicolons and jump to the next line without auto indentation
 " for Javascript/Typescript
+filetype indent on
+filetype plugin indent on
 autocmd FileType typescript,javascript,terraform,jinja2  setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
 autocmd FileType coffee                 setlocal  shiftwidth=2 tabstop=2 expandtab
 autocmd FileType css,scss,stylus        setlocal  shiftwidth=2 tabstop=2 expandtab
