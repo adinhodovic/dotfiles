@@ -683,6 +683,7 @@ endfu
 "-----------------------------------------
 " Neomake
 "-----------------------------------------
+"
 let g:neomake_list_height = 8
 let g:neomake_open_list = 2
 let g:neomake_python_python_exe = 'python3'
@@ -693,9 +694,13 @@ let g:neomake_typescript_tslint_maker = {
     \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
     \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = getcwd() . '/node_modules/.bin/eslint'
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 let g:neomake_python_enabled_makers = ['pylint']
+if filereadable(getcwd() . '/node_modules/.bin/eslint')
+	let g:neomake_javascript_eslint_exe = getcwd() . '/node_modules/.bin/eslint'
+else
+	let g:neomake_javascript_eslint_exe = '/usr/bin/eslint'
+endif
 
 autocmd BufWritePost * call BufWritePostNeomake()
 func BufWritePostNeomake()
