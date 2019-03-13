@@ -10,8 +10,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'mattn/emmet-vim'
+Plug 'airblade/vim-rooter'                     " Sets root directory to project (git) directory by default
 Plug 'ap/vim-css-color'
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
@@ -47,6 +49,11 @@ Plug 'b4b4r07/vim-ansible-vault'
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 "-----------------------------------------
+
+"-----------------------------------------
+" Python
+"-----------------------------------------
+Plug 'ambv/black'                             " Indenting
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -270,6 +277,11 @@ endfunction
 "-----------------------------------------
 let g:oblique#incsearch_highlight_all=1
 
+" Python indeting with Black
+"-----------------------------------------
+if $PYTHON_BLACK_ENABLED
+  autocmd BufWritePost *.py :silent Black
+endif
 "-----------------------------------------
 " Movement
 "-----------------------------------------
@@ -306,6 +318,20 @@ vmap m %
 
 set cursorline
 hi CursorLine ctermbg=236 guibg=#242321
+
+autocmd CursorMoved,CursorMovedI * call UpdateStatusLine()
+autocmd BufWritePost * hi statusline ctermfg=8 ctermbg=233
+fu! UpdateStatusLine()
+  let bufinfos = getbufinfo()
+  for bufinfo in bufinfos
+    if bufinfo.changed
+      hi statusline ctermfg=46 ctermbg=233
+      return
+    endif
+
+    hi statusline ctermfg=8 ctermbg=233
+  endfor
+endfu
 
 "-----------------------------------------
 " LanguageClient
