@@ -14,6 +14,9 @@
     # install oh-my-zsh
     - aur: name=oh-my-zsh-git skip_installed=true
 
+    # install autolock
+    - aur: name=xautolock skip_installed=true
+
     # install xorg-xinit/start
     - aur: name=xorg-xinit skip_installed=true
 
