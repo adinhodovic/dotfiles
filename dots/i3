@@ -206,5 +206,6 @@ exec --no-startup-id dunst
 exec --no-startup-id rescuetime
 exec --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id feh --bg-scale /home/adin/.dotfiles/images/mostar.jpg
+exec --no-startup-id clight
 exec --no-startup-id nm-applet
 exec xautolock -time 15 -locker 'i3lock-fancy -f Roboto-Light-Italic -p' -detectsleep
