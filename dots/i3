@@ -203,6 +203,7 @@ bar {
 # Please remove the following exec line:
 #######################################################################
 exec --no-startup-id dunst
+exec --no-startup-id tzupdate
 exec --no-startup-id rescuetime
 exec --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id feh --bg-scale /home/adin/.dotfiles/images/mostar.jpg
