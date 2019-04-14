@@ -136,6 +136,27 @@
         name: yarn
         global: true
 
+    - name: Install eslint-plugin-template
+      npm:
+        name: eslint-plugin-template
+        global: true
+
+    - name: Install eslint-html
+      npm:
+        name: eslint-html
+        global: true
+
+    # etcher
+    - aur: name=etcher skip_installed=true
+
+    # clight
+    - aur: name=clight skip_installed=true
+
+    - name: enable service clightd service
+      systemd:
+        name: clightd.service
+        enabled: yes
+
     # scrot screenshot
     - aur: name=scrot skip_installed=true
 
@@ -237,7 +258,6 @@
 
     - name: fzf install
       shell: ~/.fzf/install
-
 
       # important stuff
     - say:
