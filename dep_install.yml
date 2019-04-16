@@ -136,6 +136,16 @@
         name: yarn
         global: true
 
+    - name: Install eslint
+      npm:
+        name: prettier-eslint
+        global: true
+
+    - name: Install eslint
+      npm:
+        name: eslint-config-airbnb
+        global: true
+
     - name: Install eslint-plugin-template
       npm:
         name: eslint-plugin-template
@@ -145,6 +155,7 @@
       npm:
         name: eslint-html
         global: true
+
 
     # etcher
     - aur: name=etcher skip_installed=true
@@ -228,6 +239,9 @@
 
     # unrar
     - aur: name=unrar skip_installed=true
+
+    # tzupdate
+    - aur: name=tzupdate skip_installed=true
 
     - name: fonts
       # yamllint disable
