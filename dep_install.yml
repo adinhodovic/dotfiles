@@ -116,6 +116,13 @@
     # fd
     - aur: name=fd skip_installed=true
 
+    # mimeo
+    - aur: name=mimeo skip_installed=true
+
+    # setup mimeo
+    - name: setup firefox as default app
+      shell: mimeo --prefer firefox
+
     # diff-so-fany
     - aur: name=diff-so-fancy skip_installed=true
 
