@@ -1,0 +1,1 @@
+### Use secret-store to create a default keyring for i3-barista
