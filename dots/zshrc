@@ -134,7 +134,11 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 alias tmux="tmux -2"
 # Todo: Write a function instead
 
-alias t="task && task sync"
+run_task () {
+    task "$1" "$2" "$3"
+    task sync
+}
+alias t=run_task
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 alias cd.="cd .."
 alias cd..="cd ../.."
