@@ -135,8 +135,11 @@ alias tmux="tmux -2"
 # Todo: Write a function instead
 
 run_task () {
-    task "$1" "$2" "$3"
+  task "$@"
+  if [ "$1" != "" ];
+  then
     task sync
+  fi
 }
 alias t=run_task
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
