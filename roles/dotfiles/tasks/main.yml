@@ -34,6 +34,13 @@
     state: link
     force: true
 
+- name: Symlink taskrc
+  file:
+    src: "/home/adin/.dotfiles/dots/taskrc"
+    dest: "/home/adin/.taskrc"
+    state: link
+    force: true
+
 - name: Symlink lightdm
   file:
     src: "/home/adin/.dotfiles/dots/lightdm.conf"
