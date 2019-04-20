@@ -132,7 +132,10 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 # ------------
 # Allows 256 colors as background in terminal, used for Vi
 alias tmux="tmux -2"
-# Todo: Write a function instead
+alias ls='exa --long --git --git-ignore'
+alias ll='exa --long --header --git --git-ignore -al'
+alias xc='xclip -sel clip'
+alias v='nvim'
 
 run_task () {
   task "$@"
@@ -152,7 +155,6 @@ alias cp='cp -v '
 alias mv='mv -v '
 alias h="history"
 alias cd-="cd -"
-alias ls='ls --color=auto --classify -lrt --block-size=MB'
 alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
 alias o='xdg-open'
 alias v=nvim
@@ -179,11 +181,6 @@ HOSTNAME="`hostname`"
 ##############
 unsetopt ALL_EXPORT
 
-### Set alias
-#############
-alias ll='ls -al'
-alias xc='xclip -sel clip'
-alias v='nvim'
 ### Bind keys
 #############
 autoload -U compinit
