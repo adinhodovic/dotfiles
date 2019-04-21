@@ -80,6 +80,10 @@
     # docker-compose
     - aur: name=docker-compose skip_installed=true
 
+    # Add PyGithub (ansible githooks)
+    - pip:
+        name: PyGithub
+
 # add docker group
     - name: add me to docker group
       become: true
