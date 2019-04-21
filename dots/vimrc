@@ -657,55 +657,13 @@ let g:ycm_semantic_triggers =  {
       \   'cpp,objcpp' : ['->', '.', '::'],
       \   'perl' : ['->'],
       \   'php' : ['->', '::'],
-      \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go,typescript' : ['.'],
+      \   'css,java,javascript,d,python,perl6,scala,vb,elixir,go,typescript' : ['.'],
       \   'css': [ 're!^', 're!^\s+', ': ' ],
       \   'scss': [ 're!^', 're!^\s+', ': ' ],
       \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
       \   'ruby' : ['.', '::'],
       \   'erlang' : [':'],
       \ }
-
-"-----------------------------------------
-" FixMyJS
-"-----------------------------------------
-function! LintConfigExists()
-  if &filetype == 'typescript'
-    let tslintFiles = ['tslint.yml', 'tslint.yaml', 'tslint.json']
-    for tslintFile in tslintFiles
-      if filereadable(tslintFile)
-        return 1
-      endif
-    endfor
-  elseif &filetype == 'javascript'
-    let eslintFiles = ['.eslintrc.json', '.eslintrc.js', '.eslintrc.yml', '.eslintrc']
-    for eslintFile in eslintFiles
-      if filereadable(eslintFile)
-        return 1
-      endif
-    endfor
-  endif
-
-  return 0
-endfunction
-
-fu! LintAndFix()
-  if LintConfigExists() == 0
-    return
-  endif
-
-  if &filetype == 'typescript'
-    let cmd = 'tslint -p tsconfig.json --fix'
-  else
-    let cmd = printf('eslint --fix %s', expand('%'))
-  endif
-
-  function! LintAndFixCallback(job_id, data, event)
-    Neomake
-    edit
-  endfunction
-
-  call jobstart(cmd, {'on_exit': 'LintAndFixCallback'})
-endfu
 "-----------------------------------------
 " Neomake
 "-----------------------------------------
@@ -719,30 +677,18 @@ let g:neomake_typescript_tslint_maker = {
     \ 'append_file': 0,
     \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
     \ }
+let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 let g:neomake_python_enabled_makers = ['pylint']
+
 if filereadable(getcwd() . '/node_modules/.bin/eslint')
 	let g:neomake_javascript_eslint_exe = getcwd() . '/node_modules/.bin/eslint'
 else
 	let g:neomake_javascript_eslint_exe = '/usr/bin/eslint'
 endif
 
-autocmd BufWritePost * call BufWritePostNeomake()
-func BufWritePostNeomake()
-  let neomake_bufwritepost_filetypes = [
-  \ 'python', 'bash', 'lua', 'go', 'ruby', 'ansible', 'sh', 'yaml', 'dockerfile'
-  \]
-  let neomake_lint_and_fix_filetypes = ['javascript', 'typescript']
-
-  if count(neomake_lint_and_fix_filetypes, &filetype)
-    call LintAndFix()
-  elseif count(neomake_bufwritepost_filetypes, &filetype)
-    Neomake
-  endif
-endfunc
-
-autocmd BufWritePre * if &ft == 'go' | exec 'GoImports' | endif
+autocmd! BufWritePost,BufEnter * Neomake
 "-----------------------------------------
 " juliosueiras/vim-terraform-completion
 "-----------------------------------------

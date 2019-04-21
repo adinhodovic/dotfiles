@@ -84,7 +84,7 @@
     - pip:
         name: PyGithub
 
-# add docker group
+    # add docker group
     - name: add me to docker group
       become: true
       user:
@@ -150,6 +150,11 @@
         name: yarn
         global: true
 
+    - name: Install npx
+      npm:
+        name: npx
+        global: true
+
     - name: Install eslint
       npm:
         name: prettier-eslint
@@ -170,6 +175,9 @@
         name: eslint-html
         global: true
 
+    - name: Install eslint-airbnb
+      shell: "npx install-peerdeps --global eslint-config-airbnb"
+
 
     # etcher
     - aur: name=etcher skip_installed=true
@@ -180,7 +188,7 @@
     - name: enable service clightd service
       systemd:
         name: clightd.service
-        enabled: yes
+        enabled: true
 
     # scrot screenshot
     - aur: name=scrot skip_installed=true
