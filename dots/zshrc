@@ -138,10 +138,25 @@ alias xc='xclip -sel clip'
 alias v='nvim'
 
 run_task () {
-  task "$@"
-  if [ "$1" != "" ];
+  local TASKOPTION=$1
+  if [ "$TASKOPTION" = "add" ];
   then
-    task sync
+    shift
+    task $TASKOPTION "$@"
+    print "Adding $@ to todoist"
+    todoist add "$@"
+  elif [ "$TASKOPTION" = "done" ];
+  then
+    shift
+    local TASKNAME=`task $TASKOPTION "$@" | grep -o "'.*'" | sed 's/^.\(.*\).$/\1/'`
+    local TODOISTID=`todoist list | grep -w " $TASKNAME" | awk 'NR==1{print $1}'`
+    if [ ! -z "$TODOISTID" ];
+    then
+      print "Completing $TASKNAME in todoist"
+      todoist close "$TODOISTID"
+    fi
+  else
+    task $TASKOPTION "$@"
   fi
 }
 alias t=run_task
