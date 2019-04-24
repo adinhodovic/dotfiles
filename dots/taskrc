@@ -1,10 +1,4 @@
-taskd.certificate=~/task.private.certificate.pem
-taskd.key=~/task.private.key.pem
-taskd.ca=~/task.ca.cert.pem
-taskd.server=taskwarrior.inthe.am:53589
-taskd.credentials=inthe_am/adin/89270fb8-7cb7-4b5e-a926-aefc43e38923
-taskd.trust=ignore hostname
-# [Created by task 2.5.1 9/2/2018 05:40:37]
+# [Created by task 2.5.1 4/23/2019 13:36:58]
 # Taskwarrior program configuration file.
 # For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
 # 'man task-sync' or 'man taskrc'
@@ -27,11 +21,10 @@ data.location=~/.task
 #include /usr/share/doc/task/rc/dark-red-256.theme
 #include /usr/share/doc/task/rc/dark-green-256.theme
 #include /usr/share/doc/task/rc/dark-blue-256.theme
-#include /usr/share/doc/task/rc/dark-violets-256.theme
+include /usr/share/doc/task/rc/dark-violets-256.theme
 #include /usr/share/doc/task/rc/dark-yellow-green.theme
 #include /usr/share/doc/task/rc/dark-gray-256.theme
 #include /usr/share/doc/task/rc/dark-gray-blue-256.theme
 #include /usr/share/doc/task/rc/solarized-dark-256.theme
 #include /usr/share/doc/task/rc/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
-
