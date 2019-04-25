@@ -1,1 +1,1 @@
-### Use secret-store to create a default keyring for gnome-keyring which is used by i3 barista :)
+### Use secret-store to create a default keyring for gnome-keyring which is used by i3 barista
