@@ -8,4 +8,3 @@ ControlPath /tmp/%r@%h-%p
 ControlPersist 600
 
 Include ~/.ssh/config-*
-

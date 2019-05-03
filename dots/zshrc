@@ -136,6 +136,7 @@ alias ls='exa --long --git --git-ignore'
 alias ll='exa --long --header --git --git-ignore -al'
 alias xc='xclip -sel clip'
 alias v='nvim'
+alias s-hl='vps-sync hl-ops-deployment ~/company/honeylogic/ops ~/ops ops'
 
 run_task () {
   local TASKOPTION=$1
