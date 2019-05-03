@@ -33,5 +33,5 @@ sync
 while inotifywait -e modify -r ~/work/ambrosus/ambrosus-ops/*; do
  notify-send 'Syncing to $1...' -i network-transmit-receive
   sync
-  pkill xfce4-notifyd
+  #pkill xfce4-notifyd
 done
