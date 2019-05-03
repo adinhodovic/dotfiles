@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 set -e
 
+if [ "$1" = "" ] || [ "$2" = "" ] || [ "$3" = "" ];
+then
+  echo "Bad arguments passed:"
+  echo "Arg1: the server,"
+  echo "Arg2: the folder to sync,"
+  echo "Arg3: The folder to delete,"
+  echo "Arg4: The root folder to exclude files from"
+  echo "Sample $ vps-sync hl-ops-deployment ~/company/honeylogic/ops ~/ops ops"
+  exit
+fi
+
 server=$1
 sync_folder=$2
 exclude_folder=$4
-echo "$exclude_folder"
 function sync {
   rsync -avz "$sync_folder" "$server:~/" \
     --exclude="$exclude_folder/.git/" \
