@@ -30,8 +30,8 @@ ssh "$server" "rm -rf $3"
 echo 'Performing initial sync'
 sync
 
-while inotifywait -e modify -r ~/work/ambrosus/ambrosus-ops/*; do
- notify-send 'Syncing to $1...' -i network-transmit-receive
+while inotifywait -e modify -r $2/*; do
+ notify-send "Syncing to $server..." -i network-transmit-receive
   sync
   #pkill xfce4-notifyd
 done
