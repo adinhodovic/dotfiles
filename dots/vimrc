@@ -70,8 +70,7 @@ call deoplete#custom#option('sources', {
 call deoplete#custom#source('_',
             \ 'disabled_syntaxes', ['Comment', 'String'])
 " disable autocomplete by default
-let b:deoplete_disable_auto_complete=1
-let g:deoplete_disable_auto_complete=1
+call deoplete#custom#option('auto_complete', v:false)
 call deoplete#initialize()
 "-----------------------------------------
 " History
