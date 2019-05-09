@@ -446,6 +446,11 @@ eval "$(direnv hook zsh)"
 export TERMINAL=/usr/bin/alacritty
 export TERM=screen-256color
 
+######################################################
+# Ruby path
+######################################################
+export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # added by travis gem

@@ -690,6 +690,7 @@ let g:ycm_semantic_triggers =  {
 let g:neomake_list_height = 8
 let g:neomake_open_list = 2
 let g:neomake_python_python_exe = 'python3'
+let g:neomake_python_isort_exe = 'isort'
 
 let g:neomake_typescript_tslint_maker = {
     \ 'args': ['--project', 'tsconfig.json'],
@@ -702,7 +703,7 @@ let g:neomake_jsx_eslint_maker = {
     \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
-let g:neomake_python_enabled_makers = ['pylint']
+let g:neomake_python_enabled_makers = ['pylint', 'mypy']
 
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_maker = {
@@ -710,6 +711,12 @@ let g:neomake_css_stylelint_maker = {
     \ }
 
 let g:neomake_javascript_eslint_exe = '/usr/bin/eslint'
+
+let g:neomake_terraform_tflint_exe = '/usr/bin/tflint'
+let g:neomake_terraform_tvalidate_exe = '/usr/bin/terraform validate'
+
+let g:neomake_terraform_enabled_makers = ['tvalidate', 'tflint']
+
 
 autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
 
@@ -720,6 +727,19 @@ function! s:Neomake_callback(options)
   endif
 endfunction
 
+"-----------------------------------------
+" syntastic
+"-----------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"-----------------------------------------
 " juliosueiras/vim-terraform-completion
 "-----------------------------------------
 autocmd filetype terraform noremap <buffer><silent> gd :call terraformcomplete#JumpRef()<CR>
@@ -734,9 +754,6 @@ let g:terraform_completion_keys = 1
 
 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
 let g:terraform_registry_module_completion = 0
-
-let g:neomake_terraform_tflint_exe = '/usr/bin/tflint'
-let g:neomake_terraform_enabled_makers = ['terraform_validate', 'tflint']
 "-----------------------------------------
 " Eclim Java, Scala
 "-----------------------------------------
