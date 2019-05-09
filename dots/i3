@@ -195,6 +195,16 @@ bar {
 }
 
 #######################################################################
+# TODO: client colors
+#######################################################################
+client.focused #859900 #859900 #eee8d5 #859900
+client.focused_inactive #073642 #073642 #586e75 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+
+
+
+#######################################################################
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)
 #
@@ -213,5 +223,10 @@ exec --no-startup-id gnome-keyring-daemon
 exec --no-startup-id xset s off
 exec --no-startup-id xset s noblank
 exec --no-startup-id xset -dpms
+exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox'
+exec --no-startup-id i3-msg 'workspace 2:Terminal; exec /usr/bin/alacritty -e 'tmux''
+exec --no-startup-id i3-msg 'workspace 5:Slack; exec /usr/bin/slack'
+exec --no-startup-id i3-msg 'workspace 6:Spotify; exec /usr/bin/spotify'
+exec --no-startup-id i3-msg 'workspace 10:Enpass; exec /usr/bin/enpass'
 
 exec xautolock -time 15 -locker 'i3lock-fancy -f Roboto-Light-Italic -p' -detectsleep
