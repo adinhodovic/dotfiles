@@ -210,4 +210,8 @@ exec --no-startup-id feh --bg-scale /home/adin/.dotfiles/images/mostar.jpg
 exec --no-startup-id clight --day-temp=8500 --night-temp=6500
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-keyring-daemon
+exec --no-startup-id xset s off
+exec --no-startup-id xset s noblank
+exec --no-startup-id xset -dpms
+
 exec xautolock -time 15 -locker 'i3lock-fancy -f Roboto-Light-Italic -p' -detectsleep

@@ -439,7 +439,6 @@ export TERM=screen-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
 # added by travis gem
 [ -f /home/adin/.travis/travis.sh ] && source /home/adin/.travis/travis.sh
 
