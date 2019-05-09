@@ -145,7 +145,7 @@ run_task () {
     shift
     task $TASKOPTION "$@"
     print "Adding $@ to todoist"
-    todoist add "$@"
+    todoist add "$@ - taskmanager"
   elif [ "$TASKOPTION" = "done" ];
   then
     shift

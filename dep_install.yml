@@ -150,6 +150,11 @@
         name: yarn
         global: true
 
+    - name: Install neovim
+      npm:
+        name: neovim
+        global: true
+
     - name: Install npx
       npm:
         name: npx
