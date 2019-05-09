@@ -68,7 +68,7 @@ call deoplete#custom#option('sources', {
 \})
 " Disable the candidates in Comment/String syntaxes.
 call deoplete#custom#source('_',
-            \ 'disabled_syntaxes', ['Comment', 'String'])
+    \ 'disabled_syntaxes', ['Comment', 'String'])
 " disable autocomplete by default
 call deoplete#custom#option('auto_complete', v:false)
 call deoplete#initialize()
