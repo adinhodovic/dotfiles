@@ -435,6 +435,7 @@ compdef sync=scp
 eval "$(direnv hook zsh)"
 
 export TERMINAL=/usr/bin/alacritty
+export TERM=screen-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
