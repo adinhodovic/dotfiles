@@ -114,9 +114,6 @@
     # hub-git
     - aur: name=hub-git skip_installed=true
 
-    # nvim-ycm
-    - aur: name=neovim-youcompleteme-core-git skip_installed=true
-
     # fd
     - aur: name=fd skip_installed=true
 
