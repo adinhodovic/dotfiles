@@ -20,6 +20,7 @@ Plug 'autozimu/LanguageClient-neovim', {
       \ }
 Plug 'jremmen/vim-ripgrep'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'flazz/vim-colorschemes'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'neomake/neomake'                        " NeoMake
@@ -61,16 +62,11 @@ call plug#end()
 "-----------------------------------------
 " General + deoplete
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({'max_list': 25})
+""""""""""""""""TERRAFORM"""""""""""""""""
 call deoplete#custom#option('omni_patterns', {
 \ 'complete_method': 'omnifunc',
 \ 'terraform': '[^ *\t"{=$]\w*',
-\})
-call deoplete#custom#option({'max_list': 25})
-call deoplete#custom#option('auto_complete', v:false)
-""""""""""""""""TERRAFORM"""""""""""""""""
-
-call deoplete#custom#option('sources', {
-    \ 'python': ['LanguageClient'],
 \})
 " Disable the candidates in Comment/String syntaxes.
 call deoplete#custom#source('_',
