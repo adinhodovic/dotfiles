@@ -33,6 +33,7 @@ autoload -U history-search-end
 zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
+zmodload zsh/zpty
 
 export ZSH=/usr/share/oh-my-zsh
 
