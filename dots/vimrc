@@ -19,8 +19,13 @@ Plug 'autozimu/LanguageClient-neovim', {
       \ 'do': 'bash install.sh',
       \ }
 Plug 'jremmen/vim-ripgrep'
+" Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"' Deoplete python
 Plug 'deoplete-plugins/deoplete-jedi'
+"' Deoplete go
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+"
 Plug 'flazz/vim-colorschemes'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'neomake/neomake'                        " NeoMake
