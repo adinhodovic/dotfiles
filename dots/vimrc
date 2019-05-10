@@ -3,7 +3,10 @@ let g:python3_host_prog = '/usr/bin/python'
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.local/share/nvim/plugged')
+" Plugin Manager
 Plug 'VundleVim/Vundle.vim'
+" General
+Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -14,10 +17,6 @@ Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'mattn/emmet-vim'
 Plug 'airblade/vim-rooter'                     " Sets root directory to project (git) directory by default
 Plug 'ap/vim-css-color'
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
 Plug 'jremmen/vim-ripgrep'
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -25,6 +24,13 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 "' Deoplete go
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+"' JS
+Plug 'carlitux/deoplete-ternjs'
+Plug 'ternjs/tern_for_vim'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+"' Add neopairs
+Plug 'Shougo/neopairs.vim'
 "
 Plug 'flazz/vim-colorschemes'
 Plug 'hail2u/vim-css3-syntax'
@@ -33,7 +39,6 @@ Plug 'leafgarland/typescript-vim'             " Typescript syntax
 Plug 'tpope/vim-fugitive'
 Plug 'git://git.wincent.com/command-t.git'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'jiangmiao/auto-pairs'                   " Automatically add (){}<>
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
@@ -41,9 +46,7 @@ Plug 'ascenator/L9', {'name': 'newL9'}
 "HTML"
 Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
 "JSX"
-Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'b4b4r07/vim-ansible-vault'
 
@@ -68,15 +71,21 @@ call plug#end()
 " General + deoplete
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({'max_list': 25})
+"call deoplete#custom#source('_',
+""    \ 'disabled_syntaxes', ['Comment', 'String'])
+let g:deoplete#enable_profile = 1
 """"""""""""""""TERRAFORM"""""""""""""""""
 call deoplete#custom#option('omni_patterns', {
 \ 'complete_method': 'omnifunc',
 \ 'terraform': '[^ *\t"{=$]\w*',
 \})
-" Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_',
-    \ 'disabled_syntaxes', ['Comment', 'String'])
-" disable autocomplete by default
+"""""""""""""""""JS"""""""""""""""""""""""
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue'
+                \ ]
+
 call deoplete#initialize()
 "-----------------------------------------
 " History
@@ -353,35 +362,6 @@ fu! UpdateStatusLine()
     hi statusline ctermfg=8 ctermbg=233
   endfor
 endfu
-
-"-----------------------------------------
-" LanguageClient
-"-----------------------------------------
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_serverCommands = {
-      \ 'javascript': ['javascript-typescript-stdio'],
-      \ 'typescript': ['javascript-typescript-stdio'],
-      \ 'python':     ['pyls'],
-      \ 'ruby':       ['solargraph', 'stdio']
-      \ }
-
-autocmd filetype javascript,typescript,python,ruby nnoremap <silent>gd :call LanguageClient_textDocument_definition()<CR>
-autocmd filetype javascript,typescript,python,ruby nnoremap <silent> <leader>t :call LanguageClient_textDocument_hover()<CR>
-autocmd filetype javascript,typescript nnoremap <silent> <leader>gr :call LanguageClient_textDocument_references()<CR>
-autocmd filetype go nnoremap <silent>gd <Plug>(go-def)
-autocmd filetype go nmap <leader>t <Plug>(go-info)
-autocmd filetype go nnoremap <buffer> <leader>fs :GoFillStruct<cr>
-
-"-----------------------------------------
-" Auto-pairs
-"-----------------------------------------
-let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
-" Disable inappropriate defaults
-let g:AutoPairsFlyMode = 0
-let g:AutoPairsMultilineClose = 0
-let g:AutoPairsShortcutFastWrap = ''
-let g:AutoPairsShortcutJump = ''
-let g:AutoPairsShortcutToggle = ''
 
 "-----------------------------------------
 " NERDCommenter
