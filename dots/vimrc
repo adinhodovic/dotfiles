@@ -17,9 +17,13 @@ Plug 'junegunn/vim-easy-align'                " Align code around arbitrary char
 Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
-Plug 'flazz/vim-colorschemes'
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
+Plug 'vim-airline/vim-airline'
+"-----------------------------------------
+"                   Colors
+"-----------------------------------------
+Plug 'morhetz/gruvbox'
 "-----------------------------------------
 "                   GIT
 "-----------------------------------------
@@ -169,9 +173,12 @@ set si "Smart indent
 set wrap "Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme = 'gruvbox'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -243,7 +250,7 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 syntax enable
 set background=dark
 
-silent! colorscheme molokai
+silent! colorscheme gruvbox
 
 hi clear SpellBad
 hi SpellBad ctermfg=DarkRed term=undercurl
