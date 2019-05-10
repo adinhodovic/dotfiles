@@ -9,7 +9,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'mattn/emmet-vim'
@@ -60,19 +59,19 @@ call plug#end()
 "-----------------------------------------
 " Deoplate
 "-----------------------------------------
-let g:deoplete#omni_patterns = {}
+" General + deoplete
 let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('auto_complete', v:false)
-""""""""""""""""TERRAFORM"""""""""""""""""
 call deoplete#custom#option('omni_patterns', {
 \ 'complete_method': 'omnifunc',
 \ 'terraform': '[^ *\t"{=$]\w*',
 \})
+call deoplete#custom#option({'max_list': 25})
+call deoplete#custom#option('auto_complete', v:false)
+""""""""""""""""TERRAFORM"""""""""""""""""
 
 call deoplete#custom#option('sources', {
     \ 'python': ['LanguageClient'],
 \})
-
 " Disable the candidates in Comment/String syntaxes.
 call deoplete#custom#source('_',
     \ 'disabled_syntaxes', ['Comment', 'String'])
@@ -636,59 +635,6 @@ function! <SID>BufcloseCloseIt()
     execute("bdelete! ".l:currentBufNum)
   endif
 endfunction
-
-
-function! ClangCheckImpl(cmd)
-  if &autowrite | wall | endif
-  echo "Running " . a:cmd . " ..."
-  let l:output = system(a:cmd)
-  cexpr l:output
-  cwindow
-  let w:quickfix_title = a:cmd
-  if v:shell_error != 0
-    cc
-  endif
-  let g:clang_check_last_cmd = a:cmd
-endfunction
-
-"-----------------------------------------
-" YCM
-"-----------------------------------------
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_server_python_interpreter = '/usr/bin/python3.7'
-let g:ycm_filetype_blacklist = {
-      \'notes': 1,
-      \'unitte': 1,
-      \'tagtbar': 1,
-      \'pantdoc': 1,
-      \'qf': 1,
-      \'vimtwiki': 1,
-      \'inftolog': 1,
-      \'maitl': 1}
-" Opts: menu, menuone, longest, preview
-" Avoid preview to use completion  engine lookups, otherwise it tends to lag.
-" Avoid longest as it disables you from typing
-set completeopt=menuone
-
-" Ycm Erlang hack: completion shouldn't close on typing
-autocmd FileType erlang let g:ycm_cache_omnifunc = 0
-autocmd FileType c,cpp,java,php,ruby,python,javascript,typescript let g:ycm_cache_omnifunc = 1
-
-let g:ycm_semantic_triggers =  {
-      \   'c' : ['->', '.'],
-      \   'objc' : ['->', '.'],
-      \   'ocaml' : ['.', '#'],
-      \   'cpp,objcpp' : ['->', '.', '::'],
-      \   'perl' : ['->'],
-      \   'php' : ['->', '::'],
-      \   'css,java,javascript,d,python,perl6,scala,vb,elixir,go,typescript' : ['.'],
-      \   'css': [ 're!^', 're!^\s+', ': ' ],
-      \   'scss': [ 're!^', 're!^\s+', ': ' ],
-      \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
-      \   'ruby' : ['.', '::'],
-      \   'erlang' : [':'],
-      \ }
 "-----------------------------------------
 " Neomake
 "-----------------------------------------
@@ -743,7 +689,8 @@ let g:syntastic_check_on_wq = 0
 
 " (Optional)Remove Info(Preview) window
 set completeopt-=preview
-
+" 25 options
+set pumheight=25
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "~~~~~~~~~~~~~~~~TERRAFORM~~~~~~~~~~~~~~~~
 "-----------------------------------------
