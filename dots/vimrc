@@ -176,6 +176,12 @@ set wrap "Wrap lines
 " Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'gruvbox'
+let g:airline#extensions#tabline#enabled = 1
+" remove the filetype part
+let g:airline_section_x=''
+let g:airline_section_y=''
+" remove separators for empty sections
+let g:airline_skip_empty_sections = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
