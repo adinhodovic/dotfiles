@@ -19,7 +19,19 @@ Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
-Plug 'vim-airline/vim-airline'
+
+"-----------------------------------------
+"                   Automation
+"-----------------------------------------
+Plug 'cohama/lexima.vim'                      " Autoclosing
+"-----------------------------------------
+"                   GUI
+"-----------------------------------------
+Plug 'vim-airline/vim-airline'                " Bottom bar
+"-----------------------------------------
+"                   Shortkeys
+"-----------------------------------------
+Plug 'tpope/vim-surround'                     " Delete add surroundings in pair
 "-----------------------------------------
 "                   Colors
 "-----------------------------------------
