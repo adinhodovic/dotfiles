@@ -37,7 +37,7 @@ zmodload zsh/zpty
 
 export ZSH=/usr/share/oh-my-zsh
 
-ZSH_THEME="theunraveler"
+ZSH_THEME="refined"
 
 plugins=(
   ssh-agent
