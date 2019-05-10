@@ -3,64 +3,102 @@ let g:python3_host_prog = '/usr/bin/python'
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.local/share/nvim/plugged')
-" Plugin Manager
+"-----------------------------------------
+"                   Plugin Manager
+"-----------------------------------------
 Plug 'VundleVim/Vundle.vim'
-" General
-Plug 'ervandew/supertab'
-Plug 'vim-syntastic/syntastic'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+"-----------------------------------------
+"                   General
+"-----------------------------------------
+Plug 'Shougo/neopairs.vim'                    " Pair symbols
+Plug 'ervandew/supertab'                      " Tab down alts
+Plug 'jremmen/vim-ripgrep'                    " Ripgrep
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
-Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
-Plug 'mattn/emmet-vim'
-Plug 'airblade/vim-rooter'                     " Sets root directory to project (git) directory by default
-Plug 'ap/vim-css-color'
-Plug 'jremmen/vim-ripgrep'
-" Deoplete
+Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
+Plug 'flazz/vim-colorschemes'
+Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
+Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
+"-----------------------------------------
+"                   GIT
+"-----------------------------------------
+Plug 'airblade/vim-gitgutter'                 " Show changed git lines
+"-----------------------------------------
+"                   FZF
+"-----------------------------------------
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"-----------------------------------------
+"                   Syntastic
+"-----------------------------------------
+Plug 'vim-syntastic/syntastic'
+"-----------------------------------------
+"                   Deoplete
+"-----------------------------------------
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"' Deoplete python
+"-----------------------------------------
+"                   Python
+"-----------------------------------------
 Plug 'deoplete-plugins/deoplete-jedi'
-"' Deoplete go
+"-----------------------------------------
+"                   Go
+"-----------------------------------------
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-"' JS
+"-----------------------------------------
+"                   JS
+"-----------------------------------------
 Plug 'carlitux/deoplete-ternjs'
 Plug 'ternjs/tern_for_vim'
-Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-"' Add neopairs
-Plug 'Shougo/neopairs.vim'
-"
-Plug 'flazz/vim-colorschemes'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'neomake/neomake'                        " NeoMake
-Plug 'leafgarland/typescript-vim'             " Typescript syntax
-Plug 'tpope/vim-fugitive'
-Plug 'git://git.wincent.com/command-t.git'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
-Plug 'Lokaltog/vim-easymotion'
-Plug 'airblade/vim-gitgutter'                 " Show changed git lines
-Plug 'ascenator/L9', {'name': 'newL9'}
-"HTML"
-Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
-"JSX"
-Plug 'elzr/vim-json'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'b4b4r07/vim-ansible-vault'
-
 "-----------------------------------------
-" Terraform
+"                   JSX
+"-----------------------------------------
+Plug 'mxw/vim-jsx'
+"-----------------------------------------
+"                   JSON
+"-----------------------------------------
+Plug 'elzr/vim-json'
+"-----------------------------------------
+"                   CSS
+"-----------------------------------------
+Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
+"-----------------------------------------
+"                   HTML
+"-----------------------------------------
+Plug 'mattn/emmet-vim'
+Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
+"-----------------------------------------
+"                   Neomake
+"-----------------------------------------
+Plug 'neomake/neomake'
+"-----------------------------------------
+"                   Typescript
+"-----------------------------------------
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+"-----------------------------------------
+"                   Ansible
+"-----------------------------------------
+Plug 'b4b4r07/vim-ansible-vault'
+"-----------------------------------------
+"                   Terraform
 "-----------------------------------------
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 "-----------------------------------------
-
-"-----------------------------------------
-" Python
+"                   Python
 "-----------------------------------------
 Plug 'ambv/black'                             " Indenting
+
+Plug 'tpope/vim-fugitive'
+Plug 'git://git.wincent.com/command-t.git'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'Lokaltog/vim-easymotion'
+Plug 'ascenator/L9', {'name': 'newL9'}
+
 
 " All of your Plugins must be added before the following line
 call plug#end()
