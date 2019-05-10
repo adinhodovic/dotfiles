@@ -28,6 +28,7 @@ Plug 'morhetz/gruvbox'
 "                   GIT
 "-----------------------------------------
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
+Plug 'tpope/vim-fugitive'
 "-----------------------------------------
 "                   FZF
 "-----------------------------------------
@@ -74,6 +75,7 @@ Plug 'ap/vim-css-color'
 "-----------------------------------------
 Plug 'mattn/emmet-vim'
 Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}      " CTRL + E for hacking HTMl
 "-----------------------------------------
 "                   Neomake
 "-----------------------------------------
@@ -97,12 +99,7 @@ Plug 'juliosueiras/vim-terraform-completion'
 "                   Python
 "-----------------------------------------
 Plug 'ambv/black'                             " Indenting
-
-Plug 'tpope/vim-fugitive'
-Plug 'git://git.wincent.com/command-t.git'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'Lokaltog/vim-easymotion'
-Plug 'ascenator/L9', {'name': 'newL9'}
 
 
 " All of your Plugins must be added before the following line
