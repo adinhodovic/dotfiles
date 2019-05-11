@@ -1,2 +1,2 @@
 xset -q
-
+ps
