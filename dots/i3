@@ -183,7 +183,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # Default workspaces for applications
 ######################################################################
 for_window [class="Spotify"] move to workspace $ws6
-for_window [class="Enpass"] move to workspace $ws10
 for_window [class="Slack"] move to workspace $ws5
 for_window [class="Firefox"] move to workspace $ws1
 
@@ -245,7 +244,7 @@ exec --no-startup-id xset -dpms
 exec --no-startup-id firefox
 exec --no-startup-id i3-msg 'workspace 2:alacritty; exec /usr/bin/alacritty -e "tmux"'
 exec --no-startup-id spotify
-exec --no-startup-id enpass
+exec --no-startup-id i3-msg 'workspace 5:enpass; exec /usr/bin/enpass'
 exec --no-startup-id slack
 
 exec xautolock -time 15 -locker 'i3lock-fancy -f Roboto-Light-Italic -p' -detectsleep
