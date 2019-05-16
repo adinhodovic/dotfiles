@@ -121,12 +121,11 @@ call plug#end()
 "-----------------------------------------
 " Supertab
 "-----------------------------------------
-let g:SuperTabDefaultCompletionType = "<c-n>" " Supertab from top to bottom
+let g:SuperTabDefaultCompletionType = '<c-n>' "Supertab from top to bottom
 "-----------------------------------------
 " Deoplate
 "-----------------------------------------
 " General
-
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({'max_list': 25})
 call deoplete#custom#source('_',
@@ -171,7 +170,7 @@ set number
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,11 +187,11 @@ set shiftwidth=2
 set tabstop=2
 
 " Linebreak on 500 characters
-set lbr
-set tw=500
+set linebreak
+set textwidth=500
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+set smartindent "Smart indent
 set wrap "Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -209,7 +208,7 @@ let g:airline_skip_empty_sections = 1
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set scrolloff=7
 
 " Turn on the WiLd menu
 set wildmenu
@@ -224,7 +223,7 @@ set ruler
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -251,26 +250,13 @@ set magic
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
-
-command! StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
-fun! <SID>StripTrailingWhitespaces()
-  if &ft =~ 'vim'
-    return
-  endif
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  call cursor(l, c)
-endfun
-" Strip trailing whitespace
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+set timeoutlen=500
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -289,33 +275,34 @@ filetype indent on
 syntax on
 filetype plugin indent on
 " for Javascript/Typescript
-autocmd FileType typescript,javascript,terraform,jinja2  setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
-autocmd FileType coffee                 setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType css,scss,stylus        setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType vim                    setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType tex                    setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType yaml,docker-compose    setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType json                   setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType snippets               setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType jade                   setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType html,htmldjango        setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType python                 setlocal  shiftwidth=4 tabstop=4 expandtab
-autocmd FileType go                     setlocal  shiftwidth=4 tabstop=4 noexpandtab
-autocmd FileType erlang                 setlocal  shiftwidth=4 tabstop=4 noexpandtab
-autocmd FileType make                   setlocal  shiftwidth=4 tabstop=4 noexpandtab
-autocmd FileType sh,bash,zsh,readline,nginx,conf setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
-autocmd FileType php                    setlocal  shiftwidth=4 tabstop=4 expandtab
-autocmd FileType markdown               setlocal  shiftwidth=4 tabstop=4 expandtab
-autocmd FileType ruby                   setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType lua                    setlocal  shiftwidth=2 tabstop=2 expandtab
-autocmd FileType sshconfig              setlocal  shiftwidth=4 tabstop=4 expandtab
+augroup indentation
+  autocmd FileType typescript,javascript,terraform,jinja2  setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
+  autocmd FileType coffee                 setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType css,scss,stylus        setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType vim                    setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType tex                    setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType yaml,docker-compose    setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType json                   setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType snippets               setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType jade                   setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType html,htmldjango        setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType python                 setlocal  shiftwidth=4 tabstop=4 expandtab
+  autocmd FileType go                     setlocal  shiftwidth=4 tabstop=4 noexpandtab
+  autocmd FileType erlang                 setlocal  shiftwidth=4 tabstop=4 noexpandtab
+  autocmd FileType make                   setlocal  shiftwidth=4 tabstop=4 noexpandtab
+  autocmd FileType sh,bash,zsh,readline,nginx,conf setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
+  autocmd FileType php                    setlocal  shiftwidth=4 tabstop=4 expandtab
+  autocmd FileType markdown               setlocal  shiftwidth=4 tabstop=4 expandtab
+  autocmd FileType ruby                   setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType lua                    setlocal  shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType sshconfig              setlocal  shiftwidth=4 tabstop=4 expandtab
+augroup END
 
-
-autocmd FileType javascript,typescript,css,perl,nginx noremap ;; :call InsertSemicolons()<CR>
+"autocmd FileType javascript,typescript,css,perl,nginx noremap ;; :call InsertSemicolons()<CR>
 
 "pasting from outside
 set clipboard=unnamedplus
-let mapleader = ","
+let mapleader = ','
 "-----------------------------------------
 " EasyMotion
 "-----------------------------------------
@@ -385,12 +372,14 @@ let g:oblique#incsearch_highlight_all=1
 " Python indeting with Black
 "-----------------------------------------
 if $PYTHON_BLACK_ENABLED
-  autocmd BufWritePost *.py :silent Black
+  augroup python
+    autocmd BufWritePost *.py :silent Black
+  augroup END
 endif
 "-----------------------------------------
 " Movement
 "-----------------------------------------
-let mapleader = ","
+let mapleader = ','
 noremap <leader>q q
 " Execute macro over a visual selection
 xnoremap <leader>q :'<,'>:normal @q<CR>
@@ -407,15 +396,17 @@ noremap ^ <nop>
 noremap j gj
 noremap k gk
 nnoremap : <nop>
-execute "nnoremap <space> :" . &cedit . "a"
-execute "xnoremap <space> :" . &cedit . "a"
-execute "nnoremap / /" . &cedit . "a"
-execute "xnoremap / /" . &cedit . "a"
-execute "nnoremap ? ?" . &cedit . "a"
-execute "xnoremap ? ?" . &cedit . "a"
-" Exit cmdwindow on esc
-nnoremap<C-w> :q<cr>
-autocmd CmdwinEnter * nnoremap <buffer> <C-w> :q<cr>
+execute 'nnoremap <space> :' . &cedit . 'a'
+execute 'xnoremap <space> :' . &cedit . 'a'
+execute 'nnoremap / /' . &cedit . 'a'
+execute 'xnoremap / /' . &cedit . 'a'
+execute 'nnoremap ? ?' . &cedit . 'a'
+execute 'xnoremap ? ?' . &cedit . 'a'
+
+nnoremap <C-w> :q <cr>
+augroup fix_this
+  autocmd CmdwinEnter * nnoremap <buffer> <C-w> :q <cr>
+augroup END
 set cmdwinheight=1
 
 nmap m %
@@ -423,21 +414,6 @@ vmap m %
 
 set cursorline
 hi CursorLine ctermbg=236 guibg=#242321
-
-autocmd CursorMoved,CursorMovedI * call UpdateStatusLine()
-autocmd BufWritePost * hi statusline ctermfg=8 ctermbg=233
-fu! UpdateStatusLine()
-  let bufinfos = getbufinfo()
-  for bufinfo in bufinfos
-    if bufinfo.changed
-      hi statusline ctermfg=46 ctermbg=233
-      return
-    endif
-
-    hi statusline ctermfg=8 ctermbg=233
-  endfor
-endfu
-
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
@@ -457,13 +433,15 @@ noremap <F5> :NERDTreeToggle<CR>
 " Go to previous (last accessed) window.
 "autocmd VimEnter * wincmd p
 " When exiting: Close nerdtree if its the only window left
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+augroup nerdtree
+  autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+augroup END
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
 function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
+  if exists('t:NERDTreeBufName')
     if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
+      if winnr('$') == 1
         q
       endif
     endif
@@ -482,8 +460,7 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let g:mapleader = ','
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -501,7 +478,9 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " CSS & HTML
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,jsx,tsx EmmetInstall
+augroup emmet
+  autocmd FileType html,css,jsx,tsx EmmetInstall
+augroup END
 
 "-----------------------------------------
 " GitGutter
@@ -550,32 +529,6 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
-
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-" Remember info about open buffers on close
-set viminfo^=%
-
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimgrep searching and cope displaying
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -636,26 +589,26 @@ map <leader>pp :setlocal paste!<cr>
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
-  exe "menu Foo.Bar :" . a:str
+  exe 'menu Foo.Bar :' . a:str
   emenu Foo.Bar
   unmenu Foo
 endfunction
 
 function! VisualSelection(direction) range
   let l:saved_reg = @"
-  execute "normal! vgvy"
+  execute 'normal! vgvy'
 
   let l:pattern = escape(@", '\\/.*$^~[]')
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
+  let l:pattern = substitute(l:pattern, '\n$', '', '')
 
-  if a:direction == 'b'
-    execute "normal ?" . l:pattern . "^M"
-  elseif a:direction == 'gv'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-  elseif a:direction == 'f'
-    execute "normal /" . l:pattern . "^M"
+  if a:direction ==# 'b'
+    execute 'normal ?' . l:pattern . '^M'
+  elseif a:direction ==# 'gv'
+    call CmdLine('vimgrep' . '/'. l:pattern . '/' . ' **/*.')
+  elseif a:direction ==# 'replace'
+    call CmdLine('%s' . '/'. l:pattern . '/')
+  elseif a:direction ==# 'f'
+    execute 'normal /' . l:pattern . '^M'
   endif
 
   let @/ = l:pattern
@@ -674,8 +627,8 @@ endfunction
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-  let l:currentBufNum = bufnr("%")
-  let l:alternateBufNum = bufnr("#")
+  let l:currentBufNum = bufnr('%')
+  let l:alternateBufNum = bufnr('#')
 
   if buflisted(l:alternateBufNum)
     buffer #
@@ -683,12 +636,12 @@ function! <SID>BufcloseCloseIt()
     bnext
   endif
 
-  if bufnr("%") == l:currentBufNum
+  if bufnr('%') == l:currentBufNum
     new
   endif
 
   if buflisted(l:currentBufNum)
-    execute("bdelete! ".l:currentBufNum)
+    execute('bdelete! '.l:currentBufNum)
   endif
 endfunction
 "-----------------------------------------
@@ -714,7 +667,7 @@ let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 let g:neomake_python_enabled_makers = ['pylint', 'mypy']
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
-let g:neomake_vim_enabled_makers = ['vimvint']
+let g:neomake_vim_enabled_makers = ['vint']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_maker = {
     \ 'args': ['--fix'],
@@ -722,7 +675,9 @@ let g:neomake_css_stylelint_maker = {
 
 let g:neomake_javascript_eslint_exe = '/usr/bin/eslint'
 
-autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
+augroup neomake
+  autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
+augroup END
 
 function! s:Neomake_callback(options)
   let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint']
@@ -753,9 +708,11 @@ set pumheight=25
 "-----------------------------------------
 " juliosueiras/vim-terraform-completion
 "-----------------------------------------
+augroup tf_ac
 autocmd filetype terraform noremap <buffer><silent> gd :call terraformcomplete#JumpRef()<CR>
 autocmd filetype terraform noremap <buffer><silent><Leader>o :call terraformcomplete#LookupAttr()<CR>
 autocmd filetype terraform noremap <buffer><silent> K :call terraformcomplete#OpenDoc()<CR>
+augroup END
 
 " (Optional) Enable terraform plan to be include in filter
 let g:syntastic_terraform_tffilter_plan = 1
@@ -780,18 +737,5 @@ let g:EclimCompletionMethod = 'omnifunc'
 "-----------------------------------------
 " Random funcs
 "-----------------------------------------
-command! StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
-fun! <SID>StripTrailingWhitespaces()
-  if &ft =~ 'vim'
-    return
-  endif
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  call cursor(l, c)
-endfun
-" Strip trailing whitespace
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
