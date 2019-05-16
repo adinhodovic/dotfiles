@@ -132,25 +132,22 @@ let mapleader = ','
 "-----------------------------------------
 " Sets how many lines of history VIM has to remember
 set history=300
-
 "-----------------------------------------
 " Spelling
 "-----------------------------------------
 set spell
 set title
 set number
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
+"                 Files, backups and undo
+"-----------------------------------------
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowritebackup
 set noswapfile
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
+"                 Text, tab and indent related
+"-----------------------------------------
 " Use spaces instead of tabs
 set expandtab
 
@@ -168,9 +165,9 @@ set textwidth=500
 set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap "Wrap lines
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
+"                 VIM user interface
+"-----------------------------------------
 " Set 7 lines to the cursor - when moving vertically using j/k
 set scrolloff=7
 
@@ -221,11 +218,9 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set timeoutlen=500
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
+"-----------------------------------------
+"               Colors and Fonts
+"-----------------------------------------
 syntax enable
 set background=dark
 
@@ -233,6 +228,11 @@ silent! colorscheme gruvbox
 
 hi clear SpellBad
 hi SpellBad ctermfg=DarkRed term=undercurl
+
+set cursorline
+hi CursorLine ctermbg=236 guibg=#242321
+"-----------------------------------------
+"               Indentation
 "-----------------------------------------
 " `nocindent smartindent` will allow us to omit semicolons and jump to the next line without auto indentation
 filetype indent on
@@ -266,44 +266,41 @@ augroup END
 
 "pasting from outside
 set clipboard=unnamedplus
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
+"               Spell checking
+"-----------------------------------------
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
 map <leader>sn ]s
 map <leader>sp [s
-map <leader>sa zg
+map <leader>sa zg                           " Add word to spellcheck
 map <leader>s? z=
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
+"               Misc
+"-----------------------------------------
 " Quickly open a buffer for scripbble
 map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "
 "                                      Plugin specific settings
 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
 " Cosco.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
 let g:cosco_filetype_whitelist = ['javascript','typescript','css','perl','nginx']
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
 " Lastplace
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
 let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
 " Airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-----------------------------------------
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 " remove the filetype part
@@ -311,9 +308,8 @@ let g:airline_section_x=''
 let g:airline_section_y=''
 " remove separators for empty sections
 let g:airline_skip_empty_sections = 1
-
 "-----------------------------------------
-" EasyMotion
+" Easymotion
 "-----------------------------------------
 let g:EasyMotion_keys = 'hgjfkdls;a'
 let g:EasyMotion_grouping = 1
@@ -432,8 +428,6 @@ map <leader>N <Plug>(miniyank-cycleback)
 " Movement
 "-----------------------------------------
 noremap <leader>q q
-" Execute macro over a visual selection
-xnoremap <leader>q :'<,'>:normal @q<CR>
 " Copy til end of line (default is entire line - use `Y` for entire line instead)
 nnoremap Y yg_
 " Movement
@@ -462,9 +456,6 @@ set cmdwinheight=1
 
 nmap m %
 vmap m %
-
-set cursorline
-hi CursorLine ctermbg=236 guibg=#242321
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
