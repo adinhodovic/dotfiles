@@ -1,7 +1,7 @@
 " disable python 2.*
 let g:python3_host_prog = '/usr/bin/python'
 
-" set the runtime path to include Vundle and initialize
+"#########################################
 call plug#begin('~/.local/share/nvim/plugged')
 "-----------------------------------------
 "                   Plugin Manager
@@ -112,20 +112,34 @@ Plug 'juliosueiras/vim-terraform-completion'
 "-----------------------------------------
 Plug 'ambv/black'                             " Indenting
 Plug 'Lokaltog/vim-easymotion'
-
-
-" All of your Plugins must be added before the following line
+"-----------------------------------------
+"                   Plug End
+"-----------------------------------------
 call plug#end()
+"#########################################
 
+"-----------------------------------------
+" Supertab
+"-----------------------------------------
+let g:SuperTabDefaultCompletionType = "<c-n>"
 "-----------------------------------------
 " Deoplate
 "-----------------------------------------
-" General + deoplete
+" General
+
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({'max_list': 25})
-"call deoplete#custom#source('_',
-""    \ 'disabled_syntaxes', ['Comment', 'String'])
+call deoplete#custom#source('_',
+    \ 'disabled_syntaxes', ['Comment', 'String'])
 let g:deoplete#enable_profile = 1
+
+" Close deoplete popup on enter
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>\<cr>" : "\<TAB>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return deoplete#mappings#smart_close_popup() . "\<CR>"
+endfunction
+"
 """"""""""""""""TERRAFORM"""""""""""""""""
 call deoplete#custom#option('omni_patterns', {
 \ 'complete_method': 'omnifunc',
@@ -706,11 +720,11 @@ let g:neomake_css_stylelint_maker = {
 
 let g:neomake_javascript_eslint_exe = '/usr/bin/eslint'
 
-
 autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
 
 function! s:Neomake_callback(options)
   let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint']
+  print "a"
 
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
