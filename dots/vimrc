@@ -392,10 +392,8 @@ let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({'max_list': 25})
 let g:deoplete#enable_profile = 1
 """"""""""""""""TERRAFORM"""""""""""""""""
-call deoplete#custom#option('omni_patterns', {
-  \ 'complete_method': 'omnifunc',
-  \ 'terraform': '[^ *\t"{=$]\w*',
-  \})
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
 """""""""""""""""JS"""""""""""""""""""""""
 let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
@@ -506,7 +504,8 @@ function! s:CloseIfOnlyNerdTreeLeft()
 endfunction
 "-----------------------------------------
 ""
-set completeopt-=preview
+set completeopt-=menu,preview,noselect
+
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -682,9 +681,6 @@ augroup tf_ac
   autocmd filetype terraform noremap <buffer><silent> <leader>ta :call terraformcomplete#LookupAttr()<CR>
   autocmd filetype terraform noremap <buffer><silent> <leader>tf :call terraformcomplete#OpenDoc()<CR>
 augroup END
-
-" (Optional) Enable terraform plan to be include in filter
-let g:syntastic_terraform_tffilter_plan = 1
 
 " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
 let g:terraform_completion_keys = 1
