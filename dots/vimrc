@@ -148,7 +148,7 @@ map k gk
 map <silent> <leader><cr> :noh<cr>
 
 " Close the current buffer
-map <leader>bd :bd<cr>
+map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
@@ -383,28 +383,19 @@ map s <Plug>(easymotion-sn)
 " Supertab
 "-----------------------------------------
 let g:SuperTabDefaultCompletionType = '<c-n>' "Supertab from top to bottom
+let g:SuperTabClosePreviewOnPopupClose = 1
 "-----------------------------------------
 " Deoplate
 "-----------------------------------------
 " General
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({'max_list': 25})
-call deoplete#custom#source('_',
-    \ 'disabled_syntaxes', ['Comment', 'String'])
 let g:deoplete#enable_profile = 1
-
-" Close deoplete popup on enter
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>\<cr>" : "\<TAB>"
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return deoplete#mappings#smart_close_popup() . "\<CR>"
-endfunction
-"
 """"""""""""""""TERRAFORM"""""""""""""""""
 call deoplete#custom#option('omni_patterns', {
-\ 'complete_method': 'omnifunc',
-\ 'terraform': '[^ *\t"{=$]\w*',
-\})
+  \ 'complete_method': 'omnifunc',
+  \ 'terraform': '[^ *\t"{=$]\w*',
+  \})
 """""""""""""""""JS"""""""""""""""""""""""
 let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
@@ -420,6 +411,7 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'vsplit',
   \ 'ctrl-z': 'split' }
+
 let g:fzf_layout = {'up': '~40%'}
 let g:fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
 nnoremap b :e #<cr>
@@ -516,10 +508,6 @@ endfunction
 ""
 set completeopt-=preview
 
-" (Optional)Hide Info(Preview) window after completions
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -527,7 +515,7 @@ set autoread
 " like <leader>w saves the current file
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<CR>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
