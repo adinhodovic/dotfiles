@@ -117,6 +117,9 @@
     # fd
     - aur: name=fd skip_installed=true
 
+    # procs
+    - aur: name=procs skip_installed=true
+
     # vim-eunuch
     - aur: name=vim-eunuch skip_installed=true
 
