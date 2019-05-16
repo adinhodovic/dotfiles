@@ -113,6 +113,9 @@
     # terraform
     - aur: name=terraform skip_installed=true
 
+    # ruby
+    - aur: name=ruby skip_installed=true
+
     # aws-cli
     - aur: name=aws-cli skip_installed=true
 
