@@ -189,6 +189,7 @@ function vf {
 ### Set variables
 #################
 export PATH="/usr/local/bin:/usr/local/sbin/:$PATH:/home/adin/go/bin/"
+export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion"
 
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
