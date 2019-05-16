@@ -187,6 +187,13 @@
     - name: Install eslint-airbnb
       shell: "npx install-peerdeps --global eslint-config-airbnb"
 
+    # Neovim gem
+    - gem:
+        name: neovim
+
+    # Json gem
+    - gem:
+        name: json
 
     # etcher
     - aur: name=etcher skip_installed=true
