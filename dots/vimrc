@@ -614,7 +614,6 @@ function! VisualSelection(direction) range
   let @" = l:saved_reg
 endfunction
 
-
 " Returns true if paste mode is enabled
 function! HasPaste()
   if &paste
@@ -681,6 +680,7 @@ augroup END
 
 function! s:Neomake_callback(options)
   let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint']
+  print "a"
 
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
