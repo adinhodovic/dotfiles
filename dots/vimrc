@@ -1,4 +1,4 @@
-" disable python 2.*
+"w disable python 2.*
 let g:python3_host_prog = '/usr/bin/python'
 
 "#########################################
@@ -41,6 +41,7 @@ Plug 'tpope/vim-surround'                     " Delete add surroundings in pair
 "-----------------------------------------
 "                   Colors
 "-----------------------------------------
+Plug 'luochen1990/rainbow'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 "-----------------------------------------
@@ -103,7 +104,7 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 "-----------------------------------------
 "                   Ansible
 "-----------------------------------------
-Plug 'pearofducks/ansible-vim'
+Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 Plug 'b4b4r07/vim-ansible-vault'
 "-----------------------------------------
 "                   Terraform
@@ -121,7 +122,6 @@ Plug 'Lokaltog/vim-easymotion'
 call plug#end()
 "#########################################
 "
-"
 "-----------------------------------------
 " General
 "-----------------------------------------
@@ -138,21 +138,46 @@ set spell
 set title
 set number
 "-----------------------------------------
-" Movement
+" Moving around, tabs, windows and buffers
 "-----------------------------------------
-" Copy til end of line (default is entire line - use `Y` for entire line instead)
-nnoremap Y yg_
-" Movement
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" Close the current buffer
+map <leader>bd :bd<cr>
+
+" Close all the buffers
+map <leader>ba :1,1000 bd!<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+nmap m %
+vmap m %
+set cmdwinheight=1
+
 noremap q b
 " Movement begin/end of line
 noremap Q ^
 noremap W g_
 noremap $ <nop>
 noremap ^ <nop>
-" Move to next screen (vim) line instead of file line. Useful for long lines that span over two vim lines
-noremap j gj
-noremap k gk
 nnoremap : <nop>
+
 execute 'nnoremap <space> :' . &cedit . 'a'
 execute 'xnoremap <space> :' . &cedit . 'a'
 execute 'nnoremap / /' . &cedit . 'a'
@@ -162,10 +187,6 @@ execute 'xnoremap ? ?' . &cedit . 'a'
 
 nnoremap <C-w> :wq <cr>                        " Force Quit-Save on control W
 nnoremap <C-q> :q <cr>                        " Force Quit on control W
-set cmdwinheight=1
-
-nmap m %
-vmap m %
 "-----------------------------------------
 "                 Files, backups and undo
 "-----------------------------------------
@@ -456,37 +477,9 @@ map <leader>P <Plug>(miniyank-startPut)
 map <leader>n <Plug>(miniyank-cycle)
 map <leader>N <Plug>(miniyank-cycleback)
 "-----------------------------------------
-" Movement
+" Ansible-vim
 "-----------------------------------------
-noremap <leader>q q
-" Copy til end of line (default is entire line - use `Y` for entire line instead)
-nnoremap Y yg_
-" Movement
-noremap q b
-" Movement begin/end of line
-noremap Q ^
-noremap W g_
-noremap $ <nop>
-noremap ^ <nop>
-" Move to next screen (vim) line instead of file line. Useful for long lines that span over two vim lines
-noremap j gj
-noremap k gk
-nnoremap : <nop>
-execute 'nnoremap <space> :' . &cedit . 'a'
-execute 'xnoremap <space> :' . &cedit . 'a'
-execute 'nnoremap / /' . &cedit . 'a'
-execute 'xnoremap / /' . &cedit . 'a'
-execute 'nnoremap ? ?' . &cedit . 'a'
-execute 'xnoremap ? ?' . &cedit . 'a'
-
-nnoremap <C-w> :q <cr>
-augroup fix_this
-  autocmd CmdwinEnter * nnoremap <buffer> <C-w> :q <cr>
-augroup END
-set cmdwinheight=1
-
-nmap m %
-vmap m %
+let g:ansible_extra_keywords_highlight = 1
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
@@ -569,40 +562,10 @@ let g:gh_open_command = 'fn() { echo "$@" | xclip -selection clipboard | firefox
 " Fugitive
 "-----------------------------------------
 command! Gdom Gdiff origin/master
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+"-----------------------------------------
+" Rainbow Parantheses
+"-----------------------------------------
+let g:rainbow_active = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimgrep searching and cope displaying
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -705,6 +668,7 @@ let g:neomake_python_enabled_makers = ['pylint', 'mypy']
 let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_vim_enabled_makers = ['vint']
 let g:neomake_css_enabled_makers = ['stylelint']
+let g:neomake_ansible_enabled_makers = ['ansible-lint']
 let g:neomake_css_stylelint_maker = {
     \ 'args': ['--fix'],
     \ }
@@ -728,9 +692,9 @@ endfunction
 " juliosueiras/vim-terraform-completion
 "-----------------------------------------
 augroup tf_ac
-autocmd filetype terraform noremap <buffer><silent> gd :call terraformcomplete#JumpRef()<CR>
-autocmd filetype terraform noremap <buffer><silent><Leader>o :call terraformcomplete#LookupAttr()<CR>
-autocmd filetype terraform noremap <buffer><silent> K :call terraformcomplete#OpenDoc()<CR>
+  autocmd filetype terraform noremap <buffer><silent> <leader>tr :call terraformcomplete#JumpRef()<CR>
+  autocmd filetype terraform noremap <buffer><silent> <leader>ta :call terraformcomplete#LookupAttr()<CR>
+  autocmd filetype terraform noremap <buffer><silent> <leader>tf :call terraformcomplete#OpenDoc()<CR>
 augroup END
 
 " (Optional) Enable terraform plan to be include in filter
@@ -740,7 +704,7 @@ let g:syntastic_terraform_tffilter_plan = 1
 let g:terraform_completion_keys = 1
 
 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
-let g:terraform_registry_module_completion = 0
+let g:terraform_registry_module_completion = 1
 "-----------------------------------------
 " hashivim/vim-terraform
 "-----------------------------------------
