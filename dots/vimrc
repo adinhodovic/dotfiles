@@ -19,11 +19,11 @@ Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
-
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
 Plug 'cohama/lexima.vim'                      " Autoclosing
+Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
@@ -193,6 +193,11 @@ set textwidth=500
 set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap "Wrap lines
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lastplace
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline
