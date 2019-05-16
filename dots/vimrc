@@ -24,6 +24,7 @@ Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code fi
 "-----------------------------------------
 Plug 'cohama/lexima.vim'                      " Autoclosing
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
+Plug 'lfilho/cosco.vim'                       " Semicolons
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
@@ -194,6 +195,10 @@ set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap "Wrap lines
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Cosco.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:cosco_filetype_whitelist = ['javascript','typescript','css','perl','nginx']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lastplace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
