@@ -154,6 +154,12 @@
         name: yarn
         global: true
 
+    # ternjs
+    - name: Install tern
+      npm:
+        name: tern
+        global: true
+
     - name: Install neovim
       npm:
         name: neovim
