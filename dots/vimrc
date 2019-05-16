@@ -19,6 +19,8 @@ Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
+Plug 'tpope/vim-speeddating'                  " Increment dates
+Plug 'tpope/vim-unimpaired'                   " Mappings
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
