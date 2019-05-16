@@ -18,10 +18,10 @@ Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
+Plug 'scrooloose/nerdtree'                    " Treeview
 Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
-Plug 'majutsushi/tagbar'                      " Tagbar
 Plug 'ruanyl/vim-gh-line'                     " Open line on Github
 "-----------------------------------------
 "                   Automation
@@ -315,10 +315,6 @@ map <leader>pp :setlocal paste!<cr>
 "                                      Plugin specific settings
 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"-----------------------------------------
-" Tagbar
-"-----------------------------------------
-nmap <F8> :TagbarToggle<CR>
 "-----------------------------------------
 " Cosco.vim
 "-----------------------------------------
