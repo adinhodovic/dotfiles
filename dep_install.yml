@@ -84,6 +84,10 @@
     - pip:
         name: PyGithub
 
+    # Add Jedi for deoplete
+    - pip:
+        name: jedi
+
     # add docker group
     - name: add me to docker group
       become: true
