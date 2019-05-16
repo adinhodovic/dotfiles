@@ -80,6 +80,9 @@
     # docker-compose
     - aur: name=docker-compose skip_installed=true
 
+    # shellshock without haskell dep
+    - aur: name=shellshock-static skip_installed=true
+
     # Add PyGithub (ansible githooks)
     - pip:
         name: PyGithub
