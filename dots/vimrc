@@ -27,6 +27,7 @@ Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'cohama/lexima.vim'                      " Autoclosing
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 Plug 'lfilho/cosco.vim'                       " Semicolons
+Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
@@ -139,6 +140,35 @@ set spell
 set title
 set number
 "-----------------------------------------
+" Movement
+"-----------------------------------------
+" Copy til end of line (default is entire line - use `Y` for entire line instead)
+nnoremap Y yg_
+" Movement
+noremap q b
+" Movement begin/end of line
+noremap Q ^
+noremap W g_
+noremap $ <nop>
+noremap ^ <nop>
+" Move to next screen (vim) line instead of file line. Useful for long lines that span over two vim lines
+noremap j gj
+noremap k gk
+nnoremap : <nop>
+execute 'nnoremap <space> :' . &cedit . 'a'
+execute 'xnoremap <space> :' . &cedit . 'a'
+execute 'nnoremap / /' . &cedit . 'a'
+execute 'xnoremap / /' . &cedit . 'a'
+execute 'nnoremap ? ?' . &cedit . 'a'
+execute 'xnoremap ? ?' . &cedit . 'a'
+
+nnoremap <C-w> :wq <cr>                        " Force Quit-Save on control W
+nnoremap <C-q> :q <cr>                        " Force Quit on control W
+set cmdwinheight=1
+
+nmap m %
+vmap m %
+"-----------------------------------------
 "                 Files, backups and undo
 "-----------------------------------------
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
@@ -216,7 +246,6 @@ set matchtime=2
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
 set timeoutlen=500
 "-----------------------------------------
 "               Colors and Fonts
@@ -295,6 +324,19 @@ map <leader>pp :setlocal paste!<cr>
 "-----------------------------------------
 let g:cosco_filetype_whitelist = ['javascript','typescript','css','perl','nginx']
 "-----------------------------------------
+" Whitespace
+"-----------------------------------------
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:better_whitespace_verbosity=1
+let g:current_line_whitespace_disabled_soft=1
+let g:better_whitespace_filetypes_blacklist=['zsh', 'html', 'vim', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+let g:better_whitespace_ctermcolor='red'
+augroup whitespace
+  autocmd BufWritePre * StripWhitespace
+augroup END
+"-----------------------------------------
 " Lastplace
 "-----------------------------------------
 let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
@@ -355,12 +397,6 @@ let g:deoplete#sources#ternjs#filetypes = [
 
 call deoplete#initialize()
 "-----------------------------------------
-" NERDCommenter
-"-----------------------------------------
-nnoremap <leader>c :call NERDComment(0, "toggle")<CR>
-" Add a space before any comment
-let g:NERDSpaceDelims = 1
-"-----------------------------------------
 " fzf.vim
 "-----------------------------------------
 let g:fzf_action = {
@@ -404,7 +440,6 @@ endfunction
 " vim-oblique
 "-----------------------------------------
 let g:oblique#incsearch_highlight_all=1
-
 "-----------------------------------------
 " Python Black
 "-----------------------------------------
@@ -459,7 +494,6 @@ vmap m %
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
-nnoremap <leader>c :call NERDComment(0, "toggle")<CR>
 vnoremap <leader>c :call NERDComment(0, "toggle")<CR>
 " Add a space before any comment
 let g:NERDSpaceDelims = 1
@@ -725,7 +759,6 @@ let g:terraform_completion_keys = 1
 
 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
 let g:terraform_registry_module_completion = 0
-
 "-----------------------------------------
 " hashivim/vim-terraform
 "-----------------------------------------
@@ -733,12 +766,3 @@ let g:terraform_commentstring='//%s'
 let g:terraform_fold_sections=1
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
-"-----------------------------------------
-" Eclim Java, Scala
-"-----------------------------------------
-let g:EclimCompletionMethod = 'omnifunc'
-"-----------------------------------------
-" Random funcs
-"-----------------------------------------
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
