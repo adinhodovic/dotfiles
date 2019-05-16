@@ -121,7 +121,7 @@ call plug#end()
 "-----------------------------------------
 " Supertab
 "-----------------------------------------
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<c-n>" " Supertab from top to bottom
 "-----------------------------------------
 " Deoplate
 "-----------------------------------------
