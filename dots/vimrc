@@ -714,6 +714,7 @@ let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 let g:neomake_python_enabled_makers = ['pylint', 'mypy']
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
+let g:neomake_vim_enabled_makers = ['vimvint']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_maker = {
     \ 'args': ['--fix'],

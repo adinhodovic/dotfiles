@@ -87,6 +87,10 @@
     - pip:
         name: PyGithub
 
+    # Add vimvint
+    - pip:
+        name: vimvint
+
     # Add mypy
     - pip:
         name: mypy
