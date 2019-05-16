@@ -22,7 +22,7 @@ Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'majutsushi/tagbar'                      " Tagbar
-Plug 'vim-scripts/utl.vim'                    " Open image links in Vim
+Plug 'ruanyl/vim-gh-line'                     " Open line on Github
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
@@ -121,10 +121,10 @@ Plug 'Lokaltog/vim-easymotion'
 call plug#end()
 "#########################################
 "
+"
 "-----------------------------------------
 " General
 "-----------------------------------------
-let g:mapleader = ','
 let mapleader = ','
 "-----------------------------------------
 " History
@@ -289,8 +289,6 @@ augroup indentation
   autocmd FileType sshconfig              setlocal  shiftwidth=4 tabstop=4 expandtab
 augroup END
 
-"autocmd FileType javascript,typescript,css,perl,nginx noremap ;; :call InsertSemicolons()<CR>
-
 "pasting from outside
 set clipboard=unnamedplus
 "-----------------------------------------
@@ -324,7 +322,7 @@ nmap <F8> :TagbarToggle<CR>
 "-----------------------------------------
 " Cosco.vim
 "-----------------------------------------
-let g:cosco_filetype_whitelist = ['javascript','typescript','css','perl','nginx']
+let g:cosco_filetype_whitelist = ['javascript', 'typescript', 'css', 'perl', 'nginx']
 "-----------------------------------------
 " Whitespace
 "-----------------------------------------
@@ -567,6 +565,10 @@ nnoremap ggn :GitGutterNextHunk<cr>
 nnoremap ggp :GitGutterPrevHunk<cr>
 nmap <Leader>s <Plug>GitGutterStageHunk
 nmap <Leader>u <Plug>GitGutterUndoHunk
+"-----------------------------------------
+" Github line
+"-----------------------------------------
+let g:gh_open_command = 'fn() { echo "$@" | xclip -selection clipboard | firefox "$@" }; fn '
 "-----------------------------------------
 " Fugitive
 "-----------------------------------------
