@@ -14,13 +14,13 @@ Plug 'Shougo/neopairs.vim'                    " Pair symbols
 Plug 'ervandew/supertab'                      " Tab down alts
 Plug 'jremmen/vim-ripgrep'                    " Ripgrep
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
-Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
 Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'tpope/vim-unimpaired'                   " Mappings
+Plug 'bfredl/nvim-miniyank'                   " Yank History
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
@@ -39,6 +39,7 @@ Plug 'tpope/vim-surround'                     " Delete add surroundings in pair
 "                   Colors
 "-----------------------------------------
 Plug 'morhetz/gruvbox'
+Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 "-----------------------------------------
 "                   GIT
 "-----------------------------------------
@@ -120,41 +121,12 @@ Plug 'Lokaltog/vim-easymotion'
 "-----------------------------------------
 call plug#end()
 "#########################################
-
-"-----------------------------------------
-" Supertab
-"-----------------------------------------
-let g:SuperTabDefaultCompletionType = '<c-n>' "Supertab from top to bottom
-"-----------------------------------------
-" Deoplate
+"
 "-----------------------------------------
 " General
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({'max_list': 25})
-call deoplete#custom#source('_',
-    \ 'disabled_syntaxes', ['Comment', 'String'])
-let g:deoplete#enable_profile = 1
-
-" Close deoplete popup on enter
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>\<cr>" : "\<TAB>"
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return deoplete#mappings#smart_close_popup() . "\<CR>"
-endfunction
-"
-""""""""""""""""TERRAFORM"""""""""""""""""
-call deoplete#custom#option('omni_patterns', {
-\ 'complete_method': 'omnifunc',
-\ 'terraform': '[^ *\t"{=$]\w*',
-\})
-"""""""""""""""""JS"""""""""""""""""""""""
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue'
-                \ ]
-
-call deoplete#initialize()
+"-----------------------------------------
+let g:mapleader = ','
+let mapleader = ','
 "-----------------------------------------
 " History
 "-----------------------------------------
@@ -196,26 +168,6 @@ set textwidth=500
 set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap "Wrap lines
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Cosco.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:cosco_filetype_whitelist = ['javascript','typescript','css','perl','nginx']
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lastplace
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme = 'gruvbox'
-let g:airline#extensions#tabline#enabled = 1
-" remove the filetype part
-let g:airline_section_x=''
-let g:airline_section_y=''
-" remove separators for empty sections
-let g:airline_skip_empty_sections = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -314,7 +266,52 @@ augroup END
 
 "pasting from outside
 set clipboard=unnamedplus
-let mapleader = ','
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Misc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quickly open a buffer for scripbble
+map <leader>q :e ~/buffer<cr>
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"
+"                                      Plugin specific settings
+"
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Cosco.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:cosco_filetype_whitelist = ['javascript','typescript','css','perl','nginx']
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lastplace
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme = 'gruvbox'
+let g:airline#extensions#tabline#enabled = 1
+" remove the filetype part
+let g:airline_section_x=''
+let g:airline_section_y=''
+" remove separators for empty sections
+let g:airline_skip_empty_sections = 1
+
 "-----------------------------------------
 " EasyMotion
 "-----------------------------------------
@@ -328,14 +325,45 @@ map f <Plug>(easymotion-bd-fl)
 map t <Plug>(easymotion-bd-tl)
 map s <Plug>(easymotion-sn)
 "-----------------------------------------
+" Supertab
+"-----------------------------------------
+let g:SuperTabDefaultCompletionType = '<c-n>' "Supertab from top to bottom
+"-----------------------------------------
+" Deoplate
+"-----------------------------------------
+" General
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({'max_list': 25})
+call deoplete#custom#source('_',
+    \ 'disabled_syntaxes', ['Comment', 'String'])
+let g:deoplete#enable_profile = 1
+
+" Close deoplete popup on enter
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>\<cr>" : "\<TAB>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return deoplete#mappings#smart_close_popup() . "\<CR>"
+endfunction
+"
+""""""""""""""""TERRAFORM"""""""""""""""""
+call deoplete#custom#option('omni_patterns', {
+\ 'complete_method': 'omnifunc',
+\ 'terraform': '[^ *\t"{=$]\w*',
+\})
+"""""""""""""""""JS"""""""""""""""""""""""
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue'
+                \ ]
+
+call deoplete#initialize()
+"-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
 nnoremap <leader>c :call NERDComment(0, "toggle")<CR>
-vnoremap <leader>c :call NERDComment(0, "toggle")<CR>
 " Add a space before any comment
 let g:NERDSpaceDelims = 1
-"-----------------------------------------
-" Plugin specific settings
 "-----------------------------------------
 " fzf.vim
 "-----------------------------------------
@@ -381,7 +409,8 @@ endfunction
 "-----------------------------------------
 let g:oblique#incsearch_highlight_all=1
 
-" Python indeting with Black
+"-----------------------------------------
+" Python Black
 "-----------------------------------------
 if $PYTHON_BLACK_ENABLED
   augroup python
@@ -389,9 +418,19 @@ if $PYTHON_BLACK_ENABLED
   augroup END
 endif
 "-----------------------------------------
+" Miniyank
+"-----------------------------------------
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+
+map <leader>p <Plug>(miniyank-startput)
+map <leader>P <Plug>(miniyank-startPut)
+
+map <leader>n <Plug>(miniyank-cycle)
+map <leader>N <Plug>(miniyank-cycleback)
+"-----------------------------------------
 " Movement
 "-----------------------------------------
-let mapleader = ','
 noremap <leader>q q
 " Execute macro over a visual selection
 xnoremap <leader>q :'<,'>:normal @q<CR>
@@ -472,7 +511,6 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let g:mapleader = ','
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -556,47 +594,9 @@ map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><r
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with vimgrep, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
