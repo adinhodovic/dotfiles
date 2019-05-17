@@ -1,5 +1,7 @@
 let g:python3_host_prog = '/usr/bin/python'
-
+"-----------------------------------------
+"                   Plug Installation Helpers
+"-----------------------------------------
 "Installation helper of euclio/vim-markdown-composer
 function! BuildComposer(info)
   if a:info.status !=# 'unchanged' || a:info.force
