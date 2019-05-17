@@ -672,6 +672,7 @@ let g:neomake_typescript_tslint_maker = {
     \ 'append_file': 0,
     \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
     \ }
+
 let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_jsx_eslint_args = ['--fix', '--format=compact']
 
@@ -738,6 +739,7 @@ let g:terraform_fmt_on_save=1
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({'max_list': 25})
 let g:deoplete#enable_profile = 1
+call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 """"""""""""""""TERRAFORM"""""""""""""""""
 let g:deoplete#omni_patterns = {}
 call deoplete#custom#option('omni_patterns', {
