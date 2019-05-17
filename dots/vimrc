@@ -1,3 +1,6 @@
+"http://rbtnn.hateblo.jp/entry/2014/12/28/010913 #READ scriptencoding
+scriptencoding utf-8
+
 let g:python3_host_prog = '/usr/bin/python'
 "-----------------------------------------
 "                   Plug Installation Helpers
@@ -426,6 +429,10 @@ map s <Plug>(easymotion-sn)
 "-----------------------------------------
 let g:SuperTabDefaultCompletionType = '<c-n>' "Supertab from top to bottom
 let g:SuperTabClosePreviewOnPopupClose = 1
+"-----------------------------------------
+" IndentLine
+"-----------------------------------------
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "-----------------------------------------
 " fzf.vim
 "-----------------------------------------
