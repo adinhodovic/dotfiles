@@ -140,6 +140,20 @@ alias xc='xclip -sel clip'
 alias v='nvim'
 alias ps='procs'
 alias s-hl='vps-sync hl-ops-deployment ~/company/honeylogic/ops ~/ops ops'
+alias t=run_task
+alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
+alias cd.="cd .."
+alias cd..="cd ../.."
+alias cd...="cd ../../.."
+alias cd....='cd ../../../..'
+alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
+alias cp='cp -v '
+alias mv='mv -v '
+alias h="history"
+alias cd-="cd -"
+alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
+alias o='xdg-open'
+alias v=nvim
 
 run_task () {
   local TASKOPTION=$1
@@ -163,20 +177,7 @@ run_task () {
     task $TASKOPTION "$@"
   fi
 }
-alias t=run_task
-alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
-alias cd.="cd .."
-alias cd..="cd ../.."
-alias cd...="cd ../../.."
-alias cd....='cd ../../../..'
-alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
-alias cp='cp -v '
-alias mv='mv -v '
-alias h="history"
-alias cd-="cd -"
-alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
-alias o='xdg-open'
-alias v=nvim
+
 function vf {
   if [ "$#" -lt 1 ]; then
     return 1
@@ -191,7 +192,13 @@ function vf {
 #################
 export PATH="/usr/local/bin:/usr/local/sbin/:$PATH:/home/adin/go/bin/"
 export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion"
+export TERMINAL=/usr/bin/alacritty
+export TERM=screen-256color
+export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+### History
+#################
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
@@ -315,24 +322,6 @@ function fzf-ssh {
 }
 zle -N fzf-ssh
 
-function sync {
-  local_dir=$1
-
-  # user@remote:dir
-  remote=$2
-
-  remote_server=$(echo "$remote" | awk -F ':' '{print $1}')
-  remote_dir=$(echo "$remote" | awk -F ':' '{print $2}')
-  ssh "$remote_server" "rm -rf $remote_dir"
-
-  rsync -avz "$local_dir/" "$remote"
-  while inotifywait -e modify -r "$local_dir"; do
-    notify-send "Syncing $local_dir..." -i network-transmit-receive
-    rsync -avz "$local_dir/" "$remote"
-    pkill xfce4-notifyd
-  done
-}
-
 function fzf-docker-logs {
   matches=$(docker ps --format 'table {{ .Names }}\t{{ .Image }}')
   selection=$(echo $matches | fzf --header-lines=1 | awk '{print $1}')
@@ -420,44 +409,10 @@ function molecule-ssh {
   ssh -i /tmp/molecule/$dir/default/ssh_key $(grep address /tmp/molecule/$dir/default/instance_config.yml | awk '{print $NF}')
 }
 
-function sync {
-  local_dir=$1
-
-  # user@remote:dir
-  remote=$2
-
-  remote_server=$(echo "$remote" | awk -F ':' '{print $1}')
-  remote_dir=$(echo "$remote" | awk -F ':' '{print $2}')
-  ssh "$remote_server" "rm -rf $remote_dir"
-
-  rsync -avz --delete --cvs-exclude "$local_dir/" "$remote"
-
-  while inotifywait \
-    -e modify -e move -e create -e delete \
-    --exclude '.*(\.git|\.terraform|node_modules|packer_cache)' \
-    -r "$local_dir"; do
-
-    notify-send "Syncing $local_dir..." -i network-transmit-receive
-    rsync -avz --delete --cvs-exclude "$local_dir/" "$remote"
-    pkill xfce4-notifyd
-  done
-}
-compdef sync=scp
-
 # Add direnv
 eval "$(direnv hook zsh)"
-
-export TERMINAL=/usr/bin/alacritty
-export TERM=screen-256color
-
-######################################################
-# Ruby path
-######################################################
-export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # added by travis gem
 [ -f /home/adin/.travis/travis.sh ] && source /home/adin/.travis/travis.sh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
