@@ -59,6 +59,7 @@ Plug 'junegunn/vim-oblique'                   " Colors search result and sets no
 "-----------------------------------------
 "                   GIT
 "-----------------------------------------
+Plug 'rhysd/git-messenger.vim'                " Show git messages
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
 Plug 'tpope/vim-fugitive'
 Plug 'ruanyl/vim-gh-line'                     " Open line on Github
@@ -497,8 +498,13 @@ augroup END
 "-----------------------------------------
 " Ansible-vault
 "-----------------------------------------
-map <leader>ae :call AnsibleVaultEncrypt <CR>
-map <leader>ad :call AnsibleVaultDecrypt <CR>
+function EncryptVault()
+  :AnsibleVaultEncrypt
+  edit
+endfunction
+
+nnoremap <Leader>ve :call EncryptVault() <CR>
+nnoremap <Leader>vd :AnsibleVaultDecrypt <CR> :edit <CR>
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
@@ -570,6 +576,10 @@ noremap <F6> :TagbarToggle <CR>
 " Tagbar & Nerdtree
 "-----------------------------------------
 noremap <F7> :TagbarToggle <CR> :NERDTreeToggle <CR>
+"-----------------------------------------
+" GitMessenger
+"-----------------------------------------
+nnoremap <leader>gm :GitMessenger <CR>
 "-----------------------------------------
 ""
 set completeopt-=menu,preview,noselect
