@@ -62,6 +62,34 @@
     state: link
     force: true
 
+- name: Symlink yamllint.yml
+  file:
+    src: "/home/adin.dotfiles/dots/yamllint.yml"
+    dest: "/home/adin/.yamllint.yml"
+    state: link
+    force: true
+
+- name: Symlink eslintrc.yml
+  file:
+    src: "/home/adin.dotfiles/dots/eslintrc.yml"
+    dest: "/home/adin/.eslintrc.yml"
+    state: link
+    force: true
+
+- name: Symlink ctags
+  file:
+    src: "/home/adin.dotfiles/dots/ctags"
+    dest: "/home/adin/.ctags"
+    state: link
+    force: true
+
+- name: Symlink npmrc
+  file:
+    src: "/home/adin.dotfiles/dots/npmrc"
+    dest: "/home/adin/.npmrc"
+    state: link
+    force: true
+
 - name: Symlink locale.conf
   file:
     src: "/home/adin/.dotfiles/dots/locale.conf"
