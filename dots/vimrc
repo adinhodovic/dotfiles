@@ -22,6 +22,7 @@ Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'majutsushi/tagbar'
+Plug 'universal-ctags/ctags'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
