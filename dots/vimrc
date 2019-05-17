@@ -184,6 +184,11 @@ noremap W g_
 noremap $ <nop>
 noremap ^ <nop>
 nnoremap : <nop>
+" Window movements
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
 
 execute 'nnoremap <space> :' . &cedit . 'a'
 execute 'xnoremap <space> :' . &cedit . 'a'
@@ -472,11 +477,6 @@ let g:NERDSpaceDelims = 1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '\.db$']
 noremap <F5> :NERDTreeToggle<CR>
-" Open nerdtree on start
-"autocmd vimenter * NERDTree
-" Open NERDTree on enter and use the non-nerdtree window
-" Go to previous (last accessed) window.
-"autocmd VimEnter * wincmd p
 " When exiting: Close nerdtree if its the only window left
 augroup nerdtree
   autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
@@ -492,6 +492,14 @@ function! s:CloseIfOnlyNerdTreeLeft()
     endif
   endif
 endfunction
+"-----------------------------------------
+" Tagbar
+"-----------------------------------------
+noremap <F6> :TagbarToggle <CR>
+"-----------------------------------------
+" Tagbar & Nerdtree
+"-----------------------------------------
+noremap <F7> :TagbarToggle <CR> :NERDTreeToggle <CR>
 "-----------------------------------------
 ""
 set completeopt-=menu,preview,noselect
@@ -513,7 +521,6 @@ nmap <leader>w :w!<CR>
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSS & HTML
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -521,7 +528,6 @@ let g:user_emmet_install_global = 0
 augroup emmet
   autocmd FileType html,css,jsx,tsx EmmetInstall
 augroup END
-
 "-----------------------------------------
 " GitGutter
 "-----------------------------------------
@@ -622,7 +628,6 @@ endfunction
 "-----------------------------------------
 " Neomake
 "-----------------------------------------
-"
 let g:neomake_list_height = 8
 let g:neomake_open_list = 2
 let g:neomake_python_python_exe = 'python3'
