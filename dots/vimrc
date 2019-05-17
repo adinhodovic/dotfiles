@@ -1,5 +1,15 @@
 let g:python3_host_prog = '/usr/bin/python'
 
+"Installation helper of euclio/vim-markdown-composer
+function! BuildComposer(info)
+  if a:info.status !=# 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
 "#########################################
 call plug#begin('~/.local/share/nvim/plugged')
 "-----------------------------------------
@@ -68,6 +78,10 @@ Plug 'deoplete-plugins/deoplete-jedi'
 "                   Go
 "-----------------------------------------
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+"-----------------------------------------
+"                   Markdown
+"-----------------------------------------
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 "-----------------------------------------
 "                   JS
 "-----------------------------------------
@@ -666,6 +680,12 @@ function! <SID>BufcloseCloseIt()
     execute('bdelete! '.l:currentBufNum)
   endif
 endfunction
+"-----------------------------------------
+" Markdown
+"-----------------------------------------
+" Disable autostart of md composer
+" let g:markdown_composer_autostart = 0
+let g:markdown_composer_browser = 'firefox --new-window'
 "-----------------------------------------
 " Neomake
 "-----------------------------------------
