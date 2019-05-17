@@ -1,4 +1,3 @@
-"w disable python 2.*
 let g:python3_host_prog = '/usr/bin/python'
 
 "#########################################
@@ -22,7 +21,7 @@ Plug 'scrooloose/nerdtree'                    " Treeview
 Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
-Plug 'ruanyl/vim-gh-line'                     " Open line on Github
+Plug 'majutsushi/tagbar'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
@@ -49,6 +48,7 @@ Plug 'junegunn/vim-oblique'                   " Colors search result and sets no
 "-----------------------------------------
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
 Plug 'tpope/vim-fugitive'
+Plug 'ruanyl/vim-gh-line'                     " Open line on Github
 "-----------------------------------------
 "                   FZF
 "-----------------------------------------
