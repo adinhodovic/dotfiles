@@ -131,7 +131,7 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 "                   Ansible
 "-----------------------------------------
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
-Plug 'b4b4r07/vim-ansible-vault'
+Plug 'danihodovic/vim-ansible-vault'
 "-----------------------------------------
 "                   Terraform
 "-----------------------------------------
@@ -490,6 +490,11 @@ let g:ansible_extra_keywords_highlight = 1
 augroup ansible
   au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
 augroup END
+"-----------------------------------------
+" Ansible-vault
+"-----------------------------------------
+map <leader>ae :call AnsibleVaultEncrypt <CR>
+map <leader>ad :call AnsibleVaultDecrypt <CR>
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
