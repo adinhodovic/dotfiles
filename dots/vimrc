@@ -130,7 +130,9 @@ call plug#end()
 " General
 "-----------------------------------------
 let mapleader = ','
+" vint: -ProhibitSetNoCompatible
 set nocompatible
+" vint: +ProhibitSetNoCompatible
 "-----------------------------------------
 " History
 "-----------------------------------------
