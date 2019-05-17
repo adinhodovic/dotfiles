@@ -74,6 +74,10 @@ Plug 'ternjs/tern_for_vim'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 "-----------------------------------------
+"                   Ruby
+"-----------------------------------------
+Plug 'vim-ruby/vim-ruby'
+"-----------------------------------------
 "                   JSX
 "-----------------------------------------
 Plug 'mxw/vim-jsx'
@@ -126,6 +130,7 @@ call plug#end()
 " General
 "-----------------------------------------
 let mapleader = ','
+set nocompatible
 "-----------------------------------------
 " History
 "-----------------------------------------
@@ -283,9 +288,10 @@ hi CursorLine ctermbg=236 guibg=#242321
 "               Indentation
 "-----------------------------------------
 " `nocindent smartindent` will allow us to omit semicolons and jump to the next line without auto indentation
+filetype on
 filetype indent on
-syntax on
 filetype plugin indent on
+syntax on
 " for Javascript/Typescript
 augroup indentation
   autocmd FileType typescript,javascript,terraform,jinja2  setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
