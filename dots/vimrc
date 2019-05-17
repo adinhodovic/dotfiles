@@ -695,7 +695,6 @@ let g:neomake_ansible_enabled_makers = ['ansible-lint']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_args = ['--fix']
 
-
 let g:neomake_verbose = 0
 let g:neomake_logfile = '/tmp/neomake.log'
 
