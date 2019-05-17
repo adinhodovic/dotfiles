@@ -465,6 +465,7 @@ map <leader>N <Plug>(miniyank-cycleback)
 " Ansible-vim
 "-----------------------------------------
 let g:ansible_extra_keywords_highlight = 1
+let g:neomake_verbose = 3
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
@@ -691,12 +692,12 @@ let g:neomake_sh_enabled_makers = ['shellcheck']
 
 let g:neomake_vim_enabled_makers = ['vint']
 
-let g:neomake_ansible_enabled_makers = ['ansible-lint']
+let g:neomake_ansible_enabled_makers = ['ansiblelint', 'yamllint']
+
+let g:neomake_yamllint_enabled_makers = ['yamllint']
 
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_args = ['--fix']
-
-let g:neomake_yaml_enabled_makers = ['yamllint']
 
 augroup nmake
   autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
