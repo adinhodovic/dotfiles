@@ -50,6 +50,7 @@ Plug 'junegunn/vim-oblique'                   " Colors search result and sets no
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
 Plug 'tpope/vim-fugitive'
 Plug 'ruanyl/vim-gh-line'                     " Open line on Github
+Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub Actions
 "-----------------------------------------
 "                   FZF
 "-----------------------------------------
