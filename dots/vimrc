@@ -666,8 +666,6 @@ endfunction
 "-----------------------------------------
 let g:neomake_list_height = 8
 let g:neomake_open_list = 2
-let g:neomake_python_python_exe = 'python3'
-let g:neomake_python_isort_exe = 'isort'
 
 let g:neomake_typescript_tslint_maker = {
     \ 'args': ['--project', 'tsconfig.json'],
@@ -675,22 +673,30 @@ let g:neomake_typescript_tslint_maker = {
     \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
     \ }
 let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_jsx_eslint_maker = {
-    \ 'args': ['--fix'],
-    \ }
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
-let g:neomake_python_enabled_makers = ['pylint', 'mypy']
+let g:neomake_jsx_eslint_args = ['--fix']
 
-let g:neomake_sh_enabled_makers = ['shellcheck']
-let g:neomake_vim_enabled_makers = ['vint']
-let g:neomake_css_enabled_makers = ['stylelint']
-let g:neomake_ansible_enabled_makers = ['ansible-lint']
-let g:neomake_css_stylelint_maker = {
-    \ 'args': ['--fix'],
-    \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_args = ['--fix']
 
 let g:neomake_javascript_eslint_exe = '/usr/bin/eslint'
+
+let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
+
+let g:neomake_python_enabled_makers = ['pylint', 'mypy']
+let g:neomake_python_python_exe = 'python3'
+let g:neomake_python_isort_exe = 'isort'
+
+let g:neomake_sh_enabled_makers = ['shellcheck']
+
+let g:neomake_vim_enabled_makers = ['vint']
+
+let g:neomake_ansible_enabled_makers = ['ansible-lint']
+
+let g:neomake_css_enabled_makers = ['stylelint']
+let g:neomake_css_stylelint_args = ['--fix']
+
+
+let g:neomake_verbose = 3
 
 augroup nmake
   autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
@@ -698,6 +704,7 @@ augroup END
 
 function! s:Neomake_callback(options)
   let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint']
+
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
