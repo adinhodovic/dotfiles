@@ -722,9 +722,6 @@ augroup END
 
 " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
 let g:terraform_completion_keys = 1
-
-" (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
-let g:terraform_registry_module_completion = 1
 "-----------------------------------------
 " hashivim/vim-terraform
 "-----------------------------------------
@@ -739,7 +736,6 @@ let g:terraform_fmt_on_save=1
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({'max_list': 25})
 let g:deoplete#enable_profile = 1
-call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
 """"""""""""""""TERRAFORM"""""""""""""""""
 let g:deoplete#omni_patterns = {}
 call deoplete#custom#option('omni_patterns', {
@@ -752,5 +748,3 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'javascript.jsx',
                 \ 'vue'
                 \ ]
-
-call deoplete#initialize()
