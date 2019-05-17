@@ -465,7 +465,9 @@ map <leader>N <Plug>(miniyank-cycleback)
 " Ansible-vim
 "-----------------------------------------
 let g:ansible_extra_keywords_highlight = 1
-let g:neomake_verbose = 3
+augroup ansible
+  au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
+augroup END
 "-----------------------------------------
 " NERDCommenter
 "-----------------------------------------
