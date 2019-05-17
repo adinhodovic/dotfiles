@@ -190,12 +190,11 @@ function vf {
 }
 ### Set variables
 #################
-export PATH="/usr/local/bin:/usr/local/sbin/:$PATH:/home/adin/go/bin/"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin/:/home/adin/go/bin/"
+export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion"
 export TERMINAL=/usr/bin/alacritty
 export TERM=screen-256color
-export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 ### History
 #################

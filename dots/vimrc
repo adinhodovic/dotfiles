@@ -385,27 +385,6 @@ map s <Plug>(easymotion-sn)
 let g:SuperTabDefaultCompletionType = '<c-n>' "Supertab from top to bottom
 let g:SuperTabClosePreviewOnPopupClose = 1
 "-----------------------------------------
-" Deoplate
-"-----------------------------------------
-" General
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({'max_list': 25})
-let g:deoplete#enable_profile = 1
-""""""""""""""""TERRAFORM"""""""""""""""""
-let g:deoplete#omni_patterns = {}
-call deoplete#custom#option('omni_patterns', {
-\ 'complete_method': 'omnifunc',
-\ 'terraform': '[^ *\t"{=$]\w*',
-\})
-"""""""""""""""""JS"""""""""""""""""""""""
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue'
-                \ ]
-
-call deoplete#initialize()
-"-----------------------------------------
 " fzf.vim
 "-----------------------------------------
 let g:fzf_action = {
@@ -697,3 +676,24 @@ let g:terraform_commentstring='//%s'
 let g:terraform_fold_sections=1
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+"-----------------------------------------
+" Deoplate
+"-----------------------------------------
+" General
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({'max_list': 25})
+let g:deoplete#enable_profile = 1
+""""""""""""""""TERRAFORM"""""""""""""""""
+let g:deoplete#omni_patterns = {}
+call deoplete#custom#option('omni_patterns', {
+\ 'complete_method': 'omnifunc',
+\ 'terraform': '[^ *\t"{=$]\w*',
+\})
+"""""""""""""""""JS"""""""""""""""""""""""
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue'
+                \ ]
+
+call deoplete#initialize()
