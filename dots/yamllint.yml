@@ -1,0 +1,5 @@
+---
+ignore: |
+  **/vault.yml
+
+extends: default
