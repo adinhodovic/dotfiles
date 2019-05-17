@@ -46,6 +46,9 @@ Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "                   GUI
 "-----------------------------------------
 Plug 'vim-airline/vim-airline'                " Bottom bar
+Plug 'Yggdroot/indentLine'                    " Show line indentation
+Plug 'luochen1990/rainbow'                    " Color parantheses
+Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 "-----------------------------------------
 "                   Shortkeys
 "-----------------------------------------
@@ -53,9 +56,7 @@ Plug 'tpope/vim-surround'                     " Delete add surroundings in pair
 "-----------------------------------------
 "                   Colors
 "-----------------------------------------
-Plug 'luochen1990/rainbow'
-Plug 'morhetz/gruvbox'
-Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
+Plug 'morhetz/gruvbox'                        " Gruvbox theme
 "-----------------------------------------
 "                   GIT
 "-----------------------------------------
