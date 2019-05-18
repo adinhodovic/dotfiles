@@ -245,8 +245,8 @@ execute 'xnoremap / /' . &cedit . 'a'
 execute 'nnoremap ? ?' . &cedit . 'a'
 execute 'xnoremap ? ?' . &cedit . 'a'
 
-nnoremap <C-w> :wq <cr>                        " Force Quit-Save on control W
-nnoremap <C-q> :q <cr>                        " Force Quit on control W
+nnoremap <C-w> :wq <cr>                       " Force Quit-Save on control W
+nnoremap <C-q> :q  <cr>                      " Force Quit on control q
 "-----------------------------------------
 "                 Files, backups and undo
 "-----------------------------------------
