@@ -82,12 +82,6 @@ RBUFFER="$(xclip -o)$RBUFFER"
 function noop () {}
 zle -N noop
 
-#REMOVE ALL ARROW key bindigns
-bindkey -e
-bindkey '[A' noop
-bindkey '[B' noop
-bindkey '[C' noop
-bindkey '[D' noop
 
 end-of-line-no-whitespace() {
   zle vi-end-of-line
@@ -131,6 +125,7 @@ bindkey -M vicmd v tmux-copy-mode
 
 # Reverse scrolling shift+tab
 bindkey -M menuselect '^[[Z' reverse-menu-complete
+
 # Aliases
 # ------------
 # Allows 256 colors as background in terminal, used for Vi
