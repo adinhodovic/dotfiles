@@ -82,14 +82,16 @@ RBUFFER="$(xclip -o)$RBUFFER"
 function noop () {}
 zle -N noop
 
-bindkey '^[[A' noop
-bindkey '^[[B' noop
-bindkey '^[[C' noop
-bindkey '^[[D' noop
+#REMOVE ALL ARROW key bindigns
+bindkey -e
+bindkey '[A' noop
+bindkey '[B' noop
+bindkey '[C' noop
+bindkey '[D' noop
 
 end-of-line-no-whitespace() {
-zle vi-end-of-line
-zle vi-backward-word-end
+  zle vi-end-of-line
+  zle vi-backward-word-end
 }
 zle -N end-of-line-no-whitespace
 
