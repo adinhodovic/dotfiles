@@ -654,6 +654,7 @@ let g:spotify_token = 'Y2JlYWQ3NzJhMGJhNDM0NGI4YWUyZjNhMWQ2NjlkMjY6MzVhYmRjYTc5Y
 nnoremap <leader><S-s> :SpToggle <CR>
 nnoremap <leader><S-n> :SpNext <CR>
 nnoremap <leader><S-p> :SpPrevious <CR>
+nnoremap <leader><S-e> :SpSelect <CR> :bd <CR>
 nnoremap <leader><C-s> :call SearchSpotify() <CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimgrep searching and cope displaying
