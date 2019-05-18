@@ -162,6 +162,9 @@
     # diff-so-fany
     - aur: name=diff-so-fancy skip_installed=true
 
+    # procs
+    - aur: name=procs skip_installed=true
+
     # setup d-f-s
     - name: setup dfs
       shell: git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
