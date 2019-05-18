@@ -155,6 +155,10 @@
     - name: setup firefox as default app
       shell: mimeo --prefer firefox
 
+    # Add gocode golang package
+    - name: Go Gocode
+      shell: go get -u github.com/stamblerre/gocode
+
     # diff-so-fany
     - aur: name=diff-so-fancy skip_installed=true
 
