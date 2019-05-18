@@ -26,6 +26,9 @@ setopt   correctall autocd recexact longlistjobs
 setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
+
+autoload -Uz compinit && compinit -i
+#############################################
 source ~/.zplug/init.zsh
 #############################################
 # Z Plugins
@@ -33,6 +36,11 @@ source ~/.zplug/init.zsh
 zplug "adinhodovic/docker-alias", use:zshrc
 zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
+zplug "djui/alias-tips"                               # Give tips when not using aliases
+zplug "hlissner/zsh-autopair", defer:2                # Autopair
+zplug "arzzen/calc.plugin.zsh"                        # Calculator
+zplug "popstas/zsh-command-time"                      # Time activities
+zplug 'wfxr/forgit'                                   # Git FZF utility tool
 #############################################
 # ZPlug
 #############################################
@@ -53,8 +61,11 @@ fpath=(~/.zsh/completion $fpath)
 #############################################
 # Docker and Docker-Compose
 #############################################
-autoload -Uz compinit && compinit -i
+
 #############################################
+# Zsh Time
+#############################################
+ZSH_COMMAND_TIME_MIN_SECONDS=60
 
 export ZSH=/usr/share/oh-my-zsh
 
