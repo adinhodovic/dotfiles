@@ -154,6 +154,7 @@ alias cd-="cd -"
 alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
 alias o='xdg-open'
 alias v=nvim
+alias dus=diskus
 
 run_task () {
   local TASKOPTION=$1
