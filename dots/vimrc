@@ -647,10 +647,10 @@ let g:rainbow_active = 1
 "-----------------------------------------
 function! SearchSpotify()
   let name = input('Enter song name: ')
-  :SpSearch name
+  execute 'SpSearch ' l:name
 endfunction
 
-let g:spotify_token = 'cbead772a0ba4344b8ae2f3a1d669d26'
+let g:spotify_token = 'Y2JlYWQ3NzJhMGJhNDM0NGI4YWUyZjNhMWQ2NjlkMjY6MzVhYmRjYTc5YTIyNGVlMDg4YTQ5NmYzNzk0ODhhMzQ='
 nnoremap <leader><S-s> :SpToggle <CR>
 nnoremap <leader><S-n> :SpNext <CR>
 nnoremap <leader><S-p> :SpPrevious <CR>
