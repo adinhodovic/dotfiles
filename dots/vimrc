@@ -90,6 +90,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "                   Python
 "-----------------------------------------
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'fisadev/vim-isort'
 "-----------------------------------------
 "                   Go
 "-----------------------------------------
@@ -500,6 +501,7 @@ let g:oblique#incsearch_highlight_all=1
 if $PYTHON_BLACK_ENABLED
   augroup python
     autocmd BufWritePost *.py :silent Black
+    autocmd BufWritePost *.py :silent Isort
   augroup END
 endif
 "-----------------------------------------
@@ -774,7 +776,6 @@ let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 
 let g:neomake_python_enabled_makers = ['pylint', 'mypy']
 let g:neomake_python_python_exe = 'python3'
-let g:neomake_python_isort_exe = 'isort'
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
 
