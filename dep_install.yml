@@ -32,6 +32,9 @@
     # install dunst
     - aur: name=dunst skip_installed=true
 
+    # install diskus (du -sh)
+    - aur: name=diskus skip_installed=true
+
     # install feh
     - aur: name=feh skip_installed=true
 
