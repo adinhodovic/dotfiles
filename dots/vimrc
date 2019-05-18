@@ -504,6 +504,10 @@ if $PYTHON_BLACK_ENABLED
   augroup END
 endif
 "-----------------------------------------
+" Python Isort
+"-----------------------------------------
+let g:vim_isort_map = '<C-i>'
+"-----------------------------------------
 " Miniyank
 "-----------------------------------------
 map p <Plug>(miniyank-autoput)
