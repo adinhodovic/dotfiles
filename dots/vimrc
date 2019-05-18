@@ -775,6 +775,7 @@ let g:neomake_javascript_eslint_args = ['--fix', '--format=compact']
 
 let g:neomake_javascript_eslint_exe = '/usr/bin/eslint'
 
+let g:neomake_python_enabled_makers = ['pylint', 'mypy']
 let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 
 let g:neomake_python_python_exe = 'python3'
