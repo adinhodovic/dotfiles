@@ -26,14 +26,41 @@ setopt   correctall autocd recexact longlistjobs
 setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
-
-### Autoload zsh modules when they are referenced
+source ~/.zplug/init.zsh
+#############################################
+# Z Plugins
+#############################################
+zplug "adinhodovic/docker-alias", use:zshrc
+zplug "adinhodovic/docker-compose-alias", use:zshrc
+#############################################
+# ZPlug
+#############################################
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+#############################################
+# Z Modules Autoload zsh modules when they are referenced
 #################################################
 autoload -U history-search-end
 zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 zmodload zsh/zpty
+#############################################
+# Completion
+#############################################
+fpath=(~/.zsh/completion $fpath)
+#############################################
+# Docker and Docker-Compose
+#############################################
+autoload -Uz compinit && compinit -i
+#############################################
 
 export ZSH=/usr/share/oh-my-zsh
 
