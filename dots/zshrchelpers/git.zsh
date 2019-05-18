@@ -1,5 +1,4 @@
 alias gs='git status -sb'
-alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl='git log --decorate'
 alias glogS='git log -p -S '
