@@ -36,6 +36,7 @@ source ~/.zplug/init.zsh
 zplug "adinhodovic/docker-alias", use:zshrc
 zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
+zplug 'adinhodovic/calc.plugin.zsh', use:zshrc        # zsh calc
 zplug "djui/alias-tips"                               # Give tips when not using aliases
 zplug "hlissner/zsh-autopair", defer:2                # Autopair
 # zplug "arzzen/calc.plugin.zsh"                        # Calculator
