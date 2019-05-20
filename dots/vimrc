@@ -39,6 +39,7 @@ Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'majutsushi/tagbar'
 Plug 'universal-ctags/ctags'
 Plug 'kana/vim-textobj-user'
+Plug 'rhysd/vim-textobj-anyblock'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
