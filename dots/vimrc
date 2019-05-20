@@ -38,6 +38,7 @@ Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'majutsushi/tagbar'
 Plug 'universal-ctags/ctags'
+Plug 'kana/vim-textobj-user'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
