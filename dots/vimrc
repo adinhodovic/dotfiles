@@ -105,7 +105,7 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 "                   JS
 "-----------------------------------------
 Plug 'carlitux/deoplete-ternjs'
-Plug 'ternjs/tern_for_vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install tern-for-vim' }
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 "-----------------------------------------
