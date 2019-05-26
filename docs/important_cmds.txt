@@ -1,2 +1,3 @@
 xset -q
 ps
+t
