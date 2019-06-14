@@ -224,7 +224,7 @@ function vf {
 #################
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin/:/home/adin/go/bin/"
 export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
-export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion"
+export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion/bin/tffilter"
 export TERMINAL=/usr/bin/alacritty
 export TERM=screen-256color
 
