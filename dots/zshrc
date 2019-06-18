@@ -33,16 +33,19 @@ source ~/.zplug/init.zsh
 #############################################
 # Z Plugins
 #############################################
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
 zplug "adinhodovic/docker-alias", use:zshrc
 zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
-zplug 'adinhodovic/calc.plugin.zsh', use:zshrc        # zsh calc
+zplug "adinhodovic/calc.plugin.zsh", use:zshrc        # zsh calc
 zplug "djui/alias-tips"                               # Give tips when not using aliases
-zplug "hlissner/zsh-autopair", defer:2                # Autopair
-# zplug "arzzen/calc.plugin.zsh"                        # Calculator
 zplug "popstas/zsh-command-time"                      # Time activities
-zplug 'wfxr/forgit'                                   # Git FZF utility tool
-zplug 'b4b4r07/emoji-cli'                             # Emoji cli
+zplug "wfxr/forgit"                                   # Git FZF utility tool
+zplug "b4b4r07/emoji-cli"                             # Emoji cli
+zplug "hlissner/zsh-autopair", defer:2                # Autopair
+zplug "plugins/kubectl", from:oh-my-zsh
+zplug "bonnefoa/kubectl-fzf", defer:3
 #############################################
 # ZPlug
 #############################################
@@ -170,7 +173,7 @@ alias ll='exa --long --header --git --git-ignore -al'
 alias xc='xclip -sel clip'
 alias v='nvim'
 alias ps='procs'
-alias s-hl='vps-sync hl-ops-deployment ~/company/honeylogic/ops ~/ops ops'
+alias s-hl='vps-sync hl-ops-jumphost ~/company/honeylogic/ops ~/ops ops'
 alias t=run_task
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 alias cd.="cd .."

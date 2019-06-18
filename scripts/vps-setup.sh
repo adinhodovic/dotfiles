@@ -12,7 +12,7 @@ ssh $1 "wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86
 ssh -t $1 "sudo sh -c $(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Install terraform
-ssh $1 "rm terraform*;wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip;unzip terraform_0.11.13_linux_amd64.zip"
+ssh $1 "rm terraform*;wget https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_linux_amd64.zip;unzip terraform_0.12.2_linux_amd64.zip"
 ssh -t $1 "sudo mv terraform /usr/local/bin/"
 
 # Make necessary dirs for syntax highlighting
