@@ -89,6 +89,10 @@ Plug 'mboughaba/i3config.vim'
 "-----------------------------------------
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "-----------------------------------------
+"                   Coc
+"-----------------------------------------
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"-----------------------------------------
 "                   Python
 "-----------------------------------------
 Plug 'deoplete-plugins/deoplete-jedi'
