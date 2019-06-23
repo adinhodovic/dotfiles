@@ -96,6 +96,7 @@ Plug 'neoclide/coc-stylelint'
 Plug 'neoclide/coc-highlight'
 Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-yaml'
+Plug 'neoclide/coc-html'
 Plug 'neoclide/coc-git'
 Plug 'neoclide/coc-tailwindcss'
 "-----------------------------------------
