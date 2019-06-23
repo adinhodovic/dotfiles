@@ -91,6 +91,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-json'
 Plug 'neoclide/coc-tslint'
 Plug 'neoclide/coc-tsserver'
+Plug 'neoclide/coc-tslint-plugin'
 Plug 'neoclide/coc-stylelint'
 Plug 'neoclide/coc-highlight'
 Plug 'neoclide/coc-python'
