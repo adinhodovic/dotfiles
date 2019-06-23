@@ -128,6 +128,7 @@ Plug 'chr4/nginx.vim'
 "-----------------------------------------
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
+
 "-----------------------------------------
 "                   HTML
 "-----------------------------------------
@@ -337,6 +338,7 @@ set timeoutlen=500
 "-----------------------------------------
 "               Colors and Fonts
 "-----------------------------------------
+set termguicolors
 syntax enable
 set background=dark
 
@@ -347,6 +349,7 @@ hi SpellBad ctermfg=DarkRed term=undercurl
 
 set cursorline
 hi CursorLine ctermbg=236 guibg=#242321
+
 "-----------------------------------------
 "               Indentation
 "-----------------------------------------
