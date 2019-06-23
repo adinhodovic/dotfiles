@@ -1,3 +1,4 @@
+#Visuduo add ons
 root ALL=(ALL) ALL
 adin ALL=(ALL) ALL
 ## Uncomment to allow members of group wheel to execute any command
