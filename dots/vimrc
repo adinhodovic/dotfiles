@@ -93,12 +93,10 @@ Plug 'neoclide/coc-tslint'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-tslint-plugin'
 Plug 'neoclide/coc-stylelint'
-Plug 'neoclide/coc-highlight'
 Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-yaml'
-Plug 'neoclide/coc-html'
 Plug 'neoclide/coc-git'
-Plug 'iamcco/coc-tailwindcss'
+Plug 'neoclide/coc-html'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
@@ -177,6 +175,24 @@ let mapleader = ','
 " vint: -ProhibitSetNoCompatible
 set nocompatible
 " vint: +ProhibitSetNoCompatible
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
 "-----------------------------------------
 " Autocompelete
 "-----------------------------------------
