@@ -66,6 +66,10 @@
     "filetypes": ["dockerfile"],
     "args": ["--stdio"]
   },
+  "terraform": {
+    "command": "terraform-lsp",
+    "filetypes": ["terraform"],
+  },
   "efm": {
     "command": "efm-langserver",
     "filetypes": ["vim", "eruby", "markdown"]
