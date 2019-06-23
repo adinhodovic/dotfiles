@@ -98,7 +98,7 @@ Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-yaml'
 Plug 'neoclide/coc-html'
 Plug 'neoclide/coc-git'
-Plug 'neoclide/coc-tailwindcss'
+Plug 'iamcco/coc-tailwindcss'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
