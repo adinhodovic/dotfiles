@@ -93,6 +93,7 @@ Plug 'neoclide/coc-tslint'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-stylelint'
 Plug 'neoclide/coc-highlight'
+Plug 'neoclide/coc-python'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
@@ -128,7 +129,6 @@ Plug 'chr4/nginx.vim'
 "-----------------------------------------
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
-
 "-----------------------------------------
 "                   HTML
 "-----------------------------------------
