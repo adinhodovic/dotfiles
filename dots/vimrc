@@ -94,6 +94,7 @@ Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-stylelint'
 Plug 'neoclide/coc-highlight'
 Plug 'neoclide/coc-python'
+Plug 'neoclide/coc-yaml'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
