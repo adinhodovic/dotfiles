@@ -547,7 +547,9 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup Coc
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 "-----------------------------------------
 " Python Isort
 "-----------------------------------------

@@ -72,7 +72,7 @@
   },
   "efm": {
     "command": "efm-langserver",
-    "filetypes": ["vim", "eruby", "markdown"]
+    "filetypes": ["vim", "markdown", "ansible"]
   }
 }
 }
