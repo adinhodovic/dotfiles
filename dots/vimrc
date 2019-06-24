@@ -50,8 +50,8 @@ Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
 "                   Snippets
 "-----------------------------------------
-Plugin 'SirVer/ultisnips'                     " Track the engine.
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'                     " Track the engine.
+Plug 'honza/vim-snippets'
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
