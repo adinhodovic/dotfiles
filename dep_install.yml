@@ -258,14 +258,6 @@
     # etcher
     - aur: name=etcher skip_installed=true
 
-    # clight
-    - aur: name=clight skip_installed=true
-
-    - name: enable service clightd service
-      systemd:
-        name: clightd.service
-        enabled: true
-
     # scrot screenshot
     - aur: name=scrot skip_installed=true
 
