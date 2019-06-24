@@ -107,6 +107,7 @@ Plug 'neoclide/coc-snippets'
 "                   Python
 "-----------------------------------------
 Plug 'fisadev/vim-isort'
+let g:vim_isort_python_version = 'python3'
 "-----------------------------------------
 "                   Markdown
 "-----------------------------------------
