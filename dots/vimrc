@@ -48,6 +48,11 @@ Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 Plug 'lfilho/cosco.vim'                       " Semicolons
 Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
+"                   Snippets
+"-----------------------------------------
+Plugin 'SirVer/ultisnips'                     " Track the engine.
+Plugin 'honza/vim-snippets'
+"-----------------------------------------
 "                   GUI
 "-----------------------------------------
 Plug 'vim-airline/vim-airline'                " Bottom bar
@@ -97,6 +102,7 @@ Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-yaml'
 Plug 'neoclide/coc-git'
 Plug 'neoclide/coc-html'
+Plug 'neoclide/coc-snippets'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
@@ -550,6 +556,14 @@ endfunction
 augroup Coc
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
+"-----------------------------------------
+" Coc-snippets
+"-----------------------------------------
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
 "-----------------------------------------
 " Python Isort
 "-----------------------------------------
