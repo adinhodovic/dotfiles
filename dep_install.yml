@@ -74,6 +74,9 @@
     # taskwarrior
     - aur: name=task skip_installed=true
 
+    # task-runner
+    - shell: curl -sL https://taskfile.dev/install.sh | sh && mv ./bin/task /usr/local/bin/task-runner
+
     # yamllint
     - aur: name=yamllint skip_installed=true
 
