@@ -1,7 +1,3 @@
-#######################################################
-####### Arch Anywhere ZSH configuration file    #######
-#######################################################
-
 ### Set/unset ZSH options
 #########################
 # setopt NOHUP
@@ -34,7 +30,6 @@ source ~/.zplug/init.zsh
 # Z Plugins
 #############################################
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
 zplug "adinhodovic/docker-alias", use:zshrc
 zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
@@ -73,11 +68,11 @@ fpath=(~/.zsh/completion $fpath)
 #############################################
 # Zsh Time
 #############################################
-source $ZSH/oh-my-zsh.sh
 
 ZSH_COMMAND_TIME_MIN_SECONDS=60
 
 export ZSH=/usr/share/oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 ZSH_THEME="refined"
 
@@ -439,8 +434,6 @@ function molecule-ssh {
   dir=$(basename $PWD)
   ssh -i /tmp/molecule/$dir/default/ssh_key $(grep address /tmp/molecule/$dir/default/instance_config.yml | awk '{print $NF}')
 }
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Add direnv
 eval "$(direnv hook zsh)"
