@@ -46,6 +46,8 @@ zplug "plugins/ssh-agent",   from:oh-my-zsh
 zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "jonmosco/kube-ps1", use:kube-ps1.sh
 zplug "modules/command-not-found", from:prezto              # Command-not-found
+zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh         # git-prompt
+
 #############################################
 # ZPlug
 #############################################
@@ -230,7 +232,8 @@ HOSTNAME="`hostname`"
 ### Set prompt
 ##################################
 unsetopt ALL_EXPORT
-PROMPT='$(kube_ps1)'$PROMPT
+PROMPT='$(git_super_status)'
+PROMPT=$PROMPT' $(kube_ps1) '
 
 ### Bind keys
 #############
