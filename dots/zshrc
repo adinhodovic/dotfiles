@@ -44,6 +44,7 @@ zplug "hlissner/zsh-autopair", defer:2                      # Autopair
 zplug "plugins/kubectl", from:oh-my-zsh
 zplug "plugins/ssh-agent",   from:oh-my-zsh
 zplug "bonnefoa/kubectl-fzf", defer:3
+zplug "jonmosco/kube-ps1", use:kube-ps1.sh
 zplug "modules/command-not-found", from:prezto              # Command-not-found
 #############################################
 # ZPlug
@@ -225,10 +226,11 @@ HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
 HOSTNAME="`hostname`"
-
+##################################
 ### Set prompt
-##############
+##################################
 unsetopt ALL_EXPORT
+PROMPT='$(kube_ps1)'$PROMPT
 
 ### Bind keys
 #############
