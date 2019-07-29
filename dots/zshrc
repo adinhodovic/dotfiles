@@ -43,6 +43,7 @@ zplug "b4b4r07/emoji-cli"                             # Emoji cli
 zplug "hlissner/zsh-autopair", defer:2                # Autopair
 zplug "plugins/kubectl", from:oh-my-zsh
 zplug "bonnefoa/kubectl-fzf", defer:3
+zplug "plugins/ssh-agent",   from:oh-my-zsh
 #############################################
 # ZPlug
 #############################################
@@ -71,15 +72,6 @@ fpath=(~/.zsh/completion $fpath)
 
 ZSH_COMMAND_TIME_MIN_SECONDS=60
 
-export ZSH=/usr/share/oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-ZSH_THEME="refined"
-
-plugins=(
-  ssh-agent
-)
-
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 # Set vi-mode
@@ -102,7 +94,6 @@ RBUFFER="$(xclip -o)$RBUFFER"
 }
 function noop () {}
 zle -N noop
-
 
 end-of-line-no-whitespace() {
   zle vi-end-of-line
