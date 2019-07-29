@@ -36,14 +36,15 @@ zplug "adinhodovic/ansible-alias", use:zshrc
 zplug "adinhodovic/git-alias", use:zshrc
 zplug "adinhodovic/calc.plugin.zsh", use:zshrc        # zsh calc
 zplug "superbrothers/zsh-kubectl-prompt", use:kubectl.zsh # kubectl ZSH
-zplug "djui/alias-tips"                               # Give tips when not using aliases
-zplug "popstas/zsh-command-time"                      # Time activities
-zplug "wfxr/forgit"                                   # Git FZF utility tool
-zplug "b4b4r07/emoji-cli"                             # Emoji cli
-zplug "hlissner/zsh-autopair", defer:2                # Autopair
+zplug "djui/alias-tips"                                     # Give tips when not using aliases
+zplug "popstas/zsh-command-time"                            # Time activities
+zplug "wfxr/forgit"                                         # Git FZF utility tool
+zplug "b4b4r07/emoji-cli"                                   # Emoji cli
+zplug "hlissner/zsh-autopair", defer:2                      # Autopair
 zplug "plugins/kubectl", from:oh-my-zsh
-zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "plugins/ssh-agent",   from:oh-my-zsh
+zplug "bonnefoa/kubectl-fzf", defer:3
+zplug "modules/command-not-found", from:prezto              # Command-not-found
 #############################################
 # ZPlug
 #############################################
@@ -72,7 +73,10 @@ fpath=(~/.zsh/completion $fpath)
 
 ZSH_COMMAND_TIME_MIN_SECONDS=60
 
+#############################################
+# SSH Agent
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+#############################################
 
 # Set vi-mode
 bindkey -v
