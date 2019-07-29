@@ -38,7 +38,9 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "adinhodovic/docker-alias", use:zshrc
 zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
+zplug "adinhodovic/git-alias", use:zshrc
 zplug "adinhodovic/calc.plugin.zsh", use:zshrc        # zsh calc
+zplug "superbrothers/zsh-kubectl-prompt", use:kubectl.zsh # kubectl ZSH
 zplug "djui/alias-tips"                               # Give tips when not using aliases
 zplug "popstas/zsh-command-time"                      # Time activities
 zplug "wfxr/forgit"                                   # Git FZF utility tool
@@ -59,6 +61,7 @@ zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 zmodload zsh/zpty
+
 #############################################
 # Completion
 #############################################
@@ -70,6 +73,8 @@ fpath=(~/.zsh/completion $fpath)
 #############################################
 # Zsh Time
 #############################################
+source $ZSH/oh-my-zsh.sh
+
 ZSH_COMMAND_TIME_MIN_SECONDS=60
 
 export ZSH=/usr/share/oh-my-zsh
@@ -82,22 +87,6 @@ plugins=(
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
-source $ZSH/oh-my-zsh.sh
-
-scripts_to_source=(
-  # For some reason doctl overrides other completions. Source it first then
-  # source the rest
-  ${HOME}/.doctl_zsh
-
-  /usr/local/bin/aws_zsh_completer.sh
-  ${HOME}/.dotfiles/dots/zshrchelpers/git.zsh
-)
-
-for script in $scripts_to_source; do
-  if [ -f $script ]; then
-    source $script
-  fi
-done
 # Set vi-mode
 bindkey -v
 #zmodload -ap zsh/mapfile mapfile
@@ -405,7 +394,6 @@ bindkey -M viins '^l'   fzf-docker-logs
 
 bindkey -M vicmd '^x'   fzf-docker-exec
 bindkey -M viins '^x'   fzf-docker-exec
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 function awsprofile {
   profile=$(grep --text -E '\[.+\]' ~/.aws/credentials | tr -d '[]' | fzf)
@@ -451,6 +439,8 @@ function molecule-ssh {
   dir=$(basename $PWD)
   ssh -i /tmp/molecule/$dir/default/ssh_key $(grep address /tmp/molecule/$dir/default/instance_config.yml | awk '{print $NF}')
 }
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Add direnv
 eval "$(direnv hook zsh)"
