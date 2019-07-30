@@ -35,7 +35,6 @@ zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
 zplug "adinhodovic/git-alias", use:zshrc
 zplug "adinhodovic/calc.plugin.zsh", use:zshrc        # zsh calc
-zplug "superbrothers/zsh-kubectl-prompt", use:kubectl.zsh # kubectl ZSH
 zplug "djui/alias-tips"                                     # Give tips when not using aliases
 zplug "popstas/zsh-command-time"                            # Time activities
 zplug "wfxr/forgit"                                         # Git FZF utility tool
@@ -47,6 +46,7 @@ zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "jonmosco/kube-ps1", use:kube-ps1.sh
 zplug "modules/command-not-found", from:prezto              # Command-not-found
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh         # git-prompt
+zplug "skywind3000/z.lua", use:z.lua.plugin.zsh
 #############################################
 # ZPlug
 #############################################
