@@ -47,7 +47,6 @@ zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "jonmosco/kube-ps1", use:kube-ps1.sh
 zplug "modules/command-not-found", from:prezto              # Command-not-found
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh         # git-prompt
-
 #############################################
 # ZPlug
 #############################################
@@ -232,9 +231,8 @@ HOSTNAME="`hostname`"
 ### Set prompt
 ##################################
 unsetopt ALL_EXPORT
-PROMPT='$(git_super_status)'
-PROMPT=$PROMPT' $(kube_ps1) '
-
+PROMPT='$(git_super_status) '
+RPROMPT='%{$fg[blue]%}$(kube_ps1)%{$reset_color%}'
 ### Bind keys
 #############
 autoload -U compinit
