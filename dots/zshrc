@@ -158,10 +158,21 @@ alias s-hl='vps-sync hl-ops-jumphost ~/company/honeylogic/ops ~/ops ops'
 alias t=run_task
 alias trun=task-runner
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
-alias cd.="cd .."
-alias cd..="cd ../.."
-alias cd...="cd ../../.."
-alias cd....='cd ../../../..'
+
+# Z.lua
+alias cd="z"
+alias cd.="z .."
+alias cd..="z ../.."
+alias cd...="z ../../.."
+alias cd....='z ../../../..'
+
+alias cdz='z -c'      # restrict matches to subdirs of $PWD
+alias cdi='z -i'      # cd with interactive selection
+alias cdf='z -I'      # use fzf to select in multiple matches
+alias cdb='z -b'      # quickly cd to the parent directory
+alias cdh='z -I -t .'
+#
+
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 alias cp='cp -v '
 alias mv='mv -v '
