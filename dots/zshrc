@@ -240,7 +240,7 @@ HOSTNAME="`hostname`"
 ### Set prompt
 ##################################
 unsetopt ALL_EXPORT
-PROMPT='$(git_super_status) '
+PROMPT='%{$fg[blue]%}%1d%{$reset_color%} $(git_super_status) '
 RPROMPT='%{$fg[blue]%}$(kube_ps1)%{$reset_color%}'
 ### Bind keys
 #############
