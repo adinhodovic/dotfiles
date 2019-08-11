@@ -11,6 +11,9 @@
     # install neovim
     - aur: name=neovim skip_installed=true
 
+    # install lsd
+    - aur: name=lsd skip_installed=true
+
     # install oh-my-zsh
     - aur: name=oh-my-zsh-git skip_installed=true
 
