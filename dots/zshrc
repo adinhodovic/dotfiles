@@ -147,7 +147,7 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 # Aliases
 # ------------
 # Allows 256 colors as background in terminal, used for Vi
-alias tmux="tmux -2"
+alias tmux="tmux -2 -u"
 alias cat="bat"
 # lsd instead of ls
 alias ls='lsd'
