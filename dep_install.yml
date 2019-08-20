@@ -96,6 +96,10 @@
     - pip:
         name: PyGithub
 
+    # Add postgres
+    - pip:
+        name: psycopg2
+
     # Add vimvint
     - pip:
         name: vimvint
