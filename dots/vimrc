@@ -266,9 +266,11 @@ nnoremap <silent> <C-l> :wincmd l<cr>
 nnoremap <silent> <C-j> :wincmd j<cr>
 nnoremap <silent> <C-k> :wincmd k<cr>
 
-nnoremap <leader>w :w <cr>
-nnoremap <leader><C-w> :wq <cr>               " Force Quit-Save on control W
-nnoremap <leader>q :q<cr>                      " Force Quit on control q
+" Exit/Write movements
+nnoremap <leader>w :w<cr>
+nnoremap <leader>ww :wq<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>qq :q!<cr>
 
 execute 'nnoremap <space> :' . &cedit . 'a'
 execute 'xnoremap <space> :' . &cedit . 'a'
@@ -419,8 +421,6 @@ map <leader>s? z=
 "-----------------------------------------
 "               Misc
 "-----------------------------------------
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -691,12 +691,6 @@ set completeopt-=preview,menu
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-
-" Fast saving
-nmap <leader>w :w!<CR>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
