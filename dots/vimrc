@@ -70,7 +70,7 @@ Plug 'tpope/vim-surround'                     " Delete add surroundings in pair
 "-----------------------------------------
 Plug 'morhetz/gruvbox'                        " Gruvbox theme
 "-----------------------------------------
-"                   Colors
+"                   Sound
 "-----------------------------------------
 Plug 'HendrikPetertje/vimify'                 " Spotify
 "-----------------------------------------
@@ -87,25 +87,13 @@ Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "-----------------------------------------
-"                   FZF
+"                   i3
 "-----------------------------------------
 Plug 'mboughaba/i3config.vim'
 "-----------------------------------------
 "                   Coc
 "-----------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-json'
-Plug 'neoclide/coc-tslint'
-Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-tslint-plugin'
-Plug 'neoclide/coc-stylelint'
-Plug 'neoclide/coc-css'
-Plug 'neoclide/coc-prettier'
-Plug 'neoclide/coc-python'
-Plug 'neoclide/coc-yaml'
-Plug 'neoclide/coc-git'
-Plug 'neoclide/coc-html'
-Plug 'neoclide/coc-snippets'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
@@ -141,7 +129,6 @@ Plug 'chr4/nginx.vim'
 "                   CSS
 "-----------------------------------------
 Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'
 "-----------------------------------------
 "                   HTML
 "-----------------------------------------
@@ -548,6 +535,21 @@ endif
 "-----------------------------------------
 " Coc
 "-----------------------------------------
+let g:coc_global_extensions = [
+    \ 'coc-json',
+    \ 'coc-yaml',
+    \ 'coc-vimlsp',
+    \ 'coc-highlight',
+    \ 'coc-emoji',
+    \ 'coc-html',
+    \ 'coc-stylelint',
+    \ 'coc-css',
+    \ 'coc-github',
+    \ 'coc-ultisnips',
+    \ 'coc-python',
+    \ 'coc-tsserver',
+    \ 'coc-tabnine',
+\]
 set updatetime=300
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
