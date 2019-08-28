@@ -44,7 +44,6 @@ Plug 'rhysd/vim-textobj-anyblock'
 "                   Automation
 "-----------------------------------------
 Plug 'rstacruz/vim-closer'                    " Autoclosing
-Plug 'tpope/vim-endwise'                      " Close when end
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 Plug 'lfilho/cosco.vim'                       " Semicolons
 Plug 'ntpeters/vim-better-whitespace'         " Whitespace
