@@ -157,6 +157,7 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 alias tf='terraform'
+alias vtop='top'
 
 alias xc='xclip -sel clip'
 alias v='nvim'
