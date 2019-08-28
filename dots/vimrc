@@ -43,7 +43,6 @@ Plug 'rhysd/vim-textobj-anyblock'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
-Plug 'rstacruz/vim-closer'                    " Autoclosing
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 Plug 'lfilho/cosco.vim'                       " Semicolons
 Plug 'ntpeters/vim-better-whitespace'         " Whitespace
@@ -541,6 +540,9 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-stylelint',
     \ 'coc-css',
+    \ 'coc-ultisnips',
+    \ 'coc-snippets',
+    \ 'coc-pairs',
     \ 'coc-github',
     \ 'coc-python',
     \ 'coc-tsserver',
