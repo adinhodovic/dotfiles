@@ -33,7 +33,6 @@ Plug 'airblade/vim-rooter'                    " Sets root directory to project (
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
 Plug 'scrooloose/nerdtree'                    " Treeview
-Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'majutsushi/tagbar'
@@ -44,11 +43,13 @@ Plug 'rhysd/vim-textobj-anyblock'
 "                   Automation
 "-----------------------------------------
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
+Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'lfilho/cosco.vim'                       " Semicolons
 Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
 "                   Snippets
 "-----------------------------------------
+Plug 'honza/vim-snippets'
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
@@ -255,10 +256,19 @@ imap <left> <nop>
 imap <right> <nop>
 
 " Window movements
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
+inoremap <silent> <C-h> <esc>:wincmd h<cr>
+inoremap <silent> <C-l> <esc>:wincmd l<cr>
+inoremap <silent> <C-j> <esc>:wincmd j<cr>
+inoremap <silent> <C-k> <esc>:wincmd k<cr>
+
+nnoremap <silent> <C-h> :wincmd h<cr>
+nnoremap <silent> <C-l> :wincmd l<cr>
+nnoremap <silent> <C-j> :wincmd j<cr>
+nnoremap <silent> <C-k> :wincmd k<cr>
+
+nnoremap <leader>w :w <cr>
+nnoremap <leader><C-w> :wq <cr>               " Force Quit-Save on control W
+nnoremap <leader>q :q<cr>                      " Force Quit on control q
 
 execute 'nnoremap <space> :' . &cedit . 'a'
 execute 'xnoremap <space> :' . &cedit . 'a'
@@ -266,9 +276,6 @@ execute 'nnoremap / /' . &cedit . 'a'
 execute 'xnoremap / /' . &cedit . 'a'
 execute 'nnoremap ? ?' . &cedit . 'a'
 execute 'xnoremap ? ?' . &cedit . 'a'
-
-nnoremap <C-w> :wq <cr>                       " Force Quit-Save on control W
-nnoremap <C-q> :q  <cr>                      " Force Quit on control q
 "-----------------------------------------
 "                 Files, backups and undo
 "-----------------------------------------
@@ -540,7 +547,6 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-stylelint',
     \ 'coc-css',
-    \ 'coc-ultisnips',
     \ 'coc-snippets',
     \ 'coc-pairs',
     \ 'coc-github',
