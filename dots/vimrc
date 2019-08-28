@@ -205,7 +205,7 @@ set signcolumn=yes
 " Autocompelete
 "-----------------------------------------
 augroup autocomplete
-  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
   autocmd! CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 augroup END
 
