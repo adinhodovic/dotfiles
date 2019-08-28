@@ -1,11 +1,13 @@
 {
   "suggest.minTriggerInputLength": 2,
+  "suggest.maxCompleteItemCount": 20,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
     "typescriptreact",
     "json",
     "javascriptreact",
+    "scss",
     "css",
     "markdown",
     "md"

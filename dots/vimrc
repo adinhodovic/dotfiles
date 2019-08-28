@@ -106,12 +106,10 @@ Plug 'neoclide/coc-yaml'
 Plug 'neoclide/coc-git'
 Plug 'neoclide/coc-html'
 Plug 'neoclide/coc-snippets'
-Plug 'neoclide/coc-emoji'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
 Plug 'fisadev/vim-isort'
-let g:vim_isort_python_version = 'python3'
 "-----------------------------------------
 "                   Markdown
 "-----------------------------------------
@@ -130,6 +128,7 @@ Plug 'vim-ruby/vim-ruby'
 "                   JSX
 "-----------------------------------------
 Plug 'mxw/vim-jsx'
+Plug 'chemzqm/vim-jsx-improve'
 "-----------------------------------------
 "                   JSON
 "-----------------------------------------
@@ -466,8 +465,9 @@ let g:lastplace_ignore = 'gitcommit,gitrebase,svn,hgcommit'
 "-----------------------------------------
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#coc#enabled = 1
 " remove the filetype part
-let g:airline_section_x=''
+let g:airline_section_x='%{coc#status()}'
 let g:airline_section_y=''
 " remove separators for empty sections
 let g:airline_skip_empty_sections = 1
@@ -574,6 +574,7 @@ vmap <C-j> <Plug>(coc-snippets-select)
 "-----------------------------------------
 " Python Isort
 "-----------------------------------------
+let g:vim_isort_python_version = 'python3'
 let g:vim_isort_map = '<C-i>'
 "-----------------------------------------
 " Miniyank
