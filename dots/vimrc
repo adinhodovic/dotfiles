@@ -43,7 +43,8 @@ Plug 'rhysd/vim-textobj-anyblock'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
-Plug 'cohama/lexima.vim'                      " Autoclosing
+Plug 'rstacruz/vim-closer'                    " Autoclosing
+Plug 'tpope/vim-endwise'                      " Close when end
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 Plug 'lfilho/cosco.vim'                       " Semicolons
 Plug 'ntpeters/vim-better-whitespace'         " Whitespace
@@ -98,12 +99,14 @@ Plug 'neoclide/coc-tslint'
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-tslint-plugin'
 Plug 'neoclide/coc-stylelint'
+Plug 'neoclide/coc-css'
 Plug 'neoclide/coc-prettier'
 Plug 'neoclide/coc-python'
 Plug 'neoclide/coc-yaml'
 Plug 'neoclide/coc-git'
 Plug 'neoclide/coc-html'
 Plug 'neoclide/coc-snippets'
+Plug 'neoclide/coc-emoji'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
@@ -201,9 +204,11 @@ set signcolumn=yes
 "-----------------------------------------
 " Autocompelete
 "-----------------------------------------
-augroup autocompelte
-  "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup autocomplete
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  autocmd! CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 augroup END
+
 "-----------------------------------------
 " History
 "-----------------------------------------
