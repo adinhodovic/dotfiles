@@ -35,13 +35,14 @@ zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
 zplug "adinhodovic/git-alias", use:zshrc
 zplug "adinhodovic/terraform-alias", use:zshrc
-zplug "adinhodovic/calc.plugin.zsh", use:zshrc        # zsh calc
+zplug "adinhodovic/calc.plugin.zsh", use:zshrc              # zsh calc
 zplug "djui/alias-tips"                                     # Give tips when not using aliases
 zplug "popstas/zsh-command-time"                            # Time activities
 zplug "wfxr/forgit"                                         # Git FZF utility tool
 zplug "b4b4r07/emoji-cli"                                   # Emoji cli
 zplug "hlissner/zsh-autopair", defer:2                      # Autopair
 zplug "plugins/kubectl", from:oh-my-zsh
+zplug "go-task/task", use:"completion/zsh/_task"
 zplug "plugins/ssh-agent",   from:oh-my-zsh
 zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "jonmosco/kube-ps1", use:kube-ps1.sh
@@ -165,7 +166,6 @@ alias v='nvim'
 alias ps='procs'
 alias s-hl='vps-sync hl-ops-jumphost ~/company/honeylogic/ops ~/ops ops'
 alias t=run_task
-alias trun=task-runner
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 
 # cd shortkeys
@@ -196,7 +196,7 @@ run_task () {
   if [ "$TASKOPTION" = "add" ];
   then
     shift
-    task $TASKOPTION "$@"
+    taskwarrior $TASKOPTION "$@"
     print "Adding $@ to todoist"
     todoist add "$@ - taskmanager"
   elif [ "$TASKOPTION" = "done" ];
@@ -210,7 +210,7 @@ run_task () {
       todoist close "$TODOISTID"
     fi
   else
-    task $TASKOPTION "$@"
+    taskwarrior $TASKOPTION "$@"
   fi
 }
 
