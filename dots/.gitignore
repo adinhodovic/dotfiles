@@ -1,2 +1,15 @@
-.envrc
 tfplan
+_site
+.sass-cache
+.DS_Store
+/style.scss
+*.gz
+node_modules
+bower_components
+.envrc
+.default_vault
+errored.tfstate
+tfplan
+secret.tfvars
+.env
+.terraform

@@ -202,7 +202,7 @@ run_task () {
   elif [ "$TASKOPTION" = "done" ];
   then
     shift
-    local TASKNAME=`task $TASKOPTION "$@" | grep -o "'.*'" | sed 's/^.\(.*\).$/\1/'`
+    local TASKNAME=`taskwarrior $TASKOPTION "$@" | grep -o "'.*'" | sed 's/^.\(.*\).$/\1/'`
     local TODOISTID=`todoist list | grep -w " $TASKNAME" | awk 'NR==1{print $1}'`
     if [ ! -z "$TODOISTID" ];
     then
