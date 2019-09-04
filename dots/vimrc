@@ -552,8 +552,9 @@ let g:coc_global_extensions = [
     \ 'coc-github',
     \ 'coc-python',
     \ 'coc-tsserver',
-    \ 'coc-tabnine',
 \]
+"\ 'coc-tabnine' disable due to high cpu,
+
 set updatetime=300
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
