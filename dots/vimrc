@@ -859,6 +859,9 @@ let g:neomake_yamllint_enabled_makers = ['yamllint']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_args = ['--fix']
 
+let g:neomake_scss_enabled_makers = ['stylelint']
+let g:neomake_scss_stylelint_args = ['--fix']
+
 augroup nmake
   autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
 augroup END
