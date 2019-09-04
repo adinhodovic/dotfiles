@@ -863,13 +863,32 @@ let g:neomake_css_stylelint_args = ['--fix']
 let g:neomake_scss_enabled_makers = ['stylelint']
 let g:neomake_scss_stylelint_args = ['--fix']
 
+let g:neomake_htmldjango_jsbeautify_maker = {
+    \ 'name': 'js-beautify',
+    \ 'args': ['-r', '--type html'],
+    \ }
+
+let g:neomake_htmldjango_htmlhint_maker = {
+    \ 'args': ['--format', 'unix', '--nocolor'],
+    \ 'errorformat': '%f:%l:%c: %m,%-G,%-G%*\d problems',
+    \ }
+
+let g:neomake_html_jsbeautify_maker = {
+    \ 'name': 'js-beautify',
+    \ 'args': ['-r'],
+    \ 'append_file': 0,
+    \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
+    \ }
+
+let g:neomake_htmldjango_enabled_makers = ['htmlhint', 'jsbeautify']
+let g:neomake_html_enabled_makers = ['htmlhint', 'jsbeautify']
+
 augroup nmake
   autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
 augroup END
 
 function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint']
-
+  let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint', 'js-beautify']
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
