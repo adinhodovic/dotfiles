@@ -1,115 +1,65 @@
 ---
 - name: Symlink i3
   file:
-    src: "/home/adin/.dotfiles/dots/i3"
-    dest: "/home/adin/.i3/config"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     state: link
     force: true
-
-- name: Symlink ssh
-  file:
-    src: "/home/adin/.dotfiles/dots/config.ssh"
-    dest: "/home/adin/.ssh/config"
-    state: link
-    force: true
-
-- name: Symlink tmux
-  file:
-    src: "/home/adin/.dotfiles/dots/tmux.conf"
-    dest: "/home/adin/.tmux.conf"
-    state: link
-    force: true
-
-- name: Symlink vimrc
-  file:
-    src: "/home/adin/.dotfiles/dots/vimrc"
-    dest: "/home/adin/.config/nvim/init.vim"
-    state: link
-    force: true
-
-- name: Symlink zsrhc
-  file:
-    src: "/home/adin/.dotfiles/dots/zshrc"
-    dest: "/home/adin/.zshrc"
-    state: link
-    force: true
-
-- name: Symlink taskrc
-  file:
-    src: "/home/adin/.dotfiles/dots/taskrc"
-    dest: "/home/adin/.taskrc"
-    state: link
-    force: true
-
-- name: Symlink lightdm
-  file:
-    src: "/home/adin/.dotfiles/dots/lightdm.conf"
-    dest: "/etc/lightdm/lightdm.conf"
-    state: link
-    force: true
-
-- name: Symlink lightdm-webkit
-  file:
-    src: "/home/adin/.dotfiles/dots/lightdm-webkit2-greeter.conf"
-    dest: "/etc/lightdm/lightdm-webkit2-greeter.conf"
-    state: link
-    force: true
-
-- name: Symlink alacritty
-  file:
-    src: "/home/adin/.dotfiles/dots/alacritty.yml"
-    dest: "/home/adin/.config/alacritty/alacritty.yml"
-    state: link
-    force: true
-
-- name: Symlink yamllint.yml
-  file:
-    src: "/home/adin.dotfiles/dots/yamllint.yml"
-    dest: "/home/adin/.yamllint.yml"
-    state: link
-    force: true
-
-- name: Symlink eslintrc.yml
-  file:
-    src: "/home/adin.dotfiles/dots/eslintrc.yml"
-    dest: "/home/adin/.eslintrc.yml"
-    state: link
-    force: true
-
-- name: Symlink ctags
-  file:
-    src: "/home/adin.dotfiles/dots/ctags"
-    dest: "/home/adin/.ctags"
-    state: link
-    force: true
-
-- name: Symlink npmrc
-  file:
-    src: "/home/adin.dotfiles/dots/npmrc"
-    dest: "/home/adin/.npmrc"
-    state: link
-    force: true
-
-- name: Symlink locale.conf
-  file:
-    src: "/home/adin/.dotfiles/dots/locale.conf"
-    dest: "/etc/locale.conf"
-    state: link
-    force: true
-
-- name: Symlink locale.gen
-  file:
-    src: "/home/adin/.dotfiles/dots/locale.gen"
-    dest: "/etc/locale.gen"
-    state: link
-    force: true
+  with_items:
+    # i3
+    - src: "/home/adin/.dotfiles/dots/i3"
+      dest: "/home/adin/.i3/config"
+    # ssh
+    - src: "/home/adin/.dotfiles/dots/config.ssh"
+      dest: "/home/adin/.ssh/config"
+    # tmux
+    - src: "/home/adin/.dotfiles/dots/tmux.conf"
+      dest: "/home/adin/.tmux.conf"
+    # vim
+    - src: "/home/adin/.dotfiles/dots/vimrc"
+      dest: "/home/adin/.config/nvim/init.vim"
+    # zsh
+    - src: "/home/adin/.dotfiles/dots/zshrc"
+      dest: "/home/adin/.zshrc"
+    # taskwarrior
+    - src: "/home/adin/.dotfiles/dots/taskrc"
+      dest: "/home/adin/.taskrc"
+    # lightdm
+    - src: "/home/adin/.dotfiles/dots/lightdm.conf"
+      dest: "/etc/lightdm/lightdm.conf"
+    # lightdm-webkit
+    - src: "/home/adin/.dotfiles/dots/lightdm-webkit2-greeter.conf"
+      dest: "/etc/lightdm/lightdm-webkit2-greeter.conf"
+    # Alacritty
+    - src: "/home/adin/.dotfiles/dots/alacritty.yml"
+      dest: "/home/adin/.config/alacritty/alacritty.yml"
+    # yamllint
+    - src: "/home/adin.dotfiles/dots/yamllint.yml"
+      dest: "/home/adin/.yamllint.yml"
+    # eslinrc
+    - src: "/home/adin.dotfiles/dots/eslintrc.yml"
+      dest: "/home/adin/.eslintrc.yml"
+    # ctags
+    - src: "/home/adin.dotfiles/dots/ctags"
+      dest: "/home/adin/.ctags"
+    # npmrc
+    - src: "/home/adin.dotfiles/dots/npmrc"
+      dest: "/home/adin/.npmrc"
+    # locale gen
+    - src: "/home/adin/.dotfiles/dots/locale.gen"
+      dest: "/etc/locale.gen"
+    # locale conf
+    - src: "/home/adin/.dotfiles/dots/locale.conf"
+      dest: "/etc/locale.conf"
+    # xinitrc
+    - src: "/home/adin/.dotfiles/dots/xinitrc"
+      dest: "/home/adin/.xinitrc"
+    # efm-langserver
+    - src: "~/.dotfiles/dots/efm-langserver.yaml"
+      dest: "~/.config/efm-langserver/config.yaml"
+    # htmlhint
+    - src: "/home/adin/.dotfiles/dots/htmlhintrc"
+      dest: "/home/adin/.htmlhintrc"
 
 - name: locale-gen
   shell: locale-gen
-
-- name: Symlink xinit-rc
-  file:
-    src: "/home/adin/.dotfiles/dots/xinitrc"
-    dest: "/home/adin/.xinitrc"
-    state: link
-    force: true

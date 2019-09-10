@@ -129,6 +129,10 @@
     - pip:
         name: vimvint
 
+    # Add rebound-cli
+    - pip:
+        name: rebound-cli
+
     # Add mypy
     - pip:
         name: mypy
@@ -261,6 +265,16 @@
     - name: Install eslint-plugin-template
       npm:
         name: eslint-plugin-template
+        global: true
+
+    - name: Install markdownlint-cli
+      npm:
+        name: markdownlint-cli
+        global: true
+
+    - name: Install htmlhint
+      npm:
+        name: htmlhint
         global: true
 
     - name: Install eslint-html
