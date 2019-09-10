@@ -97,6 +97,10 @@
     - pip:
         name: PyGithub
 
+    # Pyhelm
+    - pip:
+        name: PyHelm
+
     # Pyls
     - pip:
         name: python-language-server[all]
@@ -112,6 +116,10 @@
     # Pyls-black
     - pip:
         name: pyls-black
+
+    # Django-stubs
+    - pip:
+        name: django-stubs
 
     # Add postgres
     - pip:
@@ -230,12 +238,22 @@
         name: tstags
         global: true
 
+    - name: Install dockerfile-language-server-nodejs
+      npm:
+        name: dockerfile-language-server-nodejs
+        global: true
+
     - name: Install npx
       npm:
         name: npx
         global: true
 
-    - name: Install eslint
+    - name: Install prettier
+      npm:
+        name: prettier
+        global: true
+
+    - name: Install eslint-prettier
       npm:
         name: prettier-eslint
         global: true
@@ -248,6 +266,11 @@
     - name: Install eslint-html
       npm:
         name: eslint-plugin-html
+        global: true
+
+    - name: Install eslint-prettier
+      npm:
+        name: eslint-plugin-prettier
         global: true
 
     - name: Install stylelint
@@ -349,6 +372,9 @@
 
     # kubectl
     - aur: name=kubectl-bin skip_installed=true
+
+    # kubectx & kubens
+    - aur: name=kubectx skip_installed=true
 
     # bat
     - aur: name=bat skip_installed=true
