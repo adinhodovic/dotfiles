@@ -214,6 +214,11 @@
       npm:
         name: tern
         global: true
+    # Vtop
+    - name: Install vtop
+      npm:
+        name: vtop
+        global: true
 
     - name: Install neovim
       npm:
