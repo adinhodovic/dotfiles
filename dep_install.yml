@@ -198,6 +198,13 @@
     - name: Go Gocode
       shell: go get -u github.com/stamblerre/gocode
 
+    # Add efm-langserver
+    - name: Go Get efm lang server
+      shell: go get -u github.com/mattn/efm-langserver/cmd/efm-langserver
+
+    - name: Setup diff-so-fancy for git
+      shell: git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+
     # diff-so-fany
     - aur: name=diff-so-fancy skip_installed=true
 
