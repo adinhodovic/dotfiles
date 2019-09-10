@@ -78,7 +78,8 @@
     - aur: name=task skip_installed=true
 
     # task-runner
-    - shell: curl -sL https://taskfile.dev/install.sh | sh && mv ./bin/task /usr/local/bin/task-runner
+    - shell: curl -sL https://taskfile.dev/install.sh |\
+        sh && mv ./bin/task /usr/local/bin/task-runner
 
     # yamllint
     - aur: name=yamllint skip_installed=true
@@ -324,6 +325,9 @@
 
     # powerline fonts
     - aur: name=powerline-fonts-git skip_installed=true
+
+    # kubectl
+    - aur: name=kubectl-bin skip_installed=true
 
     # bat
     - aur: name=bat skip_installed=true
