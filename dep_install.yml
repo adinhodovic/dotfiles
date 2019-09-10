@@ -97,6 +97,22 @@
     - pip:
         name: PyGithub
 
+    # Pyls
+    - pip:
+        name: python-language-server[all]
+
+    # Pyls-isort
+    - pip:
+        name: pyls-isort
+
+    # Pyls-mypy
+    - pip:
+        name: pyls-mypy
+
+    # Pyls-black
+    - pip:
+        name: pyls-black
+
     # Add postgres
     - pip:
         name: psycopg2
