@@ -1,3 +1,4 @@
+# Track my visudo file
 #Visuduo add ons
 root ALL=(ALL) ALL
 adin ALL=(ALL) ALL
