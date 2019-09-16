@@ -154,7 +154,6 @@ Plug 'juliosueiras/vim-terraform-completion'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
-Plug 'ambv/black'                             " Indenting
 Plug 'Lokaltog/vim-easymotion'
 "-----------------------------------------
 "                   Plug End
@@ -528,14 +527,6 @@ endfunction
 "-----------------------------------------
 let g:oblique#incsearch_highlight_all=1
 "-----------------------------------------
-" Python Black
-"-----------------------------------------
-if $PYTHON_BLACK_ENABLED
-  augroup python
-    autocmd BufWritePost *.py :silent Black
-  augroup END
-endif
-"-----------------------------------------
 " Coc
 "-----------------------------------------
 let g:coc_global_extensions = [
@@ -550,7 +541,6 @@ let g:coc_global_extensions = [
     \ 'coc-snippets',
     \ 'coc-pairs',
     \ 'coc-github',
-    \ 'coc-python',
     \ 'coc-tsserver',
 \]
 "\ 'coc-tabnine' disable due to high cpu,
@@ -849,7 +839,10 @@ let g:neomake_typescript_enabled_makers = ['tslint', 'tsc']
 let g:neomake_python_isort_maker = {
     \ 'name': 'isort',
     \ }
-let g:neomake_python_enabled_makers = ['pylint', 'mypy', 'isort']
+let g:neomake_python_black_maker = {
+    \ 'name': 'black',
+    \ }
+let g:neomake_python_enabled_makers = ['pylint', 'mypy', 'isort', 'black']
 let g:neomake_python_python_exe = 'python3'
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
@@ -891,7 +884,7 @@ augroup nmake
 augroup END
 
 function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint', 'js-beautify', 'isort']
+  let neomake_lint_and_fix_filetypes = ['eslint', 'tslint', 'stylelint', 'js-beautify', 'isort', 'black']
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
