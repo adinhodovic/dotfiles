@@ -43,9 +43,9 @@ zplug "wfxr/forgit"                                         # Git FZF utility to
 zplug "b4b4r07/emoji-cli"                                   # Emoji cli
 zplug "hlissner/zsh-autopair", defer:2                      # Autopair
 zplug "plugins/kubectl", from:oh-my-zsh
+zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "go-task/task", use:"completion/zsh/_task"
 zplug "plugins/ssh-agent",   from:oh-my-zsh
-zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "jonmosco/kube-ps1", use:kube-ps1.sh
 zplug "modules/command-not-found", from:prezto              # Command-not-found
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh         # git-prompt
