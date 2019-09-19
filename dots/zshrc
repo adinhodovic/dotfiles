@@ -456,3 +456,6 @@ eval "$(direnv hook zsh)"
 
 # added by travis gem
 [ -f /home/adin/.travis/travis.sh ] && source /home/adin/.travis/travis.sh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
