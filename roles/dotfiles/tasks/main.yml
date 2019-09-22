@@ -63,6 +63,9 @@
     # ignore file for ripgrep
     - src: "/home/adin/.dotfiles/dots/ignore"
       dest: "/home/adin/.ignore"
+    # ripcgreprc
+    - src: "/home/adin/.dotfiles/dots/ripgreprc"
+      dest: "/home/adin/.ripgreprc"
 
 - name: locale-gen
   shell: locale-gen
