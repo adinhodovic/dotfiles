@@ -234,6 +234,8 @@ export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion/bin/tffil
 export TERMINAL=/usr/bin/alacritty
 export TERM=screen-256color
 
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 export NODE_PATH="${NPM_PACKAGES}/lib/node_modules"
