@@ -60,6 +60,9 @@
     # htmlhint
     - src: "/home/adin/.dotfiles/dots/htmlhintrc"
       dest: "/home/adin/.htmlhintrc"
+    # ignore file for ripgrep
+    - src: "/home/adin/.dotfiles/dots/ignore"
+      dest: "/home/adin/.ignore"
 
 - name: locale-gen
   shell: locale-gen
