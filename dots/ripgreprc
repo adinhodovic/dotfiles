@@ -17,11 +17,8 @@ web:*.{html,css,js}*
 --colors=line:none
 --colors=line:style:bold
 
--i venv
-
 # Because who cares about case!?
 --smart-case
 
---ignore-file ~/.ignore
 
 --hidden
