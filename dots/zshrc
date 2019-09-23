@@ -159,6 +159,12 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+alias seda=search_and_replace_all
+
+search_and_replace_all () {
+ rg "$1" --files-with-matches | xargs sed -i "s/$2/$3/g"
+}
+
 alias tf='terraform'
 alias top='vtop --theme gruvbox'
 
