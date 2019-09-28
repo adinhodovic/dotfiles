@@ -253,8 +253,8 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 ### History
 #################
 HISTFILE=$HOME/.zhistory
-HISTSIZE=3000
-SAVEHIST=3000
+HISTSIZE=5000
+SAVEHIST=5000
 HOSTNAME="`hostname`"
 ##################################
 ### Set prompt
