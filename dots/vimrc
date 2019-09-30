@@ -99,6 +99,8 @@ Plug 'fisadev/vim-isort'
 "                   Markdown
 "-----------------------------------------
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 "-----------------------------------------
 "                   JS
 "-----------------------------------------
