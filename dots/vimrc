@@ -813,8 +813,11 @@ endfunction
 " Markdown
 "-----------------------------------------
 " Disable autostart of md composer
-" let g:markdown_composer_autostart = 0
 let g:markdown_composer_browser = 'firefox --new-window'
+let g:markdown_composer_autostart = 0
+
+nnoremap <leader>md :ComposerStart<cr>
+
 "-----------------------------------------
 " Neomake
 "-----------------------------------------
