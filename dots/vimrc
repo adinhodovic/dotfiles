@@ -816,6 +816,10 @@ endfunction
 let g:markdown_composer_browser = 'firefox --new-window'
 let g:markdown_composer_autostart = 0
 
+" Disable markdown code block conceals
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
 nnoremap <leader>md :ComposerStart<cr>
 
 "-----------------------------------------
