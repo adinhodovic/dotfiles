@@ -819,6 +819,8 @@ let g:markdown_composer_autostart = 0
 " Disable markdown code block conceals
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+" The other style keeps unfolding
+let g:vim_markdown_folding_style_pythonic = 1
 
 nnoremap <leader>md :ComposerStart<cr>
 
