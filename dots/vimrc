@@ -848,6 +848,9 @@ let g:neomake_sh_enabled_makers = ['shellcheck']
 
 let g:neomake_vim_enabled_makers = ['vint']
 
+let g:neomake_markdown_enabled_makers = ['markdownlint']
+let g:neomake_markdown_markdownlint_args = ['-c', '~/.markdownlint.yaml']
+
 let g:neomake_ansible_enabled_makers = ['ansiblelint', 'yamllint']
 
 let g:neomake_yamllint_enabled_makers = ['yamllint']
