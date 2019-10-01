@@ -66,6 +66,9 @@
     # ripcgreprc
     - src: "/home/adin/.dotfiles/dots/ripgreprc"
       dest: "/home/adin/.ripgreprc"
+    # markdownlint
+    - src: "/home/adin/.dotfiles/dots/markdownlint.yaml"
+      dest: "/home/adin/.markdownlint.yaml"
 
 - name: locale-gen
   shell: locale-gen
