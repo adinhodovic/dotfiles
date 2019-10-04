@@ -22,8 +22,6 @@ setopt   correctall autocd recexact longlistjobs
 setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
-
-autoload -Uz compinit && compinit -i
 #############################################
 source ~/.zplug/init.zsh
 #############################################
@@ -64,10 +62,6 @@ zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 zmodload zsh/zpty
 
-#############################################
-# Completion
-#############################################
-fpath=(~/.zsh/completion $fpath)
 #############################################
 # Docker and Docker-Compose
 #############################################
@@ -264,8 +258,6 @@ PROMPT='%{$fg[blue]%}%1d%{$reset_color%} $(git_super_status) '
 RPROMPT='%{$fg[blue]%}$(kube_ps1)%{$reset_color%}'
 ### Bind keys
 #############
-autoload -U compinit
-compinit
 bindkey "^?" backward-delete-char
 bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
@@ -465,5 +457,13 @@ eval "$(direnv hook zsh)"
 # added by travis gem
 [ -f /home/adin/.travis/travis.sh ] && source /home/adin/.travis/travis.sh
 
-autoload -U +X bashcompinit && bashcompinit
+#############################################
+# Completion
+#############################################
 complete -o nospace -C /usr/bin/terraform terraform
+fpath=(~/.zsh/completion $fpath)
+#fpath=(~/personal/terraform-target-completion $fpath)
+
+# Init compinit
+autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
