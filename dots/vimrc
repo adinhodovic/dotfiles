@@ -830,11 +830,8 @@ nnoremap <leader>md :ComposerStart<cr>
 let g:neomake_list_height = 8
 let g:neomake_open_list = 2
 
-let g:neomake_typescript_tslint_maker = {
-    \ 'args': ['--project', 'tsconfig.json'],
-    \ 'append_file': 0,
-    \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
-    \ }
+let g:neomake_tsx_enabled_makers = ['eslint']
+let g:neomake_tsx_eslint_args = ['--fix', '--format=compact']
 
 let g:neomake_jsx_enabled_makers = ['eslint']
 let g:neomake_jsx_eslint_args = ['--fix', '--format=compact']
