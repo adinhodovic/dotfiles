@@ -51,6 +51,10 @@ Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
 Plug 'honza/vim-snippets'
 "-----------------------------------------
+"                   PGSQL
+"-----------------------------------------
+Plug 'lifepillar/pgsql.vim'
+"-----------------------------------------
 "                   GUI
 "-----------------------------------------
 Plug 'vim-airline/vim-airline'                " Bottom bar
