@@ -831,6 +831,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_folding_style_pythonic = 1
 
 nnoremap <leader>md :ComposerStart<cr>
+nnoremap <leader>mo :ComposerOpen<cr>
 
 "-----------------------------------------
 " Neomake
