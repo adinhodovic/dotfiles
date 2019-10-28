@@ -153,8 +153,6 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
-alias npm='pnpm'
-
 alias seda=search_and_replace_all
 
 search_and_replace_all () {
