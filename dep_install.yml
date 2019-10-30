@@ -17,6 +17,9 @@
     # install oh-my-zsh
     - aur: name=oh-my-zsh-git skip_installed=true
 
+    # install flameshot-git
+    - aur: name=flameshot-git skip_installed=true
+
     # install autolock
     - aur: name=xautolock skip_installed=true
 
