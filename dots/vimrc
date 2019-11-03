@@ -505,8 +505,6 @@ nnoremap - :Buffers<cr>
 nnoremap = :call FzfGitChangedFilesFromMaster()<cr>
 nnoremap <M-=> :Files<cr>
 nnoremap <M--> :GitFiles<cr>
-nnoremap H :History:<cr>
-cnoremap H :History:<cr>
 
 function! FzfGitChangedFilesFromMaster()
   let root = split(system('git rev-parse --show-toplevel'), '\n')[0]
