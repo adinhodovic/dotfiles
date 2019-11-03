@@ -154,9 +154,14 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 alias seda=search_and_replace_all
+alias raf=rename_all_files
 
 search_and_replace_all () {
- rg "$1" --files-with-matches | xargs sed -i "s/$2/$3/g"
+ rg "$3" --files-with-matches | xargs sed -i "s/$1/$2/g"
+}
+
+rename_all_files () {
+ rename -v $1 $2 $3
 }
 
 alias tf='terraform'
