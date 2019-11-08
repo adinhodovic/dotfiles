@@ -24,7 +24,7 @@ Plug 'VundleVim/Vundle.vim'
 "-----------------------------------------
 "                   General
 "-----------------------------------------
-Plug 'Shougo/neopairs.vim'                    " Pair symbols
+Plug 'tmsvg/pear-tree'                        " Pair symbols
 Plug 'ervandew/supertab'                      " Tab down alts
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
@@ -540,7 +540,6 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-css',
     \ 'coc-snippets',
-    \ 'coc-pairs',
     \ 'coc-tsserver',
     \ 'coc-github',
 \]
