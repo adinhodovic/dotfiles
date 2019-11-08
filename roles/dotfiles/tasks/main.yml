@@ -35,7 +35,7 @@
       dest: "/home/adin/.config/alacritty/alacritty.yml"
     # yamllint
     - src: "/home/adin.dotfiles/dots/yamllint.yml"
-      dest: "/home/adin/.yamllint.yml"
+      dest: "/home/adin/.config/yamllint/config"
     # eslinrc
     - src: "/home/adin.dotfiles/dots/eslintrc.yml"
       dest: "/home/adin/.eslintrc.yml"

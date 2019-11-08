@@ -3,3 +3,6 @@ ignore: |
   **/vault.yml
 
 extends: default
+
+rules:
+  braces: disable
