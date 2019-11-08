@@ -830,7 +830,7 @@ let g:neomake_jsx_prettier_maker = {
     \ 'name': 'prettier',
     \ }
 
-let g:neomake_tsx_enabled_makers = ['eslint, prettier']
+let g:neomake_tsx_enabled_makers = ['eslint', 'prettier']
 let g:neomake_tsx_eslint_args = ['--fix'] " Don't combine eslint/prettier for linting, run prettier through eslint
 let g:neomake_tsx_prettier_args = ['--write']
 
