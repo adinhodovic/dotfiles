@@ -209,7 +209,7 @@ augroup END
 " History
 "-----------------------------------------
 " Sets how many lines of history VIM has to remember
-set history=300
+set history=1000
 "-----------------------------------------
 " Spelling
 "-----------------------------------------
@@ -231,16 +231,6 @@ map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -580,11 +570,6 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
 "-----------------------------------------
-" Python Isort
-"-----------------------------------------
-let g:vim_isort_python_version = 'python3'
-let g:vim_isort_map = '<C-i>'
-"-----------------------------------------
 " Miniyank
 "-----------------------------------------
 map p <Plug>(miniyank-autoput)
@@ -687,10 +672,9 @@ noremap <F7> :TagbarToggle <CR> :NERDTreeToggle <CR>
 " GitMessenger
 "-----------------------------------------
 nnoremap <leader>gm :GitMessenger <CR>
-"-----------------------------------------
-""""""""""""""""""""""""""""""
+" ----------------------------------------
 " Visual mode related
-""""""""""""""""""""""""""""""
+" ----------------------------------------
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
@@ -715,7 +699,7 @@ nmap <Leader>u <Plug>GitGutterUndoHunk
 " Fugitive
 "-----------------------------------------
 command! Gdom Gdiff origin/master
-nmap <leader>gg :Gbrowse
+map <leader>gb :Gbrowse<cr>
 "-----------------------------------------
 " Rainbow Parantheses
 "-----------------------------------------
