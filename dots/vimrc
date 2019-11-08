@@ -26,7 +26,6 @@ Plug 'VundleVim/Vundle.vim'
 "-----------------------------------------
 Plug 'Shougo/neopairs.vim'                    " Pair symbols
 Plug 'ervandew/supertab'                      " Tab down alts
-Plug 'jremmen/vim-ripgrep'                    " Ripgrep
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
@@ -79,7 +78,8 @@ Plug 'morhetz/gruvbox'                        " Gruvbox theme
 Plug 'rhysd/git-messenger.vim'                " Show git messages
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
 Plug 'tpope/vim-fugitive'
-Plug 'ruanyl/vim-gh-line'                     " Open line on Github
+Plug 'tpope/vim-rhubarb'                      " Dependency for vim-fugitive
+Plug 'humphrey/fugitive-gitlab.vim'           " Dependency for vim-fugitive
 Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub Actions
 Plug 'whiteinge/diffconflicts'                " Diffconflicts
 "-----------------------------------------
@@ -173,6 +173,11 @@ call plug#end()
 "-----------------------------------------
 " General
 "-----------------------------------------
+set completeopt-=preview,menu
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
 let mapleader = ','
 " vint: -ProhibitSetNoCompatible
 set nocompatible
@@ -683,14 +688,8 @@ noremap <F7> :TagbarToggle <CR> :NERDTreeToggle <CR>
 "-----------------------------------------
 nnoremap <leader>gm :GitMessenger <CR>
 "-----------------------------------------
-""
-set completeopt-=preview,menu
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
 """"""""""""""""""""""""""""""
-" => Visual mode related
+" Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -713,35 +712,14 @@ nnoremap ggp :GitGutterPrevHunk<cr>
 nmap <Leader>s <Plug>GitGutterStageHunk
 nmap <Leader>u <Plug>GitGutterUndoHunk
 "-----------------------------------------
-" Github line
-"-----------------------------------------
-let g:gh_open_command = 'fn() { echo "$@" | xclip -selection clipboard | firefox "$@" }; fn '
-"-----------------------------------------
 " Fugitive
 "-----------------------------------------
 command! Gdom Gdiff origin/master
+nmap <leader>gg :Gbrowse
 "-----------------------------------------
 " Rainbow Parantheses
 "-----------------------------------------
 let g:rainbow_active = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimgrep searching and cope displaying
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
-
-" Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-" Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
