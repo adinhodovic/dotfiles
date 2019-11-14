@@ -234,6 +234,12 @@
         name: yarn
         global: true
 
+    # terser
+    - name: Install terser
+      npm:
+        name: terser
+        global: true
+
     # ternjs
     - name: Install tern
       npm:
