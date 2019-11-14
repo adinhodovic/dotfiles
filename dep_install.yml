@@ -20,6 +20,9 @@
     # install flameshot-git
     - aur: name=flameshot-git skip_installed=true
 
+    # install gi standup
+    - aur: name=git-standup-git skip_installed=true
+
     # install autolock
     - aur: name=xautolock skip_installed=true
 
