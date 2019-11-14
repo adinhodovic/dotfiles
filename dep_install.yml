@@ -29,6 +29,9 @@
     # install xorg-xinit/start
     - aur: name=xorg-xinit skip_installed=true
 
+    # python venv
+    - aur: name=python-virtualenv skip_installed=true
+
     # install rofi
     - aur: name=rofi skip_installed=true
 
