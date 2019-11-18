@@ -24,7 +24,6 @@ Plug 'VundleVim/Vundle.vim'
 "-----------------------------------------
 "                   General
 "-----------------------------------------
-Plug 'tmsvg/pear-tree'                        " Pair symbols
 Plug 'ervandew/supertab'                      " Tab down alts
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
@@ -528,6 +527,7 @@ let g:oblique#incsearch_highlight_all=1
 " Coc
 "-----------------------------------------
 let g:coc_global_extensions = [
+    \ 'coc-pairs',
     \ 'coc-json',
     \ 'coc-yaml',
     \ 'coc-vimlsp',
