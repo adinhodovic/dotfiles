@@ -45,6 +45,9 @@ Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'lfilho/cosco.vim'                       " Semicolons
 Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
+"                   Utils
+"-----------------------------------------
+Plug 'psliwka/vim-smoothie'
 "                   Snippets
 "-----------------------------------------
 Plug 'honza/vim-snippets'
