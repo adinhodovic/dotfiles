@@ -148,6 +148,7 @@ alias tmux="tmux -2 -u"
 alias cat="bat"
 # lsd instead of ls
 alias ls='lsd'
+alias c='clear'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
