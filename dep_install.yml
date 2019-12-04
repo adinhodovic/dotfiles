@@ -237,6 +237,12 @@
         name: yarn
         global: true
 
+    # yarn
+    - name: Install yarn
+      npm:
+        name: write-good
+        global: true
+
     # terser
     - name: Install terser
       npm:
