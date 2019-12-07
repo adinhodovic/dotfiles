@@ -238,6 +238,8 @@ export PATH="$PATH:/home/adin/.local/bin/"
 export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion/bin/tffilter"
 
+export PYTHONPATH="/usr/local/lib/python3.8/site-packages:$PYTHONPATH"
+
 # Kubectl FZF
 export KUBECTL_FZF_RSYNC_PORT=3423
 
