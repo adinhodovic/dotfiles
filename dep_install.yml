@@ -102,6 +102,9 @@
     # shellshock without haskell dep
     - aur: name=shellshock-static skip_installed=true
 
+    # downgrade
+    - aur: name=shellshock-static skip_installed=true
+
     # Add PyGithub (ansible githooks)
     - pip:
         name: PyGithub
