@@ -105,6 +105,10 @@
     # downgrade
     - aur: name=shellshock-static skip_installed=true
 
+    # pipreqs
+    - pip:
+        name: pipreqs
+
     # Add PyGithub (ansible githooks)
     - pip:
         name: PyGithub
