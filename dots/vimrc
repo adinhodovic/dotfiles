@@ -483,6 +483,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 " IndentLine
 "-----------------------------------------
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_fileTypeExclude = ['markdown', 'terraform']
 "-----------------------------------------
 " fzf.vim
 "-----------------------------------------
@@ -770,6 +771,7 @@ let g:markdown_composer_autostart = 0
 " Disable markdown code block conceals
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+
 " The other style keeps unfolding
 let g:vim_markdown_folding_style_pythonic = 1
 
@@ -875,6 +877,5 @@ let g:terraform_completion_keys = 1
 " hashivim/vim-terraform
 "-----------------------------------------
 let g:terraform_commentstring='//%s'
-let g:terraform_fold_sections=1
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
