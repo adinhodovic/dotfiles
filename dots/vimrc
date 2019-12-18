@@ -784,23 +784,13 @@ nnoremap <leader>mo :ComposerOpen<cr>
 let g:neomake_list_height = 8
 let g:neomake_open_list = 2
 
-let g:neomake_tsx_prettier_maker = {
-    \ 'name': 'prettier',
-    \ }
-
-let g:neomake_jsx_prettier_maker = {
-    \ 'name': 'prettier',
-    \ }
-
-let g:neomake_tsx_enabled_makers = ['eslint', 'prettier']
-let g:neomake_tsx_eslint_args = ['--fix'] " Don't combine eslint/prettier for linting, run prettier through eslint
-let g:neomake_tsx_prettier_args = ['--write']
-
 let g:neomake_text_enabled_makers = ['writegood']
 
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_jsx_eslint_args = ['--fix', '--format=compact']
-let g:neomake_jsx_prettier_args = ['--write']
+let g:neomake_typescriptreact_enabled_makers = ['eslint']
+let g:neomake_typescriptreact_eslint_args = ['--fix', '--format=compact']
+
+let g:neomake_javascriptreact_enabled_makers = ['eslint']
+let g:neomake_javascriptreact_eslint_args = ['--fix', '--format=compact']
 
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_args = ['--fix', '--format=compact']
@@ -857,7 +847,7 @@ augroup nmake
 augroup END
 
 function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'stylelint', 'js-beautify', 'isort', 'black', 'prettier']
+  let neomake_lint_and_fix_filetypes = ['eslint', 'stylelint', 'js-beautify', 'isort', 'black']
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
