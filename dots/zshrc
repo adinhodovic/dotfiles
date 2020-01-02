@@ -475,6 +475,7 @@ eval "$(direnv hook zsh)"
 #############################################
 complete -o nospace -C /usr/bin/terraform terraform
 fpath=(~/.zsh/completion $fpath)
+fpath+=~/.zfunc
 #fpath=(~/personal/terraform-target-completion $fpath)
 
 # Init compinit
