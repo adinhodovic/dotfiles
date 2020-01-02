@@ -1,3 +1,4 @@
+# yamllint disable rule:line-length
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
@@ -85,6 +86,11 @@
     # task-runner
     - shell: curl -sL https://taskfile.dev/install.sh |\
         sh && mv ./bin/task /usr/local/bin/task-runner
+
+    # py-poetry
+    - shell: curl -sSL \
+        https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py |\
+        python
 
     # yamllint
     - aur: name=yamllint skip_installed=true
