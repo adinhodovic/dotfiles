@@ -8,6 +8,9 @@
     # install neovim
     - aur: name=neovim skip_installed=true
 
+    # install broot
+    - aur: name=broot skip_installed=true
+
     # install lsd
     - aur: name=lsd skip_installed=true
 
