@@ -72,6 +72,8 @@
     # shellcheckrc
     - src: "/home/adin/.dotfiles/dots/shellcheckrc"
       dest: "/home/adin/.shellcheckrc"
+    - src: "/home/adin/.dotfiles/dots/broot.toml"
+      dest: "/home/adin/.config/broot/conf.toml"
 
 - name: locale-gen
   shell: locale-gen
