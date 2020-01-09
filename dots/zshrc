@@ -482,4 +482,8 @@ fpath+=~/.zfunc
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 
+#############################################
+# Broot
+#############################################
+
 source /home/adin/.config/broot/launcher/bash/br
