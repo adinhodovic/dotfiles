@@ -37,6 +37,7 @@ Plug 'majutsushi/tagbar'
 Plug 'universal-ctags/ctags'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-anyblock'
+Plug 'wakatime/vim-wakatime'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
