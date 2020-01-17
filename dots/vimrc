@@ -857,7 +857,7 @@ augroup nmake
 augroup END
 
 function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'stylelint', 'js-beautify', 'isort', 'black']
+  let neomake_lint_and_fix_filetypes = ['eslint', 'stylelint', 'js-beautify', 'isort', 'black', 'pylint']
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
