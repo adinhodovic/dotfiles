@@ -148,11 +148,17 @@ alias tmux="tmux -2 -u"
 alias cat="bat"
 # lsd instead of ls
 alias ls='lsd'
-alias c='clear'
+alias cl='clear'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+
+alias c='z -I'
+alias cc='z -c'
+alias c.="cd .."
+alias c..="cd ../.."
+alias c...="cd ../../.."
 
 alias seda=search_and_replace_all
 alias raf=rename_all_files
@@ -481,6 +487,29 @@ fpath+=~/.zfunc
 # Init compinit
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
+
+#############################################
+# Automation
+#############################################
+function git-standup-last-week() {
+  python <<EOF
+from datetime import date, timedelta
+import subprocess
+import os
+today = date.today()
+beginning_of_last_week = today - timedelta(days=today.weekday() + 7)
+end_of_last_week = beginning_of_last_week + timedelta(days=7)
+cmd = f"git standup -A {beginning_of_last_week} -B {end_of_last_week} -s"
+home = os.path.expanduser("~")
+dirs = [
+  os.path.join(home, ".dotfiles"),
+  os.path.join(home, "repos"),
+  os.path.join(home, ".config/nvim/plugged"),
+]
+for dir in dirs:
+  subprocess.run(cmd, shell=True, cwd=dir)
+EOF
+}
 
 #############################################
 # Broot
