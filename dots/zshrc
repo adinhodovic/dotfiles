@@ -503,8 +503,8 @@ cmd = f"git standup -A {beginning_of_last_week} -B {end_of_last_week} -s"
 home = os.path.expanduser("~")
 dirs = [
   os.path.join(home, ".dotfiles"),
-  os.path.join(home, "repos"),
-  os.path.join(home, ".config/nvim/plugged"),
+  os.path.join(home, "company"),
+  os.path.join(home, "personal"),
 ]
 for dir in dirs:
   subprocess.run(cmd, shell=True, cwd=dir)
