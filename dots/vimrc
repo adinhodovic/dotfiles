@@ -59,6 +59,7 @@ Plug 'psliwka/vim-smoothie'
 "                   Snippets
 "-----------------------------------------
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 "-----------------------------------------
 "                   PGSQL
 "-----------------------------------------
@@ -86,7 +87,6 @@ Plug 'rhysd/git-messenger.vim'                " Show git messages
 Plug 'airblade/vim-gitgutter'                 " Show changed git lines
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'                      " Dependency for vim-fugitive
-Plug 'humphrey/fugitive-gitlab.vim'           " Dependency for vim-fugitive
 Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub Actions
 Plug 'whiteinge/diffconflicts'                " Diffconflicts
 "-----------------------------------------
@@ -569,14 +569,6 @@ augroup Coc
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 "-----------------------------------------
-" Coc-snippets
-"-----------------------------------------
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-"-----------------------------------------
 " Miniyank
 "-----------------------------------------
 map p <Plug>(miniyank-autoput)
@@ -860,6 +852,10 @@ function! s:Neomake_callback(options)
     edit
   endif
 endfunction
+"-----------------------------------------
+" SirVer/ultisnips
+"-----------------------------------------
+let g:UltiSnipsExpandTrigger = '<nop>'
 "-----------------------------------------
 " juliosueiras/terraform-lsp
 "-----------------------------------------
