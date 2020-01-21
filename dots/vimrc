@@ -40,6 +40,13 @@ Plug 'rhysd/vim-textobj-anyblock'
 Plug 'wakatime/vim-wakatime'
 Plug 'cespare/vim-toml'
 "-----------------------------------------
+"                   Documentation
+"-----------------------------------------
+Plug 'Rykka/riv.vim'
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+"-----------------------------------------
 "                   Automation
 "-----------------------------------------
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
@@ -74,9 +81,6 @@ Plug 'tpope/vim-surround'                     " Delete add surroundings in pair
 "-----------------------------------------
 Plug 'morhetz/gruvbox'                        " Gruvbox theme
 "-----------------------------------------
-"                   Sound
-"-----------------------------------------
-"-----------------------------------------
 "                   GIT
 "-----------------------------------------
 Plug 'rhysd/git-messenger.vim'                " Show git messages
@@ -103,12 +107,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "                   Python
 "-----------------------------------------
 Plug 'fisadev/vim-isort'
-"-----------------------------------------
-"                   Markdown
-"-----------------------------------------
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 "-----------------------------------------
 "                   JS
 "-----------------------------------------
