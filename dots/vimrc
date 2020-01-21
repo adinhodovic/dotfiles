@@ -855,6 +855,7 @@ endfunction
 "-----------------------------------------
 " SirVer/ultisnips
 "-----------------------------------------
+" Collides with coc-snippets
 let g:UltiSnipsExpandTrigger = '<nop>'
 "-----------------------------------------
 " juliosueiras/terraform-lsp
