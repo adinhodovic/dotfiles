@@ -546,7 +546,7 @@ let g:coc_global_extensions = [
     \ 'coc-emoji',
     \ 'coc-html',
     \ 'coc-css',
-    \ 'coc-snippets',
+    \ 'coc-ultisnips',
     \ 'coc-tsserver',
     \ 'coc-github',
 \]
@@ -856,6 +856,8 @@ endfunction
 "-----------------------------------------
 " Collides with coc-snippets
 let g:UltiSnipsExpandTrigger = '<nop>'
+" Load my own snippets
+let g:UltiSnipsSnippetDirectories=[$NVIM_DIR.'/UltiSnips']
 "-----------------------------------------
 " juliosueiras/terraform-lsp
 "-----------------------------------------
