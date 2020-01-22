@@ -58,7 +58,6 @@ Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 Plug 'psliwka/vim-smoothie'
 "                   Snippets
 "-----------------------------------------
-Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 "-----------------------------------------
 "                   PGSQL
