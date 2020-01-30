@@ -55,7 +55,9 @@ Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
 "                   Utils
 "-----------------------------------------
-Plug 'psliwka/vim-smoothie'
+Plug 'psliwka/vim-smoothie'                   " Smooth scrolling
+Plug 'wsdjeg/FlyGrep.vim'                     " Use grep in Vim
+"------------------------------------------
 "                   Snippets
 "-----------------------------------------
 Plug 'SirVer/ultisnips'
@@ -851,6 +853,10 @@ function! s:Neomake_callback(options)
     edit
   endif
 endfunction
+"-----------------------------------------
+" wsdjeg/flygrep
+"-----------------------------------------
+nnoremap <Space>s :FlyGrep<cr>
 "-----------------------------------------
 " SirVer/ultisnips
 "-----------------------------------------
