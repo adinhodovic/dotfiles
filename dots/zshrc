@@ -160,6 +160,8 @@ alias c.="cd .."
 alias c..="cd ../.."
 alias c...="cd ../../.."
 
+alias cvenv="python -m venv .venv"
+
 alias seda=search_and_replace_all
 alias raf=rename_all_files
 
