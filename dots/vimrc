@@ -796,6 +796,9 @@ let g:neomake_javascriptreact_eslint_args = ['--fix', '--format=compact']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_args = ['--fix', '--format=compact']
 
+let g:neomake_typescript_enabled_makers = ['eslint']
+let g:neomake_typescript_eslint_args = ['--fix', '--format=compact']
+
 let g:neomake_python_isort_maker = {
     \ 'name': 'isort',
     \ }

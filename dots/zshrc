@@ -40,6 +40,7 @@ zplug "popstas/zsh-command-time"                            # Time activities
 zplug "wfxr/forgit"                                         # Git FZF utility tool
 zplug "b4b4r07/emoji-cli"                                   # Emoji cli
 zplug "hlissner/zsh-autopair", defer:2                      # Autopair
+zplug "Aloxaf/fzf-tab"
 zplug "plugins/kubectl", from:oh-my-zsh
 zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "go-task/task", use:"completion/zsh/_task"

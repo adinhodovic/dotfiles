@@ -1,5 +1,5 @@
 package-lock.json
 node-modules
 .git
-staticfiles
 venv
+staticfiles
