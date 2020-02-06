@@ -526,6 +526,47 @@ function k8s-delete-all-namespace-resources {
 }
 
 #############################################
+# Postgres
+#############################################
+
+function pg_dump {
+  docker run -v $PWD/db_dump:/data/db_dump/ -i --rm --entrypoint='' --net=host postgres pg_dump -h $1 -U $2 -d $3 -p $4 -j 4 -F d -f /data/db_dump
+}
+
+function pg_drop_db {
+  docker exec $1 psql -U postgres -c "DROP DATABASE $2"
+}
+
+function pg_create_db {
+  docker exec $1 psql -U postgres -c "CREATE DATABASE $2"
+}
+
+function pg_restore {
+  docker exec $1 pg_restore --clean -d $2 -h 0.0.0.0 -U postgres /tmp/db_dump/
+}
+
+function pg_drop_and_restore {
+  local pg_container=$(docker-compose ps postgres | awk 'NR>2 {print $1}' | tr -d '\n')
+
+  if pg_drop_db $pg_container $1 ; then
+    echo "Dropped database"
+  fi
+  if pg_create_db $pg_container $1 ; then
+    echo "Created database"
+  fi
+  if ./manage.py migrate ; then
+    echo "Ran Migrations"
+  fi
+  if pg_restore $pg_container $1 ; then
+    echo "Restored DB"
+  fi
+}
+
+function pg_dump_janabuco_com {
+  pg_dump honeylogicdb.cbanfytnmiqp.eu-west-1.rds.amazonaws.com postgres janabuco_com 5432
+}
+
+#############################################
 # Broot
 #############################################
 source /home/adin/.config/broot/launcher/bash/br
