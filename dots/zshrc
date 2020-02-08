@@ -279,6 +279,10 @@ HISTFILE=$HOME/.zhistory
 HISTSIZE=5000
 SAVEHIST=5000
 HOSTNAME="`hostname`"
+zle-line-init() {
+  fzf-history-widget
+}
+zle -N zle-line-init
 ##################################
 ### Set prompt
 ##################################
@@ -570,4 +574,3 @@ function pg_dump_janabuco_com {
 # Broot
 #############################################
 source /home/adin/.config/broot/launcher/bash/br
-
