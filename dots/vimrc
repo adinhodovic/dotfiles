@@ -826,6 +826,11 @@ let g:neomake_css_stylelint_args = ['--fix']
 let g:neomake_scss_enabled_makers = ['stylelint']
 let g:neomake_scss_stylelint_args = ['--fix']
 
+let g:neomake_html_jsbeautify_maker = {
+    \ 'name': 'js-beautify',
+    \ 'args': ['-r', '--type html'],
+    \ }
+
 let g:neomake_htmldjango_jsbeautify_maker = {
     \ 'name': 'js-beautify',
     \ 'args': ['-r', '--type html'],
