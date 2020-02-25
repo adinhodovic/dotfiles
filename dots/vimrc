@@ -850,13 +850,6 @@ let g:neomake_htmldjango_htmlhint_maker = {
     \ 'errorformat': '%f:%l:%c: %m,%-G,%-G%*\d problems',
     \ }
 
-let g:neomake_html_jsbeautify_maker = {
-    \ 'name': 'js-beautify',
-    \ 'args': ['-r'],
-    \ 'append_file': 0,
-    \ 'errorformat': '%EERROR: %f[%l\, %c]: %m,%E%f[%l\, %c]: %m'
-    \ }
-
 let g:neomake_htmldjango_enabled_makers = ['htmlhint', 'jsbeautify']
 let g:neomake_html_enabled_makers = ['htmlhint', 'jsbeautify']
 
