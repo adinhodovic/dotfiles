@@ -57,6 +57,7 @@ Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
 Plug 'psliwka/vim-smoothie'                   " Smooth scrolling
 Plug 'wsdjeg/FlyGrep.vim'                     " Use grep in Vim
+Plug 'antoinemadec/coc-fzf'                   " Coc-Fzf
 "------------------------------------------
 "                   Snippets
 "-----------------------------------------
@@ -886,6 +887,18 @@ augroup END
 
 " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
 let g:terraform_completion_keys = 1
+
+"-----------------------------------------
+"                   coc-fzf
+"-----------------------------------------
+nnoremap <silent> <space>a  :<C-u>CocFzfListDiagnostics<CR>
+nnoremap <silent> <space>c  :<C-u>CocFzfListCommands<CR>
+nnoremap <silent> <space>e  :<C-u>CocFzfListExtensions<CR>
+nnoremap <silent> <space>l  :<C-u>CocFzfListLocation<CR>
+nnoremap <silent> <space>o  :<C-u>CocFzfListOutline<CR>
+nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
+nnoremap <silent> <space>s  :<C-u>CocFzfListSymbols<CR>
+nnoremap <silent> <space>S  :<C-u>CocFzfListServices<CR>
 "-----------------------------------------
 " hashivim/vim-terraform
 "-----------------------------------------
