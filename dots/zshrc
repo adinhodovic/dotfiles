@@ -531,11 +531,15 @@ function pg_dump {
 }
 
 function pg_drop_db {
-  docker exec $1 psql -U postgres -c "DROP DATABASE $2"
+  docker exec $1 psql -U postgres -c "DROP DATABASE $2;"
 }
 
 function pg_create_db {
-  docker exec $1 psql -U postgres -c "CREATE DATABASE $2"
+  docker exec $1 psql -U postgres -c "CREATE DATABASE $2;"
+}
+
+function pg_create_extension {
+  docker exec $1 psql -U postgres -c "CREATE EXTENSION pg_trgm;"
 }
 
 function pg_restore {
