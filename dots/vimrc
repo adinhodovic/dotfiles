@@ -817,7 +817,7 @@ let g:neomake_python_black_maker = {
     \ 'name': 'black',
     \ }
 
-let g:neomake_python_enabled_makers = ['pylint', 'isort', 'black']
+let g:neomake_python_enabled_makers = ['pylint', 'isort', 'black', 'mypy']
 let g:neomake_python_python_exe = 'python3'
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
