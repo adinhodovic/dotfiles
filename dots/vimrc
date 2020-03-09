@@ -26,7 +26,6 @@ Plug 'VundleVim/Vundle.vim'
 "-----------------------------------------
 Plug 'ervandew/supertab'                      " Tab down alts
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
-Plug 'junegunn/vim-pseudocl'                  " Required by vim-oblique
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
@@ -39,6 +38,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-anyblock'
 Plug 'wakatime/vim-wakatime'
 Plug 'cespare/vim-toml'
+Plug 'junegunn/vim-slash'                     " Better vim search
 "-----------------------------------------
 "                   Documentation
 "-----------------------------------------
@@ -72,16 +72,12 @@ Plug 'lifepillar/pgsql.vim'
 Plug 'vim-airline/vim-airline'                " Bottom bar
 Plug 'Yggdroot/indentLine'                    " Show line indentation
 Plug 'luochen1990/rainbow'                    " Color parantheses
-Plug 'junegunn/vim-oblique'                   " Colors search result and sets nohlsearch on cursor move
 Plug 'itchyny/vim-cursorword'                 " Underlines the word under the cursor
+Plug 'morhetz/gruvbox'                        " Gruvbox theme
 "-----------------------------------------
 "                   Shortkeys
 "-----------------------------------------
 Plug 'tpope/vim-surround'                     " Delete add surroundings in pair
-"-----------------------------------------
-"                   Colors
-"-----------------------------------------
-Plug 'morhetz/gruvbox'                        " Gruvbox theme
 "-----------------------------------------
 "                   GIT
 "-----------------------------------------
@@ -543,10 +539,6 @@ function! FzfGitChangedFilesFromMaster()
   call fzf#run(wrapped)
 endfunction
 
-"-----------------------------------------
-" vim-oblique
-"-----------------------------------------
-let g:oblique#incsearch_highlight_all=1
 "-----------------------------------------
 " Coc
 "-----------------------------------------
