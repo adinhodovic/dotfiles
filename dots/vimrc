@@ -75,6 +75,7 @@ Plug 'luochen1990/rainbow'                    " Color parantheses
 Plug 'itchyny/vim-cursorword'                 " Underlines the word under the cursor
 Plug 'morhetz/gruvbox'                        " Gruvbox theme
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colours in the file
+Plug 'rrethy/vim-illuminate'                  " Highlight similar word
 "-----------------------------------------
 "                   Shortkeys
 "-----------------------------------------
@@ -566,11 +567,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-" Highlight symbol under cursor on CursorHold
-augroup Coc
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup END
 "-----------------------------------------
 " Miniyank
 "-----------------------------------------
