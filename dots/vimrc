@@ -74,6 +74,7 @@ Plug 'Yggdroot/indentLine'                    " Show line indentation
 Plug 'luochen1990/rainbow'                    " Color parantheses
 Plug 'itchyny/vim-cursorword'                 " Underlines the word under the cursor
 Plug 'morhetz/gruvbox'                        " Gruvbox theme
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colours in the file
 "-----------------------------------------
 "                   Shortkeys
 "-----------------------------------------
@@ -375,7 +376,7 @@ noremap <silent> <F8> :<C-u>NextWordy<cr>
 xnoremap <silent> <F8> :<C-u>NextWordy<cr>
 inoremap <silent> <F8> <C-o>:NextWordy<cr>
 "-----------------------------------------
-"               Colors and Fonts
+"               GUI
 "-----------------------------------------
 set termguicolors
 syntax enable
@@ -388,7 +389,6 @@ hi SpellBad ctermfg=DarkRed term=undercurl
 
 set cursorline
 hi CursorLine ctermbg=236 guibg=#242321
-
 "-----------------------------------------
 "               Indentation
 "-----------------------------------------
@@ -547,7 +547,6 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-yaml',
     \ 'coc-vimlsp',
-    \ 'coc-highlight',
     \ 'coc-emoji',
     \ 'coc-html',
     \ 'coc-css',
