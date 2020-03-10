@@ -305,6 +305,7 @@ set tabstop=2
 set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap "Wrap lines
+set iskeyword+=-
 "-----------------------------------------
 "                   Text width
 "-----------------------------------------
