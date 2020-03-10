@@ -305,7 +305,8 @@ set tabstop=2
 set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap "Wrap lines
-set iskeyword+=-
+
+set iskeyword+=- " Count words with dashes as one word
 "-----------------------------------------
 "                   Text width
 "-----------------------------------------
