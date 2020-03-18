@@ -69,6 +69,7 @@ Plug 'lifepillar/pgsql.vim'
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
+Plug 'ryanoasis/vim-devicons'                 " Icons
 Plug 'vim-airline/vim-airline'                " Bottom bar
 Plug 'Yggdroot/indentLine'                    " Show line indentation
 Plug 'luochen1990/rainbow'                    " Color parantheses
