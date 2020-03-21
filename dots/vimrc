@@ -77,6 +77,8 @@ Plug 'itchyny/vim-cursorword'                 " Underlines the word under the cu
 Plug 'morhetz/gruvbox'                        " Gruvbox theme
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colours in the file
 Plug 'rrethy/vim-illuminate'                  " Highlight similar word
+Plug 'camspiers/lens.vim'                     " autoresize
+Plug 'camspiers/animate.vim'
 "-----------------------------------------
 "                   Shortkeys
 "-----------------------------------------
