@@ -542,6 +542,10 @@ function pg_create_extension {
   docker exec $1 psql -U postgres -c "CREATE EXTENSION pg_trgm;"
 }
 
+function pg_create_user {
+  dc exec $1 psql -U postgres -c "CREATE USER $2;"
+}
+
 function pg_restore {
   docker exec $1 pg_restore --clean -d $2 -h 0.0.0.0 -U postgres /tmp/db_dump/
 }
