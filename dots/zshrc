@@ -567,10 +567,6 @@ function pg_drop_and_restore {
   fi
 }
 
-function pg_dump_janabuco_com {
-  pg_dump honeylogicdb.cbanfytnmiqp.eu-west-1.rds.amazonaws.com postgres janabuco_com 5432
-}
-
 #############################################
 # Broot
 #############################################
