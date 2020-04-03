@@ -174,7 +174,7 @@ alias xc='xclip -sel clip'
 alias v='nvim'
 alias ps='procs'
 alias s-hl='vps-sync hl-ops-jumphost ~/company/honeylogic/ops ~/ops ops'
-alias t=run_task
+alias t=taskwarrior
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 
 # cd shortkeys
@@ -200,28 +200,6 @@ alias o='xdg-open'
 alias v=nvim
 alias dus=diskus
 
-run_task () {
-  local TASKOPTION=$1
-  if [ "$TASKOPTION" = "add" ];
-  then
-    shift
-    taskwarrior $TASKOPTION "$@"
-    print "Adding $@ to todoist"
-    todoist add "$@ - taskmanager"
-  elif [ "$TASKOPTION" = "done" ];
-  then
-    shift
-    local TASKNAME=`taskwarrior $TASKOPTION "$@" | grep -o "'.*'" | sed 's/^.\(.*\).$/\1/'`
-    local TODOISTID=`todoist list | grep -w " $TASKNAME" | awk 'NR==1{print $1}'`
-    if [ ! -z "$TODOISTID" ];
-    then
-      print "Completing $TASKNAME in todoist"
-      todoist close "$TODOISTID"
-    fi
-  else
-    taskwarrior $TASKOPTION "$@"
-  fi
-}
 
 function vf {
   if [ "$#" -lt 1 ]; then
