@@ -34,7 +34,7 @@ zplug "wfxr/forgit"                                         # Git FZF utility to
 zplug "b4b4r07/emoji-cli"                                   # Emoji cli
 zplug "hlissner/zsh-autopair", defer:2                      # Autopair
 zplug "Aloxaf/fzf-tab"
-zplug "plugins/kubectl", from:oh-my-zsh
+zplug "plugins/kubectl", from:oh-my-zsh, defer:2
 zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "go-task/task", use:"completion/zsh/_task"
 zplug "plugins/ssh-agent",   from:oh-my-zsh
@@ -496,6 +496,12 @@ EOF
 function k8s-delete-all-namespace-resources {
   kubectl delete "$(kubectl api-resources --namespaced=true --verbs=delete -o name | tr "\n" "," | sed -e 's/,$//')" --all
 }
+
+#############################################
+# Kubectl fzf
+#############################################
+
+export KUBECTL_FZF_OPTIONS=(-1 --header-lines=2 --layout reverse -e --no-hscroll --no-sort --bind space:accept --bind tab:down)
 
 #############################################
 # Postgres
