@@ -228,9 +228,6 @@ export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion/bin/tffil
 
 export PYTHONPATH="/usr/local/lib/python3.8/site-packages:$PYTHONPATH"
 
-# Kubectl FZF
-export KUBECTL_FZF_RSYNC_PORT=3423
-
 export TERMINAL=/usr/bin/alacritty
 export TERM=screen-256color
 
