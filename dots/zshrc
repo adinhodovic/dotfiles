@@ -137,9 +137,13 @@ bindkey -M vicmd v tmux-copy-mode
 
 # Reverse scrolling shift+tab
 bindkey -M menuselect '^[[Z' reverse-menu-complete
-
+################################################
+# ZSH-Autosuggest
+################################################
+bindkey '^I ' autosuggest-accept
+################################################
 # Aliases
-# ------------
+################################################
 # Allows 256 colors as background in terminal, used for Vi
 alias tmux="tmux -2 -u"
 alias cat="bat"
