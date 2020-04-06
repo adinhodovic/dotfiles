@@ -39,7 +39,10 @@ zplug "bonnefoa/kubectl-fzf", defer:3
 zplug "go-task/task", use:"completion/zsh/_task"
 zplug "plugins/ssh-agent",   from:oh-my-zsh
 zplug "jonmosco/kube-ps1", use:kube-ps1.sh
+#zplug "sorin-ionescu/prezto", use:init.zsh                   # https://github.com/sorin-ionescu/prezto
 zplug "modules/command-not-found", from:prezto              # Command-not-found
+zplug "modules/autosuggestions", from:prezto                # autosuggestions
+zplug "modules/archive", from:prezto                        # Archive
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh         # git-prompt
 zplug "skywind3000/z.lua", use:z.lua.plugin.zsh
 #############################################
