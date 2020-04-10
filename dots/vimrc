@@ -787,13 +787,7 @@ let g:neomake_open_list = 2
 
 let g:neomake_text_enabled_makers = ['writegood']
 
-let g:neomake_typescriptreact_importsort_maker = {
-    \ 'exe': 'import-sort',
-    \ 'name': 'importsort',
-    \ 'args': ['--write']
-    \ }
-
-let g:neomake_typescriptreact_enabled_makers = ['eslint', 'importsort']
+let g:neomake_typescriptreact_enabled_makers = ['eslint']
 let g:neomake_typescriptreact_eslint_args = ['--fix', '--format=compact']
 
 let g:neomake_javascriptreact_enabled_makers = ['eslint']
