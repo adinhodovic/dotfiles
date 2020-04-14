@@ -163,14 +163,15 @@ alias c...="cd ../../.."
 alias cvenv="python -m venv .venv"
 
 alias seda=search_and_replace_all
+# Usecase raf adin dani ./a/**
 alias raf=rename_all_files
 
 search_and_replace_all () {
- rg "$3" --files-with-matches | xargs sed -i "s/$1/$2/g"
+  rg "$3" --files-with-matches | xargs sed -i "s/$1/$2/g"
 }
 
 rename_all_files () {
- rename -v $1 $2 $3
+  rename -v "$1" "$2" "$3"
 }
 
 alias tf='terraform'
