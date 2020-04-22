@@ -553,6 +553,7 @@ let g:coc_global_extensions = [
     \ 'coc-emoji',
     \ 'coc-html',
     \ 'coc-css',
+    \ 'coc-python',
     \ 'coc-ultisnips',
     \ 'coc-tsserver',
     \ 'coc-github',
