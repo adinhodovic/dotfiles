@@ -788,6 +788,17 @@ let g:neomake_open_list = 2
 
 let g:neomake_text_enabled_makers = ['writegood']
 
+let g:neomake_sh_enabled_makers = ['shellcheck']
+
+let g:neomake_vim_enabled_makers = ['vint']
+
+let g:neomake_markdown_enabled_makers = ['markdownlint']
+let g:neomake_markdown_markdownlint_args = ['-c', '~/.markdownlint.yaml']
+
+let g:neomake_ansible_enabled_makers = ['ansiblelint', 'yamllint']
+
+let g:neomake_yamllint_enabled_makers = ['yamllint']
+
 let g:neomake_typescriptreact_enabled_makers = ['eslint']
 let g:neomake_typescriptreact_eslint_args = ['--fix', '--format=compact']
 
@@ -809,17 +820,6 @@ let g:neomake_python_black_maker = {
 
 let g:neomake_python_enabled_makers = ['pylint', 'isort', 'black', 'mypy']
 let g:neomake_python_python_exe = 'python3'
-
-let g:neomake_sh_enabled_makers = ['shellcheck']
-
-let g:neomake_vim_enabled_makers = ['vint']
-
-let g:neomake_markdown_enabled_makers = ['markdownlint']
-let g:neomake_markdown_markdownlint_args = ['-c', '~/.markdownlint.yaml']
-
-let g:neomake_ansible_enabled_makers = ['ansiblelint', 'yamllint']
-
-let g:neomake_yamllint_enabled_makers = ['yamllint']
 
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_args = ['--fix']
