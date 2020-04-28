@@ -1,0 +1,17 @@
+[user]
+	email = hodovicadin@gmail.com
+[core]
+  pager = delta --plus-color="#012800" --minus-color="#340001"
+	editor = nvim
+	excludesfile = ~/.gitignore
+[init]
+	templatedir = ~/.git-templates
+[merge]
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = v -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
+[interactive]
+    diffFilter = delta --color-only
