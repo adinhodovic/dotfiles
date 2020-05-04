@@ -232,6 +232,7 @@ export PATH="$PATH:$HOME/.poetry/bin"
 export PATH="$PATH:/home/adin/.local/bin/"
 export PATH="$PATH:/home/adin/.gem/ruby/2.6.0/bin"
 export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion/bin/tffilter"
+export PATH=$PATH:~/work/tidepool/development/bin
 
 export PYTHONPATH="/usr/local/lib/python3.8/site-packages:$PYTHONPATH"
 
