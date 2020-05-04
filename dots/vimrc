@@ -38,6 +38,7 @@ Plug 'rhysd/vim-textobj-anyblock'
 Plug 'wakatime/vim-wakatime'
 Plug 'cespare/vim-toml'
 Plug 'junegunn/vim-slash'                     " Better vim search
+Plug 'direnv/direnv.vim'                      " direnv
 "-----------------------------------------
 "                   Documentation
 "-----------------------------------------
