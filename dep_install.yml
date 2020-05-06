@@ -8,6 +8,9 @@
     # install neovim
     - aur: name=neovim skip_installed=true
 
+    # alacritty
+    - aur: name=alacritty-git skip_installed=true
+
     # install broot
     - aur: name=broot skip_installed=true
 
@@ -243,7 +246,7 @@
         global: true
 
     # yarn
-    - name: Install yarn
+    - name: Install write-good
       npm:
         name: write-good
         global: true
@@ -325,9 +328,9 @@
         name: stylelint
         global: true
 
-    - name: Install stylelint-config-airbnb
+    - name: Install stylelint-config-recommended
       npm:
-        name: stylelint-config-airbnb
+        name: stylelint-config-recommended
         global: true
 
     - name: Install stylelint-order
@@ -368,9 +371,6 @@
 
     # tldr
     - aur: name=tldr-nodejs skip_installed=true
-
-    # alacritty
-    - aur: name=alacritty-git skip_installed=true
 
     # httpie
     - aur: name=httpie skip_installed=true
