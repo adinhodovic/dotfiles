@@ -149,7 +149,7 @@
 
     # Add vimvint
     - pip:
-        name: vimvint
+        name: vim-vint
 
     # Add rebound-cli
     - pip:
@@ -198,7 +198,7 @@
     - aur: name=google-cloud-sdk skip_installed=true
 
     # hub-git
-    - aur: name=hub-git skip_installed=true
+    - aur: name=hub skip_installed=true
 
     # fd
     - aur: name=fd skip_installed=true
