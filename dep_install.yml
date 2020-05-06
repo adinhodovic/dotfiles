@@ -283,9 +283,6 @@
     # slack
     - aur: name=slack-desktop skip_installed=true
 
-    # whatsapp
-    - aur: name=whatsapp-desktop skip_installed=true
-
     # power manager
     - aur: name=xfce4-power-manager skip_installed=true
 
@@ -318,25 +315,6 @@
 
     # tzupdate
     - aur: name=tzupdate skip_installed=true
-
-    - name: fonts
-      # yamllint disable
-      shell: >
-        git clone --depth 1 https://github.com/stephenhutchings/typicons.font
-        ln -s ./fonts/typicons.font/src/font/typicons.ttf /usr/share/fonts/TTF
-        git clone --depth 1 https://github.com/FortAwesome/Font-Awesome
-        ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Free-Solid-900.otf" /usr/share/fonts/OTF/
-        ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Free-Regular-400.otf" /usr/share/fonts/OTF/
-        ln -s "$PWD/Font-Awesome/otfs/Font Awesome 5 Brands-Regular-400.otf" /usr/share/fonts/OTF/
-        git clone --depth 1 https://github.com/google/material-design-icons
-        ln -s $PWD/material-design-icons/iconfont/MaterialIcons-Regular.ttf /usr/share/fonts/TTF
-
-        git clone --depth 1 https://github.com/Templarian/MaterialDesign-Webfont
-        ln -s $PWD/MaterialDesign-Webfont/fonts/materialdesignicons-webfont.ttf /usr/share/fonts/TTF/
-        git clone --depth 1 https://github.com/ionic-team/ionicons
-        ln -s $PWD/ionicons/docs/fonts/ionicons.ttf /usr/share/fonts/TTF
-      # yamllint enable
-
 
     # vimplug
     - name: vim-plug

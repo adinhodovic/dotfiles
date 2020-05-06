@@ -54,9 +54,6 @@
     # xinitrc
     - src: "/home/adin/.dotfiles/dots/xinitrc"
       dest: "/home/adin/.xinitrc"
-    # efm-langserver
-    - src: "~/.dotfiles/dots/efm-langserver.yaml"
-      dest: "~/.config/efm-langserver/config.yaml"
     # htmlhint
     - src: "/home/adin/.dotfiles/dots/htmlhintrc"
       dest: "/home/adin/.htmlhintrc"
