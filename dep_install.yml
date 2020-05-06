@@ -71,13 +71,13 @@
     # install i3-gaps
     - aur: name=i3-gaps skip_installed=true
 
-    # install i3-gaps
+    # install i3-status
     - aur: name=i3status skip_installed=true
 
-    # install i3-gaps
+    # install i3-blocks
     - aur: name=i3blocks skip_installed=true
 
-    # install i3-gaps
+    # install i3-lock
     - aur: name=i3lock skip_installed=true
 
     # graphics
@@ -90,8 +90,8 @@
     - aur: name=bandwhich skip_installed=true
 
     # task-runner
-    - shell: curl -sL https://taskfile.dev/install.sh |\
-        sh && mv ./bin/task /usr/local/bin/task-runner
+    #- shell: curl -sL https://taskfile.dev/install.sh |\
+    #sh && mv ./bin/task /usr/local/bin/task-runner
 
     # py-poetry
     - shell: curl -sSL \
@@ -226,18 +226,8 @@
     - name: Go Get efm lang server
       shell: go get -u github.com/mattn/efm-langserver/cmd/efm-langserver
 
-    - name: Setup diff-so-fancy for git
-      shell: git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-
-    # diff-so-fany
-    - aur: name=diff-so-fancy skip_installed=true
-
     # procs
     - aur: name=procs skip_installed=true
-
-    # setup d-f-s
-    - name: setup dfs
-      shell: git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 
     # setup nvim as git editor
     - name: setup git editor

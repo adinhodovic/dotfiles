@@ -2,6 +2,6 @@
   connection: local
 
   tasks:
-    
-    import_role: dotfiles
+    - import_role:
+        name: dotfiles
 
