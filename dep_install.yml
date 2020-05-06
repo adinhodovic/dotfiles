@@ -278,7 +278,7 @@
     - aur: name=spotify skip_installed=true
 
     # alsamixer utils
-    - aur: name=alsamixer-utils skip_installed=true
+    - aur: name=gnome-alsamixer skip_installed=true
 
     # slack
     - aur: name=slack-desktop skip_installed=true
