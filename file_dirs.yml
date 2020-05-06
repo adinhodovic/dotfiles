@@ -14,8 +14,16 @@
       file:
         path: /home/adin/.ssh
         state: directory
+        owner: adin
 
     - name: Creates directory
       file:
         path: /home/adin/.i3
         state: directory
+        owner: adin
+
+    - name: Creates directory
+      file:
+        path: /home/adin/.config
+        state: directory
+        owner: adin

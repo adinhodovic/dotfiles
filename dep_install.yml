@@ -96,10 +96,8 @@
     #- shell: curl -sL https://taskfile.dev/install.sh |\
     #sh && mv ./bin/task /usr/local/bin/task-runner
 
-    # py-poetry
-    - shell: curl -sSL \
-        https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py |\
-        python
+    # yamllint
+    - aur: name=python-poetry skip_installed=true
 
     # yamllint
     - aur: name=yamllint skip_installed=true
@@ -111,10 +109,7 @@
     - aur: name=docker-compose skip_installed=true
 
     # shellshock without haskell dep
-    - aur: name=shellshock-static skip_installed=true
-
-    # downgrade
-    - aur: name=shellshock-static skip_installed=true
+    - aur: name=shellshock skip_installed=true
 
     # pipreqs
     - pip:
@@ -149,8 +144,8 @@
         name: django-stubs
 
     # Add postgres
-    - pip:
-        name: psycopg2
+    #- pip:
+    #    name: psycopg2
 
     # Add vimvint
     - pip:
