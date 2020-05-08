@@ -178,6 +178,8 @@ call plug#end()
 "-----------------------------------------
 set completeopt-=preview,menu
 
+set mouse=a
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
