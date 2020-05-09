@@ -207,6 +207,8 @@ alias o='xdg-open'
 alias v=nvim
 alias dus=diskus
 
+alias copy="xclip -sel clip < $1"
+
 function kgall {
   for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
     echo "Resource:" $i
@@ -224,7 +226,6 @@ function vf {
     eval nvim "$files"
   fi
 }
-
 fcommit() {
   local commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
   local commit=$(echo "$commits" | fzf --tac +s -m -e --ansi --reverse) &&

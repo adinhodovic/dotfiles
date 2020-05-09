@@ -6,3 +6,4 @@ extends: default
 
 rules:
   braces: disable
+  line-length: {max: 90}
