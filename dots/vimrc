@@ -559,7 +559,7 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-ultisnips',
     \ 'coc-tsserver',
-    \ 'coc-github',
+    \ 'coc-git',
 \]
 "\ 'coc-tabnine' disable due to high cpu,
 
