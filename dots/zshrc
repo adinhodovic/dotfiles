@@ -517,7 +517,7 @@ function k8s-delete-all-namespace-resources {
 # Kubectl fzf
 #############################################
 
-export KUBECTL_FZF_OPTIONS=(-1 --header-lines=2 --layout reverse -e --no-hscroll --no-sort --bind space:accept --bind tab:down)
+export KUBECTL_FZF_OPTIONS=(-1 --header-lines=2 --layout reverse --no-sort --bind space:accept --bind tab:down)
 
 #############################################
 # Postgres

@@ -93,6 +93,10 @@ Plug 'tpope/vim-rhubarb'                      " Dependency for vim-fugitive
 Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub Actions
 Plug 'whiteinge/diffconflicts'                " Diffconflicts
 "-----------------------------------------
+"                   JSONNET
+"-----------------------------------------
+Plug 'google/vim-jsonnet'
+"-----------------------------------------
 "                   FZF
 "-----------------------------------------
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
