@@ -13,3 +13,4 @@ tfplan
 secret.tfvars
 .env
 .terraform
+.mypy_cache
