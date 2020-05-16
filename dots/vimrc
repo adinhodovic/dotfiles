@@ -875,7 +875,7 @@ nnoremap <Space>s :FlyGrep<cr>
 " Collides with coc-snippets
 let g:UltiSnipsExpandTrigger = '<nop>'
 " Load my own snippets
-let g:UltiSnipsSnippetDirectories=[$NVIM_DIR.'/UltiSnips']
+let g:UltiSnipsSnippetDirectories=['~/personal/UltiSnips']
 "-----------------------------------------
 " juliosueiras/terraform-lsp
 "-----------------------------------------
