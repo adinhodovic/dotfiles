@@ -18,3 +18,5 @@
       dest: "~/personal/django-allauth-skins"
     - repo: "git@github.com:adinhodovic/django-error-skins.git"
       dest: "~/personal/django-error-skins"
+    - repo: "git@github.com:adinhodovic/ad_analytics.git"
+      dest: "~/company/honeylogic/ad_analytics"
