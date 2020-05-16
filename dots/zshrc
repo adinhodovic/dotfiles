@@ -564,6 +564,19 @@ function pg_drop_and_restore {
   fi
 }
 
+
+#############################################
+# Django Aliases
+#############################################
+export DJ_USER="adin"
+export DJ_EMAIL="adin@honeylogic.io"
+export DJ_PASSWORD="test"
+alias djuser=create_django_user
+
+function create_django_user {
+  local dj_dir=$(basename "$PWD")
+  echo "from $dj_dir.users.models import User; User.objects.create_superuser('$DJ_USER', '$DJ_EMAIL', '$DJ_PASSWORD')" | python manage.py shell
+}
 #############################################
 # Broot
 #############################################
