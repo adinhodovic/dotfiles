@@ -167,6 +167,7 @@ alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
 alias cvenv="python -m venv .venv"
+alias cenvrc="echo $'dotenv\n\nsource .venv/bin/activate' > .envrc"
 
 alias seda=search_and_replace_all
 # Usecase raf regexA regexB **
