@@ -16,3 +16,5 @@ secret.tfvars
 .mypy_cache
 .venv
 __pycache__
+toc.dat
+db_dump

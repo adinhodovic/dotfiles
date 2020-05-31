@@ -542,8 +542,10 @@ export KUBECTL_FZF_OPTIONS=(-1 --header-lines=2 --layout reverse -e --no-sort --
 # Postgres
 #############################################
 
+# pg_dump honeylogic-db.com postgres hodovi_cc 5432
 function pg_dump {
-  docker run -v $PWD/db_dump:/data/db_dump/ -i --rm --entrypoint='' --net=host postgres pg_dump -h $1 -U $2 -d $3 -p $4 -j 4 -F d -f /data/db_dump
+  rm -rf $PWD/db_dump/*
+  docker run -v $PWD/db_dump:/data/db_dump/ -i --rm --entrypoint='' --net=host postgres:11.5-alpine pg_dump -h $1 -U $2 -d $3 -p $4 -j 4 -F d -f /data/db_dump
 }
 
 function pg_drop_db {
