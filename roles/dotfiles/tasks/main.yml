@@ -81,9 +81,11 @@
     # broot
     - src: "/home/adin/.dotfiles/dots/broot.toml"
       dest: "/home/adin/.config/broot/conf.toml"
-    # broot
+    # gitconfig
     - src: "/home/adin/.dotfiles/dots/gitconfig"
       dest: "/home/adin/.gitconfig"
+    - src: "/home/adin/.dotfiles/dots/terraformrc"
+      dest: "/home/adin/.terraformrc"
 
 - name: locale-gen
   shell: locale-gen
