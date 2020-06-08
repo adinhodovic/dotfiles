@@ -86,6 +86,8 @@
       dest: "/home/adin/.gitconfig"
     - src: "/home/adin/.dotfiles/dots/terraformrc"
       dest: "/home/adin/.terraformrc"
+    - src: "/home/adin/.dotfiles/dots/neofetch.conf"
+      dest: "/home/adin/.config/neofetch/config.conf"
 
 - name: locale-gen
   shell: locale-gen
