@@ -45,6 +45,7 @@ Plug 'direnv/direnv.vim'                      " direnv
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'kamykn/spelunker.vim'                   " Words
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
@@ -226,7 +227,7 @@ set history=1000
 "-----------------------------------------
 " Spelling
 "-----------------------------------------
-set spell
+set nospell
 set title
 set number
 "-----------------------------------------
@@ -891,9 +892,19 @@ augroup END
 
 " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
 let g:terraform_completion_keys = 1
-
 "-----------------------------------------
-"                   coc-fzf
+" spelunker-vim
+"-----------------------------------------
+augroup spelunker
+  autocmd!
+  " Setting for g:spelunker_check_type = 1:
+  autocmd BufWinEnter,BufWritePost *.vim,*.js,*.jsx,*.json,*.md call spelunker#check()
+
+  " Setting for g:spelunker_check_type = 2:
+  autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md call spelunker#check_displayed_words()
+augroup END
+"-----------------------------------------
+" coc-fzf
 "-----------------------------------------
 nnoremap <silent> <space>a  :<C-u>CocFzfListDiagnostics<CR>
 nnoremap <silent> <space>c  :<C-u>CocFzfListCommands<CR>
