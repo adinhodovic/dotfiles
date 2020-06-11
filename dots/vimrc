@@ -229,6 +229,7 @@ set history=1000
 " Spelling
 "-----------------------------------------
 set nospell
+set spellfile=~/.dotfiles/spell/en.utf-8.add
 set title
 set number
 "-----------------------------------------
