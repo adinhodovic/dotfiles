@@ -331,8 +331,8 @@ set textwidth=80
 set colorcolumn=80
 
 augroup textwidth
-  autocmd FileType dockerfile,sh,gitcommit,markdown,html,htmldjango,python,yaml,text,jsonnet setlocal textwidth=0
-  autocmd FileType dockerfile,sh,gitcommit,markdown,html,htmldjango,python,yaml,text,jsonnet setlocal colorcolumn=0
+  autocmd FileType dockerfile,sh,gitcommit,markdown,html,htmldjango,python,yaml,text,jsonnet,direnv setlocal textwidth=0
+  autocmd FileType dockerfile,sh,gitcommit,markdown,html,htmldjango,python,yaml,text,jsonnet,direnv setlocal colorcolumn=0
 augroup END
 "-----------------------------------------
 "                 VIM user interface
