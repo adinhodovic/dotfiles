@@ -2,7 +2,7 @@
 	email = hodovicadin@gmail.com
 	name = Adin Hodovic
 [core]
-  pager = delta --plus-color="#012800" --minus-color="#340001"
+  pager = delta --plus-color="#024700" --minus-color="#810000" --theme='Monokai Extended' --keep-plus-minus-markers
 	editor = nvim
 	excludesfile = ~/.gitignore
 [init]
