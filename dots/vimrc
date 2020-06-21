@@ -822,8 +822,11 @@ let g:neomake_javascriptreact_eslint_args = ['--fix', '--format=compact']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_args = ['--fix', '--format=compact']
 
-let g:neomake_typescript_enabled_makers = ['eslint']
+let g:neomake_typescript_enabled_makers = ['jsonlint']
 let g:neomake_typescript_eslint_args = ['--fix', '--format=compact']
+
+let g:neomake_json_enabled_makers = ['jsonlint']
+let g:neomake_json_jsonlint_args = ['-i']
 
 let g:neomake_python_isort_maker = {
     \ 'name': 'isort',
@@ -867,7 +870,7 @@ augroup nmake
 augroup END
 
 function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'stylelint', 'js-beautify', 'isort', 'black', 'pylint', 'importsort']
+  let neomake_lint_and_fix_filetypes = ['eslint', 'jsonlint', 'stylelint', 'js-beautify', 'isort', 'black', 'pylint', 'importsort']
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
