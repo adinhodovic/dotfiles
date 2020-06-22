@@ -886,6 +886,19 @@ nnoremap <Space>s :FlyGrep<cr>
 let g:UltiSnipsExpandTrigger = '<nop>'
 " Load my own snippets
 let g:UltiSnipsSnippetDirectories=['~/personal/UltiSnips']
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"               Terraform
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+augroup terraform
+  autocmd BufEnter *.hcl :setlocal filetype=terraform
+augroup END
+"-----------------------------------------
+" hashivim/vim-terraform
+"-----------------------------------------
+let g:terraform_commentstring='//%s'
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
 "-----------------------------------------
 " juliosueiras/terraform-lsp
 "-----------------------------------------
@@ -919,9 +932,3 @@ nnoremap <silent> <space>o  :<C-u>CocFzfListOutline<CR>
 nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 nnoremap <silent> <space>s  :<C-u>CocFzfListSymbols<CR>
 nnoremap <silent> <space>S  :<C-u>CocFzfListServices<CR>
-"-----------------------------------------
-" hashivim/vim-terraform
-"-----------------------------------------
-let g:terraform_commentstring='//%s'
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
