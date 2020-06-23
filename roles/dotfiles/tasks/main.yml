@@ -88,6 +88,8 @@
       dest: "/home/adin/.terraformrc"
     - src: "/home/adin/.dotfiles/dots/neofetch.conf"
       dest: "/home/adin/.config/neofetch/config.conf"
+    - src: "/home/adin/.dotfiles/dots/tridactylrc"
+      dest: "/home/adin/.tridactylrc"
 
 - name: locale-gen
   shell: locale-gen
