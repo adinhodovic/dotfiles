@@ -42,8 +42,8 @@ Plug 'direnv/direnv.vim'                      " direnv
 "-----------------------------------------
 "                   Documentation
 "-----------------------------------------
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'godlygeek/tabular'
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'plasticboy/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'               " Markdown ToC
 Plug 'kamykn/spelunker.vim'                   " Words
