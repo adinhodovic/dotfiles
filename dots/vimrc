@@ -45,6 +45,7 @@ Plug 'direnv/direnv.vim'                      " direnv
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'mzlogin/vim-markdown-toc'               " Markdown ToC
 Plug 'kamykn/spelunker.vim'                   " Words
 Plug 'kamykn/popup-menu.nvim'                 " Popup for spelunker
 "-----------------------------------------
@@ -298,14 +299,14 @@ execute 'xnoremap / /' . &cedit . 'a'
 execute 'nnoremap ? ?' . &cedit . 'a'
 execute 'xnoremap ? ?' . &cedit . 'a'
 "-----------------------------------------
-"                 Files, backups and undo
+"           Files, backups and undo
 "-----------------------------------------
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowritebackup
 set noswapfile
 "-----------------------------------------
-"                 Text, tab and indent related
+"           Text, tab and indent related
 "-----------------------------------------
 " Use spaces instead of tabs
 set expandtab
@@ -455,9 +456,14 @@ map <leader>s? z=
 "-----------------------------------------
 "               Misc
 "-----------------------------------------
-
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+" Reload vimrc on write
+augroup myvimrc
+    au!
+    au BufWritePost vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "
 "         Plugin specific settings
