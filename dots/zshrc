@@ -279,8 +279,8 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 ### History
 #################
 HISTFILE=$HOME/.zhistory
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=50000
+SAVEHIST=50000
 HOSTNAME="`hostname`"
 # zle-line-init() {
   # fzf-history-widget
