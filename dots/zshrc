@@ -136,6 +136,11 @@ bindkey -M vicmd v tmux-copy-mode
 
 # Reverse scrolling shift+tab
 bindkey -M menuselect '^[[Z' reverse-menu-complete
+
+################################################
+# General
+################################################
+export EDITOR="nvim"
 ################################################
 # ZSH-Autosuggest
 ################################################
