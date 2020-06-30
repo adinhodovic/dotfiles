@@ -24,6 +24,7 @@ Plug 'VundleVim/Vundle.vim'
 "                   General
 "-----------------------------------------
 Plug 'ervandew/supertab'                      " Tab down alts
+Plug 'dkarter/bullets.vim'                    " Bullet lists
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
@@ -213,6 +214,14 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+" Bullets.vim
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
 "-----------------------------------------
 " Autocompelete
 "-----------------------------------------
