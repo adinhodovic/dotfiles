@@ -41,7 +41,6 @@ Plug 'cespare/vim-toml'
 Plug 'AndrewRadev/linediff.vim'               " Linediff
 Plug 'junegunn/vim-slash'                     " Better vim search
 Plug 'direnv/direnv.vim'                      " direnv
-Plug 'matze/vim-move'                         " Move lines up and down
 Plug 'pechorin/any-jump.vim'
 "-----------------------------------------
 "                   Documentation
@@ -228,7 +227,6 @@ let g:bullets_enabled_file_types = [
 
 " Linediff.vim
 map <leader>ld :Linediff<cr>
-
 "-----------------------------------------
 " Autocompelete
 "-----------------------------------------
