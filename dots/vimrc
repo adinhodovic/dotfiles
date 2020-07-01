@@ -40,6 +40,7 @@ Plug 'wakatime/vim-wakatime'
 Plug 'cespare/vim-toml'
 Plug 'junegunn/vim-slash'                     " Better vim search
 Plug 'direnv/direnv.vim'                      " direnv
+Plug 'matze/vim-move'                         " Move lines up and down
 "-----------------------------------------
 "                   Documentation
 "-----------------------------------------
@@ -55,7 +56,6 @@ Plug 'kamykn/popup-menu.nvim'                 " Popup for spelunker
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'lfilho/cosco.vim'                       " Semicolons
-Plug 'ntpeters/vim-better-whitespace'         " Whitespace
 "-----------------------------------------
 "                   Utils
 "-----------------------------------------
@@ -73,6 +73,7 @@ Plug 'lifepillar/pgsql.vim'
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'ryanoasis/vim-devicons'                 " Icons
 Plug 'vim-airline/vim-airline'                " Bottom bar
 Plug 'Yggdroot/indentLine'                    " Show line indentation
