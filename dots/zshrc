@@ -605,6 +605,7 @@ export DJ_PASSWORD="test"
 alias djuser=create_django_user
 
 function create_django_user {
+
   # Cookiecutter-django all-auth models
   local dj_dir=$(basename "$PWD")
   echo "from $dj_dir.users.models import User; User.objects.create_superuser('$DJ_USER', '$DJ_EMAIL', '$DJ_PASSWORD')" | python manage.py shell
