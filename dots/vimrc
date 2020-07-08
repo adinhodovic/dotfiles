@@ -42,6 +42,7 @@ Plug 'AndrewRadev/linediff.vim'               " Linediff
 Plug 'junegunn/vim-slash'                     " Better vim search
 Plug 'direnv/direnv.vim'                      " direnv
 Plug 'pechorin/any-jump.vim'
+Plug 'brooth/far.vim'
 "-----------------------------------------
 "                   Documentation
 "-----------------------------------------
