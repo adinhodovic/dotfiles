@@ -21,3 +21,4 @@ db_dump
 .next
 *.spl
 .terragrunt-cache
+terraform.tfvars
