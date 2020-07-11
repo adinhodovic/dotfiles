@@ -44,7 +44,7 @@ Plug 'direnv/direnv.vim'                      " direnv
 Plug 'pechorin/any-jump.vim'
 Plug 'brooth/far.vim'
 "-----------------------------------------
-"                   Documentation
+"                   Documentation/Writing
 "-----------------------------------------
 Plug 'godlygeek/tabular'
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
@@ -52,6 +52,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'               " Markdown ToC
 Plug 'kamykn/spelunker.vim'                   " Words
 Plug 'kamykn/popup-menu.nvim'                 " Popup for spelunker
+Plug 'reedes/vim-pencil'                      " Writing tool
+Plug 'reedes/vim-wordy'
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
@@ -179,10 +181,6 @@ Plug 'juliosueiras/vim-terraform-completion'
 "                   Python
 "-----------------------------------------
 Plug 'Lokaltog/vim-easymotion'
-"-----------------------------------------
-"                   Writing
-"-----------------------------------------
-Plug 'reedes/vim-wordy'
 "-----------------------------------------
 "                   Plug End
 "-----------------------------------------
@@ -942,6 +940,19 @@ augroup spelunker
 
   " Setting for g:spelunker_check_type = 2:
   autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md call spelunker#check_displayed_words()
+augroup END
+
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"               Documentation
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"
+"-----------------------------------------
+"               Vim-pencil
+"-----------------------------------------
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
 augroup END
 "-----------------------------------------
 " coc-fzf
