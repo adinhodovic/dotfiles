@@ -342,12 +342,12 @@ set iskeyword+=- " Count words with dashes as one word
 "                   Text width
 "-----------------------------------------
 set linebreak
-set textwidth=100
-set colorcolumn=100
+set textwidth=90
+set colorcolumn=90
 
 augroup textwidth
-  autocmd FileType markdown,dockerfile,sh,gitcommit,markdown,html,htmldjango,python,yaml,text,jsonnet,direnv,terraform setlocal textwidth=0
-  autocmd FileType markdown,,sh,gitcommit,markdown,html,htmldjango,python,yaml,text,jsonnet,direnv,terraform setlocal colorcolumn=0
+  autocmd FileType dockerfile,sh,gitcommit,html,htmldjango,python,yaml,text,jsonnet,direnv,terraform setlocal textwidth=0
+  autocmd FileType dockerfile,sh,gitcommit,html,htmldjango,python,yaml,text,jsonnet,direnv,terraform setlocal colorcolumn=0
 augroup END
 "-----------------------------------------
 "                 VIM user interface
