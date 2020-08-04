@@ -33,7 +33,6 @@ Plug 'scrooloose/nerdtree'                    " Treeview
 Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'majutsushi/tagbar'
-Plug 'universal-ctags/ctags'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-anyblock'
 Plug 'wakatime/vim-wakatime'
@@ -43,6 +42,7 @@ Plug 'junegunn/vim-slash'                     " Better vim search
 Plug 'direnv/direnv.vim'                      " direnv
 Plug 'pechorin/any-jump.vim'
 Plug 'brooth/far.vim'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
@@ -698,11 +698,10 @@ let g:tagbar_type_markdown = {
     \ ]
 \ }
 
-noremap <F6> :TagbarToggle <CR>
 "-----------------------------------------
-" Tagbar & Nerdtree
+" CarbonNowSh
 "-----------------------------------------
-noremap <F7> :TagbarToggle <CR> :NERDTreeToggle <CR>
+vnoremap <F6> :CarbonNowSh<CR>
 "-----------------------------------------
 " GitMessenger
 "-----------------------------------------
