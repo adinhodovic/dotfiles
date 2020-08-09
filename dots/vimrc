@@ -4,21 +4,12 @@ let g:python3_host_prog = '/usr/bin/python'
 "-----------------------------------------
 "                   Plug Installation Helpers
 "-----------------------------------------
-"Installation helper of euclio/vim-markdown-composer
-function! BuildComposer(info)
-  if a:info.status !=# 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-"#########################################
-call plug#begin('~/.local/share/nvim/plugged')
+"
 "-----------------------------------------
 "                   Plugin Manager
 "-----------------------------------------
+call plug#begin('~/.local/share/nvim/plugged')
+
 Plug 'VundleVim/Vundle.vim'
 "-----------------------------------------
 "                   General
@@ -47,7 +38,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 "                   Documentation/Writing
 "-----------------------------------------
 Plug 'godlygeek/tabular'
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'               " Markdown ToC
 Plug 'kamykn/spelunker.vim'                   " Words
@@ -797,23 +788,6 @@ function! <SID>BufcloseCloseIt()
   endif
 endfunction
 "-----------------------------------------
-" Markdown
-"-----------------------------------------
-" Disable autostart of md composer
-let g:markdown_composer_browser = 'firefox --new-window'
-let g:markdown_composer_autostart = 0
-
-" Disable markdown code block conceals
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
-" The other style keeps unfolding
-let g:vim_markdown_folding_style_pythonic = 1
-
-nnoremap <leader>md :ComposerStart<cr>
-nnoremap <leader>mo :ComposerOpen<cr>
-
-"-----------------------------------------
 " Neomake
 "-----------------------------------------
 let g:neomake_list_height = 8
@@ -945,7 +919,22 @@ augroup END
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "               Documentation
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"
+"-----------------------------------------
+" Markdown
+"-----------------------------------------
+" Disable autostart of md composer
+let g:instant_markdown_browser = "firefox --new-window"
+let g:instant_markdown_autostart = 0
+
+" Disable markdown code block conceals
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+" The other style keeps unfolding
+let g:vim_markdown_folding_style_pythonic = 1
+
+nnoremap <leader>md :InstantMarkdownPreview<cr>
+nnoremap <leader>ms :InstantMarkdownStop<cr>
 "-----------------------------------------
 "               Vim-pencil
 "-----------------------------------------
