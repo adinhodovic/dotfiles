@@ -159,6 +159,8 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+alias n="nnn"
+
 alias c='z -I'
 alias cc='z -c'
 alias c.="cd .."
