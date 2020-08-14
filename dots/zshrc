@@ -173,9 +173,6 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
-alias cvenv="python -m venv .venv"
-alias cenvrc=create_envrc
-
 create_envrc () {
   envrc_content=""
   if [ -e "./.env" ]; then
@@ -184,6 +181,12 @@ create_envrc () {
   envrc_content+='source .venv/bin/activate'
   echo $envrc_content > .envrc
 }
+
+alias cvenv="python -m venv .venv"
+alias cenvrc=create_envrc
+
+alias '?'='googler'
+alias define='googler -n 2 define'
 
 alias seda=search_and_replace_all
 # Usecase raf regexA regexB **
