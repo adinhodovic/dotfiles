@@ -93,8 +93,8 @@
     - aur: name=bandwhich skip_installed=true
 
     # task-runner
-    #- shell: curl -sL https://taskfile.dev/install.sh |\
-    #sh && mv ./bin/task /usr/local/bin/task-runner
+    # - shell: curl -sL https://taskfile.dev/install.sh |\
+    # sh && mv ./bin/task /usr/local/bin/task-runner
 
     # yamllint
     - aur: name=python-poetry skip_installed=true
@@ -114,6 +114,9 @@
     # pipreqs
     - pip:
         name: pipreqs
+
+    - pip:
+        name: pypyp
 
     # Add PyGithub (ansible githooks)
     - pip:
@@ -150,7 +153,7 @@
         name: django-stubs
 
     # Add postgres
-    #- pip:
+    # - pip:
     #    name: psycopg2
 
     # Add vimvint
@@ -337,6 +340,11 @@
     - name: Install npm
       aur:
         name: npm
+        skip_installed: true
+
+    - name: Install git-delta
+      aur:
+        name: git-delta
         skip_installed: true
 
     # yarn
