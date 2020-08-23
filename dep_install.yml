@@ -119,6 +119,12 @@
     - pip:
         name: PyGithub
 
+    - pip:
+        name: grpcio
+
+    - pip:
+        name: openshift
+
     # Pyhelm
     - pip:
         name: PyHelm
@@ -337,6 +343,11 @@
     - name: Install yarn
       npm:
         name: yarn
+        global: true
+
+    - name: Install jsonlint
+      npm:
+        name: jsonlint
         global: true
 
     # yarn
