@@ -409,6 +409,7 @@ function fzf-ssh {
 }
 zle -N fzf-ssh
 
+# Fixes backspace within the Terminal
 stty erase '^?'
 
 function fzf-docker-logs {
