@@ -736,11 +736,6 @@ function! g:committia_hooks.edit_open(info)
     " Additional settings
     setlocal spell
 
-    " If no commit message, start with insert mode
-    if a:info.vcs ==# 'git' && getline(1) ==# ''
-        startinsert
-    endif
-
     " Scroll the diff window from insert mode
     " Map <C-n> and <C-p>
     imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
@@ -974,8 +969,6 @@ nnoremap <silent> <space>e  :<C-u>CocFzfListExtensions<CR>
 nnoremap <silent> <space>l  :<C-u>CocFzfListLocation<CR>
 nnoremap <silent> <space>o  :<C-u>CocFzfListOutline<CR>
 nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
-nnoremap <silent> <space>s  :<C-u>CocFzfListSymbols<CR>
-nnoremap <silent> <space>S  :<C-u>CocFzfListServices<CR>
 "-----------------------------------------
 " diffconflicts
 "-----------------------------------------
