@@ -973,3 +973,7 @@ nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 " diffconflicts
 "-----------------------------------------
 nnoremap <leader>df :DiffConflicts<CR>
+"-----------------------------------------
+" vim-go
+"-----------------------------------------
+nnoremap <leader>gr :GoRun<CR>
