@@ -1,0 +1,12 @@
+# yamllint disable rule:line-length
+# All the dependencies for arc linux
+---
+- hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install PIP packages
+      pip:
+        name: '{{ item }}'
+      loop:
+        - ansible-lint
