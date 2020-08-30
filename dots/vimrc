@@ -976,3 +976,7 @@ nnoremap <silent> <space>o  :<C-u>CocFzfListOutline<CR>
 nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 nnoremap <silent> <space>s  :<C-u>CocFzfListSymbols<CR>
 nnoremap <silent> <space>S  :<C-u>CocFzfListServices<CR>
+"-----------------------------------------
+" diffconflicts
+"-----------------------------------------
+nnoremap <leader>df :DiffConflicts<CR>
