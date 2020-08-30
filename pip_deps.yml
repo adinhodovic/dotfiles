@@ -10,3 +10,4 @@
         name: '{{ item }}'
       loop:
         - ansible-lint
+        - cookiecutter
