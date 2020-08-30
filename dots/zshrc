@@ -409,6 +409,8 @@ function fzf-ssh {
 }
 zle -N fzf-ssh
 
+stty erase '^?'
+
 function fzf-docker-logs {
   matches=$(docker ps --format 'table {{ .Names }}\t{{ .Image }}')
   selection=$(echo $matches | fzf --header-lines=1 | awk '{print $1}')
