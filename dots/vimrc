@@ -71,6 +71,7 @@ Plug 'lifepillar/pgsql.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ryanoasis/vim-devicons'                 " Icons
 Plug 'vim-airline/vim-airline'                " Bottom bar
+Plug 'vim-airline/vim-airline-themes'                " Bottom bar
 Plug 'Yggdroot/indentLine'                    " Show line indentation
 Plug 'luochen1990/rainbow'                    " Color parantheses
 Plug 'itchyny/vim-cursorword'                 " Underlines the word under the cursor
@@ -500,7 +501,7 @@ let g:lastplace_ignore = 'gitcommit,gitrebase,svn,hgcommit'
 "-----------------------------------------
 " Airline
 "-----------------------------------------
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#coc#enabled = 1
 " remove the filetype part
