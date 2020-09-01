@@ -728,7 +728,9 @@ nmap <Leader>u <Plug>GitGutterUndoHunk
 " Fugitive
 "-----------------------------------------
 command! Gdom Gdiff origin/master
-map <leader>gb :Gbrowse<cr>
+nnoremap <leader>gb :Gbrowse<cr>
+nnoremap <leader>gl :0Glog<cr>
+nnoremap <leader>ge :Gedit<cr>
 "-----------------------------------------
 " Committia
 "-----------------------------------------
