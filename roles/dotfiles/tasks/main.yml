@@ -90,6 +90,8 @@
       dest: "/home/adin/.config/neofetch/config.conf"
     - src: "/home/adin/.dotfiles/dots/tridactylrc"
       dest: "/home/adin/.tridactylrc"
+    - src: "/home/adin/.dotfiles/dots/rofi.rasi"
+      dest: "/home/adin/.config/rofi/config.rasi"
 
 - name: locale-gen
   shell: locale-gen
