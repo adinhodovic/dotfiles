@@ -1,96 +1,99 @@
 ---
 - name: Symlink i3
   file:
-    src: "{{ item.src }}"
+    src: "/home/adin/.dotfiles/dots/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
     force: true
   with_items:
-    # i3
-    - src: "/home/adin/.dotfiles/dots/i3.config"
+    - src: "i3.config"
       dest: "/home/adin/.i3/config"
-    # ssh
-    - src: "/home/adin/.dotfiles/dots/config.ssh"
+
+    - src: "config.ssh"
       dest: "/home/adin/.ssh/config"
-    # tmux
-    - src: "/home/adin/.dotfiles/dots/tmux.conf"
+
+    - src: "tmux.conf"
       dest: "/home/adin/.tmux.conf"
-    # vim
-    - src: "/home/adin/.dotfiles/dots/vimrc"
+
+    - src: "vimrc"
       dest: "/home/adin/.config/nvim/init.vim"
-    # zsh
-    - src: "/home/adin/.dotfiles/dots/zshrc"
+
+    - src: "zshrc"
       dest: "/home/adin/.zshrc"
-    # taskwarrior
-    - src: "/home/adin/.dotfiles/dots/taskrc"
+
+    - src: "dots/taskrc"
       dest: "/home/adin/.taskrc"
-    # lightdm
-    - src: "/home/adin/.dotfiles/dots/lightdm.conf"
+
+    - src: "lightdm.conf"
       dest: "/etc/lightdm/lightdm.conf"
-    # lightdm-webkit
-    - src: "/home/adin/.dotfiles/dots/lightdm-webkit2-greeter.conf"
+
+    - src: "lightdm-webkit2-greeter.conf"
       dest: "/etc/lightdm/lightdm-webkit2-greeter.conf"
-    # Alacritty
-    - src: "/home/adin/.dotfiles/dots/alacritty.yml"
+
+    - src: "alacritty.yml"
       dest: "/home/adin/.config/alacritty/alacritty.yml"
-    # yamllint
-    - src: "/home/adin.dotfiles/dots/yamllint.yml"
+
+    - src: "yamllint.yml"
       dest: "/home/adin/.config/yamllint/config"
-    # pdf
-    - src: "/home/adin.dotfiles/dots/pdb.conf"
+
+    - src: "pdb.conf"
       dest: "/home/adin/.pdb.conf"
-    # eslinrc
-    - src: "/home/adin.dotfiles/dots/eslintrc.yml"
+
+    - src: "eslintrc.yml"
       dest: "/home/adin/.eslintrc.yml"
-    # ctags
-    - src: "/home/adin.dotfiles/dots/ctags"
+
+    - src: "ctags"
       dest: "/home/adin/.ctags"
-    # npmrc
-    - src: "/home/adin.dotfiles/dots/npmrc"
+
+    - src: "npmrc"
       dest: "/home/adin/.npmrc"
-    # locale gen
-    - src: "/home/adin/.dotfiles/dots/locale.gen"
+
+    - src: "locale.gen"
       dest: "/etc/locale.gen"
-    # locale conf
-    - src: "/home/adin/.dotfiles/dots/locale.conf"
+
+    - src: "locale.conf"
       dest: "/etc/locale.conf"
-    # xinitrc
-    - src: "/home/adin/.dotfiles/dots/xinitrc"
+
+    - src: "xinitrc"
       dest: "/home/adin/.xinitrc"
-    # gitignore
-    - src: "/home/adin/.dotfiles/dots/gitignore"
+
+    - src: "gitignore"
       dest: "/home/adin/.gitignore"
-    # coc-settings
-    - src: "/home/adin/.dotfiles/dots/coc-settings.json"
+
+    - src: "coc-settings.json"
       dest: "/home/adin/.config/nvim/coc-settings.json"
-    # htmlhint
-    - src: "/home/adin/.dotfiles/dots/htmlhintrc"
+
+    - src: "htmlhintrc"
       dest: "/home/adin/.htmlhintrc"
-    # ignore file for ripgrep
-    - src: "/home/adin/.dotfiles/dots/ignore"
+
+    - src: "ignore"
       dest: "/home/adin/.ignore"
-    # ripcgreprc
-    - src: "/home/adin/.dotfiles/dots/ripgreprc"
+
+    - src: "ripgreprc"
       dest: "/home/adin/.ripgreprc"
-    # markdownlint
-    - src: "/home/adin/.dotfiles/dots/markdownlint.yaml"
+
+    - src: "markdownlint.yaml"
       dest: "/home/adin/.markdownlint.yaml"
-    # shellcheckrc
-    - src: "/home/adin/.dotfiles/dots/shellcheckrc"
+
+    - src: "shellcheckrc"
       dest: "/home/adin/.shellcheckrc"
-    # broot
-    - src: "/home/adin/.dotfiles/dots/broot.toml"
+
+    - src: "broot.toml"
       dest: "/home/adin/.config/broot/conf.toml"
-    # gitconfig
-    - src: "/home/adin/.dotfiles/dots/gitconfig"
+
+    - src: "gitconfig"
       dest: "/home/adin/.gitconfig"
-    - src: "/home/adin/.dotfiles/dots/terraformrc"
+
+    - src: "terraformrc"
       dest: "/home/adin/.terraformrc"
-    - src: "/home/adin/.dotfiles/dots/neofetch.conf"
+
+    - src: "neofetch.conf"
       dest: "/home/adin/.config/neofetch/config.conf"
-    - src: "/home/adin/.dotfiles/dots/tridactylrc"
+
+    - src: "tridactylrc"
       dest: "/home/adin/.tridactylrc"
-    - src: "/home/adin/.dotfiles/dots/rofi.rasi"
+
+    - src: "rofi.rasi"
       dest: "/home/adin/.config/rofi/config.rasi"
 
 - name: locale-gen
