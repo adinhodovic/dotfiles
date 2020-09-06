@@ -12,3 +12,22 @@
       loop:
         - js-beautify
         - instant-markdown-d
+        - yarn
+        - jsonlint
+        - write-good
+        - terser
+        - tern
+        - vtop
+        - neovim
+        - dockerfile-language-server-nodejs
+        - prettier
+        - eslint-prettier
+        - eslint-plugin-template
+        - markdownlint-cli
+        - htmlhint
+        - eslint-html
+        - eslint-plugin-prettier
+        - stylelint
+        - stylelint-config-recommended
+        - stylelint-order
+        - stylelint-scss
