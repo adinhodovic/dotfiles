@@ -11,3 +11,21 @@
       loop:
         - ansible-lint
         - cookiecutter
+        - poetry
+        - pipreqs
+        - pypyp
+        - PyGithub
+        - grpcio
+        - openshift
+        - PyHelm
+        - python-language-server[all]
+        - pyls-isort
+        - pyls-mypy
+        - pyls-black
+        - django-stubs
+        - pyscopg2
+        - vim-vint
+        - rebound-cli
+        - mypy
+        - pynvim
+        - jedi
