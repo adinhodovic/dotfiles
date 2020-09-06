@@ -34,6 +34,7 @@ Plug 'direnv/direnv.vim'                      " direnv
 Plug 'pechorin/any-jump.vim'
 Plug 'brooth/far.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'tpope/vim-eunuch'                       " OS comamnds in vim
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
