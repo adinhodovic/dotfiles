@@ -16,3 +16,31 @@
         - yq
         - ffsend-bin
         - krew-bin
+        - neovim
+        - alacritty-git
+        - broot
+        - lsd
+        - oh-my-zsh-git
+        - flameshot-git
+        - git-standup-git
+        - xautolock
+        - xorg-xinit
+        - python-virtualenv
+        - rofi
+        - xorg
+        - dnsutils
+        - dunst
+        - diskus
+        - feh
+        - os-prober
+        - tmux
+        - networkmanager
+        - network-manager-applet
+        - enpass-bin
+        - i3-gaps
+        - i3status
+        - i3blocks
+        - i3lock
+        - xf86-video-intel
+        - task
+        - bandwhich
