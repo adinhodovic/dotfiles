@@ -27,7 +27,6 @@
     # lightdm-litarvan
     # -$deps aur: name=lightdm-webkite-theme-litarvan skip_installed=true
     #
-    #
     # setup mimeo
     - name: setup firefox as default app
       shell: mimeo --prefer firefox
@@ -39,17 +38,6 @@
     # setup nvim as git editor
     - name: setup git editor
       shell: git config --global core.editor "nvim"
-
-    # nodejs
-    - aur: name=nodejs skip_installed=true
-
-    # Neovim gem
-    - gem:
-        name: neovim
-
-    # Json gem
-    - gem:
-        name: json
 
     # setup mimeo
     - name: setup firefox as default app
@@ -74,38 +62,13 @@
     - gem:
         name: json
 
-    # power manager
-    - aur: name=xfce4-power-manager skip_installed=true
+    # Neovim gem
+    - gem:
+        name: neovim
 
-    # glibc
-    - aur: name=glibc skip_installed=true
-
-    # powerline fonts
-    - aur: name=powerline-fonts-git skip_installed=true
-
-    # kubectl
-    - aur: name=kubectl-bin skip_installed=true
-
-    # kubectx & kubens
-    - aur: name=kubectx skip_installed=true
-
-    # bat
-    - aur: name=bat skip_installed=true
-
-    # material design icons
-    - aur: name=ttf-material-design-icons-git skip_installed=true
-
-    # ttf-ionicons
-    - aur: name=ttf-ionicons skip_installed=true
-
-    # simplescreenrecorder
-    - aur: name=simplescreenrecorder skip_installed=true
-
-    # unrar
-    - aur: name=unrar skip_installed=true
-
-    # tzupdate
-    - aur: name=tzupdate skip_installed=true
+    # Json gem
+    - gem:
+        name: json
 
     # vimplug
     - name: vim-plug

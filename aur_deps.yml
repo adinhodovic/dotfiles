@@ -69,3 +69,14 @@
         - slack-desktop
         - mimeo
         - unzip
+        - xfce4-power-manager
+        - glibc
+        - powerline-fonts-git
+        - kubectl-bin
+        - kubectx
+        - bat
+        - ttf-material-design-icons-git
+        - ttf-ionicons
+        - simplescreenrecorder
+        - unrar
+        - tzupdate
