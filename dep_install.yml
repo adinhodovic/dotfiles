@@ -47,28 +47,9 @@
     - name: Go Gocode
       shell: go get -u github.com/stamblerre/gocode
 
-    # procs
-    - aur: name=procs skip_installed=true
-
     # setup nvim as git editor
     - name: setup git editor
       shell: git config --global core.editor "nvim"
-
-    # Neovim gem
-    - gem:
-        name: neovim
-
-    # Json gem
-    - gem:
-        name: json
-
-    # Neovim gem
-    - gem:
-        name: neovim
-
-    # Json gem
-    - gem:
-        name: json
 
     # vimplug
     - name: vim-plug
