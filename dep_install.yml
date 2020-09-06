@@ -26,34 +26,8 @@
 
     # lightdm-litarvan
     # -$deps aur: name=lightdm-webkite-theme-litarvan skip_installed=true
-
-    # terraform
-    - aur: name=terraform skip_installed=true
-
-    # ruby
-    - aur: name=ruby skip_installed=true
-
-    # aws-cli
-    - aur: name=aws-cli skip_installed=true
-
-    # gcloud
-    - aur: name=google-cloud-sdk skip_installed=true
-
-    # hub-git
-    - aur: name=hub skip_installed=true
-
-    # fd
-    - aur: name=fd skip_installed=true
-
-    # procs
-    - aur: name=procs skip_installed=true
-
-    # vim-eunuch
-    - aur: name=vim-eunuch skip_installed=true
-
-    # mimeo
-    - aur: name=mimeo skip_installed=true
-
+    #
+    #
     # setup mimeo
     - name: setup firefox as default app
       shell: mimeo --prefer firefox
@@ -61,9 +35,6 @@
     # Add gocode golang package
     - name: Go Gocode
       shell: go get -u github.com/stamblerre/gocode
-
-    # procs
-    - aur: name=procs skip_installed=true
 
     # setup nvim as git editor
     - name: setup git editor
@@ -80,50 +51,28 @@
     - gem:
         name: json
 
-    # etcher
-    - aur: name=etcher skip_installed=true
+    # setup mimeo
+    - name: setup firefox as default app
+      shell: mimeo --prefer firefox
 
-    # scrot screenshot
-    - aur: name=scrot skip_installed=true
+    # Add gocode golang package
+    - name: Go Gocode
+      shell: go get -u github.com/stamblerre/gocode
 
-    # imagemagick
-    - aur: name=imagemagick skip_installed=true
+    # procs
+    - aur: name=procs skip_installed=true
 
-    # tldr
-    # - aur: name=tldr++ skip_installed=true
+    # setup nvim as git editor
+    - name: setup git editor
+      shell: git config --global core.editor "nvim"
 
-    # httpie
-    - aur: name=httpie skip_installed=true
+    # Neovim gem
+    - gem:
+        name: neovim
 
-    # awless
-    - aur: name=awless skip_installed=true
-
-    # dropbox
-    - aur: name=dropbox skip_installed=true
-
-    # openssh
-    - aur: name=openssh skip_installed=true
-
-    # rg
-    - aur: name=ripgrep skip_installed=true
-
-    # rsync
-    - aur: name=rsync skip_installed=true
-
-    # unzip
-    - aur: name=unzip skip_installed=true
-
-    # snap
-    - aur: name=snapd skip_installed=true
-
-    # spotify
-    - aur: name=spotify skip_installed=true
-
-    # alsamixer utils
-    - aur: name=gnome-alsamixer skip_installed=true
-
-    # slack
-    - aur: name=slack-desktop skip_installed=true
+    # Json gem
+    - gem:
+        name: json
 
     # power manager
     - aur: name=xfce4-power-manager skip_installed=true

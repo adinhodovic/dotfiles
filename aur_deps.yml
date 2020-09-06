@@ -48,4 +48,24 @@
         - docker
         - docker-compose
         - shellshock
-
+        - terraform
+        - ruby
+        - aws-cli
+        - google-cloud-sdk
+        - hub
+        - fd
+        - procs
+        - nodejs
+        - etcher
+        - imagemagick
+        - tldr
+        - httpie
+        - dropbox
+        - openssh
+        - ripgrep
+        - rsync
+        - spotify
+        - gnome-alsamixer
+        - slack-desktop
+        - mimeo
+        - unzip
