@@ -45,6 +45,7 @@ Plug 'kamykn/spelunker.vim'                   " Words
 Plug 'kamykn/popup-menu.nvim'                 " Popup for spelunker
 Plug 'reedes/vim-pencil'                      " Writing tool
 Plug 'reedes/vim-wordy'
+Plug 'tpope/vim-abolish'                      " Abbreviations
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
@@ -994,10 +995,10 @@ let g:go_auto_sameids = 1
 "-----------------------------------------
 " Abbreviations
 "-----------------------------------------
-ab teh the
-ab Teh The
-ab liek like
-ab Liek Like
-ab tehn then
-ab Tehn Then
-ab tehm them
+function! LoadAbbreviations()
+   source ~/.dotfiles/dots/vim/abbreviations.vim
+endfunction
+
+augroup abbreviations
+  autocmd VimEnter * call LoadAbbreviations()
+augroup end
