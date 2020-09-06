@@ -1,0 +1,33 @@
+# yamllint disable rule:line-length
+# All the dependencies for arc linux
+---
+- hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Install AUR packages
+      shell: '{{ item }}'
+      loop:
+        - mimeo --prefer firefox
+        - go get -u github.com/stamblerre/gocode
+        - git config --global core.editor "nvim"
+        - go get -u github.com/stamblerre/gocode
+        - curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        - nvim +PlugInstall +qall +silent
+        - npx install-peerdeps --global eslint-config-airbnb
+
+    - name: Add me to docker group
+      become: true
+      user:
+        name: adin
+        groups: docker
+        append: true
+      tags: docker
+
+    - say:
+        msg: '{{ item }}'
+        voice: Zarvox
+      delegate_to: localhost
+      loop:
+        - chmod id_rsa now
+        - run os-prober

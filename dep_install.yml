@@ -8,15 +8,6 @@
     # task-runner
     # - shell: curl -sL https://taskfile.dev/install.sh |\
     # sh && mv ./bin/task /usr/local/bin/task-runner
-    #
-    # add docker group
-    - name: add me to docker group
-      become: true
-      user:
-        name: adin
-        groups: docker
-        append: true
-      tags: docker
 
     # lightdm
     # - aur: name=lightdm skip_installed=true
@@ -26,62 +17,3 @@
 
     # lightdm-litarvan
     # -$deps aur: name=lightdm-webkite-theme-litarvan skip_installed=true
-    #
-    # setup mimeo
-    - name: setup firefox as default app
-      shell: mimeo --prefer firefox
-
-    # Add gocode golang package
-    - name: Go Gocode
-      shell: go get -u github.com/stamblerre/gocode
-
-    # setup nvim as git editor
-    - name: setup git editor
-      shell: git config --global core.editor "nvim"
-
-    # setup mimeo
-    - name: setup firefox as default app
-      shell: mimeo --prefer firefox
-
-    # Add gocode golang package
-    - name: Go Gocode
-      shell: go get -u github.com/stamblerre/gocode
-
-    # setup nvim as git editor
-    - name: setup git editor
-      shell: git config --global core.editor "nvim"
-
-    # vimplug
-    - name: vim-plug
-      # yamllint disable-line
-      shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-    - name: nvim-setup
-      shell: nvim +PlugInstall +qall +silent
-
-    - name: fzf install
-      shell: ~/.fzf/install
-
-    # npm
-    - name: Install npm
-      aur:
-        name: npm
-        skip_installed: true
-
-    - name: Install git-delta
-      aur:
-        name: git-delta
-        skip_installed: true
-
-    - name: Install eslint-airbnb
-      shell: "npx install-peerdeps --global eslint-config-airbnb"
-      # important stuff
-    - say:
-        msg: "chmod id_rsa now"
-        voice: Zarvox
-      delegate_to: localhost
-
-    - say:
-        msg: "run os-prober"
-        voice: Zarvox
-      delegate_to: localhost
