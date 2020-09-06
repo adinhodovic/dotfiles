@@ -21,7 +21,7 @@
     - src: "zshrc"
       dest: "/home/adin/.zshrc"
 
-    - src: "dots/taskrc"
+    - src: "taskrc"
       dest: "/home/adin/.taskrc"
 
     - src: "lightdm.conf"
