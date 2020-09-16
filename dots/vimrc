@@ -843,6 +843,13 @@ let g:neomake_typescript_eslint_args = ['--fix', '--format=compact']
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_json_jsonlint_args = ['-i']
 
+let g:neomake_jsonnet_jsonnetlint_maker = {
+    \ 'name': 'jsonnetlint',
+    \ 'exe': 'jsonnet-lint',
+    \ 'errorformat': '%m',
+    \ }
+let g:neomake_jsonnet_enabled_makers = ['jsonnetlint']
+
 let g:neomake_python_isort_maker = {
     \ 'name': 'isort',
     \ }
@@ -863,12 +870,14 @@ let g:neomake_less_enabled_makers = ['stylelint']
 let g:neomake_less_stylelint_args = ['--fix']
 
 let g:neomake_html_jsbeautify_maker = {
-    \ 'name': 'js-beautify',
+    \ 'name': 'jsbeautify',
+    \ 'exe': 'js-beautify',
     \ 'args': ['-r', '--type html'],
     \ }
 
 let g:neomake_htmldjango_jsbeautify_maker = {
-    \ 'name': 'js-beautify',
+    \ 'name': 'jsbeautify',
+    \ 'exe': 'js-beautify',
     \ 'args': ['-r', '--type html'],
     \ }
 
@@ -885,7 +894,7 @@ augroup nmake
 augroup END
 
 function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'golangci-lint', 'jsonlint', 'stylelint', 'js-beautify', 'isort', 'black', 'pylint', 'importsort']
+  let neomake_lint_and_fix_filetypes = ['eslint', 'golangci-lint', 'jsonlint', 'stylelint', 'jsbeautify', 'jsonnetlint', 'isort', 'black', 'pylint', 'importsort']
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
