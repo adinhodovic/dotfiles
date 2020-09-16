@@ -3,3 +3,4 @@ node-modules
 .git
 venv
 staticfiles
+.tox

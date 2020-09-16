@@ -623,3 +623,5 @@ function create_django_user {
 # Broot
 #############################################
 source /home/adin/.config/broot/launcher/bash/br
+
+complete -o nospace -C /usr/bin/tk tk
