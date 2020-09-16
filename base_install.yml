@@ -21,3 +21,5 @@
         dest: /home/adin/.ansible/plugins/modules/aur
         version: master
 
+    - name: Install galaxy
+      shell: ansible-galaxy install -r requirements.yml

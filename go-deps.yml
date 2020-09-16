@@ -1,0 +1,15 @@
+# yamllint disable rule:line-length
+# All the dependencies for arc linux
+---
+- hosts: 127.0.0.1
+  roles:
+    - fubarhouse.golang
+  connection: local
+
+  tasks:
+    - name: Install Go packages
+      go_get:
+        url: '{{ item }}'
+        name: go_pkg
+      loop:
+        - github.com/google/go-jsonnet/linter/jsonnet-lint
