@@ -561,30 +561,30 @@ export KUBECTL_FZF_OPTIONS=(-1 --header-lines=2 --layout reverse -e --no-sort --
 # Postgres
 #############################################
 
-# pg_dump honeylogic-db.com postgres hodovi_cc 5432
-function pg_dump {
+# custom_pg_dump honeylogic-db.com postgres hodovi_cc 5432
+function custom_pg_dump {
   rm -rf $PWD/db_dump/*
-  docker run -v $PWD/db_dump:/data/db_dump/ -i --rm --entrypoint='' --net=host postgres:11.5-alpine pg_dump -h $1 -U $2 -d $3 -p $4 -j 4 -F d -f /data/db_dump
+  docker run -v $PWD/db_dump:/data/db_dump/ -i --rm --entrypoint='' --net=host postgres:11.5-alpine pg_dump -h $1 -U $2 -d $3 -p $4 -F d -f /data/db_dump
 }
 
 function pg_drop_db {
-  docker exec $1 psql -U postgres -c "DROP DATABASE $2;"
+  dc exec postgres psql -U postgres -c "DROP DATABASE $1;"
 }
 
 function pg_create_db {
-  docker exec $1 psql -U postgres -c "CREATE DATABASE $2;"
+  dc exec postgres psql -U postgres -c "CREATE DATABASE $1;"
 }
 
 function pg_create_extension {
-  docker exec $1 psql -U postgres -c "CREATE EXTENSION pg_trgm;"
+  dc exec postgres psql -U postgres -c "CREATE EXTENSION pg_trgm;"
 }
 
 function pg_create_user {
-  dc exec $1 psql -U postgres -c "CREATE USER $2;"
+  dc exec postgres psql -U postgres -c "CREATE USER $1;"
 }
 
-function pg_restore {
-  docker exec $1 pg_restore --clean -d $2 -h 0.0.0.0 -U postgres /tmp/db_dump/
+function custom_pg_restore {
+  dc exec postgres pg_restore --clean -d $1 -h 0.0.0.0 -U postgres /tmp/db_dump/
 }
 
 function pg_drop_and_restore {
@@ -599,7 +599,7 @@ function pg_drop_and_restore {
   if ./manage.py migrate ; then
     echo "Ran Migrations"
   fi
-  if pg_restore $pg_container $1 ; then
+  if custom_pg_restore $1 ; then
     echo "Restored DB"
   fi
 }
