@@ -2,15 +2,17 @@
 - hosts: 127.0.0.1
   connection: local
   become: true
+  vars:
+    user: adin
   tasks:
 
     - name: Directories
       file:
-        path: '{{ item }}'
+        path: '/home/{{ user }}/{{ item }}'
         state: directory
         owner: adin
         loop:
-          - /home/adin/tempinstall
-          - /home/adin/.ssh
-          - /home/adin/.i3
-          - /home/adin/.config
+          - tempinstall
+          - .ssh
+          - .i3
+          - .config
