@@ -4,26 +4,13 @@
   become: true
   tasks:
 
-    - name: make install dir
+    - name: Directories
       file:
-        path: /home/adin/tempinstall
+        path: '{{ item }}'
         state: directory
         owner: adin
-
-    - name: Creates directory
-      file:
-        path: /home/adin/.ssh
-        state: directory
-        owner: adin
-
-    - name: Creates directory
-      file:
-        path: /home/adin/.i3
-        state: directory
-        owner: adin
-
-    - name: Creates directory
-      file:
-        path: /home/adin/.config
-        state: directory
-        owner: adin
+        loop:
+          - /home/adin/tempinstall
+          - /home/adin/.ssh
+          - /home/adin/.i3
+          - /home/adin/.config
