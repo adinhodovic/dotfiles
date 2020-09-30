@@ -116,8 +116,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
-Plug 'fisadev/vim-isort'
-
 " Django
 Plug 'tweekmonster/django-plus.vim'
 "-----------------------------------------
