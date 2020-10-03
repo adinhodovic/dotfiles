@@ -219,8 +219,8 @@ let g:bullets_enabled_file_types = [
     \ 'markdown',
     \ 'text',
     \ 'gitcommit',
-    \ 'scratch'
-    \]
+  \ 'scratch'
+  \]
 
 " Linediff.vim
 map <leader>ld :Linediff<cr>
@@ -702,6 +702,7 @@ vnoremap <F6> :CarbonNowSh<CR>
 " GitMessenger
 "-----------------------------------------
 nnoremap <leader>gm :GitMessenger <CR>
+let g:git_messenger_include_diff = "current"
 " ----------------------------------------
 " Visual mode related
 " ----------------------------------------
