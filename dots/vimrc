@@ -970,6 +970,7 @@ nnoremap <leader>ms :InstantMarkdownStop<cr>
 "-----------------------------------------
 "               Vim-pencil
 "-----------------------------------------
+let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
