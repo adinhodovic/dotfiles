@@ -225,6 +225,9 @@ let g:bullets_enabled_file_types = [
 
 " Linediff.vim
 map <leader>ld :Linediff<cr>
+
+" Base64
+vnoremap <leader>64 y:echo system('base64 --decode', @")<cr>
 "-----------------------------------------
 " Autocompelete
 "-----------------------------------------
