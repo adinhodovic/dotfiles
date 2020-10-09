@@ -37,6 +37,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tpope/vim-eunuch'                       " OS comamnds in vim
 Plug 'wincent/scalpel'                        " Search and replace
 Plug 'AndrewRadev/splitjoin.vim'              " Single/multi line
+Plug 'christianrondeau/vim-base64'            " Base64
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
@@ -226,8 +227,12 @@ let g:bullets_enabled_file_types = [
 " Linediff.vim
 map <leader>ld :Linediff<cr>
 
+"-----------------------------------------
 " Base64
-vnoremap <leader>64 y:echo system('base64 --decode', @")<cr>
+"-----------------------------------------
+" Visual Mode mappings
+vnoremap <silent> <leader>b64e :<c-u>call base64#v_atob()<cr>
+vnoremap <silent> <leader>b64d :<c-u>call base64#v_btoa()<cr>
 "-----------------------------------------
 " Autocompelete
 "-----------------------------------------
@@ -706,7 +711,7 @@ vnoremap <F6> :CarbonNowSh<CR>
 " GitMessenger
 "-----------------------------------------
 nnoremap <leader>gm :GitMessenger <CR>
-let g:git_messenger_include_diff = "current"
+let g:git_messenger_include_diff = 'current'
 " ----------------------------------------
 " Visual mode related
 " ----------------------------------------
