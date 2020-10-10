@@ -6,6 +6,9 @@
     state: link
     force: true
   with_items:
+    - src: "golangci.yml"
+      dest: "/home/adin/.golangci.yml"
+
     - src: "i3.config"
       dest: "/home/adin/.i3/config"
 
