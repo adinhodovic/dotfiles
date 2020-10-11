@@ -826,8 +826,6 @@ let g:neomake_text_enabled_makers = ['writegood']
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
 
-let g:neomake_go_enabled_makers = ['golangci_lint']
-
 let g:neomake_vim_enabled_makers = ['vint']
 
 let g:neomake_markdown_enabled_makers = ['markdownlint']
@@ -903,7 +901,7 @@ augroup nmake
 augroup END
 
 function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'golangci-lint', 'jsonlint', 'stylelint', 'jsbeautify', 'jsonnetlint', 'isort', 'black', 'pylint', 'importsort']
+  let neomake_lint_and_fix_filetypes = ['eslint', 'jsonlint', 'stylelint', 'jsbeautify', 'jsonnetlint', 'isort', 'black', 'pylint', 'importsort']
   if count(neomake_lint_and_fix_filetypes, a:options.name)
     edit
   endif
@@ -1000,6 +998,8 @@ nnoremap <leader>df :DiffConflicts<CR>
 " vim-go
 "-----------------------------------------
 nnoremap <leader>gr :GoRun<CR>
+
+let g:go_metalinter_autosave = 1
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
