@@ -8,8 +8,28 @@
   "html.autoClosingTags": true,
   "suggest.snippetIndicator": "🔨",
   "snippets.extends": {
-    "typescript_tsx": ["typescript"],
-    "html": ["htmldjango"],
-    "scss": ["css"]
+    "typescript_tsx": [
+      "typescript"
+    ],
+    "html": [
+      "htmldjango"
+    ],
+    "scss": [
+      "css"
+    ]
+  },
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [
+        "serve"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    }
   }
 }
