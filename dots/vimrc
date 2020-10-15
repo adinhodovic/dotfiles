@@ -175,7 +175,6 @@ Plug 'danihodovic/vim-ansible-vault'
 "                   Terraform
 "-----------------------------------------
 Plug 'hashivim/vim-terraform'
-Plug 'juliosueiras/vim-terraform-completion'
 "-----------------------------------------
 "                   Python
 "-----------------------------------------
@@ -930,17 +929,6 @@ augroup END
 let g:terraform_commentstring='//%s'
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
-"-----------------------------------------
-" juliosueiras/terraform-lsp
-"-----------------------------------------
-augroup tf_ac
-  autocmd filetype terraform noremap <buffer><silent> <leader>tr :call terraformcomplete#JumpRef()<CR>
-  autocmd filetype terraform noremap <buffer><silent> <leader>ta :call terraformcomplete#LookupAttr()<CR>
-  autocmd filetype terraform noremap <buffer><silent> <leader>tf :call terraformcomplete#OpenDoc()<CR>
-augroup END
-
-" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
-let g:terraform_completion_keys = 1
 "-----------------------------------------
 " spelunker-vim
 "-----------------------------------------
