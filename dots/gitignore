@@ -22,3 +22,4 @@ db_dump
 *.spl
 .terragrunt-cache
 terraform.tfvars
+telepresence.log
