@@ -6,6 +6,9 @@
     state: link
     force: true
   with_items:
+    - src: "gitattributes"
+      dest: "/home/adin/.gitattributes"
+
     - src: "golangci.yml"
       dest: "/home/adin/.golangci.yml"
 
