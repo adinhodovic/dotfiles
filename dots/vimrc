@@ -737,9 +737,9 @@ nmap ghp <Plug>(GitGutterPreviewHunk)
 " Fugitive
 "-----------------------------------------
 command! Gdom Gdiff origin/master
-nnoremap <leader>gb :Gbrowse<cr>
-nnoremap <leader>gl :0Glog<cr>
-nnoremap <leader>ge :Gedit<cr>
+map <leader>gb :Gbrowse<cr>
+map <leader>gl :0Glog<cr>
+map <leader>ge :Gedit<cr>
 "-----------------------------------------
 " Committia
 "-----------------------------------------
