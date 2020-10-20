@@ -23,3 +23,5 @@ db_dump
 .terragrunt-cache
 terraform.tfvars
 telepresence.log
+secrets.json
+secrets.jsonnet
