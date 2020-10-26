@@ -99,6 +99,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'                      " Dependency for vim-fugitive
 Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub Actions
 Plug 'whiteinge/diffconflicts'                " Diffconflicts
+Plug 'rhysd/conflict-marker.vim'              " Diff conflicts
 "-----------------------------------------
 "                   JSONNET
 "-----------------------------------------
