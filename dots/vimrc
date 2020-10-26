@@ -980,9 +980,9 @@ nnoremap <silent> <space>l  :<C-u>CocFzfListLocation<CR>
 nnoremap <silent> <space>o  :<C-u>CocFzfListOutline<CR>
 nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 "-----------------------------------------
-" diffconflicts
+" conflict-marker
 "-----------------------------------------
-nnoremap <leader>df :DiffConflicts<CR>
+let g:conflict_marker_highlight_group = 'DiffText'
 "-----------------------------------------
 " vim-go
 "-----------------------------------------
