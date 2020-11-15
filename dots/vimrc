@@ -48,6 +48,7 @@ Plug 'mzlogin/vim-markdown-toc'               " Markdown ToC
 Plug 'kamykn/spelunker.vim'                   " Words
 Plug 'kamykn/popup-menu.nvim'                 " Popup for spelunker
 Plug 'reedes/vim-pencil'                      " Writing tool
+Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-wordy'
 Plug 'tpope/vim-abolish'                      " Abbreviations
 "-----------------------------------------
@@ -98,7 +99,6 @@ Plug 'airblade/vim-gitgutter'                 " Show changed git lines
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'                      " Dependency for vim-fugitive
 Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub Actions
-Plug 'whiteinge/diffconflicts'                " Diffconflicts
 Plug 'rhysd/conflict-marker.vim'              " Diff conflicts
 "-----------------------------------------
 "                   JSONNET
