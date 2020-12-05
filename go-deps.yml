@@ -13,3 +13,4 @@
         name: go_pkg
       loop:
         - github.com/google/go-jsonnet/linter/jsonnet-lint
+        - github.com/bazelbuild/bazelisk
