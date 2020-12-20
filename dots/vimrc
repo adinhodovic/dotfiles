@@ -51,6 +51,7 @@ Plug 'reedes/vim-pencil'                      " Writing tool
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-wordy'
 Plug 'tpope/vim-abolish'                      " Abbreviations
+Plug 'SidOfc/mkdx'                            " Markdown
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
