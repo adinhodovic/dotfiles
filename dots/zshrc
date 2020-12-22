@@ -380,10 +380,8 @@ zstyle '*' single-ignored show
 ########################################################
 # FZF
 ########################################################
-INITIAL_QUERY=""
-RG_PREFIX="rg --hidden -l --color=always --smart-case "
-export FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'" \
-export FZF_DEFAULT_OPTS="--bind 'change:reload:$RG_PREFIX {q} || true' --ansi --phony --query '$INITIAL_QUERY' --height=50% --layout=reverse"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_DEFAULT_OPTS="--ansi --height=50% --layout=reverse"
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
