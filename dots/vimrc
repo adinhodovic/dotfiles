@@ -349,7 +349,7 @@ set iskeyword+=- " Count words with dashes as one word
 "-----------------------------------------
 set linebreak
 set textwidth=90
-set colorcolumn=90
+set colorcolumn=
 
 augroup textwidth
   autocmd FileType dockerfile,sh,gitcommit,html,htmldjango,python,yaml,text,jsonnet,direnv,terraform setlocal textwidth=0
