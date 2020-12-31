@@ -20,14 +20,14 @@ source ~/.zplug/init.zsh
 #############################################
 # Z Plugins
 #############################################
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "aloxaf/fzf-tab", use:fzf-tab.plugin.zsh
+zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "adinhodovic/docker-alias", use:zshrc
 zplug "adinhodovic/docker-compose-alias", use:zshrc
 zplug "adinhodovic/ansible-alias", use:zshrc
 zplug "adinhodovic/git-alias", use:zshrc
 zplug "adinhodovic/terraform-alias", use:zshrc
-zplug "danihodovic/.dotfiles", use:fzf-helpers.zsh
-zplug "aloxaf/fzf-tab", use:fzf-tab.plugin.zsh
+# zplug "danihodovic/.dotfiles", use:fzf-helpers.zsh
 zplug "adinhodovic/kubernetes-alias", use:zshrc
 zplug "adinhodovic/calc.plugin.zsh", use:zshrc              # zsh calc
 zplug "djui/alias-tips"                                     # Give tips when not using aliases
@@ -325,10 +325,14 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 
 zstyle ":completion:*:git-checkout:*" sort false
 zstyle ':completion:*:descriptions' format '[%d]'
+
+# Use https://github.com/trapd00r/LS_COLORS for LS_COLORS
+. /usr/share/LS_COLORS/dircolors.sh
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Fzf-tab
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
 
 ########################################################
 # FZF
