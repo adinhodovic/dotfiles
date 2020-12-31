@@ -17,7 +17,7 @@
         - ffsend-bin
         - krew-bin
         - neovim
-        - alacritty-git
+        - alacritty
         - broot
         - lsd
         - oh-my-zsh-git
