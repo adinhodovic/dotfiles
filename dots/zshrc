@@ -114,9 +114,6 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # Set vi-mode
 bindkey -v
 
-# bindkey -v resets bindings, so enable fzf-tab again
-enable-fzf-tab
-
 # Move to the end of the line and exclude whitespace
 tmux-copy-mode() {
 if [ -n "$TMUX" ]; then
@@ -184,7 +181,6 @@ bindkey '^I ' autosuggest-accept
 # Aliases
 ################################################
 # Allows 256 colors as background in terminal, used for Vi
-alias tmux="tmux -2 -u"
 alias cat="bat"
 # lsd instead of ls
 alias ls='lsd'
