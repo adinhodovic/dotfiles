@@ -20,7 +20,7 @@ source ~/.zplug/init.zsh
 #############################################
 # Z Plugins
 #############################################
-zplug "aloxaf/fzf-tab", use:fzf-tab.plugin.zsh
+zplug "aloxaf/fzf-tab", defer:3
 zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "adinhodovic/docker-alias", use:zshrc
 zplug "adinhodovic/docker-compose-alias", use:zshrc
@@ -61,8 +61,18 @@ zmodload -a zsh/zprof zprof
 zmodload zsh/zpty
 
 #############################################
-# Docker and Docker-Compose
+# Completion
 #############################################
+# complete -o nospace -C /usr/bin/terraform terraform
+fpath=(~/.zsh/completion $fpath)
+fpath+=~/.zfunc
+#fpath=(~/personal/terraform-target-completion $fpath)
+
+# Init compinit
+autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #############################################
 # Zsh Time
@@ -107,9 +117,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 enable-fzf-tab
 
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:_zlua:*' query-string input
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # Set vi-mode
 bindkey -v
@@ -446,22 +456,8 @@ function awsregion {
 # Add direnv
 eval "$(direnv hook zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # added by travis gem
 [ -f /home/adin/.travis/travis.sh ] && source /home/adin/.travis/travis.sh
-
-#############################################
-# Completion
-#############################################
-complete -o nospace -C /usr/bin/terraform terraform
-fpath=(~/.zsh/completion $fpath)
-fpath+=~/.zfunc
-#fpath=(~/personal/terraform-target-completion $fpath)
-
-# Init compinit
-autoload -Uz compinit && compinit -i
-autoload -U +X bashcompinit && bashcompinit
 
 #############################################
 # Automation
@@ -570,3 +566,4 @@ function create_django_user {
 source /home/adin/.config/broot/launcher/bash/br
 
 complete -o nospace -C /usr/bin/tk tk
+[[ -z $TMUX ]] && exec tmux
