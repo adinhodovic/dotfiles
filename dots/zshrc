@@ -75,9 +75,45 @@ ZSH_COMMAND_TIME_MIN_SECONDS=60
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 #############################################
 
+#############################################
+# Completion Styles
+#############################################
+
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+
+# list of completers to use
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+
+# Enable reverse-menu-complete
+zmodload zsh/complist
+# Highlight selected option in tab completion menu
+zstyle ':completion:*' menu select
+
+# match uppercase from lowercase
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+zstyle ":completion:*:git-checkout:*" sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# Use https://github.com/trapd00r/LS_COLORS for LS_COLORS
+. /usr/share/LS_COLORS/dircolors.sh
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Fzf-tab
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
 # Set vi-mode
 bindkey -v
-#zmodload -ap zsh/mapfile mapfile
+
+# bindkey -v resets bindings, so enable fzf-tab again
+enable-fzf-tab
+
 # Move to the end of the line and exclude whitespace
 tmux-copy-mode() {
 if [ -n "$TMUX" ]; then
@@ -106,12 +142,6 @@ zle -N vi-append-x-selection-before
 zle -N vi-append-x-selection-after
 
 zle -N tmux-copy-mode
-
-# Enable reverse-menu-complete
-zmodload zsh/complist
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# Highlight selected option in tab completion menu
-zstyle ':completion:*' menu select
 
 # Key bindings. Wanna find weird keycodes? use cat
 # Fix backspace delete in vi-mode
@@ -288,10 +318,6 @@ HISTFILE=$HOME/.zhistory
 HISTSIZE=50000
 SAVEHIST=50000
 HOSTNAME="`hostname`"
-# zle-line-init() {
-  # fzf-history-widget
-# }
-# zle -N zle-line-init
 ##################################
 ### Set prompt
 ##################################
@@ -308,31 +334,6 @@ bindkey '^[[6~' down-line-or-history
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
-
-# Completion Styles
-
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
-
-# list of completers to use
-zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
-
-# match uppercase from lowercase
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-# ignore completion functions (until the _ignored completer)
-zstyle ':completion:*:functions' ignored-patterns '_*'
-
-zstyle ":completion:*:git-checkout:*" sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-
-# Use https://github.com/trapd00r/LS_COLORS for LS_COLORS
-. /usr/share/LS_COLORS/dircolors.sh
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# Fzf-tab
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:_zlua:*' query-string input
 
 ########################################################
 # FZF
@@ -575,3 +576,5 @@ function create_django_user {
 source /home/adin/.config/broot/launcher/bash/br
 
 complete -o nospace -C /usr/bin/tk tk
+
+enable-fzf-tab
