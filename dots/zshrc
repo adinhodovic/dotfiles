@@ -104,9 +104,12 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Fzf-tab
+
+enable-fzf-tab
+
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:_zlua:*' query-string input
-# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # Set vi-mode
 bindkey -v
@@ -279,6 +282,7 @@ function vf {
     eval nvim "$files"
   fi
 }
+
 fcommit() {
   local commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
   local commit=$(echo "$commits" | fzf --tac +s -m -e --ansi --reverse) &&
@@ -333,7 +337,6 @@ bindkey '^[[5~' up-line-or-history
 bindkey '^[[6~' down-line-or-history
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
-bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 
 ########################################################
 # FZF
@@ -443,11 +446,6 @@ function awsregion {
 
 [ -f ~/.aws/profile ] && export AWS_PROFILE=$(cat ~/.aws/profile)
 [ -f ~/.aws/region ]  && export AWS_DEFAULT_REGION=$(cat ~/.aws/region)
-
-function molecule-ssh {
-  dir=$(basename $PWD)
-  ssh -i /tmp/molecule/$dir/default/ssh_key $(grep address /tmp/molecule/$dir/default/instance_config.yml | awk '{print $NF}')
-}
 
 # Add direnv
 eval "$(direnv hook zsh)"
@@ -576,5 +574,3 @@ function create_django_user {
 source /home/adin/.config/broot/launcher/bash/br
 
 complete -o nospace -C /usr/bin/tk tk
-
-enable-fzf-tab
