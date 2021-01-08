@@ -24,7 +24,7 @@
     - src: "vimrc"
       dest: "/home/adin/.config/nvim/init.vim"
 
-    - src: "zshrc"
+    - src: "zsh/zshrc"
       dest: "/home/adin/.zshrc"
 
     - src: "taskrc"
