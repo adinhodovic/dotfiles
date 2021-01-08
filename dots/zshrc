@@ -604,19 +604,18 @@ function create_django_user {
 #############################################
 source /home/adin/.config/broot/launcher/bash/br
 
+#############################################
+# Tanka
+#############################################
 complete -o nospace -C /usr/bin/tk tk
 
 #############################################
 # Completion
 #############################################
-# complete -o nospace -C /usr/bin/terraform terraform
 fpath=(~/.zsh/completion $fpath)
 fpath+=~/.zfunc
-#fpath=(~/personal/terraform-target-completion $fpath)
 
 # Init compinit
 autoload -Uz compinit && compinit -i
-autoload -U +X bashcompinit && bashcompinit
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
