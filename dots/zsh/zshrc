@@ -29,6 +29,7 @@ zplug "adinhodovic/git-alias", use:zshrc
 zplug "adinhodovic/terraform-alias", use:zshrc
 zplug "adinhodovic/kubernetes-alias", use:zshrc
 zplug "adinhodovic/calc.plugin.zsh", use:zshrc              # zsh calc
+zplug "zsh-users/zsh-autosuggestions"
 zplug "djui/alias-tips"                                     # Give tips when not using aliases
 zplug "popstas/zsh-command-time"                            # Time activities
 zplug "wfxr/forgit"                                         # Git FZF utility tool
@@ -405,6 +406,12 @@ export KUBE_EDITOR="nvim"
 function k8s-delete-all-namespace-resources {
   kubectl delete "$(kubectl api-resources --namespaced=true --verbs=delete -o name | tr "\n" "," | sed -e 's/,$//')" --all
 }
+
+#############################################
+# zsh-users/zsh-autosuggestions
+#############################################
+#
+bindkey '^ ' autosuggest-accept
 
 #############################################
 # Kubectl fzf
