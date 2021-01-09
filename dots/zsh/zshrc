@@ -394,5 +394,6 @@ fpath+=~/.zfunc
 
 # Init compinit
 autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
