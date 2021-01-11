@@ -38,6 +38,7 @@ Plug 'tpope/vim-eunuch'                       " OS comamnds in vim
 Plug 'wincent/scalpel'                        " Search and replace
 Plug 'AndrewRadev/splitjoin.vim'              " Single/multi line
 Plug 'christianrondeau/vim-base64'            " Base64
+Plug 'yegappan/mru'                           " Most recently opened
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
@@ -1003,6 +1004,10 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_auto_sameids = 1
+"-----------------------------------------
+" MRU
+"-----------------------------------------
+nnoremap <leader>mr :MRU<CR>
 "-----------------------------------------
 " Abbreviations
 "-----------------------------------------
