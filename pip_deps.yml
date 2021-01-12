@@ -23,9 +23,12 @@
         - pyls-mypy
         - pyls-black
         - django-stubs
-        - pyscopg2
+        - psycopg2
         - vim-vint
         - rebound-cli
         - mypy
         - pynvim
         - jedi
+        - requests
+        - dbus-python
+        - awscli
