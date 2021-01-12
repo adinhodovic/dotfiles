@@ -24,6 +24,7 @@
         - flameshot-git
         - git-standup-git
         - xautolock
+        - python-gobject
         - xorg-xinit
         - python-virtualenv
         - rofi
