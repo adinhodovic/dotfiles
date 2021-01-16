@@ -21,6 +21,11 @@
         - neovim
         - dockerfile-language-server-nodejs
         - prettier
+        - eslint
+        - eslint-config-airbnb
+        - eslint-config-airbnb-base
+        - eslint-plugin-react
+        - eslint-plugin-import
         - eslint-prettier
         - eslint-plugin-template
         - markdownlint-cli
