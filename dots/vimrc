@@ -132,7 +132,6 @@ Plug 'fatih/vim-go'
 "-----------------------------------------
 "                   JS
 "-----------------------------------------
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install tern-for-vim' }
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 "-----------------------------------------
