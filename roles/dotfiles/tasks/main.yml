@@ -45,8 +45,8 @@
     - src: "pdb.conf"
       dest: "/home/adin/.pdb.conf"
 
-    - src: "eslintrc.yml"
-      dest: "/home/adin/.eslintrc.yml"
+    # - src: "eslintrc.yml"
+    # dest: "/home/adin/.eslintrc.yml"
 
     - src: "ctags"
       dest: "/home/adin/.ctags"
