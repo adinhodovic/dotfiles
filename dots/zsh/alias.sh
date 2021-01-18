@@ -52,7 +52,14 @@ alias tf='terraform'
 alias top='vtop --theme gruvbox'
 
 alias xc='xclip -sel clip'
-alias v='nvim'
+function v() {
+  if [[ -z "$1" ]]; then
+    nvim $(__fsel)
+  else
+    nvim $@
+  fi
+}
+alias v=v
 alias ps='procs'
 alias s-hl='vps-sync hl-ops-jumphost ~/company/honeylogic/ops ~/ops ops'
 alias t=taskwarrior
