@@ -617,11 +617,16 @@ endfunction
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 
-map <leader>p <Plug>(miniyank-startput)
-map <leader>P <Plug>(miniyank-startPut)
-
 map <leader>n <Plug>(miniyank-cycle)
 map <leader>N <Plug>(miniyank-cycleback)
+"-----------------------------------------
+" Delete/Paste text without copying
+"-----------------------------------------
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+nnoremap <leader>dd "_dd
+xnoremap <leader>dd "_dd
+xnoremap <leader>p "_dP
 "-----------------------------------------
 " Ansible-vim
 "-----------------------------------------
