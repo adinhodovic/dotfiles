@@ -39,6 +39,7 @@ Plug 'wincent/scalpel'                        " Search and replace
 Plug 'AndrewRadev/splitjoin.vim'              " Single/multi line
 Plug 'christianrondeau/vim-base64'            " Base64
 Plug 'yegappan/mru'                           " Most recently opened
+Plug 'takac/vim-hardtime'                     " Hardtime
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
@@ -191,6 +192,8 @@ call plug#end()
 "-----------------------------------------
 " General
 "-----------------------------------------
+let g:hardtime_default_on = 1
+
 set completeopt-=preview,menu
 
 set mouse=a
