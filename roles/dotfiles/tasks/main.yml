@@ -27,6 +27,9 @@
     - src: "zsh/zshrc"
       dest: "/home/adin/.zshrc"
 
+    - src: "direnvrc"
+      dest: "/home/adin/.direnvrc"
+
     - src: "taskrc"
       dest: "/home/adin/.taskrc"
 

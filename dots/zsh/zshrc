@@ -142,7 +142,7 @@ export PATH="$PATH:/.local/share/nvim/plugged/vim-terraform-completion/bin/tffil
 export PATH="$PATH:/home/adin/work/tidepool/development/bin"
 export PATH="$PATH:/home/adin/work/tidepool/tpctl/cmd"
 
-export PYTHONPATH="/usr/local/lib/python3.8/site-packages:$PYTHONPATH"
+export PYTHONPATH="/usr/local/lib/python3.9/site-packages:$PYTHONPATH"
 
 export TERMINAL=/usr/bin/alacritty
 export TERM=screen-256color

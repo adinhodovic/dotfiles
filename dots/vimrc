@@ -194,6 +194,9 @@ call plug#end()
 "-----------------------------------------
 let g:hardtime_default_on = 1
 
+let g:hardtime_maxcount = 2
+let g:hardtime_allow_different_key = 1
+
 set completeopt-=preview,menu
 
 set mouse=a
@@ -875,7 +878,6 @@ let g:neomake_python_black_maker = {
     \ }
 
 let g:neomake_python_enabled_makers = ['pylint', 'isort', 'black', 'mypy']
-let g:neomake_python_python_exe = 'python3'
 
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_css_stylelint_args = ['--fix']

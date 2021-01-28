@@ -1,6 +1,9 @@
 tfplan
 _site
 .sass-cache
+coverage.xml
+.covrage
+dist
 .DS_Store
 /style.scss
 *.gz
