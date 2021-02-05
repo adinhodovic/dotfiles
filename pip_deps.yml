@@ -30,5 +30,6 @@
         - pynvim
         - jedi
         - requests
+        - docker-compose
         - dbus-python
         - awscli
