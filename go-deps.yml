@@ -14,3 +14,4 @@
       loop:
         - github.com/google/go-jsonnet/linter/jsonnet-lint
         - github.com/bazelbuild/bazelisk
+        - github.com/monitoring-mixins/mixtool/cmd/mixtool

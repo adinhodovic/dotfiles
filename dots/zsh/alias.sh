@@ -26,11 +26,10 @@ create_envrc () {
   if [ -e "./.env" ]; then
     envrc_content+='dotenv\n\n'
   fi
-  envrc_content+='source .venv/bin/activate'
+  envrc_content+='poetry env use 3.9\nlayout_poetry'
   echo $envrc_content > .envrc
 }
 
-alias cvenv="python -m venv .venv"
 alias cenvrc=create_envrc
 
 alias '?'='googler'
