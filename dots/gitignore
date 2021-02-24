@@ -28,3 +28,4 @@ terraform.tfvars
 telepresence.log
 secrets.json
 secrets.jsonnet
+.envrc
