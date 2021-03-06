@@ -9,6 +9,8 @@ alias lt='ls --tree'
 
 alias n="nnn"
 
+alias df="duf"
+
 alias c='z -I'
 alias cc='z -c'
 alias c.="cd .."
