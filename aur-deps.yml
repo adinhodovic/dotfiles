@@ -84,3 +84,4 @@
         - tzupdate
         - git-delta
         - tanka-bin
+        - duf
