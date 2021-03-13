@@ -13,6 +13,7 @@ bower_components
 .default_vault
 errored.tfstate
 tfplan
+.terraform.lock.hcl
 secret.tfvars
 .env
 .terraform
