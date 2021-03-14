@@ -46,6 +46,7 @@ zplug "modules/command-not-found", from:prezto              # Command-not-found
 zplug "modules/archive", from:prezto                        # Archive
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh         # git-prompt
 zplug "skywind3000/z.lua", use:z.lua.plugin.zsh
+zplug "jeffreytse/zsh-vi-mode"
 #############################################
 # ZPlug
 #############################################
