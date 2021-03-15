@@ -115,6 +115,3 @@ bindkey -M viins '^x'   fzf-docker-exec
 
 bindkey -M viins '^w'   fzf-taskwarrior
 bindkey -M vicmd '^w'   fzf-taskwarrior
-
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-
