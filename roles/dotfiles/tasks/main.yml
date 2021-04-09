@@ -6,6 +6,9 @@
     state: link
     force: true
   with_items:
+    - src: "Xmodmap"
+      dest: "/home/adin/.Xmodmap"
+
     - src: "gitattributes"
       dest: "/home/adin/.gitattributes"
 
