@@ -60,7 +60,6 @@
         - npm
         - etcher
         - imagemagick
-        - tldr
         - httpie
         - dropbox
         - openssh

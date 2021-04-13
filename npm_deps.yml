@@ -1,4 +1,5 @@
-# yamllint disable rule:line-length
+
+yamllint disable rule:line-length
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
@@ -15,6 +16,7 @@
         - yarn
         - jsonlint
         - write-good
+        - tldr
         - terser
         - tern
         - vtop
