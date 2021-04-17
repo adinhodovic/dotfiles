@@ -1,7 +1,0 @@
-- hosts: 127.0.0.1
-  connection: local
-
-  tasks:
-    - import_role:
-        name: dotfiles
-

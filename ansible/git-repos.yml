@@ -1,0 +1,26 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Clone all repos I use
+      git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
+      with_items:
+        - repo: "git@github.com:adinhodovic/git-alias.git"
+          dest: "~/personal/git-alias"
+        - repo: "git@github.com:adinhodovic/terraform-alias.git"
+          dest: "~/personal/terraform-alias"
+        - repo: "git@github.com:adinhodovic/ansible-alias.git"
+          dest: "~/personal/ansible-alias"
+        - repo: "git@github.com:adinhodovic/docker-alias.git"
+          dest: "~/personal/docker-alias"
+        - repo: "git@github.com:adinhodovic/kubectl-alias.git"
+          dest: "~/personal/kubectl-alias"
+        - repo: "git@github.com:adinhodovic/terraform-cloudflare-maintenance.git"
+          dest: "~/personal/terraform-cloudflare-maintenance"
+        - repo: "git@github.com:adinhodovic/django-allauth-skins.git"
+          dest: "~/personal/django-allauth-skins"
+        - repo: "git@github.com:adinhodovic/django-error-skins.git"
+          dest: "~/personal/django-error-skins"

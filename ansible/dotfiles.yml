@@ -1,0 +1,116 @@
+---
+- name: Setup dotfiles
+  hosts: 127.0.0.1
+
+  tasks:
+    - name: Symlink i3
+      file:
+        src: "/home/adin/.dotfiles/dots/{{ item.src }}"
+        dest: "{{ item.dest }}"
+        state: link
+        force: true
+      with_items:
+        - src: "Xmodmap"
+          dest: "/home/adin/.Xmodmap"
+
+        - src: "gitattributes"
+          dest: "/home/adin/.gitattributes"
+
+        - src: "golangci.yml"
+          dest: "/home/adin/.golangci.yml"
+
+        - src: "i3.config"
+          dest: "/home/adin/.i3/config"
+
+        - src: "config.ssh"
+          dest: "/home/adin/.ssh/config"
+
+        - src: "tmux.conf"
+          dest: "/home/adin/.tmux.conf"
+
+        - src: "vimrc"
+          dest: "/home/adin/.config/nvim/init.vim"
+
+        - src: "zsh/zshrc"
+          dest: "/home/adin/.zshrc"
+
+        - src: "direnvrc"
+          dest: "/home/adin/.direnvrc"
+
+        - src: "taskrc"
+          dest: "/home/adin/.taskrc"
+
+        - src: "lightdm.conf"
+          dest: "/etc/lightdm/lightdm.conf"
+
+        - src: "lightdm-webkit2-greeter.conf"
+          dest: "/etc/lightdm/lightdm-webkit2-greeter.conf"
+
+        - src: "alacritty.yml"
+          dest: "/home/adin/.config/alacritty/alacritty.yml"
+
+        - src: "yamllint.yml"
+          dest: "/home/adin/.config/yamllint/config"
+
+        - src: "pdb.conf"
+          dest: "/home/adin/.pdb.conf"
+
+        # - src: "eslintrc.yml"
+        # dest: "/home/adin/.eslintrc.yml"
+
+        - src: "ctags"
+          dest: "/home/adin/.ctags"
+
+        - src: "npmrc"
+          dest: "/home/adin/.npmrc"
+
+        - src: "locale.gen"
+          dest: "/etc/locale.gen"
+
+        - src: "locale.conf"
+          dest: "/etc/locale.conf"
+
+        - src: "xinitrc"
+          dest: "/home/adin/.xinitrc"
+
+        - src: "gitignore"
+          dest: "/home/adin/.gitignore"
+
+        - src: "coc-settings.json"
+          dest: "/home/adin/.config/nvim/coc-settings.json"
+
+        - src: "htmlhintrc"
+          dest: "/home/adin/.htmlhintrc"
+
+        - src: "ignore"
+          dest: "/home/adin/.ignore"
+
+        - src: "ripgreprc"
+          dest: "/home/adin/.ripgreprc"
+
+        - src: "markdownlint.yaml"
+          dest: "/home/adin/.markdownlint.yaml"
+
+        - src: "shellcheckrc"
+          dest: "/home/adin/.shellcheckrc"
+
+        - src: "broot.toml"
+          dest: "/home/adin/.config/broot/conf.toml"
+
+        - src: "gitconfig"
+          dest: "/home/adin/.gitconfig"
+
+        - src: "terraformrc"
+          dest: "/home/adin/.terraformrc"
+
+        - src: "neofetch.conf"
+          dest: "/home/adin/.config/neofetch/config.conf"
+
+        - src: "tridactylrc"
+          dest: "/home/adin/.tridactylrc"
+
+        - src: "rofi.rasi"
+          dest: "/home/adin/.config/rofi/config.rasi"
+
+    - name: locale-gen
+      shell: locale-gen

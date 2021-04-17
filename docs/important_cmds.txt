@@ -1,4 +1,0 @@
-xset -q
-ps
-t
-seda
