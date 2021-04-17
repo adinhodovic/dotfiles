@@ -299,12 +299,7 @@ EOF
 #############################################
 # Kubectl
 #############################################
-
 export KUBE_EDITOR="nvim"
-
-function k8s-delete-all-namespace-resources {
-  kubectl delete "$(kubectl api-resources --namespaced=true --verbs=delete -o name | tr "\n" "," | sed -e 's/,$//')" --all
-}
 
 #############################################
 # zsh-users/zsh-autosuggestions
