@@ -47,7 +47,6 @@ zplug "modules/command-not-found", from:prezto              # Command-not-found
 zplug "modules/archive", from:prezto                        # Archive
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh         # git-prompt
 zplug "skywind3000/z.lua", use:z.lua.plugin.zsh
-# zplug "jeffreytse/zsh-vi-mode"                            # Test this later
 #############################################
 # ZPlug
 #############################################
@@ -159,8 +158,9 @@ export NODE_PATH="${NPM_PACKAGES}/lib/node_modules"
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-### History
-#################
+###############################
+# History
+###############################
 HISTFILE=$HOME/.zhistory
 HISTSIZE=50000
 SAVEHIST=50000
