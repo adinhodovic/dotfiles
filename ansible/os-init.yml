@@ -9,12 +9,9 @@
       shell: '{{ item }}'
       loop:
         - mimeo --prefer firefox
-        - go get -u github.com/stamblerre/gocode
         - git config --global core.editor "nvim"
-        - go get -u github.com/stamblerre/gocode
         - curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         - nvim +PlugInstall +qall +silent
-        - npx install-peerdeps --global eslint-config-airbnb
 
     - name: Add me to docker group
       become: true
@@ -24,10 +21,43 @@
         append: true
       tags: docker
 
-    - say:
-        msg: '{{ item }}'
-        voice: Zarvox
-      delegate_to: localhost
-      loop:
-        - chmod id_rsa now
-        - run os-prober
+    - name: Directories
+      file:
+        path: '/home/{{ user }}/{{ item }}'
+        state: directory
+        owner: adin
+        loop:
+          - tempinstall
+          - .ssh
+          - .i3
+          - .config
+
+    - name: Clone all repos I use
+      git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
+      with_items:
+        - repo: "git@github.com:adinhodovic/git-alias.git"
+          dest: "~/personal/git-alias"
+        - repo: "git@github.com:adinhodovic/terraform-alias.git"
+          dest: "~/personal/terraform-alias"
+        - repo: "git@github.com:adinhodovic/ansible-alias.git"
+          dest: "~/personal/ansible-alias"
+        - repo: "git@github.com:adinhodovic/docker-alias.git"
+          dest: "~/personal/docker-alias"
+        - repo: "git@github.com:adinhodovic/kubectl-alias.git"
+          dest: "~/personal/kubectl-alias"
+        - repo: "git@github.com:adinhodovic/terraform-cloudflare-maintenance.git"
+          dest: "~/personal/terraform-cloudflare-maintenance"
+        - repo: "git@github.com:adinhodovic/django-allauth-skins.git"
+          dest: "~/personal/django-allauth-skins"
+        - repo: "git@github.com:adinhodovic/django-error-skins.git"
+          dest: "~/personal/django-error-skins"
+
+    - name: start lightdm
+      shell: systemctl enable lightdm.service
+
+    # background image
+    - copy:
+        src: /home/adin/.dotfiles/images/mostar.jpg
+        dest: /usr/share/lightdm-webkit/themes/litarvan/images/background.png
