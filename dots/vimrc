@@ -30,7 +30,6 @@ Plug 'cespare/vim-toml'
 Plug 'AndrewRadev/linediff.vim'               " Linediff
 Plug 'junegunn/vim-slash'                     " Better vim search
 Plug 'direnv/direnv.vim'                      " direnv
-Plug 'pechorin/any-jump.vim'
 Plug 'brooth/far.vim'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tpope/vim-eunuch'                       " OS comamnds in vim
@@ -606,6 +605,14 @@ let g:coc_global_extensions = [
 "\ 'coc-tabnine' disable due to high cpu,
 
 set updatetime=300
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
