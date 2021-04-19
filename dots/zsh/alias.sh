@@ -87,7 +87,9 @@ alias cd-="cd -"
 alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
 alias o='xdg-open'
 alias v=nvim
+
 alias dus=diskus
+alias du=dust
 
 alias aws_kubeconfig="aws eks update-kubeconfig --name $1 --alias $2"
 

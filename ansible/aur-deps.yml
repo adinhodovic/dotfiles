@@ -50,6 +50,7 @@
         - docker-compose
         - shellshock
         - terraform
+        - dust
         - ruby
         - aws-cli
         - google-cloud-sdk
