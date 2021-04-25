@@ -16,7 +16,20 @@ setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
 
-source ~/.dotfiles/dots/zsh/plugins.sh
+#############################################
+# Completion
+#############################################
+fpath=(~/.zsh/completion $fpath)
+fpath+=~/.zfunc
+
+# Init compinit
+autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
+
+xmodmap ~/.Xmodmap
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 #############################################
 # Z Modules Autoload zsh modules when they are referenced
 #################################################
@@ -84,6 +97,7 @@ zle -N tmux-copy-mode
 ################################################
 export EDITOR="nvim"
 
+source ~/.dotfiles/dots/zsh/plugins.sh
 source ~/.dotfiles/dots/zsh/fzf.sh
 source ~/.dotfiles/dots/zsh/alias.sh
 
@@ -329,20 +343,6 @@ function create_django_user {
 # Broot
 #############################################
 source /home/adin/.config/broot/launcher/bash/br
-#############################################
-# Completion
-#############################################
-fpath=(~/.zsh/completion $fpath)
-fpath+=~/.zfunc
-
-# Init compinit
-autoload -Uz compinit && compinit -i
-autoload -U +X bashcompinit && bashcompinit
-
-xmodmap ~/.Xmodmap
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 ############################################
 # zsh-users/zsh-autosuggestions
 ############################################
