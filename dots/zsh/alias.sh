@@ -67,6 +67,7 @@ alias t=taskwarrior
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 
 # cd shortkeys
+alias cd-="cd -"
 alias cd.="cd .."
 alias cd..="cd ../.."
 alias cd...="cd ../../.."
@@ -83,7 +84,6 @@ alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 alias cp='cp -v '
 alias mv='mv -v '
 alias h="history"
-alias cd-="cd -"
 alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
 alias o='xdg-open'
 alias v=nvim

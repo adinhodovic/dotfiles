@@ -23,7 +23,7 @@ zinit light-mode for \
 #############################################
 # Zinit Plugins
 #############################################
-zinit light aloxaf/fzf-tab
+zinit light Aloxaf/fzf-tab
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light djui/alias-tips                          # Give tips when not using aliases
@@ -34,6 +34,8 @@ zinit light hlissner/zsh-autopair                    # Autopair
 zinit light bonnefoa/kubectl-fzf
 zinit light jonmosco/kube-ps1
 zinit light olivierverdier/zsh-git-prompt            # git-prompt
+
+zinit ice atload"eval $(lua ~/.zinit/plugins/skywind3000---z.lua/z.lua --init zsh fzf)"
 zinit light skywind3000/z.lua
 
 zinit snippet OMZP::golang
