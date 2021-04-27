@@ -43,7 +43,6 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::sudo
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::command-not-found
-zinit snippet OMZP::dotenv
 
 zinit ice src"zshrc"
 zinit light adinhodovic/docker-alias
