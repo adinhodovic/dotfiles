@@ -38,6 +38,7 @@ Plug 'AndrewRadev/splitjoin.vim'              " Single/multi line
 Plug 'christianrondeau/vim-base64'            " Base64
 Plug 'yegappan/mru'                           " Most recently opened
 Plug 'takac/vim-hardtime'                     " Hardtime
+Plug 'ferrine/md-img-paste.vim'               " Image pasting
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
@@ -480,9 +481,6 @@ map <leader>s? z=
 "-----------------------------------------
 "               Misc
 "-----------------------------------------
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
 " Reload vimrc on write
 augroup myvimrc
     au!
@@ -643,12 +641,12 @@ omap ac <Plug>(coc-classobj-a)
 " coc-fzf
 "-----------------------------------------
 nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
-nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <space>e       :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <space>l       :<C-u>CocFzfList location<CR>
-nnoremap <silent> <space>o       :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <space>s       :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <space>p       :<C-u>CocFzfListResume<CR>
+nnoremap <silent> <space>c :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <space>e :<C-u>CocFzfList extensions<CR>
+nnoremap <silent> <space>l :<C-u>CocFzfList location<CR>
+nnoremap <silent> <space>o :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <space>s :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <space>p :<C-u>CocFzfListResume<CR>
 "-----------------------------------------
 " Miniyank
 "-----------------------------------------
@@ -665,6 +663,9 @@ xnoremap <leader>d "_d
 nnoremap <leader>dd "_dd
 xnoremap <leader>dd "_dd
 xnoremap <leader>p "_dP
+
+let g:mdip_imgdir = 'images'
+nnoremap <buffer><silent> <leader>mp :call mdip#MarkdownClipboardImage()<CR>
 "-----------------------------------------
 " Ansible-vim
 "-----------------------------------------
