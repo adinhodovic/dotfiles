@@ -3,7 +3,7 @@ version: 1.4
 prefs:
   runLog:
     type: file
-    path: /home/dani/.jobber.log
+    path: /home/adin/.jobber.log
     maxFileLen: 100m
     maxHistories: 1
 jobs:

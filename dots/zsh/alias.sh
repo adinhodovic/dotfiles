@@ -68,6 +68,7 @@ alias v=v
 alias ps='procs'
 alias s-hl='vps-sync hl-ops-jumphost ~/company/honeylogic/ops ~/ops ops'
 alias t=taskwarrior
+alias bw=bugwarrior-pull
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 
 # cd shortkeys
