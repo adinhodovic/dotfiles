@@ -333,3 +333,5 @@ zstyle ':fzf-tab:complete:_zlua:*' query-string input
 # Tanka
 #############################################
 complete -o nospace -C /usr/bin/tk tk
+
+export PYTHONBREAKPOINT=pudb.set_trace

@@ -10,6 +10,12 @@
         state: link
         force: true
       with_items:
+        - src: "pudb.conf"
+          dest: "/home/adin/.config/pudb/pudb.cfg"
+
+        - src: "ptpython.py"
+          dest: "/home/adin/.ptpython/config.py"
+
         - src: "Xmodmap"
           dest: "/home/adin/.Xmodmap"
 
@@ -51,9 +57,6 @@
 
         - src: "yamllint.yml"
           dest: "/home/adin/.config/yamllint/config"
-
-        - src: "pdb.conf"
-          dest: "/home/adin/.pdb.conf"
 
         # - src: "eslintrc.yml"
         # dest: "/home/adin/.eslintrc.yml"
