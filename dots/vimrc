@@ -41,17 +41,14 @@ Plug 'ferrine/md-img-paste.vim'               " Image pasting
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
-Plug 'godlygeek/tabular'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'               " Markdown ToC
 Plug 'kamykn/spelunker.vim'                   " Words
 Plug 'kamykn/popup-menu.nvim'                 " Popup for spelunker
 Plug 'reedes/vim-pencil'                      " Writing tool
-Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-wordy'
 Plug 'tpope/vim-abolish'                      " Abbreviations
-Plug 'SidOfc/mkdx'                            " Markdown
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
