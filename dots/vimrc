@@ -38,7 +38,6 @@ Plug 'christianrondeau/vim-base64'            " Base64
 Plug 'yegappan/mru'                           " Most recently opened
 Plug 'takac/vim-hardtime'                     " Hardtime
 Plug 'ferrine/md-img-paste.vim'               " Image pasting
-Plug 'nacro90/numb.nvim'
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
