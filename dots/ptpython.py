@@ -82,4 +82,4 @@ def configure(repl):
         event.cli.key_processor.feed(KeyPress("0"))
     @repl.add_key_binding("W", filter=ViNavigationMode(), eager=True)
     def _(event):
-        event.cli.key_processor.feed_multiple([KeyPress("g"), KeyPress("_")]
+        event.cli.key_processor.feed_multiple([KeyPress("g"), KeyPress("_")])
