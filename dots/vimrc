@@ -20,7 +20,6 @@ Plug 'junegunn/vim-easy-align'                " Align code around arbitrary char
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
 Plug 'kopischke/vim-fetch'                    " Open files at file:line:column
 Plug 'scrooloose/nerdcommenter'               " Comment/uncomment source code files
-Plug 'scrooloose/nerdtree'                    " Treeview
 Plug 'tpope/vim-unimpaired'                   " Mappings
 Plug 'bfredl/nvim-miniyank'                   " Yank History
 Plug 'kana/vim-textobj-user'
@@ -39,6 +38,7 @@ Plug 'christianrondeau/vim-base64'            " Base64
 Plug 'yegappan/mru'                           " Most recently opened
 Plug 'takac/vim-hardtime'                     " Hardtime
 Plug 'ferrine/md-img-paste.vim'               " Image pasting
+Plug 'nacro90/numb.nvim'
 "-----------------------------------------
 "                   Documentation/Writing
 "-----------------------------------------
@@ -689,27 +689,6 @@ nnoremap <Leader>vd :AnsibleVaultDecrypt <CR> :edit <CR>
 vnoremap <leader>c :call NERDComment(0, "toggle")<CR>
 " Add a space before any comment
 let g:NERDSpaceDelims = 1
-"-----------------------------------------
-" NERDTree
-"-----------------------------------------
-let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '\.db$']
-noremap <F5> :NERDTreeToggle<CR>
-" When exiting: Close nerdtree if its the only window left
-augroup nerdtree
-  autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-augroup END
-" Close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists('t:NERDTreeBufName')
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr('$') == 1
-        q
-      endif
-    endif
-  endif
-endfunction
 "-----------------------------------------
 " CarbonNowSh
 "-----------------------------------------
