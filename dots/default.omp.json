@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "rprompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "background": "#424242",
+          "properties": {
+            "display_status_detail": false,
+            "branch_icon": "",
+            "postfix": "  "
+          }
+        },
+        {
+          "type": "python",
+          "style": "diamond",
+          "foreground": "#ffffff",
+          "background": "#eec10f",
+          "properties": {
+            "prefix": " \uE235 ",
+            "postfix": " ",
+            "display_version": false,
+            "display_mode": "environment"
+          }
+        },
+        {
+          "type": "kubectl",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "background": "#0959fd",
+          "properties": {
+            "prefix": " \uFD31 ",
+            "template": "{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "path",
+          "style": "diamond",
+          "trailing_diamond": "\uE0B0 ",
+          "foreground": "#56B6C2",
+          "background": "#2f2f2f",
+          "properties": {
+            "prefix": " \uE5FF ",
+            "style": "full"
+          }
+        }
+      ]
+    }
+  ]
+}
