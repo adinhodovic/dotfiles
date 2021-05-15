@@ -16,6 +16,7 @@
             "display_stash_count": false,
             "branch_icon": "\uE0A0 ",
             "local_working_icon": "",
+            "local_staged_icon": "",
             "postfix": "  "
           }
         },
