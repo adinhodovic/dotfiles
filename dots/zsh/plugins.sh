@@ -32,7 +32,6 @@ zinit light wfxr/forgit                              # Git FZF utility tool
 zinit light b4b4r07/emoji-cli                        # Emoji cli
 zinit light hlissner/zsh-autopair                    # Autopair
 zinit light bonnefoa/kubectl-fzf
-zinit light jonmosco/kube-ps1
 zinit light olivierverdier/zsh-git-prompt            # git-prompt
 
 zinit ice atload"eval $(lua ~/.zinit/plugins/skywind3000---z.lua/z.lua --init zsh fzf)"

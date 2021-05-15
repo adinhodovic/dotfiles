@@ -11,8 +11,11 @@
           "foreground": "#ffffff",
           "background": "#424242",
           "properties": {
-            "display_status_detail": false,
-            "branch_icon": "",
+            "display_status_detail": true,
+            "display_status": true,
+            "display_stash_count": false,
+            "branch_icon": "\uE0A0 ",
+            "local_working_icon": "",
             "postfix": "  "
           }
         },
