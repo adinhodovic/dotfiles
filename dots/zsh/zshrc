@@ -107,12 +107,6 @@ HISTFILE=$HOME/.zhistory
 HISTSIZE=50000
 SAVEHIST=50000
 HOSTNAME="`hostname`"
-##################################
-### Set prompt
-##################################
-unsetopt ALL_EXPORT
-PROMPT='%{$fg[blue]%}%1d%{$reset_color%} $(git_super_status) '
-RPROMPT='%{$fg[blue]%}$(kube_ps1)%{$reset_color%}'
 ### Bind keys
 #############
 

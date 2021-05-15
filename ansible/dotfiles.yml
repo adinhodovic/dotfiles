@@ -10,6 +10,9 @@
         state: link
         force: true
       with_items:
+        - src: "default.omp.json"
+          dest: "/home/adin/.default.omp.json"
+
         - src: "pudb.conf"
           dest: "/home/adin/.config/pudb/pudb.cfg"
 
