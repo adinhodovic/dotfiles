@@ -2,12 +2,22 @@
 	email = hodovicadin@gmail.com
 	name = Adin Hodovic
 [core]
-  pager = delta --plus-color="#024700" --minus-color="#810000" --theme='Monokai Extended' --keep-plus-minus-markers
-	editor = nvim
+  pager = "{                                                           \
+      COLUMNS=$(tput cols);                                            \
+      if [ $COLUMNS -ge 80 ] && [ -z $FZF_PREVIEW_COLUMNS ]; then      \
+          delta --side-by-side -w $COLUMNS;                            \
+      elif [ $COLUMNS -ge 160 ] && [ ! -z $FZF_PREVIEW_COLUMNS ]; then \
+          delta --side-by-side -w $FZF_PREVIEW_COLUMNS;                \
+      else                                                             \
+          delta;                                                       \
+      fi                                                               \
+  }"
 	excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
 [init]
 	templatedir = ~/.git-templates
+[branch]
+    sort = -committerdate
 [merge]
 	tool = diffconflicts
 [mergetool "diffconflicts"]
@@ -16,12 +26,17 @@
 [mergetool]
 	keepBackup = false
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [delta]
-    features = side-by-side line-numbers decorations
-    whitespace-error-style = 22 reverse
+  features = decorations
+  whitespace-error-style = 22 reverse
+  plus-style = "syntax #024700"
+  minus-style = "syntax #810000"
+  syntax-theme = Gruvbox
+  line-numbers = true
+  navigate = true
 [delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
