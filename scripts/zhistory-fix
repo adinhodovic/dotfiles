@@ -1,7 +1,0 @@
-#!/usr/bin/sh
-# Fixes a corrupt .zhistory file
-
-mv ~/.zhistory ~/.zhistory_bad
-strings ~/.zhistory_bad > ~/.zhistory
-fc -r ~/.zhistory
-rm ~/.zhistory_bad
