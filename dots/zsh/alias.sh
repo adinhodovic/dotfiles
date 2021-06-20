@@ -54,7 +54,7 @@ rename_all_files () {
 
 alias tf='terraform'
 
-alias top='vtop --theme gruvbox'
+alias top='bpytop'
 
 alias xc='xclip -sel clip'
 function v() {

@@ -19,7 +19,6 @@ yamllint disable rule:line-length
         - tldr
         - terser
         - tern
-        - vtop
         - neovim
         - dockerfile-language-server-nodejs
         - prettier

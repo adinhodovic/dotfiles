@@ -30,3 +30,4 @@ telepresence.log
 secrets.json
 secrets.jsonnet
 .envrc
+.npmrc

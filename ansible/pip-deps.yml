@@ -28,6 +28,7 @@
         - rebound-cli
         - mypy
         - pynvim
+        - bpytop
         - jedi
         - requests
         - docker-compose

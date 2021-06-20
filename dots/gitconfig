@@ -40,3 +40,5 @@
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
   file-decoration-style = none
+[remote "origin"]
+	gh-resolved = base
