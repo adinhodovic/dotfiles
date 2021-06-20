@@ -10,6 +10,10 @@
         state: link
         force: true
       with_items:
+
+        - src: "bpytop.conf"
+          dest: "/home/adin/.config/bpytop/bpytop.conf"
+
         - src: "default.omp.json"
           dest: "/home/adin/.default.omp.json"
 
