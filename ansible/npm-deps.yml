@@ -11,7 +11,6 @@ yamllint disable rule:line-length
         name: '{{ item }}'
         global: true
       loop:
-        - js-beautify
         - instant-markdown-d
         - yarn
         - jsonlint
@@ -22,17 +21,8 @@ yamllint disable rule:line-length
         - neovim
         - dockerfile-language-server-nodejs
         - prettier
-        - eslint
-        - eslint-config-airbnb
-        - eslint-config-airbnb-base
-        - eslint-plugin-react
-        - eslint-plugin-import
-        - eslint-prettier
-        - eslint-plugin-template
         - markdownlint-cli
         - htmlhint
-        - eslint-html
-        - eslint-plugin-prettier
         - stylelint
         - stylelint-config-recommended
         - stylelint-order
