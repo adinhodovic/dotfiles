@@ -804,6 +804,11 @@ endfunction
 let g:neomake_list_height = 8
 let g:neomake_open_list = 2
 
+let g:neomake_pylint_exe = systemlist('which pylint')[0]
+let g:neomake_mypy_exe = systemlist('which mypy')[0]
+let g:neomake_eslint_exe = systemlist('git rev-parse --show-toplevel')[0].'/node_modules/.bin/eslint'
+let g:neomake_stylelint_exe = systemlist('which stylelint')[0]
+
 let g:neomake_text_enabled_makers = ['writegood']
 
 let g:neomake_sh_enabled_makers = ['shellcheck']
@@ -818,16 +823,16 @@ let g:neomake_ansible_enabled_makers = ['ansiblelint', 'yamllint']
 let g:neomake_yamllint_enabled_makers = ['yamllint']
 
 let g:neomake_typescriptreact_enabled_makers = ['eslint']
-let g:neomake_typescriptreact_eslint_args = ['--fix', '--format=compact']
+let g:neomake_typescriptreact_eslint_args = ['--fix', '--format=json']
 
 let g:neomake_javascriptreact_enabled_makers = ['eslint']
-let g:neomake_javascriptreact_eslint_args = ['--fix', '--format=compact']
+let g:neomake_javascriptreact_eslint_args = ['--fix', '--format=json']
 
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_args = ['--fix', '--format=compact']
+let g:neomake_javascript_eslint_args = ['--fix', '--format=json']
 
 let g:neomake_typescript_enabled_makers = ['eslint']
-let g:neomake_typescript_eslint_args = ['--fix', '--format=compact']
+let g:neomake_typescript_eslint_args = ['--fix', '--format=json']
 
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_json_jsonlint_args = ['-i']
@@ -877,16 +882,7 @@ let g:neomake_htmldjango_htmlhint_maker = {
 let g:neomake_htmldjango_enabled_makers = ['htmlhint', 'jsbeautify']
 let g:neomake_html_enabled_makers = ['htmlhint', 'jsbeautify']
 
-augroup nmake
-  autocmd BufWritePost * call neomake#Make(1, [], function('s:Neomake_callback'))
-augroup END
-
-function! s:Neomake_callback(options)
-  let neomake_lint_and_fix_filetypes = ['eslint', 'jsonlint', 'stylelint', 'jsbeautify', 'jsonnetlint', 'isort', 'black', 'pylint', 'importsort']
-  if count(neomake_lint_and_fix_filetypes, a:options.name)
-    edit
-  endif
-endfunction
+call neomake#configure#automake('w')
 "-----------------------------------------
 " wsdjeg/flygrep
 "-----------------------------------------
