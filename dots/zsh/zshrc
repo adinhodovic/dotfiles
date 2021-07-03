@@ -216,6 +216,27 @@ eval "$(direnv hook zsh)"
 #############################################
 # Automation
 #############################################
+function git-standup-last-month() {
+  python <<EOF
+from datetime import date, timedelta
+import subprocess
+import os
+today = date.today()
+beginning_of_this_week = today - timedelta(days=today.weekday())
+end_of_this_week = beginning_of_this_week + timedelta(days=30)
+cmd = f"git standup -A {beginning_of_this_week} -B {end_of_this_week} -s"
+home = os.path.expanduser("~")
+dirs = [
+  os.path.join(home, "work/marble/ops"),
+  os.path.join(home, ".dotfiles"),
+  os.path.join(home, "company"),
+  os.path.join(home, "personal"),
+]
+for dir in dirs:
+  subprocess.run(cmd, shell=True, cwd=dir)
+EOF
+}
+
 function git-standup-last-week() {
   python <<EOF
 from datetime import date, timedelta

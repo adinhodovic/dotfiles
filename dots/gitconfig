@@ -16,6 +16,7 @@
   attributesfile = ~/.gitattributes
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = main
 [branch]
     sort = -committerdate
 [merge]
