@@ -13,7 +13,6 @@
         - lab
         - jq
         - yq
-        - krew-bin
         - neovim
         - alacritty
         - broot
@@ -34,11 +33,6 @@
         - networkmanager
         - network-manager-applet
         - enpass-bin
-        - i3-gaps
-        - i3status
-        - i3blocks
-        - i3lock
-        - xf86-video-intel
         - task
         - bandwhich
         - yamllint
@@ -68,8 +62,6 @@
         - unzip
         - xfce4-power-manager
         - glibc
-        - kubectl-bin
-        - kubectx
         - bat
         - simplescreenrecorder
         - unrar
@@ -79,8 +71,17 @@
         - duf
         - wget
         - lua
-        - direnv bin
+        - direnv-bin
         - inetutils
+
+        # i3
+        - i3-gaps
+        - i3status
+        - i3blocks
+        - i3lock
+        - i3lock-fancy-git
+
+        # browsers
         - firefox
         - chromium
 
@@ -89,3 +90,9 @@
         - ttf-ionicons
         - powerline-fonts-git
         - ttf-roboto-mono
+
+        # K8s
+        - lens-bin
+        - kubectl-bin
+        - kubectx
+        - krew-bin
