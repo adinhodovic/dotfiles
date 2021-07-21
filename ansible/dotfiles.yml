@@ -35,6 +35,9 @@
         - src: "i3.config"
           dest: "/home/adin/.i3/config"
 
+        - src: "i3blocks.conf"
+          dest: "/home/adin/.i3blocks.conf"
+
         - src: "config.ssh"
           dest: "/home/adin/.ssh/config"
 
@@ -65,17 +68,8 @@
         - src: "yamllint.yml"
           dest: "/home/adin/.config/yamllint/config"
 
-        # - src: "eslintrc.yml"
-        # dest: "/home/adin/.eslintrc.yml"
-
-        - src: "ctags"
-          dest: "/home/adin/.ctags"
-
         - src: "npmrc"
           dest: "/home/adin/.npmrc"
-
-        - src: "locale.gen"
-          dest: "/etc/locale.gen"
 
         - src: "locale.conf"
           dest: "/etc/locale.conf"

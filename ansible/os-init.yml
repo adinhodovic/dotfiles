@@ -10,8 +10,19 @@
       loop:
         - mimeo --prefer firefox
         - git config --global core.editor "nvim"
-        - curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        - curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         - nvim +PlugInstall +qall +silent
+
+    - name: Directories
+      file:
+        path: "/home/adin/{{ item }}"
+        state: directory
+        owner: adin
+      loop:
+        - tempinstall
+        - .ssh
+        - .i3
+        - .config
 
     - name: Add me to docker group
       become: true
@@ -20,17 +31,6 @@
         groups: docker
         append: true
       tags: docker
-
-    - name: Directories
-      file:
-        path: '/home/{{ user }}/{{ item }}'
-        state: directory
-        owner: adin
-        loop:
-          - tempinstall
-          - .ssh
-          - .i3
-          - .config
 
     - name: Clone all repos I use
       git:

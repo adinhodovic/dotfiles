@@ -4,22 +4,19 @@
   connection: local
   tasks:
 
-    - name: check the keys
-      shell: pacman-key --populate archlinux
-
     - name: clone yay
       git:
         repo: https://aur.archlinux.org/yay.git
         dest: /home/adin/tempinstall/yay
 
     - name: makepackage
-      shell:  makepkg -si /home/adin/tempinstall/yay
+      shell:  makepkg -si
+      ignore_errors: yes
+      args:
+        chdir: /home/adin/tempinstall/yay
 
     - name: clone ansible-aur
       git:
         repo: https://github.com/kewlfft/ansible-aur.git
         dest: /home/adin/.ansible/plugins/modules/aur
         version: master
-
-    - name: Install galaxy
-      shell: ansible-galaxy install -r requirements.yml

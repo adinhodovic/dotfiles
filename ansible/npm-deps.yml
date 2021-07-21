@@ -1,5 +1,5 @@
 
-yamllint disable rule:line-length
+# yamllint disable rule:line-length
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
@@ -11,19 +11,9 @@ yamllint disable rule:line-length
         name: '{{ item }}'
         global: true
       loop:
-        - instant-markdown-d
         - yarn
         - jsonlint
         - write-good
         - tldr
-        - terser
-        - tern
-        - neovim
         - dockerfile-language-server-nodejs
-        - prettier
-        - markdownlint-cli
-        - htmlhint
-        - stylelint
-        - stylelint-config-recommended
-        - stylelint-order
-        - stylelint-scss
+        - instant-markdown-d

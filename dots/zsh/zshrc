@@ -31,8 +31,6 @@ fpath+=~/.zfunc
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 
-xmodmap ~/.Xmodmap
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #############################################

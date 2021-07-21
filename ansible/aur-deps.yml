@@ -8,23 +8,19 @@
     - name: Install AUR packages
       aur:
         name: '{{ item }}'
-        skip_installed: true
       loop:
         - shellcheck
         - lab
         - jq
         - yq
-        - ffsend-bin
         - krew-bin
         - neovim
         - alacritty
         - broot
         - lsd
-        - oh-my-zsh-git
         - flameshot-git
         - git-standup-git
         - xautolock
-        - python-gobject
         - xorg-xinit
         - python-virtualenv
         - rofi
@@ -59,7 +55,6 @@
         - procs
         - nodejs
         - npm
-        - etcher
         - imagemagick
         - httpie
         - dropbox
@@ -73,16 +68,21 @@
         - unzip
         - xfce4-power-manager
         - glibc
-        - powerline-fonts-git
         - kubectl-bin
         - kubectx
         - bat
-        - ttf-material-design-icons-git
-        - ttf-ionicons
         - simplescreenrecorder
         - unrar
         - tzupdate
         - git-delta
         - tanka-bin
         - duf
-        - timew
+        - wget
+        - lua
+        - direnv bin
+        - inetutils
+
+        - ttf-material-design-icons-git
+        - ttf-ionicons
+        - powerline-fonts-git
+        - ttf-roboto-mono

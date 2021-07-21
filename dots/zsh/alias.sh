@@ -11,9 +11,6 @@ alias n="nnn"
 
 alias df="duf"
 
-eval $(thefuck --alias)
-alias f="fuck"
-
 alias c='z -I'
 alias cc='z -c'
 alias c.="cd .."
