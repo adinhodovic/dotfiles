@@ -1,8 +1,0 @@
-#!/bin/bash
-if [[ $? == "0" ]]; then
-    KCONTEXT="$(kubectx -c)"
-    KNAMESPACE="$(kubens -c)"
-    echo "☸ $KCONTEXT/$KNAMESPACE"
-    echo \#326de6 # color
-fi
-
