@@ -81,7 +81,10 @@
         - lua
         - direnv bin
         - inetutils
+        - firefox
+        - chromium
 
+        # fonts
         - ttf-material-design-icons-git
         - ttf-ionicons
         - powerline-fonts-git
