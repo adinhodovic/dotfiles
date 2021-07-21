@@ -13,17 +13,6 @@
         - curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         - nvim +PlugInstall +qall +silent
 
-    - name: Directories
-      file:
-        path: "/home/adin/{{ item }}"
-        state: directory
-        owner: adin
-      loop:
-        - tempinstall
-        - .ssh
-        - .i3
-        - .config
-
     - name: Add me to docker group
       become: true
       user:
@@ -32,27 +21,74 @@
         append: true
       tags: docker
 
-    - name: Clone all repos I use
-      git:
-        repo: "{{ item.repo }}"
-        dest: "{{ item.dest }}"
-      with_items:
-        - repo: "git@github.com:adinhodovic/git-alias.git"
-          dest: "~/personal/git-alias"
-        - repo: "git@github.com:adinhodovic/terraform-alias.git"
-          dest: "~/personal/terraform-alias"
-        - repo: "git@github.com:adinhodovic/ansible-alias.git"
-          dest: "~/personal/ansible-alias"
-        - repo: "git@github.com:adinhodovic/docker-alias.git"
-          dest: "~/personal/docker-alias"
-        - repo: "git@github.com:adinhodovic/kubectl-alias.git"
-          dest: "~/personal/kubectl-alias"
-        - repo: "git@github.com:adinhodovic/terraform-cloudflare-maintenance.git"
-          dest: "~/personal/terraform-cloudflare-maintenance"
-        - repo: "git@github.com:adinhodovic/django-allauth-skins.git"
-          dest: "~/personal/django-allauth-skins"
-        - repo: "git@github.com:adinhodovic/django-error-skins.git"
-          dest: "~/personal/django-error-skins"
+    - name: Directories & Git repos
+      tags: file_system
+      block:
+        - name: Directories
+          file:
+            path: "/home/adin/{{ item }}"
+            state: directory
+            owner: adin
+          loop:
+            # Top level core
+            - personal
+            - work
+            - company
+            - oss
+
+            # Honeylogic specific
+            - company/honeylogic
+
+            # misc
+            - tempinstall
+            - .ssh
+            - .i3
+            - .config
+
+        - name: Clone all repos I use
+          git:
+            repo: "{{ item.repo }}"
+            dest: "{{ item.dest }}"
+          with_items:
+            # Alias repos
+            - repo: "git@github.com:adinhodovic/git-alias.git"
+              dest: "~/oss/git-alias"
+            - repo: "git@github.com:adinhodovic/terraform-alias.git"
+              dest: "~/oss/terraform-alias"
+            - repo: "git@github.com:adinhodovic/ansible-alias.git"
+              dest: "~/oss/ansible-alias"
+            - repo: "git@github.com:adinhodovic/docker-alias.git"
+              dest: "~/oss/docker-alias"
+            - repo: "git@github.com:adinhodovic/kubectl-alias.git"
+              dest: "~/oss/kubectl-alias"
+
+            # My OSS projects
+            - repo: "git@github.com:adinhodovic/terraform-cloudflare-maintenance.git"
+              dest: "~/oss/terraform-cloudflare-maintenance"
+            - repo: "git@github.com:adinhodovic/django-google-optimize.git"
+              dest: "~/oss/django-google-optimize"
+            - repo: "git@github.com:adinhodovic/wagtail-resume.git"
+              dest: "~/oss/wagtail-resume"
+            - repo: "git@github.com:adinhodovic/blackbox-exporter-mixin.git"
+              dest: "~/oss/blackbox-exporter-mixin"
+
+            # Personal
+            - repo: "git@github.com:adinhodovic/tech-notes.git"
+              dest: "~/personal/tech-notes"
+            - repo: "git@github.com:adinhodovic/my-i3blocks.git"
+              dest: "~/personal/my-i3blocks"
+            - repo: "git@github.com:adinhodovic/Ultisnips.git"
+              dest: "~/personal/Ultisnips"
+
+            # Honeylogic specific
+            - repo: "git@github.com:honeylogic-io/administration.git"
+              dest: "~/company/honeylogic/administration"
+            - repo: "git@github.com:honeylogic-io/ops.git"
+              dest: "~/company/honeylogic/ops"
+            - repo: "git@github.com:honeylogic-io/resources.git"
+              dest: "~/company/honeylogic/resources"
+            - repo: "git@github.com:honeylogic-io/jobs_aggregator.git"
+              dest: "~/company/honeylogic/jobs_aggregator"
 
     - name: start lightdm
       shell: systemctl enable lightdm.service
