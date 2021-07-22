@@ -23,9 +23,6 @@
         - src: "ptpython.py"
           dest: "/home/adin/.ptpython/config.py"
 
-        - src: "Xmodmap"
-          dest: "/home/adin/.Xmodmap"
-
         - src: "gitattributes"
           dest: "/home/adin/.gitattributes"
 

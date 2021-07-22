@@ -314,7 +314,5 @@ zstyle ':fzf-tab:complete:_zlua:*' query-string input
 #############################################
 complete -o nospace -C /usr/bin/tk tk
 
-xmodmap ~/.Xmodmap
-
 export PYTHONBREAKPOINT=pudb.set_trace
 export KUBECTL_EXTERNAL_DIFF=kubectl-neat-diff
