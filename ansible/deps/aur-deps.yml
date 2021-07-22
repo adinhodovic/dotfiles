@@ -10,15 +10,9 @@
         name: '{{ item }}'
       loop:
         - shellcheck
-        - lab
-        - jq
-        - yq
         - neovim
         - alacritty
-        - broot
-        - lsd
         - flameshot-git
-        - git-standup-git
         - xautolock
         - xorg-xinit
         - python-virtualenv
@@ -39,40 +33,59 @@
         - docker
         - docker-compose
         - shellshock
-        - terraform
-        - dust
         - ruby
-        - aws-cli
-        - google-cloud-sdk
-        - hub
-        - fd
-        - procs
         - nodejs
         - npm
         - imagemagick
         - httpie
         - dropbox
         - openssh
-        - ripgrep
         - rsync
         - spotify
         - gnome-alsamixer
         - slack-desktop
         - mimeo
-        - unzip
         - xfce4-power-manager
         - glibc
-        - bat
         - simplescreenrecorder
         - unrar
         - tzupdate
-        - git-delta
-        - tanka-bin
-        - duf
-        - wget
         - lua
         - direnv-bin
+
+        # utils
+        - duf
+        - wget
         - inetutils
+        - unzip
+        - bat
+        - fd
+        - procs
+        - ripgrep
+        - broot
+        - lsd
+        - jq
+        - yq
+        - dust
+        - xclip
+
+        # configuration-management
+        - tanka-bin
+        - terraform
+
+        # git
+        - git-delta
+        - git-standup-git
+        - lab
+
+        # cloud
+        - aws-cli
+        - google-cloud-sdk
+
+        # sound
+        - pavucontrol
+        - pulseaudio-alsa
+        - alsa-utils
 
         # i3
         - i3-gaps
@@ -96,3 +109,6 @@
         - kubectl-bin
         - kubectx
         - krew-bin
+        - k9s
+        - helm
+        - lens-bin

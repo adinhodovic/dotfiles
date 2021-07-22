@@ -806,7 +806,7 @@ let g:neomake_open_list = 2
 
 let g:neomake_pylint_exe = systemlist('which pylint')[0]
 let g:neomake_mypy_exe = systemlist('which mypy')[0]
-let g:neomake_eslint_exe = systemlist('git rev-parse --show-toplevel')[0].'/api-tests/node_modules/.bin/eslint'
+let g:neomake_eslint_exe = systemlist('git rev-parse --show-toplevel')[0].'/node_modules/.bin/eslint'
 let g:neomake_stylelint_exe = systemlist('which stylelint')[0]
 
 let g:neomake_text_enabled_makers = ['writegood']
