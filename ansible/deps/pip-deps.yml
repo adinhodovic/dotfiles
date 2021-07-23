@@ -30,3 +30,4 @@
         - requests
         - docker-compose
         - awscli
+        - wheel
