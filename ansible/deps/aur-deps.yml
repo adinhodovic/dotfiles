@@ -68,6 +68,7 @@
         - yq
         - dust
         - xclip
+        - sysstat
 
         # configuration-management
         - tanka-bin

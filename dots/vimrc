@@ -58,7 +58,6 @@ Plug 'lfilho/cosco.vim'                       " Semicolons
 "-----------------------------------------
 "                   Utils
 "-----------------------------------------
-Plug 'psliwka/vim-smoothie'                   " Smooth scrolling
 Plug 'wsdjeg/FlyGrep.vim'                     " Use grep in Vim
 Plug 'antoinemadec/coc-fzf'                   " Coc-Fzf
 "------------------------------------------
@@ -72,6 +71,7 @@ Plug 'lifepillar/pgsql.vim'
 "-----------------------------------------
 "                   GUI
 "-----------------------------------------
+Plug 'psliwka/vim-smoothie'                   " Smooth scrolling
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ryanoasis/vim-devicons'                 " Icons
 Plug 'vim-airline/vim-airline'                " Bottom bar
@@ -82,7 +82,6 @@ Plug 'itchyny/vim-cursorword'                 " Underlines the word under the cu
 Plug 'morhetz/gruvbox'                        " Gruvbox theme
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } " colours in the file
 Plug 'rrethy/vim-illuminate'                  " Highlight similar word
-Plug 'camspiers/lens.vim'                     " autoresize
 Plug 'machakann/vim-highlightedyank'          " Highlight yanks
 Plug 'camspiers/animate.vim'
 "-----------------------------------------
@@ -720,7 +719,7 @@ nmap ghp <Plug>(GitGutterPreviewHunk)
 " Fugitive
 "-----------------------------------------
 command! Gdom Gdiff origin/master
-map <leader>gb :Gbrowse<cr>
+map <leader>gb :GBrowse<cr>
 map <leader>gl :0Glog<cr>
 map <leader>ge :Gedit<cr>
 "-----------------------------------------
