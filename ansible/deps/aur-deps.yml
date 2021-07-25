@@ -69,6 +69,7 @@
         - dust
         - xclip
         - sysstat
+        - postgresql-libs
 
         # configuration-management
         - tanka-bin
