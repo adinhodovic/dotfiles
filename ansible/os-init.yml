@@ -81,6 +81,8 @@
               dest: "~/personal/Ultisnips"
             - repo: "git@github.com:adinhodovic/hodovi-cc.git"
               dest: "~/personal/hodovi-cc"
+            - repo: "git@github.com:adinhodovic/blogs.git"
+              dest: "~/personal/blogs"
 
             # Honeylogic specific
             - repo: "git@github.com:honeylogic-io/administration.git"
