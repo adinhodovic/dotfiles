@@ -79,6 +79,8 @@
               dest: "~/personal/my-i3blocks"
             - repo: "git@github.com:adinhodovic/Ultisnips.git"
               dest: "~/personal/Ultisnips"
+            - repo: "git@github.com:adinhodovic/hodovi-cc.git"
+              dest: "~/personal/hodovi-cc"
 
             # Honeylogic specific
             - repo: "git@github.com:honeylogic-io/administration.git"
