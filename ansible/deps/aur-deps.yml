@@ -52,6 +52,8 @@
         - tzupdate
         - lua
         - direnv-bin
+        - xflux
+        - acpi
 
         # utils
         - duf
@@ -103,7 +105,6 @@
 
         # fonts
         - ttf-material-design-icons-git
-        - ttf-ionicons
         - powerline-fonts-git
         - ttf-roboto-mono
 
