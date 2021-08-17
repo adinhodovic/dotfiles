@@ -316,3 +316,4 @@ complete -o nospace -C /usr/bin/tk tk
 
 export PYTHONBREAKPOINT=pudb.set_trace
 export KUBECTL_EXTERNAL_DIFF=kubectl-neat-diff
+source /usr/share/nvm/init-nvm.sh

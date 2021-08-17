@@ -65,9 +65,6 @@
         - src: "yamllint.yml"
           dest: "/home/adin/.config/yamllint/config"
 
-        - src: "npmrc"
-          dest: "/home/adin/.npmrc"
-
         - src: "locale.conf"
           dest: "/etc/locale.conf"
 
