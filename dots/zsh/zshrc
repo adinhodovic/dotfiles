@@ -95,10 +95,10 @@ zle -N tmux-copy-mode
 ################################################
 export EDITOR="nvim"
 
+source ~/.dotfiles/dots/zsh/variables.sh
 source ~/.dotfiles/dots/zsh/fzf.sh
 source ~/.dotfiles/dots/zsh/plugins.sh
 source ~/.dotfiles/dots/zsh/alias.sh
-source ~/.dotfiles/dots/zsh/variables.sh
 
 ###############################
 # SSH Agent
