@@ -1,12 +1,13 @@
 alias cat="bat"
+alias cl='clear'
 # lsd instead of ls
 alias ls='lsd'
-alias cl='clear'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+# File dir
 alias n="nnn"
 
 alias df="duf"
@@ -23,6 +24,20 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
+# cd shortkeys
+alias cd-="cd -"
+alias cd.="cd .."
+alias cd..="cd ../.."
+alias cd...="cd ../../.."
+alias cd....='cd ../../../..'
+
+# Z.lua
+alias zz='z -c'      # restrict matches to subdirs of $PWD
+alias zi='z -i'      # cd with interactive selection
+alias zf='z -I'      # use fzf to select in multiple matches
+alias zb='z -b'      # quickly cd to the parent directory
+alias zh='z -I -t .'
+
 create_envrc () {
   envrc_content=""
   if [ -e "./.env" ]; then
@@ -31,19 +46,14 @@ create_envrc () {
   envrc_content+='poetry env use 3.9\nlayout_poetry'
   echo $envrc_content > .envrc
 }
-
 alias cenvrc=create_envrc
-
-alias '?'='googler'
-alias define='googler -n 2 define'
-
-alias seda=search_and_replace_all
-# Usecase raf regexA regexB **
-alias raf=rename_all_files
 
 search_and_replace_all () {
   rg "$3" --files-with-matches | xargs sed -i "s/$1/$2/g"
 }
+alias seda=search_and_replace_all
+# Usecase raf regexA regexB **
+alias raf=rename_all_files
 
 rename_all_files () {
   rename -v "$1" "$2" "$3"
@@ -61,26 +71,8 @@ function v() {
     nvim $@
   fi
 }
-alias v=v
 alias ps='procs'
-alias s-hl='vps-sync hl-ops-jumphost ~/company/honeylogic/ops ~/ops ops'
 alias t=task
-alias bw=bugwarrior-pull
-alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
-
-# cd shortkeys
-alias cd-="cd -"
-alias cd.="cd .."
-alias cd..="cd ../.."
-alias cd...="cd ../../.."
-alias cd....='cd ../../../..'
-
-# Z.lua
-alias zz='z -c'      # restrict matches to subdirs of $PWD
-alias zi='z -i'      # cd with interactive selection
-alias zf='z -I'      # use fzf to select in multiple matches
-alias zb='z -b'      # quickly cd to the parent directory
-alias zh='z -I -t .'
 
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 alias cp='cp -v '
@@ -92,8 +84,6 @@ alias v=nvim
 
 alias dus=diskus
 alias du=dust
-
-alias aws_kubeconfig="aws eks update-kubeconfig --name $1 --alias $2"
 
 alias copy="xclip -sel clip < $1"
 
