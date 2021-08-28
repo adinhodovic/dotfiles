@@ -153,9 +153,9 @@ Plug 'hail2u/vim-css3-syntax'
 "-----------------------------------------
 "                   HTML
 "-----------------------------------------
+" Look into html interactions
 Plug 'AndrewRadev/tagalong.vim'               " Tag matching
 Plug 'mattn/emmet-vim'
-Plug 'Valloric/MatchTagAlways'                " Show matching html/xml tags
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}      " CTRL + E for hacking HTMl
 "-----------------------------------------
 "                   Neomake

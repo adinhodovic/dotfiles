@@ -71,6 +71,7 @@
         - xclip
         - sysstat
         - postgresql-libs
+        - nnn
 
         # configuration-management
         - tanka-bin
