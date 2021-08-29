@@ -27,7 +27,6 @@ zinit light Aloxaf/fzf-tab
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light djui/alias-tips                          # Give tips when not using aliases
-zinit light popstas/zsh-command-time                 # Time activities
 zinit light wfxr/forgit                              # Git FZF utility tool
 zinit light b4b4r07/emoji-cli                        # Emoji cli
 zinit light hlissner/zsh-autopair                    # Autopair

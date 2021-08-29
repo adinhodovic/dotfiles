@@ -6,6 +6,17 @@
       "alignment": "right",
       "segments": [
         {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "background": "#828282",
+          "properties": {
+            "threshold": 10000,
+            "style": "austin",
+            "prefix": " <#fefefe>\ufbab</> "
+          }
+        },
+        {
           "type": "git",
           "style": "plain",
           "foreground": "#ffffff",
