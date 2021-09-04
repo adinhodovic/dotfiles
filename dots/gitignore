@@ -31,3 +31,4 @@ secrets.json
 secrets.jsonnet
 .envrc
 .npmrc
+bpytop.conf
