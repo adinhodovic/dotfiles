@@ -38,7 +38,6 @@ zinit light skywind3000/z.lua
 
 zinit snippet OMZP::golang
 zinit snippet OMZP::kubectl
-zinit snippet OMZP::sudo
 zinit snippet OMZP::ssh-agent
 zinit snippet OMZP::command-not-found
 
