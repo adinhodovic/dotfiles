@@ -1,7 +1,5 @@
 #!/bin/sh
 dbus-update-activation-environment --systemd DISPLAY
-xrandr --output eDP1
 xrdb -merge ~/.Xresources
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
 export SSH_AUTH_SOCK
-exec i3

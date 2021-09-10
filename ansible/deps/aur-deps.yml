@@ -103,10 +103,15 @@
         - firefox
         - chromium
 
+        # Ui
+        - lightdm
+        - lightdm-webkit-theme-aether
+
         # fonts
-        - ttf-material-design-icons-git
-        - powerline-fonts-git
         - ttf-roboto-mono
+        - ttf-font-awesome
+        - ttf-dejavu
+        - terminus-font
 
         # K8s
         - lens-bin

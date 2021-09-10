@@ -11,6 +11,12 @@
         force: true
       with_items:
 
+        - src: "Xresources"
+          dest: "/home/adin/.Xresources"
+
+        - src: "xprofile"
+          dest: "/home/adin/.xprofile"
+
         - src: "bpytop.conf"
           dest: "/home/adin/.config/bpytop/bpytop.conf"
 
@@ -67,9 +73,6 @@
 
         - src: "locale.conf"
           dest: "/etc/locale.conf"
-
-        - src: "xinitrc"
-          dest: "/home/adin/.xinitrc"
 
         - src: "gitignore"
           dest: "/home/adin/.gitignore"
