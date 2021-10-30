@@ -1,0 +1,6 @@
+[core]
+account = adin@honeylogic.io
+project = honeylogic
+[compute]
+region = europe-west1
+zone = europe-west1-a

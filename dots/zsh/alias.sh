@@ -38,6 +38,8 @@ alias zf='z -I'      # use fzf to select in multiple matches
 alias zb='z -b'      # quickly cd to the parent directory
 alias zh='z -I -t .'
 
+alias g-default="gcloud config configurations activate default && sed -i '/access-token:/d' ~/.kube/config"
+
 create_envrc () {
   envrc_content=""
   if [ -e "./.env" ]; then
