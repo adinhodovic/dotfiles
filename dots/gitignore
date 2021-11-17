@@ -19,6 +19,7 @@ secret.tfvars
 .terraform
 .mypy_cache
 .venv
+venv
 __pycache__
 toc.dat
 db_dump
@@ -33,3 +34,4 @@ secrets.jsonnet
 .npmrc
 bpytop.conf
 *.isorted
+*.egg-info
