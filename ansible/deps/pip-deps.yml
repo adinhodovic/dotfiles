@@ -32,3 +32,4 @@
         - awscli
         - wheel
         - psutil
+        - cleo

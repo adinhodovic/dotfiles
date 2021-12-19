@@ -1,4 +1,4 @@
 configuration {
- theme: "gruvbox-dark-hard";
  dpi: 220;
 }
+@theme "gruvbox-dark-hard"
