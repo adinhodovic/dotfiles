@@ -51,6 +51,7 @@ Plug 'tpope/vim-abolish'                      " Abbreviations
 "-----------------------------------------
 "                   Automation
 "-----------------------------------------
+Plug 'github/copilot.vim'                     " Copilot
 Plug 'farmergreg/vim-lastplace'               " Open at lastplace
 Plug 'tpope/vim-speeddating'                  " Increment dates
 Plug 'lfilho/cosco.vim'                       " Semicolons
