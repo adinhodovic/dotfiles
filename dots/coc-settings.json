@@ -27,6 +27,17 @@
       ],
       "initializationOptions": {},
       "settings": {}
+    },
+    "jsonnet": {
+      "command": "jsonnet-language-server",
+      "args": [
+        "--tanka",
+        "--lint"
+      ],
+      "filetypes": [
+        "jsonnet",
+        "jsonnet.libsonnet"
+      ]
     }
   }
 }
