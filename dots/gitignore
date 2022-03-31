@@ -35,3 +35,4 @@ secrets.jsonnet
 bpytop.conf
 *.isorted
 *.egg-info
+vendor

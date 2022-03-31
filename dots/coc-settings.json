@@ -32,7 +32,8 @@
       "command": "jsonnet-language-server",
       "args": [
         "--tanka",
-        "--lint"
+        "--lint",
+        "-j ./tanka/lib"
       ],
       "filetypes": [
         "jsonnet",
