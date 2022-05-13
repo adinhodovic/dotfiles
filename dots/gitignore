@@ -36,3 +36,5 @@ bpytop.conf
 *.isorted
 *.egg-info
 vendor
+/tmp
+.envrc

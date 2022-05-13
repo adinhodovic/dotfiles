@@ -100,6 +100,10 @@ Plug 'tpope/vim-rhubarb'                      " Dependency for vim-fugitive
 Plug 'rhysd/vim-github-actions'               " Vim filetype support for GitHub Actions
 Plug 'rhysd/conflict-marker.vim'              " Diff conflicts
 "-----------------------------------------
+"                   JSON
+"-----------------------------------------
+Plug 'elzr/vim-json'
+"-----------------------------------------
 "                   JSONNET
 "-----------------------------------------
 Plug 'google/vim-jsonnet'
@@ -139,10 +143,6 @@ Plug 'vim-ruby/vim-ruby'
 "                   JSX/TSX
 "-----------------------------------------
 Plug 'maxmellon/vim-jsx-pretty'
-"-----------------------------------------
-"                   JSON
-"-----------------------------------------
-Plug 'elzr/vim-json'
 "-----------------------------------------
 "                   NGINX
 "-----------------------------------------

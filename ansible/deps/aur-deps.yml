@@ -12,7 +12,7 @@
         - shellcheck
         - neovim
         - alacritty
-        - flameshot-git
+        - flameshot
         - xautolock
         - xorg-xinit
         - python-virtualenv
