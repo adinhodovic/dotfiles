@@ -38,3 +38,4 @@ bpytop.conf
 vendor
 /tmp
 .envrc
+htmlcov
