@@ -2,6 +2,7 @@ tfplan
 _site
 .sass-cache
 coverage.xml
+coverage
 .covrage
 dist
 .DS_Store
