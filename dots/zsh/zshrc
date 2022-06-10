@@ -329,4 +329,6 @@ source /usr/share/fzf/key-bindings.zsh
 
 export PYTHONBREAKPOINT=pudb.set_trace
 export KUBECTL_EXTERNAL_DIFF=kubectl-neat-diff
+export DOCKER_BUILDKIT=1
+
 source /usr/share/nvm/init-nvm.sh
