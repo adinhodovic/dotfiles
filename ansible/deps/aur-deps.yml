@@ -53,6 +53,7 @@
         - direnv-bin
         - xflux
         - acpi
+        - zoxide
 
         # utils
         - duf
@@ -81,6 +82,7 @@
         # git
         - git-delta
         - git-standup-git
+        - lazygit
         - lab
 
         # cloud
