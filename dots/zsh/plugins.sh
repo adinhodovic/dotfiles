@@ -1,56 +1,58 @@
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
+# clone a plugin, identify its init file, source it, and add it to your fpath
+function plugin-load {
+  local repo plugin_name plugin_dir initfile initfiles
+  ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+  for repo in $@; do
+    plugin_name=${repo:t}
+    plugin_dir=$ZPLUGINDIR/$plugin_name
+    initfile=$plugin_dir/$plugin_name.plugin.zsh
+    if [[ ! -d $plugin_dir ]]; then
+      echo "Cloning $repo"
+      git clone -q --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugin_dir
+    fi
+    if [[ ! -e $initfile ]]; then
+      initfiles=($plugin_dir/*.plugin.{z,}sh(N) $plugin_dir/*.{z,}sh{-theme,}(N))
+      [[ ${#initfiles[@]} -gt 0 ]] || { echo >&2 "Plugin has no init file '$repo'." && continue }
+      ln -sf "${initfiles[1]}" "$initfile"
+    fi
+    fpath+=$plugin_dir
+    (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
+  done
+}
 #############################################
-# Zinit Plugins
+# Plugins
 #############################################
-zinit light Aloxaf/fzf-tab
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light djui/alias-tips                          # Give tips when not using aliases
-zinit light wfxr/forgit                              # Git FZF utility tool
-zinit light b4b4r07/emoji-cli                        # Emoji cli
-zinit light hlissner/zsh-autopair                    # Autopair
-zinit light bonnefoa/kubectl-fzf
-zinit light olivierverdier/zsh-git-prompt            # git-prompt
 
-zinit ice atload"eval $(lua ~/.zinit/plugins/skywind3000---z.lua/z.lua --init zsh fzf)"
-zinit light skywind3000/z.lua
+plugins=(
+  golang
+  kubectl
+  ssh-agent
+  command-not-found
+)
 
-zinit snippet OMZP::golang
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::ssh-agent
-zinit snippet OMZP::command-not-found
+repos=(
+  Aloxaf/fzf-tab
 
-zinit ice src"zshrc"
-zinit light adinhodovic/docker-alias
-zinit ice src"zshrc"
-zinit light adinhodovic/docker-compose-alias
-zinit ice src"zshrc"
-zinit light adinhodovic/ansible-alias
-zinit ice src"zshrc"
-zinit light adinhodovic/git-alias
-zinit ice src"zshrc"
-zinit light adinhodovic/terraform-alias
-zinit ice src"zshrc"
-zinit light adinhodovic/kubernetes-alias
+  zdharma-continuum/fast-syntax-highlighting
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-completions
+  ohmyzsh/ohmyzsh
+
+  djui/alias-tips
+  wfxr/forgit
+  hlissner/zsh-autopair
+  adinhodovic/docker-alias
+  adinhodovic/docker-compose-alias
+  adinhodovic/ansible-alias
+  adinhodovic/git-alias
+  adinhodovic/terraform-alias
+  adinhodovic/kubernetes-alias
+)
+
+# now load your plugins
+plugin-load $repos
+
+eval "$(zoxide init zsh)"
 ############################################
