@@ -299,10 +299,15 @@ source /home/adin/.config/broot/launcher/bash/br
 
 bindkey '^ ' autosuggest-accept
 
+#############################################
+# FZF
+#############################################
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
 ###########################################
 # Fzf-tab
 ###########################################
-
 enable-fzf-tab
 
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
@@ -317,22 +322,18 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
+
 #############################################
 # Tanka
 #############################################
 complete -o nospace -C /usr/bin/tk tk
+
 #############################################
-# FZF
+# Misc
 #############################################
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
 
 export PYTHONBREAKPOINT=pudb.set_trace
 export KUBECTL_EXTERNAL_DIFF=kubectl-neat-diff
 export DOCKER_BUILDKIT=1
 
 source /usr/share/nvm/init-nvm.sh
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-

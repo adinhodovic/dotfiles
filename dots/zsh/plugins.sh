@@ -1,6 +1,7 @@
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
 
 # clone a plugin, identify its init file, source it, and add it to your fpath
+# https://github.com/mattmc3/zsh_unplugged
 function plugin-load {
   local repo plugin_name plugin_dir initfile initfiles
   ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
