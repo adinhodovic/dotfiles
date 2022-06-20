@@ -38,10 +38,10 @@ plugins=(
 repos=(
   Aloxaf/fzf-tab
 
-  zdharma-continuum/fast-syntax-highlighting
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions
   ohmyzsh/ohmyzsh
+  zdharma-continuum/fast-syntax-highlighting
 
   djui/alias-tips
   wfxr/forgit
