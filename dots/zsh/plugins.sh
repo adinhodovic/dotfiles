@@ -26,6 +26,8 @@ function plugin-load {
 # Plugins
 #############################################
 
+# https://github.com/ohmyzsh/ohmyzsh/issues/5569
+export DISABLE_MAGIC_FUNCTIONS=true
 plugins=(
   golang
   kubectl
