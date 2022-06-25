@@ -152,5 +152,6 @@ complete -o nospace -C /usr/bin/tk tk
 export PYTHONBREAKPOINT=pudb.set_trace
 export KUBECTL_EXTERNAL_DIFF=kubectl-neat-diff
 export DOCKER_BUILDKIT=1
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 source /usr/share/nvm/init-nvm.sh
