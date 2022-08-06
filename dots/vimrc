@@ -14,7 +14,6 @@ Plug 'VundleVim/Vundle.vim'
 "-----------------------------------------
 "                   General
 "-----------------------------------------
-Plug 'ervandew/supertab'                      " Tab down alts
 Plug 'dkarter/bullets.vim'                    " Bullet lists
 Plug 'junegunn/vim-easy-align'                " Align code around arbitrary characters =,:
 Plug 'airblade/vim-rooter'                    " Sets root directory to project (git) directory by default
@@ -238,11 +237,15 @@ vnoremap <silent> <leader>b64e :<c-u>call base64#v_btoa()<cr>
 "-----------------------------------------
 " Autocompelete
 "-----------------------------------------
-augroup autocomplete
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  autocmd! CompleteDone * if pumvisible() == 0 | silent! pclose | endif
-augroup END
-
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+" remap for complete to use tab and <cr>
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
 "-----------------------------------------
 " History
 "-----------------------------------------
@@ -530,11 +533,6 @@ let g:EasyMotion_use_upper = 1
 map f <Plug>(easymotion-bd-fl)
 map t <Plug>(easymotion-bd-tl)
 map s <Plug>(easymotion-sn)
-"-----------------------------------------
-" Supertab
-"-----------------------------------------
-let g:SuperTabDefaultCompletionType = '<c-n>' "Supertab from top to bottom
-let g:SuperTabClosePreviewOnPopupClose = 1
 "-----------------------------------------
 " IndentLine
 "-----------------------------------------
@@ -893,7 +891,6 @@ nnoremap <Space>s :FlyGrep<cr>
 let g:UltiSnipsExpandTrigger = '<nop>'
 " Load my own snippets
 let g:UltiSnipsSnippetDirectories=['~/personal/UltiSnips']
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "               Terraform
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -917,8 +914,6 @@ augroup spelunker
   " Setting for g:spelunker_check_type = 2:
   autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md call spelunker#check_displayed_words()
 augroup END
-
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "               Documentation
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
