@@ -1,6 +1,6 @@
 [user]
 	email = hodovicadin@gmail.com
-	name = Adin Hodovic
+	name = adinhodovic
 [core]
   pager = "{                                                           \
       COLUMNS=$(tput cols);                                            \
@@ -43,3 +43,8 @@
   file-decoration-style = none
 [remote "origin"]
 	gh-resolved = base
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
