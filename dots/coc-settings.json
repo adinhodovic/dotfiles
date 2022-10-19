@@ -32,13 +32,10 @@
       "command": "jsonnet-language-server",
       "args": [
         "--tanka",
-        "--lint",
-        "-j ./tanka/lib"
+        "--lint"
       ],
-      "filetypes": [
-        "jsonnet",
-        "jsonnet.libsonnet"
-      ]
+      "rootPatterns": [".git/", "jsonnetfile.json"],
+      "filetypes": ["jsonnet","libsonnet"]
     }
   }
 }
