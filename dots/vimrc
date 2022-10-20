@@ -827,12 +827,13 @@ let g:neomake_typescript_eslint_args = ['--fix', '--format=json']
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_json_jsonlint_args = ['-i']
 
-let g:neomake_jsonnet_jsonnetlint_maker = {
-    \ 'name': 'jsonnetlint',
-    \ 'exe': 'jsonnet-lint',
+let g:neomake_jsonnet_tk_maker = {
+    \ 'name': 'tk',
+    \ 'exe': 'tk',
     \ 'errorformat': '%m',
+    \ 'args': ['lint']
     \ }
-let g:neomake_jsonnet_enabled_makers = ['jsonnetlint']
+let g:neomake_jsonnet_enabled_makers = ['tk']
 
 let g:neomake_python_isort_maker = {
     \ 'name': 'isort',
