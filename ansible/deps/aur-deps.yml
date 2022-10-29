@@ -28,6 +28,7 @@
         - network-manager-applet
         - enpass-bin
         - task
+        - taskwarrior-tui
         - bandwhich
         - yamllint
         - docker
