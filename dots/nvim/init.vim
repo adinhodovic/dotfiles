@@ -2,7 +2,7 @@ scriptencoding utf-8
 
 let g:python3_host_prog = '/usr/bin/python'
 
-lua require('lua.init')
+lua require('lua')
 "-----------------------------------------
 " General
 "-----------------------------------------
@@ -792,13 +792,6 @@ nnoremap <leader>mr :MRU<CR>
 "-----------------------------------------
 " Abbreviations
 "-----------------------------------------
-function! LoadAbbreviations()
-   source ~/.dotfiles/dots/vim/abbreviations.vim
-endfunction
-
-augroup abbreviations
-  autocmd VimEnter * call LoadAbbreviations()
-augroup end
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
