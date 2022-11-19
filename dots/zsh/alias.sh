@@ -75,6 +75,7 @@ alias tt=taskwarrior-tui
 
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
 alias cp='cp -v '
+alias cp-img='xclip -selection clipboard -t image/png -i'
 alias mv='mv -v '
 alias h="history"
 alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
