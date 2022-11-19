@@ -47,8 +47,14 @@
         - src: "tmux.conf"
           dest: "/home/adin/.tmux.conf"
 
-        - src: "vimrc"
+        - src: "nvim/init.vim"
           dest: "/home/adin/.config/nvim/init.vim"
+
+        - src: "nvim/lua"
+          dest: "/home/adin/.config/nvim/lua"
+
+        - src: "nvim/coc-settings.json"
+          dest: "/home/adin/.config/nvim/coc-settings.json"
 
         - src: "zsh/zshrc"
           dest: "/home/adin/.zshrc"
@@ -76,9 +82,6 @@
 
         - src: "gitignore"
           dest: "/home/adin/.gitignore"
-
-        - src: "coc-settings.json"
-          dest: "/home/adin/.config/nvim/coc-settings.json"
 
         - src: "htmlhintrc"
           dest: "/home/adin/.htmlhintrc"
