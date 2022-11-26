@@ -31,12 +31,12 @@ Plug('Lokaltog/vim-easymotion')
 Plug('instant-markdown/vim-instant-markdown', {['for'] = 'markdown'})
 Plug('plasticboy/vim-markdown')
 Plug('mzlogin/vim-markdown-toc')               -- Markdown ToC
-Plug('kamykn/spelunker.vim')                   -- Words
-Plug('kamykn/popup-menu.nvim')                 -- Popup for spelunker
+Plug('rhysd/vim-grammarous')                   -- Words
 Plug('reedes/vim-pencil')                      -- Writing tool
-Plug('reedes/vim-wordy')
 Plug('tpope/vim-abolish')                      -- Abbreviations
 Plug('ferrine/md-img-paste.vim')               -- Image pasting
+Plug('ron89/thesaurus_query.vim')
+Plug('reedes/vim-wordy')
 -----------------------------------------
 --              Automation
 -----------------------------------------

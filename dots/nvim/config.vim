@@ -501,17 +501,6 @@ augroup END
 let g:terraform_commentstring='//%s'
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
-"-----------------------------------------
-" spelunker-vim
-"-----------------------------------------
-augroup spelunker
-  autocmd!
-  " Setting for g:spelunker_check_type = 1:
-  autocmd BufWinEnter,BufWritePost *.vim,*.js,*.jsx,*.json,*.md call spelunker#check()
-
-  " Setting for g:spelunker_check_type = 2:
-  autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md call spelunker#check_displayed_words()
-augroup END
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "               Documentation
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
