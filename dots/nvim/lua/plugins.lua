@@ -44,10 +44,11 @@ Plug('github/copilot.vim')                     -- Copilot
 Plug('farmergreg/vim-lastplace')               -- Open at lastplace
 Plug('tpope/vim-speeddating')                  -- Increment dates
 Plug('lfilho/cosco.vim')                       -- Semicolons
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 -----------------------------------------
 --              Utils
 -----------------------------------------
-Plug('wsdjeg/FlyGrep.vim')                     -- Use grep in Vim
 Plug('antoinemadec/coc-fzf')                   -- Coc-Fzf
 -----------------------------------------
 --              Snippets
@@ -163,7 +164,19 @@ Plug('danihodovic/vim-ansible-vault')
 -----------------------------------------
 Plug('hashivim/vim-terraform')
 
+Plug 'fannheyward/telescope-coc.nvim'
+
 vim.call('plug#end')
+
+require("telescope").setup({
+  extensions = {
+    coc = {
+        theme = 'ivy',
+        prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+    }
+  },
+})
+require('telescope').load_extension('coc')
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"

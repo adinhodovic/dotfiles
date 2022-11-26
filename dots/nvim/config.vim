@@ -198,15 +198,11 @@ let g:coc_global_extensions = [
     \ 'coc-ultisnips',
     \ 'coc-tsserver',
     \ 'coc-git',
+    \ 'coc-lists'
 \]
 "\ 'coc-tabnine' disable due to high cpu,
 
 set updatetime=300
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " Remap for rename current word
@@ -486,10 +482,6 @@ augroup my_neomake_hooks
   au!
   autocmd User NeomakeJobFinished :edit
 augroup END
-"-----------------------------------------
-" wsdjeg/flygrep
-"-----------------------------------------
-nnoremap <Space>s :FlyGrep<cr>
 "-----------------------------------------
 " SirVer/ultisnips
 "-----------------------------------------

@@ -3,6 +3,8 @@ local set = vim.opt
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+vim.g.python3_host_prog = '/usr/bin/python'
+
 vim.g.hardtime_default_on = 0
 
 vim.g.hardtime_maxcount = 2

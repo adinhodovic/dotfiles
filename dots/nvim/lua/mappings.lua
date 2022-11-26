@@ -42,6 +42,7 @@ vmap("m", "%")
 -- set cmdwinheight=1
 
 nmap("q", "b")
+vmap("q", "b")
 -- Movement begin/end of line
 nmap("Q", "^")
 nmap("W", "g_")
@@ -72,5 +73,16 @@ execute 'xnoremap / /' . &cedit . 'a'
 execute 'nnoremap ? ?' . &cedit . 'a'
 execute 'xnoremap ? ?' . &cedit . 'a'
 ]])
+
 -- Linediff.vim
-nmap('n', '<Leader>ld', ':Linediff<cr>')
+vmap('<leader>ld', ':Linediff<cr>')
+
+-- Telescope.nvim
+local builtin = require('telescope.builtin')
+nmap('<leader>ff', builtin.find_files)
+nmap('<leader>fg', builtin.live_grep)
+nmap('<leader>fb', builtin.buffers)
+nmap('<leader>fh', builtin.help_tags)
+nmap('<leader>fr', ":Telescope coc references<cr>")
+nmap('<leader>fd', ":Telescope coc definitions<cr>")
+nmap('<leader>fds', ":Telescope coc document_symbols<cr>")
