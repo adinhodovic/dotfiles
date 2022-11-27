@@ -515,8 +515,8 @@ let g:instant_markdown_autostart = 0
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
-" The other style keeps unfolding
-let g:vim_markdown_folding_style_pythonic = 1
+" Disable folding, we have search
+let g:vim_markdown_folding_disabled = 1
 
 nnoremap <leader>md :InstantMarkdownPreview<cr>
 nnoremap <leader>ms :InstantMarkdownStop<cr>

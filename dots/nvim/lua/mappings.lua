@@ -87,7 +87,7 @@ nmap('<leader>fr', ":Telescope coc references<cr>")
 nmap('<leader>fd', ":Telescope coc definitions<cr>")
 nmap('<leader>fds', ":Telescope coc document_symbols<cr>")
 
---
+-- Grammarous
 nmap("<leader>gc", ":GrammarousCheck<CR>")
 
 -- Thesaurus_query.vim
