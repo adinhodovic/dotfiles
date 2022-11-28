@@ -1,5 +1,6 @@
 local vim = vim
 local set = vim.opt
+local g = vim.g
 
 function map(mode, shortcut, command)
   vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
@@ -91,5 +92,5 @@ nmap('<leader>fds', ":Telescope coc document_symbols<cr>")
 nmap("<leader>gc", ":GrammarousCheck<CR>")
 
 -- Thesaurus_query.vim
-vim.g.tq_map_keys=0
+vim.g.tq_map_keys = 0
 nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
