@@ -79,10 +79,31 @@ execute 'xnoremap ? ?' . &cedit . 'a'
 vmap('<leader>ld', ':Linediff<cr>')
 
 -- Telescope.nvim
+git_files_changed = function()
+    local previewers = require('telescope.previewers')
+    local pickers = require('telescope.pickers')
+    local sorters = require('telescope.sorters')
+    local finders = require('telescope.finders')
+
+    pickers.new {
+        results_title = 'Modified on current branch',
+        finder = finders.new_oneshot_job({'/home/adin/.dotfiles/scripts/git-files-changed.sh', 'list'}),
+        sorter = sorters.get_fuzzy_file(),
+        previewer = previewers.new_termopen_previewer {
+            get_command = function(entry)
+                return {'/home/adin/.dotfiles/scripts/git-files-changed.sh', 'diff', entry.value}
+            end
+        },
+    }:find()
+end
+
+nmap('b', ":e #<cr>")
 local builtin = require('telescope.builtin')
-nmap('<leader>ff', builtin.find_files)
+nmap('-', builtin.buffers)
+nmap('=', git_files_changed)
+nmap('<M-=>', builtin.find_files)
+nmap('<M-->', builtin.git_files)
 nmap('<leader>fg', builtin.live_grep)
-nmap('<leader>fb', builtin.buffers)
 nmap('<leader>fh', builtin.help_tags)
 nmap('<leader>fr', ":Telescope coc references<cr>")
 nmap('<leader>fd', ":Telescope coc definitions<cr>")
@@ -94,3 +115,4 @@ nmap("<leader>gc", ":GrammarousCheck<CR>")
 -- Thesaurus_query.vim
 vim.g.tq_map_keys = 0
 nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
+

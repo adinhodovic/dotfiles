@@ -153,35 +153,6 @@ let g:fzf_action = {
 
 let g:fzf_layout = {'up': '~40%'}
 let g:fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
-nnoremap b :e #<cr>
-nnoremap - :Buffers<cr>
-nnoremap = :call FzfGitChangedFilesFromMaster()<cr>
-nnoremap <M-=> :Files<cr>
-nnoremap <M--> :GitFiles<cr>
-
-function! FzfGitChangedFilesFromMaster()
-  let root = split(system('git rev-parse --show-toplevel'), '\n')[0]
-  if v:shell_error
-    echom 'Not in git repo'
-    return
-  endif
-
-  let default_remote_branch = split(system("git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"), '\n')[0]
-  let cmd_diff_files = printf('git --no-pager diff origin/%s --name-only', default_remote_branch)
-  let diff_files = split(system(cmd_diff_files), '\n')
-
-  let untracked_files = split(system('git ls-files --others --exclude-standard'), '\n')
-  let files = diff_files + untracked_files
-
-  let wrapped = fzf#wrap({
-  \ 'source':  files,
-  \ 'dir':     root,
-  \ 'options': '--ansi --multi --bind=alt-a:select-all --nth 2..,.. --tiebreak=index --prompt "GitFiles?> " --preview ''sh -c "(git diff origin/master --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500"''',
-  \ 'up':      '50%',
-  \})
-  call fzf#run(wrapped)
-endfunction
-
 "-----------------------------------------
 " Coc
 "-----------------------------------------
