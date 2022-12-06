@@ -4,16 +4,19 @@ local g = vim.g
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-vim.g.python3_host_prog = '/usr/bin/python'
+g.python3_host_prog = '/usr/bin/python'
 
-vim.g.hardtime_default_on = 0
+g.hardtime_default_on = 0
 
-vim.g.hardtime_maxcount = 2
-vim.g.hardtime_allow_different_key = 1
+g.hardtime_maxcount = 2
+g.hardtime_allow_different_key = 1
 
-vim.opt.completeopt=preview,menu
 
-vim.opt.mouse=a
+set.completeopt=preview,menu
+
+set.mouse=a
+
+set.updatetime = 300
 
 -- Set to auto read when a file is changed from the outside
 vim.opt.autoread = true
@@ -245,3 +248,8 @@ vim.cmd([[
   -- command = ":edit",
   -- group = neomake
 -- })
+--
+
+-- Disable copilot tabs that interfere with Coc
+g.copilot_no_tab_map = true
+g.copilot_assume_mapped = true

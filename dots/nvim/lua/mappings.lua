@@ -75,10 +75,74 @@ execute 'nnoremap ? ?' . &cedit . 'a'
 execute 'xnoremap ? ?' . &cedit . 'a'
 ]])
 
+----------------------------------------
 -- Linediff.vim
+----------------------------------------
 vmap('<leader>ld', ':Linediff<cr>')
 
+----------------------------------------
+-- Copilot
+----------------------------------------
+vim.cmd([[
+imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")
+]])
+
+----------------------------------------
+-- Coc.nvim
+----------------------------------------
+
+local keyset = vim.keymap.set
+-- Auto complete
+function _G.check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
+-- Use tab for trigger completion with characters ahead and navigate.
+-- NOTE: There's always complete item selected by default, you may want to enable
+-- no select by `"suggest.noselect": true` in your configuration file.
+-- NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+-- other plugin before putting this into your config.
+local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+
+-- Make <CR> to accept selected completion item or notify coc.nvim to format
+-- <C-g>u breaks current undo, please make your own choice.
+keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+
+-- Use <c-j> to trigger snippets
+keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+-- Use <c-space> to trigger completion.
+keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
+
+-- Use K to show documentation in preview window.
+function _G.show_docs()
+    local cw = vim.fn.expand('<cword>')
+    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+        vim.api.nvim_command('h ' .. cw)
+    elseif vim.api.nvim_eval('coc#rpc#ready()') then
+        vim.fn.CocActionAsync('doHover')
+    else
+        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+    end
+end
+keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+
+-- Highlight the symbol and its references when holding the cursor.
+vim.api.nvim_create_augroup("CocGroup", {})
+vim.api.nvim_create_autocmd("CursorHold", {
+    group = "CocGroup",
+    command = "silent call CocActionAsync('highlight')",
+    desc = "Highlight symbol under cursor on CursorHold"
+})
+
+-- Symbol renaming.
+keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+
+----------------------------------------
 -- Telescope.nvim
+----------------------------------------
 git_files_changed = function()
     local previewers = require('telescope.previewers')
     local pickers = require('telescope.pickers')
@@ -109,10 +173,14 @@ nmap('<leader>fr', ":Telescope coc references<cr>")
 nmap('<leader>fd', ":Telescope coc definitions<cr>")
 nmap('<leader>fds', ":Telescope coc document_symbols<cr>")
 
+----------------------------------------
 -- Grammarous
+----------------------------------------
 nmap("<leader>gc", ":GrammarousCheck<CR>")
 
+----------------------------------------
 -- Thesaurus_query.vim
+----------------------------------------
 vim.g.tq_map_keys = 0
 nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
 

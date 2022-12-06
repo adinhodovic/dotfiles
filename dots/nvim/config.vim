@@ -4,18 +4,6 @@
 vnoremap <silent> <leader>b64d :<c-u>call base64#v_atob()<cr>
 vnoremap <silent> <leader>b64e :<c-u>call base64#v_btoa()<cr>
 "-----------------------------------------
-" Autocompelete
-"-----------------------------------------
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
-" remap for complete to use tab and <cr>
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-inoremap <silent><expr> <c-space> coc#refresh()
-"-----------------------------------------
 "               Writing
 "-----------------------------------------
 noremap <silent> <F8> :<C-u>NextWordy<cr>
@@ -173,29 +161,7 @@ let g:coc_global_extensions = [
 \]
 "\ 'coc-tabnine' disable due to high cpu,
 
-set updatetime=300
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . ' ' . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-augroup coc
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup end
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -366,6 +332,7 @@ endfunction
 " SirVer/ultisnips
 "-----------------------------------------
 " Collides with coc-snippets
+let g:UltiSnipsListSnippets = '<nop>'
 let g:UltiSnipsExpandTrigger = '<nop>'
 " Load my own snippets
 let g:UltiSnipsSnippetDirectories=['~/personal/UltiSnips']
