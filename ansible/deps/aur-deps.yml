@@ -9,9 +9,6 @@
       aur:
         name: '{{ item }}'
       loop:
-        - shellcheck
-        - neovim
-        - alacritty
         - flameshot
         - xautolock
         - xorg-xinit
@@ -23,17 +20,12 @@
         - diskus
         - feh
         - os-prober
-        - tmux
         - networkmanager
         - network-manager-applet
         - enpass-bin
         - task
         - taskwarrior-tui
         - bandwhich
-        - yamllint
-        - docker
-        - docker-compose
-        - shellshock
         - ruby
         - nodejs
         - npm
@@ -41,7 +33,6 @@
         - httpie
         - openssh
         - rsync
-        - spotify
         - gnome-alsamixer
         - slack-desktop
         - mimeo
@@ -50,11 +41,16 @@
         - simplescreenrecorder
         - unrar
         - tzupdate
-        - lua
-        - direnv-bin
         - xflux
         - acpi
+
+        # terminal/vim
+        - alacritty
+        - tmux
+        - neovim
         - zoxide
+        - direnv-bin
+        - lua
 
         # utils
         - duf
@@ -74,6 +70,11 @@
         - sysstat
         - postgresql-libs
         - nnn
+
+        # linting
+        - shellcheck
+        - shellshock
+        - yamllint
 
         # configuration-management
         - tanka-bin
@@ -115,6 +116,10 @@
         - ttf-font-awesome
         - ttf-dejavu
         - terminus-font
+
+        # Containers
+        - docker
+        - docker-compose
 
         # K8s
         - lens-bin
