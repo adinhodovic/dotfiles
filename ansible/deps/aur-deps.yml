@@ -51,6 +51,7 @@
         - zoxide
         - direnv-bin
         - lua
+        - mcfly
 
         # utils
         - duf

@@ -155,3 +155,5 @@ export DOCKER_BUILDKIT=1
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 source /usr/share/nvm/init-nvm.sh
+
+eval "$(mcfly init zsh)"

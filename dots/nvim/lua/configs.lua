@@ -215,15 +215,15 @@ g.neomake_less_enabled_makers = {'stylelint'}
 g.neomake_less_stylelint_args = {'--fix'}
 
 g.neomake_html_jsbeautify_maker = {
-  name = 'jsbeautify',
-  exe = 'js-beautify',
-  args = {'-r', '--type html'}
+  name = 'djLint',
+  exe = 'djlint',
+  args = {'--profile=html', '--reformat'}
 }
 
 g.neomake_htmldjango_jsbeautify_maker = {
-  name = 'jsbeautify',
-  exe = 'js-beautify',
-  args = {'-r', '--type html'}
+  name = 'djLint',
+  exe = 'djlint',
+  args = {'--profile=django', '--reformat'}
 }
 
 g.neomake_htmldjango_htmlhint_maker = {
