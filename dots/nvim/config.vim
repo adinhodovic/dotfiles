@@ -153,6 +153,7 @@ let g:coc_global_extensions = [
     \ 'coc-yank',
     \ 'coc-html',
     \ 'coc-css',
+    \ 'coc-emmet',
     \ 'coc-pyright',
     \ 'coc-ultisnips',
     \ 'coc-tsserver',

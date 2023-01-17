@@ -3,8 +3,6 @@
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
-  "coc.preferences.colorSupport": false,
-  "highlight.document.enable": false,
   "html.autoClosingTags": true,
   "suggest.snippetIndicator": "🔨",
   "snippets.extends": {
