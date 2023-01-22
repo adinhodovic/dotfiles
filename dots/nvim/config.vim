@@ -157,6 +157,7 @@ let g:coc_global_extensions = [
     \ 'coc-pyright',
     \ 'coc-ultisnips',
     \ 'coc-tsserver',
+    \ 'coc-spell-checker',
     \ 'coc-git',
     \ 'coc-lists'
 \]
@@ -172,6 +173,9 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
 "-----------------------------------------
 " coc-fzf
 "-----------------------------------------
