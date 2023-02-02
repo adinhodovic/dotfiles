@@ -158,6 +158,7 @@ let g:coc_global_extensions = [
     \ 'coc-ultisnips',
     \ 'coc-tsserver',
     \ 'coc-spell-checker',
+    \ 'coc-markdownlint',
     \ 'coc-git',
     \ 'coc-lists'
 \]
