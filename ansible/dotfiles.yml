@@ -27,7 +27,7 @@
           dest: "/home/adin/.config/pudb/pudb.cfg"
 
         - src: "ptpython.py"
-          dest: "/home/adin/.ptpython/config.py"
+          dest: "/home/adin/.config/ptpython/config.py"
 
         - src: "gitattributes"
           dest: "/home/adin/.gitattributes"

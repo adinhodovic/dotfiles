@@ -3,6 +3,7 @@
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
   "html.autoClosingTags": true,
   "suggest.snippetIndicator": "🔨",
   "snippets.extends": {
@@ -32,8 +33,14 @@
         "--tanka",
         "--lint"
       ],
-      "rootPatterns": [".git/", "jsonnetfile.json"],
-      "filetypes": ["jsonnet","libsonnet"]
+      "rootPatterns": [
+        ".git/",
+        "jsonnetfile.json"
+      ],
+      "filetypes": [
+        "jsonnet",
+        "libsonnet"
+      ]
     }
   }
 }
