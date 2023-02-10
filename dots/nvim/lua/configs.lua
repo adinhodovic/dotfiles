@@ -203,7 +203,7 @@ g.neomake_python_black_maker = {
 g.neomake_pylint_exe = vim.fn.systemlist('which pylint')[0]
 g.neomake_mypy_exe = vim.fn.systemlist('which mypy')[0]
 
-g.neomake_python_enabled_makers = {'pylint', 'isort', 'black', 'mypy', 'flake8'}
+g.neomake_python_enabled_makers = {'pylint', 'isort', 'black', 'mypy'}
 
 g.neomake_css_enabled_makers = {'stylelint'}
 g.neomake_css_stylelint_args = {'--fix'}
