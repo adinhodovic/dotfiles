@@ -51,7 +51,6 @@
         - zoxide
         - direnv-bin
         - lua
-        - mcfly
 
         # utils
         - duf
@@ -86,7 +85,6 @@
         - git-delta
         - git-standup-git
         - lazygit
-        - lab
 
         # cloud
         - aws-cli
@@ -123,10 +121,8 @@
         - docker-compose
 
         # K8s
-        - lens-bin
         - kubectl-bin
         - kubectx
-        - krew-bin
         - k9s
         - helm
-        - lens-bin
+        - openlens-bin

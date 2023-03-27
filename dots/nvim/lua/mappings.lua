@@ -183,3 +183,4 @@ nmap("<leader>gc", ":GrammarousCheck<CR>")
 ----------------------------------------
 vim.g.tq_map_keys = 0
 nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
+vmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
