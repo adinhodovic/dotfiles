@@ -70,6 +70,7 @@
         - sysstat
         - postgresql-libs
         - nnn
+        - fx # json browsing
 
         # linting
         - shellcheck
