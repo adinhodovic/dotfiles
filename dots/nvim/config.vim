@@ -361,7 +361,7 @@ let g:terraform_fmt_on_save=1
 " Markdown
 "-----------------------------------------
 " Disable autostart of md composer
-let g:instant_markdown_browser = 'firefox --new-window'
+let g:instant_markdown_browser = 'chromium --new-window'
 let g:instant_markdown_autostart = 0
 
 " Disable markdown code block conceals
