@@ -177,6 +177,7 @@ nmap('<leader>fds', ":Telescope coc document_symbols<cr>")
 -- Grammarous
 ----------------------------------------
 nmap("<leader>gc", ":GrammarousCheck<CR>")
+vmap("<leader>gc", ":GrammarousCheck<CR>")
 
 ----------------------------------------
 -- Thesaurus_query.vim
