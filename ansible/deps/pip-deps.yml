@@ -33,3 +33,4 @@
         - wheel
         - psutil
         - cleo
+        - aws-mfa
