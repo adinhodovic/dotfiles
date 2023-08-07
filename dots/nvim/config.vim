@@ -327,7 +327,7 @@ nnoremap <leader>mr :MRU<CR>
 " Abbreviations
 "-----------------------------------------
 function! LoadAbbreviations()
-   source ~/.dotfiles/dots/vim/abbreviations.vim
+   source ~/.dotfiles/dots/nvim/abbreviations.vim
 endfunction
 
 augroup abbreviations
