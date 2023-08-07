@@ -220,34 +220,6 @@ augroup emmet
   autocmd FileType html,css,jsx,tsx EmmetInstall
 augroup END
 "-----------------------------------------
-" GitGutter
-"-----------------------------------------
-let g:gitgutter_max_signs=9999
-hi SignColumn guibg=black ctermbg=black
-nmap <Leader>s <Plug>(GitGutterStageHunk)
-nmap <Leader>u <Plug>(GitGutterUndoHunk)
-nmap ghp <Plug>(GitGutterPreviewHunk)
-"-----------------------------------------
-" Fugitive
-"-----------------------------------------
-command! Gdom Gdiff origin/master
-map <leader>gb :GBrowse<cr>
-map <leader>gl :0Glog<cr>
-map <leader>ge :Gedit<cr>
-"-----------------------------------------
-" Committia
-"-----------------------------------------
-let g:committia_hooks = {}
-function! g:committia_hooks.edit_open(info)
-    " Additional settings
-    setlocal spell
-
-    " Scroll the diff window from insert mode
-    " Map <C-n> and <C-p>
-    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
-endfunction
-"-----------------------------------------
 " Rainbow Parantheses
 "-----------------------------------------
 let g:rainbow_active = 1
@@ -317,37 +289,6 @@ let g:UltiSnipsListSnippets = '<nop>'
 let g:UltiSnipsExpandTrigger = '<nop>'
 " Load my own snippets
 let g:UltiSnipsSnippetDirectories=['~/personal/UltiSnips']
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"               Terraform
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-augroup terraform
-  autocmd BufEnter *.hcl :setlocal filetype=terraform
-augroup END
-"-----------------------------------------
-" hashivim/vim-terraform
-"-----------------------------------------
-let g:terraform_commentstring='//%s'
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"               Documentation
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"-----------------------------------------
-" Markdown
-"-----------------------------------------
-" Disable autostart of md composer
-let g:instant_markdown_browser = 'chromium --new-window'
-let g:instant_markdown_autostart = 0
-
-" Disable markdown code block conceals
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
-" Disable folding, we have search
-let g:vim_markdown_folding_disabled = 1
-
-nnoremap <leader>md :InstantMarkdownPreview<cr>
-nnoremap <leader>ms :InstantMarkdownStop<cr>
 "-----------------------------------------
 "               Vim-pencil
 "-----------------------------------------

@@ -251,13 +251,46 @@ vim.cmd([[
   augroup END
 ]])
 
--- local neomake = augroup("neomake", {})
--- autocmd("NeomakeJobFinished", {
-  -- command = ":edit",
-  -- group = neomake
--- })
---
-
 -- Disable copilot tabs that interfere with Coc
 g.copilot_no_tab_map = true
 g.copilot_assume_mapped = true
+
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Terraform
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+autocmd("BufEnter", {
+  pattern = {"*.hcl"},
+  command = "setlocal filetype=terraform",
+  group = terraform
+})
+
+------------------------------------------
+-- hashivim/vim-terraform
+------------------------------------------
+g.terraform_commentstring='//%s'
+g.terraform_align=1
+g.terraform_fmt_on_save=1
+
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Documentation
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-------------------------------------------
+-- Markdown
+-------------------------------------------
+-- Disable autostart of md composer
+g.instant_markdown_browser = 'chromium --new-window'
+g.instant_markdown_autostart = 0
+
+-- Disable markdown code block conceals
+g.vim_markdown_conceal = 0
+g.vim_markdown_conceal_code_blocks = 0
+
+-- Disable folding, we have search
+g.vim_markdown_folding_disabled = 1
+
+-------------------------------------------
+-- GitGutter
+-------------------------------------------
+g.gitgutter_max_signs=9999
+vim.cmd("hi SignColumn guibg=black ctermbg=black")

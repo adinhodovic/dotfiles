@@ -197,3 +197,41 @@ vmap("<leader>gc", ":GrammarousCheck<CR>")
 vim.g.tq_map_keys = 0
 nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
 vmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
+
+-------------------------------------------
+-- Markdown
+-------------------------------------------
+nmap("<leader>md", ":InstantMarkdownPreview<cr>")
+nmap("<leader>ms", ":InstantMarkdownStop<cr>")
+
+-------------------------------------------
+-- GitGutter
+-------------------------------------------
+nmap("<leader>s", "<Plug>(GitGutterStageHunk)")
+nmap("<leader>u", "<Plug>(GitGutterUndoHunk)")
+nmap("ghp", "<Plug>(GitGutterPreviewHunk)")
+
+-------------------------------------------
+-- Fugitive
+-------------------------------------------
+nmap("<leader>gb", ":GBrowse<cr>")
+nmap("<leader>gl", ":0Glog<cr>")
+nmap("<leader>ge", ":Gedit<cr>")
+
+-------------------------------------------
+-- Committia
+-------------------------------------------
+vim.cmd([[
+  let g:committia_hooks = {}
+  function! g:committia_hooks.edit_open(info)
+      " If no commit message, start with insert mode
+      if a:info.vcs ==# 'git' && getline(1) ==# ''
+          startinsert
+      endif
+
+      " Scroll the diff window from insert mode
+      " Map <C-n> and <C-p>
+      imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+      imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+  endfunction
+]])
