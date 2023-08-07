@@ -75,6 +75,18 @@ execute 'nnoremap ? ?' . &cedit . 'a'
 execute 'xnoremap ? ?' . &cedit . 'a'
 ]])
 
+-----------------------------------------
+-- Base64
+-----------------------------------------
+vmap("<leader>b64e", ":<c-u>call base64#v_btoa()<cr>")
+vmap("<leader>b64d", ":<c-u>call base64#v_atob()<cr>")
+-----------------------------------------
+-- Writing
+-----------------------------------------
+nmap("<F8>", ":<C-u>NextWordy<cr>")
+xmap("<F8>", ":<C-u>NextWordy<cr>")
+imap("<F8>", ":<C-o>NextWordy<cr>")
+
 ----------------------------------------
 -- Linediff.vim
 ----------------------------------------

@@ -1,29 +1,4 @@
 "-----------------------------------------
-" Base64
-"-----------------------------------------
-vnoremap <silent> <leader>b64d :<c-u>call base64#v_atob()<cr>
-vnoremap <silent> <leader>b64e :<c-u>call base64#v_btoa()<cr>
-"-----------------------------------------
-"               Writing
-"-----------------------------------------
-noremap <silent> <F8> :<C-u>NextWordy<cr>
-xnoremap <silent> <F8> :<C-u>NextWordy<cr>
-inoremap <silent> <F8> <C-o>:NextWordy<cr>
-"-----------------------------------------
-"               GUI
-"-----------------------------------------
-set termguicolors
-syntax enable
-
-set background=dark
-silent! colorscheme gruvbox
-
-hi clear SpellBad
-hi SpellBad ctermfg=DarkRed term=undercurl
-
-set cursorline
-hi CursorLine ctermbg=236 guibg=#242321
-"-----------------------------------------
 "               Indentation
 "-----------------------------------------
 " `nocindent smartindent` will allow us to omit semicolons and jump to the next line without auto indentation

@@ -7,3 +7,5 @@ extends: default
 rules:
   braces: disable
   line-length: {max: 90}
+  indentation:
+    spaces: 4

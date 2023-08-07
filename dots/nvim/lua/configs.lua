@@ -29,12 +29,20 @@ set.shortmess = "c"
 -- always show signcolumns
 set.signcolumn = 'yes'
 
+-----------------------------------------
+-- GUI
+-----------------------------------------
+set.termguicolors = true
+
+set.background = "dark"
+vim.cmd("silent! colorscheme gruvbox")
+
 -- Bullets.vim
 vim.g.bullets_enabled_file_types = {
-     'markdown',
-     'text',
-     'gitcommit',
-     'scratch'
+  'markdown',
+  'text',
+  'gitcommit',
+  'scratch'
 }
 
 set.cmdwinheight = 1

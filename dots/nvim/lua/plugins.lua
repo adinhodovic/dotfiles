@@ -69,7 +69,7 @@ Plug('vim-airline/vim-airline')                -- Bottom bar
 Plug('vim-airline/vim-airline-themes')         -- Bottom bar
 Plug('Yggdroot/indentLine')                    -- Show line indentation
 Plug('luochen1990/rainbow')                    -- Color parantheses
-Plug('itchyny/vim-cursorword')                 -- Underlines the word under the cursor
+Plug('itchyny/vim-cursorword')                 -- Underlines/highlight the word under the cursor
 Plug('morhetz/gruvbox')                        -- Gruvbox theme
 Plug('rrethy/vim-hexokinase', {                -- Colours in the file
   ['do'] = 'make hexokinase'
