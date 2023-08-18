@@ -216,10 +216,13 @@ require("obsidian").setup({
 local wilder = require('wilder')
 wilder.setup({modes = {':', '/', '?'}})
 wilder.set_option('renderer', wilder.popupmenu_renderer(
-  wilder.wildmenu_airline_theme({
-    -- highlights can be overriden, see :h wilder#wildmenu_renderer()
-    highlights = {default = 'StatusLine'},
+  wilder.popupmenu_border_theme({
     highlighter = wilder.basic_highlighter(),
-    separator = ' · ',
+    highlights = {
+      border = 'Normal', -- highlight to use for the border
+    },
+    border = 'rounded',
+    left = {' ', wilder.popupmenu_devicons()},
+    right = {' ', wilder.popupmenu_scrollbar()},
   })
 ))
