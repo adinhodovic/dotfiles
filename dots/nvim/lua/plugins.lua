@@ -37,6 +37,7 @@ Plug('tpope/vim-abolish')                      -- Abbreviations
 Plug('ferrine/md-img-paste.vim')               -- Image pasting
 Plug('ron89/thesaurus_query.vim')
 Plug('reedes/vim-wordy')
+Plug('epwalsh/obsidian.nvim')                  -- Obsidian
 -----------------------------------------
 --              Automation
 -----------------------------------------
@@ -44,7 +45,7 @@ Plug('github/copilot.vim')                     -- Copilot
 Plug('farmergreg/vim-lastplace')               -- Open at lastplace
 Plug('tpope/vim-speeddating')                  -- Increment dates
 Plug('lfilho/cosco.vim')                       -- Semicolons
-Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/plenary.nvim'                   -- Obsidian dependency
 Plug 'nvim-telescope/telescope.nvim'
 -----------------------------------------
 --              Utils
@@ -168,6 +169,7 @@ Plug 'fannheyward/telescope-coc.nvim'
 
 vim.call('plug#end')
 
+-- Telescope
 require("telescope").setup({
   extensions = {
     coc = {
@@ -178,6 +180,7 @@ require("telescope").setup({
 })
 require('telescope').load_extension('coc')
 
+-- Treesitter
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = "all",
@@ -202,3 +205,8 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- Obsidian
+require("obsidian").setup({
+  dir = "~/personal/blogs"
+})
