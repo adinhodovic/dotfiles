@@ -66,14 +66,7 @@ nmap("<leader>q", "q")
 -- Execute macro over a visual selection
 xmap("<leader>q", ":'<,'>:normal @q<CR>")
 
-vim.cmd([[
-execute 'nnoremap <space> :' . &cedit . 'a'
-execute 'xnoremap <space> :' . &cedit . 'a'
-execute 'nnoremap / /' . &cedit . 'a'
-execute 'xnoremap / /' . &cedit . 'a'
-execute 'nnoremap ? ?' . &cedit . 'a'
-execute 'xnoremap ? ?' . &cedit . 'a'
-]])
+nmap("<space>", ":")
 
 -----------------------------------------
 -- Base64

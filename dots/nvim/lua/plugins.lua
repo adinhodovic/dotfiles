@@ -215,3 +215,11 @@ require("obsidian").setup({
 -- Wilder.nvim
 local wilder = require('wilder')
 wilder.setup({modes = {':', '/', '?'}})
+wilder.set_option('renderer', wilder.popupmenu_renderer(
+  wilder.wildmenu_airline_theme({
+    -- highlights can be overriden, see :h wilder#wildmenu_renderer()
+    highlights = {default = 'StatusLine'},
+    highlighter = wilder.basic_highlighter(),
+    separator = ' · ',
+  })
+))
