@@ -77,7 +77,8 @@ Plug('rrethy/vim-hexokinase', {                -- Colours in the file
 })
 Plug('rrethy/vim-illuminate')                  -- Highlight similar word
 Plug('machakann/vim-highlightedyank')          -- Highlight yanks
-Plug('camspiers/animate.vim')
+Plug('camspiers/animate.vim')                  -- Animate scroll
+Plug('gelguy/wilder.nvim', {['do']= ':UpdateRemotePlugins'}) -- Better wildmenu
 -----------------------------------------
 --              Shortkeys
 -----------------------------------------
@@ -210,3 +211,7 @@ require'nvim-treesitter.configs'.setup {
 require("obsidian").setup({
   dir = "~/personal/blogs"
 })
+
+-- Wilder.nvim
+local wilder = require('wilder')
+wilder.setup({modes = {':', '/', '?'}})
