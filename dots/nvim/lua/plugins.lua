@@ -209,7 +209,8 @@ require'nvim-treesitter.configs'.setup {
 
 -- Obsidian
 require("obsidian").setup({
-  dir = "~/personal/blogs"
+  dir = "~/personal/blogs",
+  disable_frontmatter = true,
 })
 
 -- Wilder.nvim
