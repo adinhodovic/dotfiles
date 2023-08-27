@@ -132,6 +132,7 @@ let g:coc_global_extensions = [
     \ 'coc-pyright',
     \ 'coc-ultisnips',
     \ 'coc-tsserver',
+    \ '@yaegassy/coc-tailwindcss3',
     \ 'coc-spell-checker',
     \ 'coc-markdownlint',
     \ 'coc-git',
@@ -140,6 +141,10 @@ let g:coc_global_extensions = [
 "\ 'coc-tabnine' disable due to high cpu,
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+augroup coctailwind
+  au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']
+augroup END
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)

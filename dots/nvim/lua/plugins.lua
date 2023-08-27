@@ -29,7 +29,7 @@ Plug('Lokaltog/vim-easymotion')
 --              Documentation/Writing
 -----------------------------------------
 Plug('instant-markdown/vim-instant-markdown', {['for'] = 'markdown'})
-Plug('plasticboy/vim-markdown')
+Plug('preservim/vim-markdown')
 Plug('mzlogin/vim-markdown-toc')               -- Markdown ToC
 Plug('rhysd/vim-grammarous')                   -- Words
 Plug('reedes/vim-pencil')                      -- Writing tool

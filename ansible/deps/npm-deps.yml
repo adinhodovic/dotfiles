@@ -17,3 +17,6 @@
         - tldr
         - dockerfile-language-server-nodejs
         - instant-markdown-d
+        # Works with eslint 6.0 (local plugins)
+        # https://eslint.org/docs/latest/use/migrating-to-6.0.0#package-loading-simplification
+        - eslint
