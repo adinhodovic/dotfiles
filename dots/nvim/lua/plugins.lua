@@ -213,6 +213,11 @@ require("obsidian").setup({
   disable_frontmatter = true,
 })
 
+require("obsidian").setup({
+  dir = "~/personal/notes",
+  disable_frontmatter = false,
+})
+
 -- Wilder.nvim
 local wilder = require('wilder')
 wilder.setup({modes = {':', '/', '?'}})

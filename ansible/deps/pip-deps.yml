@@ -8,7 +8,7 @@
     - name: Install PIP packages
       pip:
         name: '{{ item }}'
-        extra_args: --user
+        extra_args: --user --break-system-packages
       loop:
         - ansible-lint
         - cookiecutter
