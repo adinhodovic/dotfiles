@@ -208,8 +208,8 @@ nmap("ghp", "<Plug>(GitGutterPreviewHunk)")
 -- Fugitive
 -------------------------------------------
 nmap("<leader>gb", ":GBrowse<cr>")
-nmap("<leader>gl", ":0Glog<cr>")
-nmap("<leader>ge", ":Gedit<cr>")
+nmap("<leader>gl", ":Git log<cr>")
+vmap("<leader>gb", ":GBrowse<cr>")
 
 -------------------------------------------
 -- Committia
