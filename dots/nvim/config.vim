@@ -136,7 +136,8 @@ let g:coc_global_extensions = [
     \ 'coc-spell-checker',
     \ 'coc-markdownlint',
     \ 'coc-git',
-    \ 'coc-lists'
+    \ 'coc-lists',
+    \ 'coc-prettier'
 \]
 "\ 'coc-tabnine' disable due to high cpu,
 

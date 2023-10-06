@@ -1,5 +1,9 @@
 {
   "coc.preferences.formatOnType": false,
+  "coc.preferences.formatOnSave": [
+    "css",
+    "markdown"
+  ],
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
@@ -20,7 +24,9 @@
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
-      "args": ["serve"],
+      "args": [
+        "serve"
+      ],
       "filetypes": [
         "terraform",
         "tf"
