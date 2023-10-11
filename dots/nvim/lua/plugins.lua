@@ -38,6 +38,8 @@ Plug('ferrine/md-img-paste.vim')               -- Image pasting
 Plug('ron89/thesaurus_query.vim')
 Plug('reedes/vim-wordy')
 Plug('epwalsh/obsidian.nvim')                  -- Obsidian
+-- Plug('oflisback/obsidian-bridge.nvim')         -- Obsidian scrolling, delete if never
+-- used
 -----------------------------------------
 --              Automation
 -----------------------------------------
@@ -209,13 +211,13 @@ require'nvim-treesitter.configs'.setup {
 
 -- Obsidian
 require("obsidian").setup({
-  dir = "~/personal/blogs",
-  disable_frontmatter = true,
+  dir = "~/personal/notes",
+  disable_frontmatter = false,
 })
 
 require("obsidian").setup({
-  dir = "~/personal/notes",
-  disable_frontmatter = false,
+  dir = "~/personal/blogs",
+  disable_frontmatter = true,
 })
 
 -- Wilder.nvim
