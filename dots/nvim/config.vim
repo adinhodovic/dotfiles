@@ -137,7 +137,8 @@ let g:coc_global_extensions = [
     \ 'coc-markdownlint',
     \ 'coc-git',
     \ 'coc-lists',
-    \ 'coc-prettier'
+    \ 'coc-prettier',
+    \ 'coc-go'
 \]
 "\ 'coc-tabnine' disable due to high cpu,
 
@@ -307,24 +308,6 @@ augroup END
 " conflict-marker
 "-----------------------------------------
 let g:conflict_marker_highlight_group = 'DiffText'
-"-----------------------------------------
-" vim-go
-"-----------------------------------------
-nnoremap <leader>gr :GoRun<CR>
-
-let g:go_metalinter_autosave = 1
-
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_types = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_auto_sameids = 1
 "-----------------------------------------
 " MRU
 "-----------------------------------------

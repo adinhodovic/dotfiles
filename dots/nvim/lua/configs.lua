@@ -159,6 +159,24 @@ set.visualbell = false
 set.timeoutlen = 500
 
 -------------------------------------------
+-- Go
+-------------------------------------------
+g.go_def_mapping_enabled = 0
+g.go_auto_sameids = 0
+g.go_gopls_enabled = 0
+g.go_code_completion_enabled = 0
+g.go_fmt_autosave = 0
+g.go_diagnostics_enabled = 0
+g.go_echo_go_info = 0
+g.go_metalinter_enabled = 0
+g.go_metalinter_autosave = 0
+-- g.go_debug_windows = {
+  -- vars = 'rightbelow 60vnew',
+  -- stack = 'rightbelow 10new'
+-- }
+-- nnoremap <leader>gr :GoRun<CR>
+
+-------------------------------------------
 -- Neomake
 -------------------------------------------
 g.neomake_list_height = 8
@@ -236,9 +254,11 @@ g.neomake_htmldjango_jsbeautify_maker = {
 }
 
 g.neomake_htmldjango_htmlhint_maker = {
-  args = {'--format', 'unix', '--nocolor'},
+  args = {'--nocolor'},
   -- errorformat = '%f:%l:%c: %m,%-G,%-G%*\d problems'
 }
+
+-- g.neomake_go_enabled_makers = {}
 
 g.neomake_htmldjango_enabled_makers = {'htmlhint', 'jsbeautify'}
 g.neomake_html_enabled_makers = {'htmlhint', 'jsbeautify'}
