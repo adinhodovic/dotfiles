@@ -16,5 +16,4 @@
     - name: Install galaxy dependencies
       shell: "ansible-galaxy {{ item }}"
       loop:
-        - install fubarhouse.golang
         - collection install kewlfft.aur
