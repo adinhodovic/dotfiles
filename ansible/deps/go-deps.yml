@@ -2,17 +2,14 @@
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
-  roles:
-    - fubarhouse.golang
   connection: local
-
   tasks:
     - name: Install Go packages
-      go_get:
-        url: '{{ item }}'
-        name: go_pkg
+      shell: "go install {{ item }}"
       loop:
-        - github.com/google/go-jsonnet/linter/jsonnet-lint
-        - github.com/bazelbuild/bazelisk
-        - github.com/monitoring-mixins/mixtool/cmd/mixtool
-        - github.com/go-delve/delve/cmd/dlv
+        - github.com/google/go-jsonnet/cmd/jsonnet@latest
+        - github.com/google/go-jsonnet/cmd/jsonnet-lint@latest
+        - github.com/bazelbuild/bazelisk@latest
+        - github.com/monitoring-mixins/mixtool/cmd/mixtool@latest
+        - github.com/go-delve/delve/cmd/dlv@latest
+        - golang.org/x/tools/gopls@latest

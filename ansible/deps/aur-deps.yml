@@ -71,6 +71,7 @@
         - postgresql-libs
         - nnn
         - fx # json browsing
+        - jless # json browsing
 
         # linting
         - shellcheck
@@ -81,7 +82,6 @@
         - tanka-bin
         - terraform
         - terraform-ls
-        - jsonnet
         - kustomize
 
         # git
