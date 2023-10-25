@@ -47,8 +47,8 @@ Plug('github/copilot.vim')                     -- Copilot
 Plug('farmergreg/vim-lastplace')               -- Open at lastplace
 Plug('tpope/vim-speeddating')                  -- Increment dates
 Plug('lfilho/cosco.vim')                       -- Semicolons
-Plug 'nvim-lua/plenary.nvim'                   -- Obsidian dependency
-Plug 'nvim-telescope/telescope.nvim'
+Plug('nvim-lua/plenary.nvim')                   -- Obsidian dependency
+Plug('nvim-telescope/telescope.nvim')
 -----------------------------------------
 --              Utils
 -----------------------------------------
@@ -99,8 +99,8 @@ Plug('rhysd/conflict-marker.vim')              -- Diff conflicts
 -----------------------------------------
 --      YAML/JSON/JSONNET/TOML
 -----------------------------------------
-Plug 'elzr/vim-json'
-Plug 'google/vim-jsonnet'
+Plug('elzr/vim-json')
+Plug('google/vim-jsonnet')
 Plug('cespare/vim-toml')
 -----------------------------------------
 --              FZF
@@ -168,9 +168,10 @@ Plug('danihodovic/vim-ansible-vault')
 -----------------------------------------
 Plug('hashivim/vim-terraform')
 
-Plug 'fannheyward/telescope-coc.nvim'
+Plug('fannheyward/telescope-coc.nvim')
 
 vim.call('plug#end')
+
 
 -- Telescope
 require("telescope").setup({
@@ -208,6 +209,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
 
 -- Obsidian
 require("obsidian").setup({
