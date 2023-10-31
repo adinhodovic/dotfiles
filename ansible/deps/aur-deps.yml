@@ -35,7 +35,6 @@
         - rsync
         - gnome-alsamixer
         - slack-desktop
-        - mimeo
         - xfce4-power-manager
         - glibc
         - simplescreenrecorder
