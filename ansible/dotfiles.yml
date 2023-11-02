@@ -13,8 +13,20 @@
         - src: "tmux.conf"
           dest: "/home/adin/.tmux.conf"
 
-        - src: "nvim/*"
-          dest: "/home/adin/.config/nvim/"
+        - src: "nvim/init.lua"
+          dest: "/home/adin/.config/nvim/init.lua"
+
+        - src: "nvim/lua"
+          dest: "/home/adin/.config/nvim/lua"
+
+        - src: "nvim/after"
+          dest: "/home/adin/.config/nvim/after"
+
+        - src: "nvim/config.vim"
+          dest: "/home/adin/.config/nvim/config.vim"
+
+        - src: "nvim/coc-settings.json"
+          dest: "/home/adin/.config/nvim/coc-settings.json"
 
         - src: "zsh/zshrc"
           dest: "/home/adin/.zshrc"

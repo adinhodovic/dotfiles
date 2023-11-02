@@ -1,7 +1,6 @@
 {
   "coc.preferences.formatOnType": false,
   "coc.preferences.formatOnSave": true,
-  "coc.preferences.formatOnSaveTimeout": 2000,
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
@@ -9,23 +8,43 @@
   "html.autoClosingTags": true,
   "suggest.snippetIndicator": "🔨",
   "snippets.extends": {
-    "typescript_tsx": ["typescript"],
-    "html": ["htmldjango"],
-    "scss": ["css"]
+    "typescript_tsx": [
+      "typescript"
+    ],
+    "html": [
+      "htmldjango"
+    ],
+    "scss": [
+      "css"
+    ]
   },
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
-      "args": ["serve"],
-      "filetypes": ["terraform", "tf"],
+      "args": [
+        "serve"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
       "initializationOptions": {},
       "settings": {}
     },
     "jsonnet": {
       "command": "jsonnet-language-server",
-      "args": ["--tanka", "--lint"],
-      "rootPatterns": [".git/", "jsonnetfile.json"],
-      "filetypes": ["jsonnet", "libsonnet"]
+      "args": [
+        "--tanka",
+        "--lint"
+      ],
+      "rootPatterns": [
+        ".git/",
+        "jsonnetfile.json"
+      ],
+      "filetypes": [
+        "jsonnet",
+        "libsonnet"
+      ]
     }
   },
   "yaml.schemaStore.enable": true,
@@ -43,10 +62,9 @@
     "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json": "*api*.{yml,yaml}",
     "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "*docker-compose*.{yml,yaml}"
   },
-  "htmldjango.formatting.provider": "djlint",
-  "revertAboveWhenPerformanceIsBetter": 1000,
   "[htmldjango]": {
-    "coc.preferences.formatOnSave": false
+    "coc.preferences.formatOnSave": false,
+    "revertAboveWhenPerformanceIsBetter": 1000
   },
   "html-css-support.enabledLanguages": [
     "html",
@@ -57,4 +75,3 @@
     "javascriptreact"
   ]
 }
-
