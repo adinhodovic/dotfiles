@@ -10,6 +10,15 @@
         state: link
         force: true
       with_items:
+        - src: "tmux.conf"
+          dest: "/home/adin/.tmux.conf"
+
+        - src: "nvim/*"
+          dest: "/home/adin/.config/nvim/"
+
+        - src: "zsh/zshrc"
+          dest: "/home/adin/.zshrc"
+
         - src: "Xresources"
           dest: "/home/adin/.Xresources"
 
@@ -42,15 +51,6 @@
 
         - src: "config.ssh"
           dest: "/home/adin/.ssh/config"
-
-        - src: "tmux.conf"
-          dest: "/home/adin/.tmux.conf"
-
-        - src: "nvim/*"
-          dest: "/home/adin/.config/nvim/"
-
-        - src: "zsh/zshrc"
-          dest: "/home/adin/.zshrc"
 
         - src: "direnvrc"
           dest: "/home/adin/.direnvrc"
