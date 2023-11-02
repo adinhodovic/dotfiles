@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnType": false,
-  "coc.preferences.formatOnSave": ["css", "markdown"],
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveTimeout": 2000,
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
@@ -41,6 +42,19 @@
     "https://json.schemastore.org/gitlab-ci": "*gitlab-ci*.{yml,yaml}",
     "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json": "*api*.{yml,yaml}",
     "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "*docker-compose*.{yml,yaml}"
-  }
+  },
+  "htmldjango.formatting.provider": "djlint",
+  "revertAboveWhenPerformanceIsBetter": 1000,
+  "[htmldjango]": {
+    "coc.preferences.formatOnSave": false
+  },
+  "html-css-support.enabledLanguages": [
+    "html",
+    "vue",
+    "blade",
+    "htmldjango",
+    "typescriptreact",
+    "javascriptreact"
+  ]
 }
 

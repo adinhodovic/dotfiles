@@ -247,11 +247,11 @@ g.neomake_html_jsbeautify_maker = {
   args = {'--profile=html', '--reformat'}
 }
 
-g.neomake_htmldjango_jsbeautify_maker = {
-  name = 'djLint',
-  exe = 'djlint',
-  args = {'--profile=django', '--reformat'}
-}
+-- g.neomake_htmldjango_jsbeautify_maker = {
+  -- name = 'djLint',
+  -- exe = 'djlint',
+  -- args = {'--profile=django', '--reformat'}
+-- }
 
 g.neomake_htmldjango_htmlhint_maker = {
   args = {'--nocolor'},
@@ -259,8 +259,7 @@ g.neomake_htmldjango_htmlhint_maker = {
 }
 
 -- g.neomake_go_enabled_makers = {}
-
-g.neomake_htmldjango_enabled_makers = {'htmlhint', 'jsbeautify'}
+g.neomake_htmldjango_enabled_makers = {'htmlhint'}
 g.neomake_html_enabled_makers = {'htmlhint', 'jsbeautify'}
 
 vim.cmd([[

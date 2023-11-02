@@ -10,7 +10,6 @@
         state: link
         force: true
       with_items:
-
         - src: "Xresources"
           dest: "/home/adin/.Xresources"
 
@@ -47,17 +46,8 @@
         - src: "tmux.conf"
           dest: "/home/adin/.tmux.conf"
 
-        - src: "nvim/config.vim"
-          dest: "/home/adin/.config/nvim/config.vim"
-
-        - src: "nvim/init.lua"
-          dest: "/home/adin/.config/nvim/init.lua"
-
-        - src: "nvim/lua"
-          dest: "/home/adin/.config/nvim/lua"
-
-        - src: "nvim/coc-settings.json"
-          dest: "/home/adin/.config/nvim/coc-settings.json"
+        - src: "nvim/*"
+          dest: "/home/adin/.config/nvim/"
 
         - src: "zsh/zshrc"
           dest: "/home/adin/.zshrc"
@@ -132,4 +122,3 @@
       with_items:
         - src: ~/.dotfiles/scripts/on-modify-timewarrior.py
           dest: /home/adin/.task/hooks/on-modify-timewarrior.py
-
