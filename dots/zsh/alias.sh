@@ -31,6 +31,8 @@ alias cd..="cd ../.."
 alias cd...="cd ../../.."
 alias cd....='cd ../../../..'
 
+alias ungron="gron --ungron"
+
 alias lg=lazygit
 
 alias g-default="gcloud config configurations activate default && sed -i '/access-token:/d' ~/.kube/config"
