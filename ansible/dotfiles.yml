@@ -37,6 +37,9 @@
         - src: "xprofile"
           dest: "/home/adin/.xprofile"
 
+        - src: "lazygit.yml"
+          dest: "/home/adin/.config/lazygit/config.yml"
+
         - src: "bpytop.conf"
           dest: "/home/adin/.config/bpytop/bpytop.conf"
 
