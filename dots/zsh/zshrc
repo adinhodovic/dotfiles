@@ -86,9 +86,9 @@ export EDITOR="nvim"
 
 source ~/.dotfiles/dots/zsh/variables.sh
 source ~/.dotfiles/dots/zsh/plugins.sh
-source ~/.dotfiles/dots/zsh/fzf.sh
 source ~/.dotfiles/dots/zsh/alias.sh
 source ~/.dotfiles/dots/zsh/key-bindings.sh
+source ~/.dotfiles/dots/zsh/fzf.sh
 
 ###############################
 # SSH Agent
@@ -122,24 +122,6 @@ source /home/adin/.config/broot/launcher/bash/br
 ############################################
 bindkey '^ ' autosuggest-accept
 
-###########################################
-# Fzf-tab
-###########################################
-enable-fzf-tab
-
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:complete:_zlua:*' query-string input
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
-
 #############################################
 # Tanka
 #############################################
@@ -157,3 +139,5 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 source /usr/share/nvm/init-nvm.sh
 
 # eval "$(mcfly init zsh)"
+#
+eval "$(atuin init zsh)"

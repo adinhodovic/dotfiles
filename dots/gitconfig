@@ -28,7 +28,8 @@
 	keepBackup = false
 [interactive]
   diffFilter = delta --color-only
-
+[rebase]
+	autoStash = true
 [delta]
   features = decorations
   whitespace-error-style = 22 reverse

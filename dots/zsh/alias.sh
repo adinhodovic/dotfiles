@@ -105,4 +105,3 @@ fcommit() {
   local commit=$(echo "$commits" | fzf --tac +s -m -e --ansi --reverse) &&
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
-

@@ -14,11 +14,12 @@ export FZF_DEFAULT_OPTS="${fzf_opts[*]}"
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_R_OPTS='--exact'
 
-
 if which fd &> /dev/null; then
   # To apply the command to CTRL-T as well
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
+
+export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
 # Custom fzf file widget.
 # The differences are:
@@ -48,7 +49,7 @@ function fzf-ssh {
   fi
   zle reset-prompt
 }
-zle     -N     fzf-ssh
+zle -N fzf-ssh
 
 function fzf-docker-logs {
   matches=$(docker ps --format 'table {{ .Names }}\t{{ .Image }}')
@@ -126,3 +127,28 @@ bindkey -M viins '^x'   fzf-docker-exec
 
 bindkey -M viins '^w'   fzf-taskwarrior
 bindkey -M vicmd '^w'   fzf-taskwarrior
+
+###########################################
+# Fzf-tab
+###########################################
+enable-fzf-tab
+
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+###########################################
+# Fzf-git
+###########################################
+
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+source $ZPLUGINDIR/fzf-git.sh/fzf-git.sh

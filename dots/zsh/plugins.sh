@@ -22,6 +22,20 @@ function plugin-load {
     (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
   done
 }
+
+function binary-download {
+  local repo plugin_name plugin_dir
+  ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+  for repo in $@; do
+    plugin_name=${repo:t}
+    plugin_dir=$ZPLUGINDIR/$plugin_name
+    initfile=$plugin_dir/$plugin_name.plugin.zsh
+    if [[ ! -d $plugin_dir ]]; then
+      echo "Cloning $repo"
+      git clone -q --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugin_dir
+    fi
+  done
+}
 #############################################
 # Plugins
 #############################################
@@ -54,8 +68,13 @@ repos=(
   adinhodovic/kubernetes-alias
 )
 
+binaries=(
+  junegunn/fzf-git.sh
+)
+
 # now load your plugins
 plugin-load $repos
+binary-download $binaries
 
 eval "$(zoxide init zsh)"
 ############################################
