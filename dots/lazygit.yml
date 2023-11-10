@@ -3,10 +3,6 @@ git:
     colorArg: always
     pager: delta --color-only
 customCommands:
-  - key: "<c-p>"
-    command: "gh pr create --fill --web"
-    context: "global"
-    loadingText: "Creating pull request on GitHub"
   - key: "<c-v>"
     context: "global"
     description: "Create new conventional commit"
