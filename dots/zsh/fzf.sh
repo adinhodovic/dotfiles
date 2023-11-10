@@ -113,8 +113,8 @@ zle -N fzf-taskwarrior
 
 bindkey -M vicmd '\-'   fzf-file-widget
 
-bindkey -M vicmd '^r'   fzf-history-widget
-bindkey -M viins '^r'   fzf-history-widget
+# bindkey -M vicmd '^r'   fzf-history-widget
+# bindkey -M viins '^r'   fzf-history-widget
 
 bindkey -M vicmd '^s'   fzf-ssh
 bindkey -M viins '^s'   fzf-ssh
