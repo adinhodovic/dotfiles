@@ -53,7 +53,7 @@ customCommands:
         key: "Breaking"
         initialValue: ""
       - type: "input"
-        title: "message"
+        title: "Message"
         key: "Message"
         initialValue: ""
       - type: "input"
