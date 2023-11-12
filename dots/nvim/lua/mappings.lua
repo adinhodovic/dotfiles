@@ -2,24 +2,36 @@ local vim = vim
 local set = vim.opt
 local g = vim.g
 
-function map(mode, shortcut, command)
-  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
+function default(val, default_val)
+    if val == nil then
+        return default_val
+    else
+        return val
+    end
 end
 
-function nmap(shortcut, command)
-  map('n', shortcut, command)
+default_options = { noremap = true, silent = true }
+default_options_expression = { noremap = true, silent = true, expr = true, replace_keycodes = false }
+
+function map(mode, shortcut, command, options)
+  options = default(options, default_options)
+  vim.keymap.set(mode, shortcut, command, options)
 end
 
-function imap(shortcut, command)
-  map('i', shortcut, command)
+function nmap(shortcut, command, options)
+  map('n', shortcut, command, options)
 end
 
-function vmap(shortcut, command)
-  map('v', shortcut, command)
+function imap(shortcut, command, options)
+  map('i', shortcut, command, options)
 end
 
-function xmap(shortcut, command)
-  map('x', shortcut, command)
+function vmap(shortcut, command, options)
+  map('v', shortcut, command, options)
+end
+
+function xmap(shortcut, command, options)
+  map('x', shortcut, command, options)
 end
 
 -------------------------------------------
@@ -88,9 +100,7 @@ vmap('<leader>ld', ':Linediff<cr>')
 ----------------------------------------
 -- Copilot
 ----------------------------------------
-vim.cmd([[
-imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")
-]])
+imap("<C-c>", "copilot#Accept('<CR>')", default_options_expression)
 
 ----------------------------------------
 -- Coc.nvim

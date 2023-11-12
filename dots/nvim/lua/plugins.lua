@@ -38,8 +38,6 @@ Plug('ferrine/md-img-paste.vim')               -- Image pasting
 Plug('ron89/thesaurus_query.vim')
 Plug('reedes/vim-wordy')
 Plug('epwalsh/obsidian.nvim')                  -- Obsidian
--- Plug('oflisback/obsidian-bridge.nvim')         -- Obsidian scrolling, delete if never
--- used
 -----------------------------------------
 --              Automation
 -----------------------------------------
