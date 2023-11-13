@@ -19,7 +19,7 @@ if which fd &> /dev/null; then
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
-export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+export FZF_ALT_C_OPTS="--preview 'lsd --tree {}'"
 
 # Custom fzf file widget.
 # The differences are:
