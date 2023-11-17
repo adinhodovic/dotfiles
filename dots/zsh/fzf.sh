@@ -10,6 +10,10 @@ fzf_opts=(
   --bind ctrl-e:preview-down
   --bind ctrl-y:preview-up
 )
+
+# Useful for FZF-GIT, multiple keybindings e.g. CTRL-G + CTRL-F
+export KEYTIMEOUT=1000
+
 export FZF_DEFAULT_OPTS="${fzf_opts[*]}"
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_R_OPTS='--exact'
@@ -37,19 +41,6 @@ fzf-file-widget() {
 }
 
 stty stop undef
-function fzf-ssh {
-  all_matches=$(grep -P -r "Host\s+\w+" ~/.ssh/ | grep -v '\*')
-  only_host_parts=$(echo "$all_matches" | awk '{print $NF}')
-  selection=$(echo "$only_host_parts" | fzf)
-  echo $selection
-
-  if [ ! -z $selection ]; then
-    BUFFER="ssh $selection"
-    zle accept-line
-  fi
-  zle reset-prompt
-}
-zle -N fzf-ssh
 
 function fzf-docker-logs {
   matches=$(docker ps --format 'table {{ .Names }}\t{{ .Image }}')
@@ -115,9 +106,6 @@ bindkey -M vicmd '\-'   fzf-file-widget
 
 # bindkey -M vicmd '^r'   fzf-history-widget
 # bindkey -M viins '^r'   fzf-history-widget
-
-bindkey -M vicmd '^s'   fzf-ssh
-bindkey -M viins '^s'   fzf-ssh
 
 bindkey -M vicmd '^l'   fzf-docker-logs
 bindkey -M viins '^l'   fzf-docker-logs
