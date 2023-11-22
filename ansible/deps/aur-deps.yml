@@ -71,6 +71,7 @@
         - nnn
         - fx # json browsing
         - jless # json browsing
+        - navi
 
         # linting
         - shellcheck

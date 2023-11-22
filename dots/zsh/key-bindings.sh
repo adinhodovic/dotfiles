@@ -166,4 +166,4 @@ for dir in dirs:
 EOF
 }
 
-
+bindkey '^n' _navi_widget

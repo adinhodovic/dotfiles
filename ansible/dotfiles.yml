@@ -124,6 +124,9 @@
         - src: "rofi.rasi"
           dest: "/home/adin/.config/rofi/config.rasi"
 
+        - src: "navi.yaml"
+          dest: "/home/adin/.config/navi/config.yaml"
+
     - name: locale-gen
       shell: locale-gen
 

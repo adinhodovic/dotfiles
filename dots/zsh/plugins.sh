@@ -15,8 +15,13 @@ function plugin-load {
     fi
     if [[ ! -e $initfile ]]; then
       initfiles=($plugin_dir/*.plugin.{z,}sh(N) $plugin_dir/*.{z,}sh{-theme,}(N))
-      [[ ${#initfiles[@]} -gt 0 ]] || { echo >&2 "Plugin has no init file '$repo'." && continue }
-      ln -sf "${initfiles[1]}" "$initfile"
+      folder_initfiles=($plugin_dir/shell/*.plugin.{z,}sh(N) $plugin_dir/shell/*.{z,}sh{-theme,}(N))
+      echo $folder_initfiles
+      echo "$plugin_dir/shell/*.plugin."
+      [[ ${#initfiles[@]} -gt 0 ]] || [[ ${#folder_initfiles[@]} -gt 0 ]] || { echo >&2 "Plugin has no init file '$repo'." && continue }
+
+      [[ ${#initfiles[@]} -gt 0 ]] && ln -sf "${initfiles[1]}" "$initfile"
+      [[ ${#folder_initfiles[@]} -gt 0 ]] && ln -sf "${folder_initfiles[1]}" "$initfile"
     fi
     fpath+=$plugin_dir
     (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
@@ -66,6 +71,8 @@ repos=(
   adinhodovic/git-alias
   adinhodovic/terraform-alias
   adinhodovic/kubernetes-alias
+
+  denisidoro/navi
 )
 
 binaries=(

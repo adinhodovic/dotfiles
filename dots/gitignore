@@ -42,3 +42,4 @@ vendor
 htmlcov
 .obsidian
 __snapshot__
+db_dump.tar
