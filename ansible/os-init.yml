@@ -83,6 +83,8 @@
               dest: "~/personal/hodovi-cc"
             - repo: "git@github.com:adinhodovic/blogs.git"
               dest: "~/personal/blogs"
+            - repo: "git@github.com:adinhodovic/cheats.git"
+              dest: "~/personal/cheats"
 
             # Honeylogic specific
             - repo: "git@github.com:honeylogic-io/administration.git"
