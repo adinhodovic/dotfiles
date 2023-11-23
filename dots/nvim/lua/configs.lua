@@ -309,8 +309,19 @@ g.vim_markdown_conceal_code_blocks = 0
 -- Disable folding, we have search
 g.vim_markdown_folding_disabled = 1
 
--------------------------------------------
--- GitGutter
--------------------------------------------
-g.gitgutter_max_signs=9999
 vim.cmd("hi SignColumn guibg=black ctermbg=black")
+-------------------------------------------
+-- Airline
+-------------------------------------------
+g.airline_theme = 'gruvbox'
+g["airline#extensions#tabline#enabled"] = 1
+g["airline#extensions#coc#enabled"] = 1
+g["airline#extensions#coc#show_coc_status"] = 1
+g["airline#extensions#hunks#enabled"] = 1
+g["airline#extensions#hunks#coc_git"] = 1
+-- remove the filetype part
+g.airline_section_x='%{coc#status()}%{get(b:,"coc_git_blame","")}'
+g.airline_section_y=''
+-- remove separators for empty sections
+g.airline_skip_empty_sections = 1
+vim.cmd("autocmd User CocGitStatusChange AirlineRefresh")

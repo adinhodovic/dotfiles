@@ -73,5 +73,7 @@
     "htmldjango",
     "typescriptreact",
     "javascriptreact"
-  ]
+  ],
+  "git.addGBlameToBufferVar": true,
+  "git.addGBlameToVirtualText": true
 }

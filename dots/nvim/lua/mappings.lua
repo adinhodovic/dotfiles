@@ -85,6 +85,7 @@ nmap("<space>", ":")
 -----------------------------------------
 vmap("<leader>b64e", ":<c-u>call base64#v_btoa()<cr>")
 vmap("<leader>b64d", ":<c-u>call base64#v_atob()<cr>")
+
 -----------------------------------------
 -- Writing
 -----------------------------------------
@@ -208,13 +209,6 @@ nmap("<leader>md", ":InstantMarkdownPreview<cr>")
 nmap("<leader>ms", ":InstantMarkdownStop<cr>")
 
 -------------------------------------------
--- GitGutter
--------------------------------------------
-nmap("<leader>s", "<Plug>(GitGutterStageHunk)")
-nmap("<leader>u", "<Plug>(GitGutterUndoHunk)")
-nmap("ghp", "<Plug>(GitGutterPreviewHunk)")
-
--------------------------------------------
 -- Fugitive
 -------------------------------------------
 nmap("<leader>gb", ":GBrowse<cr>")
@@ -233,3 +227,15 @@ vim.cmd([[
       imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
   endfunction
 ]])
+
+-------------------------------------------
+-- Coc-git
+-------------------------------------------
+-- navigate chunks of current buffer
+nmap("[g", "<Plug>(coc-git-prevchunk)")
+nmap("]g", "<Plug>(coc-git-nextchunk)")
+-- navigate conflicts of current buffer
+nmap("[c", "<Plug>(coc-git-prevconflict)")
+nmap("]c", "<Plug>(coc-git-nextconflict)")
+-- show chunk diff at current position
+nmap("<leader>gs", "<Plug>(coc-git-chunkinfo)")

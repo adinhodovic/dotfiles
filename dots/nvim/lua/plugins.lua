@@ -88,7 +88,6 @@ Plug('tpope/vim-surround')                     -- Delete add surroundings in pai
 -----------------------------------------
 Plug('rhysd/committia.vim')                    -- Better Git commits
 Plug('rhysd/git-messenger.vim')                -- Show git messages
-Plug('airblade/vim-gitgutter')                 -- Show changed git lines
 Plug('tpope/vim-fugitive')
 Plug('rbong/vim-flog')                         -- Better git log
 Plug('tpope/vim-rhubarb')                      -- Dependency for vim-fugitive

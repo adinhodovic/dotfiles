@@ -79,17 +79,6 @@ augroup END
 "-----------------------------------------
 let g:lastplace_ignore = 'gitcommit,gitrebase,svn,hgcommit'
 "-----------------------------------------
-" Airline
-"-----------------------------------------
-let g:airline_theme = 'gruvbox'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#coc#enabled = 1
-" remove the filetype part
-let g:airline_section_x='%{coc#status()}'
-let g:airline_section_y=''
-" remove separators for empty sections
-let g:airline_skip_empty_sections = 1
-"-----------------------------------------
 " Easymotion
 "-----------------------------------------
 let g:EasyMotion_keys = 'hgjfkdls;a'
