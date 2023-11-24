@@ -2,7 +2,6 @@
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
-
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty it self.
@@ -94,37 +93,36 @@ font:
 debug:
   render_timer: false
 
-
 # Colors (Gruvbox dark)
 colors:
   # Default colors
   primary:
     # hard contrast: background = '0x1d2021'
-    background: '0x1d2021'
+    background: "0x1d2021"
     # soft contrast: background = '0x32302f'
-    foreground: '0xebdbb2'
+    foreground: "0xebdbb2"
 
   # Normal colors
   normal:
-    black:   '0x282828'
-    red:     '0xcc241d'
-    green:   '0x98971a'
-    yellow:  '0xd79921'
-    blue:    '0x458588'
-    magenta: '0xb16286'
-    cyan:    '0x689d6a'
-    white:   '0xa89984'
+    black: "0x282828"
+    red: "0xcc241d"
+    green: "0x98971a"
+    yellow: "0xd79921"
+    blue: "0x458588"
+    magenta: "0xb16286"
+    cyan: "0x689d6a"
+    white: "0xa89984"
 
   # Bright colors
   bright:
-    black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
+    black: "0x928374"
+    red: "0xfb4934"
+    green: "0xb8bb26"
+    yellow: "0xfabd2f"
+    blue: "0x83a598"
+    magenta: "0xd3869b"
+    cyan: "0x8ec07c"
+    white: "0xebdbb2"
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -192,7 +190,7 @@ mouse:
   unfocused_hollow: true
 
 selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
 
 # Style of the cursor
 #
@@ -202,7 +200,6 @@ cursor:
   # - Underline
   # - Beam
   style: Block
-
 
 # Live config reload (changes require restart)
 live_config_reload: true
@@ -222,7 +219,7 @@ live_config_reload: true
 shell:
   program: /usr/bin/tmux
   args:
-   - -u # force UTF-8 in tmux
+    - -u # force UTF-8 in tmux
 
 # Key bindings
 #

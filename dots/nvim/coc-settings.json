@@ -75,5 +75,5 @@
     "javascriptreact"
   ],
   "git.addGBlameToBufferVar": true,
-  "git.addGBlameToVirtualText": true
+  "git.addGBlameToVirtualText": false
 }

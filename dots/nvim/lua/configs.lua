@@ -320,7 +320,7 @@ g["airline#extensions#coc#show_coc_status"] = 1
 g["airline#extensions#hunks#enabled"] = 1
 g["airline#extensions#hunks#coc_git"] = 1
 -- remove the filetype part
-g.airline_section_x='%{coc#status()}%{get(b:,"coc_git_blame","")}'
+g.airline_section_x='%{get(b:,"coc_git_blame","")}'
 g.airline_section_y=''
 -- remove separators for empty sections
 g.airline_skip_empty_sections = 1

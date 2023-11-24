@@ -94,11 +94,12 @@ Plug('tpope/vim-rhubarb')                      -- Dependency for vim-fugitive
 Plug('rhysd/vim-github-actions')               -- Vim filetype support for GitHub Actions
 Plug('rhysd/conflict-marker.vim')              -- Diff conflicts
 -----------------------------------------
---      YAML/JSON/JSONNET/TOML
+--      YAML/JSON/JSONNET/TOML/HELM
 -----------------------------------------
 Plug('elzr/vim-json')
 Plug('google/vim-jsonnet')
 Plug('cespare/vim-toml')
+Plug('towolf/vim-helm')                        -- Helm
 -----------------------------------------
 --              FZF
 -----------------------------------------
@@ -206,7 +207,6 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-
 
 -- Obsidian
 require("obsidian").setup({
