@@ -121,7 +121,7 @@ let g:coc_global_extensions = [
     \ 'coc-html-css-support',
     \ 'coc-emmet',
     \ 'coc-pyright',
-    \ 'coc-ultisnips',
+    \ 'coc-snippets',
     \ 'coc-tsserver',
     \ '@yaegassy/coc-tailwindcss3',
     \ 'coc-spell-checker',
@@ -129,7 +129,8 @@ let g:coc_global_extensions = [
     \ 'coc-git',
     \ 'coc-lists',
     \ 'coc-prettier',
-    \ 'coc-go'
+    \ 'coc-go',
+    \ 'coc-lua'
 \]
 "\ 'coc-tabnine' disable due to high cpu,
 

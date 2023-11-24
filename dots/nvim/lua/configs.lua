@@ -12,9 +12,9 @@ g.hardtime_maxcount = 2
 g.hardtime_allow_different_key = 1
 
 
-set.completeopt=preview,menu
+set.completeopt = 'preview,menu'
 
-set.mouse=a
+set.mouse = 'a'
 
 set.updatetime = 300
 
@@ -73,7 +73,7 @@ set.swapfile = false
 --           Text, tab and indent related
 -------------------------------------------
 -- Use spaces instead of tabs
-set.expandtab =  true
+set.expandtab = true
 
 -- Be smart when using tabs
 set.smarttab = true
@@ -88,7 +88,7 @@ set.smartindent = true
 set.wrap = true
 
 -- Count words with dashes as one word
-set.iskeyword:append({"-"})
+set.iskeyword:append({ "-" })
 -------------------------------------------
 --                   Text width
 -------------------------------------------
@@ -98,7 +98,7 @@ set.colorcolumn = ""
 
 local textwidth = augroup("textwidth", {})
 autocmd("FileType", {
-  pattern = {"dockerfile","sh","gitcommit","html","htmldjango","python","yaml","text","jsonnet","direnv","terraform"},
+  pattern = { "dockerfile", "sh", "gitcommit", "html", "htmldjango", "python", "yaml", "text", "jsonnet", "direnv", "terraform" },
   command = "setlocal textwidth=0 | setlocal colorcolumn=0",
   group = textwidth
 })
@@ -114,7 +114,7 @@ set.scrolloff = 7
 set.wildmenu = true
 
 -- Ignore compiled files
-set.wildignore = {"*.o", "*~", "*.pyc"}
+set.wildignore = { "*.o", "*~", "*.pyc" }
 -- set.wildoptions = "pum"
 
 -- Always show current position
@@ -124,11 +124,11 @@ set.ruler = true
 set.hidden = true
 
 -- Configure backspace so it acts as it should act
-set.backspace = {"eol", "start", "indent"}
+set.backspace = { "eol", "start", "indent" }
 set.whichwrap = "<,>,h,l,[,]"
 
 -- Ignore case when searching
-set.ignorecase =  true
+set.ignorecase = true
 
 -- When searching try to be smart about cases
 set.smartcase = true
@@ -171,8 +171,8 @@ g.go_echo_go_info = 0
 g.go_metalinter_enabled = 0
 g.go_metalinter_autosave = 0
 -- g.go_debug_windows = {
-  -- vars = 'rightbelow 60vnew',
-  -- stack = 'rightbelow 10new'
+-- vars = 'rightbelow 60vnew',
+-- stack = 'rightbelow 10new'
 -- }
 -- nnoremap <leader>gr :GoRun<CR>
 
@@ -185,82 +185,82 @@ g.neomake_open_list = 2
 g.neomake_eslint_exe = vim.fn.systemlist('which eslint')[0]
 g.neomake_stylelint_exe = vim.fn.systemlist('which stylelint')[0]
 
-g.neomake_text_enabled_makers = {'writegood'}
+g.neomake_text_enabled_makers = { 'writegood' }
 
-g.neomake_sh_enabled_makers = {'shellcheck'}
+g.neomake_sh_enabled_makers = { 'shellcheck' }
 
-g.neomake_vim_enabled_makers = {'vint'}
+g.neomake_vim_enabled_makers = { 'vint' }
 
-g.neomake_markdown_enabled_makers = {'markdownlint'}
-g.neomake_markdown_markdownlint_args = {'-c', '~/.markdownlint.yaml'}
+g.neomake_markdown_enabled_makers = { 'markdownlint' }
+g.neomake_markdown_markdownlint_args = { '-c', '~/.markdownlint.yaml' }
 
-g.neomake_ansible_enabled_makers = {'ansiblelint', 'yamllint'}
+g.neomake_ansible_enabled_makers = { 'ansiblelint', 'yamllint' }
 
-g.neomake_yamllint_enabled_makers = {'yamllint'}
+g.neomake_yamllint_enabled_makers = { 'yamllint' }
 
-g.neomake_typescriptreact_enabled_makers = {'eslint'}
-g.neomake_typescriptreact_eslint_args = {'--fix', '--format=json'}
+g.neomake_typescriptreact_enabled_makers = { 'eslint' }
+g.neomake_typescriptreact_eslint_args = { '--fix', '--format=json' }
 
-g.neomake_javascriptreact_enabled_makers = {'eslint'}
-g.neomake_javascriptreact_eslint_args = {'--fix', '--format=json'}
+g.neomake_javascriptreact_enabled_makers = { 'eslint' }
+g.neomake_javascriptreact_eslint_args = { '--fix', '--format=json' }
 
-g.neomake_javascript_enabled_makers = {'eslint'}
-g.neomake_javascript_eslint_args = {'--fix', '--format=json'}
+g.neomake_javascript_enabled_makers = { 'eslint' }
+g.neomake_javascript_eslint_args = { '--fix', '--format=json' }
 
-g.neomake_typescript_enabled_makers = {'eslint'}
-g.neomake_typescript_eslint_args = {'--fix', '--format=json'}
+g.neomake_typescript_enabled_makers = { 'eslint' }
+g.neomake_typescript_eslint_args = { '--fix', '--format=json' }
 
-g.neomake_json_enabled_makers = {'jsonlint'}
-g.neomake_json_jsonlint_args = {'-i'}
+g.neomake_json_enabled_makers = { 'jsonlint' }
+g.neomake_json_jsonlint_args = { '-i' }
 
 g.neomake_jsonnet_tk_maker = {
   name = 'tk',
   exe = 'tk',
-  errorformat ='%m',
-  args = {'lint'}
+  errorformat = '%m',
+  args = { 'lint' }
 }
-g.neomake_jsonnet_enabled_makers = {'tk'}
+g.neomake_jsonnet_enabled_makers = { 'tk' }
 
 g.neomake_python_isort_maker = {
   name = 'isort'
 }
 g.neomake_python_black_maker = {
- name = 'black'
+  name = 'black'
 }
 g.neomake_pylint_exe = vim.fn.systemlist('which pylint')[0]
 g.neomake_mypy_exe = vim.fn.systemlist('which mypy')[0]
 
-g.neomake_python_enabled_makers = {'pylint', 'isort', 'black', 'mypy'}
+g.neomake_python_enabled_makers = { 'pylint', 'isort', 'black', 'mypy' }
 
-g.neomake_css_enabled_makers = {'stylelint'}
-g.neomake_css_stylelint_args = {'--fix'}
+g.neomake_css_enabled_makers = { 'stylelint' }
+g.neomake_css_stylelint_args = { '--fix' }
 
-g.neomake_scss_enabled_makers = {'stylelint'}
-g.neomake_scss_stylelint_args = {'--fix'}
+g.neomake_scss_enabled_makers = { 'stylelint' }
+g.neomake_scss_stylelint_args = { '--fix' }
 
-g.neomake_less_enabled_makers = {'stylelint'}
-g.neomake_less_stylelint_args = {'--fix'}
+g.neomake_less_enabled_makers = { 'stylelint' }
+g.neomake_less_stylelint_args = { '--fix' }
 
 g.neomake_html_jsbeautify_maker = {
   name = 'djLint',
   exe = 'djlint',
-  args = {'--profile=html', '--reformat'}
+  args = { '--profile=html', '--reformat' }
 }
 
 -- g.neomake_htmldjango_jsbeautify_maker = {
-  -- name = 'djLint',
-  -- exe = 'djlint',
-  -- args = {'--profile=django', '--reformat'}
+-- name = 'djLint',
+-- exe = 'djlint',
+-- args = {'--profile=django', '--reformat'}
 -- }
 
 g.neomake_htmldjango_htmlhint_maker = {
-  args = {'--nocolor'},
+  args = { '--nocolor' },
   -- errorformat = '%f:%l:%c: %m,%-G,%-G%*\d problems'
 }
 
 -- g.neomake_go_enabled_makers = {}
-g.neomake_htmldjango_enabled_makers = {'htmlhint'}
-g.neomake_html_enabled_makers = {'htmlhint', 'jsbeautify'}
+g.neomake_htmldjango_enabled_makers = { 'htmlhint' }
+g.neomake_html_enabled_makers = { 'htmlhint', 'jsbeautify' }
 
 vim.cmd([[
   call neomake#configure#automake('w')
@@ -279,7 +279,7 @@ g.copilot_assume_mapped = true
 -- Terraform
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 autocmd("BufEnter", {
-  pattern = {"*.hcl"},
+  pattern = { "*.hcl" },
   command = "setlocal filetype=terraform",
   group = terraform
 })
@@ -287,9 +287,9 @@ autocmd("BufEnter", {
 ------------------------------------------
 -- hashivim/vim-terraform
 ------------------------------------------
-g.terraform_commentstring='//%s'
-g.terraform_align=1
-g.terraform_fmt_on_save=1
+g.terraform_commentstring = '//%s'
+g.terraform_align = 1
+g.terraform_fmt_on_save = 1
 
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- Documentation
@@ -320,8 +320,8 @@ g["airline#extensions#coc#show_coc_status"] = 1
 g["airline#extensions#hunks#enabled"] = 1
 g["airline#extensions#hunks#coc_git"] = 1
 -- remove the filetype part
-g.airline_section_x='%{get(b:,"coc_git_blame","")}'
-g.airline_section_y=''
+g.airline_section_x = '%{get(b:,"coc_git_blame","")}'
+g.airline_section_y = ''
 -- remove separators for empty sections
 g.airline_skip_empty_sections = 1
 vim.cmd("autocmd User CocGitStatusChange AirlineRefresh")

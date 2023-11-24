@@ -5,56 +5,56 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 -----------------------------------------
 --              General
 -----------------------------------------
-Plug('dkarter/bullets.vim')                    -- Bullet lists
-Plug('junegunn/vim-easy-align')                -- Align code around arbitrary characters =,:
-Plug('airblade/vim-rooter')                    -- Sets root directory to project (git) directory by default
-Plug('kopischke/vim-fetch')                    -- Open files at file:line:column
-Plug('scrooloose/nerdcommenter')               -- Comment/uncomment source code files
-Plug('tpope/vim-unimpaired')                   -- Mappings
+Plug('dkarter/bullets.vim')                     -- Bullet lists
+Plug('junegunn/vim-easy-align')                 -- Align code around arbitrary characters =,:
+Plug('airblade/vim-rooter')                     -- Sets root directory to project (git) directory by default
+Plug('kopischke/vim-fetch')                     -- Open files at file:line:column
+Plug('scrooloose/nerdcommenter')                -- Comment/uncomment source code files
+Plug('tpope/vim-unimpaired')                    -- Mappings
 Plug('kana/vim-textobj-user')
 Plug('rhysd/vim-textobj-anyblock')
-Plug('AndrewRadev/linediff.vim')               -- Linediff
-Plug('junegunn/vim-slash')                     -- Better vim search
-Plug('direnv/direnv.vim')                      -- direnv
+Plug('AndrewRadev/linediff.vim')                -- Linediff
+Plug('junegunn/vim-slash')                      -- Better vim search
+Plug('direnv/direnv.vim')                       -- direnv
 Plug('brooth/far.vim')
 Plug('kristijanhusak/vim-carbon-now-sh')
-Plug('tpope/vim-eunuch')                       -- OS comamnds in vim
-Plug('wincent/scalpel')                        -- Search and replace
-Plug('AndrewRadev/splitjoin.vim')              -- Single/multi line
-Plug('christianrondeau/vim-base64')            -- Base64
-Plug('yegappan/mru')                           -- Most recently opened
-Plug('takac/vim-hardtime')                     -- Hardtime
+Plug('tpope/vim-eunuch')                        -- OS comamnds in vim
+Plug('wincent/scalpel')                         -- Search and replace
+Plug('AndrewRadev/splitjoin.vim')               -- Single/multi line
+Plug('christianrondeau/vim-base64')             -- Base64
+Plug('yegappan/mru')                            -- Most recently opened
+Plug('takac/vim-hardtime')                      -- Hardtime
 Plug('Lokaltog/vim-easymotion')
 -----------------------------------------
 --              Documentation/Writing
 -----------------------------------------
 Plug('instant-markdown/vim-instant-markdown', {['for'] = 'markdown'})
 Plug('preservim/vim-markdown')
-Plug('mzlogin/vim-markdown-toc')               -- Markdown ToC
-Plug('rhysd/vim-grammarous')                   -- Words
-Plug('reedes/vim-pencil')                      -- Writing tool
-Plug('tpope/vim-abolish')                      -- Abbreviations
-Plug('ferrine/md-img-paste.vim')               -- Image pasting
+Plug('mzlogin/vim-markdown-toc')                -- Markdown ToC
+Plug('rhysd/vim-grammarous')                    -- Words
+Plug('reedes/vim-pencil')                       -- Writing tool
+Plug('tpope/vim-abolish')                       -- Abbreviations
+Plug('ferrine/md-img-paste.vim')                -- Image pasting
 Plug('ron89/thesaurus_query.vim')
 Plug('reedes/vim-wordy')
-Plug('epwalsh/obsidian.nvim')                  -- Obsidian
+Plug('epwalsh/obsidian.nvim')                   -- Obsidian
 -----------------------------------------
 --              Automation
 -----------------------------------------
-Plug('github/copilot.vim')                     -- Copilot
-Plug('farmergreg/vim-lastplace')               -- Open at lastplace
-Plug('tpope/vim-speeddating')                  -- Increment dates
-Plug('lfilho/cosco.vim')                       -- Semicolons
+Plug('github/copilot.vim')                      -- Copilot
+Plug('farmergreg/vim-lastplace')                -- Open at lastplace
+Plug('tpope/vim-speeddating')                   -- Increment dates
+Plug('lfilho/cosco.vim')                        -- Semicolons
 Plug('nvim-lua/plenary.nvim')                   -- Obsidian dependency
 Plug('nvim-telescope/telescope.nvim')
 -----------------------------------------
 --              Utils
 -----------------------------------------
-Plug('antoinemadec/coc-fzf')                   -- Coc-Fzf
+Plug('antoinemadec/coc-fzf')                    -- Coc-Fzf
 -----------------------------------------
 --              Snippets
 -----------------------------------------
-Plug('SirVer/ultisnips')
+Plug('SirVer/ultisnips')                        -- Use with coc-snippets
 -----------------------------------------
 --              PGSQL
 -----------------------------------------
@@ -63,43 +63,45 @@ Plug('lifepillar/pgsql.vim')
 --              GUI
 -----------------------------------------
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
-Plug('psliwka/vim-smoothie')                   -- Smooth scrolling
+Plug('psliwka/vim-smoothie')                    -- Smooth scrolling
 Plug('ntpeters/vim-better-whitespace')
-Plug('ryanoasis/vim-devicons')                 -- Icons
-Plug('vim-airline/vim-airline')                -- Bottom bar
-Plug('vim-airline/vim-airline-themes')         -- Bottom bar
-Plug('Yggdroot/indentLine')                    -- Show line indentation
-Plug('luochen1990/rainbow')                    -- Color parantheses
-Plug('itchyny/vim-cursorword')                 -- Underlines/highlight the word under the cursor
-Plug('morhetz/gruvbox')                        -- Gruvbox theme
-Plug('rrethy/vim-hexokinase', {                -- Colours in the file
+Plug('ryanoasis/vim-devicons')                  -- Icons
+Plug('vim-airline/vim-airline')                 -- Bottom bar
+Plug('vim-airline/vim-airline-themes')          -- Bottom bar
+Plug('Yggdroot/indentLine')                     -- Show line indentation
+Plug('luochen1990/rainbow')                     -- Color parantheses
+Plug('itchyny/vim-cursorword')                  -- Underlines/highlight the word under the cursor
+Plug('morhetz/gruvbox')                         -- Gruvbox theme
+Plug('rrethy/vim-hexokinase', {                 -- Colours in the file
   ['do'] = 'make hexokinase'
 })
-Plug('rrethy/vim-illuminate')                  -- Highlight similar word
-Plug('machakann/vim-highlightedyank')          -- Highlight yanks
-Plug('camspiers/animate.vim')                  -- Animate scroll
-Plug('gelguy/wilder.nvim', {['do']= ':UpdateRemotePlugins'}) -- Better wildmenu
+Plug('rrethy/vim-illuminate')                   -- Highlight similar word
+Plug('machakann/vim-highlightedyank')           -- Highlight yanks
+Plug('camspiers/animate.vim')                   -- Animate scroll
+Plug('gelguy/wilder.nvim', {
+  ['do']= ':UpdateRemotePlugins'}               -- Better wildmenu
+)
 -----------------------------------------
 --              Shortkeys
 -----------------------------------------
-Plug('tpope/vim-surround')                     -- Delete add surroundings in pair
+Plug('tpope/vim-surround')                      -- Delete add surroundings in pair
 -----------------------------------------
 --              GIT
 -----------------------------------------
-Plug('rhysd/committia.vim')                    -- Better Git commits
-Plug('rhysd/git-messenger.vim')                -- Show git messages
+Plug('rhysd/committia.vim')                     -- Better Git commits
+Plug('rhysd/git-messenger.vim')                 -- Show git messages
 Plug('tpope/vim-fugitive')
-Plug('rbong/vim-flog')                         -- Better git log
-Plug('tpope/vim-rhubarb')                      -- Dependency for vim-fugitive
-Plug('rhysd/vim-github-actions')               -- Vim filetype support for GitHub Actions
-Plug('rhysd/conflict-marker.vim')              -- Diff conflicts
+Plug('rbong/vim-flog')                          -- Better git log
+Plug('tpope/vim-rhubarb')                       -- Dependency for vim-fugitive
+Plug('rhysd/vim-github-actions')                -- Vim filetype support for GitHub Actions
+Plug('rhysd/conflict-marker.vim')               -- Diff conflicts
 -----------------------------------------
 --      YAML/JSON/JSONNET/TOML/HELM
 -----------------------------------------
 Plug('elzr/vim-json')
 Plug('google/vim-jsonnet')
 Plug('cespare/vim-toml')
-Plug('towolf/vim-helm')                        -- Helm
+Plug('towolf/vim-helm')                         -- Helm
 -----------------------------------------
 --              FZF
 -----------------------------------------

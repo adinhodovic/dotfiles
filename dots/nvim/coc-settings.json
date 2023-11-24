@@ -6,18 +6,6 @@
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": false,
   "html.autoClosingTags": true,
-  "suggest.snippetIndicator": "🔨",
-  "snippets.extends": {
-    "typescript_tsx": [
-      "typescript"
-    ],
-    "html": [
-      "htmldjango"
-    ],
-    "scss": [
-      "css"
-    ]
-  },
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
@@ -66,7 +54,7 @@
     "coc.preferences.formatOnSave": false,
     "revertAboveWhenPerformanceIsBetter": 1000
   },
-  "html-css-support.enabledLanguages": [
+  "html-css-support.styleSheets": [
     "html",
     "vue",
     "blade",
@@ -75,5 +63,19 @@
     "javascriptreact"
   ],
   "git.addGBlameToBufferVar": true,
-  "git.addGBlameToVirtualText": false
+  "git.addGBlameToVirtualText": false,
+  "snippets.extends": {
+    "typescript_tsx": [
+      "typescript"
+    ],
+    "html": [
+      "htmldjango"
+    ],
+    "scss": [
+      "css"
+    ]
+  },
+  "snippets.ultisnips.directories": [
+    "~/personal/Ultisnips"
+  ]
 }
