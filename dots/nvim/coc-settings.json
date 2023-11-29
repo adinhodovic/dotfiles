@@ -54,6 +54,12 @@
     "coc.preferences.formatOnSave": false,
     "revertAboveWhenPerformanceIsBetter": 1000
   },
+  "htmldjango.djlint.addLinterArgs": [
+    "--configuration=pyproject.toml"
+  ],
+  "htmldjango.djlint.addFormatterArgs": [
+    "--configuration=pyproject.toml"
+  ],
   "html-css-support.styleSheets": [
     "html",
     "vue",
