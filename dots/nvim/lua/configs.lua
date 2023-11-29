@@ -56,8 +56,7 @@ set.history = 1000
 -------------------------------------------
 -- Spelling
 -------------------------------------------
-set.spell = false
-set.spellfile = "~/.dotfiles/spell/en.utf-8.add"
+set.spell = true
 set.title = true
 set.number = true
 

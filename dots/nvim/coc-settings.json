@@ -9,30 +9,16 @@
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
-      "args": [
-        "serve"
-      ],
-      "filetypes": [
-        "terraform",
-        "tf"
-      ],
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
     },
     "jsonnet": {
       "command": "jsonnet-language-server",
-      "args": [
-        "--tanka",
-        "--lint"
-      ],
-      "rootPatterns": [
-        ".git/",
-        "jsonnetfile.json"
-      ],
-      "filetypes": [
-        "jsonnet",
-        "libsonnet"
-      ]
+      "args": ["--tanka", "--lint"],
+      "rootPatterns": [".git/", "jsonnetfile.json"],
+      "filetypes": ["jsonnet", "libsonnet"]
     }
   },
   "yaml.schemaStore.enable": true,
@@ -54,12 +40,8 @@
     "coc.preferences.formatOnSave": false,
     "revertAboveWhenPerformanceIsBetter": 1000
   },
-  "htmldjango.djlint.addLinterArgs": [
-    "--configuration=pyproject.toml"
-  ],
-  "htmldjango.djlint.addFormatterArgs": [
-    "--configuration=pyproject.toml"
-  ],
+  "htmldjango.djlint.addLinterArgs": ["--configuration=pyproject.toml"],
+  "htmldjango.djlint.addFormatterArgs": ["--configuration=pyproject.toml"],
   "html-css-support.styleSheets": [
     "html",
     "vue",
@@ -71,17 +53,23 @@
   "git.addGBlameToBufferVar": true,
   "git.addGBlameToVirtualText": false,
   "snippets.extends": {
-    "typescript_tsx": [
-      "typescript"
-    ],
-    "html": [
-      "htmldjango"
-    ],
-    "scss": [
-      "css"
-    ]
+    "typescript_tsx": ["typescript"],
+    "html": ["htmldjango"],
+    "scss": ["css"]
   },
-  "snippets.ultisnips.directories": [
-    "~/personal/Ultisnips"
+  "snippets.ultisnips.directories": ["~/personal/Ultisnips"],
+  "cSpell.userWords": [
+    "htmldjango",
+    "jsonnet",
+    "jsonnetfile",
+    "kubernetes",
+    "kustomization",
+    "libsonnet",
+    "mypy",
+    "prettierrc",
+    "pylint",
+    "pyproject",
+    "ultisnips"
   ]
 }
+
