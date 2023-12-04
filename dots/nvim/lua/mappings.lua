@@ -3,11 +3,11 @@ local set = vim.opt
 local g = vim.g
 
 function default(val, default_val)
-    if val == nil then
-        return default_val
-    else
-        return val
-    end
+  if val == nil then
+    return default_val
+  else
+    return val
+  end
 end
 
 default_options = { noremap = true, silent = true }
@@ -110,8 +110,8 @@ imap("<C-c>", "copilot#Accept('<CR>')", default_options_expression)
 local keyset = vim.keymap.set
 -- Auto complete
 function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
 -- Use tab for trigger completion with characters ahead and navigate.
@@ -119,7 +119,7 @@ end
 -- no select by `"suggest.noselect": true` in your configuration file.
 -- NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 -- other plugin before putting this into your config.
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
@@ -130,51 +130,52 @@ keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r
 -- Use <c-j> to trigger snippets
 keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 -- Use <c-space> to trigger completion.
-keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
+keyset("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
 
 -- Use K to show documentation in preview window.
 function _G.show_docs()
-    local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
-        vim.api.nvim_command('h ' .. cw)
-    elseif vim.api.nvim_eval('coc#rpc#ready()') then
-        vim.fn.CocActionAsync('doHover')
-    else
-        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
-    end
+  local cw = vim.fn.expand('<cword>')
+  if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+    vim.api.nvim_command('h ' .. cw)
+  elseif vim.api.nvim_eval('coc#rpc#ready()') then
+    vim.fn.CocActionAsync('doHover')
+  else
+    vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+  end
 end
-keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+
+keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
 -- Highlight the symbol and its references when holding the cursor.
 vim.api.nvim_create_augroup("CocGroup", {})
 vim.api.nvim_create_autocmd("CursorHold", {
-    group = "CocGroup",
-    command = "silent call CocActionAsync('highlight')",
-    desc = "Highlight symbol under cursor on CursorHold"
+  group = "CocGroup",
+  command = "silent call CocActionAsync('highlight')",
+  desc = "Highlight symbol under cursor on CursorHold"
 })
 
 -- Symbol renaming.
-keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 
 ----------------------------------------
 -- Telescope.nvim
 ----------------------------------------
 git_files_changed = function()
-    local previewers = require('telescope.previewers')
-    local pickers = require('telescope.pickers')
-    local sorters = require('telescope.sorters')
-    local finders = require('telescope.finders')
+  local previewers = require('telescope.previewers')
+  local pickers = require('telescope.pickers')
+  local sorters = require('telescope.sorters')
+  local finders = require('telescope.finders')
 
-    pickers.new {
-        results_title = 'Modified on current branch',
-        finder = finders.new_oneshot_job({'/home/adin/.dotfiles/scripts/git-files-changed.sh', 'list'}),
-        sorter = sorters.get_fuzzy_file(),
-        previewer = previewers.new_termopen_previewer {
-            get_command = function(entry)
-                return {'/home/adin/.dotfiles/scripts/git-files-changed.sh', 'diff', entry.value}
-            end
-        },
-    }:find()
+  pickers.new {
+    results_title = 'Modified on current branch',
+    finder = finders.new_oneshot_job({ '/home/adin/.dotfiles/scripts/git-files-changed.sh', 'list' }),
+    sorter = sorters.get_fuzzy_file(),
+    previewer = previewers.new_termopen_previewer {
+      get_command = function(entry)
+        return { '/home/adin/.dotfiles/scripts/git-files-changed.sh', 'diff', entry.value }
+      end
+    },
+  }:find()
 end
 
 nmap('b', ":e #<cr>")
@@ -239,3 +240,9 @@ nmap("[c", "<Plug>(coc-git-prevconflict)")
 nmap("]c", "<Plug>(coc-git-nextconflict)")
 -- show chunk diff at current position
 nmap("<leader>gs", "<Plug>(coc-git-chunkinfo)")
+
+-------------------------------------------
+-- Projects/Tree
+-------------------------------------------
+nmap('<leader>cd', ":Telescope projects<cr>")
+nmap('<leader>ct', ":NvimTreeToggle<cr>")
