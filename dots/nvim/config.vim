@@ -148,10 +148,10 @@ omap ac <Plug>(coc-classobj-a)
 vmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
 
-" Use <C-l> for trigger snippet expand.
+" Use for trigger snippet expand.
 imap <leader>se <Plug>(coc-snippets-expand)
 
-" Use <leader>x for convert visual selected code to snippet
+" Use for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 "-----------------------------------------
 " coc-fzf
