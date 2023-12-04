@@ -238,13 +238,18 @@ require("nvim-tree").setup({
 
 -- Obsidian
 require("obsidian").setup({
-  dir = "~/personal/notes",
-  disable_frontmatter = false,
-})
-
-require("obsidian").setup({
-  dir = "~/personal/blogs",
-  disable_frontmatter = true,
+  workspaces = {
+    {
+      name = 'notes',
+      path = "~/personal/notes",
+      disable_frontmatter = false,
+    },
+    {
+      name = 'blogs',
+      path = "~/personal/blogs",
+      disable_frontmatter = true,
+    }
+  },
 })
 
 -- Wilder.nvim
