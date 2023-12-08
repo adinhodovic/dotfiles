@@ -118,9 +118,6 @@
         - src: "neofetch.conf"
           dest: "/home/adin/.config/neofetch/config.conf"
 
-        - src: "tridactylrc"
-          dest: "/home/adin/.tridactylrc"
-
         - src: "rofi.rasi"
           dest: "/home/adin/.config/rofi/config.rasi"
 
