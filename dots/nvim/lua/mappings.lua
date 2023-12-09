@@ -229,8 +229,19 @@ vim.cmd([[
   endfunction
 ]])
 
+------------------------------------------
+-- coc-fzf
+------------------------------------------
+nmap("<space><space>", ":<C-u>CocFzfList<CR>")
+nmap("<space>c", ":<C-u>CocFzfList commands<CR>")
+nmap("<space>e", ":<C-u>CocFzfList extensions<CR>")
+nmap("<space>l", ":<C-u>CocFzfList location<CR>")
+nmap("<space>o", ":<C-u>CocFzfList outline<CR>")
+nmap("<space>s", ":<C-u>CocFzfList symbols<CR>")
+nmap("<space>p", ":<C-u>CocFzfListResume<CR>")
+
 -------------------------------------------
--- Coc-git
+-- coc-git
 -------------------------------------------
 -- navigate chunks of current buffer
 nmap("[g", "<Plug>(coc-git-prevchunk)")
@@ -246,3 +257,23 @@ nmap("<leader>gs", "<Plug>(coc-git-chunkinfo)")
 -------------------------------------------
 nmap('<leader>cd', ":Telescope projects<cr>")
 nmap('<leader>ct', ":NvimTreeToggle<cr>")
+
+-------------------------------------------
+-- Delete/Paste text without copying
+-------------------------------------------
+nmap("<leader>d", '"_d')
+xmap("<leader>d", '"_d')
+nmap("<leader>dd", '"_dd')
+xmap("<leader>dd", '"_dd')
+xmap("<leader>p", '"_dP')
+
+-------------------------------------------
+-- MarkdownClipboardImage
+-------------------------------------------
+g.mdip_imgdir = 'images'
+nmap("<leader>mp", ":call mdip#MarkdownClipboardImage()<CR>")
+
+-------------------------------------------
+-- MRU
+-------------------------------------------
+nmap("<leader>mr", ":MRU<CR>")

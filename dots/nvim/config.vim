@@ -154,27 +154,6 @@ imap <leader>se <Plug>(coc-snippets-expand)
 " Use for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 "-----------------------------------------
-" coc-fzf
-"-----------------------------------------
-nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
-nnoremap <silent> <space>c :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <space>e :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <space>l :<C-u>CocFzfList location<CR>
-nnoremap <silent> <space>o :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <space>s :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <space>p :<C-u>CocFzfListResume<CR>
-"-----------------------------------------
-" Delete/Paste text without copying
-"-----------------------------------------
-nnoremap <leader>d "_d
-xnoremap <leader>d "_d
-nnoremap <leader>dd "_dd
-xnoremap <leader>dd "_dd
-xnoremap <leader>p "_dP
-
-let g:mdip_imgdir = 'images'
-nnoremap <buffer><silent> <leader>mp :call mdip#MarkdownClipboardImage()<CR>
-"-----------------------------------------
 " Ansible-vim
 "-----------------------------------------
 let g:ansible_extra_keywords_highlight = 1
@@ -283,14 +262,6 @@ function! <SID>BufcloseCloseIt()
   endif
 endfunction
 "-----------------------------------------
-" SirVer/ultisnips
-"-----------------------------------------
-" Collides with coc-snippets
-let g:UltiSnipsListSnippets = '<nop>'
-let g:UltiSnipsExpandTrigger = '<nop>'
-" Load my own snippets
-let g:UltiSnipsSnippetDirectories=['~/personal/UltiSnips']
-"-----------------------------------------
 "               Vim-pencil
 "-----------------------------------------
 let g:pencil#wrapModeDefault = 'soft'
@@ -298,14 +269,6 @@ augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
 augroup END
-"-----------------------------------------
-" conflict-marker
-"-----------------------------------------
-let g:conflict_marker_highlight_group = 'DiffText'
-"-----------------------------------------
-" MRU
-"-----------------------------------------
-nnoremap <leader>mr :MRU<CR>
 "-----------------------------------------
 " Abbreviations
 "-----------------------------------------

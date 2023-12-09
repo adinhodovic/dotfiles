@@ -324,3 +324,16 @@ g.airline_section_y = ''
 -- remove separators for empty sections
 g.airline_skip_empty_sections = 1
 vim.cmd("autocmd User CocGitStatusChange AirlineRefresh")
+
+-------------------------------------------
+-- SirVer/ultisnips
+-------------------------------------------
+-- Collides with coc-snippets
+g.UltiSnipsListSnippets = '<nop>'
+g.UltiSnipsExpandTrigger = '<nop>'
+-- Load my own snippets
+g.UltiSnipsSnippetDirectories = ('~/personal/UltiSnips')
+-------------------------------------------
+-- conflict-marker
+-------------------------------------------
+g.conflict_marker_highlight_group = 'DiffText'
