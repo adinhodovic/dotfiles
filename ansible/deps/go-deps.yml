@@ -2,15 +2,24 @@
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
+  name: Go Dependencies
   connection: local
   tasks:
     - name: Install Go packages
       shell: "go install {{ item }}"
       loop:
+        # core
+        - golang.org/x/tools/gopls@latest
+        # jsonnet
         - github.com/google/go-jsonnet/cmd/jsonnet@latest
         - github.com/google/go-jsonnet/cmd/jsonnet-lint@latest
-        - github.com/bazelbuild/bazelisk@latest
+        - github.com/grafana/jsonnet-language-server@latest
+        # observability
+        - github.com/prometheus/prometheus/cmd/promtool@latest
         - github.com/monitoring-mixins/mixtool/cmd/mixtool@latest
+        - github.com/grafana/dashboard-linter@latest
+        # dev
+        - github.com/bazelbuild/bazelisk@latest
         - github.com/go-delve/delve/cmd/dlv@latest
-        - golang.org/x/tools/gopls@latest
+        # utils
         - github.com/tomnomnom/gron@latest
