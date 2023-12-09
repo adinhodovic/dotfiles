@@ -50,10 +50,6 @@ nmap("<leader>bd", ":Bclose<cr>")
 -- Close all the buffers
 nmap("<leader>ba", ":1,1000 bd!<cr>")
 
-nmap("m", "%")
-vmap("m", "%")
--- set cmdwinheight=1
-
 nmap("q", "b")
 vmap("q", "b")
 -- Movement begin/end of line
