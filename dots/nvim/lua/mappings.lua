@@ -277,3 +277,23 @@ nmap("<leader>mp", ":call mdip#MarkdownClipboardImage()<CR>")
 -- MRU
 -------------------------------------------
 nmap("<leader>mr", ":MRU<CR>")
+
+-------------------------------------------
+-- Markbar
+-------------------------------------------
+nmap("<leader>m", "<Plug>ToggleMarkbar")
+
+-- this lets you write your custom mark names to ShaDa/viminfo on demand,
+-- rather than waiting until you :q to exit. That lets you sync mark names
+-- between (neo)vim editor instances without closing and reopening vim.
+--
+-- this and the mapping below will trigger wshada[!]/wviminfo[!] and
+-- rshada[!]/rviminfo[!]. trigger this after setting custom mark names
+nmap("<leader>www", "<Plug>WriteMarkbarRosters")
+
+-- trigger this mapping in other vim instances to update the mark names in
+-- their markbars
+nmap("<leader>rrr", "<Plug>ReadMarkbarRosters")
+
+-- when set to true, this echomsg's when rosters are read or written
+g.markbar_print_time_on_shada_io = true

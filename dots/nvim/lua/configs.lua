@@ -11,7 +11,6 @@ g.hardtime_default_on = 0
 g.hardtime_maxcount = 2
 g.hardtime_allow_different_key = 1
 
-
 set.completeopt = 'preview,menu'
 
 set.mouse = 'a'
@@ -29,6 +28,17 @@ set.shortmess = "c"
 -- always show signcolumns
 set.signcolumn = 'yes'
 
+-- Abbreviations
+vim.cmd("cnoreabbrev W! w!")
+vim.cmd("cnoreabbrev Q! q!")
+vim.cmd("cnoreabbrev Qall! qall!")
+vim.cmd("cnoreabbrev Wq wq")
+vim.cmd("cnoreabbrev Wa wa")
+vim.cmd("cnoreabbrev wQ wq")
+vim.cmd("cnoreabbrev WQ wq")
+vim.cmd("cnoreabbrev W w")
+vim.cmd("cnoreabbrev Q q")
+
 -----------------------------------------
 -- GUI
 -----------------------------------------
@@ -39,10 +49,10 @@ vim.cmd("silent! colorscheme gruvbox")
 
 -- Bullets.vim
 vim.g.bullets_enabled_file_types = {
-  'markdown',
-  'text',
-  'gitcommit',
-  'scratch'
+	'markdown',
+	'text',
+	'gitcommit',
+	'scratch'
 }
 
 set.cmdwinheight = 1
@@ -97,9 +107,9 @@ set.colorcolumn = ""
 
 local textwidth = augroup("textwidth", {})
 autocmd("FileType", {
-  pattern = { "dockerfile", "sh", "gitcommit", "html", "htmldjango", "python", "yaml", "text", "jsonnet", "direnv", "terraform" },
-  command = "setlocal textwidth=0 | setlocal colorcolumn=0",
-  group = textwidth
+	pattern = { "dockerfile", "sh", "gitcommit", "html", "htmldjango", "python", "yaml", "text", "jsonnet", "direnv", "terraform" },
+	command = "setlocal textwidth=0 | setlocal colorcolumn=0",
+	group = textwidth
 })
 
 -------------------------------------------
@@ -213,18 +223,18 @@ g.neomake_json_enabled_makers = { 'jsonlint' }
 g.neomake_json_jsonlint_args = { '-i' }
 
 g.neomake_jsonnet_tk_maker = {
-  name = 'tk',
-  exe = 'tk',
-  errorformat = '%m',
-  args = { 'lint' }
+	name = 'tk',
+	exe = 'tk',
+	errorformat = '%m',
+	args = { 'lint' }
 }
 g.neomake_jsonnet_enabled_makers = { 'tk' }
 
 g.neomake_python_isort_maker = {
-  name = 'isort'
+	name = 'isort'
 }
 g.neomake_python_black_maker = {
-  name = 'black'
+	name = 'black'
 }
 g.neomake_pylint_exe = vim.fn.systemlist('which pylint')[0]
 g.neomake_mypy_exe = vim.fn.systemlist('which mypy')[0]
@@ -241,9 +251,9 @@ g.neomake_less_enabled_makers = { 'stylelint' }
 g.neomake_less_stylelint_args = { '--fix' }
 
 g.neomake_html_jsbeautify_maker = {
-  name = 'djLint',
-  exe = 'djlint',
-  args = { '--profile=html', '--reformat' }
+	name = 'djLint',
+	exe = 'djlint',
+	args = { '--profile=html', '--reformat' }
 }
 
 -- g.neomake_htmldjango_jsbeautify_maker = {
@@ -253,8 +263,8 @@ g.neomake_html_jsbeautify_maker = {
 -- }
 
 g.neomake_htmldjango_htmlhint_maker = {
-  args = { '--nocolor' },
-  -- errorformat = '%f:%l:%c: %m,%-G,%-G%*\d problems'
+	args = { '--nocolor' },
+	-- errorformat = '%f:%l:%c: %m,%-G,%-G%*\d problems'
 }
 
 -- g.neomake_go_enabled_makers = {}
@@ -278,9 +288,9 @@ g.copilot_assume_mapped = true
 -- Terraform
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 autocmd("BufEnter", {
-  pattern = { "*.hcl" },
-  command = "setlocal filetype=terraform",
-  group = terraform
+	pattern = { "*.hcl" },
+	command = "setlocal filetype=terraform",
+	group = terraform
 })
 
 ------------------------------------------

@@ -49,6 +49,7 @@ Plug('nvim-lua/plenary.nvim')    -- Obsidian dependency
 Plug('nvim-telescope/telescope.nvim')
 Plug('ahmedkhalf/project.nvim')  -- Project jumping
 Plug('nvim-tree/nvim-tree.lua')  -- File tree
+Plug('Yilin-Yang/vim-markbar')   -- Markbar
 -----------------------------------------
 --              Utils
 -----------------------------------------

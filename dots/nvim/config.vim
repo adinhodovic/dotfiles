@@ -126,7 +126,8 @@ let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-lua',
     \ '@yaegassy/coc-ansible',
-    \ '@yaegassy/coc-marksman'
+    \ '@yaegassy/coc-marksman',
+    \ 'coc-sql'
 \]
 "\ 'coc-tabnine' disable due to high cpu,
 
