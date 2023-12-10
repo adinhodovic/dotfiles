@@ -34,6 +34,10 @@ function xmap(shortcut, command, options)
   map('x', shortcut, command, options)
 end
 
+function omap(shortcut, command, options)
+  map('o', shortcut, command, options)
+end
+
 -------------------------------------------
 -- Moving around, tabs, windows and buffers
 -------------------------------------------
@@ -102,6 +106,25 @@ imap("<C-c>", "copilot#Accept('<CR>')", default_options_expression)
 ----------------------------------------
 -- Coc.nvim
 ----------------------------------------
+nmap("<space>y", ":<C-u>CocList -A --normal yank<cr>")
+
+xmap("if", "<Plug>(coc-funcobj-i")
+omap("if", "<Plug>(coc-funcobj-i")
+xmap("af", "<Plug>(coc-funcobj-a")
+omap("af", "<Plug>(coc-funcobj-a")
+xmap("ic", "<Plug>(coc-classobj-i")
+omap("ic", "<Plug>(coc-classobj-i")
+xmap("ac", "<Plug>(coc-classobj-a")
+omap("ac", "<Plug>(coc-classobj-a")
+
+vmap("<leader>a", "<Plug>(coc-codeaction-selected)")
+nmap("<leader>a", "<Plug>(coc-codeaction-selected)")
+
+-- Use for trigger snippet expand.
+imap("<leader>se", "<Plug>(coc-snippets-expand)")
+
+-- Use for convert visual selected code to snippet
+xmap("<leader>x", "<Plug>(coc-convert-snippet)")
 
 local keyset = vim.keymap.set
 -- Auto complete
@@ -142,16 +165,31 @@ end
 
 keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
--- Highlight the symbol and its references when holding the cursor.
-vim.api.nvim_create_augroup("CocGroup", {})
-vim.api.nvim_create_autocmd("CursorHold", {
-  group = "CocGroup",
-  command = "silent call CocActionAsync('highlight')",
-  desc = "Highlight symbol under cursor on CursorHold"
-})
-
 -- Symbol renaming.
 keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
+
+------------------------------------------
+-- coc-fzf
+------------------------------------------
+nmap("<space><space>", ":<C-u>CocFzfList<CR>")
+nmap("<space>c", ":<C-u>CocFzfList commands<CR>")
+nmap("<space>e", ":<C-u>CocFzfList extensions<CR>")
+nmap("<space>l", ":<C-u>CocFzfList location<CR>")
+nmap("<space>o", ":<C-u>CocFzfList outline<CR>")
+nmap("<space>s", ":<C-u>CocFzfList symbols<CR>")
+nmap("<space>p", ":<C-u>CocFzfListResume<CR>")
+
+-------------------------------------------
+-- coc-git
+-------------------------------------------
+-- navigate chunks of current buffer
+nmap("[g", "<Plug>(coc-git-prevchunk)")
+nmap("]g", "<Plug>(coc-git-nextchunk)")
+-- navigate conflicts of current buffer
+nmap("[c", "<Plug>(coc-git-prevconflict)")
+nmap("]c", "<Plug>(coc-git-nextconflict)")
+-- show chunk diff at current position
+nmap("<leader>gs", "<Plug>(coc-git-chunkinfo)")
 
 ----------------------------------------
 -- Telescope.nvim
@@ -225,29 +263,6 @@ vim.cmd([[
   endfunction
 ]])
 
-------------------------------------------
--- coc-fzf
-------------------------------------------
-nmap("<space><space>", ":<C-u>CocFzfList<CR>")
-nmap("<space>c", ":<C-u>CocFzfList commands<CR>")
-nmap("<space>e", ":<C-u>CocFzfList extensions<CR>")
-nmap("<space>l", ":<C-u>CocFzfList location<CR>")
-nmap("<space>o", ":<C-u>CocFzfList outline<CR>")
-nmap("<space>s", ":<C-u>CocFzfList symbols<CR>")
-nmap("<space>p", ":<C-u>CocFzfListResume<CR>")
-
--------------------------------------------
--- coc-git
--------------------------------------------
--- navigate chunks of current buffer
-nmap("[g", "<Plug>(coc-git-prevchunk)")
-nmap("]g", "<Plug>(coc-git-nextchunk)")
--- navigate conflicts of current buffer
-nmap("[c", "<Plug>(coc-git-prevconflict)")
-nmap("]c", "<Plug>(coc-git-nextconflict)")
--- show chunk diff at current position
-nmap("<leader>gs", "<Plug>(coc-git-chunkinfo)")
-
 -------------------------------------------
 -- Projects/Tree
 -------------------------------------------
@@ -299,3 +314,26 @@ g.markbar_print_time_on_shada_io = true
 -------------------------------------------
 -- Pressing ,se will toggle and untoggle spell checking
 nmap("<leader>se", ":setlocal spell!<cr>")
+
+-------------------------------------------
+-- CarbonNowSh
+-------------------------------------------
+xmap('<F6>', ':CarbonNowSh<CR>')
+
+-------------------------------------------
+-- GitMessenger
+-------------------------------------------
+nmap("<leader>gm", ":GitMessenger <CR>")
+g.git_messenger_include_diff = 'current'
+
+-------------------------------------------
+-- Easymotion
+-------------------------------------------
+nmap("f", "<Plug>(easymotion-bd-fl)")
+nmap("t", "<Plug>(easymotion-bd-tl)")
+nmap("s", "<Plug>(easymotion-sn)")
+
+-------------------------------------------
+-- NERDCommenter
+-------------------------------------------
+vmap("<leader>c", ":call NERDComment(0, 'toggle')<CR>")

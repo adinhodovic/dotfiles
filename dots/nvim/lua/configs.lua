@@ -469,3 +469,89 @@ set_autocmd(
   { "*/ansible/*.yml" },
   "set filetype=yaml.ansible"
 )
+
+-------------------------------------------
+-- Coc
+-------------------------------------------
+g.coc_global_extensions = {
+  'coc-pairs',
+  'coc-json',
+  'coc-yaml',
+  'coc-vimlsp',
+  'coc-emoji',
+  'coc-yank',
+  'coc-html',
+  'coc-htmldjango',
+  'coc-css',
+  'coc-html-css-support',
+  'coc-emmet',
+  'coc-pyright',
+  'coc-snippets',
+  'coc-tsserver',
+  '@yaegassy/coc-tailwindcss3',
+  'coc-spell-checker',
+  'coc-markdownlint',
+  'coc-git',
+  'coc-lists',
+  'coc-prettier',
+  'coc-go',
+  'coc-lua',
+  '@yaegassy/coc-ansible',
+  '@yaegassy/coc-marksman',
+  'coc-sql'
+}
+
+local cocGroup = augroup("coc", {})
+-- Highlight symbol under cursor on CursorHold
+set_autocmd(
+  cocGroup,
+  {
+    "CursorHold"
+  },
+  { "html" },
+  "silent call CocActionAsync('highlight')"
+)
+
+-- coc-tailwindcss3
+local coctailwindGroup = augroup("coctailwind", {})
+set_autocmd(
+  coctailwindGroup,
+  {
+    "FileType"
+  },
+  { "html" },
+  "let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']"
+)
+
+-------------------------------------------
+-- fzf.vim
+-------------------------------------------
+g.fzf_action = {
+  ['ctrl-t'] = 'tab split',
+  ['ctrl-x'] = 'vsplit',
+  ['ctrl-z'] = 'split',
+}
+g.fzf_layout = { up = '~40%' }
+g.fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
+
+-------------------------------------------
+-- Easymotion
+-------------------------------------------
+g.EasyMotion_keys = 'hgjfkdls;a'
+g.EasyMotion_grouping = 1
+g.EasyMotion_do_mapping = 0
+g.EasyMotion_smartcase = 1
+g.EasyMotion_do_shade = 1
+g.EasyMotion_use_upper = 1
+
+-------------------------------------------
+-- IndentLine
+-------------------------------------------
+g.indentLine_char_list = { '|', '¦', '┆', '┊' }
+g.indentLine_fileTypeExclude = { 'markdown', 'terraform' }
+
+-------------------------------------------
+-- NERDCommenter
+-------------------------------------------
+-- Add a space before any comment
+g.NERDSpaceDelims = 1

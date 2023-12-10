@@ -13,88 +13,6 @@ augroup END
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "----------------------------------------
 "-----------------------------------------
-" Easymotion
-"-----------------------------------------
-let g:EasyMotion_keys = 'hgjfkdls;a'
-let g:EasyMotion_grouping = 1
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_do_shade = 1
-let g:EasyMotion_use_upper = 1
-map f <Plug>(easymotion-bd-fl)
-map t <Plug>(easymotion-bd-tl)
-map s <Plug>(easymotion-sn)
-"-----------------------------------------
-" IndentLine
-"-----------------------------------------
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_fileTypeExclude = ['markdown', 'terraform']
-"-----------------------------------------
-" fzf.vim
-"-----------------------------------------
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'vsplit',
-  \ 'ctrl-z': 'split' }
-
-let g:fzf_layout = {'up': '~40%'}
-let g:fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
-"-----------------------------------------
-" Coc
-"-----------------------------------------
-let g:coc_global_extensions = [
-    \ 'coc-pairs',
-    \ 'coc-json',
-    \ 'coc-yaml',
-    \ 'coc-vimlsp',
-    \ 'coc-emoji',
-    \ 'coc-yank',
-    \ 'coc-html',
-    \ 'coc-htmldjango',
-    \ 'coc-css',
-    \ 'coc-html-css-support',
-    \ 'coc-emmet',
-    \ 'coc-pyright',
-    \ 'coc-snippets',
-    \ 'coc-tsserver',
-    \ '@yaegassy/coc-tailwindcss3',
-    \ 'coc-spell-checker',
-    \ 'coc-markdownlint',
-    \ 'coc-git',
-    \ 'coc-lists',
-    \ 'coc-prettier',
-    \ 'coc-go',
-    \ 'coc-lua',
-    \ '@yaegassy/coc-ansible',
-    \ '@yaegassy/coc-marksman',
-    \ 'coc-sql'
-\]
-"\ 'coc-tabnine' disable due to high cpu,
-
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
-augroup coctailwind
-  au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']
-augroup END
-
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-vmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)
-
-" Use for trigger snippet expand.
-imap <leader>se <Plug>(coc-snippets-expand)
-
-" Use for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
-"-----------------------------------------
 " Ansible-vault
 "-----------------------------------------
 function EncryptVault()
@@ -104,21 +22,6 @@ endfunction
 
 nnoremap <Leader>ve :call EncryptVault() <CR>
 nnoremap <Leader>vd :AnsibleVaultDecrypt <CR> :edit <CR>
-"-----------------------------------------
-" NERDCommenter
-"-----------------------------------------
-vnoremap <leader>c :call NERDComment(0, "toggle")<CR>
-" Add a space before any comment
-let g:NERDSpaceDelims = 1
-"-----------------------------------------
-" CarbonNowSh
-"-----------------------------------------
-vnoremap <F6> :CarbonNowSh<CR>
-"-----------------------------------------
-" GitMessenger
-"-----------------------------------------
-nnoremap <leader>gm :GitMessenger <CR>
-let g:git_messenger_include_diff = 'current'
 " ----------------------------------------
 " Visual mode related
 " ----------------------------------------
