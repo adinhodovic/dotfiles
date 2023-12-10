@@ -293,3 +293,9 @@ nmap("<leader>rrr", "<Plug>ReadMarkbarRosters")
 
 -- when set to true, this echomsg's when rosters are read or written
 g.markbar_print_time_on_shada_io = true
+
+-------------------------------------------
+--  Spell checking
+-------------------------------------------
+-- Pressing ,se will toggle and untoggle spell checking
+nmap("<leader>se", ":setlocal spell!<cr>")

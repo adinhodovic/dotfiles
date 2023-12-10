@@ -1,44 +1,4 @@
 "-----------------------------------------
-"               Indentation
-"-----------------------------------------
-" `nocindent smartindent` will allow us to omit semicolons and jump to the next line without auto indentation
-filetype on
-filetype indent on
-filetype plugin indent on
-syntax on
-" for Javascript/Typescript
-augroup indentation
-  autocmd FileType typescript,javascript,terraform,jinja2  setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
-  autocmd FileType coffee                 setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType css,scss,stylus        setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType vim                    setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType tex                    setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType yaml,docker-compose    setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType json                   setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType json syntax match Comment +\/\/.\+$+
-  autocmd FileType snippets               setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType jade                   setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType html,htmldjango        setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType python                 setlocal  shiftwidth=4 tabstop=4 expandtab
-  autocmd FileType go                     setlocal  shiftwidth=4 tabstop=4 noexpandtab
-  autocmd FileType erlang                 setlocal  shiftwidth=4 tabstop=4 noexpandtab
-  autocmd FileType make                   setlocal  shiftwidth=4 tabstop=4 noexpandtab
-  autocmd FileType sh,bash,zsh,readline,nginx,conf setlocal  shiftwidth=2 tabstop=2 expandtab nocindent smartindent
-  autocmd FileType php                    setlocal  shiftwidth=4 tabstop=4 expandtab
-  autocmd FileType markdown               setlocal  shiftwidth=4 tabstop=4 expandtab
-  autocmd FileType ruby                   setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType lua                    setlocal  shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType sshconfig              setlocal  shiftwidth=4 tabstop=4 expandtab
-augroup END
-
-"pasting from outside
-set clipboard=unnamedplus
-"-----------------------------------------
-"               Spell checking
-"-----------------------------------------
-" Pressing ,se will toggle and untoggle spell checking
-map <leader>se :setlocal spell!<cr>
-"-----------------------------------------
 "               Misc
 "-----------------------------------------
 " Reload vimrc on write
@@ -52,26 +12,6 @@ augroup END
 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "----------------------------------------
-" Cosco.vim
-"-----------------------------------------
-let g:cosco_filetype_whitelist = ['javascript', 'typescript', 'css', 'perl', 'nginx']
-"-----------------------------------------
-" Whitespace
-"-----------------------------------------
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-let g:better_whitespace_verbosity=1
-let g:current_line_whitespace_disabled_soft=1
-let g:better_whitespace_filetypes_blacklist=['zsh', 'html', 'vim', 'diff', 'gitcommit', 'unite', 'qf', 'help']
-let g:better_whitespace_ctermcolor='red'
-augroup whitespace
-  autocmd BufWritePre * StripWhitespace
-augroup END
-"-----------------------------------------
-" Lastplace
-"-----------------------------------------
-let g:lastplace_ignore = 'gitcommit,gitrebase,svn,hgcommit'
 "-----------------------------------------
 " Easymotion
 "-----------------------------------------
@@ -155,13 +95,6 @@ imap <leader>se <Plug>(coc-snippets-expand)
 " Use for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 "-----------------------------------------
-" Ansible-vim
-"-----------------------------------------
-let g:ansible_extra_keywords_highlight = 1
-augroup ansible
-  au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
-augroup END
-"-----------------------------------------
 " Ansible-vault
 "-----------------------------------------
 function EncryptVault()
@@ -193,17 +126,6 @@ let g:git_messenger_include_diff = 'current'
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CSS & HTML
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:user_emmet_install_global = 0
-augroup emmet
-  autocmd FileType html,css,jsx,tsx EmmetInstall
-augroup END
-"-----------------------------------------
-" Rainbow Parantheses
-"-----------------------------------------
-let g:rainbow_active = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -262,14 +184,6 @@ function! <SID>BufcloseCloseIt()
     execute('bdelete! '.l:currentBufNum)
   endif
 endfunction
-"-----------------------------------------
-"               Vim-pencil
-"-----------------------------------------
-let g:pencil#wrapModeDefault = 'soft'
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-augroup END
 "-----------------------------------------
 " Abbreviations
 "-----------------------------------------

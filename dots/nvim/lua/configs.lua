@@ -4,6 +4,15 @@ local g = vim.g
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Define a function to simplify setting autocmds
+local function set_autocmd(group, event, pattern, command)
+  autocmd(event, {
+    group = group,
+    pattern = pattern,
+    command = command
+  })
+end
+
 g.python3_host_prog = '/usr/bin/python'
 
 g.hardtime_default_on = 0
@@ -39,6 +48,52 @@ vim.cmd("cnoreabbrev WQ wq")
 vim.cmd("cnoreabbrev W w")
 vim.cmd("cnoreabbrev Q q")
 
+-------------------------------------------
+-- Indentation
+-------------------------------------------
+
+-- Enable file type detection
+vim.o.filetype = 'on'
+
+-- Enable file type-specific indentation
+vim.o.filetypeindent = 'on'
+
+-- Enable file type-specific plugins and indentation
+vim.o.filetypeplugin = 'on'
+
+-- Enable syntax highlighting
+vim.o.syntax = 'on'
+
+-- Create the augroup and set autocmds for various filetypes
+local indentation = augroup("indentation", {})
+set_autocmd(indentation, "FileType", { "typescript", "javascript", "terraform", "jinja2" },
+  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
+set_autocmd(indentation, "FileType", { "coffee" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "css", "scss", "stylus" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "vim" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "tex" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "yaml", "docker-compose" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "json" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "json" },
+  'setlocal shiftwidth=2 tabstop=2 expandtab | syntax match Comment "^//(.+)$"')
+set_autocmd(indentation, "FileType", { "snippets" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "jade" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "html", "htmldjango" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "python" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+set_autocmd(indentation, "FileType", { "go" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
+set_autocmd(indentation, "FileType", { "erlang" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
+set_autocmd(indentation, "FileType", { "make" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
+set_autocmd(indentation, "FileType", { "sh", "bash", "zsh", "readline", "nginx", "conf" },
+  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
+set_autocmd(indentation, "FileType", { "php" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+set_autocmd(indentation, "FileType", { "markdown" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+set_autocmd(indentation, "FileType", { "ruby" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "lua" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "sshconfig" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+
+-- pasting from outside
+set.clipboard = "unnamedplus"
+
 -----------------------------------------
 -- GUI
 -----------------------------------------
@@ -49,10 +104,10 @@ vim.cmd("silent! colorscheme gruvbox")
 
 -- Bullets.vim
 vim.g.bullets_enabled_file_types = {
-	'markdown',
-	'text',
-	'gitcommit',
-	'scratch'
+  'markdown',
+  'text',
+  'gitcommit',
+  'scratch'
 }
 
 set.cmdwinheight = 1
@@ -107,9 +162,9 @@ set.colorcolumn = ""
 
 local textwidth = augroup("textwidth", {})
 autocmd("FileType", {
-	pattern = { "dockerfile", "sh", "gitcommit", "html", "htmldjango", "python", "yaml", "text", "jsonnet", "direnv", "terraform" },
-	command = "setlocal textwidth=0 | setlocal colorcolumn=0",
-	group = textwidth
+  pattern = { "dockerfile", "sh", "gitcommit", "html", "htmldjango", "python", "yaml", "text", "jsonnet", "direnv", "terraform" },
+  command = "setlocal textwidth=0 | setlocal colorcolumn=0",
+  group = textwidth
 })
 
 -------------------------------------------
@@ -223,18 +278,18 @@ g.neomake_json_enabled_makers = { 'jsonlint' }
 g.neomake_json_jsonlint_args = { '-i' }
 
 g.neomake_jsonnet_tk_maker = {
-	name = 'tk',
-	exe = 'tk',
-	errorformat = '%m',
-	args = { 'lint' }
+  name = 'tk',
+  exe = 'tk',
+  errorformat = '%m',
+  args = { 'lint' }
 }
 g.neomake_jsonnet_enabled_makers = { 'tk' }
 
 g.neomake_python_isort_maker = {
-	name = 'isort'
+  name = 'isort'
 }
 g.neomake_python_black_maker = {
-	name = 'black'
+  name = 'black'
 }
 g.neomake_pylint_exe = vim.fn.systemlist('which pylint')[0]
 g.neomake_mypy_exe = vim.fn.systemlist('which mypy')[0]
@@ -251,9 +306,9 @@ g.neomake_less_enabled_makers = { 'stylelint' }
 g.neomake_less_stylelint_args = { '--fix' }
 
 g.neomake_html_jsbeautify_maker = {
-	name = 'djLint',
-	exe = 'djlint',
-	args = { '--profile=html', '--reformat' }
+  name = 'djLint',
+  exe = 'djlint',
+  args = { '--profile=html', '--reformat' }
 }
 
 -- g.neomake_htmldjango_jsbeautify_maker = {
@@ -263,8 +318,8 @@ g.neomake_html_jsbeautify_maker = {
 -- }
 
 g.neomake_htmldjango_htmlhint_maker = {
-	args = { '--nocolor' },
-	-- errorformat = '%f:%l:%c: %m,%-G,%-G%*\d problems'
+  args = { '--nocolor' },
+  -- errorformat = '%f:%l:%c: %m,%-G,%-G%*\d problems'
 }
 
 -- g.neomake_go_enabled_makers = {}
@@ -288,9 +343,9 @@ g.copilot_assume_mapped = true
 -- Terraform
 --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 autocmd("BufEnter", {
-	pattern = { "*.hcl" },
-	command = "setlocal filetype=terraform",
-	group = terraform
+  pattern = { "*.hcl" },
+  command = "setlocal filetype=terraform",
+  group = terraform
 })
 
 ------------------------------------------
@@ -347,3 +402,70 @@ g.UltiSnipsSnippetDirectories = ('~/personal/UltiSnips')
 -- conflict-marker
 -------------------------------------------
 g.conflict_marker_highlight_group = 'DiffText'
+
+-------------------------------------------
+-- CSS & HTML
+-------------------------------------------
+g.user_emmet_install_global = 0
+local emmetGroup = augroup("emmet", {})
+autocmd("FileType", {
+  pattern = { "html", "css", "jsx", "tsx", "htmldjango" },
+  command = "EmmetInstall",
+  group = emmetGroup
+})
+
+-------------------------------------------
+-- Rainbow Parantheses
+-------------------------------------------
+g.rainbow_active = 1
+
+-------------------------------------------
+-- Vim-pencil
+-------------------------------------------
+g["pencil#wrapModeDefault"] = 'soft'
+
+local pencilGroup = augroup("pencil", {})
+autocmd("FileType", {
+  pattern = { "markdown", "mkd" },
+  command = "call pencil#init()",
+  group = pencilGroup
+})
+
+-------------------------------------------
+-- Cosco.vim
+-------------------------------------------
+g.cosco_filetype_whitelist = { 'javascript', 'typescript', 'css', 'perl', 'nginx' }
+
+-------------------------------------------
+-- Whitespace
+-------------------------------------------
+g.better_whitespace_enabled = 1
+g.strip_whitespace_on_save = 1
+g.strip_whitespace_confirm = 0
+g.better_whitespace_verbosity = 1
+g.current_line_whitespace_disabled_soft = 1
+g.better_whitespace_filetypes_blacklist = { 'zsh', 'html', 'vim', 'diff', 'gitcommit', 'unite', 'qf', 'help' }
+g.better_whitespace_ctermcolor = 'red'
+
+local whitespaceGroup = augroup("whitespace", {})
+set_autocmd(
+  whitespaceGroup,
+  { "BufWritePre" },
+  { "*" },
+  "StripWhitespace"
+)
+
+-------------------------------------------
+-- Ansible-vim
+-------------------------------------------
+g.ansible_extra_keywords_highlight = 1
+local ansibleGroup = augroup("ansible", {})
+set_autocmd(
+  ansibleGroup,
+  {
+    "BufRead",
+    "BufNewFile"
+  },
+  { "*/ansible/*.yml" },
+  "set filetype=yaml.ansible"
+)
