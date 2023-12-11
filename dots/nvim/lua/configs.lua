@@ -397,7 +397,7 @@ vim.cmd("autocmd User CocGitStatusChange AirlineRefresh")
 g.UltiSnipsListSnippets = '<nop>'
 g.UltiSnipsExpandTrigger = '<nop>'
 -- Load my own snippets
-g.UltiSnipsSnippetDirectories = ('~/personal/UltiSnips')
+g.UltiSnipsSnippetDirectories = { '~/personal/UltiSnips' }
 -------------------------------------------
 -- conflict-marker
 -------------------------------------------
