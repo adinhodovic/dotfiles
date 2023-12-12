@@ -124,6 +124,9 @@
         - src: "navi.yaml"
           dest: "/home/adin/.config/navi/config.yaml"
 
+        - src: "default.pa"
+          dest: "/home/adin/.config/pulse/default.pa"
+
     - name: locale-gen
       shell: locale-gen
 

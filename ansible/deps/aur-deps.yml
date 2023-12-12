@@ -97,6 +97,7 @@
         - pavucontrol
         - pulseaudio-alsa
         - alsa-utils
+        - openrazer-daemon
 
         # i3
         - i3-gaps

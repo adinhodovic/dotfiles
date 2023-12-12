@@ -21,6 +21,14 @@
         append: true
       tags: docker
 
+    - name: Add me to plugdev group
+      become: true
+      user:
+        name: adin
+        groups: plugdev
+        append: true
+      tags: plugdev
+
     - name: Directories & Git repos
       tags: file_system
       block:
