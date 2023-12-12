@@ -22,6 +22,8 @@ g.hardtime_allow_different_key = 1
 
 set.completeopt = 'preview,menu'
 
+g.netrw_browser_viewer = 'o'
+
 set.mouse = 'a'
 
 set.updatetime = 300

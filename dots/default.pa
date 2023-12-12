@@ -1,0 +1,4 @@
+.include /etc/pulse/default.pa
+
+### Automatically switch to newly-connected devices
+load-module module-switch-on-connect
