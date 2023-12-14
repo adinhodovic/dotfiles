@@ -251,6 +251,7 @@ require("obsidian").setup({
       disable_frontmatter = true,
     }
   },
+  disable_frontmatter = true,
 })
 
 -- Wilder.nvim
