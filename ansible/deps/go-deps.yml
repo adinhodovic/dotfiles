@@ -23,3 +23,5 @@
         - github.com/go-delve/delve/cmd/dlv@latest
         # utils
         - github.com/tomnomnom/gron@latest
+        # secrets
+        - github.com/hashicorp/vault
