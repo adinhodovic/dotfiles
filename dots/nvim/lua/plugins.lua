@@ -155,6 +155,7 @@ Plug('rstacruz/sparkup', {       -- CTRL + E for hacking HTMl
   ['rtp'] = 'vim/'
 })
 Plug('hail2u/vim-css3-syntax')
+Plug('laytan/tailwind-sorter.nvim', { ['do'] = 'cd formatter && npm i && npm run build' })
 -----------------------------------------
 --              Neomake
 -----------------------------------------
@@ -268,3 +269,7 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
     right = { ' ', wilder.popupmenu_scrollbar() },
   })
 ))
+
+require('tailwind-sorter').setup({
+  on_save_enabled = true, -- If `true`, automatically enables on save sorting.
+})
