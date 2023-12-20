@@ -104,7 +104,8 @@ Plug('rhysd/conflict-marker.vim') -- Diff conflicts
 Plug('elzr/vim-json')
 Plug('google/vim-jsonnet')
 Plug('cespare/vim-toml')
-Plug('towolf/vim-helm') -- Helm
+Plug('towolf/vim-helm')        -- Helm
+Plug('cappyzawa/starlark.vim') -- Starlark
 -----------------------------------------
 --              FZF
 -----------------------------------------
