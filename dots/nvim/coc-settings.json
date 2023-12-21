@@ -69,6 +69,7 @@
     "prettierrc",
     "pylint",
     "pyproject",
+    "starlark",
     "ultisnips"
   ]
 }

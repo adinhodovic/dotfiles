@@ -19,9 +19,11 @@
         - github.com/monitoring-mixins/mixtool/cmd/mixtool@latest
         - github.com/grafana/dashboard-linter@latest
         # dev
+        - github.com/kubernetes/minikube/cmd/minikube@latest
         - github.com/bazelbuild/bazelisk@latest
         - github.com/go-delve/delve/cmd/dlv@latest
+        - github.com/tilt-dev/ctlptl/cmd/ctlptl@latest
         # utils
         - github.com/tomnomnom/gron@latest
         # secrets
-        - github.com/hashicorp/vault
+        - github.com/hashicorp/vault@latest
