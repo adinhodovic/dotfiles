@@ -105,3 +105,12 @@ fcommit() {
   local commit=$(echo "$commits" | fzf --tac +s -m -e --ansi --reverse) &&
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
+
+
+run_taskwarrior_tui() {
+  taskwarrior-tui
+}
+zle -N run_taskwarrior_tui
+
+bindkey -M vicmd '^w' run_taskwarrior_tui
+bindkey -M viins '^w' run_taskwarrior_tui
