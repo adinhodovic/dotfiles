@@ -79,8 +79,8 @@
         - src: "lightdm-webkit2-greeter.conf"
           dest: "/etc/lightdm/lightdm-webkit2-greeter.conf"
 
-        - src: "alacritty.yml"
-          dest: "/home/adin/.config/alacritty/alacritty.yml"
+        - src: "alacritty.toml"
+          dest: "/home/adin/.config/alacritty/alacritty.toml"
 
         - src: "yamllint.yml"
           dest: "/home/adin/.config/yamllint/config"
