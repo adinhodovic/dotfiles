@@ -9,16 +9,17 @@
       aur:
         name: "{{ item }}"
       loop:
-        - flameshot
-        - xautolock
+        # system
+        - thermald
+        - xfce4-power-manager
         - xorg-xinit
+        - xautolock
+
         - python-virtualenv
         - rofi
         - xorg
         - dnsutils
         - dunst
-        - diskus
-        - feh
         - os-prober
         - networkmanager
         - network-manager-applet
@@ -29,15 +30,12 @@
         - ruby
         - nodejs
         - npm
-        - imagemagick
         - httpie
         - openssh
         - rsync
         - gnome-alsamixer
         - slack-desktop
-        - xfce4-power-manager
         - glibc
-        - simplescreenrecorder
         - unrar
         - tzupdate
         - xflux
@@ -72,6 +70,11 @@
         - fx # json browsing
         - jless # json browsing
         - navi
+        - flameshot
+        - imagemagick
+        - simplescreenrecorder
+        - diskus
+        - feh
 
         # linting
         - shellcheck
