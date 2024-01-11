@@ -140,4 +140,4 @@ source /usr/share/nvm/init-nvm.sh
 
 # eval "$(mcfly init zsh)"
 #
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"

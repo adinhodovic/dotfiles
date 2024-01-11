@@ -107,6 +107,9 @@
     - name: start lightdm
       shell: systemctl enable lightdm.service
 
+    - name: start lightdm
+      shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'
+
     # background image
     - copy:
         src: /home/adin/.dotfiles/images/mostar.jpg
