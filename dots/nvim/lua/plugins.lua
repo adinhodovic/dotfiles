@@ -50,6 +50,7 @@ Plug('nvim-telescope/telescope.nvim')
 Plug('ahmedkhalf/project.nvim')  -- Project jumping
 Plug('nvim-tree/nvim-tree.lua')  -- File tree
 Plug('Yilin-Yang/vim-markbar')   -- Markbar
+Plug('nacro90/numb.nvim')        -- Peek line numbers
 -----------------------------------------
 --              Utils
 -----------------------------------------
@@ -66,9 +67,10 @@ Plug('lifepillar/pgsql.vim')
 --              GUI
 -----------------------------------------
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+Plug('nvim-treesitter/nvim-treesitter-context', { ['do'] = ':TSUpdate' })
 Plug('psliwka/vim-smoothie')           -- Smooth scrolling
 Plug('ntpeters/vim-better-whitespace')
-Plug('ryanoasis/vim-devicons')         -- Icons
+Plug('nvim-tree/nvim-web-devicons')    -- Icons
 Plug('vim-airline/vim-airline')        -- Bottom bar
 Plug('vim-airline/vim-airline-themes') -- Bottom bar
 Plug('Yggdroot/indentLine')            -- Show line indentation
@@ -78,12 +80,14 @@ Plug('morhetz/gruvbox')                -- Gruvbox theme
 Plug('rrethy/vim-hexokinase', {        -- Colours in the file
   ['do'] = 'make hexokinase'
 })
-Plug('rrethy/vim-illuminate')         -- Highlight similar word
-Plug('machakann/vim-highlightedyank') -- Highlight yanks
-Plug('camspiers/animate.vim')         -- Animate scroll
+Plug('rrethy/vim-illuminate')                    -- Highlight similar word
+Plug('machakann/vim-highlightedyank')            -- Highlight yanks
+Plug('camspiers/animate.vim')                    -- Animate scroll
 Plug('gelguy/wilder.nvim', {
-  ['do'] = ':UpdateRemotePlugins' }   -- Better wildmenu
+  ['do'] = ':UpdateRemotePlugins' }              -- Better wildmenu
 )
+Plug('Bekaboo/dropbar.nvim')                     -- Dropbar
+Plug('nvim-telescope/telescope-fzf-native.nvim') -- Telescope FZF
 -----------------------------------------
 --              Shortkeys
 -----------------------------------------
@@ -274,3 +278,9 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
 require('tailwind-sorter').setup({
   on_save_enabled = true, -- If `true`, automatically enables on save sorting.
 })
+
+require('numb').setup()
+
+require('treesitter-context').setup {
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+}

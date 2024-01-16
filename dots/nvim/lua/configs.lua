@@ -57,12 +57,6 @@ vim.cmd("cnoreabbrev Q q")
 -- Enable file type detection
 vim.o.filetype = 'on'
 
--- Enable file type-specific indentation
-vim.o.filetypeindent = 'on'
-
--- Enable file type-specific plugins and indentation
-vim.o.filetypeplugin = 'on'
-
 -- Enable syntax highlighting
 vim.o.syntax = 'on'
 
@@ -506,7 +500,7 @@ g.coc_global_extensions = {
   'coc-lua',
   '@yaegassy/coc-ansible',
   '@yaegassy/coc-marksman',
-  'coc-sql'
+  'coc-sql',
 }
 
 local cocGroup = augroup("coc", {})

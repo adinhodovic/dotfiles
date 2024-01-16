@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnType": false,
   "coc.preferences.formatOnSave": true,
+  "colors.enable": true,
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
@@ -71,6 +72,6 @@
     "pyproject",
     "starlark",
     "ultisnips"
-  ]
+  ],
+  "snippets.ultisnips.pythonPrompt": false
 }
-
