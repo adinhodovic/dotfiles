@@ -43,21 +43,21 @@ TERM = "xterm-256color"
 [font]
 size = 11
 
+[font.normal]
+  family = "Roboto Mono"
+  style = "Regular"
+
+[font.italic]
+  family = "Roboto Mono"
+  style = "Italic"
+
 [font.bold]
-family = "Roboto Mono"
-style = "Bold"
+  family = "Roboto Mono"
+  style = "Bold"
 
 [font.glyph_offset]
 x = 0
 y = 0
-
-[font.italic]
-family = "Roboto Mono"
-style = "Italic"
-
-[font.normal]
-family = "Roboto Mono"
-style = "Regular"
 
 [font.offset]
 x = 0

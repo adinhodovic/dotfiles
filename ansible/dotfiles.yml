@@ -127,6 +127,9 @@
         - src: "default.pa"
           dest: "/home/adin/.config/pulse/default.pa"
 
+        - src: "fonts.conf"
+          dest: "/home/adin/.config/fontconfig/fonts.conf"
+
     - name: locale-gen
       shell: locale-gen
 
