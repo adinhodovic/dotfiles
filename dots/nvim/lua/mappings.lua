@@ -38,6 +38,10 @@ function omap(shortcut, command, options)
   map('o', shortcut, command, options)
 end
 
+function cmap(shortcut, command, options)
+  map('c', shortcut, command, options)
+end
+
 -------------------------------------------
 -- Moving around, tabs, windows and buffers
 -------------------------------------------
@@ -337,3 +341,29 @@ nmap("s", "<Plug>(easymotion-sn)")
 -- NERDCommenter
 -------------------------------------------
 vmap("<leader>c", ":call NERDComment(0, 'toggle')<CR>")
+
+-------------------------------------------
+-- Dap
+-------------------------------------------
+nmap('<F5>', function() require('dap').continue() end)
+nmap('<F10>', function() require('dap').step_over() end)
+nmap('<F11>', function() require('dap').step_into() end)
+nmap('<F12>', function() require('dap').step_out() end)
+nmap('<Leader>b', function() require('dap').toggle_breakpoint() end)
+nmap('<Leader>dr', function() require('dap').repl.open() end)
+nmap('<Leader>dl', function() require('dap').run_last() end)
+vmap("<Leader>b", function() require('dapui').eval() end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
+  require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
+  require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end)

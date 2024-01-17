@@ -93,6 +93,15 @@ Plug('nvim-telescope/telescope-fzf-native.nvim') -- Telescope FZF
 -----------------------------------------
 Plug('tpope/vim-surround') -- Delete add surroundings in pair
 -----------------------------------------
+--              Debugging
+-----------------------------------------
+Plug('mfussenegger/nvim-dap')             -- Debugging
+Plug('rcarriga/nvim-dap-ui')              -- Debugging UI
+Plug('theHamsta/nvim-dap-virtual-text')   -- Debugging virtual text
+Plug('mfussenegger/nvim-dap-python')      -- Debugging python
+Plug('leoluz/nvim-dap-go')                -- Debugging go
+Plug('nvim-telescope/telescope-dap.nvim') -- Debugging telescope
+-----------------------------------------
 --              GIT
 -----------------------------------------
 Plug('rhysd/committia.vim')       -- Better Git commits
@@ -191,6 +200,26 @@ require("telescope").setup({
   },
 })
 require('telescope').load_extension('coc')
+require('telescope').load_extension('dap')
+
+-- Dap
+require('dap-python').setup('/usr/bin/python')
+require('dap-go').setup()
+require("dapui").setup()
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
 
 -- Treesitter
 require('nvim-treesitter.configs').setup({

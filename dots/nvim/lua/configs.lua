@@ -175,7 +175,6 @@ set.wildmenu = true
 
 -- Ignore compiled files
 set.wildignore = { "*.o", "*~", "*.pyc" }
--- set.wildoptions = "pum"
 
 -- Always show current position
 set.ruler = true
