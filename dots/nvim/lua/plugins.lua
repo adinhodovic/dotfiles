@@ -77,6 +77,7 @@ Plug('Yggdroot/indentLine')            -- Show line indentation
 Plug('luochen1990/rainbow')            -- Color parantheses
 Plug('itchyny/vim-cursorword')         -- Underlines/highlight the word under the cursor
 Plug('morhetz/gruvbox')                -- Gruvbox theme
+Plug('projekt0n/github-nvim-theme')    -- Github theme
 Plug('rrethy/vim-hexokinase', {        -- Colours in the file
   ['do'] = 'make hexokinase'
 })
@@ -88,6 +89,7 @@ Plug('gelguy/wilder.nvim', {
 )
 Plug('Bekaboo/dropbar.nvim')                     -- Dropbar
 Plug('nvim-telescope/telescope-fzf-native.nvim') -- Telescope FZF
+Plug('akinsho/bufferline.nvim')                  -- Bufferline
 -----------------------------------------
 --              Shortkeys
 -----------------------------------------
@@ -189,6 +191,8 @@ Plug('hashivim/vim-terraform')
 Plug('fannheyward/telescope-coc.nvim')
 
 vim.call('plug#end')
+
+require('github-theme').setup({})
 
 -- Telescope
 require("telescope").setup({
@@ -310,6 +314,33 @@ require('tailwind-sorter').setup({
 
 require('numb').setup()
 
-require('treesitter-context').setup {
+require('treesitter-context').setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-}
+})
+
+require('bufferline').setup({
+  options = {
+    diagnostics = "coc",
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      -- luacheck: pop
+      if (count == 0) then
+        return ""
+      end
+      local icon = '' .. ' ' .. level
+      if level:match("error") then
+        icon = ''
+      elseif level:match("warning") then
+        icon = ''
+      elseif level:match("info") or level:match("hint") then
+        icon = ''
+      end
+      -- kitty scales down the icon if there is no space on the right
+      return icon .. " " .. count
+    end,
+    hover = {
+      enabled = true,
+      delay = 0,
+      reveal = { "close" }
+    },
+  }
+})

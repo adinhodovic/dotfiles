@@ -35,7 +35,8 @@
   whitespace-error-style = 22 reverse
   plus-style = "syntax #024700"
   minus-style = "syntax #810000"
-  syntax-theme = Gruvbox
+  # Use github theme later
+  syntax-theme = Base16
   line-numbers = true
   navigate = true
 [delta "decorations"]

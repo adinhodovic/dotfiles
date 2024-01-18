@@ -1,0 +1,24 @@
+# yamllint disable rule:line-length
+# All the dependencies for arc linux
+---
+- hosts: 127.0.0.1
+  name: Go Dependencies
+  connection: local
+  tasks:
+    - name: Directories
+      file:
+        path: "/home/adin/{{ item }}"
+        state: directory
+        owner: adin
+      loop:
+        # Packages
+        - .config/alacritty/themes
+
+    - name: Clone all repos I use
+      git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
+      with_items:
+        # Alias repos
+        - repo: "https://github.com/alacritty/alacritty-theme"
+          dest: "~/.config/alacritty/themes"

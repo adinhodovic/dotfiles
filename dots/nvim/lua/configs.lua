@@ -96,7 +96,9 @@ set.clipboard = "unnamedplus"
 set.termguicolors = true
 
 set.background = "dark"
-vim.cmd("silent! colorscheme gruvbox")
+-- g.gruvbox_contrast_dark = "hard"
+-- vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("github_dark_default")
 
 -- Bullets.vim
 vim.g.bullets_enabled_file_types = {
@@ -378,8 +380,8 @@ vim.cmd("hi SignColumn guibg=black ctermbg=black")
 -------------------------------------------
 -- Airline
 -------------------------------------------
-g.airline_theme = 'gruvbox'
-g["airline#extensions#tabline#enabled"] = 1
+g.airline_theme = 'github_dark_default'
+g["airline#extensions#tabline#enabled"] = 0
 g["airline#extensions#coc#enabled"] = 1
 g["airline#extensions#coc#show_coc_status"] = 1
 g["airline#extensions#hunks#enabled"] = 1
