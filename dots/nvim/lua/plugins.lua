@@ -51,6 +51,7 @@ Plug('ahmedkhalf/project.nvim')  -- Project jumping
 Plug('nvim-tree/nvim-tree.lua')  -- File tree
 Plug('Yilin-Yang/vim-markbar')   -- Markbar
 Plug('nacro90/numb.nvim')        -- Peek line numbers
+Plug('nvim-pack/nvim-spectre')   -- Search and replace
 -----------------------------------------
 --              Utils
 -----------------------------------------
@@ -344,3 +345,5 @@ require('bufferline').setup({
     },
   }
 })
+
+require('spectre').setup()
