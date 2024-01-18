@@ -130,6 +130,9 @@
         - src: "fonts.conf"
           dest: "/home/adin/.config/fontconfig/fonts.conf"
 
+        - src: "obsidian.vimrc"
+          dest: "/home/adin/personal/notes/.obsidian.vimrc"
+
     - name: locale-gen
       shell: locale-gen
 
