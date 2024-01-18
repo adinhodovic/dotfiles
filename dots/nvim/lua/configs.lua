@@ -383,8 +383,6 @@ g.vim_markdown_conceal_code_blocks = 0
 
 -- Disable folding, we have search
 g.vim_markdown_folding_disabled = 1
-
-vim.cmd("hi SignColumn guibg=black ctermbg=black")
 -------------------------------------------
 -- Airline
 -------------------------------------------
