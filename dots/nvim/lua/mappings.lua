@@ -382,3 +382,8 @@ vmap('<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
 nmap('<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
   desc = "Search on current file"
 })
+-------------------------------------------
+-- UFO
+-------------------------------------------
+nmap('zR', require('ufo').openAllFolds)
+nmap('zM', require('ufo').closeAllFolds)

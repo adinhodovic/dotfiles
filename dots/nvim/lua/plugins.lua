@@ -41,17 +41,19 @@ Plug('epwalsh/obsidian.nvim') -- Obsidian
 -----------------------------------------
 --              Automation
 -----------------------------------------
-Plug('github/copilot.vim')       -- Copilot
-Plug('farmergreg/vim-lastplace') -- Open at lastplace
-Plug('tpope/vim-speeddating')    -- Increment dates
-Plug('lfilho/cosco.vim')         -- Semicolons
-Plug('nvim-lua/plenary.nvim')    -- Obsidian dependency
+Plug('github/copilot.vim')         -- Copilot
+Plug('farmergreg/vim-lastplace')   -- Open at lastplace
+Plug('tpope/vim-speeddating')      -- Increment dates
+Plug('lfilho/cosco.vim')           -- Semicolons
+Plug('nvim-lua/plenary.nvim')      -- Obsidian dependency
 Plug('nvim-telescope/telescope.nvim')
-Plug('ahmedkhalf/project.nvim')  -- Project jumping
-Plug('nvim-tree/nvim-tree.lua')  -- File tree
-Plug('Yilin-Yang/vim-markbar')   -- Markbar
-Plug('nacro90/numb.nvim')        -- Peek line numbers
-Plug('nvim-pack/nvim-spectre')   -- Search and replace
+Plug('ahmedkhalf/project.nvim')    -- Project jumping
+Plug('nvim-tree/nvim-tree.lua')    -- File tree
+Plug('Yilin-Yang/vim-markbar')     -- Markbar
+Plug('nacro90/numb.nvim')          -- Peek line numbers
+Plug('nvim-pack/nvim-spectre')     -- Search and replace
+Plug('kevinhwang91/nvim-ufo')      -- Better folding
+Plug('kevinhwang91/promise-async') -- Dependency for nvim-ufo
 -----------------------------------------
 --              Utils
 -----------------------------------------
@@ -319,6 +321,7 @@ require('treesitter-context').setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 })
 
+-- Bufferline
 require('bufferline').setup({
   options = {
     diagnostics = "coc",
@@ -346,4 +349,8 @@ require('bufferline').setup({
   }
 })
 
+-- Spectre
 require('spectre').setup()
+
+-- UFO
+require('ufo').setup()
