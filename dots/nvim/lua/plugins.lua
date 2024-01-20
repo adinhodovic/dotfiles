@@ -94,6 +94,7 @@ Plug('Bekaboo/dropbar.nvim')                     -- Dropbar
 Plug('nvim-telescope/telescope-fzf-native.nvim') -- Telescope FZF
 Plug('akinsho/bufferline.nvim')                  -- Bufferline
 Plug('luukvbaal/statuscol.nvim')                 -- Statuscol
+Plug('ghillb/cybu.nvim')
 -----------------------------------------
 --              Shortkeys
 -----------------------------------------
@@ -408,3 +409,6 @@ end
 require('ufo').setup({
   fold_virt_text_handler = handler
 })
+
+-- Cybu
+require("cybu").setup()

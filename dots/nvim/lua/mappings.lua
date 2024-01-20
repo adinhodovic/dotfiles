@@ -387,3 +387,11 @@ nmap('<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=tr
 -------------------------------------------
 nmap('zR', require('ufo').openAllFolds)
 nmap('zM', require('ufo').closeAllFolds)
+
+-------------------------------------------
+-- Cybu
+-------------------------------------------
+nmap("[b", "<Plug>(CybuPrev)")
+nmap("]b", "<Plug>(CybuNext)")
+nmap("<s-tab>", "<plug>(CybuLastusedPrev)")
+nmap("<tab>", "<plug>(CybuLastusedNext)")
