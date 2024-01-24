@@ -331,13 +331,6 @@ nmap("<leader>gm", ":GitMessenger <CR>")
 g.git_messenger_include_diff = 'current'
 
 -------------------------------------------
--- Easymotion
--------------------------------------------
-nmap("f", "<Plug>(easymotion-bd-fl)")
-nmap("t", "<Plug>(easymotion-bd-tl)")
-nmap("s", "<Plug>(easymotion-sn)")
-
--------------------------------------------
 -- NERDCommenter
 -------------------------------------------
 vmap("<leader>c", ":call NERDComment(0, 'toggle')<CR>")
@@ -395,3 +388,12 @@ nmap("[b", "<Plug>(CybuPrev)")
 nmap("]b", "<Plug>(CybuNext)")
 nmap("<s-tab>", "<plug>(CybuLastusedPrev)")
 nmap("<tab>", "<plug>(CybuLastusedNext)")
+
+-------------------------------------------
+-- Flash
+-------------------------------------------
+
+map({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash" })
+map({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+omap("r", function() require("flash").remote() end, { desc = "Remote Flash" })
+map({ "x", "o" }, "R", function() require("flash").treesitter_search() end, { desc = "Flash Treesitter Search" })

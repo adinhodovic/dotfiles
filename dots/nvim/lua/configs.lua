@@ -545,16 +545,6 @@ g.fzf_layout = { up = '~40%' }
 g.fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
 
 -------------------------------------------
--- Easymotion
--------------------------------------------
-g.EasyMotion_keys = 'hgjfkdls;a'
-g.EasyMotion_grouping = 1
-g.EasyMotion_do_mapping = 0
-g.EasyMotion_smartcase = 1
-g.EasyMotion_do_shade = 1
-g.EasyMotion_use_upper = 1
-
--------------------------------------------
 -- IndentLine
 -------------------------------------------
 g.indentLine_char_list = { '|', '¦', '┆', '┊' }

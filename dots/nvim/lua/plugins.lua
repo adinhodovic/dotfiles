@@ -24,7 +24,6 @@ Plug('AndrewRadev/splitjoin.vim')   -- Single/multi line
 Plug('christianrondeau/vim-base64') -- Base64
 Plug('yegappan/mru')                -- Most recently opened
 Plug('takac/vim-hardtime')          -- Hardtime
-Plug('Lokaltog/vim-easymotion')
 -----------------------------------------
 --              Documentation/Writing
 -----------------------------------------
@@ -54,6 +53,7 @@ Plug('nacro90/numb.nvim')          -- Peek line numbers
 Plug('nvim-pack/nvim-spectre')     -- Search and replace
 Plug('kevinhwang91/nvim-ufo')      -- Better folding
 Plug('kevinhwang91/promise-async') -- Dependency for nvim-ufo
+Plug('folke/flash.nvim')           -- Flash
 -----------------------------------------
 --              Utils
 -----------------------------------------
@@ -428,3 +428,6 @@ require("cybu").setup()
 
 -- Deadcolumn
 require("deadcolumn").setup()
+
+-- Flash
+require("flash").setup()
