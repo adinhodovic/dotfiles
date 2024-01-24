@@ -357,14 +357,24 @@ require('spectre').setup()
 -- Statuscol
 local builtin = require("statuscol.builtin")
 local cfg = {
-  segments = {
+  segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
     { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
-    { text = { "%s" },                  click = "v:lua.ScSa" },
     {
-      text = { builtin.lnumfunc, " " },
+      sign = { name = { "CocGit*" }, maxwidth = 1, auto = true },
+      click = "v:lua.ScSa"
+    },
+    {
+      sign = { name = { ".*" }, maxwidth = 2, auto = true },
+      click = "v:lua.ScSa"
+    },
+    {
+      text = {
+        builtin.lnumfunc,
+        ' '
+      },
       condition = { true, builtin.not_empty },
-      click = "v:lua.ScLa",
-    }
+      click = 'v:lua.ScLa'
+    },
   },
 }
 require("statuscol").setup(cfg)
@@ -372,6 +382,7 @@ require("statuscol").setup(cfg)
 -- UFO
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
+  local totalLines = vim.api.nvim_buf_line_count(0)
   local totalLines = vim.api.nvim_buf_line_count(0)
   local foldedLines = endLnum - lnum
   local suffix = ("  %d %d%%"):format(foldedLines, foldedLines / totalLines * 100)
