@@ -95,6 +95,7 @@ Plug('nvim-telescope/telescope-fzf-native.nvim') -- Telescope FZF
 Plug('akinsho/bufferline.nvim')                  -- Bufferline
 Plug('luukvbaal/statuscol.nvim')                 -- Statuscol
 Plug('ghillb/cybu.nvim')
+Plug('Bekaboo/deadcolumn.nvim')                  -- Deadcolumn
 -----------------------------------------
 --              Shortkeys
 -----------------------------------------
@@ -369,8 +370,9 @@ local cfg = {
     },
     {
       text = {
+        " ",
         builtin.lnumfunc,
-        ' '
+        " "
       },
       condition = { true, builtin.not_empty },
       click = 'v:lua.ScLa'
@@ -423,3 +425,6 @@ require('ufo').setup({
 
 -- Cybu
 require("cybu").setup()
+
+-- Deadcolumn
+require("deadcolumn").setup()

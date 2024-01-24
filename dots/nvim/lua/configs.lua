@@ -51,46 +51,6 @@ vim.cmd("cnoreabbrev W w")
 vim.cmd("cnoreabbrev Q q")
 
 -------------------------------------------
--- Indentation
--------------------------------------------
-
--- Enable file type detection
-vim.o.filetype = 'on'
-
--- Enable syntax highlighting
-vim.o.syntax = 'on'
-
--- Create the augroup and set autocmds for various filetypes
-local indentation = augroup("indentation", {})
-set_autocmd(indentation, "FileType", { "typescript", "javascript", "terraform", "jinja2" },
-  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
-set_autocmd(indentation, "FileType", { "coffee" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "css", "scss", "stylus" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "vim" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "tex" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "yaml", "docker-compose" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "json" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "json" },
-  'setlocal shiftwidth=2 tabstop=2 expandtab | syntax match Comment "^//(.+)$"')
-set_autocmd(indentation, "FileType", { "snippets" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "jade" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "html", "htmldjango" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "python" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
-set_autocmd(indentation, "FileType", { "go" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
-set_autocmd(indentation, "FileType", { "erlang" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
-set_autocmd(indentation, "FileType", { "make" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
-set_autocmd(indentation, "FileType", { "sh", "bash", "zsh", "readline", "nginx", "conf" },
-  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
-set_autocmd(indentation, "FileType", { "php" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
-set_autocmd(indentation, "FileType", { "markdown" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
-set_autocmd(indentation, "FileType", { "ruby" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "lua" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "sshconfig" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
-
--- pasting from outside
-set.clipboard = "unnamedplus"
-
--------------------------------------------
 -- Folding
 -------------------------------------------
 vim.o.foldcolumn = "1" -- '0' is not bad
@@ -160,16 +120,56 @@ set.wrap = true
 
 -- Count words with dashes as one word
 set.iskeyword:append({ "-" })
+
+-------------------------------------------
+-- Indentation
+-------------------------------------------
+
+-- Enable file type detection
+vim.o.filetype = 'on'
+
+-- Enable syntax highlighting
+vim.o.syntax = 'on'
+
+-- Create the augroup and set autocmds for various filetypes
+local indentation = augroup("indentation", {})
+set_autocmd(indentation, "FileType", { "typescript", "javascript", "terraform", "jinja2" },
+  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
+set_autocmd(indentation, "FileType", { "coffee" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "css", "scss", "stylus" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "vim" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "tex" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "yaml", "docker-compose" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "json" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "json" },
+  'setlocal shiftwidth=2 tabstop=2 expandtab | syntax match Comment "^//(.+)$"')
+set_autocmd(indentation, "FileType", { "snippets" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "jade" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "html", "htmldjango" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "python" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+set_autocmd(indentation, "FileType", { "go" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
+set_autocmd(indentation, "FileType", { "erlang" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
+set_autocmd(indentation, "FileType", { "make" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
+set_autocmd(indentation, "FileType", { "sh", "bash", "zsh", "readline", "nginx", "conf" },
+  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
+set_autocmd(indentation, "FileType", { "php" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+set_autocmd(indentation, "FileType", { "markdown" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+set_autocmd(indentation, "FileType", { "ruby" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "lua" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
+set_autocmd(indentation, "FileType", { "sshconfig" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
+
+-- pasting from outside
+set.clipboard = "unnamedplus"
 -------------------------------------------
 --                   Text width
 -------------------------------------------
 set.linebreak = true
-set.textwidth = 90
-set.colorcolumn = ""
+set.textwidth = 100
+set.colorcolumn = "100"
 
 local textwidth = augroup("textwidth", {})
 autocmd("FileType", {
-  pattern = { "dockerfile", "sh", "gitcommit", "html", "htmldjango", "python", "yaml", "text", "jsonnet", "direnv", "terraform" },
+  pattern = { "gitcommit", "html", "htmldjango", "text", "direnv", "markdown" },
   command = "setlocal textwidth=0 | setlocal colorcolumn=0",
   group = textwidth
 })
