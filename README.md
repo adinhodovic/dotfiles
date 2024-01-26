@@ -18,4 +18,4 @@
 - Editor: [Neovim](https://neovim.io/)
 - Fetch: [Neofetch](https://github.com/dylanaraps/neofetch)
 - Notification Daemon: [dunst](https://github.com/dunst-project/dunst)
-- Colorscheme: [Gruvbox](https://github.com/morhetz/gruvbox)
+- Color scheme: [Gruvbox](https://github.com/morhetz/gruvbox)
