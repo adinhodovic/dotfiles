@@ -138,6 +138,7 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 source /usr/share/nvm/init-nvm.sh
 
-# eval "$(mcfly init zsh)"
-#
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# Less oh my zsh updates
+zstyle ':omz:update' frequency 30
