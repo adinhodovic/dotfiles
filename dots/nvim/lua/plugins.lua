@@ -53,7 +53,7 @@ Plug('nacro90/numb.nvim')          -- Peek line numbers
 Plug('nvim-pack/nvim-spectre')     -- Search and replace
 Plug('kevinhwang91/nvim-ufo')      -- Better folding
 Plug('kevinhwang91/promise-async') -- Dependency for nvim-ufo
-Plug('folke/flash.nvim')           -- Flash
+Plug('folke/flash.nvim')           -- Flash, better search
 -----------------------------------------
 --              Utils
 -----------------------------------------
@@ -94,7 +94,7 @@ Plug('Bekaboo/dropbar.nvim')                     -- Dropbar
 Plug('nvim-telescope/telescope-fzf-native.nvim') -- Telescope FZF
 Plug('akinsho/bufferline.nvim')                  -- Bufferline
 Plug('luukvbaal/statuscol.nvim')                 -- Statuscol
-Plug('ghillb/cybu.nvim')
+Plug('ghillb/cybu.nvim')                         -- Better buffers
 Plug('Bekaboo/deadcolumn.nvim')                  -- Deadcolumn
 -----------------------------------------
 --              Shortkeys
