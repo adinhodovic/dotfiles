@@ -23,10 +23,10 @@
         # Alias repos
         - repo: "https://github.com/alacritty/alacritty-theme"
           dest: "~/.config/alacritty/themes"
-        - repo: https://github.com/catppuccin/k9s
-          dest: /tmp/k9s-skins
+        - repo: https://github.com/derailed/k9s
+          dest: /tmp/k9s
 
     - name: Move skins file
       shell: "{{ item }}"
       loop:
-        - "mv /tmp/k9s-skins/dist/* ~/.config/k9s/skins/"
+        - "mv /tmp/k9s/skins/* ~/.config/k9s/skins/"
