@@ -361,11 +361,11 @@ local cfg = {
   segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
     { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
     {
-      sign = { name = { "CocGit*" }, maxwidth = 1, auto = true },
+      sign = { name = { "CocGit*" }, minwidth = 1, maxwidth = 1, auto = false },
       click = "v:lua.ScSa"
     },
     {
-      sign = { name = { ".*" }, maxwidth = 2, auto = true },
+      sign = { name = { ".*" }, minwidth = 2, maxwidth = 2, auto = false },
       click = "v:lua.ScSa"
     },
     {
