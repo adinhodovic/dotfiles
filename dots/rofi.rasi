@@ -1,4 +1,25 @@
+@import "~/.config/rofi/launchers/type-1/style-2.rasi"
+@import "~/.config/rofi/colors/arc.rasi"
+
 configuration {
- dpi: 220;
+	/*---------- General setting ----------*/
+  dpi: 220;
+	modi: "drun,run,window";
+	terminal: "rofi-sensible-terminal";
+	font: "Roboto Mono 10";
+	show-icons: true;
 }
-@theme "gruvbox-dark-hard"
+
+window {
+  width: 1200px;
+}
+
+element-icon {
+  size: 3ch;
+  padding: 10px;
+}
+
+element-text {
+  vertical-align: 0.50;
+  padding: 10px;
+}

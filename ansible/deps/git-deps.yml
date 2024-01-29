@@ -25,8 +25,12 @@
           dest: "~/.config/alacritty/themes"
         - repo: https://github.com/derailed/k9s
           dest: /tmp/k9s
+        - repo: https://github.com/adi1090x/rofi
+          dest: /tmp/rofi-themes
 
     - name: Move skins file
       shell: "{{ item }}"
       loop:
-        - "mv /tmp/k9s/skins/* ~/.config/k9s/skins/"
+        - "cp /tmp/k9s/skins/* ~/.config/k9s/skins/"
+        - "cp /tmp/rofi-themes/fonts/* $HOME/.local/share/fonts/"
+        - rsync -a /tmp/rofi-themes/files/ ~/.config/rofi --exclude 'config.rasi'
