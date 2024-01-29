@@ -2,7 +2,7 @@
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
-  name: Go Dependencies
+  name: Git Dependencies
   connection: local
   tasks:
     - name: Directories
@@ -13,6 +13,7 @@
       loop:
         # Packages
         - .config/alacritty/themes
+        - .config/k9s/skins
 
     - name: Clone all repos I use
       git:
@@ -22,3 +23,10 @@
         # Alias repos
         - repo: "https://github.com/alacritty/alacritty-theme"
           dest: "~/.config/alacritty/themes"
+        - repo: https://github.com/catppuccin/k9s
+          dest: /tmp/k9s-skins
+
+    - name: Move skins file
+      shell: "{{ item }}"
+      loop:
+        - "mv /tmp/k9s-skins/dist/* ~/.config/k9s/skins/"

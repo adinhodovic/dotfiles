@@ -133,6 +133,9 @@
         - src: "obsidian.vimrc"
           dest: "/home/adin/personal/notes/.obsidian.vimrc"
 
+        - src: "k9s.yaml"
+          dest: "/home/adin/.config/k9s/config.yaml"
+
     - name: locale-gen
       shell: locale-gen
 
