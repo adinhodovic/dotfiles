@@ -86,7 +86,7 @@ return {
   {
     -- Github theme
     "projekt0n/github-nvim-theme",
-    priority = 1000
+    priority = 1000,
     config = function()
       require('github-theme').setup()
     end

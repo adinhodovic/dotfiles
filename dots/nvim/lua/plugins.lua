@@ -100,14 +100,6 @@ Plug('chr4/nginx.vim')
 -----------------------------------------
 --              HTML/CSS
 -----------------------------------------
--- Look into html interactions
-Plug('AndrewRadev/tagalong.vim') -- Tag matching
-Plug('mattn/emmet-vim')
-Plug('rstacruz/sparkup', {       -- CTRL + E for hacking HTMl
-  ['rtp'] = 'vim/'
-})
-Plug('hail2u/vim-css3-syntax')
-Plug('laytan/tailwind-sorter.nvim', { ['do'] = 'cd formatter && npm i && npm run build' })
 -----------------------------------------
 --              Neomake
 -----------------------------------------
@@ -126,10 +118,3 @@ Plug('hashivim/vim-terraform')
 
 
 vim.call('plug#end')
-
-require('tailwind-sorter').setup({
-  on_save_enabled = true, -- If `true`, automatically enables on save sorting.
-})
-
-
--- Noice
