@@ -27,7 +27,6 @@ Plug('takac/vim-hardtime')          -- Hardtime
 -----------------------------------------
 --              Utils
 -----------------------------------------
-Plug('antoinemadec/coc-fzf') -- Coc-Fzf
 -----------------------------------------
 --              Snippets
 -----------------------------------------
@@ -43,21 +42,9 @@ Plug('tpope/vim-surround') -- Delete add surroundings in pair
 -----------------------------------------
 --              GIT
 -----------------------------------------
-Plug('rhysd/committia.vim')       -- Better Git commits
-Plug('rhysd/git-messenger.vim')   -- Show git messages
-Plug('tpope/vim-fugitive')
-Plug('rbong/vim-flog')            -- Better git log
-Plug('tpope/vim-rhubarb')         -- Dependency for vim-fugitive
-Plug('rhysd/vim-github-actions')  -- Vim filetype support for GitHub Actions
-Plug('rhysd/conflict-marker.vim') -- Diff conflicts
 -----------------------------------------
 --      YAML/JSON/JSONNET/TOML/HELM
 -----------------------------------------
-Plug('elzr/vim-json')
-Plug('google/vim-jsonnet')
-Plug('cespare/vim-toml')
-Plug('towolf/vim-helm')        -- Helm
-Plug('cappyzawa/starlark.vim') -- Starlark
 -----------------------------------------
 --              FZF
 -----------------------------------------
@@ -66,17 +53,6 @@ Plug('junegunn/fzf', {
   ['do'] = './install --all'
 })
 Plug('junegunn/fzf.vim')
------------------------------------------
---              I3
------------------------------------------
-Plug('mboughaba/i3config.vim')
------------------------------------------
---              Coc
------------------------------------------
------------------------------------------
---              Python
------------------------------------------
-Plug('tweekmonster/django-plus.vim')
 -----------------------------------------
 --              Go
 -----------------------------------------
@@ -98,23 +74,9 @@ Plug('vim-ruby/vim-ruby')
 -----------------------------------------
 Plug('chr4/nginx.vim')
 -----------------------------------------
---              HTML/CSS
------------------------------------------
------------------------------------------
 --              Neomake
 -----------------------------------------
 Plug('neomake/neomake')
------------------------------------------
---              Ansible
------------------------------------------
-Plug('pearofducks/ansible-vim', {
-  ['do'] = 'cd ./UltiSnips; ./generate.py'
-})
-Plug('danihodovic/vim-ansible-vault')
------------------------------------------
---              Terraform
------------------------------------------
-Plug('hashivim/vim-terraform')
 
 
 vim.call('plug#end')

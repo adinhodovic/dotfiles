@@ -163,7 +163,7 @@ return {
     -- Better notifications
     "folke/noice.nvim",
     config = function()
-      require('noice').setup()
+      -- require('noice').setup()
     end
   },
 }

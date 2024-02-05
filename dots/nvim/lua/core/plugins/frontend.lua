@@ -13,11 +13,13 @@ return {
     ft = "html"
   },
   {
-    -- Provides support for expanding abbreviations similar to emmet.
+    -- Provides support for expanding abbreviations similar to emmet
     "mattn/emmet-vim",
-    dependencies = {
-      "mfussenegger/nvim-dap"
-    },
+  },
+  {
+    -- Html Django
+    "tweekmonster/django-plus.vim",
+    ft = "htmldjango"
   },
   {
     -- CSS syntax

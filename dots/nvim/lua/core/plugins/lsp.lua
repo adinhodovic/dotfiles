@@ -21,7 +21,7 @@ return {
     build = "npm ci",
     lazy = false,
     priority = 1000,
-    config = function ()
+    config = function()
       g.coc_global_extensions = {
         'coc-pairs',
         'coc-json',
@@ -73,4 +73,11 @@ return {
       )
     end
   },
+  {
+    -- CoC fzf
+    "antoinemadec/coc-fzf",
+    dependencies = {
+      "neoclide/coc.nvim"
+    },
+  }
 }

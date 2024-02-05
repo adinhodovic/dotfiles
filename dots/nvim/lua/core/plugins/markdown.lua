@@ -19,9 +19,9 @@ return {
     lazy = true,
     ft = "markdown",
   },
-  { 
+  {
     -- Markdown ToC
-    "mzlogin/vim-markdown-toc", 
+    "mzlogin/vim-markdown-toc",
     lazy = true,
     ft = "markdown",
   },
@@ -80,7 +80,7 @@ return {
       'nvim-lua/plenary.nvim'
     },
     init = function()
-      vim.opt.conceallevel = 1
+      vim.opt.conceallevel = 2
       require("obsidian").setup({
         workspaces = {
           {
