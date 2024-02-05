@@ -3,6 +3,15 @@ local g = vim.g
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Define a function to simplify setting autocmds
+local function set_autocmd(group, event, pattern, command)
+  autocmd(event, {
+    group = group,
+    pattern = pattern,
+    command = command
+  })
+end
+
 -----------------------------------------
 -- Frontend
 -----------------------------------------
@@ -15,6 +24,16 @@ return {
   {
     -- Provides support for expanding abbreviations similar to emmet
     "mattn/emmet-vim",
+    config = function()
+      g.user_emmet_install_global = 0
+      local emmetGroup = augroup("emmet", {})
+      set_autocmd(
+        emmetGroup,
+        { "FileType" },
+        { "html", "css", "jsx", "tsx", "htmldjango" },
+        "EmmetInstall"
+      )
+    end
   },
   {
     -- Html Django

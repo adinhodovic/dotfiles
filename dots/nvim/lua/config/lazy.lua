@@ -19,5 +19,5 @@ vim.g.mapleader = ','
 
 require("lazy").setup("core.plugins", {
   -- Can cause git issues
-  concurrency = 1,
+  concurrency = 5,
 })

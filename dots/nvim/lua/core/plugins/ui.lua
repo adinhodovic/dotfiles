@@ -1,4 +1,17 @@
 local vim = vim
+local set = vim.opt
+local g = vim.g
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+-- Define a function to simplify setting autocmds
+local function set_autocmd(group, event, pattern, command)
+  autocmd(event, {
+    group = group,
+    pattern = pattern,
+    command = command
+  })
+end
 
 -----------------------------------------
 -- GUI
@@ -51,6 +64,23 @@ return {
   {
     -- Better whitespace
     "ntpeters/vim-better-whitespace",
+    config = function()
+      g.better_whitespace_enabled = 1
+      g.strip_whitespace_on_save = 1
+      g.strip_whitespace_confirm = 0
+      g.better_whitespace_verbosity = 1
+      g.current_line_whitespace_disabled_soft = 1
+      g.better_whitespace_filetypes_blacklist = { 'zsh', 'html', 'vim', 'diff', 'gitcommit', 'unite', 'qf', 'help' }
+      g.better_whitespace_ctermcolor = 'red'
+
+      local whitespaceGroup = augroup("whitespace", {})
+      set_autocmd(
+        whitespaceGroup,
+        { "BufWritePre" },
+        { "*" },
+        "StripWhitespace"
+      )
+    end
   },
   {
     -- Icons
@@ -59,8 +89,20 @@ return {
   {
     -- Bottom bar
     "vim-airline/vim-airline",
-    lazy = true,
-    ft = "markdown",
+    config = function()
+      g.airline_theme = 'github_dark_default'
+      g["airline#extensions#tabline#enabled"] = 0
+      g["airline#extensions#coc#enabled"] = 1
+      g["airline#extensions#coc#show_coc_status"] = 1
+      g["airline#extensions#hunks#enabled"] = 1
+      g["airline#extensions#hunks#coc_git"] = 1
+      -- remove the filetype part
+      g.airline_section_x = '%{get(b:,"coc_git_blame","")}'
+      g.airline_section_y = ''
+      -- remove separators for empty sections
+      g.airline_skip_empty_sections = 1
+      vim.cmd("autocmd User CocGitStatusChange AirlineRefresh")
+    end
   },
   {
     -- Airline themes
@@ -69,19 +111,21 @@ return {
   {
     -- Show line indentation
     "Yggdroot/indentLine",
+    config = function()
+      g.indentLine_char_list = { '|', '¦', '┆', '┊' }
+      g.indentLine_fileTypeExclude = { 'markdown', 'terraform' }
+    end
   },
   {
     -- Color parenthesis
     "luochen1990/rainbow",
+    config = function()
+      g.rainbow_active = 1
+    end
   },
   {
     -- Underlines/highlight the word under the cursor
     "itchyny/vim-cursorword",
-  },
-  {
-    -- Gruvbox theme
-    "morhetz/gruvbox",
-    priority = 1000
   },
   {
     -- Github theme
@@ -89,6 +133,7 @@ return {
     priority = 1000,
     config = function()
       require('github-theme').setup()
+      vim.cmd.colorscheme("github_dark_default")
     end
   },
   {

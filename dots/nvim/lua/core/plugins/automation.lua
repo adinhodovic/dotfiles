@@ -18,7 +18,25 @@ return {
     "junegunn/fzf.vim",
     dependencies = {
       "junegunn/fzf"
-    }
+    },
+    config = function()
+      g.fzf_action = {
+        ['ctrl-t'] = 'tab split',
+        ['ctrl-x'] = 'vsplit',
+        ['ctrl-z'] = 'split',
+      }
+      g.fzf_layout = { up = '~40%' }
+      g.fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
+    end
+  },
+  {
+    -- Copilot
+    "github/copilot.vim",
+    config = function()
+      -- Disable copilot tabs that interfere with Coc
+      g.copilot_no_tab_map = true
+      g.copilot_assume_mapped = true
+    end
   },
   {
     -- Telescope
@@ -57,6 +75,11 @@ return {
   {
     -- Semicolons
     "lfilho/cosco.vim",
+    config = function()
+      g.cosco_filetype_whitelist = {
+        'javascript',
+        'typescript', 'css', 'perl', 'nginx' }
+    end
   },
   {
     -- Project jumping
@@ -181,6 +204,126 @@ return {
     "folke/noice.nvim",
     config = function()
       -- require('noice').setup()
+    end
+  },
+  {
+    -- Delete add surroundings in pair
+    "tpope/vim-surround",
+  },
+  {
+    -- Comment/uncomment source code files
+    "scrooloose/nerdcommenter",
+    config = function()
+      -- Add a space before any comment
+      g.NERDSpaceDelims = 1
+    end
+  },
+  {
+    -- Ultisnips, use with coc-snippets
+    "SirVer/ultisnips",
+    config = function()
+      -- Collides with coc-snippets
+      g.UltiSnipsListSnippets = '<nop>'
+      g.UltiSnipsExpandTrigger = '<nop>'
+      -- Load my own snippets
+      g.UltiSnipsSnippetDirectories = { '~/personal/UltiSnips' }
+    end
+  },
+  {
+    -- Ultisnips, use with coc-snippets
+    "neomake/neomake",
+    config = function()
+      g.neomake_list_height = 8
+      g.neomake_open_list = 2
+
+      g.neomake_eslint_exe = vim.fn.systemlist('which eslint')[0]
+      g.neomake_stylelint_exe = vim.fn.systemlist('which stylelint')[0]
+
+      g.neomake_text_enabled_makers = { 'writegood' }
+
+      g.neomake_sh_enabled_makers = { 'shellcheck' }
+
+      g.neomake_vim_enabled_makers = { 'vint' }
+
+      g.neomake_markdown_enabled_makers = { 'markdownlint' }
+      g.neomake_markdown_markdownlint_args = { '-c', '~/.markdownlint.yaml' }
+
+      g.neomake_ansible_enabled_makers = { 'ansiblelint', 'yamllint' }
+
+      g.neomake_yamllint_enabled_makers = { 'yamllint' }
+
+      g.neomake_typescriptreact_enabled_makers = { 'eslint' }
+      g.neomake_typescriptreact_eslint_args = { '--fix', '--format=json' }
+
+      g.neomake_javascriptreact_enabled_makers = { 'eslint' }
+      g.neomake_javascriptreact_eslint_args = { '--fix', '--format=json' }
+
+      g.neomake_javascript_enabled_makers = { 'eslint' }
+      g.neomake_javascript_eslint_args = { '--fix', '--format=json' }
+
+      g.neomake_typescript_enabled_makers = { 'eslint' }
+      g.neomake_typescript_eslint_args = { '--fix', '--format=json' }
+
+      g.neomake_json_enabled_makers = { 'jsonlint' }
+      g.neomake_json_jsonlint_args = { '-i' }
+
+      g.neomake_jsonnet_tk_maker = {
+        name = 'tk',
+        exe = 'tk',
+        errorformat = '%m',
+        args = { 'lint' }
+      }
+      g.neomake_jsonnet_enabled_makers = { 'tk' }
+
+      g.neomake_python_isort_maker = {
+        name = 'isort'
+      }
+      g.neomake_python_black_maker = {
+        name = 'black'
+      }
+      g.neomake_pylint_exe = vim.fn.systemlist('which pylint')[0]
+      g.neomake_mypy_exe = vim.fn.systemlist('which mypy')[0]
+
+      g.neomake_python_enabled_makers = { 'pylint', 'isort', 'black', 'mypy' }
+
+      g.neomake_css_enabled_makers = { 'stylelint' }
+      g.neomake_css_stylelint_args = { '--fix' }
+
+      g.neomake_scss_enabled_makers = { 'stylelint' }
+      g.neomake_scss_stylelint_args = { '--fix' }
+
+      g.neomake_less_enabled_makers = { 'stylelint' }
+      g.neomake_less_stylelint_args = { '--fix' }
+
+      g.neomake_html_jsbeautify_maker = {
+        name = 'djLint',
+        exe = 'djlint',
+        args = { '--profile=html', '--reformat' }
+      }
+
+      -- g.neomake_htmldjango_jsbeautify_maker = {
+      -- name = 'djLint',
+      -- exe = 'djlint',
+      -- args = {'--profile=django', '--reformat'}
+      -- }
+
+      g.neomake_htmldjango_htmlhint_maker = {
+        args = { '--nocolor' },
+        -- errorformat = '%f:%l:%c: %m,%-G,%-G%*\d problems'
+      }
+
+      -- g.neomake_go_enabled_makers = {}
+      g.neomake_htmldjango_enabled_makers = { 'htmlhint' }
+      g.neomake_html_enabled_makers = { 'htmlhint', 'jsbeautify' }
+
+      vim.cmd([[
+        call neomake#configure#automake('w')
+
+        augroup my_neomake_hooks
+          au!
+          autocmd User NeomakeJobFinished silent! :edit
+        augroup END
+      ]])
     end
   },
 }

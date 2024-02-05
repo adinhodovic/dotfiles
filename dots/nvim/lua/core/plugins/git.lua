@@ -33,5 +33,8 @@ return {
   {
     -- Diff conflicts
     "rhysd/conflict-marker.vim",
+    config = function()
+      g.conflict_marker_highlight_group = 'DiffText'
+    end
   },
 }

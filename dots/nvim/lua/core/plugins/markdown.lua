@@ -12,12 +12,25 @@ return {
     "instant-markdown/vim-instant-markdown",
     lazy = true,
     ft = "markdown",
+    config = function()
+      -- Disable autostart of md composer
+      g.instant_markdown_browser = 'chromium --new-window'
+      g.instant_markdown_autostart = 0
+    end,
   },
   {
     -- Markdown
     "preservim/vim-markdown",
     lazy = true,
     ft = "markdown",
+    config = function()
+      -- Disable markdown code block conceals
+      g.vim_markdown_conceal = 0
+      g.vim_markdown_conceal_code_blocks = 0
+
+      -- Disable folding, we have search
+      g.vim_markdown_folding_disabled = 1
+    end
   },
   {
     -- Markdown ToC
