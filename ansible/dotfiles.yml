@@ -37,6 +37,9 @@
         - src: "xprofile"
           dest: "/home/adin/.xprofile"
 
+        - src: "xinitrc"
+          dest: "/home/adin/.xinitrc"
+
         - src: "lazygit.yml"
           dest: "/home/adin/.config/lazygit/config.yml"
 
@@ -59,7 +62,7 @@
           dest: "/home/adin/.golangci.yml"
 
         - src: "i3.config"
-          dest: "/home/adin/.i3/config"
+          dest: "/home/adin/.config/i3/config"
 
         - src: "i3blocks.conf"
           dest: "/home/adin/.i3blocks.conf"
@@ -72,12 +75,6 @@
 
         - src: "taskrc"
           dest: "/home/adin/.taskrc"
-
-        - src: "lightdm.conf"
-          dest: "/etc/lightdm/lightdm.conf"
-
-        - src: "lightdm-webkit2-greeter.conf"
-          dest: "/etc/lightdm/lightdm-webkit2-greeter.conf"
 
         - src: "alacritty.toml"
           dest: "/home/adin/.config/alacritty/alacritty.toml"
@@ -136,16 +133,28 @@
         - src: "k9s.yaml"
           dest: "/home/adin/.config/k9s/config.yaml"
 
-    - name: locale-gen
-      shell: locale-gen
-
-    - name: Symlink Misc
-      file:
-        src: "{{ item.src }}"
+    - name: Mv Sudo Dots
+      become: true
+      tags: sudo-dots
+      copy:
+        src: "/home/adin/.dotfiles/dots/{{ item.src }}"
         dest: "{{ item.dest }}"
-        state: link
         force: true
-      tags: symlink-misc
       with_items:
-        - src: ~/.dotfiles/scripts/on-modify-timewarrior.py
-          dest: /home/adin/.task/hooks/on-modify-timewarrior.py
+        - src: "lightdm.conf"
+          dest: "/etc/lightdm/lightdm.conf"
+
+        - src: "web-greeter.yml"
+          dest: "/etc/lightdm/web-greeter.yml"
+
+    - name: Store image
+      become: true
+      tags: sudo-dots
+      copy:
+        src: /home/adin/.dotfiles/images/mostar.jpg
+        dest: /usr/share/backgrounds/mostar.jpg
+        force: true
+
+    - name: locale-gen
+      become: true
+      shell: locale-gen

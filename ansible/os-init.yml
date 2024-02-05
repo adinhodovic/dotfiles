@@ -2,6 +2,7 @@
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
+  become: true
   connection: local
 
   tasks:
@@ -14,7 +15,6 @@
         - nvim +PlugInstall +qall +silent
 
     - name: Add me to docker group
-      become: true
       user:
         name: adin
         groups: docker
@@ -22,7 +22,6 @@
       tags: docker
 
     - name: Add me to plugdev group
-      become: true
       user:
         name: adin
         groups: plugdev
@@ -54,6 +53,7 @@
             - .config
 
         - name: Clone all repos I use
+          become: false
           git:
             repo: "{{ item.repo }}"
             dest: "{{ item.dest }}"
@@ -91,6 +91,8 @@
               dest: "~/personal/hodovi-cc"
             - repo: "git@github.com:adinhodovic/blogs.git"
               dest: "~/personal/blogs"
+            - repo: "git@github.com:adinhodovic/notes.git"
+              dest: "~/personal/notes"
             - repo: "git@github.com:adinhodovic/cheats.git"
               dest: "~/personal/cheats"
 
@@ -109,8 +111,3 @@
 
     - name: start lightdm
       shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'
-
-    # background image
-    - copy:
-        src: /home/adin/.dotfiles/images/mostar.jpg
-        dest: /usr/share/lightdm-webkit/themes/litarvan/images/background.png

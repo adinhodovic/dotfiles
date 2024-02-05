@@ -116,7 +116,10 @@
 
         # Ui
         - lightdm
-        - lightdm-webkit-theme-aether
+        - web-greeter
+        # Needs to move this from /usr/share/lightdm-webkit/themes/litarvan to
+        # /usr/share/web-greeter/themes/litarvan
+        - lightdm-webkit-theme-litarvan-git
 
         # fonts
         - ttf-roboto-mono

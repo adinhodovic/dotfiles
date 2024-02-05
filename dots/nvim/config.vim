@@ -90,10 +90,10 @@ endfunction
 "-----------------------------------------
 " Abbreviations
 "-----------------------------------------
-function! LoadAbbreviations()
-   source ~/.dotfiles/dots/nvim/abbreviations.vim
-endfunction
+" function! LoadAbbreviations()
+   " source ~/.dotfiles/dots/nvim/abbreviations.vim
+" endfunction
 
-augroup abbreviations
-  autocmd VimEnter * call LoadAbbreviations()
-augroup end
+" augroup abbreviations
+  " autocmd VimEnter * call LoadAbbreviations()
+" augroup end
