@@ -117,6 +117,10 @@ return {
     end
   },
   {
+    -- Better search <leader>e, simpler than above
+    "wincent/scalpel",
+  },
+  {
     -- Better folding
     "kevinhwang91/nvim-ufo",
     dependencies = {

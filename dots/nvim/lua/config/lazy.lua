@@ -17,4 +17,7 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.g.mapleader = ','
 -- vim.keymap.set("n", "<leader>ml", "<cmd>Lazy<cr>")
 
-require("lazy").setup("core.plugins", {})
+require("lazy").setup("core.plugins", {
+  -- Can cause git issues
+  concurrency = 1,
+})

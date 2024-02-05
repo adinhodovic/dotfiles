@@ -54,4 +54,12 @@ return {
     "mboughaba/i3config.vim",
     ft = "i3config"
   },
+  {
+    -- Base64 Decoding/Encoding
+    "christianrondeau/vim-base64",
+  },
+  {
+    -- Most recently opened
+    "yegappan/mru",
+  },
 }
