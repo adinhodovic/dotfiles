@@ -1,5 +1,4 @@
 require('config.lazy')
-require('plugins')
 require('configs')
 require('mappings')
 -- require('keybindings')
