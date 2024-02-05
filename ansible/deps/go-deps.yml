@@ -23,6 +23,7 @@
         - github.com/bazelbuild/bazelisk@latest
         - github.com/go-delve/delve/cmd/dlv@latest
         - github.com/tilt-dev/ctlptl/cmd/ctlptl@latest
+        - github.com/mvdan.cc/sh/v3/cmd/shfmt@latest
         # utils
         - github.com/tomnomnom/gron@latest
         # secrets

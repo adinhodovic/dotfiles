@@ -40,6 +40,7 @@
         - tzupdate
         - xflux
         - acpi
+        - luarocks
 
         # terminal/vim
         - alacritty
