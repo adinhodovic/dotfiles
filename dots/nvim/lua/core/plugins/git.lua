@@ -13,7 +13,7 @@ return {
   },
   {
     -- Show git messages
-    "rhysd/git-messenger",
+    "rhysd/git-messenger.vim",
   },
   {
     -- Nvim Git integration

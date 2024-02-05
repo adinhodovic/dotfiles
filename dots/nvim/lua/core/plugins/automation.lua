@@ -8,16 +8,17 @@ local autocmd = vim.api.nvim_create_autocmd
 -----------------------------------------
 return {
   {
-    -- Open at last place
-    "farmergreg/vim-lastplace"
+    -- Fzf
+    "junegunn/fzf",
+    dir = "~/.fzf",
+    build = "./install --all"
   },
   {
-    -- Increment dates
-    "tpope/vim-speeddating",
-  },
-  {
-    -- Semicolons
-    "lfilho/cosco.vim",
+    -- Fzf vim integration
+    "junegunn/fzf.vim",
+    dependencies = {
+      "junegunn/fzf"
+    }
   },
   {
     -- Telescope
@@ -44,6 +45,18 @@ return {
     config = function()
       require('telescope').load_extension('coc')
     end
+  },
+  {
+    -- Open at last place
+    "farmergreg/vim-lastplace"
+  },
+  {
+    -- Increment dates
+    "tpope/vim-speeddating",
+  },
+  {
+    -- Semicolons
+    "lfilho/cosco.vim",
   },
   {
     -- Project jumping

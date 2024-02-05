@@ -22,6 +22,44 @@ return {
     ft = "htmldjango"
   },
   {
+    -- Javascript
+    "pangloss/vim-javascript",
+    ft = {
+      "javscript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    }
+  },
+  {
+    -- Javascript
+    "jelera/vim-javascript-syntax",
+    ft = {
+      "javscript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    }
+  },
+  {
+    -- Typescript
+    "HerringtonDarkholme/yats.vim",
+    ft = {
+      "typescript",
+      "typescriptreact"
+    }
+  },
+  {
+    -- JSX
+    "maxmellon/vim-jsx-pretty",
+    ft = {
+      "javscript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    }
+  },
+  {
     -- CSS syntax
     "hail2u/vim-css3-syntax",
     lazy = true,
