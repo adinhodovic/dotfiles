@@ -1,0 +1,23 @@
+branding:
+  background_images_dir: /usr/share/web-greeter
+  logo_image: /usr/share/pixmaps/archlinux-logo.svg
+  user_image: /usr/share/pixmaps/archlinux-user.svg
+
+greeter:
+  debug_mode: False
+  detect_theme_errors: True
+  screensaver_timeout: 300
+  secure_mode: True
+  theme: gruvbox
+  icon_theme:
+  time_language:
+
+layouts:
+  - us
+
+features:
+  battery: False
+  backlight:
+    enabled: False
+    value: 10
+    steps: 0

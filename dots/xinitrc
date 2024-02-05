@@ -1,0 +1,4 @@
+!#/bin/sh
+# This script is used to start i3 when not using a web-greeter,
+# but instead from the terminal with startx
+exec i3

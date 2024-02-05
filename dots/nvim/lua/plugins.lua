@@ -40,31 +40,10 @@ Plug('lifepillar/pgsql.vim')
 -----------------------------------------
 Plug('tpope/vim-surround') -- Delete add surroundings in pair
 -----------------------------------------
---              GIT
------------------------------------------
------------------------------------------
---      YAML/JSON/JSONNET/TOML/HELM
------------------------------------------
------------------------------------------
---              FZF
------------------------------------------
-Plug('junegunn/fzf', {
-  ['dir'] = '~/.fzf',
-  ['do'] = './install --all'
-})
-Plug('junegunn/fzf.vim')
------------------------------------------
 --              Go
 -----------------------------------------
 Plug('fatih/vim-go')
 Plug('sebdah/vim-delve')
------------------------------------------
---              JS/TS/JSX/TSX
------------------------------------------
-Plug('pangloss/vim-javascript')
-Plug 'HerringtonDarkholme/yats.vim'
-Plug('jelera/vim-javascript-syntax')
-Plug('maxmellon/vim-jsx-pretty')
 -----------------------------------------
 --              Ruby
 -----------------------------------------
