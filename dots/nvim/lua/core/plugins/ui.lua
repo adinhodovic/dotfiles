@@ -128,25 +128,48 @@ return {
 	},
 	{
 		-- Bottom bar
-		"vim-airline/vim-airline",
+		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"projekt0n/github-nvim-theme",
+			"f-person/git-blame.nvim",
+		},
 		config = function()
-			g.airline_theme = "github_dark_default"
-			g["airline#extensions#tabline#enabled"] = 0
-			g["airline#extensions#coc#enabled"] = 1
-			g["airline#extensions#coc#show_coc_status"] = 1
-			g["airline#extensions#hunks#enabled"] = 1
-			g["airline#extensions#hunks#coc_git"] = 1
-			-- remove the filetype part
-			g.airline_section_x = '%{get(b:,"coc_git_blame","")}'
-			g.airline_section_y = ""
-			-- remove separators for empty sections
-			g.airline_skip_empty_sections = 1
-			vim.cmd("autocmd User CocGitStatusChange AirlineRefresh")
+			-- We only use the statusline for the git blame
+			g.gitblame_display_virtual_text = 0
+			g.gitblame_date_format = "%x %H:%M"
+			local git_blame = require("gitblame")
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					always_divide_middle = true,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
+						winbar = 1000,
+					},
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff" },
+					lualine_c = { "diagnostics" },
+					lualine_x = {
+						{
+							git_blame.get_current_blame_text,
+							cond = git_blame.is_blame_text_available,
+						},
+					},
+					lualine_y = { "aerial", "filename", "progress", "location" },
+					lualine_z = { "searchcount", "selectioncount" },
+				},
+				tabline = {},
+				winbar = {},
+				inactive_winbar = {},
+				extensions = { "aerial" },
+			})
 		end,
-	},
-	{
-		-- Airline themes
-		"vim-airline/vim-airline-themes",
 	},
 	{
 		-- Show line indentation
@@ -258,17 +281,34 @@ return {
 	{
 		-- Better statuscol
 		"luukvbaal/statuscol.nvim",
+		dependencies = {
+			"kevinhwang91/nvim-ufo",
+			"lewis6991/gitsigns.nvim",
+			"folke/trouble.nvim",
+		},
 		config = function()
+			local signs = {
+				Error = "",
+				Warn = "",
+				Hint = "",
+				Info = "",
+				Other = "",
+			}
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+			end
+
 			local builtin = require("statuscol.builtin")
-			local cfg = {
+			require("statuscol").setup({
 				segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 					{
-						sign = { name = { "CocGit*" }, minwidth = 1, maxwidth = 1, auto = false },
+						sign = { namespace = { "gitsigns" }, minwidth = 1, maxwidth = 1, auto = false },
 						click = "v:lua.ScSa",
 					},
 					{
-						sign = { name = { ".*" }, minwidth = 2, maxwidth = 2, auto = false },
+						sign = { namespace = { ".*" }, minwidth = 2, maxwidth = 2, auto = false },
 						click = "v:lua.ScSa",
 					},
 					{
@@ -281,8 +321,13 @@ return {
 						click = "v:lua.ScLa",
 					},
 				},
-			}
-			require("statuscol").setup(cfg)
+			})
+		end,
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
 		end,
 	},
 	{
@@ -302,7 +347,7 @@ return {
 	{
 		-- Better notifications
 		"folke/noice.nvim",
-		enabled = true,
+		enabled = false,
 		event = "VeryLazy",
 		opts = {
 			-- add any options here

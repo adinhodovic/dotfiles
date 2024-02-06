@@ -19,8 +19,6 @@
       "settings": {}
     }
   },
-  "git.addGBlameToBufferVar": true,
-  "git.addGBlameToVirtualText": false,
   "snippets.extends": {
     "typescript_tsx": [
       "typescript"

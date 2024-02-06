@@ -1,3 +1,4 @@
+local vim = vim
 -----------------------------------------
 -- General
 -----------------------------------------
@@ -48,7 +49,15 @@ return {
 	},
 	{
 		"gbprod/yanky.nvim",
-		opts = {},
+		dependencies = { "kkharji/sqlite.lua" },
+		opts = {
+			highlight = {
+				timer = 250,
+			},
+			ring = {
+				storage = "sqlite",
+			},
+		},
 		keys = {
 			{
 				"<leader>p",
@@ -75,5 +84,55 @@ return {
 			{ "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
 			{ "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
 		},
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+		config = function()
+			local ls = require("luasnip").setup()
+			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/personal/Ultisnips" } })
+			vim.keymap.set({ "i" }, "<C-K>", function()
+				ls.expand()
+			end, { silent = true })
+			vim.keymap.set({ "i", "s" }, "<C-L>", function()
+				ls.jump(1)
+			end, { silent = true })
+			vim.keymap.set({ "i", "s" }, "<C-J>", function()
+				ls.jump(-1)
+			end, { silent = true })
+
+			vim.keymap.set({ "i", "s" }, "<C-E>", function()
+				if ls.choice_active() then
+					ls.change_choice(1)
+				end
+			end, { silent = true })
+		end,
+	},
+	{
+		"smjonas/snippet-converter.nvim",
+		cmd = "ConvertSnippets",
+		config = function()
+			local template = {
+				-- name = "t1", (optionally give your template a name to refer to it in the `ConvertSnippets` command)
+				sources = {
+					ultisnips = {
+						"/home/adin/personal/UltiSnips",
+					},
+				},
+				output = {
+					-- Specify the output formats and paths
+					snipmate = {
+						"/home/adin/.config/nvim/snippets",
+					},
+				},
+			}
+
+			require("snippet_converter").setup({
+				templates = { template },
+				-- To change the default settings (see configuration section in the documentation)
+				-- settings = {},
+			})
+		end,
 	},
 }

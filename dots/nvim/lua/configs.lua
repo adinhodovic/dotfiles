@@ -6,38 +6,38 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Define a function to simplify setting autocmds
 local function set_autocmd(group, event, pattern, command)
-  autocmd(event, {
-    group = group,
-    pattern = pattern,
-    command = command
-  })
+	autocmd(event, {
+		group = group,
+		pattern = pattern,
+		command = command,
+	})
 end
 
-g.python3_host_prog = '/usr/bin/python'
+g.python3_host_prog = "/usr/bin/python"
 
 g.hardtime_default_on = 0
 
 g.hardtime_maxcount = 2
 g.hardtime_allow_different_key = 1
 
-set.completeopt = 'preview,menu'
+set.completeopt = "preview,menu"
 
-g.netrw_browser_viewer = 'o'
+g.netrw_browser_viewer = "o"
 
-set.mouse = 'a'
+set.mouse = "a"
 
 set.updatetime = 300
 
 -- Set to auto read when a file is changed from the outside
 vim.opt.autoread = true
 
-vim.g.mapleader = ','
+vim.g.mapleader = ","
 
 -- don't give |ins-completion-menu| messages.
 set.shortmess = "c"
 
 -- always show signcolumns
-set.signcolumn = 'yes'
+set.signcolumn = "yes"
 
 -- Abbreviations
 vim.cmd("cnoreabbrev W! w!")
@@ -54,7 +54,7 @@ vim.cmd("cnoreabbrev Q q")
 -- Folding
 -------------------------------------------
 vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
@@ -68,10 +68,10 @@ set.background = "dark"
 
 -- Bullets.vim
 vim.g.bullets_enabled_file_types = {
-  'markdown',
-  'text',
-  'gitcommit',
-  'scratch'
+	"markdown",
+	"text",
+	"gitcommit",
+	"scratch",
 }
 
 set.cmdwinheight = 1
@@ -86,7 +86,7 @@ set.history = 1000
 -- Spelling
 -------------------------------------------
 set.spell = true
-set.spelllang = { 'en_us' }
+set.spelllang = { "en_us" }
 set.title = true
 set.number = true
 
@@ -111,7 +111,6 @@ set.smarttab = true
 set.shiftwidth = 2
 set.tabstop = 2
 
-
 set.autoindent = true
 set.smartindent = true
 set.wrap = true
@@ -124,23 +123,31 @@ set.iskeyword:append({ "-" })
 -------------------------------------------
 
 -- Enable file type detection
-vim.o.filetype = 'on'
+vim.o.filetype = "on"
 
 -- Enable syntax highlighting
-vim.o.syntax = 'on'
+vim.o.syntax = "on"
 
 -- Create the augroup and set autocmds for various filetypes
 local indentation = augroup("indentation", {})
-set_autocmd(indentation, "FileType", { "typescript", "javascript", "terraform", "jinja2" },
-  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
+set_autocmd(
+	indentation,
+	"FileType",
+	{ "typescript", "javascript", "terraform", "jinja2" },
+	"setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent"
+)
 set_autocmd(indentation, "FileType", { "coffee" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
 set_autocmd(indentation, "FileType", { "css", "scss", "stylus" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
 set_autocmd(indentation, "FileType", { "vim" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
 set_autocmd(indentation, "FileType", { "tex" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
 set_autocmd(indentation, "FileType", { "yaml", "docker-compose" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
 set_autocmd(indentation, "FileType", { "json" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
-set_autocmd(indentation, "FileType", { "json" },
-  'setlocal shiftwidth=2 tabstop=2 expandtab | syntax match Comment "^//(.+)$"')
+set_autocmd(
+	indentation,
+	"FileType",
+	{ "json" },
+	'setlocal shiftwidth=2 tabstop=2 expandtab | syntax match Comment "^//(.+)$"'
+)
 set_autocmd(indentation, "FileType", { "snippets" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
 set_autocmd(indentation, "FileType", { "jade" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
 set_autocmd(indentation, "FileType", { "html", "htmldjango" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
@@ -148,8 +155,12 @@ set_autocmd(indentation, "FileType", { "python" }, "setlocal shiftwidth=4 tabsto
 set_autocmd(indentation, "FileType", { "go" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
 set_autocmd(indentation, "FileType", { "erlang" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
 set_autocmd(indentation, "FileType", { "make" }, "setlocal shiftwidth=4 tabstop=4 noexpandtab")
-set_autocmd(indentation, "FileType", { "sh", "bash", "zsh", "readline", "nginx", "conf" },
-  "setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent")
+set_autocmd(
+	indentation,
+	"FileType",
+	{ "sh", "bash", "zsh", "readline", "nginx", "conf" },
+	"setlocal shiftwidth=2 tabstop=2 expandtab nocindent smartindent"
+)
 set_autocmd(indentation, "FileType", { "php" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
 set_autocmd(indentation, "FileType", { "markdown" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
 set_autocmd(indentation, "FileType", { "ruby" }, "setlocal shiftwidth=2 tabstop=2 expandtab")
@@ -167,9 +178,9 @@ set.colorcolumn = "100"
 
 local textwidth = augroup("textwidth", {})
 autocmd("FileType", {
-  pattern = { "gitcommit", "html", "htmldjango", "text", "direnv", "markdown" },
-  command = "setlocal textwidth=0 | setlocal colorcolumn=0",
-  group = textwidth
+	pattern = { "gitcommit", "html", "htmldjango", "text", "direnv", "markdown" },
+	command = "setlocal textwidth=0 | setlocal colorcolumn=0",
+	group = textwidth,
 })
 
 -------------------------------------------

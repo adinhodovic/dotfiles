@@ -103,11 +103,6 @@ imap("<F8>", ":<C-o>NextWordy<cr>")
 vmap("<leader>ld", ":Linediff<cr>")
 
 ----------------------------------------
--- Copilot
-----------------------------------------
-imap("<C-c>", "copilot#Accept('<CR>')", default_options_expression)
-
-----------------------------------------
 -- Coc.nvim
 ----------------------------------------
 
@@ -116,17 +111,6 @@ imap("<C-c>", "copilot#Accept('<CR>')", default_options_expression)
 
 -- -- Use for convert visual selected code to snippet
 -- xmap("<leader>x", "<Plug>(coc-convert-snippet)")
-
--- ------------------------------------------
--- -- coc-fzf
--- ------------------------------------------
--- nmap("<space><space>", ":<C-u>CocFzfList<CR>")
--- nmap("<space>c", ":<C-u>CocFzfList commands<CR>")
--- nmap("<space>e", ":<C-u>CocFzfList extensions<CR>")
--- nmap("<space>l", ":<C-u>CocFzfList location<CR>")
--- nmap("<space>o", ":<C-u>CocFzfList outline<CR>")
--- nmap("<space>s", ":<C-u>CocFzfList symbols<CR>")
--- nmap("<space>p", ":<C-u>CocFzfListResume<CR>")
 
 -- -------------------------------------------
 -- -- coc-git

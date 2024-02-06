@@ -28,27 +28,28 @@ return {
 		end,
 	},
 	{
-		-- Copilot
-		"github/copilot.vim",
-		config = function()
-			-- Disable copilot tabs that interfere with Coc
-			g.copilot_no_tab_map = true
-			g.copilot_assume_mapped = true
-		end,
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		priority = 10000,
 	},
 	{
 		-- Telescope
 		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
 		priority = 1000,
 		config = function()
 			require("telescope").setup({
 				extensions = {
-					coc = {
-						theme = "ivy",
-						prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+					fzf = {
+						fuzzy = true, -- false will only do exact matching
+						override_generic_sorter = true, -- override the generic sorter
+						override_file_sorter = true, -- override the file sorter
 					},
 				},
 			})
+			require("telescope").load_extension("fzf")
 		end,
 	},
 	-- Code actions
@@ -64,17 +65,6 @@ return {
 				desc = "Toggle Code Actions",
 			},
 		},
-	},
-	{
-		-- Telescope CoC
-		"fannheyward/telescope-coc.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"neoclide/coc.nvim",
-		},
-		config = function()
-			require("telescope").load_extension("coc")
-		end,
 	},
 	{
 		-- Open at last place
@@ -170,24 +160,6 @@ return {
 		dependencies = {
 			"kevinhwang91/promise-async",
 		},
-		keys = {
-			{
-				"zR",
-				mode = { "n" },
-				function()
-					require("ufo").openAllFolds()
-				end,
-				desc = "Ufo open all",
-			},
-			{
-				"zM",
-				mode = { "n" },
-				function()
-					require("ufo").closeAllFolds()
-				end,
-				desc = "Ufo close all",
-			},
-		},
 		config = function()
 			local handler = function(virtText, lnum, endLnum, width, truncate)
 				local newVirtText = {}
@@ -227,6 +199,9 @@ return {
 			require("ufo").setup({
 				fold_virt_text_handler = handler,
 			})
+
+			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 		end,
 	},
 	{
@@ -265,6 +240,14 @@ return {
 					require("flash").treesitter_search()
 				end,
 				desc = "Treesitter Search",
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
 			},
 		},
 		config = function()
@@ -383,6 +366,30 @@ return {
 			require("nvim-treesitter.configs").setup({
 				autotag = {
 					enable = true,
+				},
+			})
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = false,
+				},
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					keymap = {
+						accept = "<c-c>",
+						accept_word = false,
+						accept_line = false,
+						next = false,
+						prev = false,
+						dismiss = "<c-S-C>",
+					},
 				},
 			})
 		end,

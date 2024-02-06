@@ -54,6 +54,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
+		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
 		opts = {},
 		config = function(_, opts)
 			local present, mason = pcall(require, "mason")
@@ -233,48 +234,6 @@ return {
 			auto_open = true, -- automatically open the list when you have diagnostics
 			auto_close = true, -- automatically close the list when you have no diagnostics
 		},
-		keys = {
-			{
-				"<leader>xx",
-				mode = "n",
-				function()
-					require("trouble").toggle()
-				end,
-				desc = "Toggle trouble",
-			},
-			{
-				"<leader>xw",
-				mode = "n",
-				function()
-					require("trouble").toggle("workspace_diagnostics")
-				end,
-				desc = "Toggle trouble workspace diagnostics",
-			},
-			{
-				"<leader>xd",
-				mode = "n",
-				function()
-					require("trouble").toggle("document_diagnostics")
-				end,
-				desc = "Toggle trouble document diagnostics",
-			},
-			{
-				"<leader>xq",
-				mode = "n",
-				function()
-					require("trouble").toggle("quickfix")
-				end,
-				desc = "Toggle trouble quickfix",
-			},
-			{
-				"<leader>gR",
-				mode = "n",
-				function()
-					require("trouble").toggle("lsp_references")
-				end,
-				desc = "Toggle trouble lsp references",
-			},
-		},
 		config = function()
 			-- What does this do
 			local trouble = require("trouble.providers.telescope")
@@ -289,6 +248,24 @@ return {
 					},
 				},
 			})
+			vim.keymap.set("n", "<leader>xx", function()
+				require("trouble").toggle()
+			end)
+			vim.keymap.set("n", "<leader>xw", function()
+				require("trouble").toggle("workspace_diagnostics")
+			end)
+			vim.keymap.set("n", "<leader>xd", function()
+				require("trouble").toggle("document_diagnostics")
+			end)
+			vim.keymap.set("n", "<leader>xq", function()
+				require("trouble").toggle("quickfix")
+			end)
+			vim.keymap.set("n", "<leader>xl", function()
+				require("trouble").toggle("loclist")
+			end)
+			vim.keymap.set("n", "gR", function()
+				require("trouble").toggle("lsp_references")
+			end)
 		end,
 	},
 	{
@@ -297,16 +274,6 @@ return {
 		config = function()
 			require("tailwindcss-colorizer-cmp").setup({
 				color_square_width = 2,
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot.lua",
-		opts = {},
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
 			})
 		end,
 	},
@@ -328,6 +295,7 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-emoji",
+			"hrsh7th/cmp-calc",
 			"SirVer/ultisnips",
 			"f3fora/cmp-spell",
 			"quangnguyen30192/cmp-nvim-ultisnips",
@@ -338,6 +306,8 @@ return {
 		},
 		config = function()
 			local cmp = require("cmp")
+
+			require("cmp_nvim_ultisnips").setup({})
 			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 			local cmp_copilot = { name = "copilot", group_index = 2, max_item_count = 5 }
@@ -356,6 +326,7 @@ return {
 			local cmp_path = { name = "path", max_item_count = 5 }
 			local cmp_ultisnips = { name = "ultisnips", max_item_count = 5 }
 			local cmp_emoji = { name = "emoji", max_item_count = 5 }
+			local cmp_calc = { name = "calc", max_item_count = 2 }
 
 			local default_cmp_sources = {
 				cmp_copilot,
@@ -366,9 +337,8 @@ return {
 				cmp_path,
 				cmp_ultisnips,
 				cmp_emoji,
+				cmp_calc,
 			}
-
-			local lspkind = require("lspkind")
 
 			-- Lua function that merges dicts
 			local function merge_dicts(...)
@@ -380,6 +350,17 @@ return {
 				end
 				return result
 			end
+
+			-- Copilot integraiton for <TAB>
+			local has_words_before = function()
+				if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+					return false
+				end
+				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+				return col ~= 0
+					and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+			end
+
 			cmp.setup({
 				formatting = {
 					format = require("lspkind").cmp_format({
@@ -388,17 +369,20 @@ return {
 						maxwidth = 50,
 						ellipsis_char = "...",
 						before = function(entry, vim_item)
+							-- Custom icon for 'calc' source
+							if entry.source.name == "calc" then
+								vim_item.kind = ""
+								return vim_item
+							end
+
+							-- Tailwind colors
 							vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
 							return vim_item
 						end,
 					}),
 				},
 				snippet = {
-					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
-						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-						-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 						vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 					end,
 				},
@@ -415,19 +399,15 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-							-- elseif cmp_ultisnips_mappings.expand_or_jumpable() then
-							-- cmp_ultisnips_mappings.expand_or_jump()
 						else
-							fallback()
+							cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
 						end
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-							-- elseif cmp_ultisnips_mappings.jumpable(-1) then
-							-- cmp_ultisnips_mappings.jump(-1)
 						else
-							fallback()
+							cmp_ultisnips_mappings.jump_backwards(fallback)
 						end
 					end, { "i", "s" }),
 				}),
@@ -435,6 +415,15 @@ return {
 					{ name = "buffer" },
 				}),
 			})
+
+			-- Hide copilot when suggestion open
+			cmp.event:on("menu_opened", function()
+				vim.b.copilot_suggestion_hidden = true
+			end)
+
+			cmp.event:on("menu_closed", function()
+				vim.b.copilot_suggestion_hidden = false
+			end)
 
 			-- Set configuration for specific filetype.
 			cmp.setup.filetype("gitcommit", {
@@ -469,6 +458,11 @@ return {
 			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			-- nvim-ufo requirement
+			capabilities.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			}
 
 			require("lspconfig")["ansiblels"].setup({
 				capabilities = capabilities,
