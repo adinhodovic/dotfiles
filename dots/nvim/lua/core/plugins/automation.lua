@@ -126,9 +126,13 @@ return {
 		end,
 	},
 	{
-		-- Markbar
-		"Yilin-Yang/vim-markbar",
-		config = function() end,
+		-- Bettermarks
+		"chentoast/marks.nvim",
+		config = function()
+			require("marks").setup({})
+
+			vim.keymap.set("n", "<leader>m", "<cmd>MarksListAll<CR>")
+		end,
 	},
 	{
 		-- Peek line numbers
@@ -251,7 +255,14 @@ return {
 			},
 		},
 		config = function()
-			require("flash").setup()
+			require("flash").setup({
+				modes = {
+					search = {
+						-- TODO: adinhodovic renable this maybe later?
+						enabled = false,
+					},
+				},
+			})
 		end,
 	},
 	{

@@ -91,6 +91,9 @@ return {
 		},
 		config = function()
 			require("aerial").setup({
+				layout = {
+					default_direction = "prefer_left",
+				},
 				-- optionally use on_attach to set keymaps when aerial has attached to a buffer
 				on_attach = function(bufnr)
 					-- Jump forwards/backwards with '{' and '}'
@@ -209,28 +212,6 @@ return {
 		"rrethy/vim-illuminate",
 	},
 	{
-		-- Better wildmenu
-		"gelguy/wilder.nvim",
-		build = ":UpdateRemotePlugins",
-		enabled = false,
-		config = function()
-			local wilder = require("wilder")
-			wilder.setup({ modes = { ":", "?" } })
-			wilder.set_option(
-				"renderer",
-				wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-					highlighter = wilder.basic_highlighter(),
-					highlights = {
-						border = "Normal", -- highlight to use for the border
-					},
-					border = "rounded",
-					left = { " ", wilder.popupmenu_devicons() },
-					right = { " ", wilder.popupmenu_scrollbar() },
-				}))
-			)
-		end,
-	},
-	{
 		-- Better dropbar
 		"Bekaboo/dropbar.nvim",
 	},
@@ -301,6 +282,10 @@ return {
 
 			local builtin = require("statuscol.builtin")
 			require("statuscol").setup({
+				setopt = true,
+				-- https://github.com/luukvbaal/statuscol.nvim/issues/72#issuecomment-1593828496
+				bt_ignore = { "nofile", "prompt" },
+
 				segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 					{

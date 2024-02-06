@@ -296,6 +296,8 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-emoji",
 			"hrsh7th/cmp-calc",
+			"petertriho/cmp-git",
+			"davidsierradz/cmp-conventionalcommits",
 			"SirVer/ultisnips",
 			"f3fora/cmp-spell",
 			"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
@@ -303,9 +305,12 @@ return {
 			"chrisgrieser/cmp_yanky",
 			"zbirenbaum/copilot-cmp",
 			"onsails/lspkind.nvim",
+			"lukas-reineke/cmp-rg",
 		},
 		config = function()
 			local cmp = require("cmp")
+
+			require("cmp_git").setup()
 
 			local cmp_copilot = { name = "copilot", group_index = 2, max_item_count = 5 }
 			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10 }
@@ -325,6 +330,9 @@ return {
 			local cmp_ultisnips = { name = "ultisnips", max_item_count = 5 }
 			local cmp_emoji = { name = "emoji", max_item_count = 5 }
 			local cmp_calc = { name = "calc", max_item_count = 5 }
+			local cmp_git = { name = "git", max_item_count = 10 }
+			local cmp_conventional_commits = { name = "conventionalcommits", max_item_count = 20 }
+			local cmp_ripgrep = { name = "rg", max_item_count = 5, keyword_length = 5 }
 
 			local default_cmp_sources = {
 				cmp_copilot,
@@ -332,11 +340,13 @@ return {
 				cmp_lsp_signature_help,
 				cmp_luasnip,
 				cmp_yanky,
+				cmp_git,
 				cmp_spell,
 				cmp_path,
 				cmp_ultisnips,
 				cmp_emoji,
 				cmp_calc,
+				cmp_ripgrep,
 			}
 
 			-- Lua function that merges dicts
@@ -373,6 +383,18 @@ return {
 							-- Custom icon for 'calc' source
 							if entry.source.name == "calc" then
 								vim_item.kind = ""
+								return vim_item
+							end
+
+							-- Custom icon for 'git' source
+							if entry.source.name == "git" then
+								vim_item.kind = ""
+								return vim_item
+							end
+
+							-- Custom icon for 'search' source
+							if entry.source.name == "rg" then
+								vim_item.kind = ""
 								return vim_item
 							end
 
@@ -421,20 +443,11 @@ return {
 				}),
 			})
 
-			-- Hide copilot when suggestion open
-			cmp.event:on("menu_opened", function()
-				vim.b.copilot_suggestion_hidden = true
-			end)
-
-			cmp.event:on("menu_closed", function()
-				vim.b.copilot_suggestion_hidden = false
-			end)
-
 			-- Set configuration for specific filetype.
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources(
 					merge_dicts(default_cmp_sources, {
-						{ name = "git" },
+						cmp_conventional_commits,
 					}),
 					{
 						{ name = "buffer" },
@@ -459,6 +472,15 @@ return {
 					{ name = "cmdline" },
 				}),
 			})
+
+			-- Hide copilot when suggestion open
+			cmp.event:on("menu_opened", function()
+				vim.b.copilot_suggestion_hidden = true
+			end)
+
+			cmp.event:on("menu_closed", function()
+				vim.b.copilot_suggestion_hidden = false
+			end)
 
 			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
