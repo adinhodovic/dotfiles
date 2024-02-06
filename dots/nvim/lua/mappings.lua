@@ -106,9 +106,6 @@ vmap("<leader>ld", ":Linediff<cr>")
 -- Coc.nvim
 ----------------------------------------
 
--- -- Use for trigger snippet expand.
--- imap("<leader>se", "<Plug>(coc-snippets-expand)")
-
 -- -- Use for convert visual selected code to snippet
 -- xmap("<leader>x", "<Plug>(coc-convert-snippet)")
 

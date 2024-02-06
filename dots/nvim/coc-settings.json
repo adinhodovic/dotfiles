@@ -5,34 +5,6 @@
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": false,
-  "languageserver": {
-    "terraform": {
-      "command": "terraform-ls",
-      "args": [
-        "serve"
-      ],
-      "filetypes": [
-        "terraform",
-        "tf"
-      ],
-      "initializationOptions": {},
-      "settings": {}
-    }
-  },
-  "snippets.extends": {
-    "typescript_tsx": [
-      "typescript"
-    ],
-    "html": [
-      "htmldjango"
-    ],
-    "scss": [
-      "css"
-    ]
-  },
-  "snippets.ultisnips.directories": [
-    "~/personal/Ultisnips"
-  ],
   "cSpell.userWords": [
     "Alacritty",
     "Gruvbox",
@@ -54,7 +26,6 @@
     "starlark",
     "ultisnips"
   ],
-  "snippets.ultisnips.pythonPrompt": false,
   "Lua.diagnostics.globals": [
     "vim"
   ]

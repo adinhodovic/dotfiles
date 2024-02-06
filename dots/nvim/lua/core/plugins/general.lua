@@ -83,6 +83,13 @@ return {
 			{ "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)", desc = "Put before and indent left" },
 			{ "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
 			{ "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
+			{
+				"<leader>x",
+				-- TODO(adinhodovic): Improve this to mimic coc behaviour
+				"y<cmd>lua require('luasnip.loaders').edit_snippet_files()<cr>1<cr>2<cr><esc>Go<cr><esc>0<esc>isnippet key \"Desc\"<esc>p",
+				mode = "v",
+				desc = "Convert to snippet",
+			},
 		},
 	},
 	{
@@ -90,23 +97,25 @@ return {
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp",
 		config = function()
-			local ls = require("luasnip").setup()
-			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/personal/Ultisnips" } })
-			vim.keymap.set({ "i" }, "<C-K>", function()
-				ls.expand()
-			end, { silent = true })
-			vim.keymap.set({ "i", "s" }, "<C-L>", function()
-				ls.jump(1)
-			end, { silent = true })
-			vim.keymap.set({ "i", "s" }, "<C-J>", function()
-				ls.jump(-1)
-			end, { silent = true })
-
-			vim.keymap.set({ "i", "s" }, "<C-E>", function()
-				if ls.choice_active() then
-					ls.change_choice(1)
-				end
-			end, { silent = true })
+			require("luasnip.loaders.from_snipmate").lazy_load({
+				paths = { "/home/adin/.dotfiles/snippets" },
+			})
+		end,
+	},
+	{
+		"benfowler/telescope-luasnip.nvim",
+		keys = {
+			{
+				"<leader>ts",
+				function()
+					require("telescope").extensions.luasnip.luasnip({})
+				end,
+				desc = "Search snippets in telescope",
+			},
+		},
+		requires = { "nvim-telescope/telescope.nvim", "L3MON4D3/LuaSnip" },
+		config = function()
+			require("telescope").load_extension("luasnip")
 		end,
 	},
 	{

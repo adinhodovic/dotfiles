@@ -298,7 +298,7 @@ return {
 			"hrsh7th/cmp-calc",
 			"SirVer/ultisnips",
 			"f3fora/cmp-spell",
-			"quangnguyen30192/cmp-nvim-ultisnips",
+			"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 			"roobert/tailwindcss-colorizer-cmp.nvim",
 			"chrisgrieser/cmp_yanky",
 			"zbirenbaum/copilot-cmp",
@@ -307,12 +307,10 @@ return {
 		config = function()
 			local cmp = require("cmp")
 
-			require("cmp_nvim_ultisnips").setup({})
-			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-
 			local cmp_copilot = { name = "copilot", group_index = 2, max_item_count = 5 }
 			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10 }
 			local cmp_lsp_signature_help = { name = "nvim_lsp_signature_help", max_item_count = 5 }
+			local cmp_luasnip = { name = "luasnip", max_item_count = 10 }
 			local cmp_yanky = { name = "cmp_yanky", max_item_count = 5 }
 			local cmp_spell = {
 				name = "spell",
@@ -332,6 +330,7 @@ return {
 				cmp_copilot,
 				cmp_lsp,
 				cmp_lsp_signature_help,
+				cmp_luasnip,
 				cmp_yanky,
 				cmp_spell,
 				cmp_path,
@@ -361,6 +360,8 @@ return {
 					and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 			end
 
+			local luasnip = require("luasnip")
+
 			cmp.setup({
 				formatting = {
 					format = require("lspkind").cmp_format({
@@ -383,7 +384,7 @@ return {
 				},
 				snippet = {
 					expand = function(args)
-						vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+						luasnip.lsp_expand(args.body)
 					end,
 				},
 				window = {
@@ -399,15 +400,19 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
 						else
-							cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+							fallback()
 						end
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
 						else
-							cmp_ultisnips_mappings.jump_backwards(fallback)
+							fallback()
 						end
 					end, { "i", "s" }),
 				}),
