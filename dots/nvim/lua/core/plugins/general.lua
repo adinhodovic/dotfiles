@@ -117,15 +117,18 @@ return {
 				-- name = "t1", (optionally give your template a name to refer to it in the `ConvertSnippets` command)
 				sources = {
 					ultisnips = {
-						"/home/adin/personal/UltiSnips",
+						"/home/adin/personal/Ultisnips/yaml",
 					},
 				},
 				output = {
 					-- Specify the output formats and paths
 					snipmate = {
-						"/home/adin/.config/nvim/snippets",
+						"/home/adin/.dotfiles/snippets/yaml",
 					},
 				},
+				sort_snippets = function(first, second)
+					return first.trigger < second.trigger
+				end,
 			}
 
 			require("snippet_converter").setup({

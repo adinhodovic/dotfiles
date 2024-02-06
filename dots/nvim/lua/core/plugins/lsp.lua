@@ -323,10 +323,10 @@ return {
 					end,
 				},
 			}
-			local cmp_path = { name = "path", max_item_count = 5 }
+			local cmp_path = { name = "path" }
 			local cmp_ultisnips = { name = "ultisnips", max_item_count = 5 }
 			local cmp_emoji = { name = "emoji", max_item_count = 5 }
-			local cmp_calc = { name = "calc", max_item_count = 2 }
+			local cmp_calc = { name = "calc", max_item_count = 5 }
 
 			local default_cmp_sources = {
 				cmp_copilot,
