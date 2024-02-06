@@ -360,16 +360,6 @@ return {
 				return result
 			end
 
-			-- Copilot integraiton for <TAB>
-			local has_words_before = function()
-				if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-					return false
-				end
-				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-				return col ~= 0
-					and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
-			end
-
 			local luasnip = require("luasnip")
 
 			cmp.setup({
@@ -414,6 +404,8 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
+					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
@@ -457,7 +449,16 @@ return {
 
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 			cmp.setup.cmdline({ "/", "?" }, {
-				mapping = cmp.mapping.preset.cmdline(),
+				-- Use default nvim history scrolling
+				mapping = cmp.mapping.preset.cmdline({
+					-- Use default nvim history scrolling
+					["<C-n>"] = {
+						c = false,
+					},
+					["<C-p>"] = {
+						c = false,
+					},
+				}),
 				sources = {
 					{ name = "buffer" },
 				},
@@ -465,7 +466,15 @@ return {
 
 			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
+				mapping = cmp.mapping.preset.cmdline({
+					-- Use default nvim history scrolling
+					["<C-n>"] = {
+						c = false,
+					},
+					["<C-p>"] = {
+						c = false,
+					},
+				}),
 				sources = cmp.config.sources({
 					{ name = "path" },
 				}, {

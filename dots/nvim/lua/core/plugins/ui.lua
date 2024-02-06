@@ -105,10 +105,6 @@ return {
 		end,
 	},
 	{
-		-- smooth scrolling
-		"psliwka/vim-smoothie",
-	},
-	{
 		-- Better whitespace
 		"ntpeters/vim-better-whitespace",
 		config = function()
@@ -362,6 +358,30 @@ return {
 					long_message_to_split = true, -- long messages will be sent to a split
 					inc_rename = true, -- enables an input dialog for inc-rename.nvim
 					lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
+			})
+		end,
+	},
+	{
+		"lewis6991/satellite.nvim",
+		config = function()
+			require("satellite").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.animate",
+		event = "VeryLazy",
+		enabled = true,
+		config = function()
+			local animate = require("mini.animate")
+			require("mini.animate").setup({
+				cursor = {
+					-- Lags, disabled
+					enabled = false,
+					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+				},
+				scroll = {
+					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
 				},
 			})
 		end,

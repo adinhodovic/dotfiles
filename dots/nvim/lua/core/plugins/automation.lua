@@ -50,6 +50,9 @@ return {
 				},
 			})
 			require("telescope").load_extension("fzf")
+
+			-- Action spell
+			vim.keymap.set({ "n", "v" }, "<leader>as", ":lua require('telescope.builtin').spell_suggest({})<CR>")
 		end,
 	},
 	-- Code actions
@@ -211,7 +214,7 @@ return {
 	{
 		-- Better search
 		"folke/flash.nvim",
-		event = "VeryLazy",
+		lazy = false,
 		keys = {
 			{
 				"s",
