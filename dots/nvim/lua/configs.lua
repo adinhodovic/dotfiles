@@ -86,6 +86,7 @@ set.history = 1000
 -- Spelling
 -------------------------------------------
 set.spell = true
+set.spelllang = { 'en_us' }
 set.title = true
 set.number = true
 
@@ -208,9 +209,6 @@ set.hlsearch = true
 
 -- Makes search act like search in modern browsers
 set.incsearch = true
-
--- Don't redraw while executing macros (good performance config)
-set.lazyredraw = true
 
 -- For regular expressions turn magic on
 set.magic = true

@@ -32,19 +32,43 @@ return {
 				-- List of parsers to ignore installing (for "all")
 				ignore_install = {},
 				highlight = {
-					-- `false` will disable the whole extension
 					enable = true,
-					-- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-					-- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-					-- the name of the parser)
-					-- list of language that will be disabled
-					disable = {},
-					-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-					-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-					-- Using this option may slow down your editor, and you may see some duplicate highlights.
-					-- Instead of true it can also be a list of languages
-					additional_vim_regex_highlighting = false,
 				},
+			})
+		end,
+	},
+	{
+		-- Colorizer in code
+		"NvChad/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({
+				user_default_options = {
+					tailwind = true,
+					sass = { enable = true, parsers = { "css" } }, -- Enable sass colors
+				},
+			})
+		end,
+	},
+	{
+		"stevearc/dressing.nvim",
+		config = function()
+			require("dressing").setup({
+				input = {
+					override = function(conf)
+						conf.col = -1
+						conf.row = 0
+						return conf
+					end,
+				},
+			})
+		end,
+	},
+	{
+		-- Better renamer
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup({
+				input_buffer_type = "dressing",
 			})
 		end,
 	},
@@ -54,6 +78,26 @@ return {
 		config = function()
 			require("treesitter-context").setup({
 				enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+			})
+		end,
+	},
+	{
+		"stevearc/aerial.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("aerial").setup({
+				-- optionally use on_attach to set keymaps when aerial has attached to a buffer
+				on_attach = function(bufnr)
+					-- Jump forwards/backwards with '{' and '}'
+					vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+					vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+				end,
+				vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>"),
 			})
 		end,
 	},
@@ -185,7 +229,7 @@ return {
 		config = function()
 			require("bufferline").setup({
 				options = {
-					diagnostics = "coc",
+					diagnostics = "nvim_lsp",
 					diagnostics_indicator = function(count, level, diagnostics_dict, context)
 						-- luacheck: pop
 						if count == 0 then
@@ -258,25 +302,22 @@ return {
 	{
 		-- Better notifications
 		"folke/noice.nvim",
-		enabled = false,
+		enabled = true,
 		event = "VeryLazy",
 		opts = {
 			-- add any options here
 		},
 		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
 		config = function()
 			require("noice").setup({
 				cmdline = {
-					enabled = true, -- enables the Noice cmdline UI
 					view = "cmdline",
+					enable = true,
 				},
+
 				lsp = {
 					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 					override = {
@@ -286,10 +327,10 @@ return {
 					},
 				},
 				presets = {
-					bottom_search = false, -- use a classic bottom cmdline for search
+					bottom_search = true, -- use a classic bottom cmdline for search
 					command_palette = true, -- position the cmdline and popupmenu together
 					long_message_to_split = true, -- long messages will be sent to a split
-					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					inc_rename = true, -- enables an input dialog for inc-rename.nvim
 					lsp_doc_border = false, -- add a border to hover docs and signature help
 				},
 			})

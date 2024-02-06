@@ -24,19 +24,11 @@ return {
 		priority = 1000,
 		config = function()
 			g.coc_global_extensions = {
-				"coc-json",
-				"coc-yaml",
-				"coc-vimlsp",
 				"coc-emoji",
 				"coc-yank",
-				"coc-html",
-				"coc-htmldjango",
-				"coc-css",
-				"coc-html-css-support",
+				"@yaegassy/coc-tailwindcss3",
 				"coc-emmet",
 				"coc-tsserver",
-				"@yaegassy/coc-tailwindcss3",
-				"coc-spell-checker",
 				"coc-markdownlint",
 				"coc-git",
 				"coc-lists",
@@ -77,7 +69,10 @@ return {
 					"vint",
 					"luacheck",
 					"shellcheck",
+					"stylelint",
+					"tflint",
 					"stylua",
+					"prettier",
 					"write-good",
 				},
 				max_concurrent_installers = 10,
@@ -100,10 +95,13 @@ return {
 					"cssls",
 					"dockerls",
 					"docker_compose_language_service",
+					"emmet_language_server",
+					"eslint",
 					"gopls",
 					"html",
 					"htmx",
 					"helm_ls",
+					"lua_ls",
 					"jsonls",
 					"tsserver",
 					"jsonnet_ls",
@@ -123,29 +121,109 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"folke/neodev.nvim",
+			"b0o/schemastore.nvim",
+		},
+		keys = {
+			{ "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+			{
+				"gd",
+				function()
+					require("telescope.builtin").lsp_definitions({ reuse_win = true })
+				end,
+				desc = "Goto Definition",
+			},
+			{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+			{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+			{
+				"gI",
+				function()
+					require("telescope.builtin").lsp_implementations({ reuse_win = true })
+				end,
+				desc = "Goto Implementation",
+			},
+			{
+				"gy",
+				function()
+					require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+				end,
+				desc = "Goto T[y]pe Definition",
+			},
+			{ "K", vim.lsp.buf.hover, desc = "Hover" },
+			{ "gK", vim.lsp.buf.signature_help, desc = "Signature Help" },
+			{ "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help" },
+			-- Code actions managed by preview in ui.lua
+			{
+				"<leader>cA",
+				function()
+					vim.lsp.buf.code_action({
+						context = {
+							only = {
+								"source",
+							},
+							diagnostics = {},
+						},
+					})
+				end,
+				desc = "Source Action",
+			},
+			{
+				"<leader>cr",
+				function()
+					local inc_rename = require("inc_rename")
+					return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+				end,
+				expr = true,
+				desc = "Rename",
+			},
+		},
 		config = function()
-			require("lspconfig").ansiblels.setup({})
-			require("lspconfig").bashls.setup({})
-			require("lspconfig").cssls.setup({})
-			require("lspconfig").dockerls.setup({})
-			require("lspconfig").docker_compose_language_service.setup({})
-			require("lspconfig").gopls.setup({})
-			require("lspconfig").html.setup({})
-			require("lspconfig").htmx.setup({})
-			require("lspconfig").helm_ls.setup({})
-			require("lspconfig").jsonls.setup({})
-			require("lspconfig").tsserver.setup({})
-			require("lspconfig").jsonnet_ls.setup({})
-			require("lspconfig").jqls.setup({})
-			require("lspconfig").marksman.setup({})
-			require("lspconfig").pyright.setup({})
-			require("lspconfig").sqlls.setup({})
-			require("lspconfig").bzl.setup({})
-			require("lspconfig").taplo.setup({})
-			require("lspconfig").tailwindcss.setup({})
-			require("lspconfig").terraformls.setup({})
-			require("lspconfig").vimls.setup({})
-			require("lspconfig").yamlls.setup({})
+			require("neodev").setup({})
+
+			local lspconfig = require("lspconfig")
+			lspconfig.ansiblels.setup({})
+			lspconfig.bashls.setup({})
+			lspconfig.cssls.setup({})
+			lspconfig.dockerls.setup({})
+			lspconfig.docker_compose_language_service.setup({})
+			lspconfig.emmet_language_server.setup({})
+			lspconfig.gopls.setup({})
+			lspconfig.html.setup({
+				filetypes = { "html", "htmldjango" },
+			})
+			lspconfig.htmx.setup({})
+			lspconfig.helm_ls.setup({})
+			lspconfig.jsonls.setup({
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			})
+			lspconfig.tsserver.setup({})
+			lspconfig.jsonnet_ls.setup({})
+			lspconfig.jqls.setup({})
+			lspconfig.marksman.setup({})
+			lspconfig.lua_ls.setup({})
+			lspconfig.pyright.setup({})
+			lspconfig.sqlls.setup({})
+			lspconfig.bzl.setup({})
+			lspconfig.taplo.setup({})
+			lspconfig.tailwindcss.setup({})
+			lspconfig.terraformls.setup({})
+			lspconfig.vimls.setup({})
+			lspconfig.yamlls.setup({
+				schemaStore = {
+					-- You must disable built-in schemaStore support if you want to use
+					-- this plugin and its advanced options like `ignore`.
+					enable = false,
+					-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+					url = "",
+				},
+				schemas = require("schemastore").yaml.schemas(),
+			})
 		end,
 	},
 	{
@@ -214,20 +292,107 @@ return {
 		end,
 	},
 	{
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+		-- optionally, override the default options:
+		config = function()
+			require("tailwindcss-colorizer-cmp").setup({
+				color_square_width = 2,
+			})
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		opts = {},
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		dependencies = {
+			"zbirenbaum/copilot.lua",
+		},
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-emoji",
 			"SirVer/ultisnips",
+			"f3fora/cmp-spell",
 			"quangnguyen30192/cmp-nvim-ultisnips",
+			"roobert/tailwindcss-colorizer-cmp.nvim",
+			"chrisgrieser/cmp_yanky",
+			"zbirenbaum/copilot-cmp",
+			"onsails/lspkind.nvim",
 		},
 		config = function()
 			local cmp = require("cmp")
 			local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
+			local cmp_copilot = { name = "copilot", group_index = 2, max_item_count = 5 }
+			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10 }
+			local cmp_lsp_signature_help = { name = "nvim_lsp_signature_help", max_item_count = 5 }
+			local cmp_yanky = { name = "cmp_yanky", max_item_count = 5 }
+			local cmp_spell = {
+				name = "spell",
+				option = {
+					keep_all_entries = false,
+					enable_in_context = function()
+						return require("cmp.config.context").in_treesitter_capture("spell")
+					end,
+				},
+			}
+			local cmp_path = { name = "path", max_item_count = 5 }
+			local cmp_ultisnips = { name = "ultisnips", max_item_count = 5 }
+			local cmp_emoji = { name = "emoji", max_item_count = 5 }
+
+			local default_cmp_sources = {
+				cmp_copilot,
+				cmp_lsp,
+				cmp_lsp_signature_help,
+				cmp_yanky,
+				cmp_spell,
+				cmp_path,
+				cmp_ultisnips,
+				cmp_emoji,
+			}
+
+			local lspkind = require("lspkind")
+
+			-- Lua function that merges dicts
+			local function merge_dicts(...)
+				local result = {}
+				for _, dict in ipairs({ ... }) do
+					for k, v in pairs(dict) do
+						result[k] = v
+					end
+				end
+				return result
+			end
 			cmp.setup({
+				formatting = {
+					format = require("lspkind").cmp_format({
+						mode = "symbol_text",
+						symbol_map = { Copilot = "" },
+						maxwidth = 50,
+						ellipsis_char = "...",
+						before = function(entry, vim_item)
+							vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+							return vim_item
+						end,
+					}),
+				},
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
@@ -238,8 +403,8 @@ return {
 					end,
 				},
 				window = {
-					-- completion = cmp.config.window.bordered(),
-					-- documentation = cmp.config.window.bordered(),
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -250,7 +415,7 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						-- elseif cmp_ultisnips_mappings.expand_or_jumpable() then
+							-- elseif cmp_ultisnips_mappings.expand_or_jumpable() then
 							-- cmp_ultisnips_mappings.expand_or_jump()
 						else
 							fallback()
@@ -259,28 +424,28 @@ return {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						-- elseif cmp_ultisnips_mappings.jumpable(-1) then
+							-- elseif cmp_ultisnips_mappings.jumpable(-1) then
 							-- cmp_ultisnips_mappings.jump(-1)
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
 				}),
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "ultisnips" },
-				}, {
+				sources = cmp.config.sources(default_cmp_sources, {
 					{ name = "buffer" },
 				}),
 			})
 
 			-- Set configuration for specific filetype.
 			cmp.setup.filetype("gitcommit", {
-				sources = cmp.config.sources({
-					{ name = "git" },
-				}, {
-					{ name = "buffer" },
-				}),
+				sources = cmp.config.sources(
+					merge_dicts(default_cmp_sources, {
+						{ name = "git" },
+					}),
+					{
+						{ name = "buffer" },
+					}
+				),
 			})
 
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -303,6 +468,8 @@ return {
 
 			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 			require("lspconfig")["ansiblels"].setup({
 				capabilities = capabilities,
 			})
@@ -354,6 +521,9 @@ return {
 			require("lspconfig")["bzl"].setup({
 				capabilities = capabilities,
 			})
+			require("lspconfig")["lua_ls"].setup({
+				capabilities = capabilities,
+			})
 			require("lspconfig")["taplo"].setup({
 				capabilities = capabilities,
 			})
@@ -368,6 +538,24 @@ return {
 			})
 			require("lspconfig")["yamlls"].setup({
 				capabilities = capabilities,
+				settings = {
+					yaml = {
+						schemas = {
+							["kubernetes"] = "*.{yml,yaml}",
+							["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+							["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+							["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+							["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+							["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+							["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+							["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+							["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+							["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+							["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+							["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+						},
+					},
+				},
 			})
 		end,
 	},

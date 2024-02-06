@@ -1,7 +1,5 @@
 local vim = vim
 local g = vim.g
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
 
 -----------------------------------------
 -- Automation
@@ -53,20 +51,20 @@ return {
 			})
 		end,
 	},
-  -- Telescope code actions
-  {
-  "aznhe21/actions-preview.nvim",
-	keys = {
+	-- Code actions
+	{
+		"aznhe21/actions-preview.nvim",
+		keys = {
 			{
-				"<leader>a",
-				mode = {"v", "n"},
+				"<leader>ca",
+				mode = { "v", "n" },
 				function()
-          require("actions-preview").code_actions()
+					require("actions-preview").code_actions()
 				end,
 				desc = "Toggle Code Actions",
 			},
-    },
-},
+		},
+	},
 	{
 		-- Telescope CoC
 		"fannheyward/telescope-coc.nvim",
@@ -194,7 +192,6 @@ return {
 			local handler = function(virtText, lnum, endLnum, width, truncate)
 				local newVirtText = {}
 				local totalLines = vim.api.nvim_buf_line_count(0)
-				local totalLines = vim.api.nvim_buf_line_count(0)
 				local foldedLines = endLnum - lnum
 				local suffix = ("  %d %d%%"):format(foldedLines, foldedLines / totalLines * 100)
 				local sufWidth = vim.fn.strdisplaywidth(suffix)
@@ -280,19 +277,16 @@ return {
 	},
 	{
 		-- Comment/uncomment source code files
-		"scrooloose/nerdcommenter",
-		config = function()
-			-- Add a space before any comment
-			g.NERDSpaceDelims = 1
-		end,
+		"numToStr/Comment.nvim",
+		opts = {},
 	},
 	{
 		-- Ultisnips, use with coc-snippets
 		"SirVer/ultisnips",
 		config = function()
 			-- Collides with coc-snippets
-			g.UltiSnipsListSnippets = "<nop>"
-			g.UltiSnipsExpandTrigger = "<nop>"
+			-- g.UltiSnipsListSnippets = "<nop>"
+			-- g.UltiSnipsExpandTrigger = "<nop>"
 			-- Load my own snippets
 			g.UltiSnipsSnippetDirectories = { "~/personal/UltiSnips" }
 		end,
@@ -301,11 +295,9 @@ return {
 		-- Conform formatting
 		"stevearc/conform.nvim",
 		dependencies = { "mason.nvim" },
-		cmd = "ConformInfo",
 		config = function()
 			require("conform").setup({
 				format_on_save = {
-					-- These options will be passed to conform.format()
 					timeout_ms = 500,
 					lsp_fallback = true,
 				},
@@ -319,15 +311,15 @@ return {
 					markdown = { "markdownlint" },
 					ansible = { "ansible-lint" },
 					yaml = { "ansiblelint", "yamllint" },
-					javascript = { { "prettierd", "prettier" } },
-					typescript = { { "prettierd", "prettier" } },
-					typescriptreact = { { "prettierd", "prettier" } },
-					javascriptreact = { "eslint", { "prettierd", "prettier" } },
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					typescriptreact = { "prettier" },
+					javascriptreact = { "prettier" },
 					css = { "stylelint" },
 					scss = { "stylelint" },
 					less = { "stylelint" },
-					html = { "htmlhint", "jsbeautify" },
-					htmldjango = { "htmlhint", "djlint" },
+					html = { "jsbeautify" },
+					htmldjango = { "djlint" },
 					json = { "jsonlint" },
 				},
 			})
@@ -339,16 +331,33 @@ return {
 	{
 		-- nvim-lint linting
 		"mfussenegger/nvim-lint",
+		opts = {
+			linters = {
+				eslint_d = {
+					args = {
+						"--no-warn-ignored", -- <-- this is the key argument
+						"--format",
+						"json",
+						"--stdin",
+						"--stdin-filename",
+						function()
+							return vim.api.nvim_buf_get_name(0)
+						end,
+					},
+				},
+			},
+		},
 		config = function()
 			require("lint").linters_by_ft = {
+				["*"] = { "cspell" },
 				markdown = { "vale" },
 				ansible = { "ansible-lint" },
 				yaml = { "yamllint" },
 				json = { "jsonlint" },
-				javascript = { "eslint", "prettier" },
-				typescript = { "eslint", "prettier" },
-				typescriptreact = { "eslint", "prettier" },
-				javascriptreact = { "eslint", "prettier" },
+				javascript = { "eslint_d" },
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
+				javascriptreact = { "eslint_d" },
 				css = { "stylelint" },
 				scss = { "stylelint" },
 				less = { "stylelint" },
@@ -363,8 +372,18 @@ return {
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 				callback = function()
 					require("lint").try_lint()
-          require("lint").try_lint("cspell")
 				end,
+			})
+		end,
+	},
+	{
+		-- treesitter tag closing
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				autotag = {
+					enable = true,
+				},
 			})
 		end,
 	},

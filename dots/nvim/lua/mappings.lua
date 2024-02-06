@@ -110,35 +110,12 @@ imap("<C-c>", "copilot#Accept('<CR>')", default_options_expression)
 ----------------------------------------
 -- Coc.nvim
 ----------------------------------------
--- nmap("<space>y", ":<C-u>CocList -A --normal yank<cr>")
 
 -- -- Use for trigger snippet expand.
 -- imap("<leader>se", "<Plug>(coc-snippets-expand)")
 
 -- -- Use for convert visual selected code to snippet
 -- xmap("<leader>x", "<Plug>(coc-convert-snippet)")
-
--- -- Use <c-j> to trigger snippets
--- keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
--- -- Use <c-space> to trigger completion.
--- keyset("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
-
--- -- Use K to show documentation in preview window.
--- function _G.show_docs()
--- local cw = vim.fn.expand('<cword>')
--- if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
--- vim.api.nvim_command('h ' .. cw)
--- elseif vim.api.nvim_eval('coc#rpc#ready()') then
--- vim.fn.CocActionAsync('doHover')
--- else
--- vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
--- end
--- end
-
--- keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
-
--- -- Symbol renaming.
--- keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 
 -- ------------------------------------------
 -- -- coc-fzf
@@ -299,11 +276,6 @@ xmap("<F6>", ":CarbonNowSh<CR>")
 -------------------------------------------
 nmap("<leader>gm", ":GitMessenger <CR>")
 g.git_messenger_include_diff = "current"
-
--------------------------------------------
--- NERDCommenter
--------------------------------------------
-vmap("<leader>c", ":call NERDComment(0, 'toggle')<CR>")
 
 -------------------------------------------
 -- Dap
