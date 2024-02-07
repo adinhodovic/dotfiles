@@ -1,6 +1,46 @@
 local vim = vim
 local g = vim.g
 
+local function default(val, default_val)
+	if val == nil then
+		return default_val
+	else
+		return val
+	end
+end
+
+local default_options = { noremap = true, silent = true }
+local default_options_expression = { noremap = true, silent = true, expr = true, replace_keycodes = false }
+
+local function map(mode, shortcut, command, options)
+	options = default(options, default_options)
+	vim.keymap.set(mode, shortcut, command, options)
+end
+
+local function nmap(shortcut, command, options)
+	map("n", shortcut, command, options)
+end
+
+local function imap(shortcut, command, options)
+	map("i", shortcut, command, options)
+end
+
+local function vmap(shortcut, command, options)
+	map("v", shortcut, command, options)
+end
+
+local function xmap(shortcut, command, options)
+	map("x", shortcut, command, options)
+end
+
+local function omap(shortcut, command, options)
+	map("o", shortcut, command, options)
+end
+
+local function cmap(shortcut, command, options)
+	map("c", shortcut, command, options)
+end
+
 -----------------------------------------
 -- Automation
 -----------------------------------------
@@ -50,6 +90,40 @@ return {
 				},
 			})
 			require("telescope").load_extension("fzf")
+
+			local git_files_changed = function()
+				local previewers = require("telescope.previewers")
+				local pickers = require("telescope.pickers")
+				local sorters = require("telescope.sorters")
+				local finders = require("telescope.finders")
+
+				pickers
+					.new({
+						results_title = "Modified on current branch",
+						finder = finders.new_oneshot_job({
+							"/home/adin/.dotfiles/scripts/git-files-changed.sh",
+							"list",
+						}),
+						sorter = sorters.get_fuzzy_file(),
+						previewer = previewers.new_termopen_previewer({
+							get_command = function(entry)
+								return { "/home/adin/.dotfiles/scripts/git-files-changed.sh", "diff", entry.value }
+							end,
+						}),
+					})
+					:find()
+			end
+
+			nmap("b", ":e #<cr>")
+			local builtin = require("telescope.builtin")
+			nmap("-", builtin.buffers)
+			nmap("=", git_files_changed)
+			nmap("<M-=>", builtin.find_files)
+			nmap("<M-->", builtin.git_files)
+			nmap("<leader>fg", builtin.live_grep)
+			nmap("<leader>fh", builtin.help_tags)
+			nmap("<leader>fc", builtin.commands)
+			nmap("<leader>fds", builtin.lsp_document_symbols)
 
 			-- Action spell
 			vim.keymap.set({ "n", "v" }, "<leader>as", ":lua require('telescope.builtin').spell_suggest({})<CR>")

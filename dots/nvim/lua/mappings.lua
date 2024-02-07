@@ -2,7 +2,7 @@ local vim = vim
 local set = vim.opt
 local g = vim.g
 
-function default(val, default_val)
+local function default(val, default_val)
 	if val == nil then
 		return default_val
 	else
@@ -10,35 +10,35 @@ function default(val, default_val)
 	end
 end
 
-default_options = { noremap = true, silent = true }
-default_options_expression = { noremap = true, silent = true, expr = true, replace_keycodes = false }
+local default_options = { noremap = true, silent = true }
+local default_options_expression = { noremap = true, silent = true, expr = true, replace_keycodes = false }
 
-function map(mode, shortcut, command, options)
+local function map(mode, shortcut, command, options)
 	options = default(options, default_options)
 	vim.keymap.set(mode, shortcut, command, options)
 end
 
-function nmap(shortcut, command, options)
+local function nmap(shortcut, command, options)
 	map("n", shortcut, command, options)
 end
 
-function imap(shortcut, command, options)
+local function imap(shortcut, command, options)
 	map("i", shortcut, command, options)
 end
 
-function vmap(shortcut, command, options)
+local function vmap(shortcut, command, options)
 	map("v", shortcut, command, options)
 end
 
-function xmap(shortcut, command, options)
+local function xmap(shortcut, command, options)
 	map("x", shortcut, command, options)
 end
 
-function omap(shortcut, command, options)
+local function omap(shortcut, command, options)
 	map("o", shortcut, command, options)
 end
 
-function cmap(shortcut, command, options)
+local function cmap(shortcut, command, options)
 	map("c", shortcut, command, options)
 end
 
@@ -101,53 +101,6 @@ imap("<F8>", ":<C-o>NextWordy<cr>")
 -- Linediff.vim
 ----------------------------------------
 vmap("<leader>ld", ":Linediff<cr>")
-
--- -------------------------------------------
--- -- coc-git
--- -------------------------------------------
--- -- navigate chunks of current buffer
--- nmap("[g", "<Plug>(coc-git-prevchunk)")
--- nmap("]g", "<Plug>(coc-git-nextchunk)")
--- -- navigate conflicts of current buffer
--- nmap("[c", "<Plug>(coc-git-prevconflict)")
--- nmap("]c", "<Plug>(coc-git-nextconflict)")
--- -- show chunk diff at current position
--- nmap("<leader>gs", "<Plug>(coc-git-chunkinfo)")
-
-----------------------------------------
--- Telescope.nvim
-----------------------------------------
-git_files_changed = function()
-	local previewers = require("telescope.previewers")
-	local pickers = require("telescope.pickers")
-	local sorters = require("telescope.sorters")
-	local finders = require("telescope.finders")
-
-	pickers
-		.new({
-			results_title = "Modified on current branch",
-			finder = finders.new_oneshot_job({ "/home/adin/.dotfiles/scripts/git-files-changed.sh", "list" }),
-			sorter = sorters.get_fuzzy_file(),
-			previewer = previewers.new_termopen_previewer({
-				get_command = function(entry)
-					return { "/home/adin/.dotfiles/scripts/git-files-changed.sh", "diff", entry.value }
-				end,
-			}),
-		})
-		:find()
-end
-
-nmap("b", ":e #<cr>")
-local builtin = require("telescope.builtin")
-nmap("-", builtin.buffers)
-nmap("=", git_files_changed)
-nmap("<M-=>", builtin.find_files)
-nmap("<M-->", builtin.git_files)
-nmap("<leader>fg", builtin.live_grep)
-nmap("<leader>fh", builtin.help_tags)
-nmap("<leader>fr", ":Telescope coc references<cr>")
-nmap("<leader>fd", ":Telescope coc definitions<cr>")
-nmap("<leader>fds", ":Telescope coc document_symbols<cr>")
 
 ----------------------------------------
 -- Grammarous

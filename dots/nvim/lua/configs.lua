@@ -87,6 +87,7 @@ set.history = 1000
 -------------------------------------------
 set.spell = true
 set.spelllang = { "en_us" }
+set.spellfile = vim.fn.expand("$HOME/.dotfiles/misc/spell/en.utf-8.add")
 set.title = true
 set.number = true
 
@@ -190,7 +191,7 @@ autocmd("FileType", {
 -- Set 7 lines to the cursor - when moving vertically using j/k
 set.scrolloff = 7
 
--- Turn on the WiLd menu
+-- Turn on the wildmenu
 set.wildmenu = true
 
 -- Ignore compiled files

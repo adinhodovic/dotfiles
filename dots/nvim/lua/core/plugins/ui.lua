@@ -172,10 +172,9 @@ return {
 	},
 	{
 		-- Show line indentation
-		"Yggdroot/indentLine",
+		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			g.indentLine_char_list = { "|", "¦", "┆", "┊" }
-			g.indentLine_fileTypeExclude = { "markdown", "terraform" }
+			require("ibl").setup()
 		end,
 	},
 	{
@@ -231,7 +230,6 @@ return {
 				options = {
 					diagnostics = "nvim_lsp",
 					diagnostics_indicator = function(count, level, diagnostics_dict, context)
-						-- luacheck: pop
 						if count == 0 then
 							return ""
 						end
@@ -243,7 +241,6 @@ return {
 						elseif level:match("info") or level:match("hint") then
 							icon = ""
 						end
-						-- kitty scales down the icon if there is no space on the right
 						return icon .. " " .. count
 					end,
 					hover = {
@@ -308,7 +305,64 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("gitsigns").setup()
+			require("gitsigns").setup({
+				on_attach = function(bufnr)
+					local gs = package.loaded.gitsigns
+
+					local function map(mode, l, r, opts)
+						opts = opts or {}
+						opts.buffer = bufnr
+						vim.keymap.set(mode, l, r, opts)
+					end
+
+					-- Navigation
+					map("n", "]c", function()
+						if vim.wo.diff then
+							return "]c"
+						end
+						vim.schedule(function()
+							gs.next_hunk()
+						end)
+						return "<Ignore>"
+					end, { expr = true })
+
+					map("n", "[c", function()
+						if vim.wo.diff then
+							return "[c"
+						end
+						vim.schedule(function()
+							gs.prev_hunk()
+						end)
+						return "<Ignore>"
+					end, { expr = true })
+
+					-- Actions
+					map("n", "<leader>hs", gs.stage_hunk)
+					map("n", "<leader>hr", gs.reset_hunk)
+					map("v", "<leader>hs", function()
+						gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+					end)
+					map("v", "<leader>hr", function()
+						gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+					end)
+					map("n", "<leader>hS", gs.stage_buffer)
+					map("n", "<leader>hu", gs.undo_stage_hunk)
+					map("n", "<leader>hR", gs.reset_buffer)
+					map("n", "<leader>hp", gs.preview_hunk)
+					map("n", "<leader>hb", function()
+						gs.blame_line({ full = true })
+					end)
+					map("n", "<leader>tb", gs.toggle_current_line_blame)
+					map("n", "<leader>hd", gs.diffthis)
+					map("n", "<leader>hD", function()
+						gs.diffthis("~")
+					end)
+					map("n", "<leader>td", gs.toggle_deleted)
+
+					-- Text object
+					map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+				end,
+			})
 		end,
 	},
 	{
@@ -384,6 +438,43 @@ return {
 					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
 				},
 			})
+		end,
+	},
+	{
+		"lewis6991/hover.nvim",
+		config = function()
+			require("hover").setup({
+				init = function()
+					-- Require providers
+					require("hover.providers.lsp")
+					require("hover.providers.gh")
+					require("hover.providers.gh_user")
+					require("hover.providers.man")
+					require("hover.providers.dictionary")
+				end,
+				preview_opts = {
+					border = "single",
+				},
+				preview_window = false,
+				title = true,
+				mouse_providers = {
+					"LSP",
+				},
+				mouse_delay = 1000,
+			})
+
+			-- Setup keymaps, replaces cmp's mappings
+			vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+			vim.keymap.set("n", "<C-p>", function()
+				require("hover").hover_switch("previous")
+			end, { desc = "hover.nvim (previous source)" })
+			vim.keymap.set("n", "<C-n>", function()
+				require("hover").hover_switch("next")
+			end, { desc = "hover.nvim (next source)" })
+
+			-- Mouse support
+			vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
+			vim.o.mousemoveevent = true
 		end,
 	},
 }

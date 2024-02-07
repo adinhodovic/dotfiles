@@ -4,29 +4,5 @@
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": false,
   "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": false,
-  "cSpell.userWords": [
-    "Alacritty",
-    "Gruvbox",
-    "Neovim",
-    "Powermenu",
-    "Rofi",
-    "dunst",
-    "htmldjango",
-    "jsonnet",
-    "jsonnetfile",
-    "kubernetes",
-    "kustomization",
-    "libsonnet",
-    "mypy",
-    "neofetch",
-    "prettierrc",
-    "pylint",
-    "pyproject",
-    "starlark",
-    "ultisnips"
-  ],
-  "Lua.diagnostics.globals": [
-    "vim"
-  ]
+  "python.linting.flake8Enabled": false
 }

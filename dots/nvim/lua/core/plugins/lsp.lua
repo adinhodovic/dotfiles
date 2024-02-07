@@ -18,37 +18,15 @@ return {
 	{
 		-- coc
 		"neoclide/coc.nvim",
-		build = "npm ci",
 		enabled = false,
-		lazy = false,
-		priority = 1000,
+		build = "npm ci",
 		config = function()
 			g.coc_global_extensions = {
-				"coc-emoji",
-				"coc-yank",
-				"@yaegassy/coc-tailwindcss3",
-				"coc-emmet",
-				"coc-tsserver",
 				"coc-markdownlint",
 				"coc-git",
-				"coc-lists",
 				"coc-prettier",
-				"coc-go",
 				"@yaegassy/coc-marksman",
-				"coc-sql",
 			}
-
-			local cocGroup = augroup("coc", {})
-			-- Highlight symbol under cursor on CursorHold
-			set_autocmd(cocGroup, {
-				"CursorHold",
-			}, { "html" }, "silent call CocActionAsync('highlight')")
-
-			-- coc-tailwindcss3
-			local coctailwindGroup = augroup("coctailwind", {})
-			set_autocmd(coctailwindGroup, {
-				"FileType",
-			}, { "html" }, "let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs']")
 		end,
 	},
 	{
@@ -151,7 +129,8 @@ return {
 				end,
 				desc = "Goto T[y]pe Definition",
 			},
-			{ "K", vim.lsp.buf.hover, desc = "Hover" },
+			-- Some are replaced by hover.nvim
+			-- { "K", vim.lsp.buf.hover, desc = "Hover" },
 			{ "gK", vim.lsp.buf.signature_help, desc = "Signature Help" },
 			{ "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help" },
 			-- Code actions managed by preview in ui.lua
@@ -287,10 +266,22 @@ return {
 		end,
 	},
 	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("lsp_signature").setup({
+				bind = true, -- This is mandatory, otherwise border config won't get registered.
+				handler_opts = {
+					border = "rounded",
+				},
+			})
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"ray-x/lsp_signature.nvim",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
@@ -314,13 +305,11 @@ return {
 
 			local cmp_copilot = { name = "copilot", group_index = 2, max_item_count = 5 }
 			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10 }
-			local cmp_lsp_signature_help = { name = "nvim_lsp_signature_help", max_item_count = 5 }
 			local cmp_luasnip = { name = "luasnip", max_item_count = 10 }
 			local cmp_yanky = { name = "cmp_yanky", max_item_count = 5 }
 			local cmp_spell = {
 				name = "spell",
 				option = {
-					keep_all_entries = false,
 					enable_in_context = function()
 						return require("cmp.config.context").in_treesitter_capture("spell")
 					end,
@@ -337,7 +326,6 @@ return {
 			local default_cmp_sources = {
 				cmp_copilot,
 				cmp_lsp,
-				cmp_lsp_signature_help,
 				cmp_luasnip,
 				cmp_yanky,
 				cmp_git,
