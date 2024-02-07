@@ -286,7 +286,7 @@ return {
 			require("statuscol").setup({
 				setopt = true,
 				-- https://github.com/luukvbaal/statuscol.nvim/issues/72#issuecomment-1593828496
-				bt_ignore = { "nofile", "prompt" },
+				bt_ignore = { "nofile", "prompt", "tempfile" },
 
 				segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
@@ -437,16 +437,19 @@ return {
 		enabled = true,
 		config = function()
 			local animate = require("mini.animate")
-			require("mini.animate").setup({
-				cursor = {
-					-- Lags, disabled
-					enabled = false,
-					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
-				},
-				scroll = {
-					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
-				},
-			})
+			-- Disable on large files
+			if vim.api.nvim_buf_line_count(0) < 1000 then
+				require("mini.animate").setup({
+					cursor = {
+						-- Lags, disabled
+						enabled = false,
+						timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+					},
+					scroll = {
+						timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+					},
+				})
+			end
 		end,
 	},
 	{

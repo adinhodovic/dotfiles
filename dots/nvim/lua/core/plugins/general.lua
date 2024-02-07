@@ -26,6 +26,10 @@ return {
 	{
 		-- Linediff
 		"AndrewRadev/linediff.vim",
+		config = function()
+			-- Try to not break statuscol
+			vim.g.linediff_modify_statusline = 0
+		end,
 	},
 	{
 		-- Direnv integration

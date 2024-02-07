@@ -65,7 +65,6 @@ nmap("Q", "^")
 nmap("W", "g_")
 nmap("$", "<nop>")
 nmap("^", "<nop>")
-nmap(":", "<nop>")
 
 -- Window movements
 imap("<C-h>", "<esc>:wincmd h<cr>")
@@ -82,7 +81,8 @@ nmap("<leader>q", "q")
 -- Execute macro over a visual selection
 xmap("<leader>q", ":'<,'>:normal @q<CR>")
 
-nmap("<space>", ":")
+nmap("<space>", ":", { noremap = true, silent = false })
+nmap(":", "<nop>")
 
 -----------------------------------------
 -- Base64

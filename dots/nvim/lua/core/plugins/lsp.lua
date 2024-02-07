@@ -207,10 +207,11 @@ return {
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", "nvim-telescope/telescope.nvim" },
 		opts = {
-			auto_open = true, -- automatically open the list when you have diagnostics
-			auto_close = true, -- automatically close the list when you have no diagnostics
+			auto_open = false, -- automatically open the list when you have diagnostics
+			auto_close = false, -- automatically close the list when you have no diagnostics
 		},
-		config = function()
+		config = function(_, opts)
+			require("trouble").setup(opts)
 			-- What does this do
 			local trouble = require("trouble.providers.telescope")
 
