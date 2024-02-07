@@ -1,8 +1,0 @@
-{
-  "coc.preferences.formatOnType": false,
-  "coc.preferences.formatOnSave": true,
-  "python.formatting.provider": "black",
-  "python.linting.mypyEnabled": false,
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": false
-}

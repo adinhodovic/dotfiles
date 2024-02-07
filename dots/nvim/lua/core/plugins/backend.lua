@@ -9,7 +9,7 @@ return {
 		"fatih/vim-go",
 		ft = "go",
 		config = function()
-			-- disable all linters as that is taken care of by coc.nvim
+			-- disable all linters as that is taken care of by vim
 			g.go_diagnostics_enabled = 0
 			g.go_metalinter_enabled = 0
 

@@ -16,20 +16,6 @@ end
 -----------------------------------------
 return {
 	{
-		-- coc
-		"neoclide/coc.nvim",
-		enabled = false,
-		build = "npm ci",
-		config = function()
-			g.coc_global_extensions = {
-				"coc-markdownlint",
-				"coc-git",
-				"coc-prettier",
-				"@yaegassy/coc-marksman",
-			}
-		end,
-	},
-	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
 		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -45,14 +31,25 @@ return {
 				ensure_installed = {
 					"black",
 					"isort",
+					"htmlhint",
 					"vint",
 					"luacheck",
+					"jsonlint",
+					"jsonnetlint",
 					"shellcheck",
+					"yamllint",
+					"yamlfmt",
+					"codespell",
+					"ansible-lint",
 					"stylelint",
+					"mypy",
+					"sqlfmt",
 					"tflint",
 					"stylua",
 					"prettier",
 					"write-good",
+					"vale",
+					"markdownlint",
 				},
 				max_concurrent_installers = 10,
 			}
@@ -172,7 +169,7 @@ return {
 			lspconfig.html.setup({
 				filetypes = { "html", "htmldjango" },
 			})
-			lspconfig.htmx.setup({})
+			-- lspconfig.htmx.setup({})
 			lspconfig.helm_ls.setup({})
 			lspconfig.jsonls.setup({
 				settings = {
@@ -509,9 +506,9 @@ return {
 			require("lspconfig")["html"].setup({
 				capabilities = capabilities,
 			})
-			require("lspconfig")["htmx"].setup({
-				capabilities = capabilities,
-			})
+			-- require("lspconfig")["htmx"].setup({
+			-- 	capabilities = capabilities,
+			-- })
 			require("lspconfig")["helm_ls"].setup({
 				capabilities = capabilities,
 			})

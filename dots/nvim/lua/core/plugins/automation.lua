@@ -352,102 +352,6 @@ return {
 		opts = {},
 	},
 	{
-		-- Ultisnips, use with coc-snippets
-		"SirVer/ultisnips",
-		config = function()
-			-- Collides with coc-snippets
-			-- g.UltiSnipsListSnippets = "<nop>"
-			-- g.UltiSnipsExpandTrigger = "<nop>"
-			-- Load my own snippets
-			g.UltiSnipsSnippetDirectories = { "~/personal/UltiSnips" }
-		end,
-	},
-	{
-		-- Conform formatting
-		"stevearc/conform.nvim",
-		dependencies = { "mason.nvim" },
-		config = function()
-			require("conform").setup({
-				format_on_save = {
-					timeout_ms = 500,
-					lsp_fallback = true,
-				},
-				formatters_by_ft = {
-					sh = { "shfmt" },
-					lua = { "stylua" },
-					python = { "isort", "black" },
-					jsonnet = { "tk" },
-					vim = { "vint" },
-					text = { "writegood" },
-					markdown = { "markdownlint" },
-					ansible = { "ansible-lint" },
-					yaml = { "ansiblelint", "yamllint" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					typescriptreact = { "prettier" },
-					javascriptreact = { "prettier" },
-					css = { "stylelint" },
-					scss = { "stylelint" },
-					less = { "stylelint" },
-					html = { "jsbeautify" },
-					htmldjango = { "djlint" },
-					json = { "jsonlint" },
-				},
-			})
-			-- require("conform").formatters.tk = {
-			-- prepend_args = { "fmt" },
-			-- }
-		end,
-	},
-	{
-		-- nvim-lint linting
-		"mfussenegger/nvim-lint",
-		opts = {
-			linters = {
-				eslint_d = {
-					args = {
-						"--no-warn-ignored", -- <-- this is the key argument
-						"--format",
-						"json",
-						"--stdin",
-						"--stdin-filename",
-						function()
-							return vim.api.nvim_buf_get_name(0)
-						end,
-					},
-				},
-			},
-		},
-		config = function()
-			require("lint").linters_by_ft = {
-				["*"] = { "cspell" },
-				markdown = { "vale" },
-				ansible = { "ansible-lint" },
-				yaml = { "yamllint" },
-				json = { "jsonlint" },
-				javascript = { "eslint_d" },
-				typescript = { "eslint_d" },
-				typescriptreact = { "eslint_d" },
-				javascriptreact = { "eslint_d" },
-				css = { "stylelint" },
-				scss = { "stylelint" },
-				less = { "stylelint" },
-				html = { "htmlhint" },
-				htmldjango = { "htmlhint" },
-				sh = { "shellcheck" },
-				lua = { "luacheck" },
-				python = { "mypy", "pylint" },
-				vim = { "vint" },
-				sql = { "sqlint" },
-			}
-			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-				callback = function()
-					require("lint").try_lint()
-				end,
-			})
-		end,
-	},
-	{
 		-- treesitter tag closing
 		"windwp/nvim-ts-autotag",
 		config = function()
@@ -476,7 +380,6 @@ return {
 						accept_line = false,
 						next = false,
 						prev = false,
-						dismiss = "<c-S-C>",
 					},
 				},
 			})

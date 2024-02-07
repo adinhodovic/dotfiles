@@ -138,6 +138,15 @@ return {
 			g.gitblame_display_virtual_text = 0
 			g.gitblame_date_format = "%x %H:%M"
 			local git_blame = require("gitblame")
+
+			local lint_progress = function()
+				local linters = require("lint").get_running()
+				if #linters == 0 then
+					return "󰦕"
+				end
+				return "󱉶 " .. table.concat(linters, ", ")
+			end
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -161,7 +170,7 @@ return {
 						},
 					},
 					lualine_y = { "aerial", "filename", "progress", "location" },
-					lualine_z = { "searchcount", "selectioncount" },
+					lualine_z = { lint_progress, "searchcount", "selectioncount" },
 				},
 				tabline = {},
 				winbar = {},
