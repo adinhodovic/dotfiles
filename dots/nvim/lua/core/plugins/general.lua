@@ -44,8 +44,18 @@ return {
 		"tpope/vim-eunuch",
 	},
 	{
-		-- Split/join multi lines
-		"AndrewRadev/splitjoin.vim",
+		"ckolkey/ts-node-action",
+		keys = {
+			{
+				"<leader>cc",
+				function()
+					require("ts-node-action").node_action()
+				end,
+				desc = "Trigger Node Action",
+			},
+		},
+		dependencies = { "nvim-treesitter" },
+		opts = {},
 	},
 	{
 		-- Hardtime
@@ -88,7 +98,7 @@ return {
 			{ "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
 			{ "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
 			{
-				"<leader>x",
+				"<leader>xx",
 				-- TODO(adinhodovic): Improve this to mimic coc behaviour
 				"y<cmd>lua require('luasnip.loaders').edit_snippet_files()<cr>1<cr>2<cr><esc>Go<cr><esc>0<esc>isnippet key \"Desc\"<esc>p",
 				mode = "v",
@@ -149,6 +159,58 @@ return {
 				-- To change the default settings (see configuration section in the documentation)
 				-- settings = {},
 			})
+		end,
+	},
+	{
+		"mrjones2014/legendary.nvim",
+		dependencies = {
+			"folke/which-key.nvim",
+		},
+		keys = {
+			{
+				"<leader>lg",
+				mode = { "n" },
+				"<cmd>Legendary<cr>",
+				desc = "Open Legendary",
+			},
+		},
+		priority = 10000,
+		lazy = false,
+		opts = {
+			extensions = {
+				lazy_nvim = { auto_register = true },
+				which_key = { auto_register = true },
+			},
+		},
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			plugins = { spelling = true },
+			defaults = {
+				mode = { "n", "v" },
+				["g"] = { name = "+goto" },
+				["gs"] = { name = "+surround" },
+				["]"] = { name = "+next" },
+				["["] = { name = "+prev" },
+				["<leader><tab>"] = { name = "+tabs" },
+				["<leader>b"] = { name = "+buffer" },
+				["<leader>c"] = { name = "+code" },
+				["<leader>f"] = { name = "+file/find" },
+				["<leader>g"] = { name = "+git" },
+				["<leader>gh"] = { name = "+hunks" },
+				["<leader>q"] = { name = "+quit/session" },
+				["<leader>s"] = { name = "+search" },
+				["<leader>u"] = { name = "+ui" },
+				["<leader>w"] = { name = "+windows" },
+				["<leader>x"] = { name = "+diagnostics/quickfix" },
+			},
+		},
+		config = function(_, opts)
+			local wk = require("which-key")
+			wk.setup(opts)
+			wk.register(opts.defaults)
 		end,
 	},
 }

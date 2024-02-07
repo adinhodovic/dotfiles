@@ -343,10 +343,6 @@ return {
 		end,
 	},
 	{
-		-- Delete add surroundings in pair
-		"tpope/vim-surround",
-	},
-	{
 		-- Comment/uncomment source code files
 		"numToStr/Comment.nvim",
 		opts = {},
@@ -385,4 +381,7 @@ return {
 			})
 		end,
 	},
+	{ "echasnovski/mini.ai" },
+	{ "echasnovski/mini.surround" },
+	{ "echasnovski/mini.hipatterns" },
 }

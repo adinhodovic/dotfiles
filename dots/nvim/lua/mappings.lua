@@ -77,7 +77,6 @@ nmap("<C-l>", "<esc>:wincmd l<cr>")
 nmap("<C-j>", "<esc>:wincmd j<cr>")
 nmap("<C-k>", "<esc>:wincmd k<cr>")
 
-nmap("<leader>q", "q")
 -- Execute macro over a visual selection
 xmap("<leader>q", ":'<,'>:normal @q<CR>")
 
@@ -199,7 +198,7 @@ end)
 nmap("<F12>", function()
 	require("dap").step_out()
 end)
-nmap("<Leader>b", function()
+nmap("<Leader>br", function()
 	require("dap").toggle_breakpoint()
 end)
 nmap("<Leader>dr", function()
