@@ -58,8 +58,13 @@ return {
 		},
 	},
 	{
-		-- Better git log
+		-- Flog is a fast, beautiful, and powerful git branch viewer for Vim.
 		"rbong/vim-flog",
+		lazy = true,
+		cmd = { "Flog", "Flogsplit", "Floggit" },
+		dependencies = {
+			"tpope/vim-fugitive",
+		},
 	},
 	{
 		-- File type support for GitHub Actions
@@ -134,6 +139,11 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		cmd = {
+			"DiffviewOpen",
+			"DiffviewToggleFiles",
+			"DiffviewFocusFiles",
+		},
 		opts = {},
 	},
 }

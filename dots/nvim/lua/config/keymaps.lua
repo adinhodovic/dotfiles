@@ -91,11 +91,6 @@ xmap("<F8>", ":<C-u>NextWordy<cr>")
 imap("<F8>", ":<C-o>NextWordy<cr>")
 
 ----------------------------------------
--- Linediff.vim
-----------------------------------------
-vmap("<leader>ld", ":Linediff<cr>")
-
-----------------------------------------
 -- Grammarous
 ----------------------------------------
 nmap("<leader>gc", ":GrammarousCheck<CR>")
@@ -135,7 +130,6 @@ vim.cmd([[
 -- Projects/Tree
 -------------------------------------------
 nmap("<leader>cd", ":Telescope projects<cr>")
-nmap("<leader>ct", ":NvimTreeToggle<cr>")
 
 -------------------------------------------
 -- Delete/Paste text without copying

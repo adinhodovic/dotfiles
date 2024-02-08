@@ -26,6 +26,14 @@ return {
 	{
 		-- Linediff
 		"AndrewRadev/linediff.vim",
+		keys = {
+			{
+				"<leader>ld",
+				":Linediff<cr>",
+				mode = "v",
+				desc = "Check Linediffs",
+			},
+		},
 		config = function()
 			-- Try to not break statuscol
 			vim.g.linediff_modify_statusline = 0

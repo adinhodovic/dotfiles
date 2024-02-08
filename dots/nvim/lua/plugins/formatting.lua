@@ -9,7 +9,6 @@ return {
 		-- Conform formatting
 		"stevearc/conform.nvim",
 		enabled = true,
-		dependencies = { "mason.nvim" },
 		config = function()
 			require("conform").setup({
 				format_on_save = {

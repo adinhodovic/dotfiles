@@ -182,6 +182,13 @@ return {
 	{
 		-- File tree
 		"nvim-tree/nvim-tree.lua",
+		keys = {
+			{
+				"<leader>ct",
+				":NvimTreeToggle<cr>",
+				desc = "Open nvim tree",
+			},
+		},
 		config = function()
 			require("nvim-tree").setup({
 				sync_root_with_cwd = true,
@@ -408,15 +415,5 @@ return {
 	},
 	{
 		"echasnovski/mini.hipatterns",
-	},
-	{
-		-- Most recently opened
-		"yegappan/mru",
-		keys = {
-			"<leader>mr",
-			"<Plug>(MRU)",
-			description = "Open most recently used files",
-		},
-		lazy = false,
 	},
 }
