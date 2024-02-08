@@ -1,7 +1,3 @@
-require("config.lazy")
-require("configs")
-require("mappings")
--- require('keybindings')
---
+require("config")
 
 vim.cmd("source ~/.config/nvim/config.vim")
