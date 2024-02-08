@@ -24,6 +24,9 @@ return {
 					prettier = {
 						prepend_args = { "--write" },
 					},
+					sqlfluff = {
+						args = { "format", "--dialect=postgres", "-" },
+					},
 				},
 
 				formatters_by_ft = {
@@ -35,10 +38,11 @@ return {
 					typescript = { "prettier" },
 					typescriptreact = { "prettier" },
 					javascriptreact = { "prettier" },
+					toml = { "taplo" },
 					css = { "prettier" },
 					scss = { "prettier" },
 					less = { "prettier" },
-					sql = { "sqlfmt" },
+					sql = { "sqlfluff" },
 					yaml = { "yamlfmt" },
 					html = { "djlint" },
 				},
@@ -64,13 +68,13 @@ return {
 				css = { "stylelint" },
 				scss = { "stylelint" },
 				less = { "stylelint" },
+				sql = { "sqlfluff" },
 				html = { "htmlhint" },
 				htmldjango = { "htmlhint", "djlint" },
 				sh = { "shellcheck" },
 				lua = { "luacheck" },
 				python = { "mypy", "pylint" },
 				vim = { "vint" },
-				sql = { "sqlint" },
 			},
 
 			linters = {

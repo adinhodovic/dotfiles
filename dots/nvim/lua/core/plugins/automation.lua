@@ -381,7 +381,13 @@ return {
 			})
 		end,
 	},
-	{ "echasnovski/mini.ai" },
-	{ "echasnovski/mini.surround" },
-	{ "echasnovski/mini.hipatterns" },
+	{
+		"echasnovski/mini.ai",
+	},
+	{
+		"echasnovski/mini.surround",
+	},
+	{
+		"echasnovski/mini.hipatterns",
+	},
 }
