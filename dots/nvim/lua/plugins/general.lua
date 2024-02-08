@@ -229,4 +229,11 @@ return {
 			wk.register(opts.defaults)
 		end,
 	},
+	{
+		"stevearc/oil.nvim",
+		cmd = "Oil",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 }
