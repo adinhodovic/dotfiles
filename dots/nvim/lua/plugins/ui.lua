@@ -318,6 +318,12 @@ return {
 	{
 		-- Better buffers
 		"ghillb/cybu.nvim",
+		keys = {
+			{ "[b", "<Plug>(CybuPrev)", desc = "Cybu buffer previous" },
+			{ "]b", "<Plug>(CybuNext)", desc = "Cybu buffer next" },
+			{ "<s-tab>", "<Plug>(CybuLastusedPrev)", desc = "Cybu buffer last used previous" },
+			{ "<tab>", "<Plug>(CybuLastusedPrev)", desc = "Cybu buffer last used next" },
+		},
 		config = function()
 			require("cybu").setup()
 		end,

@@ -36,8 +36,16 @@ return {
 		"direnv/direnv.vim",
 	},
 	{
-		-- CarbonNow Integration
-		"kristijanhusak/vim-carbon-now-sh",
+		"ellisonleao/carbon-now.nvim",
+		opts = {},
+		keys = {
+			{
+				"<F6>",
+				":CarbonNow<CR>",
+				mode = { "x" },
+				desc = "Open Carbon.sh with selected text",
+			},
+		},
 	},
 	{
 		-- OS commands in vim

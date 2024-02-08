@@ -85,10 +85,13 @@ return {
 	},
 	{
 		-- Base64 Decoding/Encoding
-		"christianrondeau/vim-base64",
-	},
-	{
-		-- Most recently opened
-		"yegappan/mru",
+		"deponian/nvim-base64",
+		keys = {
+			{ "<leader>b64e", "<Plug>(ToBase64)", mode = "x", desc = "Base64 encrypt" },
+			{ "<leader>b64d", "<Plug>(FromBase64)", mode = "x", desc = "Base64 decrypt" },
+		},
+		config = function()
+			require("nvim-base64").setup()
+		end,
 	},
 }

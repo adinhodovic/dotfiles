@@ -84,12 +84,6 @@ nmap("<space>", ":", { noremap = true, silent = false })
 nmap(":", "<nop>")
 
 -----------------------------------------
--- Base64
------------------------------------------
-vmap("<leader>b64e", ":<c-u>call base64#v_btoa()<cr>")
-vmap("<leader>b64d", ":<c-u>call base64#v_atob()<cr>")
-
------------------------------------------
 -- Writing
 -----------------------------------------
 nmap("<F8>", ":<C-u>NextWordy<cr>")
@@ -123,9 +117,6 @@ nmap("<leader>ms", ":InstantMarkdownStop<cr>")
 -------------------------------------------
 -- Fugitive
 -------------------------------------------
-nmap("<leader>gb", ":GBrowse<cr>")
-nmap("<leader>gl", ":Git log<cr>")
-vmap("<leader>gb", ":GBrowse<cr>")
 
 -------------------------------------------
 -- Committia
@@ -162,26 +153,10 @@ g.mdip_imgdir = "images"
 nmap("<leader>mp", ":call mdip#MarkdownClipboardImage()<CR>")
 
 -------------------------------------------
--- MRU
--------------------------------------------
-nmap("<leader>mr", ":MRU<CR>")
-
--------------------------------------------
 --  Spell checking
 -------------------------------------------
 -- Pressing ,se will toggle and untoggle spell checking
 nmap("<leader>se", ":setlocal spell!<cr>")
-
--------------------------------------------
--- CarbonNowSh
--------------------------------------------
-xmap("<F6>", ":CarbonNowSh<CR>")
-
--------------------------------------------
--- GitMessenger
--------------------------------------------
-nmap("<leader>gm", ":GitMessenger <CR>")
-g.git_messenger_include_diff = "current"
 
 -------------------------------------------
 -- Dap
@@ -224,25 +199,3 @@ vim.keymap.set("n", "<Leader>ds", function()
 	local widgets = require("dap.ui.widgets")
 	widgets.centered_float(widgets.scopes)
 end)
--------------------------------------------
--- Spectre
--------------------------------------------
-nmap("<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
-	desc = "Toggle Spectre",
-})
-nmap("<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-	desc = "Search current word",
-})
-vmap("<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-	desc = "Search current word",
-})
-nmap("<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-	desc = "Search on current file",
-})
--------------------------------------------
--- Cybu
--------------------------------------------
-nmap("[b", "<Plug>(CybuPrev)")
-nmap("]b", "<Plug>(CybuNext)")
-nmap("<s-tab>", "<plug>(CybuLastusedPrev)")
-nmap("<tab>", "<plug>(CybuLastusedNext)")

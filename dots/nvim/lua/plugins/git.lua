@@ -10,14 +10,49 @@ return {
 	{
 		-- Better Git commits
 		"rhysd/committia.vim",
+		ft = { "gitcommit" },
+		config = function()
+			vim.cmd([[
+        let g:committia_hooks = {}
+        function! g:committia_hooks.edit_open(info)
+          " Scroll the diff window from insert mode
+          " Map <C-n> and <C-p>
+          imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+          imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+        endfunction
+      ]])
+		end,
 	},
 	{
 		-- Show git messages
 		"rhysd/git-messenger.vim",
+		keys = {
+			{
+				"<leader>gm",
+				"<Plug>(GitMessenger)",
+				desc = "Shows the history of commits under the cursor in popup window.",
+			},
+		},
+		config = function()
+			g.git_messenger_include_diff = "current"
+		end,
 	},
 	{
 		-- Nvim Git integration
 		"tpope/vim-fugitive",
+		keys = {
+			{
+				"<leader>gb",
+				":GBrowse<cr>",
+				mode = { "n", "x" },
+				desc = "Open the current file on GitHub",
+			},
+			{
+				"<leader>gl",
+				":Git log<cr>",
+				desc = "Open the git log",
+			},
+		},
 		dependencies = {
 			"tpope/vim-rhubarb",
 		},
