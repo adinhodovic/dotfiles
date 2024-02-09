@@ -62,12 +62,6 @@ return {
 		end,
 	},
 	{
-		-- Abbreviations
-		"tpope/vim-abolish",
-		lazy = true,
-		ft = "markdown",
-	},
-	{
 		-- Markdown image pasting
 		"ferrine/md-img-paste.vim",
 		lazy = true,

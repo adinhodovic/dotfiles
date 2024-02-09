@@ -53,6 +53,29 @@ nmap("k", "gk")
 -- Disable highlight when <leader><cr> is pressed
 nmap("<leader><cr>", ":noh<cr>")
 
+vim.cmd([[
+  " Don't close window, when deleting a buffer
+  command! Bclose call BufcloseCloseIt()
+  function! BufcloseCloseIt()
+    let l:currentBufNum = bufnr('%')
+    let l:alternateBufNum = bufnr('#')
+
+    if buflisted(l:alternateBufNum)
+      buffer #
+    else
+      bnext
+    endif
+
+    if bufnr('%') == l:currentBufNum
+      new
+    endif
+
+    if buflisted(l:currentBufNum)
+      execute('bdelete! '.l:currentBufNum)
+    endif
+  endfunction
+]])
+
 -- Close the current buffer
 nmap("<leader>bd", ":Bclose<cr>")
 -- Close all the buffers
@@ -82,6 +105,40 @@ xmap("<leader>q", ":'<,'>:normal @q<CR>")
 
 nmap("<space>", ":", { noremap = true, silent = false })
 nmap(":", "<nop>")
+
+-- Visual mode pressing * or # searches for the current selection
+-- Super useful! From an idea by Michael Naumann
+vim.cmd([[
+function! CmdLine(str)
+  exe 'menu Foo.Bar :' . a:str
+  emenu Foo.Bar
+  unmenu Foo
+endfunction
+
+function! VisualSelection(direction) range
+  let l:saved_reg = @"
+  execute 'normal! vgvy'
+
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, '\n$', '', '')
+
+  if a:direction ==# 'b'
+    execute 'normal ?' . l:pattern . '^M'
+  elseif a:direction ==# 'gv'
+    call CmdLine('vimgrep' . '/'. l:pattern . '/' . ' **/*.')
+  elseif a:direction ==# 'replace'
+    call CmdLine('%s' . '/'. l:pattern . '/')
+  elseif a:direction ==# 'f'
+    execute 'normal /' . l:pattern . '^M'
+  endif
+
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunction
+]])
+
+vmap("*", ":call VisualSelection('f')<CR>")
+vmap("#", ":call VisualSelection('b')<CR>")
 
 -----------------------------------------
 -- Writing

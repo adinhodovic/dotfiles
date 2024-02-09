@@ -64,6 +64,10 @@ return {
 		-- Ansible Vault
 		"danihodovic/vim-ansible-vault",
 		ft = "ansible",
+		keys = {
+			{ "<leader>ve", ":AnsibleVaultEncrypt <CR> :edit <CR>", mode = "n", desc = "Encrypt ansible vault" },
+			{ "<leader>vd", ":AnsibleVaultDecrypt <CR> :edit <CR>", mode = "n", desc = "Decrypt ansible vault" },
+		},
 	},
 	{
 		-- Terraform
