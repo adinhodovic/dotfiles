@@ -210,12 +210,18 @@ return {
 		end,
 	},
 	{
-		-- Bettermarks
+		-- Better marks
 		"chentoast/marks.nvim",
+		lazy = false,
+		keys = {
+			{
+				"<leader>m",
+				"<cmd>MarksListAll<CR>",
+				desc = "List all marks",
+			},
+		},
 		config = function()
 			require("marks").setup({})
-
-			vim.keymap.set("n", "<leader>m", "<cmd>MarksListAll<CR>")
 		end,
 	},
 	{
