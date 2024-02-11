@@ -422,4 +422,21 @@ return {
 	{
 		"echasnovski/mini.hipatterns",
 	},
+	{
+		"chrisgrieser/nvim-rulebook",
+		keys = {
+			{
+				"<leader>ri",
+				function()
+					require("rulebook").ignoreRule()
+				end,
+			},
+			{
+				"<leader>rl",
+				function()
+					require("rulebook").lookupRule()
+				end,
+			},
+		},
+	},
 }
