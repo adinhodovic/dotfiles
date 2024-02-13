@@ -1,11 +1,10 @@
----
 - name: Setup dotfiles
   hosts: 127.0.0.1
 
   tasks:
     - name: Symlink dots
       file:
-        src: "/home/adin/.dotfiles/dots/{{ item.src }}"
+        src: "/home/adin/dotfiles/dots/{{ item.src }}"
         dest: "{{ item.dest }}"
         state: link
         force: true
@@ -140,7 +139,7 @@
       become: true
       tags: sudo-dots
       copy:
-        src: "/home/adin/.dotfiles/dots/{{ item.src }}"
+        src: "/home/adin/dotfiles/dots/{{ item.src }}"
         dest: "{{ item.dest }}"
         force: true
       with_items:
@@ -154,7 +153,7 @@
       become: true
       tags: sudo-dots
       copy:
-        src: /home/adin/.dotfiles/images/mostar.jpg
+        src: /home/adin/dotfiles/images/mostar.jpg
         dest: /usr/share/backgrounds/mostar.jpg
         force: true
 

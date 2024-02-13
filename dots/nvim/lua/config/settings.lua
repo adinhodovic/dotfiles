@@ -87,7 +87,7 @@ set.history = 1000
 -------------------------------------------
 set.spell = true
 set.spelllang = { "en_us" }
-set.spellfile = vim.fn.expand("$HOME/.dotfiles/misc/spell/en.utf-8.add")
+set.spellfile = vim.fn.expand("$HOME/dotfiles/misc/spell/en.utf-8.add")
 set.title = true
 set.number = true
 

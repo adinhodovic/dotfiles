@@ -128,7 +128,7 @@ return {
 		build = "make install_jsregexp",
 		config = function()
 			require("luasnip.loaders.from_snipmate").lazy_load({
-				paths = { "/home/adin/.dotfiles/snippets" },
+				paths = { "/home/adin/dotfiles/snippets" },
 			})
 		end,
 	},
@@ -162,7 +162,7 @@ return {
 				output = {
 					-- Specify the output formats and paths
 					snipmate = {
-						"/home/adin/.dotfiles/snippets/yaml",
+						"/home/adin/dotfiles/snippets/yaml",
 					},
 				},
 				sort_snippets = function(first, second)

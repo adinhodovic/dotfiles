@@ -101,13 +101,13 @@ return {
 					.new({
 						results_title = "Modified on current branch",
 						finder = finders.new_oneshot_job({
-							"/home/adin/.dotfiles/scripts/git-files-changed.sh",
+							"/home/adin/dotfiles/scripts/git-files-changed.sh",
 							"list",
 						}),
 						sorter = sorters.get_fuzzy_file(),
 						previewer = previewers.new_termopen_previewer({
 							get_command = function(entry)
-								return { "/home/adin/.dotfiles/scripts/git-files-changed.sh", "diff", entry.value }
+								return { "/home/adin/dotfiles/scripts/git-files-changed.sh", "diff", entry.value }
 							end,
 						}),
 					})
@@ -204,7 +204,7 @@ return {
 					group_empty = true,
 				},
 				filters = {
-					dotfiles = true,
+				dotfiles = true,
 				},
 			})
 		end,

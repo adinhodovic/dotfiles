@@ -115,7 +115,7 @@ cmd = f"git standup -A {beginning_of_this_week} -B {end_of_this_week} -s"
 home = os.path.expanduser("~")
 dirs = [
   os.path.join(home, "work/**/**"),
-  os.path.join(home, ".dotfiles"),
+  os.path.join(home, "dotfiles"),
   os.path.join(home, "company"),
   os.path.join(home, "personal"),
 ]
@@ -136,7 +136,7 @@ cmd = f"git standup -A {beginning_of_last_week} -B {end_of_last_week} -s"
 home = os.path.expanduser("~")
 dirs = [
   os.path.join(home, "work/**/**"),
-  os.path.join(home, ".dotfiles"),
+  os.path.join(home, "dotfiles"),
   os.path.join(home, "company"),
   os.path.join(home, "personal"),
 ]
@@ -157,7 +157,7 @@ cmd = f"git standup -A {beginning_of_this_week} -B {end_of_this_week} -s"
 home = os.path.expanduser("~")
 dirs = [
   os.path.join(home, "work/**/**"),
-  os.path.join(home, ".dotfiles"),
+  os.path.join(home, "dotfiles"),
   os.path.join(home, "company"),
   os.path.join(home, "personal"),
 ]
