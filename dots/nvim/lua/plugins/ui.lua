@@ -170,8 +170,15 @@ return {
 					lualine_c = { "diagnostics" },
 					lualine_x = {
 						{
-							git_blame.get_current_blame_text,
-							cond = git_blame.is_blame_text_available,
+							function()
+								local blame_text = require("gitblame").get_current_blame_text()
+								if blame_text:len() > 180 then
+									blame_text = blame_text:sub(1, 180) .. "..."
+								end
+								local blame_text_escaped = blame_text:gsub("%%", "%%%%")
+								return blame_text_escaped
+							end,
+							cond = require("gitblame").is_blame_text_available,
 						},
 					},
 					lualine_y = { "aerial", "filename", "progress", "location" },
