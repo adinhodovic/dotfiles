@@ -236,4 +236,34 @@ return {
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+		keys = {
+			{
+				"<leader>tds",
+				"<cmd>TodoTelescope<cr>",
+				desc = "Open todo comments in telescope",
+			},
+			{
+				"<leader>tdt",
+				"<cmd>TodoTrouble<cr>",
+				desc = "Open todo comments in trouble",
+			},
+		},
+	},
+	{
+		"backdround/global-note.nvim",
+		config = function()
+			require("global-note").setup({})
+		end,
+		keys = {
+			{
+				"<leader>gn",
+				"<cmd>GlobalNote<cr>",
+				desc = "Toggle global note",
+			},
+		},
+	},
 }
