@@ -133,6 +133,9 @@
         - src: "k9s.yaml"
           dest: "/home/adin/.config/k9s/config.yaml"
 
+        - src: "yamlfmt"
+          dest: "/home/adin/.config/yamlfmt/.yamlfmt"
+
     - name: Mv Sudo Dots
       become: true
       tags: sudo-dots
