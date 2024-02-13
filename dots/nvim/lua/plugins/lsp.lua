@@ -251,6 +251,18 @@ return {
 		end,
 	},
 	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("lsp_signature").setup({
+				bind = true, -- This is mandatory, otherwise border config won't get registered.
+				handler_opts = {
+					border = "rounded",
+				},
+			})
+		end,
+	},
+	{
 		"roobert/tailwindcss-colorizer-cmp.nvim",
 		-- optionally, override the default options:
 		config = function()
@@ -269,18 +281,6 @@ return {
 		end,
 	},
 	{
-		"ray-x/lsp_signature.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("lsp_signature").setup({
-				bind = true, -- This is mandatory, otherwise border config won't get registered.
-				handler_opts = {
-					border = "rounded",
-				},
-			})
-		end,
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -292,7 +292,6 @@ return {
 			"hrsh7th/cmp-calc",
 			"petertriho/cmp-git",
 			"davidsierradz/cmp-conventionalcommits",
-			"SirVer/ultisnips",
 			"f3fora/cmp-spell",
 			"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
 			"roobert/tailwindcss-colorizer-cmp.nvim",
@@ -302,9 +301,9 @@ return {
 			"lukas-reineke/cmp-rg",
 		},
 		config = function()
-			local cmp = require("cmp")
-
 			require("cmp_git").setup()
+
+			local cmp = require("cmp")
 
 			local cmp_copilot = { name = "copilot", group_index = 2, max_item_count = 5 }
 			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10 }
@@ -319,7 +318,6 @@ return {
 				},
 			}
 			local cmp_path = { name = "path" }
-			local cmp_ultisnips = { name = "ultisnips", max_item_count = 5 }
 			local cmp_emoji = { name = "emoji", max_item_count = 5 }
 			local cmp_calc = { name = "calc", max_item_count = 5 }
 			local cmp_git = { name = "git", max_item_count = 10 }
@@ -334,22 +332,10 @@ return {
 				cmp_git,
 				cmp_spell,
 				cmp_path,
-				cmp_ultisnips,
 				cmp_emoji,
 				cmp_calc,
 				cmp_ripgrep,
 			}
-
-			-- Lua function that merges dicts
-			local function merge_dicts(...)
-				local result = {}
-				for _, dict in ipairs({ ... }) do
-					for k, v in pairs(dict) do
-						result[k] = v
-					end
-				end
-				return result
-			end
 
 			local luasnip = require("luasnip")
 
@@ -429,9 +415,7 @@ return {
 			-- Set configuration for specific filetype.
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources(
-					merge_dicts(default_cmp_sources, {
-						cmp_conventional_commits,
-					}),
+					vim.tbl_deep_extend("keep", { cmp_conventional_commits }, default_cmp_sources),
 					{
 						{ name = "buffer" },
 					}
