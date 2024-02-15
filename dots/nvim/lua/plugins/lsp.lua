@@ -272,11 +272,45 @@ return {
 		end,
 	},
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
+		-- TODO: remove this when empty lines work
+		-- https://github.com/zbirenbaum/copilot-cmp/issues/5
+		-- https://github.com/hrsh7th/nvim-cmp/issues/1272
+		"github/copilot.vim",
 		config = function()
-			require("copilot").setup({})
+			g.copilot_no_tab_map = true
+			g.copilot_assume_mapped = true
+			vim.cmd([[
+	       imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")
+	     ]])
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = false,
+				},
+				suggestion = {
+					-- TODO: enable this when empty lines work
+					-- https://github.com/zbirenbaum/copilot-cmp/issues/5
+					-- https://github.com/hrsh7th/nvim-cmp/issues/1272
+					enabled = false,
+					auto_trigger = true,
+					keymap = {
+						accept = "<c-c>",
+						accept_word = false,
+						accept_line = false,
+						next = false,
+						prev = false,
+					},
+				},
+				filetypes = {
+					yaml = true,
+					markdown = true,
+					help = true,
+				},
+			})
 		end,
 	},
 	{
@@ -285,7 +319,8 @@ return {
 			"zbirenbaum/copilot.lua",
 		},
 		config = function()
-			require("copilot_cmp").setup()
+			local copilot_cmp = require("copilot_cmp")
+			copilot_cmp.setup({})
 		end,
 	},
 	{
@@ -313,10 +348,10 @@ return {
 
 			local cmp = require("cmp")
 
-			local cmp_copilot = { name = "copilot", group_index = 2, max_item_count = 5 }
-			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10 }
-			local cmp_luasnip = { name = "luasnip", max_item_count = 10 }
-			local cmp_yanky = { name = "cmp_yanky", max_item_count = 5 }
+			local cmp_copilot = { name = "copilot", max_item_count = 5, group_index = 1 }
+			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10, group_index = 1 }
+			local cmp_luasnip = { name = "luasnip", max_item_count = 10, group_index = 1 }
+			local cmp_yanky = { name = "cmp_yanky", max_item_count = 5, group_index = 1 }
 			local cmp_spell = {
 				name = "spell",
 				option = {
@@ -324,13 +359,19 @@ return {
 						return require("cmp.config.context").in_treesitter_capture("spell")
 					end,
 				},
+				group_index = 1,
 			}
-			local cmp_path = { name = "path" }
-			local cmp_emoji = { name = "emoji", max_item_count = 5 }
-			local cmp_calc = { name = "calc", max_item_count = 5 }
-			local cmp_git = { name = "git", max_item_count = 10 }
-			local cmp_conventional_commits = { name = "conventionalcommits", max_item_count = 20 }
-			local cmp_ripgrep = { name = "rg", max_item_count = 5, keyword_length = 5 }
+			local cmp_path = { name = "path", max_item_count = 10, group_index = 1 }
+			local cmp_emoji = { name = "emoji", max_item_count = 5, group_index = 1 }
+			local cmp_calc = { name = "calc", max_item_count = 5, group_index = 1 }
+			local cmp_git = { name = "git", max_item_count = 10, group_index = 1 }
+			local cmp_conventional_commits = {
+				name = "conventionalcommits",
+				max_item_count = 20,
+				group_index = 1,
+			}
+			local cmp_ripgrep = { name = "rg", max_item_count = 5, keyword_length = 5, group_index = 1 }
+			local cmp_buffer = { name = "buffer", max_item_count = 10, group_index = 2 }
 
 			local default_cmp_sources = {
 				cmp_copilot,
@@ -343,6 +384,7 @@ return {
 				cmp_emoji,
 				cmp_calc,
 				cmp_ripgrep,
+				cmp_buffer,
 			}
 
 			local luasnip = require("luasnip")
@@ -415,18 +457,13 @@ return {
 						end
 					end, { "i", "s" }),
 				}),
-				sources = cmp.config.sources(default_cmp_sources, {
-					{ name = "buffer" },
-				}),
+				sources = cmp.config.sources(default_cmp_sources),
 			})
 
 			-- Set configuration for specific filetype.
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources(
-					vim.tbl_deep_extend("keep", { cmp_conventional_commits }, default_cmp_sources),
-					{
-						{ name = "buffer" },
-					}
+					vim.tbl_deep_extend("keep", { cmp_conventional_commits }, default_cmp_sources)
 				),
 			})
 
@@ -443,7 +480,7 @@ return {
 					},
 				}),
 				sources = {
-					{ name = "buffer" },
+					{ cmp_buffer },
 				},
 			})
 
@@ -459,20 +496,10 @@ return {
 					},
 				}),
 				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{ name = "cmdline" },
+					cmp_path,
+					{ name = "cmdline", group_index = 2 },
 				}),
 			})
-
-			-- Hide copilot when suggestion open
-			cmp.event:on("menu_opened", function()
-				vim.b.copilot_suggestion_hidden = true
-			end)
-
-			cmp.event:on("menu_closed", function()
-				vim.b.copilot_suggestion_hidden = false
-			end)
 
 			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -504,9 +531,9 @@ return {
 			require("lspconfig")["html"].setup({
 				capabilities = capabilities,
 			})
-			-- require("lspconfig")["htmx"].setup({
-			-- 	capabilities = capabilities,
-			-- })
+			require("lspconfig")["htmx"].setup({
+				capabilities = capabilities,
+			})
 			require("lspconfig")["helm_ls"].setup({
 				capabilities = capabilities,
 			})

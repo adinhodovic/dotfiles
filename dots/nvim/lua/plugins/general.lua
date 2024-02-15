@@ -240,6 +240,8 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
+		-- Will show todo highlighting
+		lazy = false,
 		keys = {
 			{
 				"<leader>tds",

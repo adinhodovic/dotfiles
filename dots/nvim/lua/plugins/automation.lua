@@ -204,7 +204,7 @@ return {
 					group_empty = true,
 				},
 				filters = {
-				dotfiles = true,
+					dotfiles = true,
 				},
 			})
 		end,
@@ -386,29 +386,6 @@ return {
 			require("nvim-treesitter.configs").setup({
 				autotag = {
 					enable = true,
-				},
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				panel = {
-					enabled = false,
-				},
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					keymap = {
-						accept = "<c-c>",
-						accept_word = false,
-						accept_line = false,
-						next = false,
-						prev = false,
-					},
 				},
 			})
 		end,
