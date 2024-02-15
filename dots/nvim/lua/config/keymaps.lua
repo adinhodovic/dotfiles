@@ -86,8 +86,6 @@ vmap("q", "b")
 -- Movement begin/end of line
 nmap("Q", "^")
 nmap("W", "g_")
-nmap("$", "<nop>")
-nmap("^", "<nop>")
 
 -- Window movements
 imap("<C-h>", "<esc>:wincmd h<cr>")

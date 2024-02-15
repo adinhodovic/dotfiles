@@ -370,6 +370,9 @@ return {
 						-- TODO: adinhodovic renable this maybe later?
 						enabled = false,
 					},
+					char = {
+						jump_labels = true,
+					},
 				},
 			})
 		end,
