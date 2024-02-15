@@ -34,6 +34,9 @@ return {
 				highlight = {
 					enable = true,
 				},
+				indent = {
+					enable = true,
+				},
 			})
 		end,
 	},
@@ -272,10 +275,6 @@ return {
 		"Bekaboo/dropbar.nvim",
 	},
 	{
-		-- Animate scroll
-		"camspiers/animate.vim",
-	},
-	{
 		-- Highlight yanks
 		"machakann/vim-highlightedyank",
 	},
@@ -427,9 +426,9 @@ return {
 		end,
 	},
 	{
+		-- TODO: maybe replace with neoscroll?
 		"echasnovski/mini.animate",
 		event = "VeryLazy",
-		enabled = true,
 		config = function()
 			local animate = require("mini.animate")
 			-- Disable on large files
