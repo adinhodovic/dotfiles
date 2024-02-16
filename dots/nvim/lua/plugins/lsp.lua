@@ -82,6 +82,7 @@ return {
 					"html",
 					"htmx",
 					"helm_ls",
+					"ltex",
 					"lua_ls",
 					"jsonls",
 					"tsserver",
@@ -524,6 +525,14 @@ return {
 			})
 			require("lspconfig")["docker_compose_language_service"].setup({
 				capabilities = capabilities,
+			})
+			require("lspconfig")["ltex"].setup({
+				capabilities = capabilities,
+				settings = {
+					ltex = {
+						language = "en-US",
+					},
+				},
 			})
 			require("lspconfig")["gopls"].setup({
 				capabilities = capabilities,

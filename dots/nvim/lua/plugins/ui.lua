@@ -337,7 +337,7 @@ return {
 			require("statuscol").setup({
 				setopt = true,
 				-- https://github.com/luukvbaal/statuscol.nvim/issues/72#issuecomment-1593828496
-				bt_ignore = { "nofile", "prompt", "tempfile" },
+				bt_ignore = { "nofile", "prompt", "tempfile", "acwrite" },
 
 				segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },

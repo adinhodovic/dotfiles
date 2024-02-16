@@ -228,9 +228,28 @@ return {
 	{
 		"stevearc/oil.nvim",
 		cmd = "Oil",
-		opts = {},
+		lazy = false,
+		opts = {
+			columns = {
+				"icon",
+				"size",
+				"mtime",
+			},
+			win_options = {
+				signcolumn = "yes:2",
+			},
+		},
 		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+	{
+		"SirZenith/oil-vcs-status",
+		dependencies = {
+			"stevearc/oil.nvim",
+		},
+		opts = {},
 	},
 	{
 		"folke/todo-comments.nvim",
