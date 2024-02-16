@@ -157,13 +157,6 @@ vmap("<leader>gc", ":GrammarousCheck<CR>")
 vim.g.tq_map_keys = 0
 nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
 vmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
-
--------------------------------------------
--- Markdown
--------------------------------------------
-nmap("<leader>md", ":InstantMarkdownPreview<cr>")
-nmap("<leader>ms", ":InstantMarkdownStop<cr>")
-
 -------------------------------------------
 -- Fugitive
 -------------------------------------------

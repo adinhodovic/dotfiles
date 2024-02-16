@@ -8,28 +8,35 @@ local autocmd = vim.api.nvim_create_autocmd
 -----------------------------------------
 return {
 	{
-		-- Instant markdown reader
-		"instant-markdown/vim-instant-markdown",
-		lazy = true,
-		ft = "markdown",
-		config = function()
-			-- Disable autostart of md composer
-			g.instant_markdown_browser = "chromium --new-window"
-			g.instant_markdown_autostart = 0
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
 		end,
+		ft = { "markdown" },
+		keys = {
+			{
+				"<leader>md",
+				":MarkdownPreviewToggle<cr>",
+				mode = "n",
+				desc = "Start instant markdown preview",
+			},
+		},
 	},
 	{
 		-- Markdown
-		"preservim/vim-markdown",
+		"ixru/nvim-markdown",
 		lazy = true,
 		ft = "markdown",
 		config = function()
 			-- Disable markdown code block conceals
-			g.vim_markdown_conceal = 0
-			g.vim_markdown_conceal_code_blocks = 0
+			g.vim_markdown_conceal = 2
 
-			-- Disable folding, we have search
-			g.vim_markdown_folding_disabled = 1
+			g.vim_markdown_frontmatter = 1
+
+			-- TODO: Add custom mappings
+			g.vim_markdown_no_default_key_mappings = 0
 		end,
 	},
 	{
