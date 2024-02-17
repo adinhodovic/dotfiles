@@ -1,0 +1,10 @@
+Rofi
+Alacritty
+Zsh
+Neovim
+Neofetch
+dunst
+Gruvbox
+Powermenu
+neovim
+neofetch

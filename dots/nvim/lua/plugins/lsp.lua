@@ -343,6 +343,7 @@ return {
 			"zbirenbaum/copilot-cmp",
 			"onsails/lspkind.nvim",
 			"lukas-reineke/cmp-rg",
+			"barreiroleo/ltex_extra.nvim",
 		},
 		config = function()
 			require("cmp_git").setup()
@@ -528,10 +529,14 @@ return {
 			})
 			require("lspconfig")["ltex"].setup({
 				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					-- rest of your on_attach process.
+					require("ltex_extra").setup({
+						path = "~/dotfiles/misc/spell",
+					})
+				end,
 				settings = {
-					ltex = {
-						language = "en-US",
-					},
+					-- dictionary = {}
 				},
 			})
 			require("lspconfig")["gopls"].setup({

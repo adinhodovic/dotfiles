@@ -36,7 +36,7 @@ return {
 			g.vim_markdown_frontmatter = 1
 
 			-- TODO: Add custom mappings
-			g.vim_markdown_no_default_key_mappings = 0
+			g.vim_markdown_no_default_key_mappings = 1
 		end,
 	},
 	{
