@@ -103,8 +103,9 @@ return {
 			{ "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", desc = "Put and indent left" },
 			{ ">P", "<Plug>(YankyPutIndentBeforeShiftRight)", desc = "Put before and indent right" },
 			{ "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)", desc = "Put before and indent left" },
-			{ "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
-			{ "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
+			-- TODO: enable? Slows down git_changed files <=>
+			-- { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
+			-- { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
 			{
 				"<leader>xx",
 				-- TODO(adinhodovic): Improve this to mimic coc behaviour
