@@ -157,9 +157,6 @@ vmap("<leader>gc", ":GrammarousCheck<CR>")
 vim.g.tq_map_keys = 0
 nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
 vmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
--------------------------------------------
--- Fugitive
--------------------------------------------
 
 -------------------------------------------
 -- Committia
@@ -175,18 +172,12 @@ vim.cmd([[
 ]])
 
 -------------------------------------------
--- Projects/Tree
--------------------------------------------
-nmap("<leader>cd", ":Telescope projects<cr>")
-
--------------------------------------------
 -- Delete/Paste text without copying
 -------------------------------------------
 nmap("<leader>d", '"_d')
 xmap("<leader>d", '"_d')
 nmap("<leader>dd", '"_dd')
 xmap("<leader>dd", '"_dd')
-xmap("<leader>p", '"_dP')
 
 -------------------------------------------
 -- MarkdownClipboardImage

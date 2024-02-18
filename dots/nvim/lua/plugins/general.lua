@@ -52,10 +52,6 @@ return {
 		},
 	},
 	{
-		-- OS commands in vim
-		"tpope/vim-eunuch",
-	},
-	{
 		"ckolkey/ts-node-action",
 		keys = {
 			{

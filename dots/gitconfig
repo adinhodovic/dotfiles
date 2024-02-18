@@ -37,7 +37,7 @@
   plus-style = "syntax #024700"
   minus-style = "syntax #810000"
   # Use github theme later
-  syntax-theme = Base16
+  # syntax-theme = Base16
   line-numbers = true
   navigate = true
 [delta "decorations"]

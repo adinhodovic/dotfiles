@@ -1,46 +1,6 @@
 local vim = vim
 local g = vim.g
 
-local function default(val, default_val)
-	if val == nil then
-		return default_val
-	else
-		return val
-	end
-end
-
-local default_options = { noremap = true, silent = true }
-local default_options_expression = { noremap = true, silent = true, expr = true, replace_keycodes = false }
-
-local function map(mode, shortcut, command, options)
-	options = default(options, default_options)
-	vim.keymap.set(mode, shortcut, command, options)
-end
-
-local function nmap(shortcut, command, options)
-	map("n", shortcut, command, options)
-end
-
-local function imap(shortcut, command, options)
-	map("i", shortcut, command, options)
-end
-
-local function vmap(shortcut, command, options)
-	map("v", shortcut, command, options)
-end
-
-local function xmap(shortcut, command, options)
-	map("x", shortcut, command, options)
-end
-
-local function omap(shortcut, command, options)
-	map("o", shortcut, command, options)
-end
-
-local function cmap(shortcut, command, options)
-	map("c", shortcut, command, options)
-end
-
 -----------------------------------------
 -- Automation
 -----------------------------------------
@@ -78,6 +38,82 @@ return {
 		dependencies = {
 			"nvim-telescope/telescope-fzf-native.nvim",
 		},
+		lazy = false,
+		keys = {
+			{
+				"<leader>cd",
+				function()
+					require("telescope").extensions.projects.projects()
+				end,
+				desc = "Find project",
+			},
+			{
+				"b",
+				":e #<cr>",
+				desc = "Last buffer",
+			},
+			{
+				"<M-=>",
+				function()
+					require("telescope.builtin").find_files()
+				end,
+				desc = "Find files",
+			},
+			{
+				"<M-->",
+				function()
+					require("telescope.builtin").git_files()
+				end,
+				desc = "Find git files",
+			},
+			{
+				"-",
+				function()
+					require("telescope.builtin").buffers({
+						show_all_buffers = true,
+						sort_lastused = true,
+						ignore_current_buffer = true,
+					})
+				end,
+				desc = "Find buffers",
+			},
+			{
+				"<leader>fc",
+				function()
+					require("telescope.builtin").commands()
+				end,
+				desc = "Telescope Commands",
+			},
+			{
+				"<leader>fds",
+				function()
+					require("telescope.builtin").lsp_document_symbols()
+				end,
+				desc = "Telescope Document Symbols",
+			},
+			{
+				"<leader>fg",
+				function()
+					require("telescope.builtin").live_grep()
+				end,
+				desc = "Telescope Grep",
+			},
+			{
+				"<leader>fh",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+				desc = "Telescope Help tags",
+			},
+			{
+				"<leader>as",
+				mode = { "n", "v" },
+				function()
+					require("telescope.builtin").spell_suggest({})
+				end,
+				desc = "Telescope Spell Suggest",
+			},
+		},
 		priority = 1000,
 		config = function()
 			require("telescope").setup({
@@ -90,43 +126,42 @@ return {
 				},
 			})
 			require("telescope").load_extension("fzf")
+		end,
+	},
+	{
+		"axkirillov/easypick.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		keys = {
+			{
+				"=",
+				":Easypick git_changed_files<cr>",
+				desc = "Find changed git files",
+			},
+		},
+		config = function()
+			local easypick = require("easypick")
 
-			local git_files_changed = function()
-				local previewers = require("telescope.previewers")
-				local pickers = require("telescope.pickers")
-				local sorters = require("telescope.sorters")
-				local finders = require("telescope.finders")
+			local base_branch = vim.fn.system("basename $(git symbolic-ref --short refs/remotes/origin/HEAD)")
 
-				pickers
-					.new({
-						results_title = "Modified on current branch",
-						finder = finders.new_oneshot_job({
-							"/home/adin/dotfiles/scripts/git-files-changed.sh",
-							"list",
-						}),
-						sorter = sorters.get_fuzzy_file(),
-						previewer = previewers.new_termopen_previewer({
-							get_command = function(entry)
-								return { "/home/adin/dotfiles/scripts/git-files-changed.sh", "diff", entry.value }
-							end,
-						}),
-					})
-					:find()
-			end
+			easypick.setup({
+				pickers = {
+					-- diff current branch with base_branch and show files that changed with respective diffs in preview
+					{
+						name = "git_changed_files",
+						command = "git diff --name-only $(git merge-base HEAD " .. base_branch .. " )",
+						previewer = easypick.previewers.branch_diff({ base_branch = base_branch }),
+					},
 
-			nmap("b", ":e #<cr>")
-			local builtin = require("telescope.builtin")
-			nmap("-", builtin.buffers)
-			nmap("=", git_files_changed)
-			nmap("<M-=>", builtin.find_files)
-			nmap("<M-->", builtin.git_files)
-			nmap("<leader>fg", builtin.live_grep)
-			nmap("<leader>fh", builtin.help_tags)
-			nmap("<leader>fc", builtin.commands)
-			nmap("<leader>fds", builtin.lsp_document_symbols)
-
-			-- Action spell
-			vim.keymap.set({ "n", "v" }, "<leader>as", ":lua require('telescope.builtin').spell_suggest({})<CR>")
+					-- list files that have conflicts with diffs in preview
+					{
+						name = "git_conflicts",
+						command = "git diff --name-only --diff-filter=U --relative",
+						previewer = easypick.previewers.file_diff(),
+					},
+				},
+			})
 		end,
 	},
 	-- Code actions
