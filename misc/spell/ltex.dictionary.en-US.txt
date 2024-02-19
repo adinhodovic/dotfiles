@@ -8,3 +8,8 @@ Gruvbox
 Powermenu
 neovim
 neofetch
+doctype
+href
+wss
+attachAddon
+const
