@@ -58,6 +58,7 @@ return {
 					"markdownlint",
 				},
 				max_concurrent_installers = 10,
+				PATH = "skip",
 			}
 
 			mason.setup(options)
@@ -595,7 +596,8 @@ return {
 				settings = {
 					yaml = {
 						schemas = {
-							["kubernetes"] = "*.{yml,yaml}",
+							-- Causes issues... With all yamls
+							-- ["kubernetes"] = "*.{yml,yaml}",
 							["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
 							["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
 							["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",

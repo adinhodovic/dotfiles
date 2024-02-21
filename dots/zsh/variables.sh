@@ -11,8 +11,6 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
-export PYTHONPATH="/usr/local/lib/python3.10/site-packages:$PYTHONPATH"
-
 export GOPATH="$HOME/go"
 
 export TERMINAL=/usr/bin/alacritty
