@@ -184,7 +184,7 @@ return {
 							cond = require("gitblame").is_blame_text_available,
 						},
 					},
-					lualine_y = { "aerial", "filename", "progress", "location" },
+					lualine_y = { "filename", "progress", "location" },
 					lualine_z = { lint_progress, "searchcount", "selectioncount" },
 				},
 				tabline = {},
