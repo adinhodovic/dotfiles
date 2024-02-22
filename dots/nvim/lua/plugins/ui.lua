@@ -41,6 +41,12 @@ return {
 		end,
 	},
 	{
+		"hiphish/rainbow-delimiters.nvim",
+		config = function()
+			require("rainbow-delimiters.setup").setup({})
+		end,
+	},
+	{
 		-- Colorizer in code
 		"NvChad/nvim-colorizer.lua",
 		config = function()
@@ -206,17 +212,6 @@ return {
 		end,
 	},
 	{
-		-- Color parenthesis
-		"luochen1990/rainbow",
-		config = function()
-			g.rainbow_active = 1
-		end,
-	},
-	{
-		-- Underlines/highlight the word under the cursor
-		"itchyny/vim-cursorword",
-	},
-	{
 		-- Github theme
 		"projekt0n/github-nvim-theme",
 		priority = 1000,
@@ -235,13 +230,12 @@ return {
 	-- instances.
 	{
 		"RRethy/vim-illuminate",
-		-- event = "LazyFile",
 		lazy = false,
 		opts = {
 			delay = 200,
 			large_file_cutoff = 2000,
 			large_file_overrides = {
-				providers = { "lsp" },
+				providers = { "lsp", "treesitter", "regex" },
 			},
 		},
 		config = function(_, opts)
