@@ -127,14 +127,6 @@ return {
 		config = function(_, opts)
 			local lint = require("lint")
 
-			-- require('lint') is just available here.
-			opts.linters.htmlhint = {
-				cmd = vim.fn.systemlist("which htmlhint")[1],
-				stdin = false,
-				args = { "--format", "unix", "--nocolor" },
-				parser = require("lint.parser").from_errorformat("%f:%l:%c: %m,%-G,%-G%*\\d problems"),
-			}
-
 			opts.linters.tk = {
 				cmd = vim.fn.systemlist("which tk")[1],
 				args = { "lint" },
