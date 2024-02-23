@@ -13,3 +13,4 @@ href
 wss
 attachAddon
 const
+pylint
