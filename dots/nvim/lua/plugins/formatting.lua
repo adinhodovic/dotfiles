@@ -47,6 +47,7 @@ return {
 					sql = { "sqlfluff" },
 					yaml = { "yamlfmt" },
 					html = { "djlint" },
+					htmldjango = { "djlint" },
 				},
 			})
 
@@ -120,7 +121,7 @@ return {
 					prepend_args = { "--enable-neovim" },
 				},
 				djlint = {
-					prepend_args = { "--lint", "--reformat" },
+					prepend_args = { "--lint" },
 				},
 			},
 		},
