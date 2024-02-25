@@ -45,6 +45,9 @@ function binary-download {
 # Plugins
 #############################################
 
+# Less oh my zsh updates
+zstyle ':omz:update' frequency 30
+
 # https://github.com/ohmyzsh/ohmyzsh/issues/5569
 export DISABLE_MAGIC_FUNCTIONS=true
 plugins=(

@@ -351,10 +351,10 @@ return {
 
 			local cmp = require("cmp")
 
-			local cmp_lsp = { name = "nvim_lsp", max_item_count = 10, group_index = 1 }
+			local cmp_lsp = { name = "nvim_lsp", group_index = 1 }
 			local cmp_copilot = { name = "copilot", max_item_count = 5, group_index = 1 }
 			local cmp_luasnip = { name = "luasnip", max_item_count = 10, group_index = 1 }
-			local cmp_yanky = { name = "cmp_yanky", max_item_count = 5, group_index = 1 }
+			local cmp_yanky = { name = "cmp_yanky", max_item_count = 10, group_index = 1 }
 			local cmp_spell = {
 				name = "spell",
 				option = {
@@ -364,7 +364,7 @@ return {
 				},
 				group_index = 1,
 			}
-			local cmp_path = { name = "path", max_item_count = 10, group_index = 1 }
+			local cmp_path = { name = "path", max_item_count = 20, group_index = 1 }
 			local cmp_emoji = { name = "emoji", max_item_count = 5, group_index = 1 }
 			local cmp_calc = { name = "calc", max_item_count = 5, group_index = 1 }
 			local cmp_git = { name = "git", max_item_count = 10, group_index = 1 }
@@ -373,7 +373,7 @@ return {
 				max_item_count = 20,
 				group_index = 1,
 			}
-			local cmp_ripgrep = { name = "rg", max_item_count = 5, keyword_length = 5, group_index = 1 }
+			local cmp_ripgrep = { name = "rg", max_item_count = 10, keyword_length = 5, group_index = 1 }
 			local cmp_buffer = { name = "buffer", max_item_count = 10, group_index = 2 }
 
 			local default_cmp_sources = {
