@@ -267,6 +267,21 @@ return {
 		end,
 	},
 	{
+		-- Better search
+		"cshuaimin/ssr.nvim",
+		opts = {},
+		keys = {
+			{
+				"<leader>sr",
+				mode = { "n", "x" },
+				function()
+					require("ssr").open()
+				end,
+				desc = "Search and replace",
+			},
+		},
+	},
+	{
 		-- Search and replace
 		"nvim-pack/nvim-spectre",
 		keys = {
@@ -285,7 +300,7 @@ return {
 			{
 				"<leader>sp",
 				'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-				desc = "Search on current file",
+				desc = "Search in current file",
 			},
 		},
 		config = function()
@@ -420,13 +435,7 @@ return {
 	{
 		-- treesitter tag closing
 		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				autotag = {
-					enable = true,
-				},
-			})
-		end,
+		opts = {},
 	},
 	{
 		"echasnovski/mini.ai",
