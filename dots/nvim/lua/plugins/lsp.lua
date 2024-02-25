@@ -107,6 +107,8 @@ return {
 		dependencies = {
 			"folke/neodev.nvim",
 			"b0o/schemastore.nvim",
+			"hrsh7th/nvim-cmp",
+			"kevinhwang91/nvim-ufo",
 		},
 		keys = {
 			{ "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
@@ -165,20 +167,55 @@ return {
 		config = function()
 			require("neodev").setup({})
 
+			-- Set up lspconfig.
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			-- nvim-ufo requirement
+			capabilities.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			}
+
 			local lspconfig = require("lspconfig")
-			lspconfig.ansiblels.setup({})
-			lspconfig.bashls.setup({})
-			lspconfig.cssls.setup({})
-			lspconfig.dockerls.setup({})
-			lspconfig.docker_compose_language_service.setup({})
-			lspconfig.emmet_language_server.setup({})
-			lspconfig.gopls.setup({})
+			lspconfig.ansiblels.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.bashls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.dockerls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.docker_compose_language_service.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.emmet_language_server.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.helm_ls.setup({
+				settings = {
+					["helm-ls"] = {
+						yamlls = {
+							path = "yaml-language-server",
+						},
+					},
+				},
+			})
 			lspconfig.html.setup({
+				capabilities = capabilities,
 				filetypes = { "html", "htmldjango" },
 			})
-			-- lspconfig.htmx.setup({})
-			lspconfig.helm_ls.setup({})
+			lspconfig.htmx.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.jsonls.setup({
+				capabilities = capabilities,
 				settings = {
 					json = {
 						schemas = require("schemastore").json.schemas(),
@@ -186,27 +223,66 @@ return {
 					},
 				},
 			})
-			lspconfig.tsserver.setup({})
-			lspconfig.jsonnet_ls.setup({})
-			lspconfig.jqls.setup({})
-			lspconfig.marksman.setup({})
-			lspconfig.lua_ls.setup({})
-			lspconfig.pyright.setup({})
-			lspconfig.sqlls.setup({})
-			lspconfig.bzl.setup({})
-			lspconfig.taplo.setup({})
-			lspconfig.tailwindcss.setup({})
-			lspconfig.terraformls.setup({})
-			lspconfig.vimls.setup({})
+			lspconfig.jsonnet_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.jqls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.ltex.setup({
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					-- rest of your on_attach process.
+					require("ltex_extra").setup({
+						path = "~/dotfiles/misc/spell",
+					})
+				end,
+				settings = {},
+			})
+			lspconfig.marksman.setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig.tsserver.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.sqlls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.bzl.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.taplo.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.terraformls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.vimls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.yamlls.setup({
-				schemaStore = {
-					-- You must disable built-in schemaStore support if you want to use
-					-- this plugin and its advanced options like `ignore`.
-					enable = false,
-					-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-					url = "",
+				capabilities = capabilities,
+				yaml = {
+
+					schemaStore = {
+						-- You must disable built-in schemaStore support if you want to use
+						-- this plugin and its advanced options like `ignore`.
+						enable = false,
+						-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+						url = "",
+					},
+					schemas = require("schemastore").yaml.schemas(),
 				},
-				schemas = require("schemastore").yaml.schemas(),
 			})
 		end,
 	},
@@ -502,116 +578,6 @@ return {
 					cmp_path,
 					{ name = "cmdline", group_index = 2 },
 				}),
-			})
-
-			-- Set up lspconfig.
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			capabilities.textDocument.completion.completionItem.snippetSupport = true
-			-- nvim-ufo requirement
-			capabilities.textDocument.foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			}
-
-			require("lspconfig")["ansiblels"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["bashls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["cssls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["dockerls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["docker_compose_language_service"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["ltex"].setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					-- rest of your on_attach process.
-					require("ltex_extra").setup({
-						path = "~/dotfiles/misc/spell",
-					})
-				end,
-				settings = {
-					-- dictionary = {}
-				},
-			})
-			require("lspconfig")["gopls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["html"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["htmx"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["helm_ls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["jsonls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["tsserver"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["jsonnet_ls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["jqls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["marksman"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["pyright"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["sqlls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["bzl"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["lua_ls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["taplo"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["tailwindcss"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["terraformls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["vimls"].setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig")["yamlls"].setup({
-				capabilities = capabilities,
-				settings = {
-					yaml = {
-						schemas = {
-							-- Causes issues... With all yamls
-							-- ["kubernetes"] = "*.{yml,yaml}",
-							["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-							["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-							["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-							["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-							["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-							["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
-							["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-							["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
-							["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
-							["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-							["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-						},
-					},
-				},
 			})
 		end,
 	},
