@@ -15,3 +15,7 @@ attachAddon
 const
 pylint
 ASGI
+LogEntry
+websockets
+shellx
+SHELLX

@@ -96,8 +96,8 @@
         - src: "ripgreprc"
           dest: "/home/adin/.ripgreprc"
 
-        - src: "markdownlint.yaml"
-          dest: "/home/adin/.markdownlint.yaml"
+        - src: "markdownlintrc"
+          dest: "/home/adin/.markdownlintrc"
 
         - src: "shellcheckrc"
           dest: "/home/adin/.shellcheckrc"
