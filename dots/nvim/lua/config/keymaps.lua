@@ -172,14 +172,6 @@ vim.cmd([[
 ]])
 
 -------------------------------------------
--- Delete/Paste text without copying
--------------------------------------------
-nmap("<leader>d", '"_d')
-xmap("<leader>d", '"_d')
-nmap("<leader>dd", '"_dd')
-xmap("<leader>dd", '"_dd')
-
--------------------------------------------
 -- MarkdownClipboardImage
 -------------------------------------------
 g.mdip_imgdir = "images"

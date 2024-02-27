@@ -169,7 +169,20 @@ set_autocmd(indentation, "FileType", { "lua" }, "setlocal shiftwidth=2 tabstop=2
 set_autocmd(indentation, "FileType", { "sshconfig" }, "setlocal shiftwidth=4 tabstop=4 expandtab")
 
 -- pasting from outside
-set.clipboard = "unnamedplus"
+set.clipboard = "unnamedplus,unnamed"
+-- https://github.com/gbprod/yanky.nvim/issues/46
+vim.g.clipboard = {
+	name = "xsel_override",
+	copy = {
+		["+"] = "xsel --input --clipboard",
+		["*"] = "xsel --input --primary",
+	},
+	paste = {
+		["+"] = "xsel --output --clipboard",
+		["*"] = "xsel --output --primary",
+	},
+	cache_enabled = 1,
+}
 -------------------------------------------
 --                   Text width
 -------------------------------------------

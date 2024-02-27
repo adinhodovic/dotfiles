@@ -51,6 +51,7 @@
         - atuin
 
         # utils
+        - xsel
         - duf
         - wget
         - inetutils

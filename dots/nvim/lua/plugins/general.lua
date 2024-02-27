@@ -74,7 +74,9 @@ return {
 		dependencies = { "kkharji/sqlite.lua" },
 		opts = {
 			highlight = {
-				timer = 250,
+				on_put = true,
+				on_yank = true,
+				timer = 300,
 			},
 			ring = {
 				storage = "sqlite",
