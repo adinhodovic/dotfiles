@@ -78,15 +78,9 @@
         - diskus
         - feh
 
-        # linting
-        - shellcheck
-        - shellshock
-        - yamllint
-
         # configuration-management
         - tanka-bin
         - terraform
-        - terraform-ls
         - kustomize
 
         # git
@@ -114,6 +108,9 @@
         # browsers
         - firefox
         - chromium
+
+        # db
+        - mongosh-bin
 
         # Ui
         - lightdm
