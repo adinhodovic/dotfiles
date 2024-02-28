@@ -146,6 +146,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"projekt0n/github-nvim-theme",
 			"f-person/git-blame.nvim",
+			"linrongbin16/lsp-progress.nvim",
 		},
 		config = function()
 			-- We only use the statusline for the git blame
@@ -176,7 +177,7 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff" },
-					lualine_c = { "diagnostics" },
+					lualine_c = { "diagnostics", require("lsp-progress").progress },
 					lualine_x = {
 						{
 							function()
@@ -197,6 +198,13 @@ return {
 				winbar = {},
 				inactive_winbar = {},
 				extensions = { "aerial" },
+			})
+			-- listen lsp-progress event and refresh lualine
+			vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+			vim.api.nvim_create_autocmd("User", {
+				group = "lualine_augroup",
+				pattern = "LspProgressStatusUpdated",
+				callback = require("lualine").refresh,
 			})
 		end,
 	},
@@ -418,6 +426,12 @@ return {
 		"lewis6991/satellite.nvim",
 		config = function()
 			require("satellite").setup()
+		end,
+	},
+	{
+		"linrongbin16/lsp-progress.nvim",
+		config = function()
+			require("lsp-progress").setup()
 		end,
 	},
 	{
