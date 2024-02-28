@@ -89,13 +89,24 @@ return {
 	},
 	{
 		-- Base64 Decoding/Encoding
-		"deponian/nvim-base64",
+		"taybart/b64.nvim",
 		keys = {
-			{ "<leader>b64e", "<Plug>(ToBase64)", mode = "x", desc = "Base64 encrypt" },
-			{ "<leader>b64d", "<Plug>(FromBase64)", mode = "x", desc = "Base64 decrypt" },
+			{
+				"<leader>b64e",
+				function()
+					require("b64").encode()
+				end,
+				mode = "x",
+				desc = "Base64 encrypt",
+			},
+			{
+				"<leader>b64d",
+				function()
+					require("b64").decode()
+				end,
+				mode = "x",
+				desc = "Base64 decrypt",
+			},
 		},
-		config = function()
-			require("nvim-base64").setup()
-		end,
 	},
 }
