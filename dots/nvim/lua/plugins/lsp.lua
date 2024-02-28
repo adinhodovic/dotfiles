@@ -35,6 +35,7 @@ return {
 					"shfmt",
 					"codespell",
 					"sqlfluff",
+					"golangci-lint",
 					"ansible-lint",
 					"stylelint",
 					"mypy",
