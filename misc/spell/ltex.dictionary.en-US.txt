@@ -19,3 +19,5 @@ LogEntry
 websockets
 shellx
 SHELLX
+url
+urls

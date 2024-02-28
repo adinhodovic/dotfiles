@@ -135,6 +135,9 @@
         - src: "yamlfmt"
           dest: "/home/adin/.config/yamlfmt/.yamlfmt"
 
+        - src: "atuin.toml"
+          dest: "/home/adin/.config/atuin/config.toml"
+
     - name: Mv Sudo Dots
       become: true
       tags: sudo-dots
