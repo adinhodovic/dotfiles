@@ -21,3 +21,5 @@ shellx
 SHELLX
 url
 urls
+websocket
+wtf

@@ -209,6 +209,11 @@ return {
 		end,
 	},
 	{
+		"briangwaltney/paren-hint.nvim",
+		lazy = false,
+		opts = {},
+	},
+	{
 		-- Show line indentation
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
