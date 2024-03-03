@@ -6,100 +6,16 @@ local g = vim.g
 -----------------------------------------
 return {
 	{
-		"williamboman/mason.nvim",
-		build = ":MasonUpdate",
-		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-		opts = {},
-		config = function(_, opts)
-			local present, mason = pcall(require, "mason")
-
-			if not present then
-				return
-			end
-
-			local options = {
-				ensure_installed = {
-					"black",
-					"isort",
-					"htmlhint",
-					"golangci-lint",
-					"ruff",
-					"djlint",
-					"vint",
-					"luacheck",
-					"jsonlint",
-					"jsonnetlint",
-					"shellcheck",
-					"yamllint",
-					"yamlfmt",
-					"shfmt",
-					"codespell",
-					"sqlfluff",
-					"golangci-lint",
-					"ansible-lint",
-					"stylelint",
-					"mypy",
-					"tflint",
-					"stylua",
-					"pylint",
-					"prettier",
-					"write-good",
-					"eslint",
-					"vale",
-					"markdownlint",
-				},
-				max_concurrent_installers = 10,
-				PATH = "skip",
-			}
-
-			mason.setup(options)
-
-			vim.api.nvim_create_user_command("MasonInstallAll", function()
-				vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
-			end, {})
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"ansiblels",
-					"bashls",
-					"cssls",
-					"dockerls",
-					"docker_compose_language_service",
-					"emmet_language_server",
-					"gopls",
-					"html",
-					"htmx",
-					"helm_ls",
-					"ltex",
-					"lua_ls",
-					"jsonls",
-					"tsserver",
-					"jsonnet_ls",
-					"jqls",
-					"marksman",
-					"pyright",
-					"sqlls",
-					"bzl",
-					"taplo",
-					"tailwindcss",
-					"terraformls",
-					"vimls",
-					"yamlls",
-				},
-			})
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"folke/neodev.nvim",
 			"b0o/schemastore.nvim",
 			"hrsh7th/nvim-cmp",
 			"kevinhwang91/nvim-ufo",
+			{
+				"rmagatti/goto-preview",
+				opts = {},
+			},
 		},
 		keys = {
 			{ "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
@@ -153,6 +69,27 @@ return {
 				end,
 				expr = true,
 				desc = "Rename",
+			},
+			{
+				"gpd",
+				function()
+					require("goto-preview").goto_preview_definition()
+				end,
+				desc = "Goto Preview Definition",
+			},
+			{
+				"gpy",
+				function()
+					require("goto-preview").goto_preview_type_definition()
+				end,
+				desc = "Goto Preview Type Definition",
+			},
+			{
+				"<leader>gp",
+				function()
+					require("goto-preview").close_all_win()
+				end,
+				desc = "Goto Preview Definition",
 			},
 		},
 		config = function()
@@ -342,6 +279,20 @@ return {
 	       imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")
 	     ]])
 		end,
+	},
+	-- Code actions
+	{
+		"aznhe21/actions-preview.nvim",
+		keys = {
+			{
+				"<leader>ca",
+				mode = { "v", "n" },
+				function()
+					require("actions-preview").code_actions()
+				end,
+				desc = "Toggle Code Actions",
+			},
+		},
 	},
 	{
 		"zbirenbaum/copilot.lua",

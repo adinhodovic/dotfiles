@@ -164,20 +164,6 @@ return {
 			})
 		end,
 	},
-	-- Code actions
-	{
-		"aznhe21/actions-preview.nvim",
-		keys = {
-			{
-				"<leader>ca",
-				mode = { "v", "n" },
-				function()
-					require("actions-preview").code_actions()
-				end,
-				desc = "Toggle Code Actions",
-			},
-		},
-	},
 	{
 		-- Open at last place
 		"farmergreg/vim-lastplace",
