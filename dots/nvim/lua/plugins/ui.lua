@@ -54,6 +54,8 @@ return {
 				user_default_options = {
 					tailwind = true,
 					sass = { enable = true, parsers = { "css" } }, -- Enable sass colors
+					-- Set to virtual text if needed
+					mode = "background",
 				},
 			})
 		end,
@@ -232,11 +234,6 @@ return {
 			require("github-theme").setup()
 			vim.cmd.colorscheme("github_dark_default")
 		end,
-	},
-	{
-		-- Colours in the file
-		"rrethy/vim-hexokinase",
-		build = "make hexokinase",
 	},
 	-- Automatically highlights other instances of the word under your cursor.
 	-- This works with LSP, Treesitter, and regexp matching to find the other
