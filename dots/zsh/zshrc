@@ -139,6 +139,3 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 source /usr/share/nvm/init-nvm.sh
 
 eval "$(atuin init zsh --disable-up-arrow)"
-
-# Navi CTRL+G
-eval "$(navi widget zsh)"
