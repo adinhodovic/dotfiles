@@ -1,6 +1,5 @@
 # yamllint disable rule:line-length
 # All the dependencies for arc linux
----
 - hosts: 127.0.0.1
   connection: local
 
@@ -8,29 +7,25 @@
     - name: Install PIP packages
       pip:
         name: '{{ item }}'
-        extra_args: --user --break-system-packages
       loop:
-        - ansible-lint
+        - pipx
+        - psycopg2
+        - requests
+        - wheel
+        - cleo
+        - pynvim
+        - openshift
+        - psutil
+
+    - name: Install PIPX packages
+      community.general.pipx:
+        name: '{{ item }}'
+      loop:
         - cookiecutter
+        - awscli
+        - aws-mfa
         - pipreqs
         - pypyp
-        - PyGithub
-        - openshift
-        - python-language-server[all]
-        - pyls-isort
-        - pyls-mypy
-        - pyls-black
-        - psycopg2
-        - vim-vint
         - rebound-cli
-        - mypy
-        - pynvim
         - bpytop
-        - jedi
-        - requests
         - docker-compose
-        - awscli
-        - wheel
-        - psutil
-        - cleo
-        - aws-mfa
