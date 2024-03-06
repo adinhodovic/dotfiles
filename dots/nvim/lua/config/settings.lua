@@ -85,9 +85,14 @@ set.history = 1000
 -------------------------------------------
 -- Spelling
 -------------------------------------------
-set.spell = true
-set.spelllang = { "en_us" }
-set.spellfile = vim.fn.expand("$HOME/dotfiles/misc/spell/en.utf-8.add")
+-- Replaced by LSP LTEX
+set.spell = false
+-- set.spelllang = { "en_us" }
+-- set.spellfile = vim.fn.expand("$HOME/dotfiles/misc/spell/en.utf-8.add")
+
+-------------------------------------------
+-- Common
+-------------------------------------------
 set.title = true
 set.number = true
 
