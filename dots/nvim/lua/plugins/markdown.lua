@@ -19,7 +19,6 @@ return {
 			{
 				"<leader>md",
 				":MarkdownPreviewToggle<cr>",
-				mode = "n",
 				desc = "Start instant markdown preview",
 			},
 		},

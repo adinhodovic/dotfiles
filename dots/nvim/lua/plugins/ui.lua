@@ -544,4 +544,8 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+	{
+		"tzachar/highlight-undo.nvim",
+		opts = {},
+	},
 }

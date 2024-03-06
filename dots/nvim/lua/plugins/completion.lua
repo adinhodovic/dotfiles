@@ -84,6 +84,7 @@ return {
 						symbol_map = { Copilot = "" },
 						maxwidth = 50,
 						ellipsis_char = "...",
+
 						before = function(entry, vim_item)
 							-- Custom icon for 'calc' source
 							if entry.source.name == "calc" then
