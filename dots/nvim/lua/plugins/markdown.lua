@@ -49,6 +49,14 @@ return {
 		"rhysd/vim-grammarous",
 		lazy = true,
 		ft = "markdown",
+		keys = {
+			{
+				"<leader>gc",
+				":GrammarousCheck<CR>",
+				mode = { "n", "v" },
+				desc = "Grammarous: Check grammar",
+			},
+		},
 	},
 	{
 		-- Writing tooling
@@ -72,12 +80,33 @@ return {
 		"ferrine/md-img-paste.vim",
 		lazy = true,
 		ft = "markdown",
+		init = function()
+			g.mdip_imgdir = "images"
+		end,
+		keys = {
+			{
+				"<leader>mp",
+				":call mdip#MarkdownClipboardImage()<CR>",
+				desc = "Paste image from clipboard",
+			},
+		},
 	},
 	{
 		-- Thesaurus
 		"ron89/thesaurus_query.vim",
 		lazy = true,
 		ft = "markdown",
+		init = function()
+			g.tq_map_keys = 0
+		end,
+		keys = {
+			{
+				"<leader>tq",
+				":ThesaurusQueryReplaceCurrentWord<CR>",
+				mode = { "n", "v", "x" },
+				desc = "Thesaurus: Query word",
+			},
+		},
 	},
 	{
 		-- Words

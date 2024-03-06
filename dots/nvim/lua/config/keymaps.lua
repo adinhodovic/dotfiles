@@ -145,38 +145,6 @@ nmap("<F8>", ":<C-u>NextWordy<cr>")
 xmap("<F8>", ":<C-u>NextWordy<cr>")
 imap("<F8>", ":<C-o>NextWordy<cr>")
 
-----------------------------------------
--- Grammarous
-----------------------------------------
-nmap("<leader>gc", ":GrammarousCheck<CR>")
-vmap("<leader>gc", ":GrammarousCheck<CR>")
-
-----------------------------------------
--- Thesaurus_query.vim
-----------------------------------------
-vim.g.tq_map_keys = 0
-nmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
-vmap("<leader>tq", ":ThesaurusQueryReplaceCurrentWord<CR>")
-
--------------------------------------------
--- Committia
--------------------------------------------
-vim.cmd([[
-  let g:committia_hooks = {}
-  function! g:committia_hooks.edit_open(info)
-      " Scroll the diff window from insert mode
-      " Map <C-n> and <C-p>
-      imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-      imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
-  endfunction
-]])
-
--------------------------------------------
--- MarkdownClipboardImage
--------------------------------------------
-g.mdip_imgdir = "images"
-nmap("<leader>mp", ":call mdip#MarkdownClipboardImage()<CR>")
-
 -------------------------------------------
 --  Spell checking
 -------------------------------------------
