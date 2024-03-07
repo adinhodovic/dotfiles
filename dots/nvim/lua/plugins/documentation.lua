@@ -10,13 +10,6 @@ return {
 			vim.g.doge_mapping = "<leader>dg"
 		end,
 		keys = {
-			-- TODO(adinhodovic): Do we need this, does tab work fine?
-			-- {
-			-- 	"<leader>dg",
-			-- 	"<Plug>(doge-generate)",
-			-- 	mode = { "n", "x" },
-			-- 	desc = "Generate documentation",
-			-- },
 			{
 				"<leader>dgn",
 				"<Plug>(doge-comment-jump-forward)",

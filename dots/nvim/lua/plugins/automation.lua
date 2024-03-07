@@ -449,4 +449,24 @@ return {
 			},
 		},
 	},
+	{
+		"bloznelis/before.nvim",
+		opts = {},
+		keys = {
+			{
+				"<c-h>",
+				function()
+					require("before").jump_to_last_edit()
+				end,
+				desc = "Jump to last edit",
+			},
+			{
+				"<c-l>",
+				function()
+					require("before").jump_to_next_edit()
+				end,
+				desc = "Jump to next edit",
+			},
+		},
+	},
 }

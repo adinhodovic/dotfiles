@@ -39,7 +39,7 @@ return {
 				desc = "Neotest: Debug test (with dap)",
 			},
 			{
-				"<leader>ts",
+				"<leader>trs",
 				function()
 					require("neotest").run.stop()
 				end,
