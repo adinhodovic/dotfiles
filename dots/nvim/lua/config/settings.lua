@@ -119,7 +119,8 @@ set.tabstop = 2
 
 set.autoindent = true
 set.smartindent = true
-set.wrap = true
+-- Skip wrapping
+set.wrap = false
 
 -- Count words with dashes as one word
 set.iskeyword:append({ "-" })

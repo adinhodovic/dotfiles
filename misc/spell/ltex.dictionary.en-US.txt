@@ -28,3 +28,4 @@ WebSockets
 Gunicorn
 ASGI-HTTP
 WebSocket
+non-ASGI
