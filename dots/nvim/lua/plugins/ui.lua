@@ -535,16 +535,6 @@ return {
 	},
 	{ "winston0410/range-highlight.nvim", dependencies = { "winston0410/cmd-parser.nvim" }, config = true },
 	{
-		-- Preview colorthemes
-		"vague2k/huez.nvim",
-		cmd = {
-			"Huez",
-		},
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-	},
-	{
 		"tzachar/highlight-undo.nvim",
 		opts = {},
 	},

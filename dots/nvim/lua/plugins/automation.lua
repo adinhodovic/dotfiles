@@ -12,19 +12,14 @@ return {
 		build = "./install --all",
 	},
 	{
-		-- Fzf vim integration
-		"junegunn/fzf.vim",
-		dependencies = {
-			"junegunn/fzf",
-		},
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			g.fzf_action = {
-				["ctrl-t"] = "tab split",
-				["ctrl-x"] = "vsplit",
-				["ctrl-z"] = "split",
-			}
-			g.fzf_layout = { up = "~40%" }
-			g.fzf_files_options = '--ansi --preview "bat --style=plain {}" --preview-window right:100'
+			require("fzf-lua").setup({
+				"telescope",
+				winopts = { preview = { default = "bat" } },
+			})
 		end,
 	},
 	{
