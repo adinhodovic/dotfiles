@@ -124,6 +124,22 @@ return {
 		end,
 	},
 	{
+		"piersolenski/telescope-import.nvim",
+		dependencies = "nvim-telescope/telescope.nvim",
+		keys = {
+			{
+				"<leader>fi",
+				function()
+					require("telescope").extensions.import.import()
+				end,
+				desc = "Import",
+			},
+		},
+		config = function()
+			require("telescope").load_extension("import")
+		end,
+	},
+	{
 		"axkirillov/easypick.nvim",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
