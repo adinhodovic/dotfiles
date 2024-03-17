@@ -178,6 +178,15 @@ return {
 			})
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
+				settings = {
+					python = {
+						analysis = {
+							-- 'workspace' diagnostics is better but consumes more resources
+							diagnosticMode = "openFilesOnly",
+							typeCheckingMode = "off", -- Using mypy
+						},
+					},
+				},
 			})
 			lspconfig.sqlls.setup({
 				capabilities = capabilities,
