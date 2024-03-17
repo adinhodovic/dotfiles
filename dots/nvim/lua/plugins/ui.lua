@@ -148,13 +148,11 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"projekt0n/github-nvim-theme",
 			"f-person/git-blame.nvim",
-			"linrongbin16/lsp-progress.nvim",
 		},
 		config = function()
 			-- We only use the statusline for the git blame
 			g.gitblame_display_virtual_text = 0
 			g.gitblame_date_format = "%x %H:%M"
-			local git_blame = require("gitblame")
 
 			local lint_progress = function()
 				local linters = require("lint").get_running()
@@ -179,7 +177,7 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff" },
-					lualine_c = { "diagnostics", require("lsp-progress").progress },
+					lualine_c = { "diagnostics" },
 					lualine_x = {
 						{
 							function()
@@ -200,13 +198,6 @@ return {
 				winbar = {},
 				inactive_winbar = {},
 				extensions = { "aerial" },
-			})
-			-- listen lsp-progress event and refresh lualine
-			vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-			vim.api.nvim_create_autocmd("User", {
-				group = "lualine_augroup",
-				pattern = "LspProgressStatusUpdated",
-				callback = require("lualine").refresh,
 			})
 		end,
 	},
@@ -431,12 +422,6 @@ return {
 		end,
 	},
 	{
-		"linrongbin16/lsp-progress.nvim",
-		config = function()
-			require("lsp-progress").setup()
-		end,
-	},
-	{
 		-- TODO: maybe replace with neoscroll?
 		"echasnovski/mini.animate",
 		event = "VeryLazy",
@@ -537,5 +522,15 @@ return {
 	{
 		"tzachar/highlight-undo.nvim",
 		opts = {},
+	},
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({
+				notification = {
+					override_vim_notify = true,
+				},
+			})
+		end,
 	},
 }
