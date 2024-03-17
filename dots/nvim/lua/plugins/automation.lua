@@ -132,7 +132,7 @@ return {
 				function()
 					require("telescope").extensions.import.import()
 				end,
-				desc = "Import",
+				desc = "Telescope: Import library",
 			},
 		},
 		config = function()
