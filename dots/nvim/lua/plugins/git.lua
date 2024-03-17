@@ -163,7 +163,7 @@ return {
 		},
 		keys = {
 			{
-				"<leader>gsa",
+				"<leader>gas",
 				"<cmd>Telescope advanced_git_search show_custom_functions<cr>",
 				desc = "Advanced Git Search",
 			},
@@ -180,26 +180,5 @@ return {
 			"ibhagwan/fzf-lua", -- optional
 		},
 		config = true,
-	},
-	{
-		"isak102/telescope-git-file-history.nvim",
-		dependencies = {
-			{
-				"nvim-telescope/telescope.nvim",
-				"tpope/vim-fugitive",
-			},
-		},
-		keys = {
-			{
-				"<leader>gfh",
-				function()
-					require("telescope").extensions.git_file_history.git_file_history()
-				end,
-				desc = "Telescope: Git File History",
-			},
-		},
-		config = function()
-			require("telescope").load_extension("git_file_history")
-		end,
 	},
 }
