@@ -50,9 +50,9 @@ return {
 			{
 				"<M-=>",
 				function()
-					require("telescope.builtin").find_files()
+					require("fzf-lua").files()
 				end,
-				desc = "Find files",
+				desc = "fzf-lua: Find files",
 			},
 			{
 				"<M-->",
