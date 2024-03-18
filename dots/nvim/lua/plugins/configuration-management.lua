@@ -18,11 +18,6 @@ end
 
 return {
 	{
-		-- Json
-		"elzr/vim-json",
-		ft = "json",
-	},
-	{
 		-- Jsonnnet
 		"google/vim-jsonnet",
 		ft = "jsonnet",

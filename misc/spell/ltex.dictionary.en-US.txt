@@ -29,3 +29,7 @@ Gunicorn
 ASGI-HTTP
 WebSocket
 non-ASGI
+ui
+uppy
+minio
+nextjs

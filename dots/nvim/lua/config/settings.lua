@@ -253,3 +253,13 @@ set.matchtime = 2
 set.errorbells = false
 set.visualbell = false
 set.timeoutlen = 500
+
+-------------------------------------------
+-- Filetypes
+-------------------------------------------
+vim.filetype.add({
+	pattern = {
+		-- .env.template
+		["%.env%.[%w_.-]+"] = "sh",
+	},
+})
