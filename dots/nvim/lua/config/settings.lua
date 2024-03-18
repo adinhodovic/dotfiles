@@ -63,6 +63,10 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- GUI
 -----------------------------------------
 set.termguicolors = true
+set.cursorline = true
+vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
+
+set.number = true
 
 set.background = "dark"
 

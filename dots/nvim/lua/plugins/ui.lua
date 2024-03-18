@@ -226,9 +226,18 @@ return {
 			vim.cmd.colorscheme("github_dark_default")
 		end,
 	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({
+				flavor = "moccha",
+				transparent_background = true,
+			})
+		end,
+	},
 	-- Automatically highlights other instances of the word under your cursor.
-	-- This works with LSP, Treesitter, and regexp matching to find the other
-	-- instances.
 	{
 		"RRethy/vim-illuminate",
 		lazy = false,
@@ -535,5 +544,9 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"mawkler/modicator.nvim",
+		opts = {},
 	},
 }
