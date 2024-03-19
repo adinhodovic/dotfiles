@@ -13,7 +13,6 @@ alias n="nnn"
 alias df="duf"
 
 # Zoxide inits with cd
-alias z="cd"
 alias c='cd -I'
 alias cc='cd -c'
 alias c.="cd .."
