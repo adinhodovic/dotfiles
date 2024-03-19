@@ -1,7 +1,7 @@
 alias cat="bat"
 alias cl='clear'
-# lsd instead of ls
-alias ls='lsd'
+# eza instead of ls
+alias ls='eza'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
@@ -12,8 +12,10 @@ alias n="nnn"
 
 alias df="duf"
 
-alias c='z -I'
-alias cc='z -c'
+# Zoxide inits with cd
+alias z="cd"
+alias c='cd -I'
+alias cc='cd -c'
 alias c.="cd .."
 alias c..="cd ../.."
 alias c...="cd ../../.."

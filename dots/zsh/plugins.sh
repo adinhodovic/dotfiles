@@ -86,5 +86,5 @@ binaries=(
 plugin-load $repos
 binary-download $binaries
 
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh))"
 ############################################

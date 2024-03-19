@@ -61,7 +61,6 @@
         - procs
         - ripgrep
         - broot
-        - lsd
         - jq
         - yq
         - dust
@@ -77,6 +76,7 @@
         - simplescreenrecorder
         - diskus
         - feh
+        - eza
 
         # configuration-management
         - tanka-bin

@@ -24,7 +24,7 @@ if which fd &> /dev/null; then
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
-export FZF_ALT_C_OPTS="--preview 'lsd --tree {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree {}'"
 
 # Custom fzf file widget.
 # The differences are:
@@ -85,6 +85,7 @@ bindkey -M viins '^x'   fzf-docker-exec
 enable-fzf-tab
 
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' popup-pad 50 0
 zstyle ':fzf-tab:complete:_zlua:*' query-string input
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -93,7 +94,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
