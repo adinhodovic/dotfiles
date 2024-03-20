@@ -45,7 +45,7 @@ return {
 					scss = { "prettier" },
 					less = { "prettier" },
 					sql = { "sqlfluff" },
-					yaml = { "yamlfmt" },
+					yaml = { "prettier" },
 					html = { "djlint" },
 					htmldjango = { "djlint" },
 				},

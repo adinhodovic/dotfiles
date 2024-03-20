@@ -48,6 +48,12 @@ return {
 				desc = "Open the current file on GitHub",
 			},
 			{
+				"<leader>gbl",
+				":Git blame<cr>",
+				mode = { "n", "x" },
+				desc = "Open the current file on GitHub",
+			},
+			{
 				"<leader>gl",
 				":Git log<cr>",
 				desc = "Open the git log",
