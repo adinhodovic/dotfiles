@@ -549,4 +549,16 @@ return {
 		"mawkler/modicator.nvim",
 		opts = {},
 	},
+	{
+		"Sam-programs/cmdline-hl.nvim",
+		event = "VimEnter",
+		opts = {
+			type_signs = {
+				[":"] = { " ", "Title" },
+				["/"] = { " ", "Title" },
+				["?"] = { " ", "Title" },
+			},
+			ghost_text = false,
+		},
+	},
 }
