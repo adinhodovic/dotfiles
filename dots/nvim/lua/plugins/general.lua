@@ -424,4 +424,14 @@ return {
 			vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 		end,
 	},
+	{
+		"chrishrb/gx.nvim",
+		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+		cmd = { "Browse" },
+		init = function()
+			vim.g.netrw_nogx = 1 -- disable netrw gx
+		end,
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
+	},
 }
