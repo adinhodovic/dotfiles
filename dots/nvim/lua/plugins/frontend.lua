@@ -17,11 +17,6 @@ end
 -----------------------------------------
 return {
 	{
-		-- Tag matching
-		"AndrewRadev/tagalong.vim",
-		ft = { "html", "htmldjango" },
-	},
-	{
 		-- Provides support for expanding abbreviations similar to emmet
 		"mattn/emmet-vim",
 		config = function()

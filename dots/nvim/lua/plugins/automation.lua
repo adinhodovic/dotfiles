@@ -305,12 +305,6 @@ return {
 		end,
 	},
 	{
-		-- Auto pairs
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		opts = {},
-	},
-	{
 		-- Better search <leader>e, simpler than above
 		"wincent/scalpel",
 	},
@@ -432,6 +426,17 @@ return {
 	{
 		-- treesitter tag closing
 		"windwp/nvim-ts-autotag",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("nvim-ts-autotag").setup({})
+		end,
+	},
+	{
+		-- Auto pairs
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		opts = {},
 	},
 	{

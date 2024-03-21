@@ -2,15 +2,6 @@ local vim = vim
 
 return {
 	{
-		"roobert/tailwindcss-colorizer-cmp.nvim",
-		-- optionally, override the default options:
-		config = function()
-			require("tailwindcss-colorizer-cmp").setup({
-				color_square_width = 2,
-			})
-		end,
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -24,7 +15,7 @@ return {
 			"davidsierradz/cmp-conventionalcommits",
 			"f3fora/cmp-spell",
 			"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-			"roobert/tailwindcss-colorizer-cmp.nvim",
+			"luckasRanarison/tailwind-tools.nvim",
 			"chrisgrieser/cmp_yanky",
 			"zbirenbaum/copilot-cmp",
 			"onsails/lspkind.nvim",
@@ -76,6 +67,7 @@ return {
 			}
 
 			local luasnip = require("luasnip")
+			local utils = require("tailwind-tools.utils")
 
 			cmp.setup({
 				formatting = {
@@ -111,7 +103,14 @@ return {
 							end
 
 							-- Tailwind colors
-							vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+							local doc = entry.completion_item.documentation
+							if vim_item.kind == "Color" and type(doc) == "string" then
+								local _, _, r, g, b = doc:find("rgba?%((%d+), (%d+), (%d+)")
+								if r then
+									vim_item.kind_hl_group = utils.set_hl_from(r, g, b, "foreground")
+								end
+							end
+
 							return vim_item
 						end,
 					}),
