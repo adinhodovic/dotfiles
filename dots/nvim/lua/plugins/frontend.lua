@@ -5,103 +5,94 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Define a function to simplify setting autocmds
 local function set_autocmd(group, event, pattern, command)
-  autocmd(event, {
-    group = group,
-    pattern = pattern,
-    command = command
-  })
+	autocmd(event, {
+		group = group,
+		pattern = pattern,
+		command = command,
+	})
 end
 
 -----------------------------------------
 -- Frontend
 -----------------------------------------
 return {
-  {
-    -- Tag matching
-    "AndrewRadev/tagalong.vim",
-    ft = "html"
-  },
-  {
-    -- Provides support for expanding abbreviations similar to emmet
-    "mattn/emmet-vim",
-    config = function()
-      g.user_emmet_install_global = 0
-      local emmetGroup = augroup("emmet", {})
-      set_autocmd(
-        emmetGroup,
-        { "FileType" },
-        { "html", "css", "jsx", "tsx", "htmldjango" },
-        "EmmetInstall"
-      )
-    end
-  },
-  {
-    -- Html Django
-    "tweekmonster/django-plus.vim",
-    ft = "htmldjango"
-  },
-  {
-    -- Javascript
-    "pangloss/vim-javascript",
-    ft = {
-      "javscript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    }
-  },
-  {
-    -- Javascript
-    "jelera/vim-javascript-syntax",
-    ft = {
-      "javscript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    }
-  },
-  {
-    -- Typescript
-    "HerringtonDarkholme/yats.vim",
-    ft = {
-      "typescript",
-      "typescriptreact"
-    }
-  },
-  {
-    -- JSX
-    "maxmellon/vim-jsx-pretty",
-    ft = {
-      "javscript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    }
-  },
-  {
-    -- CSS syntax
-    "hail2u/vim-css3-syntax",
-    lazy = true,
-    ft = {
-      "css",
-      "scss",
-      "less",
-    },
-  },
-  {
-    -- Tailwind class sorting
-    "laytan/tailwind-sorter.nvim",
-    build = "cd formatter && npm i && npm run build",
-    lazy = true,
-    ft = {
-      "css",
-      "scss",
-      "less",
-    },
-    config = function()
-      require('tailwind-sorter').setup({
-        on_save_enabled = true, -- If `true`, automatically enables on save sorting.
-      })
-    end
-  },
+	{
+		-- Tag matching
+		"AndrewRadev/tagalong.vim",
+		ft = { "html", "htmldjango" },
+	},
+	{
+		-- Provides support for expanding abbreviations similar to emmet
+		"mattn/emmet-vim",
+		config = function()
+			g.user_emmet_install_global = 0
+			local emmetGroup = augroup("emmet", {})
+			set_autocmd(emmetGroup, { "FileType" }, { "html", "css", "jsx", "tsx", "htmldjango" }, "EmmetInstall")
+		end,
+	},
+	{
+		-- Javascript
+		"pangloss/vim-javascript",
+		ft = {
+			"javscript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+		},
+	},
+	{
+		-- Javascript
+		"jelera/vim-javascript-syntax",
+		ft = {
+			"javscript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+		},
+	},
+	{
+		-- Typescript
+		"HerringtonDarkholme/yats.vim",
+		ft = {
+			"typescript",
+			"typescriptreact",
+		},
+	},
+	{
+		-- JSX
+		"maxmellon/vim-jsx-pretty",
+		ft = {
+			"javscript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+		},
+	},
+	{
+		-- CSS syntax
+		"hail2u/vim-css3-syntax",
+		lazy = true,
+		ft = {
+			"css",
+			"scss",
+			"less",
+		},
+	},
+	{
+		"luckasRanarison/tailwind-tools.nvim",
+		config = function()
+			require("tailwind-tools").setup({})
+			local tailwindGroup = augroup("tailwind", {})
+			set_autocmd(tailwindGroup, { "BufWritePre" }, { "*.html" }, "TailwindSort")
+		end,
+		ft = {
+			"htmldjango",
+			"html",
+			"jsx",
+			"tsx",
+			"css",
+			"scss",
+			"less",
+		},
+	},
 }
