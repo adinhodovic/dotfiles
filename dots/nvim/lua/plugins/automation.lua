@@ -456,12 +456,14 @@ return {
 				function()
 					require("rulebook").ignoreRule()
 				end,
+				description = "Rulebook: Ignore rule",
 			},
 			{
 				"<leader>rl",
 				function()
 					require("rulebook").lookupRule()
 				end,
+				description = "Rulebook: Lookup rule",
 			},
 		},
 	},
