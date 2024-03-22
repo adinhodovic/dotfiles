@@ -14,12 +14,20 @@ return {
 	},
 	{
 		"chrisgrieser/nvim-scissors",
-		dependencies = "nvim-telescope/telescope.nvim", -- optional
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		}, -- optional
 		opts = {
 			snippetDir = "/home/adin/dotfiles/snippets",
+			editSnippetPopup = {
+				keymaps = {
+					cancel = "<esc>",
+				},
+			},
 		},
 		keys = {
 			{
+				mode = { "n", "x" },
 				"<leader>sa",
 				function()
 					require("scissors").addNewSnippet()
