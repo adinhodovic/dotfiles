@@ -25,7 +25,6 @@ return {
 				mode = { "n", "t" },
 				desc = "Toggleterm: Toggle terminal",
 			},
-
 			{
 				"<leader>ttg",
 				"<cmd>lua _lazygit_toggle()<cr>",

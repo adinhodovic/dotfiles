@@ -12,10 +12,6 @@ return {
 		"junegunn/vim-easy-align",
 	},
 	{
-		-- Sets root directory to project (git) directory by default
-		"airblade/vim-rooter",
-	},
-	{
 		-- Open files at file:line:column
 		"kopischke/vim-fetch",
 	},
