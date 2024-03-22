@@ -149,7 +149,7 @@ imap("<F8>", ":<C-o>NextWordy<cr>")
 --  Spell checking
 -------------------------------------------
 -- Pressing ,se will toggle and untoggle spell checking
-nmap("<leader>se", ":setlocal spell!<cr>")
+nmap("<leader>sss", ":setlocal spell!<cr>")
 
 -------------------------------------------
 -- Dap
