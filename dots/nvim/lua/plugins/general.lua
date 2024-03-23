@@ -358,6 +358,7 @@ return {
 	{
 		"chrishrb/gx.nvim",
 		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+		-- TODO: Long links don't work
 		cmd = { "Browse" },
 		init = function()
 			vim.g.netrw_nogx = 1 -- disable netrw gx
