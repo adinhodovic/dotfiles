@@ -123,8 +123,8 @@ set.tabstop = 2
 
 set.autoindent = true
 set.smartindent = true
--- Skip wrapping
-set.wrap = false
+-- wrapping
+set.wrap = true
 
 -- Count words with dashes as one word
 set.iskeyword:append({ "-" })
@@ -202,7 +202,7 @@ set.colorcolumn = "100"
 
 local textwidth = augroup("textwidth", {})
 autocmd("FileType", {
-	pattern = { "gitcommit", "html", "htmldjango", "text", "direnv", "markdown" },
+	pattern = { "gitcommit", "html", "htmldjango", "text", "direnv", "markdown", "libsonnet", "jsonnet" },
 	command = "setlocal textwidth=0 | setlocal colorcolumn=0",
 	group = textwidth,
 })
