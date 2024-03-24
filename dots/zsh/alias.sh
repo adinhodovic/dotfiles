@@ -43,7 +43,7 @@ create_envrc() {
 	if [ -e "./.env" ]; then
 		envrc_content+='dotenv\n\n'
 	fi
-	envrc_content+='poetry env use 3.9\nlayout_poetry'
+	envrc_content+="poetry env use 3.11\nsource ./.venv/bin/activate"
 	echo $envrc_content >.envrc
 }
 alias cenvrc=create_envrc
