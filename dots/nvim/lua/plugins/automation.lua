@@ -6,176 +6,6 @@ local g = vim.g
 -----------------------------------------
 return {
 	{
-		-- Fzf
-		"junegunn/fzf",
-		dir = "~/.fzf",
-		build = "./install --all",
-	},
-	{
-		"ibhagwan/fzf-lua",
-		-- optional for icon support
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("fzf-lua").setup({
-				"telescope",
-				winopts = { preview = { default = "bat" } },
-			})
-		end,
-	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-		priority = 10000,
-	},
-	{
-		-- Telescope
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
-		lazy = false,
-		keys = {
-			{
-				"<leader>cd",
-				function()
-					require("telescope").extensions.projects.projects()
-				end,
-				desc = "Find project",
-			},
-			{
-				"b",
-				":e #<cr>",
-				desc = "Last buffer",
-			},
-			{
-				"<M-=>",
-				function()
-					require("fzf-lua").files()
-				end,
-				desc = "fzf-lua: Find files",
-			},
-			{
-				"<M-->",
-				function()
-					require("telescope.builtin").git_files()
-				end,
-				desc = "Find git files",
-			},
-			{
-				"-",
-				function()
-					require("telescope.builtin").buffers({
-						show_all_buffers = true,
-						sort_lastused = true,
-						ignore_current_buffer = true,
-					})
-				end,
-				desc = "Find buffers",
-			},
-			{
-				"<leader>fc",
-				function()
-					require("telescope.builtin").commands()
-				end,
-				desc = "Telescope Commands",
-			},
-			{
-				"<leader>fds",
-				function()
-					require("telescope.builtin").lsp_document_symbols()
-				end,
-				desc = "Telescope Document Symbols",
-			},
-			{
-				"<leader>fg",
-				function()
-					require("telescope.builtin").live_grep()
-				end,
-				desc = "Telescope Grep",
-			},
-			{
-				"<leader>fh",
-				function()
-					require("telescope.builtin").help_tags()
-				end,
-				desc = "Telescope Help tags",
-			},
-			{
-				"<leader>as",
-				mode = { "n", "v" },
-				function()
-					require("telescope.builtin").spell_suggest({})
-				end,
-				desc = "Telescope Spell Suggest",
-			},
-		},
-		priority = 1000,
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					fzf = {
-						fuzzy = true, -- false will only do exact matching
-						override_generic_sorter = true, -- override the generic sorter
-						override_file_sorter = true, -- override the file sorter
-					},
-				},
-			})
-			require("telescope").load_extension("fzf")
-		end,
-	},
-	{
-		"piersolenski/telescope-import.nvim",
-		dependencies = "nvim-telescope/telescope.nvim",
-		keys = {
-			{
-				"<leader>fi",
-				function()
-					require("telescope").extensions.import.import()
-				end,
-				desc = "Telescope: Import library",
-			},
-		},
-		config = function()
-			require("telescope").load_extension("import")
-		end,
-	},
-	{
-		"axkirillov/easypick.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		keys = {
-			{
-				"=",
-				":Easypick git_changed_files<cr>",
-				desc = "Find changed git files",
-			},
-		},
-		config = function()
-			local easypick = require("easypick")
-
-			local base_branch = vim.fn.system("basename $(git symbolic-ref --short refs/remotes/origin/HEAD)")
-
-			easypick.setup({
-				pickers = {
-					-- diff current branch with base_branch and show files that changed with respective diffs in preview
-					{
-						name = "git_changed_files",
-						command = "git diff --name-only $(git merge-base HEAD " .. base_branch .. " )",
-						previewer = easypick.previewers.branch_diff({ base_branch = base_branch }),
-					},
-
-					-- list files that have conflicts with diffs in preview
-					{
-						name = "git_conflicts",
-						command = "git diff --name-only --diff-filter=U --relative",
-						previewer = easypick.previewers.file_diff(),
-					},
-				},
-			})
-		end,
-	},
-	{
 		-- Open at last place
 		"farmergreg/vim-lastplace",
 	},
@@ -194,48 +24,6 @@ return {
 				"perl",
 				"nginx",
 			}
-		end,
-	},
-	{
-		-- Project jumping
-		-- Autocd to root of project
-		"ahmedkhalf/project.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		config = function()
-			require("project_nvim").setup({})
-			require("telescope").load_extension("projects")
-		end,
-	},
-	{
-		-- File tree
-		"nvim-tree/nvim-tree.lua",
-		keys = {
-			{
-				"<leader>ct",
-				":NvimTreeToggle<cr>",
-				desc = "Open nvim tree",
-			},
-		},
-		config = function()
-			require("nvim-tree").setup({
-				sync_root_with_cwd = true,
-				respect_buf_cwd = true,
-				update_focused_file = {
-					enable = true,
-					update_root = true,
-				},
-				sort = {
-					sorter = "case_sensitive",
-				},
-				renderer = {
-					group_empty = true,
-				},
-				filters = {
-					dotfiles = true,
-				},
-			})
 		end,
 	},
 	{
@@ -259,51 +47,6 @@ return {
 		config = function()
 			require("numb").setup()
 		end,
-	},
-	{
-		-- Better search
-		"cshuaimin/ssr.nvim",
-		opts = {},
-		keys = {
-			{
-				"<leader>sr",
-				mode = { "n", "x" },
-				function()
-					require("ssr").open()
-				end,
-				desc = "Search and replace",
-			},
-		},
-	},
-	{
-		-- Search and replace
-		"nvim-pack/nvim-spectre",
-		keys = {
-			{ "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre" },
-			{
-				"<leader>sw",
-				'<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-				desc = "Search current word",
-			},
-			{
-				"<leader>sw",
-				mode = { "v" },
-				'<esc><cmd>lua require("spectre").open_visual()<CR>',
-				desc = "Search current word",
-			},
-			{
-				"<leader>sp",
-				'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-				desc = "Search in current file",
-			},
-		},
-		config = function()
-			require("spectre").setup()
-		end,
-	},
-	{
-		-- Better search <leader>e, simpler than above
-		"wincent/scalpel",
 	},
 	{
 		-- Better folding
@@ -353,66 +96,6 @@ return {
 
 			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-		end,
-	},
-	{
-		-- Better search
-		"folke/flash.nvim",
-		lazy = false,
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-			{
-				"R",
-				mode = { "o", "x" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Treesitter Search",
-			},
-			{
-				"<c-s>",
-				mode = { "c" },
-				function()
-					require("flash").toggle()
-				end,
-				desc = "Toggle Flash Search",
-			},
-		},
-		config = function()
-			require("flash").setup({
-				modes = {
-					search = {
-						-- TODO: adinhodovic renable this maybe later?
-						enabled = false,
-					},
-					char = {
-						jump_labels = true,
-					},
-				},
-			})
 		end,
 	},
 	{
@@ -511,5 +194,113 @@ return {
 				require("nvim_rocks").ensure_installed("luautf8")
 			end,
 		},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"folke/which-key.nvim",
+		},
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				textobjects = {
+					select = {
+						enable = true,
+
+						-- Automatically jump forward to textobj, similar to targets.vim
+						lookahead = true,
+
+						keymaps = {
+							-- You can use the capture groups defined in textobjects.scm
+							["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
+							["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
+							["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
+							["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
+
+							["a:"] = { query = "@property.outer", desc = "Select outer part of an object property" },
+							["i:"] = { query = "@property.inner", desc = "Select inner part of an object property" },
+							["l:"] = { query = "@property.lhs", desc = "Select left part of an object property" },
+							["r:"] = { query = "@property.rhs", desc = "Select right part of an object property" },
+
+							["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
+							["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
+
+							["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
+							["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
+
+							["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
+							["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
+
+							["af"] = { query = "@call.outer", desc = "Select outer part of a function call" },
+							["if"] = { query = "@call.inner", desc = "Select inner part of a function call" },
+
+							["am"] = {
+								query = "@function.outer",
+								desc = "Select outer part of a method/function definition",
+							},
+							["im"] = {
+								query = "@function.inner",
+								desc = "Select inner part of a method/function definition",
+							},
+
+							["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
+							["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
+						},
+					},
+					swap = {
+						enable = true,
+						swap_next = {
+							["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
+							["<leader>n:"] = "@property.outer", -- swap object property with next
+							["<leader>nm"] = "@function.outer", -- swap function with next
+						},
+						swap_previous = {
+							["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
+							["<leader>p:"] = "@property.outer", -- swap object property with prev
+							["<leader>pm"] = "@function.outer", -- swap function with previous
+						},
+					},
+					move = {
+						enable = true,
+						set_jumps = true, -- whether to set jumps in the jumplist
+						goto_next_start = {
+							["]f"] = { query = "@call.outer", desc = "Next function call start" },
+							["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
+							["]l"] = { query = "@loop.outer", desc = "Next loop start" },
+
+							["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+							["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+						},
+						goto_next_end = {
+							["]F"] = { query = "@call.outer", desc = "Next function call end" },
+							["]M"] = { query = "@function.outer", desc = "Next method/function def end" },
+							["]C"] = { query = "@class.outer", desc = "Next class end" },
+							["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
+							["]L"] = { query = "@loop.outer", desc = "Next loop end" },
+						},
+						goto_previous_start = {
+							["[f"] = { query = "@call.outer", desc = "Prev function call start" },
+							["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
+							["[c"] = { query = "@class.outer", desc = "Prev class start" },
+							["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
+							["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
+						},
+						goto_previous_end = {
+							["[F"] = { query = "@call.outer", desc = "Prev function call end" },
+							["[M"] = { query = "@function.outer", desc = "Prev method/function def end" },
+							["[C"] = { query = "@class.outer", desc = "Prev class end" },
+							["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
+							["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
+						},
+					},
+				},
+			})
+
+			local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+
+			-- vim way: ; goes to the direction you were moving.
+			vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+			vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+		end,
 	},
 }

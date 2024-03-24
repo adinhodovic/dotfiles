@@ -33,3 +33,6 @@ ui
 uppy
 minio
 nextjs
+mixin
+ServiceMonitor
+ingress-nginx-mixin

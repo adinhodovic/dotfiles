@@ -91,4 +91,28 @@ return {
 			vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 		end,
 	},
+	{
+		"backdround/global-note.nvim",
+		config = function()
+			require("global-note").setup({})
+		end,
+		keys = {
+			{
+				"<leader>gn",
+				"<cmd>GlobalNote<cr>",
+				desc = "Toggle global note",
+			},
+		},
+	},
+	{
+		"chrishrb/gx.nvim",
+		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+		-- TODO: Long links don't work
+		cmd = { "Browse" },
+		init = function()
+			vim.g.netrw_nogx = 1 -- disable netrw gx
+		end,
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
+	},
 }
