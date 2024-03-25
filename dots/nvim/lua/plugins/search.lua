@@ -44,16 +44,16 @@ return {
 			{
 				"<M-=>",
 				function()
-					require("fzf-lua").files()
+					require("telescope.builtin").find_files()
 				end,
-				desc = "fzf-lua: Find files",
+				desc = "Telescope: Find files",
 			},
 			{
 				"<M-->",
 				function()
 					require("telescope.builtin").git_files()
 				end,
-				desc = "Find git files",
+				desc = "Telescope: Find git files",
 			},
 			{
 				"-",
