@@ -123,9 +123,6 @@ return {
 		"echasnovski/mini.ai",
 	},
 	{
-		"echasnovski/mini.surround",
-	},
-	{
 		"echasnovski/mini.hipatterns",
 	},
 	{
@@ -352,6 +349,15 @@ return {
 		},
 		config = function()
 			require("hlslens").setup()
+		end,
+	},
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
 		end,
 	},
 }
