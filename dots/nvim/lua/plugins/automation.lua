@@ -303,4 +303,55 @@ return {
 			vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 		end,
 	},
+	{
+		"sustech-data/wildfire.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("wildfire").setup()
+		end,
+	},
+	{
+		"kevinhwang91/nvim-hlslens",
+		keys = {
+			{
+				"<leader>l",
+				"<cmd>noh<CR>",
+				desc = "Hlslens: Clear highlights",
+			},
+			{
+				"n",
+				[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+				desc = "Hlslens: Next",
+			},
+			{
+				"N",
+				[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+				desc = "Hlslens: Previous",
+			},
+			{
+				"*",
+				[[*<Cmd>lua require('hlslens').start()<CR>]],
+				desc = "Hlslens: Next",
+			},
+			{
+				"#",
+				[[#<Cmd>lua require('hlslens').start()<CR>]],
+				desc = "Hlslens: Previous",
+			},
+			{
+				"g*",
+				[[g*<Cmd>lua require('hlslens').start()<CR>]],
+				desc = "Hlslens: Next",
+			},
+			{
+				"g#",
+				[[g#<Cmd>lua require('hlslens').start()<CR>]],
+				desc = "Hlslens: Previous",
+			},
+		},
+		config = function()
+			require("hlslens").setup()
+		end,
+	},
 }
