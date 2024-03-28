@@ -197,8 +197,8 @@ vim.g.clipboard = {
 --                   Text width
 -------------------------------------------
 set.linebreak = true
-set.textwidth = 100
-set.colorcolumn = "100"
+set.textwidth = 150
+set.colorcolumn = "150"
 
 local textwidth = augroup("textwidth", {})
 autocmd("FileType", {
