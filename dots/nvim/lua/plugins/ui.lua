@@ -124,21 +124,12 @@ return {
 		end,
 	},
 	{
-		-- Better whitespace
-		"ntpeters/vim-better-whitespace",
-		config = function()
-			g.better_whitespace_enabled = 1
-			g.strip_whitespace_on_save = 1
-			g.strip_whitespace_confirm = 0
-			g.better_whitespace_verbosity = 1
-			g.current_line_whitespace_disabled_soft = 1
-			g.better_whitespace_filetypes_blacklist =
-				{ "zsh", "html", "vim", "diff", "gitcommit", "unite", "qf", "help" }
-			g.better_whitespace_ctermcolor = "red"
-
-			local whitespaceGroup = augroup("whitespace", {})
-			set_autocmd(whitespaceGroup, { "BufWritePre" }, { "*" }, "StripWhitespace")
-		end,
+		"cappyzawa/trim.nvim",
+		opts = {
+			ft_blocklist = { "html", "diff", "help" },
+			-- PREV: { "zsh", "html", "vim", "diff", "gitcommit", "unite", "qf", "help" }
+			highlight = true,
+		},
 	},
 	{
 		-- Icons
