@@ -228,6 +228,50 @@ return {
 			auto_open = false, -- automatically open the list when you have diagnostics
 			auto_close = false, -- automatically close the list when you have no diagnostics
 		},
+		keys = {
+			{
+				"<leader>xx",
+				function()
+					require("trouble").toggle()
+				end,
+				desc = "Trouble: Toggle",
+			},
+			{
+				"<leader>xw",
+				function()
+					require("trouble").toggle("workspace_diagnostics")
+				end,
+				desc = "Trouble: Toggle Workspace Diagnostics",
+			},
+			{
+				"<leader>xd",
+				function()
+					require("trouble").toggle("document_diagnostics")
+				end,
+				desc = "Trouble: Toggle Document Diagnostics",
+			},
+			{
+				"<leader>xq",
+				function()
+					require("trouble").toggle("quickfix")
+				end,
+				desc = "Trouble: Toggle Quickfix",
+			},
+			{
+				"<leader>xl",
+				function()
+					require("trouble").toggle("loclist")
+				end,
+				desc = "Trouble: Toggle Location List",
+			},
+			{
+				"gR",
+				function()
+					require("trouble").toggle("lsp_references")
+				end,
+				desc = "Trouble: Toggle LSP References",
+			},
+		},
 		config = function(_, opts)
 			require("trouble").setup(opts)
 			-- What does this do
@@ -243,24 +287,6 @@ return {
 					},
 				},
 			})
-			vim.keymap.set("n", "<leader>xx", function()
-				require("trouble").toggle()
-			end)
-			vim.keymap.set("n", "<leader>xw", function()
-				require("trouble").toggle("workspace_diagnostics")
-			end)
-			vim.keymap.set("n", "<leader>xd", function()
-				require("trouble").toggle("document_diagnostics")
-			end)
-			vim.keymap.set("n", "<leader>xq", function()
-				require("trouble").toggle("quickfix")
-			end)
-			vim.keymap.set("n", "<leader>xl", function()
-				require("trouble").toggle("loclist")
-			end)
-			vim.keymap.set("n", "gR", function()
-				require("trouble").toggle("lsp_references")
-			end)
 		end,
 	},
 	{

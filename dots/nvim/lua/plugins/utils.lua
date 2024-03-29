@@ -115,4 +115,70 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
 	},
+	{
+		"monaqa/dial.nvim",
+		lazy = false,
+		keys = {
+			{
+				"<C-a>",
+				function()
+					require("dial.map").manipulate("increment", "normal")
+				end,
+				desc = "dial: Increment number under cursor",
+			},
+			{
+				"<C-x>",
+				function()
+					require("dial.map").manipulate("decrement", "normal")
+				end,
+				desc = "dial: Decrement number under cursor",
+			},
+			{
+				"g<C-a>",
+				function()
+					require("dial.map").manipulate("increment", "gnormal")
+				end,
+				desc = "dial: Increment number under cursor",
+			},
+			{
+				"g<C-x>",
+				function()
+					require("dial.map").manipulate("decrement", "gnormal")
+				end,
+				desc = "dial: Decrement number under cursor",
+			},
+			{
+				"v<C-a>",
+				function()
+					require("dial.map").manipulate("increment", "visual")
+				end,
+				mode = { "v" },
+				desc = "dial: Increment number under cursor",
+			},
+			{
+				"v<C-x>",
+				function()
+					require("dial.map").manipulate("decrement", "visual")
+				end,
+				mode = { "v" },
+				desc = "dial: Decrement number under cursor",
+			},
+			{
+				"g<C-a>",
+				function()
+					require("dial.map").manipulate("increment", "gvisual")
+				end,
+				mode = { "v" },
+				desc = "dial: Increment number under cursor",
+			},
+			{
+				"g<C-x>",
+				function()
+					require("dial.map").manipulate("decrement", "gvisual")
+				end,
+				mode = { "v" },
+				desc = "dial: Decrement number under cursor",
+			},
+		},
+	},
 }
