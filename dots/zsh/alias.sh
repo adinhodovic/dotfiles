@@ -1,3 +1,4 @@
+#! /bin/sh
 alias cat="bat"
 alias cl='clear'
 # eza instead of ls
