@@ -10,23 +10,6 @@ return {
 		"farmergreg/vim-lastplace",
 	},
 	{
-		-- Increment dates
-		"tpope/vim-speeddating",
-	},
-	{
-		-- Semicolons
-		"lfilho/cosco.vim",
-		config = function()
-			g.cosco_filetype_whitelist = {
-				"javascript",
-				"typescript",
-				"css",
-				"perl",
-				"nginx",
-			}
-		end,
-	},
-	{
 		-- Better marks
 		"chentoast/marks.nvim",
 		lazy = false,

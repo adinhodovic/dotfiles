@@ -8,14 +8,6 @@ return {
 		"dkarter/bullets.vim",
 	},
 	{
-		-- Align code around arbitrary characters =,:
-		"junegunn/vim-easy-align",
-	},
-	{
-		-- Open files at file:line:column
-		"kopischke/vim-fetch",
-	},
-	{
 		-- Linediff
 		"AndrewRadev/linediff.vim",
 		keys = {
