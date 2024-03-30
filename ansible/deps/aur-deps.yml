@@ -136,3 +136,8 @@
         - k9s
         - helm
         - openlens-bin
+
+    - name: Install GitHub extensions
+      shell: |
+        gh extension install dlvhdr/gh-dash
+        gh ext install meiji163/gh-notify
