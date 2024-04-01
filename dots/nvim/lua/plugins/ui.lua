@@ -126,7 +126,7 @@ return {
 	{
 		"cappyzawa/trim.nvim",
 		opts = {
-			ft_blocklist = { "html", "diff", "help" },
+			ft_blocklist = { "html", "diff", "help", "dashboard" },
 			-- PREV: { "zsh", "html", "vim", "diff", "gitcommit", "unite", "qf", "help" }
 			highlight = true,
 		},
@@ -492,7 +492,6 @@ return {
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
-			vim.g.better_whitespace_filetypes_blacklist = { "dashboard" }
 			require("dashboard").setup({
 				theme = "hyper",
 				config = {
