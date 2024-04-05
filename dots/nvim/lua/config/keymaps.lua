@@ -102,7 +102,11 @@ nmap("<C-k>", "<esc>:wincmd k<cr>")
 xmap("<leader>q", ":'<,'>:normal @q<CR>")
 
 nmap("<space>", ":", { noremap = true, silent = false })
+vmap("<space>", ":", { noremap = true, silent = false })
+xmap("<space>", ":", { noremap = true, silent = false })
 nmap(":", "<nop>")
+vmap(":", "<nop>")
+xmap(":", "<nop>")
 
 -- Visual mode pressing * or # searches for the current selection
 -- Super useful! From an idea by Michael Naumann
