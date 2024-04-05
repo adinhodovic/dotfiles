@@ -181,4 +181,41 @@ return {
 			},
 		},
 	},
+	{
+		"mistricky/codesnap.nvim",
+		build = "make",
+		cmd = { "CodeSnap", "CodeSnapSave" },
+		keys = {
+			{
+				"<leader>cs",
+				"<cmd>CodeSnap<cr>",
+				mode = { "x" },
+				desc = "codesnap: Preview code",
+			},
+		},
+		opts = {
+			mac_window_bar = false,
+			has_breadcrumb = true,
+			save_path = "~/images/codesnap/tmp.png",
+			bg_color = "#535c68",
+			watermark = "",
+		},
+	},
+	{
+		"ellisonleao/carbon-now.nvim",
+		opts = {},
+		keys = {
+			{
+				"<F6>",
+				":CarbonNow<CR>",
+				mode = { "x" },
+				desc = "Open Carbon.sh with selected text",
+			},
+		},
+	},
+	{
+		-- Direnv integration
+		"direnv/direnv.vim",
+		enabled = true,
+	},
 }

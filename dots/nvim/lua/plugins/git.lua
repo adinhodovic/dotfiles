@@ -40,6 +40,7 @@ return {
 	{
 		-- Nvim Git integration
 		"tpope/vim-fugitive",
+		cmd = { "Git" },
 		keys = {
 			{
 				"<leader>gb",
