@@ -154,17 +154,20 @@ return {
 				"w",
 				"<cmd>lua require('spider').motion('w')<CR>",
 				mode = { "n", "o", "x" },
+				desc = "Spider: Move to next word",
 			},
 			{
 				"e",
 				"<cmd>lua require('spider').motion('e')<CR>",
 				mode = { "n", "o", "x" },
+				desc = "Spider: Move to end of word",
 			},
 			-- ...
 			{
 				"q",
 				"<cmd>lua require('spider').motion('b')<CR>",
 				mode = { "n", "o", "x" },
+				desc = "Spider: Move to previous word",
 			},
 		},
 		dependencies = {
