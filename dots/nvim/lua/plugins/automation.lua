@@ -17,7 +17,7 @@ return {
 			{
 				"<leader>m",
 				"<cmd>MarksListAll<CR>",
-				desc = "List all marks",
+				desc = "Marks: List all marks",
 			},
 		},
 		config = function()
