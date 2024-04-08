@@ -218,4 +218,10 @@ return {
 		"direnv/direnv.vim",
 		enabled = true,
 	},
+	{
+		"gbprod/cutlass.nvim",
+		opts = {
+			cut_key = "x",
+		},
+	},
 }
