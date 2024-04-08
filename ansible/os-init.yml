@@ -42,6 +42,8 @@
             - work
             - company
             - oss
+            - images
+            - images/codesnap
 
             # Honeylogic specific
             - company/honeylogic
