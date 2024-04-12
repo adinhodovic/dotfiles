@@ -69,7 +69,6 @@ repos=(
   wfxr/forgit
   hlissner/zsh-autopair
   adinhodovic/docker-alias
-  adinhodovic/docker-compose-alias
   adinhodovic/ansible-alias
   adinhodovic/git-alias
   adinhodovic/terraform-alias
