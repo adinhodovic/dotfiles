@@ -186,6 +186,24 @@ return {
 		end,
 	},
 	{
+		"Myzel394/jsonfly.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		keys = {
+			{
+				"<leader>tj",
+				"<cmd>Telescope jsonfly<cr>",
+				desc = "JsonFly: Open json(fly)",
+				ft = { "json" },
+				mode = "n",
+			},
+		},
+		config = function()
+			require("telescope").load_extension("jsonfly")
+		end,
+	},
+	{
 		-- Better search
 		"folke/flash.nvim",
 		lazy = false,
