@@ -49,12 +49,6 @@ return {
 				desc = "Open the current file on GitHub",
 			},
 			{
-				"<leader>gbl",
-				":Git blame<cr>",
-				mode = { "n", "x" },
-				desc = "Open the current file on GitHub",
-			},
-			{
 				"<leader>gl",
 				":Git log<cr>",
 				desc = "Open the git log",
@@ -187,5 +181,16 @@ return {
 			"ibhagwan/fzf-lua", -- optional
 		},
 		config = true,
+	},
+	{
+		"FabijanZulj/blame.nvim",
+		opts = {},
+		keys = {
+			{
+				"<leader>gbl",
+				"<cmd>BlameToggle<cr>",
+				desc = "Git blame: Toggle",
+			},
+		},
 	},
 }
