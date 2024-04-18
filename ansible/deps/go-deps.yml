@@ -24,7 +24,10 @@
         - github.com/go-delve/delve/cmd/dlv@latest
         - github.com/tilt-dev/ctlptl/cmd/ctlptl@latest
         - github.com/mvdan.cc/sh/v3/cmd/shfmt@latest
+        # Kubernetes
+        - github.com/kubecolor/kubecolor@latest
         # utils
         - github.com/tomnomnom/gron@latest
+        - github.com/brancz/gojsontoyaml@latest
         # secrets
         - github.com/hashicorp/vault@latest

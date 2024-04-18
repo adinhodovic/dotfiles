@@ -65,6 +65,9 @@ alias tf='terraform'
 
 alias top='bpytop'
 
+# Kubecolor
+alias kubectl="kubecolor"
+
 alias xc='xclip -sel clip'
 function v() {
 	if [[ -z "$1" ]]; then
