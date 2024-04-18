@@ -36,3 +36,5 @@ nextjs
 mixin
 ServiceMonitor
 ingress-nginx-mixin
+jsonnet
+Mixins

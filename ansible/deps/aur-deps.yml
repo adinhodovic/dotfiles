@@ -4,6 +4,9 @@
   connection: local
 
   tasks:
+    - name: Import Trusted Keys
+      shell: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
+
     - name: Install AUR packages
       aur:
         name: "{{ item }}"
@@ -22,7 +25,6 @@
         - os-prober
         - networkmanager
         - network-manager-applet
-        - enpass-bin
         - task
         - taskwarrior-tui
         - bandwhich
@@ -40,6 +42,10 @@
         - xflux
         - acpi
         - luarocks
+
+        # Secrets
+        - enpass-bin
+        - 1password
 
         # terminal/vim
         - alacritty
