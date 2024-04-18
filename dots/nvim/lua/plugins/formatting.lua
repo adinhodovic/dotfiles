@@ -40,6 +40,7 @@ return {
 					typescript = { "prettier" },
 					typescriptreact = { "prettier" },
 					javascriptreact = { "prettier" },
+					graphql = { "prettier" },
 					toml = { "taplo" },
 					css = { "prettier" },
 					scss = { "prettier" },
