@@ -126,8 +126,22 @@ return {
 	{
 		"cappyzawa/trim.nvim",
 		opts = {
-			ft_blocklist = { "html", "diff", "help", "dashboard" },
-			-- PREV: { "zsh", "html", "vim", "diff", "gitcommit", "unite", "qf", "help" }
+			ft_blocklist = {
+				"html",
+				"diff",
+				"help",
+				"dashboard",
+				"qf",
+				-- "git",
+				-- "gitcommit",
+				"unite",
+				"help",
+				"fugitive",
+				"Trouble",
+				"NeogitConsole",
+				"TelescopeResults",
+				"TelescopePrompt",
+			},
 			highlight = true,
 		},
 	},
