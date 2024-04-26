@@ -1,40 +1,12 @@
 live_config_reload = true
 
-import = [
-  "~/.config/alacritty/themes/themes/github_dark_default.toml"
-]
-
-[bell]
-animation = "EaseOutExpo"
-duration = 0
-
-[debug]
-render_timer = false
+import = ["~/.config/alacritty/themes/themes/github_dark_default.toml"]
 
 [env]
 TERM = "xterm-256color"
 
 [font]
 size = 11
-
-[font.normal]
-  family = "Roboto Mono"
-  style = "Regular"
-
-[font.italic]
-  family = "Roboto Mono"
-  style = "Italic"
-
-[font.bold]
-  family = "Roboto Mono"
-  style = "Bold"
-
-[mouse]
-hide_when_typing = false
-
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"

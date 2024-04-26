@@ -16,3 +16,5 @@ export GOPATH="$HOME/go"
 export TERMINAL=/usr/bin/alacritty
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
+export FONTCONFIG_PATH=~/.config/fontconfig/fonts.conf
