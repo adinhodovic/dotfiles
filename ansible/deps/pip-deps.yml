@@ -6,20 +6,26 @@
   tasks:
     - name: Install PIP packages
       pip:
-        name: '{{ item }}'
+        name: "{{ item }}"
+        # Break system packages
+        extra_args: --break-system-packages
       loop:
         - pipx
         - psycopg2
         - requests
-        - wheel
         - cleo
         - pynvim
         - openshift
         - psutil
+      ignore_errors: yes
+
+    - name: Ensure pipx path
+      shell: pipx ensurepath
 
     - name: Install PIPX packages
       community.general.pipx:
-        name: '{{ item }}'
+        name: "{{ item }}"
+      # Requires pipx
       loop:
         - cookiecutter
         - awscli
@@ -28,4 +34,5 @@
         - pypyp
         - rebound-cli
         - bpytop
-        - docker-compose
+        - wheel
+        - pip-tools
