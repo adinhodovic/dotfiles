@@ -96,7 +96,7 @@
 
         # cloud
         - aws-cli
-        - google-cloud-sdk
+        - google-cloud-cli
 
         # sound
         - pavucontrol

@@ -36,3 +36,4 @@
         - bpytop
         - wheel
         - pip-tools
+        - poetry
