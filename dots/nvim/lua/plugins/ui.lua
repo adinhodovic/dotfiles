@@ -143,7 +143,6 @@ return {
 				"TelescopePrompt",
 			},
 			highlight = true,
-			trim_on_write = false,
 		},
 	},
 	{

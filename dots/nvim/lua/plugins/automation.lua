@@ -82,11 +82,6 @@ return {
 		end,
 	},
 	{
-		"chrisgrieser/nvim-origami",
-		event = "BufReadPost", -- later or on keypress would prevent saving folds
-		opts = true, -- needed even when using default config
-	},
-	{
 		-- Comment/uncomment source code files
 		"numToStr/Comment.nvim",
 		opts = {},
@@ -295,9 +290,7 @@ return {
 		"sustech-data/wildfire.nvim",
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("wildfire").setup()
-		end,
+		opts = {},
 	},
 	{
 		"kevinhwang91/nvim-hlslens",
