@@ -23,6 +23,9 @@ require("lazy").setup("plugins", {
 		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
+	dev = {
+		path = "~/oss",
+	},
 	-- Can cause git issues
 	concurrency = 5,
 })

@@ -129,6 +129,7 @@
         - ttf-font-awesome
         - ttf-dejavu
         - terminus-font
+        - noto-fonts-emoji
 
         # Containers
         - docker
