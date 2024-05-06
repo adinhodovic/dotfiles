@@ -13,6 +13,7 @@ return {
 			require("fzf-lua").setup({
 				"telescope",
 				winopts = { preview = { default = "bat" } },
+				defaults = { formatter = "path.filename_first" },
 			})
 		end,
 	},

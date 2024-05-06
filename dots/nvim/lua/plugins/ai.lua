@@ -1,3 +1,6 @@
+local vim = vim
+local g = vim.g
+
 return {
 	{
 		-- TODO: remove this when empty lines work
