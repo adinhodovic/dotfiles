@@ -13,7 +13,6 @@
         name: "{{ item }}"
       loop:
         # system
-        - thermald
         - xfce4-power-manager
         - xorg-xinit
         - xautolock
@@ -84,7 +83,7 @@
         - diskus
         - feh
         - eza
-        - ventoy
+        - usbimager
 
         # configuration-management
         - tanka-bin
