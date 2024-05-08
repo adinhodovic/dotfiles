@@ -11,7 +11,7 @@
       file:
         state: directory
         path: ~/.config/{{ item }}
-      with:
+      loop:
         - nvim
         - lazygit
         - bpytop
