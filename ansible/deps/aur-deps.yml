@@ -56,6 +56,11 @@
         - lua
         - atuin
 
+        # Languages
+        - rust
+        - go
+        - python
+
         # utils
         - xsel
         - duf
@@ -106,6 +111,7 @@
         - openrazer-daemon
 
         # i3
+        - i3-wm
         - i3-gaps
         - i3status
         - i3blocks
@@ -122,7 +128,6 @@
         # Ui
         - lightdm
         - web-greeter
-        - lightdm-webkit-theme-litarvan-git
 
         # fonts
         - nerd-fonts # TODO: Group too big?
