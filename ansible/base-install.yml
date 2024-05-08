@@ -2,6 +2,11 @@
 - hosts: 127.0.0.1
   connection: local
   tasks:
+    - name: Install base-devel
+      pacman:
+        name: base-devel
+        state: present
+
     - name: clone yay
       git:
         repo: https://aur.archlinux.org/yay.git

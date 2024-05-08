@@ -8,7 +8,8 @@
       shell: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
 
     - name: Install AUR packages
-      aur:
+      kewlfft.aur.aur:
+        use: yay
         name: "{{ item }}"
       loop:
         # system
@@ -83,6 +84,7 @@
         - diskus
         - feh
         - eza
+        - ventoy
 
         # configuration-management
         - tanka-bin
