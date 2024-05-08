@@ -2,6 +2,30 @@
   hosts: 127.0.0.1
 
   tasks:
+    - name: Create ssh directory
+      file:
+        state: directory
+        path: ~/.ssh
+
+    - name: Create config directories
+      file:
+        state: directory
+        path: ~/.config/{{ item }}
+      with:
+        - nvim
+        - lazygit
+        - bpytop
+        - i3
+        - atuin
+        - broot
+        - k9s
+        - yamllint
+        - alacritty
+        - fontconfig
+        - navi
+        - rofi
+        - neofetch
+
     - name: Symlink dots
       file:
         src: "/home/adin/dotfiles/dots/{{ item.src }}"
