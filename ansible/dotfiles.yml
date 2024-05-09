@@ -20,6 +20,11 @@
         - broot
         - k9s
         - yamllint
+        - yamlfmt
+        - pulse
+        - pudb
+        - ptpython
+
         - alacritty
         - fontconfig
         - navi
