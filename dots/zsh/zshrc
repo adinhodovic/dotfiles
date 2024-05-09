@@ -76,7 +76,6 @@ zstyle ":completion:*:git-checkout:*" sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 
 # Use https://github.com/trapd00r/LS_COLORS for LS_COLORS
-. /usr/share/LS_COLORS/dircolors.sh
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 ################################################
