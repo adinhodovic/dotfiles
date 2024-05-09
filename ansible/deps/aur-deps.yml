@@ -85,6 +85,8 @@
         - go
         - python
         - ruby
+        - node
+        - nvm
 
         # utils
         - xsel

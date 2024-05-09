@@ -17,11 +17,6 @@ setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
 
 #############################################
-# Prompt
-#############################################
-eval "$(oh-my-posh --init --shell zsh --config ~/.default.omp.json)"
-
-#############################################
 # Completion
 #############################################
 fpath=(~/.zsh/completion $fpath)
@@ -89,6 +84,11 @@ source ~/dotfiles/dots/zsh/alias.sh
 source ~/dotfiles/dots/zsh/key-bindings.sh
 source ~/dotfiles/dots/zsh/completions.sh
 source ~/dotfiles/dots/zsh/fzf.sh
+
+#############################################
+# Prompt
+#############################################
+eval "$(oh-my-posh --init --shell zsh --config ~/.default.omp.json)"
 
 ###############################
 # SSH Agent

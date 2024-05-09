@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
   "blocks": [
     {
       "type": "rprompt",
@@ -10,10 +11,10 @@
           "style": "plain",
           "foreground": "#ffffff",
           "background": "#828282",
+          "template": " <#fefefe>\ufbab</> {{ .FormattedMs }} ",
           "properties": {
-            "threshold": 10000,
             "style": "austin",
-            "prefix": " <#fefefe>\ufbab</> "
+            "threshold": 10000
           }
         },
         {
@@ -21,14 +22,11 @@
           "style": "plain",
           "foreground": "#ffffff",
           "background": "#424242",
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}{{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }}{{ .Staging.String }}{{ end }}  ",
           "properties": {
-            "display_status_detail": true,
-            "display_status": true,
-            "display_stash_count": false,
-            "branch_icon": "\uE0A0 ",
-            "local_working_icon": "",
-            "local_staged_icon": "",
-            "postfix": "  "
+            "branch_icon": "\ue0a0 ",
+            "fetch_stash_count": false,
+            "fetch_status": true
           }
         },
         {
@@ -36,11 +34,10 @@
           "style": "diamond",
           "foreground": "#ffffff",
           "background": "#eec10f",
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
           "properties": {
-            "prefix": " \uE235 ",
-            "postfix": " ",
-            "display_version": false,
-            "display_mode": "environment"
+            "display_mode": "environment",
+            "fetch_version": false
           }
         },
         {
@@ -48,30 +45,27 @@
           "style": "plain",
           "foreground": "#ffffff",
           "background": "#0959fd",
-          "properties": {
-            "prefix": " \uFD31 ",
-            "template": "{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}"
-          }
+          "template": " \ufd31 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
         }
       ]
     },
     {
       "type": "prompt",
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
           "type": "path",
           "style": "diamond",
-          "trailing_diamond": "\uE0B0 ",
           "foreground": "#56B6C2",
           "background": "#2f2f2f",
+          "trailing_diamond": "\ue0b0 ",
+          "template": " \ue5ff {{ .Path }} ",
           "properties": {
-            "prefix": " \uE5FF ",
             "style": "full"
           }
         }
-      ]
+      ],
+      "newline": true
     }
   ]
 }
