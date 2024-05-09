@@ -29,6 +29,7 @@
       when: "'desktop' in ansible_run_tags"
 
     - name: Install AUR packages
+      ignore_errors: yes
       kewlfft.aur.aur:
         use: yay
         name: "{{ item }}"
@@ -155,6 +156,8 @@
         # Ui
         - lightdm
         - web-greeter
+
+        - github-cli
 
         # fonts
         - nerd-fonts # TODO: Group too big?
