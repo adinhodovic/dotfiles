@@ -21,9 +21,6 @@
     - name: Ensure pipx path
       shell: pipx ensurepath
 
-    - name: Ensure pipx completions
-      shell: pipx completions
-
     - name: Install PIPX packages
       community.general.pipx:
         name: "{{ item }}"

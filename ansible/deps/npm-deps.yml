@@ -6,6 +6,7 @@
 
   tasks:
     - name: Install NPM packages
+      become: true
       npm:
         name: "{{ item }}"
         global: true
