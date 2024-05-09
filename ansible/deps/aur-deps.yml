@@ -146,8 +146,8 @@
         - i3lock-fancy-git
 
         # browsers
+        - google-chrome
         - firefox
-        - chromium
 
         # db
         - mongosh-bin
