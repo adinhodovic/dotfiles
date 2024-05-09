@@ -7,6 +7,7 @@
   tasks:
     - name: Run Base Commands
       shell: "{{ item }}"
+      ignore_errors: true
       loop:
         - xdg-settings set default-web-browser chrome.desktop
         - git config --global core.editor "nvim"
