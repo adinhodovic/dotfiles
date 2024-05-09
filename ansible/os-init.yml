@@ -2,7 +2,6 @@
 # All the dependencies for arc linux
 ---
 - hosts: 127.0.0.1
-  become: true
   connection: local
 
   tasks:
@@ -13,6 +12,7 @@
         - git config --global core.editor "nvim"
 
     - name: Add me to docker group
+      become: true
       user:
         name: adin
         groups: docker
@@ -20,6 +20,7 @@
       tags: docker
 
     - name: Add me to plugdev group
+      become: true
       user:
         name: adin
         groups: plugdev
@@ -107,9 +108,11 @@
               dest: "~/company/honeylogic/jobs_aggregator"
 
     - name: start lightdm
+      become: true
       shell: systemctl enable lightdm.service
 
     - name: start lightdm
+      become: true
       shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'
       tags:
         - laptop
