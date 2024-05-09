@@ -73,6 +73,7 @@ repos=(
   adinhodovic/git-alias
   adinhodovic/terraform-alias
   adinhodovic/kubernetes-alias
+  trapd00r/LS_COLORS
 
   denisidoro/navi
 )

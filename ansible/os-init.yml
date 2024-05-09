@@ -30,15 +30,22 @@
     - name: Directories & Git repos
       tags: file_system
       block:
-        - name: Directories
+        - name: OS Directories
+          become: true
           file:
-            path: "/home/adin/{{ item }}"
+            path: "{{ item }}"
             state: directory
             owner: adin
           loop:
             # OS
             - /usr/share/backgrounds
 
+        - name: Directories
+          file:
+            path: "/home/adin/{{ item }}"
+            state: directory
+            owner: adin
+          loop:
             # Top level core
             - personal
             - work
@@ -52,9 +59,12 @@
 
             # misc
             - playground
+            - .local/share/fonts
+            - .git-templates
 
         - name: Clone all repos I use
           become: false
+          ignore_errors: yes
           git:
             repo: "{{ item.repo }}"
             dest: "{{ item.dest }}"

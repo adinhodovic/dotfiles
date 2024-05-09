@@ -17,6 +17,17 @@
         - laptop
       when: "'laptop' in ansible_run_tags"
 
+    - name: Install desktop dependencies
+      kewlfft.aur.aur:
+        use: yay
+        name: "{{ item }}"
+      loop:
+        - nvidia
+        - nvidia-utils
+      tags:
+        - desktop
+      when: "'desktop' in ansible_run_tags"
+
     - name: Install AUR packages
       kewlfft.aur.aur:
         use: yay
@@ -59,11 +70,13 @@
         - 1password
 
         # terminal/vim
+        - zsh
         - alacritty
+        - gnome-terminal # extra terminal
         - tmux
         - neovim
         - zoxide
-        - direnv-bin
+        - direnv
         - lua
         - atuin
 
