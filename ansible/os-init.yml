@@ -8,7 +8,7 @@
     - name: Run Base Commands
       shell: "{{ item }}"
       loop:
-        - xdg-settings set default-web-browser chromium.desktop
+        - xdg-settings set default-web-browser chrome.desktop
         - git config --global core.editor "nvim"
 
     - name: Add me to docker group
