@@ -36,6 +36,9 @@
             state: directory
             owner: adin
           loop:
+            # OS
+            - /usr/share/backgrounds
+
             # Top level core
             - personal
             - work
@@ -48,10 +51,7 @@
             - company/honeylogic
 
             # misc
-            - tempinstall
-            - .ssh
-            - .i3
-            - .config
+            - playground
 
         - name: Clone all repos I use
           become: false
@@ -111,7 +111,7 @@
       become: true
       shell: systemctl enable lightdm.service
 
-    - name: start lightdm
+    - name: Start thermald
       become: true
       shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'
       tags:

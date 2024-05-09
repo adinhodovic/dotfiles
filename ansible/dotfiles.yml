@@ -32,6 +32,7 @@
         - neofetch
 
     - name: Symlink dots
+      ignore_errors: true
       file:
         src: "/home/adin/dotfiles/dots/{{ item.src }}"
         dest: "{{ item.dest }}"
@@ -110,9 +111,6 @@
         - src: "yamllint.yml"
           dest: "/home/adin/.config/yamllint/config"
 
-        - src: "locale.conf"
-          dest: "/etc/locale.conf"
-
         - src: "gitignore"
           dest: "/home/adin/.gitignore"
 
@@ -180,6 +178,9 @@
 
         - src: "web-greeter.yml"
           dest: "/etc/lightdm/web-greeter.yml"
+
+        - src: "locale.conf"
+          dest: "/etc/locale.conf"
 
     - name: Store image
       become: true
