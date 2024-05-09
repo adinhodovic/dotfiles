@@ -7,6 +7,16 @@
     - name: Import Trusted Keys
       shell: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
 
+    - name: Install laptop dependencies
+      kewlfft.aur.aur:
+        use: yay
+        name: "{{ item }}"
+      loop:
+        - thermald
+      tags:
+        - laptop
+      when: "'laptop' in ansible_run_tags"
+
     - name: Install AUR packages
       kewlfft.aur.aur:
         use: yay
@@ -18,6 +28,7 @@
         - xautolock
 
         - python-virtualenv
+        - python-pipx
         - rofi
         - xorg
         - dnsutils
@@ -60,6 +71,7 @@
         - rust
         - go
         - python
+        - ruby
 
         # utils
         - xsel
@@ -142,7 +154,7 @@
         - docker-compose
 
         # K8s
-        - kubectl-bin
+        - kubectl
         - kubectx
         - k9s
         - helm

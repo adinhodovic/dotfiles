@@ -111,3 +111,6 @@
 
     - name: start lightdm
       shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'
+      tags:
+        - laptop
+      when: "'laptop' in ansible_run_tags"

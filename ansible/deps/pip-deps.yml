@@ -10,7 +10,6 @@
         # Break system packages
         extra_args: --break-system-packages
       loop:
-        - pipx
         - psycopg2
         - requests
         - cleo
@@ -21,6 +20,9 @@
 
     - name: Ensure pipx path
       shell: pipx ensurepath
+
+    - name: Ensure pipx completions
+      shell: pipx completions
 
     - name: Install PIPX packages
       community.general.pipx:
