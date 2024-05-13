@@ -9,7 +9,7 @@
       shell: "{{ item }}"
       ignore_errors: true
       loop:
-        - xdg-settings set default-web-browser chrome.desktop
+        - xdg-settings set default-web-browser google-chrome-stable.desktop
         - git config --global core.editor "nvim"
 
     - name: Add me to docker group
