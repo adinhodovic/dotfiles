@@ -1,3 +1,4 @@
 # Remove this when `fuzzy` is better supported
 search_mode = "fulltext"
 enter_accept = true
+sync_address = "https://atuin.honeylogic.io"
