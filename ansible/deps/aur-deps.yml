@@ -130,6 +130,7 @@
         # cloud
         - aws-cli
         - google-cloud-cli
+        - google-cloud-cli-gke-gcloud-auth-plugin
 
         # sound
         - pavucontrol

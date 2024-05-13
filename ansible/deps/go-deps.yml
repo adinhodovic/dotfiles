@@ -10,6 +10,7 @@
       loop:
         # jsonnet
         - github.com/google/go-jsonnet/cmd/jsonnet@latest
+        - github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
         - github.com/google/go-jsonnet/cmd/jsonnet-lint@latest
         # observability
         - github.com/prometheus/prometheus/cmd/promtool@latest
@@ -22,6 +23,7 @@
         - github.com/tilt-dev/ctlptl/cmd/ctlptl@latest
         # Kubernetes
         - github.com/kubecolor/kubecolor@latest
+        - github.com/sh0rez/kubectl-neat-diff@latest
         # utils
         - github.com/tomnomnom/gron@latest
         - github.com/brancz/gojsontoyaml@latest
