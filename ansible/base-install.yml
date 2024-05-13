@@ -21,4 +21,5 @@
     - name: Install galaxy dependencies
       shell: "ansible-galaxy {{ item }}"
       loop:
+        - collection install community.general
         - collection install kewlfft.aur

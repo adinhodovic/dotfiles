@@ -48,12 +48,19 @@
             owner: adin
           loop:
             # Top level core
+            - desktop
+            - downloads
+            - documents
+            - music
+            - pictures
+            - pictures/codesnap
+            - public
+            - templates
+            - videos
             - personal
             - work
             - company
             - oss
-            - images
-            - images/codesnap
 
             # Honeylogic specific
             - company/honeylogic
@@ -115,8 +122,8 @@
               dest: "~/company/honeylogic/ops"
             - repo: "git@github.com:honeylogic-io/resources.git"
               dest: "~/company/honeylogic/resources"
-            - repo: "git@github.com:honeylogic-io/jobs_aggregator.git"
-              dest: "~/company/honeylogic/jobs_aggregator"
+            - repo: "git@github.com:honeylogic-io/findwork-dev.git"
+              dest: "~/company/honeylogic/findwork-dev"
 
     - name: start lightdm
       become: true

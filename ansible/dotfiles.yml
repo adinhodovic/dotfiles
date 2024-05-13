@@ -24,12 +24,12 @@
         - pulse
         - pudb
         - ptpython
-
         - alacritty
         - fontconfig
         - navi
         - rofi
         - neofetch
+        - discord
 
     - name: Symlink dots
       ignore_errors: true
@@ -164,6 +164,12 @@
 
         - src: "atuin.toml"
           dest: "/home/adin/.config/atuin/config.toml"
+
+        - src: "user-dirs.dirs"
+          dest: "/home/adin/.config/user-dirs.dirs"
+
+        - src: "discord-settings.json"
+          dest: "/home/adin/.config/discord/settings.json"
 
     - name: Mv Sudo Dots
       become: true

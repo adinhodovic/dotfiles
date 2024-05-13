@@ -1,0 +1,11 @@
+# yamllint disable rule:line-length
+# All the dependencies for arch linux
+---
+- hosts: 127.0.0.1
+  name: Cargo Dependencies
+  connection: local
+  tasks:
+    - name: Install Cargo packages
+      community.general.cargo:
+      loop:
+        - tzupdate

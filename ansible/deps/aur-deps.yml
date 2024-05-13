@@ -61,7 +61,6 @@
         - slack-desktop
         - glibc
         - unrar
-        - tzupdate
         - xflux
         - acpi
         - luarocks
@@ -177,6 +176,9 @@
         - k9s
         - helm
         - openlens-bin
+
+        # Comms
+        - discord
 
     - name: Install GitHub extensions
       shell: |

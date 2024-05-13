@@ -196,7 +196,7 @@ return {
 		opts = {
 			mac_window_bar = true,
 			has_breadcrumbs = true,
-			save_path = "~/images/codesnap/",
+			save_path = "~/pictures/codesnap/",
 			bg_color = "#535c68",
 			watermark = "",
 		},
