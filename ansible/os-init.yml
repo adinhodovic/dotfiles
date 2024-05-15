@@ -129,6 +129,10 @@
       become: true
       shell: systemctl enable lightdm.service
 
+    - name: start syncthing
+      become: true
+      shell: systemctl enable syncthing@adin.service
+
     - name: Start thermald
       become: true
       shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'

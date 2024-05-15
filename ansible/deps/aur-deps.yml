@@ -65,6 +65,10 @@
         - acpi
         - luarocks
 
+        # Syncthing
+        - syncthing
+        - syncthingtray
+
         # Secrets
         - enpass-bin
         - 1password
