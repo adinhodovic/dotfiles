@@ -61,9 +61,14 @@
         - slack-desktop
         - glibc
         - unrar
-        - xflux
         - acpi
         - luarocks
+
+        # time
+        - ntp
+
+        # display
+        - redshift
 
         # Syncthing
         - syncthing

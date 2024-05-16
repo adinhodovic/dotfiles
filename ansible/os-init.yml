@@ -133,6 +133,10 @@
       become: true
       shell: systemctl enable syncthing@adin.service
 
+    - name: ensure time uses ntp
+      become: true
+      shell: timedatectl set-ntp true
+
     - name: Start thermald
       become: true
       shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'
