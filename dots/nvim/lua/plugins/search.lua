@@ -107,6 +107,10 @@ return {
 		priority = 1000,
 		config = function()
 			require("telescope").setup({
+				defaults = {
+					prompt_prefix = "󰼛 ",
+					selection_caret = "󱞩 ",
+				},
 				extensions = {
 					fzf = {
 						fuzzy = true, -- false will only do exact matching

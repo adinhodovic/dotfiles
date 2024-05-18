@@ -51,15 +51,13 @@ return {
 	},
 	{
 		-- Colorizer in code
-		"NvChad/nvim-colorizer.lua",
+		"brenoprata10/nvim-highlight-colors",
 		config = function()
-			require("colorizer").setup({
-				user_default_options = {
-					tailwind = true,
-					sass = { enable = true, parsers = { "css" } }, -- Enable sass colors
-					-- Set to virtual text if needed
-					mode = "background",
-				},
+			require("nvim-highlight-colors").setup({
+				-- Set to virtual text if needed
+				render = "background",
+				enable_named_colors = true,
+				enable_tailwind = true,
 			})
 		end,
 	},
