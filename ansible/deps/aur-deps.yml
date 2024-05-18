@@ -190,6 +190,9 @@
         # Comms
         - discord
 
+        # notes
+        - obsidian
+
     - name: Install GitHub extensions
       shell: |
         gh extension install dlvhdr/gh-dash
