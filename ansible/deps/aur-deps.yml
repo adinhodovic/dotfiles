@@ -145,7 +145,7 @@
         - pavucontrol
         - pulseaudio-alsa
         - alsa-utils
-        - openrazer-daemon
+        - pasystray
 
         # i3
         - i3-wm
