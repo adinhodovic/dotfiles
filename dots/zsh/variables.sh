@@ -21,3 +21,4 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export FONTCONFIG_PATH=~/.config/fontconfig/fonts.conf
 
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
+export GTK_USE_PORTAL=1

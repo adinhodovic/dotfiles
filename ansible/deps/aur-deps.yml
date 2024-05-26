@@ -126,6 +126,11 @@
         - eza
         - usbimager
 
+        # OS
+        - dolphin
+        - xdg-portal-desktop
+        - xdg-portal-desktop-kde
+
         # configuration-management
         - tanka-bin
         - terraform
