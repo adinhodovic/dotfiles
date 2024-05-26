@@ -128,11 +128,11 @@
 
     - name: start lightdm
       become: true
-      shell: systemctl enable lightdm.service
+      shell: systemctl enable --now lightdm.service
 
     - name: start syncthing
       become: true
-      shell: systemctl enable syncthing@adin.service
+      shell: systemctl enable --now syncthing@adin.service
 
     - name: ensure time uses ntp
       become: true

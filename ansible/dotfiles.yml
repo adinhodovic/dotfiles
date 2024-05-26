@@ -30,6 +30,7 @@
         - rofi
         - neofetch
         - discord
+        - xdg-desktop-portal
 
     - name: Symlink dots
       ignore_errors: true
@@ -170,6 +171,9 @@
 
         - src: "discord-settings.json"
           dest: "/home/adin/.config/discord/settings.json"
+
+        - src: "portals.conf"
+          dest: "/home/adin/.config/xdg-desktop-portal/portals.conf"
 
     - name: Mv Sudo Dots
       become: true
