@@ -94,34 +94,6 @@ return {
 		end,
 	},
 	{
-		"stevearc/aerial.nvim",
-		-- Optional dependencies
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-		keys = {
-			{
-				"<leader>a",
-				"<cmd>AerialToggle!<CR>",
-				desc = "Open aerial",
-			},
-		},
-		config = function()
-			require("aerial").setup({
-				layout = {
-					default_direction = "prefer_left",
-				},
-				-- optionally use on_attach to set keymaps when aerial has attached to a buffer
-				on_attach = function(bufnr)
-					-- Jump forwards/backwards with '{' and '}'
-					vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-					vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-				end,
-			})
-		end,
-	},
-	{
 		"cappyzawa/trim.nvim",
 		opts = {
 			ft_blocklist = {
@@ -169,8 +141,6 @@ return {
 				end
 				return "󱉶 " .. table.concat(linters, ", ")
 			end
-
-			local trouble = require("trouble")
 
 			require("lualine").setup({
 				options = {

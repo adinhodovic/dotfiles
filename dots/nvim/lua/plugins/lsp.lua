@@ -227,6 +227,17 @@ return {
 		opts = {
 			auto_open = false, -- automatically open the list when you have diagnostics
 			auto_close = false, -- automatically close the list when you have no diagnostics
+			focus = true,
+			modes = {
+				lsp = {
+					focus = false,
+					win = { position = "left", size = 60 },
+				},
+				symbols = {
+					focus = false,
+					win = { position = "left", size = 60 },
+				},
+			},
 		},
 		keys = {
 			{
@@ -241,12 +252,12 @@ return {
 			},
 			{
 				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
+				"<cmd>Trouble symbols toggle<cr>",
 				desc = "Trouble: DSymbols",
 			},
 			{
 				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				"<cmd>Trouble lsp toggle<cr>",
 				desc = "Trouble: DLSP Definitions / references",
 			},
 			{
