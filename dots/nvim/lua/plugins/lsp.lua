@@ -18,7 +18,7 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+			{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
 			{
 				"gd",
 				function()
@@ -231,59 +231,51 @@ return {
 		keys = {
 			{
 				"<leader>xx",
-				function()
-					require("trouble").toggle()
-				end,
-				desc = "Trouble: Toggle",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Trouble: Diagnostics",
 			},
 			{
-				"<leader>xw",
-				function()
-					require("trouble").toggle("workspace_diagnostics")
-				end,
-				desc = "Trouble: Toggle Workspace Diagnostics",
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Trouble: DBuffer Diagnostics",
 			},
 			{
-				"<leader>xd",
-				function()
-					require("trouble").toggle("document_diagnostics")
-				end,
-				desc = "Trouble: Toggle Document Diagnostics",
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Trouble: DSymbols",
 			},
 			{
-				"<leader>xq",
-				function()
-					require("trouble").toggle("quickfix")
-				end,
-				desc = "Trouble: Toggle Quickfix",
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "Trouble: DLSP Definitions / references",
 			},
 			{
-				"<leader>xl",
-				function()
-					require("trouble").toggle("loclist")
-				end,
-				desc = "Trouble: Toggle Location List",
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Trouble: DLocation List",
 			},
 			{
-				"gR",
-				function()
-					require("trouble").toggle("lsp_references")
-				end,
-				desc = "Trouble: Toggle LSP References",
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Trouble: Quickfix List",
 			},
 		},
 		config = function(_, opts)
 			require("trouble").setup(opts)
 			-- What does this do
-			local trouble = require("trouble.providers.telescope")
+			local actions = require("telescope.actions")
+			local open_with_trouble = require("trouble.sources.telescope").open
+
+			-- Use this to add more results without clearing the trouble list
+			local add_to_trouble = require("trouble.sources.telescope").add
 
 			local telescope = require("telescope")
 
 			telescope.setup({
 				defaults = {
 					mappings = {
-						i = { ["<c-t>"] = trouble.open_with_trouble },
-						n = { ["<c-t>"] = trouble.open_with_trouble },
+						i = { ["<c-t>"] = open_with_trouble },
+						n = { ["<c-t>"] = open_with_trouble },
 					},
 				},
 			})

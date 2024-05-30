@@ -130,6 +130,8 @@
         - dolphin
         - xdg-portal-desktop
         - xdg-portal-desktop-kde
+        # Fallback
+        - xdg-portal-desktop-gtk
 
         # configuration-management
         - tanka-bin
@@ -189,8 +191,9 @@
         - kubectl
         - kubectx
         - k9s
-        - helm
         - openlens-bin
+        - helm
+        - minikube
 
         # Comms
         - discord
