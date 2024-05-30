@@ -40,6 +40,7 @@
         - xautolock
 
         - python-virtualenv
+        - pyenv
         - python-pipx
         - rofi
         - xorg
@@ -125,6 +126,8 @@
         - feh
         - eza
         - usbimager
+        # Useful for command not found
+        - pkgfile
 
         # OS
         - dolphin

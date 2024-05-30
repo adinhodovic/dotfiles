@@ -5,6 +5,12 @@
   connection: local
 
   tasks:
+    - name: Run Sudo Commands
+      shell: "{{ item }}"
+      become: true
+      loop:
+        - pkgfile -U
+
     - name: Run Base Commands
       shell: "{{ item }}"
       ignore_errors: true

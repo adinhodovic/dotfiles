@@ -12,6 +12,8 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
+export EDITOR="nvim"
+
 export GOPATH="$HOME/go"
 
 export TERMINAL=/usr/bin/alacritty
@@ -22,3 +24,9 @@ export FONTCONFIG_PATH=~/.config/fontconfig/fonts.conf
 
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
 export GTK_USE_PORTAL=1
+
+export PYTHON_VENV_NAME=.venv
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"

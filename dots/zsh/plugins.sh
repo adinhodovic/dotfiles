@@ -51,10 +51,19 @@ zstyle ':omz:update' frequency 30
 # https://github.com/ohmyzsh/ohmyzsh/issues/5569
 export DISABLE_MAGIC_FUNCTIONS=true
 plugins=(
-  golang
-  kubectl
-  ssh-agent
+  aws
+  aliases
   command-not-found
+  # gcloud
+  golang
+  helm
+  kubectl
+  npm
+  ssh-agent
+  terraform
+  poetry
+  pyenv
+  python
 )
 
 repos=(

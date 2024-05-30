@@ -76,8 +76,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 ################################################
 # General
 ################################################
-export EDITOR="nvim"
-
 source ~/dotfiles/dots/zsh/variables.sh
 source ~/dotfiles/dots/zsh/plugins.sh
 source ~/dotfiles/dots/zsh/alias.sh
