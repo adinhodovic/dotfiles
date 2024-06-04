@@ -21,11 +21,14 @@ return {
 			"onsails/lspkind.nvim",
 			"lukas-reineke/cmp-rg",
 			"barreiroleo/ltex_extra.nvim",
+			"windwp/nvim-autopairs",
 		},
 		config = function()
 			require("cmp_git").setup()
 
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 			local cmp_lsp = { name = "nvim_lsp", group_index = 1 }
 			local cmp_copilot = { name = "copilot", max_item_count = 5, group_index = 1 }
