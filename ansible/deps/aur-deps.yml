@@ -84,7 +84,7 @@
         - alacritty
         - gnome-terminal # extra terminal
         - tmux
-        - neovim-nightly
+        - neovim-nightly-bin
         - zoxide
         - direnv
         - lua
