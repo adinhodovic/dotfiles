@@ -1,37 +1,39 @@
 # yamllint disable rule:line-length
 # All the dependencies for arc linux
 ---
-- hosts: 127.0.0.1
-  name: Go Dependencies
-  connection: local
+- name: Install and upgrade Go packages from JSON file
+  hosts: localhost
+  gather_facts: no
+
   tasks:
-    - name: Install Go packages
-      shell: "go install {{ item }}"
-      loop:
-        # jsonnet
-        - github.com/google/go-jsonnet/cmd/jsonnet@latest
-        - github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
-        - github.com/google/go-jsonnet/cmd/jsonnet-lint@latest
-        - github.com/grafana/tanka/cmd/tk@latest
-        # configuration-management
-        - sigs.k8s.io/kustomize/kustomize/v5@latest
-        # - github.com/hashcorp/terraform@latest
-        # observability
-        - github.com/prometheus/prometheus/cmd/promtool@latest
-        - github.com/monitoring-mixins/mixtool/cmd/mixtool@latest
-        - github.com/grafana/dashboard-linter@latest
-        # dev
-        - github.com/kubernetes/minikube/cmd/minikube@latest
-        - github.com/bazelbuild/bazelisk@latest
-        - github.com/go-delve/delve/cmd/dlv@latest
-        - github.com/tilt-dev/ctlptl/cmd/ctlptl@latest
-        # Kubernetes
-        - sigs.k8s.io/kind@latest
-        - github.com/terraform-docs/terraform-docs@latest
-        - github.com/kubecolor/kubecolor@latest
-        - github.com/sh0rez/kubectl-neat-diff@latest
-        # utils
-        - github.com/tomnomnom/gron@latest
-        - github.com/brancz/gojsontoyaml@latest
-        # secrets
-        - github.com/hashicorp/vault@latest
+    - name: Read the Go packages JSON file
+      slurp:
+        src: ~/dotfiles/ansible/deps/go-package-versions.json
+      register: go_packages_file
+
+    - name: Set Go packages fact
+      set_fact:
+        go_packages: "{{ go_packages_file.content | b64decode | from_json }}"
+
+    - name: Install or upgrade Go packages
+      command: >
+        go install {{ item.key }}@{{ item.value }}
+      environment:
+        GOPATH: "{{ ansible_env.HOME }}/go"
+      with_dict: "{{ go_packages }}"
+      when: item.value is defined
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Verify installations
+      command: "{{ ansible_env.HOME }}/go/bin/{{ item.key.split('/')[-1] }} --version"
+      register: go_pkg_versions
+      failed_when: go_pkg_versions.rc != 0
+      with_dict: "{{ go_packages }}"
+      loop_control:
+        label: "{{ item.key }}"
+
+    - name: Display installed Go package versions
+      debug:
+        msg: "Installed {{ item.key }} version: {{ item.stdout }}"
+      with_items: "{{ go_pkg_versions.results }}"

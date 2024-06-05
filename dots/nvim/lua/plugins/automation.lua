@@ -101,12 +101,6 @@ return {
 		opts = {},
 	},
 	{
-		"echasnovski/mini.ai",
-	},
-	{
-		"echasnovski/mini.hipatterns",
-	},
-	{
 		"chrisgrieser/nvim-rulebook",
 		keys = {
 			{
@@ -147,6 +141,7 @@ return {
 	},
 	{
 		"chrisgrieser/nvim-spider",
+		enabled = false,
 		keys = {
 			{
 				"w",
