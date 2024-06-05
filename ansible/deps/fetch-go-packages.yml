@@ -40,8 +40,8 @@
         headers:
           Accept: "application/vnd.github.v3+json"
       register: github_release
-      loop: "{{ go_packages }}"
       when: item.startswith('github.com')
+      loop: "{{ go_packages }}"
       ignore_errors: true
       loop_control:
         label: "{{ item }}"
@@ -64,17 +64,6 @@
       loop: "{{ github_release.results }}"
       loop_control:
         label: "{{ item.item }}"
-
-    - name: Set version to latest for packages without GitHub releases
-      set_fact:
-        release_versions: >-
-          {{
-            release_versions | combine({item: 'latest'})
-          }}
-      loop: "{{ go_packages }}"
-      when: item not in release_versions
-      loop_control:
-        label: "{{ item }}"
 
     - name: Write versions to JSON file
       copy:
