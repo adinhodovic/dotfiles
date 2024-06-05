@@ -47,8 +47,6 @@
         - dnsutils
         - dunst
         - os-prober
-        - networkmanager
-        - network-manager-applet
         - task
         - taskwarrior-tui
         - bandwhich
@@ -64,6 +62,11 @@
         - unrar
         - acpi
         - luarocks
+
+        # network
+        - networkmanager
+        - network-manager-applet
+        - tailscale
 
         # time
         - ntp
@@ -137,9 +140,7 @@
         - xdg-portal-desktop-gtk
 
         # configuration-management
-        - tanka-bin
         - terraform
-        - kustomize
 
         # git
         - git-delta
@@ -169,9 +170,6 @@
         - google-chrome
         - firefox
 
-        # db
-        - mongosh-bin
-
         # Ui
         - lightdm
         - web-greeter
@@ -188,7 +186,6 @@
 
         # Containers
         - docker
-        - docker-compose
 
         # K8s
         - kubectl

@@ -12,6 +12,10 @@
         - github.com/google/go-jsonnet/cmd/jsonnet@latest
         - github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
         - github.com/google/go-jsonnet/cmd/jsonnet-lint@latest
+        - github.com/grafana/tanka/cmd/tk@latest
+        # configuration-management
+        - sigs.k8s.io/kustomize/kustomize/v5@latest
+        # - github.com/hashcorp/terraform@latest
         # observability
         - github.com/prometheus/prometheus/cmd/promtool@latest
         - github.com/monitoring-mixins/mixtool/cmd/mixtool@latest
@@ -22,6 +26,8 @@
         - github.com/go-delve/delve/cmd/dlv@latest
         - github.com/tilt-dev/ctlptl/cmd/ctlptl@latest
         # Kubernetes
+        - sigs.k8s.io/kind@latest
+        - github.com/terraform-docs/terraform-docs@latest
         - github.com/kubecolor/kubecolor@latest
         - github.com/sh0rez/kubectl-neat-diff@latest
         # utils
