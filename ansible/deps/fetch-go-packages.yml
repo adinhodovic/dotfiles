@@ -1,0 +1,82 @@
+---
+- name: Fetch latest Go release for packages
+  hosts: localhost
+  vars:
+    go_packages:
+      # jsonnet
+      - github.com/google/go-jsonnet/cmd/jsonnet
+      - github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
+      - github.com/google/go-jsonnet/cmd/jsonnet-lint
+      # configuration-management
+      - github.com/grafana/tanka/cmd/tk
+      - sigs.k8s.io/kustomize/kustomize/v5
+      - github.com/hashicorp/terraform
+      # observability
+      - github.com/prometheus/prometheus/cmd/promtool
+      - github.com/monitoring-mixins/mixtool/cmd/mixtool
+      - github.com/grafana/dashboard-linter
+      # dev
+      - github.com/kubernetes/minikube/cmd/minikube
+      - github.com/bazelbuild/bazelisk
+      - github.com/go-delve/delve/cmd/dlv
+      - github.com/tilt-dev/ctlptl/cmd/ctlptl
+      # Kubernetes
+      - sigs.k8s.io/kind
+      - github.com/terraform-docs/terraform-docs
+      - github.com/kubecolor/kubecolor
+      - github.com/sh0rez/kubectl-neat-diff
+      # utils
+      - github.com/tomnomnom/gron
+      - github.com/brancz/gojsontoyaml
+      # secrets
+      - github.com/hashicorp/vault
+
+  tasks:
+    - name: Fetch latest release from GitHub
+      uri:
+        url: "https://api.github.com/repos/{{ item.split('/')[1] }}/{{ item.split('/')[2] }}/releases/latest"
+        method: GET
+        return_content: true
+        headers:
+          Accept: "application/vnd.github.v3+json"
+      register: github_release
+      loop: "{{ go_packages }}"
+      when: item.startswith('github.com')
+      ignore_errors: true
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Initialize release_versions variable
+      set_fact:
+        release_versions: {}
+
+    - name: Parse release versions and handle errors
+      set_fact:
+        release_versions: >-
+          {{
+            release_versions | combine({
+              item.item: (
+                item.content | from_json).tag_name if (
+                'json' in item and 'tag_name' in (item.content | from_json) and item.status == 200
+              ) else 'latest'
+            })
+          }}
+      loop: "{{ github_release.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+
+    - name: Set version to latest for packages without GitHub releases
+      set_fact:
+        release_versions: >-
+          {{
+            release_versions | combine({item: 'latest'})
+          }}
+      loop: "{{ go_packages }}"
+      when: item not in release_versions
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Write versions to JSON file
+      copy:
+        content: "{{ release_versions | to_nice_json }}"
+        dest: "~/dotfiles/ansible/deps/go-package-versions.json"
