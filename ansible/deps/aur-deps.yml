@@ -67,6 +67,7 @@
         - networkmanager
         - network-manager-applet
         - tailscale
+        - openvpn
 
         # time
         - ntp
@@ -148,7 +149,8 @@
         - lazygit
 
         # cloud
-        - aws-cli
+        - aws-cli-v2
+        - eksctl
         - google-cloud-cli
         - google-cloud-cli-gke-gcloud-auth-plugin
 
@@ -186,6 +188,7 @@
 
         # Containers
         - docker
+        - docker-compose
 
         # K8s
         - kubectl
