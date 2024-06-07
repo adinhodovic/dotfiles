@@ -31,7 +31,7 @@ return {
 				function()
 					require("ts-node-action").node_action()
 				end,
-				desc = "Trigger Node Action",
+				desc = "Node Action: Toggle Node Action",
 			},
 		},
 		dependencies = { "nvim-treesitter" },
