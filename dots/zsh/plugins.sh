@@ -82,6 +82,7 @@ repos=(
   adinhodovic/git-alias
   adinhodovic/terraform-alias
   adinhodovic/kubernetes-alias
+  adinhodovic/zsh-aws-vault
   trapd00r/LS_COLORS
 
   denisidoro/navi
