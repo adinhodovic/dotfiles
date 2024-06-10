@@ -25,6 +25,8 @@ export FONTCONFIG_PATH=~/.config/fontconfig/fonts.conf
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
 export GTK_USE_PORTAL=1
 
+export AWS_VAULT_BACKEND="secret-service"
+
 export PYTHON_VENV_NAME=.venv
 
 export PYENV_ROOT="$HOME/.pyenv"

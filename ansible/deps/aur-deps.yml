@@ -82,6 +82,9 @@
         # Secrets
         - enpass-bin
         - 1password
+        - gnome-keyring
+        - seahorse
+        - aws-vault
 
         # terminal/vim
         - zsh

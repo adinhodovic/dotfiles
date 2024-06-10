@@ -46,6 +46,27 @@
           "foreground": "#ffffff",
           "background": "#0959fd",
           "template": " \ufd31 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
+        },
+        {
+          "type": "terraform",
+          "style": "powerline",
+          "foreground": "#000000",
+          "background": "#ebcc34",
+          "template": "{{.WorkspaceName}} "
+        },
+        {
+          "type": "gcp",
+          "style": "powerline",
+          "foreground": "#ffffff",
+          "background": "#47888d",
+          "template": "  {{.Project}} :: {{.Account}} "
+        },
+        {
+          "type": "aws",
+          "style": "powerline",
+          "foreground": "#ffffff",
+          "background": "#FFA400",
+          "template": "  {{.Profile}}{{if .Region}}@{{.Region}}{{end}} "
         }
       ]
     },
