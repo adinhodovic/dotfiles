@@ -26,7 +26,10 @@
           "properties": {
             "branch_icon": "\ue0a0 ",
             "fetch_stash_count": false,
-            "fetch_status": true
+            "fetch_status": true,
+            "ignore_status": [
+              "internal"
+            ]
           }
         },
         {

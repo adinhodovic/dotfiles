@@ -7,6 +7,7 @@
       - github.com/google/go-jsonnet/cmd/jsonnet
       - github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
       - github.com/google/go-jsonnet/cmd/jsonnet-lint
+      - github.com/google/go-jsonnet/cmd/jsonnetfmt
       # configuration-management
       - github.com/grafana/tanka/cmd/tk
       - sigs.k8s.io/kustomize/kustomize/v5
@@ -20,6 +21,7 @@
       - github.com/bazelbuild/bazelisk
       - github.com/go-delve/delve/cmd/dlv
       - github.com/tilt-dev/ctlptl/cmd/ctlptl
+      - github.com/magefile/mage
       # Kubernetes
       - sigs.k8s.io/kind
       - github.com/terraform-docs/terraform-docs
