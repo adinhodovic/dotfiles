@@ -50,8 +50,14 @@ create_envrc() {
 alias cenvrc=create_envrc
 
 # Usecase: seda accounts-service cron-service ArgoCD
-search_and_replace_all() {
+rsearch_and_replace_all() {
 	rg "$3" --files-with-matches | xargs sed -i "s/$1/$2/g"
+}
+alias reda=rsearch_and_replace_all
+
+# Usecase: seda accounts-service cron-service <file_name>
+search_and_replace_all() {
+	ls "$3" | xargs sed -i "s/$1/$2/g"
 }
 alias seda=search_and_replace_all
 # Usecase: raf regexA regexB **

@@ -22,6 +22,7 @@
       - github.com/go-delve/delve/cmd/dlv
       - github.com/tilt-dev/ctlptl/cmd/ctlptl
       - github.com/magefile/mage
+      - github.com/stefanprodan/kustomizer/cmd/kustomizer
       # Kubernetes
       - sigs.k8s.io/kind
       - github.com/terraform-docs/terraform-docs

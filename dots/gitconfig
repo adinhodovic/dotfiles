@@ -59,3 +59,7 @@
 	enabled = true
 [maintenance]
 	repo = /home/adin/dotfiles
+[status]
+	submodulesummary = 1
+[submodule]
+	recurse = true
