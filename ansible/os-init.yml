@@ -150,3 +150,7 @@
       tags:
         - laptop
       when: "'laptop' in ansible_run_tags"
+
+    - name: Start clamav
+      become: true
+      shell: systemctl enable --now clamav-daemon.service

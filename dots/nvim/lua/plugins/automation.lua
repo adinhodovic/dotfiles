@@ -249,7 +249,7 @@ return {
 						goto_previous_start = {
 							["[f"] = { query = "@call.outer", desc = "Prev function call start" },
 							["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
-							["[c"] = { query = "@class.outer", desc = "Prev class start" },
+							["[C"] = { query = "@class.outer", desc = "Prev class start" },
 							["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
 							["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
 						},
