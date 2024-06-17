@@ -31,6 +31,7 @@
       # utils
       - github.com/tomnomnom/gron
       - github.com/brancz/gojsontoyaml
+      - github.com/sachaos/viddy
       # secrets
       - github.com/hashicorp/vault
 

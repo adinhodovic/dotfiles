@@ -39,6 +39,12 @@ alias lg=lazygit
 
 alias g-default="gcloud config configurations activate default && sed -i '/access-token:/d' ~/.kube/config"
 
+vd() {
+	viddy -d -n 1 --shell zsh  "$(which $1 | cut -d' ' -f 4-)"
+}
+
+alias vd=vd
+
 create_envrc() {
 	envrc_content=""
 	if [ -e "./.env" ]; then
