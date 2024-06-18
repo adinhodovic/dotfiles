@@ -32,7 +32,6 @@
         - pipreqs
         - pypyp
         - rebound-cli
-        - bpytop
         - wheel
         - pip-tools
         - poetry

@@ -14,7 +14,6 @@
       loop:
         - nvim
         - lazygit
-        - bpytop
         - i3
         - atuin
         - broot
@@ -72,9 +71,6 @@
 
         - src: "lazygit.yml"
           dest: "/home/adin/.config/lazygit/config.yml"
-
-        - src: "bpytop.conf"
-          dest: "/home/adin/.config/bpytop/bpytop.conf"
 
         - src: "default.omp.json"
           dest: "/home/adin/.default.omp.json"

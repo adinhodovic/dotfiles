@@ -43,6 +43,8 @@ vd() {
 	viddy -d -n 1 --shell zsh  "$(which $1 | cut -d' ' -f 4-)"
 }
 
+alias ping=gping
+alias dig=dog
 alias vd=vd
 
 create_envrc() {
@@ -75,7 +77,7 @@ rename_all_files() {
 
 alias tf='terraform'
 
-alias top='bpytop'
+alias top='btm --color nord'
 
 # Kubecolor
 alias kubectl="kubecolor"

@@ -9,3 +9,4 @@
       community.general.cargo:
       loop:
         - tzupdate
+        - gping

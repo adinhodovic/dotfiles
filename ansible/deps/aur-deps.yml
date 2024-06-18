@@ -69,6 +69,7 @@
         - tailscale
         - openvpn
         - clamav
+        - dog # dig alternative
 
         # time
         - ntp
