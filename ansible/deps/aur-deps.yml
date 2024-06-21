@@ -147,6 +147,7 @@
 
         # configuration-management
         - terraform
+        - pulumi
 
         # git
         - git-delta
