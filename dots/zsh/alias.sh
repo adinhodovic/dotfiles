@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 alias cat="bat"
 alias cl='clear'
 # eza instead of ls
@@ -37,10 +37,41 @@ alias ungron="gron --ungron"
 
 alias lg=lazygit
 
-alias g-default="gcloud config configurations activate default && sed -i '/access-token:/d' ~/.kube/config"
+gcp_reset() {
+	# Path to the JSON file
+	json_file="$HOME/.kube/gke_gcloud_auth_plugin_cache"
+
+	# Calculate the new expiry time (5 minutes in the past)
+	new_expiry=$(date -u -d '5 minutes ago' +"%Y-%m-%dT%H:%M:%SZ")
+
+	# Update the token_expiry field in the JSON file
+	jq --arg new_expiry "$new_expiry" '.token_expiry = $new_expiry' "$json_file" >"${json_file}.tmp" && mv "${json_file}.tmp" "$json_file"
+}
+alias gcpreset=gcp_reset
+gcp_list() {
+	# Define the gcloud configuration command
+	gcloud_cmd=("gcloud" "config" "configurations")
+
+	# Function to list configurations and select one using fzf
+	select_configuration() {
+		"${gcloud_cmd[@]}" list | fzf --header-lines 1 --reverse | awk '{print $1}'
+	}
+
+	# Activate the specified configuration or prompt the user to select one
+	configuration_to_activate="${1:-$(select_configuration)}"
+
+	if [ -n "$configuration_to_activate" ]; then
+		"${gcloud_cmd[@]}" activate "$configuration_to_activate"
+		gcp_reset
+	else
+		echo "No configuration selected or specified."
+		exit 1
+	fi
+}
+alias gcplist=gcp_list
 
 vd() {
-	viddy -d -n 1 --shell zsh  "$(which $1 | cut -d' ' -f 4-)"
+	viddy -d -n 1 --shell zsh "$(which "$1" | cut -d' ' -f 4-)"
 }
 
 alias ping=gping
@@ -53,7 +84,7 @@ create_envrc() {
 		envrc_content+='dotenv\n\n'
 	fi
 	envrc_content+="poetry env use 3.11\nsource ./.venv/bin/activate"
-	echo $envrc_content >.envrc
+	echo "$envrc_content" >.envrc
 }
 alias cenvrc=create_envrc
 
