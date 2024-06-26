@@ -16,7 +16,6 @@
       ignore_errors: true
       loop:
         - xdg-settings set default-web-browser google-chrome-stable.desktop
-        - xdg-mime default org.kde.dolphin.desktop inode/directory
         - git config --global core.editor "nvim"
 
     - name: Add me to docker group

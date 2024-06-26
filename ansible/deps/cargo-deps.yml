@@ -10,3 +10,4 @@
       loop:
         - tzupdate
         - gping
+        - serpl

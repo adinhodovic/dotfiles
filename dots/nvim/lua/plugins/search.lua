@@ -292,23 +292,23 @@ return {
 		-- Search and replace
 		"nvim-pack/nvim-spectre",
 		keys = {
-			{ "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre" },
-			{
-				"<leader>sw",
-				'<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-				desc = "Search current word",
-			},
-			{
-				"<leader>sw",
-				mode = { "v" },
-				'<esc><cmd>lua require("spectre").open_visual()<CR>',
-				desc = "Search current word",
-			},
-			{
-				"<leader>sp",
-				'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-				desc = "Search in current file",
-			},
+			-- { "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre" },
+			-- {
+			-- 	"<leader>sw",
+			-- 	'<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
+			-- 	desc = "Search current word",
+			-- },
+			-- {
+			-- 	"<leader>sw",
+			-- 	mode = { "v" },
+			-- 	'<esc><cmd>lua require("spectre").open_visual()<CR>',
+			-- 	desc = "Search current word",
+			-- },
+			-- {
+			-- 	"<leader>sp",
+			-- 	'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
+			-- 	desc = "Search in current file",
+			-- },
 		},
 		config = function()
 			require("spectre").setup()
@@ -319,5 +319,36 @@ return {
 		config = function()
 			require("grug-far").setup({})
 		end,
+		keys = {
+			{
+				"<leader>S",
+				function()
+					require("grug-far").grug_far()
+				end,
+				desc = "Grug: Open",
+			},
+			{
+				"<leader>sw",
+				function()
+					require("grug-far").grug_far({
+						prefills = {
+							search = vim.fn.expand("<cword>"),
+						},
+					})
+				end,
+				desc = "Grug: Replace word under cursor",
+			},
+			{
+				"<leader>sf",
+				function()
+					require("grug-far").grug_far({
+						prefills = {
+							flags = vim.fn.expand("%"),
+						},
+					})
+				end,
+				desc = "Grug: Replace word in current file",
+			},
+		},
 	},
 }

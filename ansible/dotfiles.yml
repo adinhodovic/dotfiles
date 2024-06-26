@@ -171,6 +171,9 @@
         - src: "portals.conf"
           dest: "/home/adin/.config/xdg-desktop-portal/portals.conf"
 
+        - src: "mimeapps.list"
+          dest: "/home/adin/.config/mimeapps.list"
+
     - name: Mv Sudo Dots
       become: true
       tags: sudo-dots
