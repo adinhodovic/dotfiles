@@ -9,6 +9,32 @@ return {
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{
+				"<M-=>",
+				function()
+					require("fzf-lua").files()
+				end,
+				desc = "Fzf-lua: Find files",
+			},
+			{
+				"<M-->",
+				function()
+					require("fzf-lua").git_files()
+				end,
+				desc = "Fzf-lua: Git files",
+			},
+			{
+				"-",
+				function()
+					require("fzf-lua").buffers({
+						sort_lastused = true,
+						ignore_current_buffer = true,
+					})
+				end,
+				desc = "Fzf-lua: Find buffers",
+			},
+		},
 		config = function()
 			require("fzf-lua").setup({
 				"telescope",
@@ -35,37 +61,12 @@ return {
 				function()
 					require("telescope").extensions.projects.projects()
 				end,
-				desc = "Find project",
+				desc = "Telescope: Find project",
 			},
 			{
 				"b",
 				":e #<cr>",
 				desc = "Last buffer",
-			},
-			{
-				"<M-=>",
-				function()
-					require("telescope.builtin").find_files()
-				end,
-				desc = "Telescope: Find files",
-			},
-			{
-				"<M-->",
-				function()
-					require("telescope.builtin").git_files()
-				end,
-				desc = "Telescope: Find git files",
-			},
-			{
-				"-",
-				function()
-					require("telescope.builtin").buffers({
-						show_all_buffers = true,
-						sort_lastused = true,
-						ignore_current_buffer = true,
-					})
-				end,
-				desc = "Find buffers",
 			},
 			{
 				"<leader>fc",
@@ -269,6 +270,10 @@ return {
 		end,
 	},
 	{
+		-- Better search <leader>e, simpler than above
+		"wincent/scalpel",
+	},
+	{
 		-- Better search
 		"cshuaimin/ssr.nvim",
 		opts = {},
@@ -308,9 +313,5 @@ return {
 		config = function()
 			require("spectre").setup()
 		end,
-	},
-	{
-		-- Better search <leader>e, simpler than above
-		"wincent/scalpel",
 	},
 }
