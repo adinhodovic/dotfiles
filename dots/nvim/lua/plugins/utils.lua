@@ -31,6 +31,12 @@ return {
 				mode = { "n", "t" },
 				desc = "Toggleterm: Toggle lazygit",
 			},
+			{
+				"<leader>tts",
+				"<cmd>lua _serpl_toggle()<cr>",
+				mode = { "n", "t" },
+				desc = "Toggleterm: Toggle Serpl",
+			},
 		},
 		opts = {},
 		config = function()
@@ -74,6 +80,31 @@ return {
 
 			function _lazygit_toggle() ---@diagnostic disable-line: lowercase-global
 				lazygit:toggle()
+			end
+
+			local serpl = Terminal:new({
+				cmd = "serpl",
+				dir = "git_dir",
+				direction = "float",
+				-- function to run on opening the terminal
+				on_open = function(term)
+					vim.cmd("startinsert!")
+					vim.api.nvim_buf_set_keymap(
+						term.bufnr,
+						"n",
+						"q",
+						"<cmd>close<CR>",
+						{ noremap = true, silent = true }
+					)
+				end,
+				-- function to run on closing the terminal
+				on_close = function(term)
+					vim.cmd("startinsert!")
+				end,
+			})
+
+			function _serpl_toggle() ---@diagnostic disable-line: lowercase-global
+				serpl:toggle()
 			end
 
 			function _G.set_terminal_keymaps()

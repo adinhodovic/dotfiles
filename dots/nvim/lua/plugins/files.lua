@@ -2,6 +2,13 @@ return {
 	{
 		"stevearc/oil.nvim",
 		cmd = "Oil",
+		keys = {
+			{
+				"<leader>fo",
+				":Oil --float <cr>",
+				desc = "Oil: Open file explorer",
+			},
+		},
 		opts = {
 			columns = {
 				"icon",
@@ -10,6 +17,15 @@ return {
 			},
 			win_options = {
 				signcolumn = "yes:2",
+			},
+			view_options = {
+				-- Show files and directories that start with "."
+				show_hidden = true,
+			},
+
+			float = {
+				max_width = 100,
+				max_height = 0,
 			},
 		},
 		-- Optional dependencies
@@ -73,9 +89,9 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		keys = {
 			{
-				"<leader>ct",
+				"<leader>ft",
 				":NvimTreeToggle<cr>",
-				desc = "Open nvim tree",
+				desc = "Nvim Tree: Open NvimTree",
 			},
 		},
 		config = function()
@@ -85,6 +101,12 @@ return {
 				update_focused_file = {
 					enable = true,
 					update_root = true,
+				},
+				view = {
+					width = {
+						min = 30,
+						max = 50,
+					},
 				},
 				sort = {
 					sorter = "case_sensitive",

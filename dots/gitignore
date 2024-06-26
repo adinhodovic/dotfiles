@@ -45,3 +45,4 @@ __snapshot__
 db_dump.tar
 dbsqlite3.db
 debug.*
+serpl.log
