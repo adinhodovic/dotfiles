@@ -314,4 +314,10 @@ return {
 			require("spectre").setup()
 		end,
 	},
+	{
+		"MagicDuck/grug-far.nvim",
+		config = function()
+			require("grug-far").setup({})
+		end,
+	},
 }

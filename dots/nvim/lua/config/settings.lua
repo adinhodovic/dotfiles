@@ -32,6 +32,7 @@ set.updatetime = 300
 vim.opt.autoread = true
 
 vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- don't give |ins-completion-menu| messages.
 set.shortmess = "c"
