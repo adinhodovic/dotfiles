@@ -11,6 +11,7 @@ export PATH="$PATH:$HOME/.krew/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+export PATH="$PATH:$HOME/.pulumi/bin"
 
 export EDITOR="nvim"
 

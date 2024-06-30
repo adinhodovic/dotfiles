@@ -67,7 +67,11 @@ set.termguicolors = true
 set.cursorline = true
 vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
 
+set.title = true
+
 set.number = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 set.background = "dark"
 
@@ -94,12 +98,6 @@ set.history = 1000
 set.spell = false
 -- set.spelllang = { "en_us" }
 -- set.spellfile = vim.fn.expand("$HOME/dotfiles/misc/spell/en.utf-8.add")
-
--------------------------------------------
--- Common
--------------------------------------------
-set.title = true
-set.number = true
 
 -------------------------------------------
 --           Files, backups and undo
