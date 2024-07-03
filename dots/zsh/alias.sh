@@ -36,6 +36,8 @@ alias cd....='cd ../../../..'
 alias ungron="gron --ungron"
 
 alias lg=lazygit
+# Remove this if we need the native ld command
+alias ld=lazydocker
 
 gcp_reset() {
 	# Path to the JSON file

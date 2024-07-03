@@ -23,6 +23,7 @@
       - github.com/tilt-dev/ctlptl/cmd/ctlptl
       - github.com/magefile/mage
       - github.com/stefanprodan/kustomizer/cmd/kustomizer
+      - github.com/jesseduffield/lazydocker
       # Kubernetes
       - sigs.k8s.io/kind
       - github.com/terraform-docs/terraform-docs
@@ -32,6 +33,7 @@
       - github.com/tomnomnom/gron
       - github.com/brancz/gojsontoyaml
       - github.com/sachaos/viddy
+      - github.com/dhth/mult
       # secrets
       - github.com/hashicorp/vault
 
