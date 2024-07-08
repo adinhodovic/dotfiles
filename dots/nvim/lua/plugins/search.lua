@@ -53,16 +53,24 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-telescope/telescope-fzf-native.nvim",
+			{
+				"polirritmico/telescope-lazy-plugins.nvim",
+				opts = {
+					lazy_config = vim.fn.stdpath("config") .. "/lua/config/lazy.lua", -- path to the file containing the lazy opts and setup() call.
+				},
+				keys = {
+					{
+						"<leader>flp",
+						function()
+							require("telescope").extensions.lazy_plugins.lazy_plugins()
+						end,
+						desc = "Telescope: Lazy Plugins",
+					},
+				},
+			},
 		},
 		lazy = false,
 		keys = {
-			{
-				"<leader>cd",
-				function()
-					require("telescope").extensions.projects.projects()
-				end,
-				desc = "Telescope: Find project",
-			},
 			{
 				"b",
 				":e #<cr>",
@@ -104,6 +112,13 @@ return {
 				end,
 				desc = "Telescope Spell Suggest",
 			},
+			{
+				"<leader>cd",
+				function()
+					require("telescope").extensions.projects.projects()
+				end,
+				desc = "Telescope: Find project",
+			},
 		},
 		priority = 1000,
 		config = function()
@@ -121,6 +136,7 @@ return {
 				},
 			})
 			require("telescope").load_extension("fzf")
+			require("telescope").load_extension("lazy_plugins")
 		end,
 	},
 	{
