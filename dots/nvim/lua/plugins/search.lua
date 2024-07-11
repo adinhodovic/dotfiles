@@ -140,22 +140,6 @@ return {
 		end,
 	},
 	{
-		"polirritmico/telescope-lazy-plugins.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		keys = {
-			{
-				"<leader>tlp",
-				function()
-					require("telescope").extensions.lazy_plugins.lazy_plugins()
-				end,
-				desc = "Telescope: Lazy Plugins",
-			},
-		},
-		config = function()
-			require("telescope").load_extension("lazy_plugins")
-		end,
-	},
-	{
 		"piersolenski/telescope-import.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
 		keys = {
