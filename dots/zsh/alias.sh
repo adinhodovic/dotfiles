@@ -40,40 +40,40 @@ alias lg=lazygit
 alias ld=lazydocker
 
 gcp_reset() {
-	# Path to the JSON file
-	json_file="$HOME/.kube/gke_gcloud_auth_plugin_cache"
+  # Path to the JSON file
+  json_file="$HOME/.kube/gke_gcloud_auth_plugin_cache"
 
-	# Calculate the new expiry time (5 minutes in the past)
-	new_expiry=$(date -u -d '5 minutes ago' +"%Y-%m-%dT%H:%M:%SZ")
+  # Calculate the new expiry time (5 minutes in the past)
+  new_expiry=$(date -u -d '5 minutes ago' +"%Y-%m-%dT%H:%M:%SZ")
 
-	# Update the token_expiry field in the JSON file
-	jq --arg new_expiry "$new_expiry" '.token_expiry = $new_expiry' "$json_file" >"${json_file}.tmp" && mv "${json_file}.tmp" "$json_file"
+  # Update the token_expiry field in the JSON file
+  jq --arg new_expiry "$new_expiry" '.token_expiry = $new_expiry' "$json_file" >"${json_file}.tmp" && mv "${json_file}.tmp" "$json_file"
 }
 alias gcpreset=gcp_reset
 gcp_list() {
-	# Define the gcloud configuration command
-	gcloud_cmd=("gcloud" "config" "configurations")
+  # Define the gcloud configuration command
+  gcloud_cmd=("gcloud" "config" "configurations")
 
-	# Function to list configurations and select one using fzf
-	select_configuration() {
-		"${gcloud_cmd[@]}" list | fzf --header-lines 1 --reverse | awk '{print $1}'
-	}
+  # Function to list configurations and select one using fzf
+  select_configuration() {
+    "${gcloud_cmd[@]}" list | fzf --header-lines 1 --reverse | awk '{print $1}'
+  }
 
-	# Activate the specified configuration or prompt the user to select one
-	configuration_to_activate="${1:-$(select_configuration)}"
+  # Activate the specified configuration or prompt the user to select one
+  configuration_to_activate="${1:-$(select_configuration)}"
 
-	if [ -n "$configuration_to_activate" ]; then
-		"${gcloud_cmd[@]}" activate "$configuration_to_activate"
-		gcp_reset
-	else
-		echo "No configuration selected or specified."
-		exit 1
-	fi
+  if [ -n "$configuration_to_activate" ]; then
+    "${gcloud_cmd[@]}" activate "$configuration_to_activate"
+    gcp_reset
+  else
+    echo "No configuration selected or specified."
+    exit 1
+  fi
 }
 alias gcplist=gcp_list
 
 vd() {
-	viddy -d -n 1 --shell zsh "$(which "$1" | cut -d' ' -f 4-)"
+  viddy -d -n 1 --shell zsh "$(which "$1" | cut -d' ' -f 4-)"
 }
 
 alias ping=gping
@@ -81,31 +81,31 @@ alias dig=dog
 alias vd=vd
 
 create_envrc() {
-	envrc_content=""
-	if [ -e "./.env" ]; then
-		envrc_content+='dotenv\n\n'
-	fi
-	envrc_content+="poetry env use 3.11\nsource ./.venv/bin/activate"
-	echo "$envrc_content" >.envrc
+  envrc_content=""
+  if [ -e "./.env" ]; then
+    envrc_content+='dotenv\n\n'
+  fi
+  envrc_content+="poetry env use 3.11\nsource ./.venv/bin/activate"
+  echo "$envrc_content" >.envrc
 }
 alias cenvrc=create_envrc
 
 # Usecase: seda accounts-service cron-service ArgoCD
 rsearch_and_replace_all() {
-	rg "$3" --files-with-matches | xargs sed -i "s/$1/$2/g"
+  rg "$3" --files-with-matches | xargs sed -i "s/$1/$2/g"
 }
 alias reda=rsearch_and_replace_all
 
 # Usecase: seda accounts-service cron-service <file_name>
 search_and_replace_all() {
-	ls "$3" | xargs sed -i "s/$1/$2/g"
+  ls "$3" | xargs sed -i "s/$1/$2/g"
 }
 alias seda=search_and_replace_all
 # Usecase: raf regexA regexB **
 alias raf=rename_all_files
 
 rename_all_files() {
-	rename -v "$1" "$2" "$3"
+  rename -v "$1" "$2" "$3"
 }
 
 alias tf='terraform'
@@ -117,11 +117,11 @@ alias kubectl="kubecolor"
 
 alias xc='xclip -sel clip'
 function v() {
-	if [[ -z "$1" ]]; then
-		nvim $(__fsel)
-	else
-		nvim $@
-	fi
+  if [[ -z "$1" ]]; then
+    nvim $(__fsel)
+  else
+    nvim $@
+  fi
 }
 alias ps='procs'
 alias t=task
@@ -136,30 +136,29 @@ alias setxkbmapcaps="setxkbmap -option caps:swapescape68"
 alias o='xdg-open'
 alias v=nvim
 
-alias dus=diskus
 alias du=dust
 
 alias copy="xclip -sel clip < $1"
 
 function vf {
-	if [ "$#" -lt 1 ]; then
-		return 1
-	fi
-	results=$(ag --nogroup --column --color "$@" | fzf --multi --ansi --prompt 'AG>')
-	if [ -n "$results" ]; then
-		files=$(echo $results | awk -F ':' '{print $1":"$2":"$3}' | tr '\r\n' ' ')
-		eval nvim "$files"
-	fi
+  if [ "$#" -lt 1 ]; then
+    return 1
+  fi
+  results=$(ag --nogroup --column --color "$@" | fzf --multi --ansi --prompt 'AG>')
+  if [ -n "$results" ]; then
+    files=$(echo $results | awk -F ':' '{print $1":"$2":"$3}' | tr '\r\n' ' ')
+    eval nvim "$files"
+  fi
 }
 
 fcommit() {
-	local commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
-		local commit=$(echo "$commits" | fzf --tac +s -m -e --ansi --reverse) &&
-		echo -n $(echo "$commit" | sed "s/ .*//")
+  local commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
+    local commit=$(echo "$commits" | fzf --tac +s -m -e --ansi --reverse) &&
+    echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
 run_taskwarrior_tui() {
-	taskwarrior-tui
+  taskwarrior-tui
 }
 zle -N run_taskwarrior_tui
 
