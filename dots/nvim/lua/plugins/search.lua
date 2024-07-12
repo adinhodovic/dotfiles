@@ -274,21 +274,6 @@ return {
 		"wincent/scalpel",
 	},
 	{
-		-- Better search
-		"cshuaimin/ssr.nvim",
-		opts = {},
-		keys = {
-			{
-				"<leader>sr",
-				mode = { "n", "x" },
-				function()
-					require("ssr").open()
-				end,
-				desc = "Search and replace",
-			},
-		},
-	},
-	{
 		-- Search and replace
 		"nvim-pack/nvim-spectre",
 		keys = {
