@@ -255,4 +255,20 @@ return {
 			cut_key = "x",
 		},
 	},
+	{
+		"sQVe/sort.nvim",
+		opts = {},
+		keys = {
+			{
+				"<leader>so",
+				"<cmd>Sort<cr>",
+				desc = "Sort: Sort lines",
+			},
+			{
+				"<leader>so",
+				"<esc><cmd>Sort<cr>",
+				mode = { "v" },
+			},
+		},
+	},
 }
