@@ -219,6 +219,9 @@ return {
 					schemas = require("schemastore").yaml.schemas(),
 				},
 			})
+			lspconfig.lemminx.setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 	{

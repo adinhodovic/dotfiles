@@ -32,6 +32,7 @@ return {
 					"golangci-lint",
 					"ansible-lint",
 					"stylelint",
+					"lemminx",
 					"mypy",
 					"tflint",
 					"stylua",
