@@ -24,6 +24,7 @@
       - github.com/magefile/mage
       - github.com/stefanprodan/kustomizer/cmd/kustomizer
       - github.com/jesseduffield/lazydocker
+      - github.com/grpc-ecosystem/grpc-health-probe
       # Kubernetes
       - sigs.k8s.io/kind
       - github.com/terraform-docs/terraform-docs
