@@ -36,3 +36,4 @@
         - pip-tools
         - poetry
         - tl
+        - harlequin[postgres,s3]

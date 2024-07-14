@@ -46,3 +46,4 @@ db_dump.tar
 dbsqlite3.db
 debug.*
 serpl.log
+local.db

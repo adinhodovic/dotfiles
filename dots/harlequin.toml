@@ -1,0 +1,19 @@
+default_profile = "sqlite-local"
+[profiles]
+[profiles.postgres-local]
+adapter = "postgres"
+theme = "github-dark"
+limit = 100000
+keymap_name = ["vscode"]
+host = "localhost"
+port = "5672"
+dbname = "postgres"
+user = "postgres"
+password = "postgres"
+
+[profiles.sqlite-local]
+adapter = "sqlite"
+theme = "github-dark"
+limit = 100000
+keymap_name = ["vscode"]
+conn_str = ["local.db"]

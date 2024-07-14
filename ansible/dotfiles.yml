@@ -30,6 +30,7 @@
         - neofetch
         - discord
         - xdg-desktop-portal
+        - harlequin
 
     - name: Symlink dots
       ignore_errors: true
@@ -173,6 +174,9 @@
 
         - src: "mimeapps.list"
           dest: "/home/adin/.config/mimeapps.list"
+
+        - src: "harlequin.toml"
+          dest: "/home/adin/.config/harlequin/config.toml"
 
     - name: Mv Sudo Dots
       become: true
