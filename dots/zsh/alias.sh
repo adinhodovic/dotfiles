@@ -138,6 +138,8 @@ alias v=nvim
 
 alias du=dust
 
+alias diff=difft
+
 alias copy="xclip -sel clip < $1"
 
 function vf {

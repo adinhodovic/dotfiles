@@ -136,6 +136,8 @@
         - usbimager
         # Useful for command not found
         - pkgfile
+        # A better diff
+        - difft
 
         # OS
         - dolphin

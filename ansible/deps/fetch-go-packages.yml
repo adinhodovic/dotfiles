@@ -25,6 +25,7 @@
       - github.com/stefanprodan/kustomizer/cmd/kustomizer
       - github.com/jesseduffield/lazydocker
       - github.com/grpc-ecosystem/grpc-health-probe
+      - github.com/boz/kail/cmd/kail
       # Kubernetes
       - sigs.k8s.io/kind
       - github.com/terraform-docs/terraform-docs
