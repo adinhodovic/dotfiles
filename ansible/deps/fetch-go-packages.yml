@@ -26,6 +26,7 @@
       - github.com/jesseduffield/lazydocker
       - github.com/grpc-ecosystem/grpc-health-probe
       - github.com/boz/kail/cmd/kail
+      - github.com/fullstorydev/grpcurl/cmd/grpcurl
       # Kubernetes
       - sigs.k8s.io/kind
       - github.com/terraform-docs/terraform-docs
