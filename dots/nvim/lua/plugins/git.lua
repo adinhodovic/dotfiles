@@ -189,7 +189,7 @@ return {
 		opts = {},
 	},
 	{
-		"aaronhallaert/ts-advanced-git-search.nvim",
+		"aaronhallaert/advanced-git-search.nvim",
 		config = function()
 			require("telescope").load_extension("advanced_git_search")
 		end,
