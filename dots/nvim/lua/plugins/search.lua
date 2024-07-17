@@ -334,6 +334,18 @@ return {
 				end,
 				desc = "Grug: Replace word in current file",
 			},
+			{
+				"<leader>sv",
+				function()
+					require("grug-far").with_visual_selection({
+						prefills = {
+							flags = vim.fn.expand("%"),
+						},
+					})
+				end,
+				mode = { "v" },
+				desc = "Grug: Replace word in current file visually selected",
+			},
 		},
 	},
 }
