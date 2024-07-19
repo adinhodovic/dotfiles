@@ -141,10 +141,10 @@
 
         # OS
         - dolphin
-        - xdg-portal-desktop
-        - xdg-portal-desktop-kde
+        - xdg-desktop-portal
+        - xdg-desktop-portal-kde
         # Fallback
-        - xdg-portal-desktop-gtk
+        - xdg-desktop-portal-gtk
 
         # configuration-management
         - terraform
