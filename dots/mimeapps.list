@@ -4,4 +4,21 @@ x-scheme-handler/http=google-chrome.desktop
 x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
+application/json=chromium.desktop;
+application/pdf=chromium.desktop;
+application/rdf+xml=chromium.desktop;
+application/rss+xml=chromium.desktop;
+application/x-xpinstall=chromium.desktop;
+application/xhtml+xml=chromium.desktop;
+application/xhtml_xml=chromium.desktop;
+application/xml=chromium.desktop;
+image/gif=chromium.desktop;
+image/jpeg=chromium.desktop;
+image/png=chromium.desktop;
+image/webp=chromium.desktop;
+text/html=google-chrome.desktop
+text/xml=chromium.desktop;
 inode/directory=org.kde.dolphin.desktop
+
+[Added Associations]
+audio/x-wav=chromium.desktop;
