@@ -16,6 +16,24 @@ return {
 				"rmagatti/goto-preview",
 				opts = {},
 			},
+			{
+				-- Navbuddy provides breadcrumb like UI
+				"SmiteshP/nvim-navbuddy",
+				dependencies = {
+					"SmiteshP/nvim-navic",
+					"MunifTanjim/nui.nvim",
+				},
+				opts = { lsp = { auto_attach = true } },
+				keys = {
+					{
+						"<leader>nb",
+						function()
+							require("nvim-navbuddy").open()
+						end,
+						desc = "Navbuddy: Toggle",
+					},
+				},
+			},
 		},
 		keys = {
 			{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
