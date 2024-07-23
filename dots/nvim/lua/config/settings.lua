@@ -73,8 +73,6 @@ set.number = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-set.background = "dark"
-
 -- Bullets.vim
 vim.g.bullets_enabled_file_types = {
 	"markdown",

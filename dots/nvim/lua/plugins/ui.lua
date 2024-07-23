@@ -199,7 +199,9 @@ return {
 		"projekt0n/github-nvim-theme",
 		priority = 1000,
 		config = function()
-			require("github-theme").setup()
+			require("github-theme").setup({
+				options = {},
+			})
 			vim.cmd.colorscheme("github_dark_default")
 		end,
 	},
@@ -254,6 +256,10 @@ return {
 	{
 		-- Better dropbar
 		"Bekaboo/dropbar.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"telescope-fzf-native.nvim",
+		},
 	},
 	{
 		-- Highlight yanks

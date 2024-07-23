@@ -8,6 +8,24 @@ local autocmd = vim.api.nvim_create_autocmd
 -----------------------------------------
 return {
 	{
+		"MeanderingProgrammer/markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		ft = { "markdown", "norg", "rmd", "org" },
+		opts = {
+			heading = {
+				-- Turn on / off heading icon & background rendering
+				enabled = false,
+			},
+			bullet = {
+				-- Turn on / off list bullet rendering
+				enabled = false,
+			},
+			code = {
+				style = "language",
+			},
+		},
+	},
+	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && yarn install",
@@ -125,6 +143,12 @@ return {
 		config = function()
 			vim.opt.conceallevel = 1
 			require("obsidian").setup({
+				ui = {
+					-- use markdown.nvim instead for these
+					checkboxes = {},
+					bullets = {},
+					external_link_icon = {},
+				},
 				workspaces = {
 					{
 						name = "notes",

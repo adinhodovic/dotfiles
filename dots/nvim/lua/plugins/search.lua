@@ -274,35 +274,11 @@ return {
 		"wincent/scalpel",
 	},
 	{
-		-- Search and replace
-		"nvim-pack/nvim-spectre",
-		keys = {
-			-- { "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre" },
-			-- {
-			-- 	"<leader>sw",
-			-- 	'<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-			-- 	desc = "Search current word",
-			-- },
-			-- {
-			-- 	"<leader>sw",
-			-- 	mode = { "v" },
-			-- 	'<esc><cmd>lua require("spectre").open_visual()<CR>',
-			-- 	desc = "Search current word",
-			-- },
-			-- {
-			-- 	"<leader>sp",
-			-- 	'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-			-- 	desc = "Search in current file",
-			-- },
-		},
-		config = function()
-			require("spectre").setup()
-		end,
-	},
-	{
 		"MagicDuck/grug-far.nvim",
 		config = function()
-			require("grug-far").setup({})
+			require("grug-far").setup({
+				transient = true,
+			})
 		end,
 		keys = {
 			{
