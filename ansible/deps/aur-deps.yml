@@ -138,6 +138,7 @@
         - pkgfile
         # A better diff
         - difft
+        - cronie
 
         # OS
         - dolphin

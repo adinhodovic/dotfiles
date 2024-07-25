@@ -152,4 +152,36 @@
 
     - name: Start clamav
       become: true
-      shell: systemctl enable --now clamav-daemon.service
+      shell: systemctl enable --now clamav-daemon.service && systemctl enable --now clamav-freshclam.service
+      tags:
+        - antivirus
+
+    - name: Ensure the directory for ClamAV logs exists
+      become: true
+      file:
+        path: /var/log/clamav
+        state: directory
+        mode: "0755"
+      tags:
+        - antivirus
+
+    - name: Ensure freshclam.log exists
+      become: true
+      file:
+        path: /var/log/clamav/freshclam.log
+        state: touch
+        mode: "0644"
+      tags:
+        - antivirus
+
+    - name: Set up a monthly cron job for ClamAV scan
+      cron:
+        name: "Monthly ClamAV Scan"
+        minute: "0"
+        hour: "0"
+        day: "1"
+        month: "*"
+        weekday: "*"
+        job: "~/dotfiles/scripts/clamav-scan.sh"
+      tags:
+        - antivirus
