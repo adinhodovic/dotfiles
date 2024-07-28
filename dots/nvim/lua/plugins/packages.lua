@@ -18,8 +18,6 @@ return {
 					"codespell",
 					"djlint",
 					"eslint",
-					"golangci-lint",
-					"golangci-lint",
 					"htmlhint",
 					"isort",
 					"jsonlint",
@@ -28,6 +26,12 @@ return {
 					"luacheck",
 					"markdownlint",
 					"mypy",
+					-- Go
+					"gofumpt",
+					"goimports",
+					"golangci-lint",
+					"gopls",
+					---
 					"prettier",
 					"pylint",
 					"ruff",

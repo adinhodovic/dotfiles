@@ -325,18 +325,34 @@ return {
 			})
 		end,
 	},
-	-- Code actions
 	{
-		"aznhe21/actions-preview.nvim",
+		"rachartier/tiny-code-action.nvim",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		event = "LspAttach",
+		config = function()
+			require("tiny-code-action").setup()
+		end,
 		keys = {
 			{
 				"<leader>ca",
 				mode = { "v", "n" },
 				function()
-					require("actions-preview").code_actions()
+					require("tiny-code-action").code_action()
 				end,
-				desc = "Toggle Code Actions",
+				desc = "Acitons Preview: Toggle Code Actions",
 			},
 		},
+	},
+	-- Better inline diagnostic for breaking lines
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("tiny-inline-diagnostic").setup()
+			vim.diagnostic.config({ virtual_text = false })
+		end,
 	},
 }
