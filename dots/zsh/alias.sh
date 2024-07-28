@@ -1,5 +1,4 @@
 #! /bin/bash
-alias cat="bat"
 alias cl='clear'
 # eza instead of ls
 alias ls='eza'
@@ -141,6 +140,24 @@ alias du=dust
 alias diff=difft
 
 alias copy="xclip -sel clip < $1"
+
+# Ripgrep
+alias rg="batgrep --paging=never"
+
+# Bat
+alias cat="bat"
+# Diff files
+alias bd="batdiff"
+
+# in your .bashrc/.zshrc/*rc
+alias bathelp='bat --plain --language=help'
+help() {
+  "$@" --help 2>&1 | bathelp
+}
+
+# Use bat for help
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 function vf {
   if [ "$#" -lt 1 ]; then

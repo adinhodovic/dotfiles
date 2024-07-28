@@ -278,4 +278,20 @@ return {
 			enabled = false,
 		},
 	},
+	{
+		-- Better vim help
+		"OXY2DEV/helpview.nvim",
+		lazy = false, -- Recommended
+
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		keys = {
+			{
+				"<leader>hv",
+				"<cmd>Helpview toggleAll<cr>",
+				desc = "Helpview: Toggle helpview",
+			},
+		},
+	},
 }

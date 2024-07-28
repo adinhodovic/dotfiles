@@ -19,6 +19,11 @@ return {
 		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 	{
+		"maxandron/goplements.nvim",
+		ft = "go",
+		opts = {},
+	},
+	{
 		-- Delve debugging
 		"sebdah/vim-delve",
 		ft = "go",

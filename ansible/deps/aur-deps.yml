@@ -114,6 +114,7 @@
         - inetutils
         - unzip
         - bat
+        - bat-extras
         - fd
         - procs
         - ripgrep
