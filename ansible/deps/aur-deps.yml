@@ -138,7 +138,7 @@
         # Useful for command not found
         - pkgfile
         # A better diff
-        - difft
+        - difftastic
         - cronie
 
         # OS
