@@ -75,7 +75,7 @@ zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # preview directory's content with exa when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `,` and `.`
@@ -87,3 +87,20 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
 source $ZPLUGINDIR/fzf-git.sh/fzf-git.sh
+
+
+# Forgit
+# Pop stash on alt-enter
+export FORGIT_STASH_POP_COMMAND='echo {} | cut -d: -f1 | xargs -I % git stash pop %'
+
+# Drop stash on alt-backspace
+export FORGIT_STASH_DROP_COMMAND='echo {} | cut -d: -f1 | xargs -I % git stash drop %'
+
+export FORGIT_STASH_FZF_OPTS="
+	--preview-window=top:50%
+	--bind='alt-p:execute($FORGIT_STASH_POP_COMMAND)+accept'
+	--bind='alt-r:execute($FORGIT_STASH_DROP_COMMAND)+reload(git stash list)'
+	--border=bottom
+	--border-label=' [ALT+P] pop - [ALT+R] drop '
+	--color=label:gray
+"
