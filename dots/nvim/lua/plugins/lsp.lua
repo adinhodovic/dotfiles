@@ -294,14 +294,11 @@ return {
 		},
 		config = function(_, opts)
 			require("trouble").setup(opts)
-			-- What does this do
-			local actions = require("telescope.actions")
 			local open_with_trouble = require("trouble.sources.telescope").open
 
-			-- Use this to add more results without clearing the trouble list
-			local add_to_trouble = require("trouble.sources.telescope").add
-
 			local telescope = require("telescope")
+			vim.lsp.handlers["textDocument/publishDiagnostics"] =
+				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = true })
 
 			telescope.setup({
 				defaults = {
@@ -353,6 +350,15 @@ return {
 		config = function()
 			require("tiny-inline-diagnostic").setup()
 			vim.diagnostic.config({ virtual_text = false })
+		end,
+	},
+	{
+		-- Better LSP renamer
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup({
+				input_buffer_type = "dressing",
+			})
 		end,
 	},
 }

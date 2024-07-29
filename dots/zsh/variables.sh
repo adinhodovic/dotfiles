@@ -34,5 +34,5 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
-# Bat as manpager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# Nvim as manpager
+export MANPAGER='nvim +Man!'

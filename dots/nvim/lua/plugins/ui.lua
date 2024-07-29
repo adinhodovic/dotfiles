@@ -73,15 +73,6 @@ return {
 		end,
 	},
 	{
-		-- Better renamer
-		"smjonas/inc-rename.nvim",
-		config = function()
-			require("inc_rename").setup({
-				input_buffer_type = "dressing",
-			})
-		end,
-	},
-	{
 		-- treesitter context
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
