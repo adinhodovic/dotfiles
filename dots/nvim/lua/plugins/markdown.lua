@@ -42,21 +42,6 @@ return {
 		},
 	},
 	{
-		-- Markdown
-		"ixru/nvim-markdown",
-		lazy = true,
-		ft = "markdown",
-		config = function()
-			-- Disable markdown code block conceals
-			g.vim_markdown_conceal = 2
-
-			g.vim_markdown_frontmatter = 1
-
-			-- TODO: Add custom mappings
-			g.vim_markdown_no_default_key_mappings = 1
-		end,
-	},
-	{
 		-- Markdown ToC
 		"mzlogin/vim-markdown-toc",
 		lazy = true,
@@ -136,6 +121,7 @@ return {
 		-- Obsidian
 		"epwalsh/obsidian.nvim",
 		lazy = true,
+		enabled = false,
 		ft = "markdown",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
