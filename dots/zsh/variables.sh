@@ -36,3 +36,6 @@ eval "$(pyenv init --path)"
 
 # Nvim as manpager
 export MANPAGER='nvim +Man!'
+
+# TODO(adinhodovic): Set a theme
+# export BAT_THEME="GitHub"
