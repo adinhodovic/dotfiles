@@ -157,6 +157,9 @@
         - src: "k9s.yaml"
           dest: "/home/adin/.config/k9s/config.yaml"
 
+        - src: "k9s-plugins.yaml"
+          dest: "/home/adin/.config/k9s/plugins.yaml"
+
         - src: "yamlfmt"
           dest: "/home/adin/.config/yamlfmt/.yamlfmt"
 
