@@ -6,3 +6,17 @@
   tasks:
     - name: Install oh-my-posh
       shell: curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+
+    - name: Install Krew
+      shell: |
+        set -x; cd "$(mktemp -d)" &&
+        OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+        ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+        KREW="krew-${OS}_${ARCH}" &&
+        curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+        tar zxvf "${KREW}.tar.gz" &&
+        ./"${KREW}" install krew
+
+    - name: Install Krew Plugins
+      shell: |
+        kubectl krew install cnpg
