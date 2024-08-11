@@ -178,15 +178,16 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.ltex.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					-- rest of your on_attach process.
-					require("ltex_extra").setup({
-						path = "~/dotfiles/misc/spell",
-					})
-				end,
-			})
+			-- Causes many scrolling issues
+			-- lspconfig.ltex.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = function(client, bufnr)
+			-- 		-- rest of your on_attach process.
+			-- 		require("ltex_extra").setup({
+			-- 			path = "~/dotfiles/misc/spell",
+			-- 		})
+			-- 	end,
+			-- })
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
 			})
