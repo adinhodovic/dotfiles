@@ -325,7 +325,7 @@ return {
 						click = "v:lua.ScSa",
 					},
 					{
-						sign = { namespace = { ".*" }, minwidth = 2, maxwidth = 2, auto = false },
+						sign = { name = { ".*" }, namespace = { ".*" }, minwidth = 2, maxwidth = 2, auto = false },
 						click = "v:lua.ScSa",
 					},
 					{
