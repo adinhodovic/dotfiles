@@ -8,7 +8,7 @@ local autocmd = vim.api.nvim_create_autocmd
 -----------------------------------------
 return {
 	{
-		"MeanderingProgrammer/markdown.nvim",
+		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 		ft = { "markdown", "norg", "rmd", "org" },
 		opts = {
@@ -23,6 +23,8 @@ return {
 			code = {
 				style = "language",
 			},
+
+			latex = { enabled = false },
 		},
 	},
 	{

@@ -85,6 +85,7 @@ nmap("q", "b")
 vmap("q", "b")
 -- Movement begin/end of line
 nmap("Q", "^")
+vmap("Q", "^")
 nmap("W", "g_")
 
 -- Window movements

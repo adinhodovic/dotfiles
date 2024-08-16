@@ -266,21 +266,23 @@ return {
 		config = function()
 			require("bufferline").setup({
 				options = {
-					diagnostics = "nvim_lsp",
-					diagnostics_indicator = function(count, level, diagnostics_dict, context)
-						if count == 0 then
-							return ""
-						end
-						local icon = "" .. " " .. level
-						if level:match("error") then
-							icon = ""
-						elseif level:match("warning") then
-							icon = ""
-						elseif level:match("info") or level:match("hint") then
-							icon = ""
-						end
-						return icon .. " " .. count
-					end,
+					-- TODO(adinhodovic): High CPU
+					--
+					-- diagnostics = "nvim_lsp",
+					-- 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
+					-- 			if count == 0 then
+					-- 				return ""
+					-- 			end
+					-- 			local icon = "" .. " " .. level
+					-- 			if level:match("error") then
+					-- 				icon = ""
+					-- 			elseif level:match("warning") then
+					-- 				icon = ""
+					-- 			elseif level:match("info") or level:match("hint") then
+					-- 				icon = ""
+					-- 			end
+					-- 			return icon .. " " .. count
+					-- 		end,
 					hover = {
 						enabled = true,
 						delay = 0,
