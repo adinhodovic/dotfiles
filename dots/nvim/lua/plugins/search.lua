@@ -13,7 +13,7 @@ return {
 			{
 				"<M-=>",
 				function()
-					require("fzf-lua").files()
+					require("fzf-lua").files({ cwd = require("fzf-lua").path.git_root() })
 				end,
 				desc = "Fzf-lua: Find files",
 			},
