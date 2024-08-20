@@ -5,6 +5,7 @@ local g = vim.g
 -----------------------------------------
 return {
 	{
+		-- Has DAP Golang aswell
 		"ray-x/go.nvim",
 		dependencies = { -- optional packages
 			"ray-x/guihua.lua",
@@ -12,21 +13,30 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			require("go").setup()
+			require("go").setup({
+				dap_debug_keymap = false,
+			})
 		end,
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+		keys = {
+			{
+				"<leader>god",
+				":GoDebug<CR>",
+				desc = "Go DAP: Start",
+			},
+			{
+				"<leader>gos",
+				":GoDbgStop<CR>",
+				desc = "Go DAP: Stop",
+			},
+		},
 	},
 	{
 		"maxandron/goplements.nvim",
 		ft = "go",
 		opts = {},
-	},
-	{
-		-- Delve debugging
-		"sebdah/vim-delve",
-		ft = "go",
 	},
 	{
 		-- Ruby
