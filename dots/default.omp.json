@@ -53,7 +53,7 @@
           "style": "powerline",
           "foreground": "#000000",
           "background": "#ebcc34",
-          "template": "{{.WorkspaceName}} "
+          "template": " 󱁢 {{.WorkspaceName}} "
         },
         {
           "type": "gcp",
