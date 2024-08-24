@@ -181,6 +181,15 @@
         - src: "harlequin.toml"
           dest: "/home/adin/.config/harlequin/config.toml"
 
+    - name: Create sudo config directories
+      become: true
+      tags: sudo-dots
+      file:
+        state: directory
+        path: { { item } }
+      loop:
+        - /etc/docker
+
     - name: Mv Sudo Dots
       become: true
       tags: sudo-dots
@@ -197,6 +206,9 @@
 
         - src: "locale.conf"
           dest: "/etc/locale.conf"
+
+        - src: "daemon.json"
+          dest: "/etc/docker/daemon.json"
 
     - name: Store image
       become: true
