@@ -93,7 +93,7 @@
         - alacritty
         - gnome-terminal # extra terminal
         - tmux
-        - neovim-nightly-bin
+        - neovim-git
         - zoxide
         - direnv
         - lua
