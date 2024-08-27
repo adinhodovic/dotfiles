@@ -143,13 +143,6 @@ endfunction
 vmap("*", ":call VisualSelection('f')<CR>")
 vmap("#", ":call VisualSelection('b')<CR>")
 
------------------------------------------
--- Writing
------------------------------------------
-nmap("<F8>", ":<C-u>NextWordy<cr>")
-xmap("<F8>", ":<C-u>NextWordy<cr>")
-imap("<F8>", ":<C-o>NextWordy<cr>")
-
 -------------------------------------------
 --  Spell checking
 -------------------------------------------

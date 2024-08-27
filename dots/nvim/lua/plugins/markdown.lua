@@ -118,6 +118,13 @@ return {
 		"reedes/vim-wordy",
 		lazy = true,
 		ft = "markdown",
+		-- TODO(adinhodovic): Add keymaps
+		-----------------------------------------
+		-- Writing
+		-----------------------------------------
+		-- nmap("<F8>", ":<C-u>NextWordy<cr>")
+		-- xmap("<F8>", ":<C-u>NextWordy<cr>")
+		-- imap("<F8>", ":<C-o>NextWordy<cr>")
 	},
 	{
 		-- Obsidian

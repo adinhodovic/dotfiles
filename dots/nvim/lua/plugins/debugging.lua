@@ -31,63 +31,77 @@ return {
 				function()
 					require("dap").toggle_breakpoint()
 				end,
-				desc = "Toggle Breakpoint",
+				desc = "Dap: Toggle Breakpoint",
 			},
 			{
-				"<space>gb",
+				"<space>db",
 				function()
 					require("dap").run_to_cursor()
 				end,
-				desc = "Run to Cursor",
+				desc = "Dap: Run to Cursor",
+			},
+			{
+				"<space>dr",
+				function()
+					require("dapui").float_element("repl")
+				end,
+				desc = "Dap: Repl",
 			},
 			{
 				"<space>?",
 				function()
 					require("dapui").eval(nil, { enter = true })
 				end,
-				desc = "Evaluate Variable",
+				desc = "Dap: Evaluate Variable",
 			},
 			{
 				"<F1>",
 				function()
 					require("dap").continue()
 				end,
-				desc = "Continue",
+				desc = "Dap: Continue",
 			},
 			{
 				"<F2>",
 				function()
 					require("dap").step_over()
 				end,
-				desc = "Step Over",
+				desc = "Dap: Step Over",
 			},
 			{
 				"<F3>",
 				function()
 					require("dap").step_into()
 				end,
-				desc = "Step Into",
+				desc = "Dap: Step Into",
 			},
 			{
 				"<F4>",
 				function()
 					require("dap").step_out()
 				end,
-				desc = "Step Out",
+				desc = "Dap: Step Out",
 			},
 			{
 				"<F5>",
 				function()
 					require("dap").step_back()
 				end,
-				desc = "Step Back",
+				desc = "Dap: Step Back",
 			},
 			{
-				"<F13>",
+				"<F8>",
+				function()
+					require("dap").terminate()
+				end,
+				desc = "Dap: Terminate",
+			},
+			{
+				"<F9>",
 				function()
 					require("dap").restart()
 				end,
-				desc = "Restart",
+				desc = "Dap: Restart",
 			},
 		},
 		config = function()
