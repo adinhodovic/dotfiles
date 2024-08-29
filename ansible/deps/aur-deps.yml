@@ -42,6 +42,7 @@
         - python-virtualenv
         - pyenv
         - python-pipx
+        - tk
         - rofi
         - xorg
         - dnsutils

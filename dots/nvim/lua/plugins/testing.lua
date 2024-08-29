@@ -28,6 +28,9 @@ return {
 					require("neotest-python"),
 					require("neotest-go"),
 				},
+				output = {
+					enter = true,
+				},
 			})
 		end,
 		keys = {
@@ -83,7 +86,7 @@ return {
 			{
 				"<leader>to",
 				function()
-					require("neotest").output_panel.toggle()
+					require("neotest").output.open({ enter = true })
 				end,
 			},
 			{

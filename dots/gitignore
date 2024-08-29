@@ -47,3 +47,4 @@ dbsqlite3.db
 debug.*
 serpl.log
 local.db
+.direnv

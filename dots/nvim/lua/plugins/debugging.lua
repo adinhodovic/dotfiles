@@ -55,35 +55,35 @@ return {
 				desc = "Dap: Evaluate Variable",
 			},
 			{
-				"<F1>",
+				"<space>dc",
 				function()
 					require("dap").continue()
 				end,
 				desc = "Dap: Continue",
 			},
 			{
-				"<F2>",
+				"<space>dn",
 				function()
 					require("dap").step_over()
 				end,
 				desc = "Dap: Step Over",
 			},
 			{
-				"<F3>",
+				"<space>di",
 				function()
 					require("dap").step_into()
 				end,
 				desc = "Dap: Step Into",
 			},
 			{
-				"<F4>",
+				"<space>do",
 				function()
 					require("dap").step_out()
 				end,
 				desc = "Dap: Step Out",
 			},
 			{
-				"<F5>",
+				"<space>ds",
 				function()
 					require("dap").step_back()
 				end,
@@ -126,6 +126,11 @@ return {
 		-- DAP virtual text
 		"theHamsta/nvim-dap-virtual-text",
 		opts = {},
+	},
+	{
+		"leoluz/nvim-dap-go",
+		opts = {},
+		ft = "go",
 	},
 	{
 		-- DAP python

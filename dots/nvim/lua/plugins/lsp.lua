@@ -61,7 +61,6 @@ return {
 				desc = "Goto T[y]pe Definition",
 			},
 			-- Some are replaced by hover.nvim
-			-- { "K", vim.lsp.buf.hover, desc = "Hover" },
 			{ "gK", vim.lsp.buf.signature_help, desc = "Signature Help" },
 			{ "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help" },
 			-- Code actions managed by preview in ui.lua
