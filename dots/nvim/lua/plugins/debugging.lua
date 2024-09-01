@@ -34,14 +34,14 @@ return {
 				desc = "Dap: Toggle Breakpoint",
 			},
 			{
-				"<space>db",
+				"<leader>db",
 				function()
 					require("dap").run_to_cursor()
 				end,
 				desc = "Dap: Run to Cursor",
 			},
 			{
-				"<space>dr",
+				"<leader>dr",
 				function()
 					require("dapui").float_element("repl")
 				end,
@@ -55,35 +55,35 @@ return {
 				desc = "Dap: Evaluate Variable",
 			},
 			{
-				"<space>dc",
+				"<leader>dc",
 				function()
 					require("dap").continue()
 				end,
 				desc = "Dap: Continue",
 			},
 			{
-				"<space>dn",
+				"<leader>do",
 				function()
 					require("dap").step_over()
 				end,
 				desc = "Dap: Step Over",
 			},
 			{
-				"<space>di",
-				function()
-					require("dap").step_into()
-				end,
-				desc = "Dap: Step Into",
-			},
-			{
-				"<space>do",
+				"<leader>dO",
 				function()
 					require("dap").step_out()
 				end,
 				desc = "Dap: Step Out",
 			},
 			{
-				"<space>ds",
+				"<leader>di",
+				function()
+					require("dap").step_into()
+				end,
+				desc = "Dap: Step Into",
+			},
+			{
+				"<leader>ds",
 				function()
 					require("dap").step_back()
 				end,

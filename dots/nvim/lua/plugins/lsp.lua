@@ -37,29 +37,7 @@ return {
 		},
 		keys = {
 			{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
-			{
-				"gd",
-				function()
-					require("telescope.builtin").lsp_definitions({ reuse_win = true })
-				end,
-				desc = "Goto Definition",
-			},
-			{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
 			{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-			{
-				"gI",
-				function()
-					require("telescope.builtin").lsp_implementations({ reuse_win = true })
-				end,
-				desc = "Goto Implementation",
-			},
-			{
-				"gy",
-				function()
-					require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-				end,
-				desc = "Goto T[y]pe Definition",
-			},
 			-- Some are replaced by hover.nvim
 			{ "gK", vim.lsp.buf.signature_help, desc = "Signature Help" },
 			{ "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help" },
@@ -76,7 +54,7 @@ return {
 						},
 					})
 				end,
-				desc = "Source Action",
+				desc = "LSP: Source Action",
 			},
 			{
 				"<leader>cr",
@@ -85,7 +63,7 @@ return {
 					return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
 				end,
 				expr = true,
-				desc = "Rename",
+				desc = "IncRename: Rename",
 			},
 			{
 				"gpd",

@@ -13,9 +13,16 @@ return {
 			{
 				"<M-=>",
 				function()
-					require("fzf-lua").files({ cwd = require("fzf-lua").path.git_root() })
+					require("fzf-lua").files()
 				end,
 				desc = "Fzf-lua: Find files",
+			},
+			{
+				"<M-+>",
+				function()
+					require("fzf-lua").files({ cwd = require("fzf-lua").path.git_root() })
+				end,
+				desc = "Fzf-lua: Find files (Git Root)",
 			},
 			{
 				"<M-->",
@@ -34,12 +41,56 @@ return {
 				end,
 				desc = "Fzf-lua: Find buffers",
 			},
+			{
+				"<leader>fg",
+				function()
+					require("fzf-lua").live_grep()
+				end,
+				desc = "Fzf-lua: Live Grep",
+			},
+			{
+				"gd",
+				function()
+					require("fzf-lua").lsp_definitions()
+				end,
+				desc = "Fzf-lua: Go to Definition",
+			},
+			{
+				"gr",
+				function()
+					require("fzf-lua").lsp_references()
+				end,
+				desc = "Fzf-lua: LSP References",
+			},
+			{
+				"gy",
+				function()
+					require("fzf-lua").lsp_typedefs()
+				end,
+				desc = "Goto T[y]pe Definition",
+			},
+			{
+				"gI",
+				function()
+					require("fzf-lua").lsp_implementations()
+				end,
+				desc = "Goto Implementation",
+			},
 		},
 		config = function()
 			require("fzf-lua").setup({
 				"telescope",
 				winopts = { preview = { default = "bat" } },
 				defaults = { formatter = "path.filename_first" },
+				fzf_opts = {
+					-- ["--layout"] = "reverse",
+				},
+				keymap = {
+					fzf = {
+						["tab"] = "up",
+						["shift-tab"] = "down",
+					},
+				},
 			})
 		end,
 	},
@@ -91,13 +142,6 @@ return {
 				desc = "Telescope Document Symbols",
 			},
 			{
-				"<leader>fg",
-				function()
-					require("telescope.builtin").live_grep()
-				end,
-				desc = "Telescope Grep",
-			},
-			{
 				"<leader>fh",
 				function()
 					require("telescope.builtin").help_tags()
@@ -126,6 +170,20 @@ return {
 				defaults = {
 					prompt_prefix = "󰼛 ",
 					selection_caret = "󱞩 ",
+					sorting_strategy = "ascending",
+
+					layout_config = {
+						horizontal = {
+							prompt_position = "bottom",
+						},
+					},
+				},
+				mappings = {
+					-- TODO(adinhodovic): Fix these mappings
+					n = {
+						["Tab"] = require("telescope.actions").move_selection_next,
+						["S-Tab"] = require("telescope.actions").move_selection_previous,
+					},
 				},
 				extensions = {
 					fzf = {
