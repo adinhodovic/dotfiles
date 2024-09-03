@@ -1,4 +1,4 @@
-data.location=~/.task
+data.location=~/sync/.task
 
 urgency.blocking.coefficient = 1.5
 
