@@ -119,22 +119,30 @@ return {
 			},
 			{
 				"<leader>hS",
-				"<cmd>lua require('gitsigns').stage_buffer()<cr>",
+				function()
+					require("gitsigns").stage_buffer()
+				end,
 				desc = "Gitsigns: Stage buffer",
 			},
 			{
 				"<leader>hu",
-				"<cmd>lua require('gitsigns').undo_stage_hunk()<cr>",
+				function()
+					require("gitsigns").undo_stage_hunk()
+				end,
 				desc = "Gitsigns: Undo stage hunk",
 			},
 			{
 				"<leader>hR",
-				"<cmd>lua require('gitsigns').reset_buffer()<cr>",
+				function()
+					require("gitsigns").reset_buffer()
+				end,
 				desc = "Gitsigns: Reset buffer",
 			},
 			{
 				"<leader>hp",
-				"<cmd>lua require('gitsigns').preview_hunk()<cr>",
+				function()
+					require("gitsigns").preview_hunk()
+				end,
 				desc = "Gitsigns: Preview hunk",
 			},
 			{
@@ -145,13 +153,10 @@ return {
 				desc = "Gitsigns: Blame line",
 			},
 			{
-				"<leader>tb",
-				"<cmd>lua require('gitsigns').toggle_current_line_blame()<cr>",
-				desc = "Gitsigns: Toggle current line blame",
-			},
-			{
 				"<leader>hd",
-				"<cmd>lua require('gitsigns').diffthis()<cr>",
+				function()
+					require("gitsigns").diffthis()
+				end,
 				desc = "Gitsigns: Diff this",
 			},
 			{
@@ -162,8 +167,24 @@ return {
 				desc = "Gitsigns: Diff this",
 			},
 			{
-				"<leader>td",
-				"<cmd>lua require('gitsigns').toggle_deleted()<cr>",
+				"<leader>gstw",
+				function()
+					require("gitsigns").toggle_word_diff()
+				end,
+				desc = "Gitsigns: Toggle word diff",
+			},
+			{
+				"<leader>gstl",
+				function()
+					require("gitsigns").toggle_linehl()
+				end,
+				desc = "Gitsigns: Toggle line highlight",
+			},
+			{
+				"<leader>gstd",
+				function()
+					require("gitsigns").toggle_deleted()
+				end,
 				desc = "Gitsigns: Toggle deleted",
 			},
 			{
@@ -185,6 +206,53 @@ return {
 			"DiffviewOpen",
 			"DiffviewToggleFiles",
 			"DiffviewFocusFiles",
+		},
+		keys = {
+			{
+				"<leader>gd",
+				"<cmd>DiffviewOpen<cr>",
+				desc = "DiffView: Open",
+			},
+			{
+				"<leader>gdc",
+				"<cmd>DiffviewClose<cr>",
+				desc = "DiffView: Close",
+			},
+			{
+				"<leader>gdlm",
+				function()
+					vim.cmd("DiffviewOpen " .. get_default_branch_name())
+				end,
+				desc = "DiffView: Open Diff Local Main",
+			},
+			{
+				"<leader>gdrm",
+				function()
+					vim.cmd("DiffviewOpen HEAD..origin/" .. get_default_branch_name())
+				end,
+				desc = "DiffView: Open Diff Local Main",
+			},
+			{
+				"<leader>gdr",
+				"<cmd>DiffviewFileHistory<cr>",
+				desc = "DiffView: Repo history",
+			},
+			{
+				"<leader>gdf",
+				"<cmd>DiffviewFileHistory --follow %<cr>",
+				desc = "DiffView: File history",
+			},
+			{
+				"<leader>gdv",
+				"<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>",
+				mode = { "v" },
+				desc = "DiffView: Visual History",
+			},
+			{
+				"<leader>gdl",
+				"<Cmd>.DiffviewFileHistory --follow<CR>",
+				desc = "DiffView: Line History",
+			},
 		},
 		opts = {},
 	},

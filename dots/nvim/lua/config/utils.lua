@@ -18,3 +18,8 @@ function get_all_buffer_filetypes()
 	end
 	return buffer_filetypes
 end
+
+function get_default_branch_name()
+	local res = vim.system({ "git", "rev-parse", "--verify", "main" }, { capture_output = true }):wait()
+	return res.code == 0 and "main" or "master"
+end
