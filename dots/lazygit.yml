@@ -1,7 +1,6 @@
 git:
   paging:
-    colorArg: always
-    pager: delta --color-only
+    externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on --tab-width=2
 customCommands:
   - key: "<c-v>"
     context: "global"
