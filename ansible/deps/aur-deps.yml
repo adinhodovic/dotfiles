@@ -159,6 +159,9 @@
         - git-standup-git
         - lazygit
 
+        # docs
+        - hugo
+
         # cloud
         - aws-cli-v2
         - eksctl
