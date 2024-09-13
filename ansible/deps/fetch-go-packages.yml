@@ -37,6 +37,7 @@
       - github.com/brancz/gojsontoyaml
       - github.com/sachaos/viddy
       - github.com/dhth/mult
+      - github.com/josephburnett/jd
       # secrets
       - github.com/hashicorp/vault
 
