@@ -7,18 +7,18 @@ bindkey -v
 
 # Move to the end of the line and exclude whitespace
 tmux-copy-mode() {
-if [ -n "$TMUX" ]; then
-  tmux copy-mode
-fi
+  if [ -n "$TMUX" ]; then
+    tmux copy-mode
+  fi
 }
 
 # Paste from clipboard
-vi-append-x-selection-before () {
-RBUFFER="$(xclip -o)$RBUFFER"
+vi-append-x-selection-before() {
+  RBUFFER="$(xclip -o)$RBUFFER"
 }
-vi-append-x-selection-after () {
-CURSOR=$((CURSOR+1))
-RBUFFER="$(xclip -o)$RBUFFER"
+vi-append-x-selection-after() {
+  CURSOR=$((CURSOR + 1))
+  RBUFFER="$(xclip -o)$RBUFFER"
 }
 
 end-of-line-no-whitespace() {
@@ -57,10 +57,18 @@ bindkey -M vicmd v tmux-copy-mode
 # Reverse scrolling shift+tab
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
+function sol-func() {
+  local current_line="${BUFFER}"
+  BUFFER=$(echo "$current_line" | sol -p -c -b -r -a -s -jqobj -jqarr -jqop comma)
+  CURSOR=${#BUFFER}
+}
+zle -N sol-func
+bindkey -M vicmd '@' sol-func
+
 function awsprofile {
   profile=$(grep --text -E '\[.+\]' ~/.aws/credentials | tr -d '[]' | fzf)
   if [ -n "$profile" ]; then
-    echo $profile > ~/.aws_profile
+    echo $profile >~/.aws_profile
     export AWS_PROFILE=$profile
   fi
 }
@@ -89,13 +97,13 @@ function awsregion {
   )
   selected=$(printf '%s\n' "${regions[@]}" | fzf --sort | awk '{print $1}')
   if [ -n "$selected" ]; then
-    echo $selected > ~/.aws_region
+    echo $selected >~/.aws_region
     export AWS_DEFAULT_REGION=$selected
   fi
 }
 
 [ -f ~/.aws/profile ] && export AWS_PROFILE=$(cat ~/.aws/profile)
-[ -f ~/.aws/region ]  && export AWS_DEFAULT_REGION=$(cat ~/.aws/region)
+[ -f ~/.aws/region ] && export AWS_DEFAULT_REGION=$(cat ~/.aws/region)
 
 # Add direnv
 eval "$(direnv hook zsh)"
