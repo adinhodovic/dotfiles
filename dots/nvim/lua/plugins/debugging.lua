@@ -105,7 +105,16 @@ return {
 			},
 		},
 		config = function()
-			require("dapui").setup()
+			require("dapui").setup({
+				mappings = {
+					edit = "null",
+					expand = { "<CR>", "<2-LeftMouse>" },
+					open = "o",
+					remove = "d",
+					repl = "r",
+					toggle = "t",
+				},
+			})
 
 			local dap, dapui = require("dap"), require("dapui")
 			dap.listeners.before.attach.dapui_config = function()
