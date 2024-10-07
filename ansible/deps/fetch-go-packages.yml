@@ -39,6 +39,7 @@
       - github.com/sachaos/viddy
       - github.com/dhth/mult
       - github.com/josephburnett/jd
+      - github.com/neilotoole/sq
       # secrets
       - github.com/hashicorp/vault
 
