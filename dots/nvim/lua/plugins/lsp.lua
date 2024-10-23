@@ -163,6 +163,12 @@ return {
 						path = "~/dotfiles/misc/spell",
 					})
 				end,
+				settings = {
+					ltex = {
+						language = "en-US",
+						checkFrequency = "save",
+					},
+				},
 			})
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
