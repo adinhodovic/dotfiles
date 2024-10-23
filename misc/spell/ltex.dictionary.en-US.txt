@@ -38,3 +38,12 @@ ServiceMonitor
 ingress-nginx-mixin
 jsonnet
 Mixins
+Tailscale
+tanka
+ConfigMap
+Pulumi
+Datastore
+CustomResourceDefinition
+Dex
+Tanka
+EKS
