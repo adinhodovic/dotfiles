@@ -37,9 +37,10 @@ return {
 		},
 		keys = {
 			{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
-			{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+			{ "gD", vim.lsp.buf.declaration, desc = "Go to Declaration" },
 			-- Some are replaced by hover.nvim
 			{ "gK", vim.lsp.buf.signature_help, desc = "Signature Help" },
+			{ "gY", vim.lsp.buf.type_definition, desc = "Go to Type Definition" },
 			{ "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help" },
 			-- Code actions managed by preview in ui.lua
 			{
