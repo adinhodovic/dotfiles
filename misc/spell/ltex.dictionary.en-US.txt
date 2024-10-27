@@ -47,3 +47,14 @@ CustomResourceDefinition
 Dex
 Tanka
 EKS
+Kubernetes-mixin
+autoscalers
+VPA
+Karpenter
+karpenter
+autoscaler
+cluster-autoscaler
+Kubernetes-autoscaling-mixin
+Autoscalers
+Autoscaler
+kube-state-metrics

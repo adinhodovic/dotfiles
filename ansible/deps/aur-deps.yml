@@ -107,6 +107,7 @@
         - ruby
         - node
         - nvm
+        - clang
 
         # utils
         - downgrade
