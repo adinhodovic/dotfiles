@@ -133,11 +133,13 @@
 
     - name: start lightdm
       become: true
-      shell: systemctl enable --now lightdm.service
-
-    - name: start syncthing
-      become: true
-      shell: systemctl enable --now syncthing@adin.service
+      shell: systemctl enable --now {{ item }}
+      loop:
+        - systemd-resolved.service
+        - lightdm.service
+        - syncthing@adin.service
+        - clamav-daemon.service
+        - clamav-freshclam.service
 
     - name: ensure time uses ntp
       become: true
@@ -149,12 +151,6 @@
       tags:
         - laptop
       when: "'laptop' in ansible_run_tags"
-
-    - name: Start clamav
-      become: true
-      shell: systemctl enable --now clamav-daemon.service && systemctl enable --now clamav-freshclam.service
-      tags:
-        - antivirus
 
     - name: Ensure the directory for ClamAV logs exists
       become: true
