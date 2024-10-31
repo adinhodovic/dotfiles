@@ -210,6 +210,10 @@
         - src: "daemon.json"
           dest: "/etc/docker/daemon.json"
 
+        # Manage DNS settings
+        - src: "network-manager.json"
+          dest: "/etc/NetworkManager/NetworkManager.conf"
+
     - name: Store image
       become: true
       tags: sudo-dots
