@@ -141,6 +141,15 @@
         - clamav-daemon.service
         - clamav-freshclam.service
 
+    - name: Symlink resolv.conf
+      become: true
+      file:
+        src: /run/systemd/resolve/resolv.conf
+        dest: /etc/resolv.conf
+        state: link
+      tags:
+        - dns
+
     - name: ensure time uses ntp
       become: true
       shell: timedatectl set-ntp true
