@@ -80,7 +80,7 @@
 
         # Syncthing
         - syncthing
-        - syncthingtray
+        - syncthingtray # maybe qt6 with --mflags "--nocheck"
 
         # Secrets
         - enpass-bin
