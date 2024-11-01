@@ -40,7 +40,7 @@ return {
 					typescript = { "prettier" },
 					typescriptreact = { "prettier" },
 					javascriptreact = { "prettier" },
-					go = { "gofumpts", "goimports" },
+					go = { "gofumpt", "goimports" },
 					graphql = { "prettier" },
 					toml = { "taplo" },
 					css = { "prettier" },
