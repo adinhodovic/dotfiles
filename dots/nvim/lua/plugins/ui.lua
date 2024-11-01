@@ -42,9 +42,13 @@ return {
 	},
 	{
 		"hiphish/rainbow-delimiters.nvim",
+		lazy = true,
 		config = function()
 			require("rainbow-delimiters.setup").setup({})
 		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
 	},
 	{
 		-- Colorizer in code
