@@ -84,3 +84,6 @@ prometheus
 pdb
 unschedulable
 Jsonnet
+dotfiles
+printf
+gcloud

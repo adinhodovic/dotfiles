@@ -77,7 +77,7 @@ vim.cmd([[
 ]])
 
 -- Close the current buffer
-nmap("<leader>bd", ":Bclose<cr>")
+nmap("<leader>bd", ":Bclose<cr>", { desc = "Buffer Close" })
 -- Close all the buffers
 nmap("<leader>ba", ":1,1000 bd!<cr>")
 
