@@ -71,6 +71,7 @@
         - openvpn
         - clamav
         - dog # dig alternative
+        - wavemon
 
         # time
         - ntp
