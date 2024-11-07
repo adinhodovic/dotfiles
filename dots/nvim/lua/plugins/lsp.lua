@@ -101,27 +101,35 @@ return {
 			}
 
 			local lspconfig = require("lspconfig")
+
 			lspconfig.ansiblels.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.dockerls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.docker_compose_language_service.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.emmet_language_server.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.helm_ls.setup({
 				settings = {
 					["helm-ls"] = {
@@ -131,13 +139,16 @@ return {
 					},
 				},
 			})
+
 			lspconfig.html.setup({
 				capabilities = capabilities,
 				filetypes = { "html", "htmldjango" },
 			})
+
 			lspconfig.htmx.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 				settings = {
@@ -147,12 +158,15 @@ return {
 					},
 				},
 			})
+
 			lspconfig.jsonnet_ls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.jqls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
@@ -171,13 +185,15 @@ return {
 					},
 				},
 			})
+
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
 			})
 
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				settings = {
@@ -190,24 +206,31 @@ return {
 					},
 				},
 			})
+
 			lspconfig.sqlls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.bzl.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.taplo.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.terraformls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.vimls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.yamlls.setup({
 				capabilities = capabilities,
 				yaml = {
@@ -221,6 +244,7 @@ return {
 					schemas = require("schemastore").yaml.schemas(),
 				},
 			})
+
 			lspconfig.lemminx.setup({
 				capabilities = capabilities,
 			})

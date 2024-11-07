@@ -38,41 +38,6 @@ return {
 		end,
 	},
 	{
-		-- Nvim Git integration
-		"tpope/vim-fugitive",
-		cmd = { "Git" },
-		keys = {
-			{
-				"<leader>gb",
-				":GBrowse<cr>",
-				mode = { "n", "x" },
-				desc = "Fugitive: Open the current file on GitHub",
-			},
-			{
-				"<leader>gl",
-				":Git log<cr>",
-				desc = "Fugitive: Open the git log",
-			},
-		},
-		dependencies = {
-			"tpope/vim-rhubarb",
-		},
-		config = function()
-			vim.api.nvim_create_user_command("Browse", function(opts)
-				vim.fn.system({ "xdg-open", opts.fargs[1] })
-			end, { nargs = 1 })
-		end,
-	},
-	{
-		-- Flog is a fast, beautiful, and powerful git branch viewer for Vim.
-		"rbong/vim-flog",
-		lazy = true,
-		cmd = { "Flog", "Flogsplit", "Floggit" },
-		dependencies = {
-			"tpope/vim-fugitive",
-		},
-	},
-	{
 		-- File type support for GitHub Actions
 		"rhysd/vim-github-actions",
 	},
@@ -282,6 +247,11 @@ return {
 
 			-- Only one of these is needed, not both.
 			"ibhagwan/fzf-lua", -- optional
+		},
+		keys = {
+			{
+				"<leader>gl",
+			},
 		},
 		config = true,
 	},

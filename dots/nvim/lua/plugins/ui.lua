@@ -478,8 +478,9 @@ return {
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup({
+				-- Nvim UI notifications
 				notification = {
-					override_vim_notify = true,
+					override_vim_notify = false,
 				},
 				progress = {
 					-- ignore = { "ltex" },

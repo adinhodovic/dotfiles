@@ -76,11 +76,6 @@ vim.cmd([[
   endfunction
 ]])
 
--- Close the current buffer
-nmap("<leader>bd", ":Bclose<cr>", { desc = "Buffer Close" })
--- Close all the buffers
-nmap("<leader>ba", ":1,1000 bd!<cr>")
-
 nmap("q", "b")
 vmap("q", "b")
 -- Movement begin/end of line

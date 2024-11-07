@@ -76,7 +76,7 @@ return {
 					"ltex",
 					"lua_ls",
 					"jsonls",
-					"tsserver",
+					"ts_ls",
 					"jsonnet_ls",
 					"jqls",
 					"marksman",

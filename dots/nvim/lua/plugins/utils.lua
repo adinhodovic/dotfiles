@@ -32,6 +32,18 @@ return {
 				desc = "Toggleterm: Toggle lazygit",
 			},
 			{
+				"<leader>gl",
+				"<cmd>lua _lazygit_log_toggle()<cr>",
+				mode = { "n", "t" },
+				desc = "Toggleterm: Toggle lazygit log",
+			},
+			{
+				"<leader>glf",
+				"<cmd>lua _lazygit_log_file_toggle()<cr>",
+				mode = { "n", "t" },
+				desc = "Toggleterm: Toggle lazygit log current file",
+			},
+			{
 				"<leader>tts",
 				"<cmd>lua _serpl_toggle()<cr>",
 				mode = { "n", "t" },
@@ -57,29 +69,47 @@ return {
 				default_term:toggle()
 			end
 
-			local lazygit = Terminal:new({
-				cmd = "lazygit",
-				dir = "git_dir",
-				direction = "float",
-				-- function to run on opening the terminal
-				on_open = function(term)
-					vim.cmd("startinsert!")
-					vim.api.nvim_buf_set_keymap(
-						term.bufnr,
-						"n",
-						"q",
-						"<cmd>close<CR>",
-						{ noremap = true, silent = true }
-					)
-				end,
-				-- function to run on closing the terminal
-				on_close = function(term)
-					vim.cmd("startinsert!")
-				end,
-			})
+			local function lazygit(command)
+				-- Create a new terminal instance with the given command
+				return Terminal:new({
+					cmd = command,
+					dir = "git_dir", -- Replace with actual Git directory or leave it to open in the current directory
+					direction = "float",
+					-- function to run on opening the terminal
+					on_open = function(term)
+						vim.cmd("startinsert!")
+						vim.api.nvim_buf_set_keymap(
+							term.bufnr,
+							"n",
+							"q",
+							"<cmd>close<CR>",
+							{ noremap = true, silent = true }
+						)
+					end,
+					-- function to run on closing the terminal
+					on_close = function(term)
+						vim.cmd("startinsert!")
+					end,
+				})
+			end
 
+			-- Create terminal instances for lazygit and lazygit log
+			local lazygit_terminal = lazygit("lazygit")
+			local lazygit_log_terminal = lazygit("lazygit log")
+			local file = vim.trim(vim.api.nvim_buf_get_name(0))
+			local lazygit_log_file_terminal = lazygit("lazygit log -f " .. file)
+
+			-- Functions to toggle each terminal instance
 			function _lazygit_toggle() ---@diagnostic disable-line: lowercase-global
-				lazygit:toggle()
+				lazygit_terminal:toggle()
+			end
+
+			function _lazygit_log_toggle() ---@diagnostic disable-line: lowercase-global
+				lazygit_log_terminal:toggle()
+			end
+
+			function _lazygit_log_file_toggle() ---@diagnostic disable-line: lowercase-global
+				lazygit_log_file_terminal:toggle()
 			end
 
 			local serpl = Terminal:new({
@@ -106,20 +136,6 @@ return {
 			function _serpl_toggle() ---@diagnostic disable-line: lowercase-global
 				serpl:toggle()
 			end
-
-			function _G.set_terminal_keymaps()
-				local opts = { buffer = 0 }
-				vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-				vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-				vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-				vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-				vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-				vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-				vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
-			end
-
-			-- if you only want these mappings for toggle term use term://*toggleterm#* instead
-			vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 		end,
 	},
 	{
@@ -291,6 +307,55 @@ return {
 				"<leader>hv",
 				"<cmd>Helpview toggleAll<cr>",
 				desc = "Helpview: Toggle helpview",
+			},
+		},
+	},
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			bigfile = { enabled = true },
+			notifier = {
+				enabled = true,
+				timeout = 3000,
+			},
+			quickfile = { enabled = true },
+			words = { enabled = true },
+			styles = {
+				notification = {
+					wo = { wrap = true }, -- Wrap notifications
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>un",
+				function()
+					Snacks.notifier.hide()
+				end,
+				desc = "Snacks: Dismiss All Notifications",
+			},
+			{
+				"<leader>bd",
+				function()
+					Snacks.bufdelete()
+				end,
+				desc = "Snacks: Delete Buffer",
+			},
+			{
+				"<leader>gb",
+				function()
+					Snacks.gitbrowse()
+				end,
+				desc = "Snacks: Git Browse",
+			},
+			{
+				"<leader>cR",
+				function()
+					Snacks.rename()
+				end,
+				desc = "Snacks: Rename File",
 			},
 		},
 	},
