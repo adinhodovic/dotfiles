@@ -321,7 +321,6 @@ return {
 				timeout = 3000,
 			},
 			quickfile = { enabled = true },
-			words = { enabled = true },
 			styles = {
 				notification = {
 					wo = { wrap = true }, -- Wrap notifications
@@ -345,6 +344,7 @@ return {
 			},
 			{
 				"<leader>gb",
+				mode = { "n", "v" },
 				function()
 					Snacks.gitbrowse()
 				end,
