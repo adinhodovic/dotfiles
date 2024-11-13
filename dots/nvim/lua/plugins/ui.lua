@@ -504,4 +504,11 @@ return {
 			ghost_text = false,
 		},
 	},
+	{
+		"zbirenbaum/neodim",
+		event = "LspAttach",
+		opts = {
+			alpha = 0.5,
+		},
+	},
 }
