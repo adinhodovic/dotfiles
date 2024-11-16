@@ -511,4 +511,8 @@ return {
 			alpha = 0.5,
 		},
 	},
+	{
+		"mcauley-penney/visual-whitespace.nvim",
+		opts = {},
+	},
 }
