@@ -50,3 +50,4 @@ report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +P
 
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-add=false
 news.version=2.6.0
+report.next.filter=status:pending -WAITING
