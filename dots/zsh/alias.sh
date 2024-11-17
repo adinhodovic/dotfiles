@@ -109,7 +109,7 @@ rename_all_files() {
 
 alias tf='terraform'
 
-alias top='btm --color nord'
+alias top='btm --theme nord'
 
 # Kubecolor
 alias kubectl="kubecolor"
