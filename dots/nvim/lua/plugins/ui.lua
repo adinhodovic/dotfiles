@@ -86,6 +86,7 @@ return {
 		end,
 	},
 	{
+		-- Used for whitespace trimming
 		"cappyzawa/trim.nvim",
 		opts = {
 			ft_blocklist = {
@@ -105,6 +106,7 @@ return {
 				"TelescopePrompt",
 				"NeogitConsole",
 				"fzf",
+				"taskedit",
 			},
 			highlight = true,
 		},

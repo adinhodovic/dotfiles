@@ -87,3 +87,13 @@ Jsonnet
 dotfiles
 printf
 gcloud
+OpenCost
+opencost-mixin
+KubeCost
+Opencost-overview
+Opencost-namespace
+Pygments
+Grueber
+DaisyUI
+tailwindcss
+ux

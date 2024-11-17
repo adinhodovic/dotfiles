@@ -124,6 +124,7 @@ function v() {
 }
 alias ps='procs'
 alias t=task
+alias twall=t limit:none
 alias tt=taskwarrior-tui
 
 alias tempdir='tempdir=$(mktemp -d) && cd $tempdir'
