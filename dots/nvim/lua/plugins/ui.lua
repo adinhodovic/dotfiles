@@ -517,4 +517,11 @@ return {
 		"mcauley-penney/visual-whitespace.nvim",
 		opts = {},
 	},
+	-- Highlight cursor when it moves, changes windows etc.
+	{
+		"danilamihailov/beacon.nvim",
+		opts = {
+			fps = 90,
+		},
+	},
 }
