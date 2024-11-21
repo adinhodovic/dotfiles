@@ -18,3 +18,8 @@
         - bottom
         - git-absorb
         - below
+
+    - name: Install Cargo Git Packages
+      shell: cargo install --locked --git {{ item }}
+      loop:
+        - https://github.com/pamburus/hl.git
