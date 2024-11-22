@@ -40,6 +40,7 @@
       - github.com/dhth/mult
       - github.com/josephburnett/jd
       - github.com/neilotoole/sq
+      - github.com/mikefarah/yq/v4
       # secrets
       - github.com/hashicorp/vault
 
