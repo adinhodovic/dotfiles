@@ -160,4 +160,21 @@ return {
 			require("telescope").load_extension("dap")
 		end,
 	},
+	{
+		"chrisgrieser/nvim-chainsaw",
+		event = { "VeryLazy" },
+		keys = {
+			{ "g?p", ":lua require('chainsaw').emojiLog()<CR>", desc = "Chainsaw: Emoji Log" },
+			{
+				"g?v",
+				mode = { "n", "v" },
+				":lua require('chainsaw').variableLog()<CR>",
+				desc = "Chainsaw: Variable Log",
+			},
+			{ "g?m", ":lua require('chainsaw').messageLog()<CR>", desc = "Chainsaw: Message Log" },
+			{ "g?o", mode = { "n", "v" }, ":lua require('chainsaw').objectLog()<CR>", desc = "Chainsaw: Object Log" },
+			{ "g?t", ":lua require('chainsaw').timeLog()<CR>", desc = "Chainsaw: Time Log" },
+			{ "g?c", ":lua require('chainsaw').removeLogs()<CR>", desc = "Chainsaw: Clear" },
+		},
+	},
 }
