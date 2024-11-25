@@ -517,11 +517,16 @@ return {
 		"mcauley-penney/visual-whitespace.nvim",
 		opts = {},
 	},
-	-- Highlight cursor when it moves, changes windows etc.
 	{
+		-- Highlight cursor when it moves, changes windows etc.
 		"danilamihailov/beacon.nvim",
 		opts = {
 			fps = 90,
 		},
+	},
+	{
+		-- Smear cursor, shows cursor movement
+		"sphamba/smear-cursor.nvim",
+		opts = {},
 	},
 }
