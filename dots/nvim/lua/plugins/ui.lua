@@ -527,6 +527,8 @@ return {
 	{
 		-- Smear cursor, shows cursor movement
 		"sphamba/smear-cursor.nvim",
-		opts = {},
+		opts = {
+			distance_stop_animating = 0.5,
+		},
 	},
 }
