@@ -181,12 +181,15 @@
         - src: "harlequin.toml"
           dest: "/home/adin/.config/harlequin/config.toml"
 
+        - src: "gtk-settings.ini"
+          dest: "/home/adin/.config/gtk-3.0/settings.ini"
+
     - name: Create sudo config directories
       become: true
       tags: sudo-dots
       file:
         state: directory
-        path: { { item } }
+        path: "{{ item }}"
       loop:
         - /etc/docker
 
