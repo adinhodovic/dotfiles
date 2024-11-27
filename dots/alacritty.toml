@@ -1,6 +1,6 @@
-live_config_reload = true
-
+[general]
 import = ["~/.config/alacritty/themes/themes/github_dark_default.toml"]
+live_config_reload = true
 
 [env]
 TERM = "xterm-256color"
@@ -11,7 +11,7 @@ size = 11
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
+[terminal.shell]
 args = ["-u"]
 program = "/usr/bin/tmux"
 
@@ -26,3 +26,5 @@ lines = 24
 [window.padding]
 x = 2
 y = 2
+
+[terminal]
