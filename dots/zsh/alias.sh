@@ -38,6 +38,8 @@ alias lg=lazygit
 # Remove this if we need the native ld command
 alias ld=lazydocker
 
+alias kl=~/go/bin/kl
+
 gcp_reset() {
   # Path to the JSON file
   json_file="$HOME/.kube/gke_gcloud_auth_plugin_cache"
