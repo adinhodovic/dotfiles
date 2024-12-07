@@ -474,6 +474,7 @@ return {
 	{ "winston0410/range-highlight.nvim", dependencies = { "winston0410/cmd-parser.nvim" }, config = true },
 	{
 		"tzachar/highlight-undo.nvim",
+		enabled = true,
 		opts = {},
 	},
 	{
@@ -527,6 +528,7 @@ return {
 	{
 		-- Smear cursor, shows cursor movement
 		"sphamba/smear-cursor.nvim",
+		enabled = true,
 		opts = {
 			distance_stop_animating = 0.5,
 		},

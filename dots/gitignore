@@ -48,3 +48,6 @@ debug.*
 serpl.log
 local.db
 .direnv
+import.json
+mage_output_file.go
+a.yaml
