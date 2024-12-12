@@ -22,6 +22,7 @@ return {
 			"lukas-reineke/cmp-rg",
 			"barreiroleo/ltex_extra.nvim",
 			"windwp/nvim-autopairs",
+			"philosofonusus/ecolog.nvim",
 		},
 		config = function()
 			require("cmp_git").setup()
@@ -47,6 +48,7 @@ return {
 			local cmp_emoji = { name = "emoji", max_item_count = 5, group_index = 1 }
 			local cmp_calc = { name = "calc", max_item_count = 5, group_index = 1 }
 			local cmp_git = { name = "git", max_item_count = 10, group_index = 1 }
+			local cmp_ecolog = { name = "ecolog", max_item_count = 10, group_index = 1 }
 			local cmp_conventional_commits = {
 				name = "conventionalcommits",
 				max_item_count = 20,
@@ -61,6 +63,7 @@ return {
 				cmp_luasnip,
 				cmp_yanky,
 				cmp_git,
+				cmp_ecolog,
 				cmp_spell,
 				cmp_path,
 				cmp_emoji,

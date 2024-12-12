@@ -359,4 +359,28 @@ return {
 			},
 		},
 	},
+	-- {
+	-- 	"philosofonusus/ecolog.nvim",
+	-- 	dependencies = {
+	-- 		"hrsh7th/nvim-cmp", -- Optional, for autocompletion support
+	-- 	},
+	-- 	keys = {
+	-- 		{ "<leader>eg", "<cmd>EcologGoto<cr>", desc = "Ecolog: Go to env file" },
+	-- 		{ "<leader>ep", "<cmd>EcologPeek<cr>", desc = "Ecolog: Peek variable" },
+	-- 		{ "<leader>es", "<cmd>EcologSelect<cr>", desc = "Ecolog: Switch env file" },
+	-- 	},
+	-- 	lazy = false,
+	-- 	opts = {
+	-- 		-- Enables shelter mode for sensitive values
+	-- 		shelter = {
+	-- 			configuration = {
+	-- 				partial_mode = false, -- Disables partial mode see shelter configuration below
+	-- 			},
+	-- 			modules = {
+	-- 				cmp = true, -- Mask values in completion
+	-- 			},
+	-- 		},
+	-- 		path = vim.fn.getcwd(), -- Path to search for .env files
+	-- 	},
+	-- },
 }

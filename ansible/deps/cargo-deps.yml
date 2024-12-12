@@ -19,6 +19,7 @@
         - git-absorb
         - below
         - fzf-make
+        - tokei
 
     - name: Install Cargo Git Packages
       shell: cargo install --locked --git {{ item }}
