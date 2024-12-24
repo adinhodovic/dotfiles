@@ -17,6 +17,8 @@ g.python3_host_prog = "/usr/bin/python"
 
 g.hardtime_default_on = 0
 
+vim.opt.laststatus = 3
+
 g.hardtime_maxcount = 2
 g.hardtime_allow_different_key = 1
 

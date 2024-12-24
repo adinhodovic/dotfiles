@@ -10,7 +10,7 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		ft = { "markdown", "norg", "rmd", "org" },
+		ft = { "markdown", "norg", "rmd", "org", "Avante" },
 		opts = {
 			heading = {
 				-- Turn on / off heading icon & background rendering

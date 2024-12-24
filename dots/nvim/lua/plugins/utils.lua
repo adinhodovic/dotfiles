@@ -383,4 +383,29 @@ return {
 	-- 		path = vim.fn.getcwd(), -- Path to search for .env files
 	-- 	},
 	-- },
+	--
+	{
+		-- support for image pasting
+		"HakonHarnes/img-clip.nvim",
+		event = "VeryLazy",
+		keys = {
+			{
+				"<leader>pi",
+				"<cmd>lua require('img-clip').paste()<cr>",
+				desc = "Img-clip: Paste image from clipboard",
+			},
+		},
+		opts = {
+			-- recommended settings
+			default = {
+				embed_image_as_base64 = false,
+				prompt_for_file_name = false,
+				drag_and_drop = {
+					insert_mode = true,
+				},
+				-- required for Windows users
+				use_absolute_path = true,
+			},
+		},
+	},
 }
