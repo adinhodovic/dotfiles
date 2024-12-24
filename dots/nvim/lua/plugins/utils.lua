@@ -391,7 +391,7 @@ return {
 		keys = {
 			{
 				"<leader>pi",
-				"<cmd>lua require('img-clip').paste()<cr>",
+				"<cmd>PasteImage<cr>",
 				desc = "Img-clip: Paste image from clipboard",
 			},
 		},
