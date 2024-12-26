@@ -24,6 +24,7 @@
     - name: Install PIPX packages
       community.general.pipx:
         name: "{{ item }}"
+        force: true
       # Requires pipx
       loop:
         - cookiecutter
