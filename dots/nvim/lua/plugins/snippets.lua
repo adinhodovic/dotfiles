@@ -55,7 +55,7 @@ return {
 				function()
 					require("telescope").extensions.luasnip.luasnip({})
 				end,
-				desc = "Search snippets in telescope",
+				desc = "Snippets: Search snippets in telescope",
 			},
 		},
 	},

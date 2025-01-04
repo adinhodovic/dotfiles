@@ -408,4 +408,17 @@ return {
 			},
 		},
 	},
+	{
+		"danymat/neogen",
+		keys = {
+			{
+				"<leader>nf",
+				"<cmd>lua require('neogen').generate()<cr>",
+				desc = "Neogen: Generate code snippets",
+			},
+		},
+		opts = {
+			snippet_engine = "luasnip",
+		},
+	},
 }
