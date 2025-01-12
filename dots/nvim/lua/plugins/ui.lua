@@ -183,13 +183,24 @@ return {
 	{
 		-- Show line indentation
 		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("ibl").setup({
-				exclude = {
-					filetypes = { "dashboard" },
+		main = "ibl",
+		opts = {
+			exclude = {
+				filetypes = {
+					"dashboard",
+					"packer",
+					"terminal",
+					"help",
+					"log",
+					"markdown",
+					"TelescopePrompt",
+					"lspinfo",
+					"mason.nvim",
+					"toggleterm",
+					"text",
 				},
-			})
-		end,
+			},
+		},
 	},
 	{
 		-- Github theme
