@@ -100,3 +100,7 @@ ux
 Kube-prometheus-stack
 mixins
 CoreDNS
+monitoring-mixin
+nodepools
+VPAs
+HPAs

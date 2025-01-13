@@ -94,7 +94,7 @@ return {
 		event = "VeryLazy",
 		opts = {
 			provider = "copilot",
-			auto_suggestions_provider = "copilot",
+			auto_suggestions_provider = "claude",
 			behaviour = {
 				auto_suggestions = false,
 			},
