@@ -184,7 +184,7 @@
         - src: "gtk-settings.ini"
           dest: "/home/adin/.config/gtk-3.0/settings.ini"
 
-        - src: "vale.init"
+        - src: "vale.ini"
           dest: "/home/adin/.vale.ini"
 
     - name: Create sudo config directories
