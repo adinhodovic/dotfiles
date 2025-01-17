@@ -205,6 +205,8 @@
         # Containers
         - docker
         - docker-compose
+        - dive
+        - crane
 
         # K8s
         - kubectl
