@@ -42,6 +42,7 @@ return {
 					"stylua",
 					"tflint",
 					"vale",
+					"vale-ls",
 					"vint",
 					"write-good",
 					"yamlfmt",

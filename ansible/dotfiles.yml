@@ -184,6 +184,9 @@
         - src: "gtk-settings.ini"
           dest: "/home/adin/.config/gtk-3.0/settings.ini"
 
+        - src: "vale.init"
+          dest: "/home/adin/.vale.ini"
+
     - name: Create sudo config directories
       become: true
       tags: sudo-dots

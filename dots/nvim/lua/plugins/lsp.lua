@@ -170,6 +170,7 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.ltex.setup({
 				capabilities = capabilities,
 				on_attach = function(_, _)
@@ -224,6 +225,10 @@ return {
 			})
 
 			lspconfig.terraformls.setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig.vale_ls.setup({
 				capabilities = capabilities,
 			})
 

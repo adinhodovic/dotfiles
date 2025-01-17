@@ -78,8 +78,11 @@ return {
 		opts = {
 			linters_by_ft = {
 				["*"] = { "codespell" },
-				markdown = { "markdownlint" },
-				text = { "vale" },
+				markdown = {
+					"markdownlint",
+					-- "vale",
+				},
+				-- text = { "vale" },
 				ansible = { "ansible-lint" },
 				yaml = { "yamllint" },
 				json = { "jsonlint" },
