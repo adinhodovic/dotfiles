@@ -482,7 +482,6 @@ return {
 		end,
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
-	{ "winston0410/range-highlight.nvim", dependencies = { "winston0410/cmd-parser.nvim" }, config = true },
 	{
 		"tzachar/highlight-undo.nvim",
 		enabled = true,
