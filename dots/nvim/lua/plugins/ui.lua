@@ -229,45 +229,41 @@ return {
 		"RRethy/vim-illuminate",
 		lazy = false,
 		opts = {
-			delay = 200,
 			large_file_cutoff = 2000,
-			large_file_overrides = {
-				providers = { "lsp", "treesitter", "regex" },
-			},
 		},
 		config = function(_, opts)
 			require("illuminate").configure(opts)
-
-			local function map(key, dir, buffer)
-				vim.keymap.set("n", key, function()
-					require("illuminate")["goto_" .. dir .. "_reference"](false)
-				end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
-			end
-
-			map("]]", "next")
-			map("[[", "prev")
-
-			-- also set it after loading ftplugins, since a lot overwrite [[ and ]]
-			vim.api.nvim_create_autocmd("FileType", {
-				callback = function()
-					local buffer = vim.api.nvim_get_current_buf()
-					map("]]", "next", buffer)
-					map("[[", "prev", buffer)
-				end,
-			})
 		end,
 		keys = {
-			{ "]]", desc = "Next Reference" },
-			{ "[[", desc = "Prev Reference" },
+			{ "]]", desc = "Illuminate: Next Reference" },
+			{ "[[", desc = "Illuminate: Prev Reference" },
 		},
 	},
 	{
 		-- Better dropbar
 		"Bekaboo/dropbar.nvim",
 		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"telescope-fzf-native.nvim",
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
 		},
+		lazy = false,
+		keys = {
+			{
+				"[;",
+				function()
+					require("dropbar.api").goto_context_start()
+				end,
+				desc = "Dropbar: Go to start of current context",
+			},
+			{
+				"];",
+				function()
+					require("dropbar.api").select_next_context()
+				end,
+				desc = "Dropbar: Select next context",
+			},
+		},
+		opts = true,
 	},
 	{
 		-- Highlight yanks
