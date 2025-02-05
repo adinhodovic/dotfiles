@@ -12,6 +12,26 @@ local function set_autocmd(group, event, pattern, command)
 	})
 end
 
+local function default(val, default_val)
+	if val == nil then
+		return default_val
+	else
+		return val
+	end
+end
+
+local default_options = { noremap = true, silent = true }
+local default_options_expression = { noremap = true, silent = true, expr = true, replace_keycodes = false }
+
+local function map(mode, shortcut, command, options)
+	options = default(options, default_options)
+	vim.keymap.set(mode, shortcut, command, options)
+end
+
+local function nmap(shortcut, command, options)
+	map("n", shortcut, command, options)
+end
+
 -----------------------------------------
 -- Utils
 -----------------------------------------
@@ -326,7 +346,22 @@ return {
 					wo = { wrap = true }, -- Wrap notifications
 				},
 			},
+			words = { enabled = true },
 		},
+		config = function(_, opts)
+			require("snacks").setup(opts)
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					local buffer = vim.api.nvim_get_current_buf()
+					nmap("]]", function()
+						require("snacks.words").jump(vim.v.count1)
+					end, { desc = "Snacks: Next Reference", buffer = buffer })
+					nmap("[[", function()
+						require("snacks.words").jump(-vim.v.count1)
+					end, { desc = "Snacks: Prev Reference", buffer = buffer })
+				end,
+			})
+		end,
 		keys = {
 			{
 				"<leader>un",
@@ -356,6 +391,20 @@ return {
 					Snacks.rename()
 				end,
 				desc = "Snacks: Rename File",
+			},
+			{
+				"]]",
+				function()
+					Snacks.words.jump(vim.v.count1)
+				end,
+				desc = "Snacks: Next Reference",
+			},
+			{
+				"[[",
+				function()
+					Snacks.words.jump(-vim.v.count1)
+				end,
+				desc = "Snacks: Prev Reference",
 			},
 		},
 	},

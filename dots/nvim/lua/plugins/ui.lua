@@ -224,21 +224,6 @@ return {
 			})
 		end,
 	},
-	-- Automatically highlights other instances of the word under your cursor.
-	{
-		"RRethy/vim-illuminate",
-		lazy = false,
-		opts = {
-			large_file_cutoff = 2000,
-		},
-		config = function(_, opts)
-			require("illuminate").configure(opts)
-		end,
-		keys = {
-			{ "]]", desc = "Illuminate: Next Reference" },
-			{ "[[", desc = "Illuminate: Prev Reference" },
-		},
-	},
 	{
 		-- Better dropbar
 		"Bekaboo/dropbar.nvim",
