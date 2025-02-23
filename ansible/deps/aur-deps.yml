@@ -39,9 +39,12 @@
         - xorg-xinit
         - xautolock
 
+        # python
         - python-virtualenv
         - pyenv
         - python-pipx
+        - uv
+
         - tk
         - rofi
         - xorg

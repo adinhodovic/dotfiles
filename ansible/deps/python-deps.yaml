@@ -38,3 +38,10 @@
         - poetry
         - tl
         - harlequin[postgres,s3]
+
+    - name: Install uv packages
+      tags: uv
+      shell: |
+        uv tool install {{ item }}
+      loop:
+        - isd-tui
