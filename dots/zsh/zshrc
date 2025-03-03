@@ -110,25 +110,14 @@ export KUBE_EDITOR="nvim"
 #############################################
 export KUBECTL_FZF_OPTIONS=(-1 --header-lines=2 --layout reverse -e --no-sort --bind space:accept --bind tab:down)
 
-#############################################
-# Broot
-#############################################
-source /home/adin/.config/broot/launcher/bash/br
-
 ############################################
 # zsh-users/zsh-autosuggestions
 ############################################
 bindkey '^ ' autosuggest-accept
 
 #############################################
-# Tanka
-#############################################
-complete -o nospace -C "$(which tk)" tk
-
-#############################################
 # Misc
 #############################################
-
 export PYTHONBREAKPOINT=pudb.set_trace
 export KUBECTL_EXTERNAL_DIFF=kubectl-neat-diff
 export DOCKER_BUILDKIT=1

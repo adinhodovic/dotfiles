@@ -104,3 +104,4 @@ monitoring-mixin
 nodepools
 VPAs
 HPAs
+loki
