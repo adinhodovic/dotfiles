@@ -59,33 +59,4 @@ return {
 			},
 		},
 	},
-	{
-		"smjonas/snippet-converter.nvim",
-		cmd = "ConvertSnippets",
-		config = function()
-			local template = {
-				-- name = "t1", (optionally give your template a name to refer to it in the `ConvertSnippets` command)
-				sources = {
-					ultisnips = {
-						"/home/adin/personal/Ultisnips/yaml",
-					},
-				},
-				output = {
-					-- Specify the output formats and paths
-					snipmate = {
-						"/home/adin/dotfiles/snippets/yaml",
-					},
-				},
-				sort_snippets = function(first, second)
-					return first.trigger < second.trigger
-				end,
-			}
-
-			require("snippet_converter").setup({
-				templates = { template },
-				-- To change the default settings (see configuration section in the documentation)
-				-- settings = {},
-			})
-		end,
-	},
 }

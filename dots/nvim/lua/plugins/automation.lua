@@ -25,13 +25,6 @@ return {
 		end,
 	},
 	{
-		-- Peek line numbers
-		"nacro90/numb.nvim",
-		config = function()
-			require("numb").setup()
-		end,
-	},
-	{
 		-- Better folding
 		"kevinhwang91/nvim-ufo",
 		dependencies = {
@@ -116,26 +109,6 @@ return {
 					require("rulebook").lookupRule()
 				end,
 				desc = "Rulebook: Lookup rule",
-			},
-		},
-	},
-	{
-		"bloznelis/before.nvim",
-		opts = {},
-		keys = {
-			{
-				"<c-h>",
-				function()
-					require("before").jump_to_last_edit()
-				end,
-				desc = "Jump to last edit",
-			},
-			{
-				"<c-l>",
-				function()
-					require("before").jump_to_next_edit()
-				end,
-				desc = "Jump to next edit",
 			},
 		},
 	},

@@ -44,58 +44,6 @@ return {
 		},
 	},
 	{
-		-- Markdown ToC
-		"mzlogin/vim-markdown-toc",
-		lazy = true,
-		ft = "markdown",
-	},
-	{
-		-- Markdown image pasting
-		"ferrine/md-img-paste.vim",
-		lazy = true,
-		ft = "markdown",
-		init = function()
-			g.mdip_imgdir = "images"
-		end,
-		keys = {
-			{
-				"<leader>mp",
-				":call mdip#MarkdownClipboardImage()<CR>",
-				desc = "Paste image from clipboard",
-			},
-		},
-	},
-	{
-		-- Thesaurus
-		"ron89/thesaurus_query.vim",
-		lazy = true,
-		ft = "markdown",
-		init = function()
-			g.tq_map_keys = 0
-		end,
-		keys = {
-			{
-				"<leader>tq",
-				":ThesaurusQueryReplaceCurrentWord<CR>",
-				mode = { "n", "v", "x" },
-				desc = "Thesaurus: Query word",
-			},
-		},
-	},
-	{
-		-- Words
-		"reedes/vim-wordy",
-		lazy = true,
-		ft = "markdown",
-		-- TODO(adinhodovic): Add keymaps
-		-----------------------------------------
-		-- Writing
-		-----------------------------------------
-		-- nmap("<F8>", ":<C-u>NextWordy<cr>")
-		-- xmap("<F8>", ":<C-u>NextWordy<cr>")
-		-- imap("<F8>", ":<C-o>NextWordy<cr>")
-	},
-	{
 		-- Obsidian
 		"epwalsh/obsidian.nvim",
 		lazy = true,

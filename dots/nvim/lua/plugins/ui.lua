@@ -255,10 +255,6 @@ return {
 		"machakann/vim-highlightedyank",
 	},
 	{
-		-- Telescope fzf
-		"nvim-telescope/telescope-fzf-native.nvim",
-	},
-	{
 		-- Better bufferline
 		"akinsho/bufferline.nvim",
 		config = function()
@@ -339,17 +335,6 @@ return {
 					},
 				},
 			})
-		end,
-	},
-	{
-		-- Better buffers
-		"ghillb/cybu.nvim",
-		keys = {
-			{ "[b", "<Plug>(CybuPrev)", desc = "Cybu buffer previous" },
-			{ "]b", "<Plug>(CybuNext)", desc = "Cybu buffer next" },
-		},
-		config = function()
-			require("cybu").setup()
 		end,
 	},
 	{
@@ -508,13 +493,6 @@ return {
 	{
 		"mcauley-penney/visual-whitespace.nvim",
 		opts = {},
-	},
-	{
-		-- Highlight cursor when it moves, changes windows etc.
-		"danilamihailov/beacon.nvim",
-		opts = {
-			fps = 90,
-		},
 	},
 	{
 		-- Smear cursor, shows cursor movement

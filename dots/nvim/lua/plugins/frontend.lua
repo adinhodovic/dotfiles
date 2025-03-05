@@ -26,52 +26,13 @@ return {
 		end,
 	},
 	{
-		-- Javascript
-		"pangloss/vim-javascript",
-		ft = {
-			"javscript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-		},
-	},
-	{
-		-- Javascript
-		"jelera/vim-javascript-syntax",
-		ft = {
-			"javscript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-		},
-	},
-	{
-		-- Typescript
-		"HerringtonDarkholme/yats.vim",
+		"pmizio/typescript-tools.nvim",
 		ft = {
 			"typescript",
 			"typescriptreact",
 		},
-	},
-	{
-		-- JSX
-		"maxmellon/vim-jsx-pretty",
-		ft = {
-			"javscript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-		},
-	},
-	{
-		-- CSS syntax
-		"hail2u/vim-css3-syntax",
-		lazy = true,
-		ft = {
-			"css",
-			"scss",
-			"less",
-		},
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
 	},
 	{
 		"luckasRanarison/tailwind-tools.nvim",
@@ -89,16 +50,16 @@ return {
 			"scss",
 			"less",
 		},
-		{
-			"MaximilianLloyd/tw-values.nvim",
-			keys = {
-				{
-					"<leader>sv",
-					"<cmd>TWValues<cr>",
-					desc = "Show tailwind CSS values",
-				},
+	},
+	{
+		"MaximilianLloyd/tw-values.nvim",
+		keys = {
+			{
+				"<leader>sv",
+				"<cmd>TWValues<cr>",
+				desc = "Show tailwind CSS values",
 			},
-			opts = {},
 		},
+		opts = {},
 	},
 }

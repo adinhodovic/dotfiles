@@ -322,10 +322,6 @@ return {
 		end,
 	},
 	{
-		-- Better search <leader>e, simpler than above
-		"wincent/scalpel",
-	},
-	{
 		"MagicDuck/grug-far.nvim",
 		config = function()
 			require("grug-far").setup({

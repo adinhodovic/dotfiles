@@ -34,11 +34,6 @@ return {
 		},
 	},
 	{
-		"maxandron/goplements.nvim",
-		ft = "go",
-		opts = {},
-	},
-	{
 		-- Ruby
 		"vim-ruby/vim-ruby",
 		ft = "ruby",

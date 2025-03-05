@@ -267,6 +267,16 @@ vim.filetype.add({
 	},
 })
 
+-- Auto-detect Tiltfile as a Bazel/Starlark file
+vim.filetype.add({
+	filename = {
+		["Tiltfile"] = "bzl",
+	},
+	extension = {
+		["bzl"] = "bzl",
+	},
+})
+
 -------------------------------------------
 -- LSP
 -------------------------------------------

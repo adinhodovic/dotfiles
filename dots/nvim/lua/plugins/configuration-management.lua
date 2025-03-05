@@ -23,22 +23,9 @@ return {
 		ft = "jsonnet",
 	},
 	{
-		-- Toml
-		"cespare/vim-toml",
-		ft = "toml",
-	},
-	{
 		-- Helm
 		"towolf/vim-helm",
 		ft = "helm",
-	},
-	{
-		-- Starlark
-		"cappyzawa/starlark.vim",
-		ft = {
-			"starlark",
-			"tiltfile",
-		},
 	},
 	{
 		-- Ansible

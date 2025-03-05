@@ -159,19 +159,6 @@ return {
 		end,
 	},
 	{
-		"backdround/global-note.nvim",
-		config = function()
-			require("global-note").setup({})
-		end,
-		keys = {
-			{
-				"<leader>gn",
-				"<cmd>GlobalNote<cr>",
-				desc = "Toggle global note",
-			},
-		},
-	},
-	{
 		"chrishrb/gx.nvim",
 		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
 		-- TODO: Long links don't work
@@ -266,18 +253,6 @@ return {
 			save_path = "~/pictures/codesnap/",
 			bg_color = "#535c68",
 			watermark = "",
-		},
-	},
-	{
-		"ellisonleao/carbon-now.nvim",
-		opts = {},
-		keys = {
-			{
-				"<F6>",
-				":CarbonNow<CR>",
-				mode = { "x" },
-				desc = "CarbowNow: Open Carbon.sh with selected text",
-			},
 		},
 	},
 	{
@@ -447,6 +422,7 @@ return {
 		opts = {
 			-- recommended settings
 			default = {
+				dir_path = "images",
 				embed_image_as_base64 = false,
 				prompt_for_file_name = false,
 				drag_and_drop = {
