@@ -261,12 +261,6 @@ return {
 		enabled = true,
 	},
 	{
-		"gbprod/cutlass.nvim",
-		opts = {
-			cut_key = "x",
-		},
-	},
-	{
 		"sQVe/sort.nvim",
 		opts = {},
 		keys = {
