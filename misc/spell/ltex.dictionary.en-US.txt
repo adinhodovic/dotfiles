@@ -106,3 +106,8 @@ VPAs
 HPAs
 loki
 SpiceDB
+AuthZed
+Alertmanager
+Thumper
+CockroachDB
+Datastores
