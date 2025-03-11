@@ -111,3 +111,7 @@ Alertmanager
 Thumper
 CockroachDB
 Datastores
+LogQL
+PromQL
+OpenTelemetry
+ArgoCD
