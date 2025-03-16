@@ -115,3 +115,4 @@ LogQL
 PromQL
 OpenTelemetry
 ArgoCD
+Pyroscope
