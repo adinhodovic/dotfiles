@@ -28,6 +28,7 @@
       - github.com/boz/kail/cmd/kail
       - github.com/fullstorydev/grpcurl/cmd/grpcurl
       - github.com/noperator/sol/cmd/sol
+      - github.com/grafana/grizzly/cmd/grr
       # Kubernetes
       - sigs.k8s.io/kind
       - github.com/terraform-docs/terraform-docs
