@@ -116,3 +116,4 @@ PromQL
 OpenTelemetry
 ArgoCD
 Pyroscope
+statefulset

@@ -8,7 +8,15 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 # File dir
-alias n="nnn"
+# alias f="yazi"
+function f() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
 
 alias df="duf"
 
