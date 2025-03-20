@@ -48,6 +48,7 @@ return {
 			},
 			ring = {
 				storage = "sqlite",
+				history_length = 500,
 			},
 		},
 		keys = {
