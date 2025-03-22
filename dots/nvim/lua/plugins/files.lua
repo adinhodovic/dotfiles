@@ -1,41 +1,5 @@
 return {
 	{
-		"stevearc/oil.nvim",
-		cmd = "Oil",
-		-- Yazi preferred
-		keys = {
-			{
-				"<leader>fo",
-				":Oil --float <cr>",
-				desc = "Oil: Open file explorer",
-			},
-		},
-		opts = {
-			default_file_explorer = false,
-			columns = {
-				"icon",
-				"size",
-				"mtime",
-			},
-			win_options = {
-				signcolumn = "yes:2",
-			},
-			view_options = {
-				-- Show files and directories that start with "."
-				show_hidden = true,
-			},
-
-			float = {
-				max_width = 100,
-				max_height = 0,
-			},
-		},
-		-- Optional dependencies
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
-	{
 		"mikavilpas/yazi.nvim",
 		event = "VeryLazy",
 		dependencies = { "folke/snacks.nvim", lazy = true },
@@ -52,59 +16,15 @@ return {
 				"<cmd>Yazi cwd<cr>",
 				desc = "Yazi: Open the file manager in nvim's working directory",
 			},
-			{
-				"<c-up>",
-				"<cmd>Yazi toggle<cr>",
-				desc = "YAzi: Resume the last yazi session",
-			},
 		},
 		opts = {
 			-- if you want to open yazi instead of netrw, see below for more info
 			open_for_directories = true,
 			floating_window_scaling_factor = 1,
 			keymaps = {
-				show_help = "g?",
+				show_help = "~",
 			},
 		},
-	},
-	{
-		"SirZenith/oil-vcs-status",
-		dependencies = {
-			"stevearc/oil.nvim",
-		},
-		config = function()
-			local status_const = require("oil-vcs-status.constant.status")
-
-			local StatusType = status_const.StatusType
-
-			require("oil-vcs-status").setup({
-				status_symbol = {
-					[StatusType.Added] = "",
-					[StatusType.Copied] = "󰆏",
-					[StatusType.Deleted] = "",
-					[StatusType.Ignored] = "",
-					[StatusType.Modified] = "",
-					[StatusType.Renamed] = "",
-					[StatusType.TypeChanged] = "󰉺",
-					[StatusType.Unmodified] = " ",
-					[StatusType.Unmerged] = "",
-					[StatusType.Untracked] = "",
-					[StatusType.External] = "",
-
-					[StatusType.UpstreamAdded] = "󰈞",
-					[StatusType.UpstreamCopied] = "󰈢",
-					[StatusType.UpstreamDeleted] = "",
-					[StatusType.UpstreamIgnored] = " ",
-					[StatusType.UpstreamModified] = "󰏫",
-					[StatusType.UpstreamRenamed] = "",
-					[StatusType.UpstreamTypeChanged] = "󱧶",
-					[StatusType.UpstreamUnmodified] = " ",
-					[StatusType.UpstreamUnmerged] = "",
-					[StatusType.UpstreamUntracked] = " ",
-					[StatusType.UpstreamExternal] = "",
-				},
-			})
-		end,
 	},
 	{
 		-- Project jumping
@@ -151,6 +71,81 @@ return {
 				},
 				filters = {
 					dotfiles = true,
+				},
+			})
+		end,
+	},
+	{
+		"stevearc/oil.nvim",
+		cmd = "Oil",
+		-- Yazi preferred
+		keys = {
+			{
+				"<leader>fo",
+				":Oil --float <cr>",
+				desc = "Oil: Open file explorer",
+			},
+		},
+		opts = {
+			default_file_explorer = false,
+			columns = {
+				"icon",
+				"size",
+				"mtime",
+			},
+			win_options = {
+				signcolumn = "yes:2",
+			},
+			view_options = {
+				-- Show files and directories that start with "."
+				show_hidden = true,
+			},
+
+			float = {
+				max_width = 100,
+				max_height = 0,
+			},
+		},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+	{
+		"SirZenith/oil-vcs-status",
+		dependencies = {
+			"stevearc/oil.nvim",
+		},
+		config = function()
+			local status_const = require("oil-vcs-status.constant.status")
+
+			local StatusType = status_const.StatusType
+
+			require("oil-vcs-status").setup({
+				status_symbol = {
+					[StatusType.Added] = "",
+					[StatusType.Copied] = "󰆏",
+					[StatusType.Deleted] = "",
+					[StatusType.Ignored] = "",
+					[StatusType.Modified] = "",
+					[StatusType.Renamed] = "",
+					[StatusType.TypeChanged] = "󰉺",
+					[StatusType.Unmodified] = " ",
+					[StatusType.Unmerged] = "",
+					[StatusType.Untracked] = "",
+					[StatusType.External] = "",
+
+					[StatusType.UpstreamAdded] = "󰈞",
+					[StatusType.UpstreamCopied] = "󰈢",
+					[StatusType.UpstreamDeleted] = "",
+					[StatusType.UpstreamIgnored] = " ",
+					[StatusType.UpstreamModified] = "󰏫",
+					[StatusType.UpstreamRenamed] = "",
+					[StatusType.UpstreamTypeChanged] = "󱧶",
+					[StatusType.UpstreamUnmodified] = " ",
+					[StatusType.UpstreamUnmerged] = "",
+					[StatusType.UpstreamUntracked] = " ",
+					[StatusType.UpstreamExternal] = "",
 				},
 			})
 		end,
