@@ -24,6 +24,9 @@ g.hardtime_allow_different_key = 1
 
 set.completeopt = "preview,menu"
 
+-- All file plugins recommend this setting
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 g.netrw_browser_viewer = "o"
 
 set.mouse = "a"

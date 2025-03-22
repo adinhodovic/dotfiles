@@ -2,6 +2,7 @@ return {
 	{
 		"stevearc/oil.nvim",
 		cmd = "Oil",
+		-- Yazi preferred
 		keys = {
 			{
 				"<leader>fo",
@@ -10,6 +11,7 @@ return {
 			},
 		},
 		opts = {
+			default_file_explorer = false,
 			columns = {
 				"icon",
 				"size",
@@ -31,6 +33,38 @@ return {
 		-- Optional dependencies
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
+		},
+	},
+	{
+		"mikavilpas/yazi.nvim",
+		event = "VeryLazy",
+		dependencies = { "folke/snacks.nvim", lazy = true },
+		keys = {
+			{
+				"<leader>-",
+				mode = { "n", "v" },
+				"<cmd>Yazi<cr>",
+				desc = "Yazi: Open yazi at the current file",
+			},
+			{
+				-- Open in the current working directory
+				"<leader>cw",
+				"<cmd>Yazi cwd<cr>",
+				desc = "Yazi: Open the file manager in nvim's working directory",
+			},
+			{
+				"<c-up>",
+				"<cmd>Yazi toggle<cr>",
+				desc = "YAzi: Resume the last yazi session",
+			},
+		},
+		opts = {
+			-- if you want to open yazi instead of netrw, see below for more info
+			open_for_directories = true,
+			floating_window_scaling_factor = 1,
+			keymaps = {
+				show_help = "g?",
+			},
 		},
 	},
 	{
@@ -96,6 +130,7 @@ return {
 		},
 		config = function()
 			require("nvim-tree").setup({
+				hijack_netrw = "disabled",
 				sync_root_with_cwd = true,
 				respect_buf_cwd = true,
 				update_focused_file = {
