@@ -103,6 +103,8 @@
         - direnv
         - lua
         - atuin
+        # support for pdf previews
+        - poppler
 
         # Languages
         - rust
