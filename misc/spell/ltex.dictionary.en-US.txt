@@ -117,3 +117,12 @@ OpenTelemetry
 ArgoCD
 Pyroscope
 statefulset
+Nodepools
+DaemonSets
+Kube-prometheus
+Velero
+Fairwind
+Preemptible
+preemptible
+Konnectivity
+Kube
