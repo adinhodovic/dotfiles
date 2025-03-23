@@ -31,6 +31,7 @@
         - discord
         - xdg-desktop-portal
         - harlequin
+        - yazi
 
     - name: Symlink dots
       ignore_errors: true
@@ -186,6 +187,9 @@
 
         - src: "vale.ini"
           dest: "/home/adin/.vale.ini"
+
+        - src: "yazi.toml"
+          dest: "/home/adin/.config/yazi/yazi.toml"
 
     - name: Create sudo config directories
       become: true
