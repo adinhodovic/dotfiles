@@ -18,11 +18,6 @@ end
 
 return {
 	{
-		-- Jsonnnet
-		"google/vim-jsonnet",
-		ft = "jsonnet",
-	},
-	{
 		-- Helm
 		"towolf/vim-helm",
 		ft = "helm",

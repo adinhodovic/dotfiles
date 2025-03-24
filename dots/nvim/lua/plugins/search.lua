@@ -323,23 +323,26 @@ return {
 	},
 	{
 		"MagicDuck/grug-far.nvim",
-		config = function()
-			require("grug-far").setup({
-				transient = true,
-			})
-		end,
+		opts = {
+			transient = true,
+			engines = {
+				ripgrep = {
+					path = "/usr/bin/rg",
+				},
+			},
+		},
 		keys = {
 			{
 				"<leader>S",
 				function()
-					require("grug-far").grug_far()
+					require("grug-far").open()
 				end,
 				desc = "Grug: Open",
 			},
 			{
 				"<leader>sw",
 				function()
-					require("grug-far").grug_far({
+					require("grug-far").open({
 						prefills = {
 							search = vim.fn.expand("<cword>"),
 						},
@@ -350,7 +353,7 @@ return {
 			{
 				"<leader>sf",
 				function()
-					require("grug-far").grug_far({
+					require("grug-far").open({
 						prefills = {
 							flags = vim.fn.expand("%"),
 						},
