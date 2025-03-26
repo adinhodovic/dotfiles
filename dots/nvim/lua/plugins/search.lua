@@ -355,7 +355,7 @@ return {
 				function()
 					require("grug-far").open({
 						prefills = {
-							flags = vim.fn.expand("%"),
+							paths = vim.fn.expand("%"),
 						},
 					})
 				end,
@@ -366,7 +366,7 @@ return {
 				function()
 					require("grug-far").with_visual_selection({
 						prefills = {
-							flags = vim.fn.expand("%"),
+							paths = vim.fn.expand("%"),
 						},
 					})
 				end,
