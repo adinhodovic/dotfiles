@@ -2,3 +2,4 @@
 search_mode = "fulltext"
 enter_accept = true
 sync_address = "https://atuin.honeylogic.io"
+keymap_mode = "vim-insert"

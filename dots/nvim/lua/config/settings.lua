@@ -72,6 +72,8 @@ set.termguicolors = true
 set.cursorline = true
 vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
 
+vim.opt.showmode = false
+
 set.title = true
 
 set.number = true
