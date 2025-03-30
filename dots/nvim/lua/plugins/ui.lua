@@ -426,12 +426,10 @@ return {
 		config = function()
 			local f = function(args)
 				vim.b[args.buf].minitrailspace_disable = true
-				vim.print(vim.bo.filetype)
 			end
 			local ft_blocklist = {
 				"html",
 				"diff",
-				"help",
 				"cmp_menu",
 				"snacks_dashboard",
 				"qf",
@@ -447,7 +445,7 @@ return {
 				"taskedit",
 			}
 			vim.api.nvim_create_autocmd("FileType", { pattern = ft_blocklist, callback = f })
-			require("mini.trailspace").setup({})
+			require("mini.trailspace").setup()
 		end,
 	},
 	{
