@@ -136,13 +136,6 @@ set.iskeyword:append({ "-" })
 -------------------------------------------
 -- Indentation
 -------------------------------------------
-
--- Enable file type detection
-vim.o.filetype = "on"
-
--- Enable syntax highlighting
-vim.o.syntax = "on"
-
 -- Create the augroup and set autocmds for various filetypes
 local indentation = augroup("indentation", {})
 set_autocmd(

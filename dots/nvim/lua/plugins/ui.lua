@@ -422,6 +422,7 @@ return {
 	{
 		"echasnovski/mini.trailspace",
 		lazy = false,
+		priority = 10000,
 		config = function()
 			require("mini.trailspace").setup({})
 			local f = function(args)
@@ -431,6 +432,7 @@ return {
 				"html",
 				"diff",
 				"help",
+				"cmp_menu",
 				"snacks_dashboard",
 				"qf",
 				"git",
