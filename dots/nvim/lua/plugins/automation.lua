@@ -72,6 +72,17 @@ return {
 
 			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+			local ui_ft_blocklist = require("custom_settings").ui_ft_blocklist
+			local disable_folding = function(args)
+				require("ufo").detach()
+				vim.opt_local.foldenable = false
+				vim.opt_local.foldcolumn = "0"
+			end
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = ui_ft_blocklist,
+				callback = disable_folding,
+			})
 		end,
 	},
 	{

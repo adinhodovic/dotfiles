@@ -13,6 +13,7 @@ local function set_autocmd(group, event, pattern, command)
 	})
 end
 
+local ui_ft_blocklist = require("custom_settings").ui_ft_blocklist
 -----------------------------------------
 -- GUI
 -----------------------------------------
@@ -160,26 +161,14 @@ return {
 		main = "ibl",
 		opts = {
 			exclude = {
-				filetypes = {
-					"snacks_dashboard",
-					"packer",
-					"terminal",
-					"help",
-					"log",
-					"markdown",
-					"TelescopePrompt",
-					"lspinfo",
-					"mason.nvim",
-					"toggleterm",
-					"text",
-				},
+				filetypes = ui_ft_blocklist,
 			},
 		},
 	},
 	{
 		-- Github theme
 		"projekt0n/github-nvim-theme",
-		priority = 1000,
+		priority = 100000,
 		config = function()
 			require("github-theme").setup({
 				options = {},
@@ -252,6 +241,8 @@ return {
 	{
 		-- Better statuscol
 		"luukvbaal/statuscol.nvim",
+		lazy = false,
+		priority = 100,
 		dependencies = {
 			"kevinhwang91/nvim-ufo",
 			"lewis6991/gitsigns.nvim",
@@ -275,7 +266,7 @@ return {
 				setopt = true,
 				-- https://github.com/luukvbaal/statuscol.nvim/issues/72#issuecomment-1593828496
 				bt_ignore = { "nofile", "prompt", "tempfile", "terminal" },
-				ft_ignore = { "oil", "neotest-summary", "snacks_dashboard" },
+				ft_ignore = ui_ft_blocklist,
 
 				segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
@@ -322,7 +313,6 @@ return {
 	{
 		-- TODO: maybe replace with neoscroll?
 		"echasnovski/mini.animate",
-		event = "VeryLazy",
 		config = function()
 			local animate = require("mini.animate")
 			-- Disable on large files
@@ -421,30 +411,13 @@ return {
 	},
 	{
 		"echasnovski/mini.trailspace",
-		lazy = false,
-		priority = 10000,
+		event = "VeryLazy",
 		config = function()
 			local f = function(args)
 				vim.b[args.buf].minitrailspace_disable = true
 			end
-			local ft_blocklist = {
-				"html",
-				"diff",
-				"cmp_menu",
-				"snacks_dashboard",
-				"qf",
-				"git",
-				"gitcommit",
-				"unite",
-				"help",
-				"Trouble",
-				"NeogitConsole",
-				"TelescopeResults",
-				"TelescopePrompt",
-				"fzf",
-				"taskedit",
-			}
-			vim.api.nvim_create_autocmd("FileType", { pattern = ft_blocklist, callback = f })
+			local ui_ft_blocklist = require("custom_settings").ui_ft_blocklist
+			vim.api.nvim_create_autocmd("FileType", { pattern = ui_ft_blocklist, callback = f })
 			require("mini.trailspace").setup()
 		end,
 	},
