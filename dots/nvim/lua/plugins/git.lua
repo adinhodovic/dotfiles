@@ -38,10 +38,6 @@ return {
 		end,
 	},
 	{
-		-- File type support for GitHub Actions
-		"rhysd/vim-github-actions",
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		keys = {
 			{

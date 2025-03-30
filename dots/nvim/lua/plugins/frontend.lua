@@ -17,15 +17,6 @@ end
 -----------------------------------------
 return {
 	{
-		-- Provides support for expanding abbreviations similar to emmet
-		"mattn/emmet-vim",
-		config = function()
-			g.user_emmet_install_global = 0
-			local emmetGroup = augroup("emmet", {})
-			set_autocmd(emmetGroup, { "FileType" }, { "html", "css", "jsx", "tsx", "htmldjango" }, "EmmetInstall")
-		end,
-	},
-	{
 		"pmizio/typescript-tools.nvim",
 		ft = {
 			"typescript",
