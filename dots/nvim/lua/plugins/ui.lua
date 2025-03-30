@@ -275,7 +275,7 @@ return {
 				setopt = true,
 				-- https://github.com/luukvbaal/statuscol.nvim/issues/72#issuecomment-1593828496
 				bt_ignore = { "nofile", "prompt", "tempfile", "terminal" },
-				ft_ignore = { "oil", "neotest-summary" },
+				ft_ignore = { "oil", "neotest-summary", "snacks_dashboard" },
 
 				segments = { -- https://github.com/luukvbaal/statuscol.nvim#custom-segments
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
@@ -424,9 +424,9 @@ return {
 		lazy = false,
 		priority = 10000,
 		config = function()
-			require("mini.trailspace").setup({})
 			local f = function(args)
 				vim.b[args.buf].minitrailspace_disable = true
+				vim.print(vim.bo.filetype)
 			end
 			local ft_blocklist = {
 				"html",
@@ -447,6 +447,7 @@ return {
 				"taskedit",
 			}
 			vim.api.nvim_create_autocmd("FileType", { pattern = ft_blocklist, callback = f })
+			require("mini.trailspace").setup({})
 		end,
 	},
 	{
