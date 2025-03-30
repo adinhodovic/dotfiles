@@ -253,7 +253,7 @@ return {
 				"<leader>gl",
 			},
 		},
-		config = true,
+		opts = {},
 	},
 	{
 		"FabijanZulj/blame.nvim",

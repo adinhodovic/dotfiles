@@ -46,50 +46,6 @@ return {
 		end,
 	},
 	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		dependencies = {
-			{ "zbirenbaum/copilot.lua" },
-			{ "nvim-lua/plenary.nvim" },
-			{ "ibhagwan/fzf-lua" },
-		},
-		opts = {
-			-- See Configuration section for rest
-		},
-		keys = {
-			{
-				"<leader>cct",
-				function()
-					require("CopilotChat").toggle()
-				end,
-				desc = "CopilotChat: Toggle",
-			},
-			{
-				"<leader>ccr",
-				function()
-					require("CopilotChat").reset()
-				end,
-				desc = "CopilotChat: Reset",
-			},
-			{
-				"<leader>cch",
-				function()
-					local actions = require("CopilotChat.actions")
-					require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-				end,
-				desc = "CopilotChat: Help actions",
-			},
-			{
-				"<leader>ccp",
-				mode = { "n", "v", "x" },
-				function()
-					local actions = require("CopilotChat.actions")
-					require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-				end,
-				desc = "CopilotChat: Prompt actions",
-			},
-		},
-	},
-	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		opts = {

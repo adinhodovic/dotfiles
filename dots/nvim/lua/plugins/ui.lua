@@ -86,32 +86,6 @@ return {
 		end,
 	},
 	{
-		-- Used for whitespace trimming
-		"cappyzawa/trim.nvim",
-		opts = {
-			ft_blocklist = {
-				"html",
-				"diff",
-				"help",
-				"dashboard",
-				"qf",
-				"git",
-				"gitcommit",
-				"unite",
-				"help",
-				"fugitive",
-				"Trouble",
-				"NeogitConsole",
-				"TelescopeResults",
-				"TelescopePrompt",
-				"NeogitConsole",
-				"fzf",
-				"taskedit",
-			},
-			highlight = true,
-		},
-	},
-	{
 		-- Icons
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -187,7 +161,7 @@ return {
 		opts = {
 			exclude = {
 				filetypes = {
-					"dashboard",
+					"snacks_dashboard",
 					"packer",
 					"terminal",
 					"help",
@@ -211,17 +185,6 @@ return {
 				options = {},
 			})
 			vim.cmd.colorscheme("github_dark_default")
-		end,
-	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		config = function()
-			require("catppuccin").setup({
-				flavor = "moccha",
-				transparent_background = true,
-			})
 		end,
 	},
 	{
@@ -411,44 +374,6 @@ return {
 		end,
 	},
 	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("dashboard").setup({
-				theme = "hyper",
-				config = {
-					week_header = {
-						enable = true,
-					},
-					shortcut = {
-						{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
-						{
-							icon = " ",
-							icon_hl = "@variable",
-							desc = "Files",
-							group = "Label",
-							action = "Telescope find_files",
-							key = "f",
-						},
-						{
-							desc = " Apps",
-							group = "DiagnosticHint",
-							action = "Telescope app",
-							key = "a",
-						},
-						{
-							desc = " dotfiles",
-							group = "Number",
-							action = "Telescope dotfiles",
-							key = "d",
-						},
-					},
-				},
-			})
-		end,
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
-	},
-	{
 		"tzachar/highlight-undo.nvim",
 		enabled = true,
 		opts = {},
@@ -493,6 +418,34 @@ return {
 	{
 		"mcauley-penney/visual-whitespace.nvim",
 		opts = {},
+	},
+	{
+		"echasnovski/mini.trailspace",
+		lazy = false,
+		config = function()
+			require("mini.trailspace").setup({})
+			local f = function(args)
+				vim.b[args.buf].minitrailspace_disable = true
+			end
+			local ft_blocklist = {
+				"html",
+				"diff",
+				"help",
+				"snacks_dashboard",
+				"qf",
+				"git",
+				"gitcommit",
+				"unite",
+				"help",
+				"Trouble",
+				"NeogitConsole",
+				"TelescopeResults",
+				"TelescopePrompt",
+				"fzf",
+				"taskedit",
+			}
+			vim.api.nvim_create_autocmd("FileType", { pattern = ft_blocklist, callback = f })
+		end,
 	},
 	{
 		-- Smear cursor, shows cursor movement
