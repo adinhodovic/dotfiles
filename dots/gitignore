@@ -52,4 +52,4 @@ import.json
 mage_output_file.go
 a.yaml
 b.yaml
-thumper
+./thumper
