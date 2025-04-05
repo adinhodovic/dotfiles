@@ -27,10 +27,24 @@ return {
 	},
 	{
 		"luckasRanarison/tailwind-tools.nvim",
+		name = "tailwind-tools",
+		build = ":UpdateRemotePlugins",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-telescope/telescope.nvim", -- optional
+			"neovim/nvim-lspconfig", -- optional
+		},
 		config = function()
-			require("tailwind-tools").setup({})
+			require("tailwind-tools").setup({
+				options = {
+					server = {
+						-- override = false,
+					},
+				},
+			})
 			local tailwindGroup = augroup("tailwind", {})
-			set_autocmd(tailwindGroup, { "BufWritePre" }, { "*.html" }, "TailwindSort")
+			-- This messes up django if statements
+			-- set_autocmd(tailwindGroup, { "BufWritePre" }, { "*.html" }, "TailwindSort")
 		end,
 		ft = {
 			"htmldjango",

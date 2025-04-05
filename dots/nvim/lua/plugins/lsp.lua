@@ -171,7 +171,7 @@ return {
 				capabilities = capabilities,
 			})
 
-			lspconfig.ltex.setup({
+			lspconfig.ltex_plus.setup({
 				capabilities = capabilities,
 				on_attach = function(_, _)
 					-- rest of your on_attach process.
@@ -220,9 +220,10 @@ return {
 				capabilities = capabilities,
 			})
 
-			lspconfig.tailwindcss.setup({
-				capabilities = capabilities,
-			})
+			-- Managed by tailwind-tools
+			-- lspconfig.tailwindcss.setup({
+			-- 	capabilities = capabilities,
+			-- })
 
 			lspconfig.terraformls.setup({
 				capabilities = capabilities,

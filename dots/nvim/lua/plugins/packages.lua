@@ -74,7 +74,7 @@ return {
 					"html",
 					"htmx",
 					"helm_ls",
-					"ltex",
+					-- "ltex",
 					"lua_ls",
 					"jsonls",
 					"ts_ls",

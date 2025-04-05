@@ -127,3 +127,4 @@ preemptible
 Konnectivity
 Kube
 runbook
+Dj-tailwind
