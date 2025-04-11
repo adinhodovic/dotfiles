@@ -2,8 +2,12 @@
 max_width = 1500
 max_height = 1500
 
-# keymap.toml
-[[manager.prepend_keymap]]
-on = ["g", "c"]
-run = "plugin vcs-files"
-desc = "Show Git file changes"
+[[plugin.prepend_fetchers]]
+id = "git"
+name = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id = "git"
+name = "*/"
+run = "git"

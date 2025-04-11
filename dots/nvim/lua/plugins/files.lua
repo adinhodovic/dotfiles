@@ -25,17 +25,10 @@ return {
 				show_help = "~",
 			},
 		},
-	},
-	{
-		-- Project jumping
-		-- Autocd to root of project
-		"ahmedkhalf/project.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		config = function()
-			require("project_nvim").setup({})
-			require("telescope").load_extension("projects")
+		init = function()
+			-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+			-- vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
 		end,
 	},
 	{

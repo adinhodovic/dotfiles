@@ -21,3 +21,8 @@
       shell: |
         kubectl krew install cnpg
         kubectl krew install explore
+
+    - name: Install yazi Plugins
+      shell: |
+        ya pack -a yazi-rs/plugins:git
+        ya pack -a yazi-rs/plugins:vcs-files

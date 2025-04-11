@@ -98,6 +98,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-telescope/telescope-fzf-native.nvim",
+			"debugloop/telescope-undo.nvim",
 			{
 				"polirritmico/telescope-lazy-plugins.nvim",
 				opts = {
@@ -157,6 +158,13 @@ return {
 				end,
 				desc = "Telescope: Find project",
 			},
+			{
+				"<leader>fu",
+				function()
+					require("telescope").extensions.undo.undo()
+				end,
+				desc = "Telescope: Undo",
+			},
 		},
 		priority = 1000,
 		config = function()
@@ -189,6 +197,7 @@ return {
 			})
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("lazy_plugins")
+			require("telescope").load_extension("undo")
 		end,
 	},
 	{

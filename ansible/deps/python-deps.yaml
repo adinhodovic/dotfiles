@@ -36,7 +36,7 @@
         - wheel
         - pip-tools
         - poetry
-        - tl
+        - toolong
         - harlequin[postgres,s3]
 
     - name: Install uv packages
