@@ -1,0 +1,5 @@
+# keymap.toml
+[[manager.prepend_keymap]]
+on = ["g", "c"]
+run = "plugin vcs-files"
+desc = "Show Git file changes"
