@@ -7,7 +7,7 @@
     "silentOpen": false
   },
   "highlighter_settings": {
-    "alwaysShowHighlights": true,
+    "alwaysShowHighlights": false,
     "highlightBehavior": "highlight-inline",
     "highlighterEnabled": true
   },
@@ -65,7 +65,7 @@
     "themeMode": "auto"
   },
   "stats": {
-    "addToObsidian": 3,
+    "addToObsidian": 4,
     "copyToClipboard": 0,
     "saveFile": 0,
     "share": 0
