@@ -344,7 +344,12 @@ return {
 		},
 		event = "LspAttach",
 		config = function()
-			require("tiny-code-action").setup()
+			require("tiny-code-action").setup({
+				backend = "difftastic",
+				picker = {
+					"fzf-lua",
+				},
+			})
 		end,
 		keys = {
 			{
