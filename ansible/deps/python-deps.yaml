@@ -17,6 +17,7 @@
         - openshift
         - psutil
         - pip-tools
+        - setup-tools
       ignore_errors: yes
 
     - name: Ensure pipx path
