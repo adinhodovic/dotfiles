@@ -347,7 +347,7 @@ return {
 			require("tiny-code-action").setup({
 				backend = "difftastic",
 				picker = {
-					"fzf-lua",
+					"select",
 				},
 			})
 		end,
