@@ -170,6 +170,7 @@
 
         # cloud
         - aws-cli-v2
+        - azure-cli
         - eksctl
         - google-cloud-cli
         - google-cloud-cli-gke-gcloud-auth-plugin

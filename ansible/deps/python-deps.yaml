@@ -30,7 +30,6 @@
       # Requires pipx
       loop:
         - cookiecutter
-        - awscli
         - aws-mfa
         - pipreqs
         - pypyp
