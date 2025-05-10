@@ -16,6 +16,7 @@
         - pynvim
         - openshift
         - psutil
+        - pip-tools
       ignore_errors: yes
 
     - name: Ensure pipx path

@@ -105,7 +105,12 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			triggers = {
+				{ "<auto>", mode = "nixsotc" },
+				{ "<leader>", mode = { "n", "v" } },
+			},
+		},
 		keys = {
 			{
 				"<leader>?",

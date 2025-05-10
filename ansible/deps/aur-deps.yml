@@ -60,7 +60,6 @@
         - httpie
         - openssh
         - rsync
-        - gnome-alsamixer
         - slack-desktop
         - glibc
         - unrar

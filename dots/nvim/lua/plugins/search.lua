@@ -159,7 +159,7 @@ return {
 				desc = "Telescope: Find project",
 			},
 			{
-				"<leader>fu",
+				"<leader>u",
 				function()
 					require("telescope").extensions.undo.undo()
 				end,

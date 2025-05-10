@@ -1,6 +1,6 @@
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		build = ":MasonUpdate",
 		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
 		opts = {},
@@ -60,7 +60,7 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
