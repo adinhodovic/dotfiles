@@ -21,6 +21,7 @@
       shell: |
         kubectl krew install cnpg
         kubectl krew install explore
+        kubectl krew install node-resource
 
     - name: Install yazi Plugins
       shell: |
