@@ -532,4 +532,10 @@ return {
 			snippet_engine = "luasnip",
 		},
 	},
+	{
+		"m4xshen/hardtime.nvim",
+		opts = {
+			enabled = true,
+		},
+	},
 }
