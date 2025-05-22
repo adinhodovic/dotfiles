@@ -535,7 +535,7 @@ return {
 	{
 		"m4xshen/hardtime.nvim",
 		opts = {
-			enabled = true,
+			enabled = false,
 		},
 	},
 }
