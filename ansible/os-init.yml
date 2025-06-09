@@ -161,6 +161,15 @@
         - laptop
       when: "'laptop' in ansible_run_tags"
 
+    - name: Add me to clamav group
+      become: true
+      user:
+        name: adin
+        groups: clamav
+        append: true
+      tags:
+        - antivirus
+
     - name: Ensure the directory for ClamAV logs exists
       become: true
       file:
@@ -169,6 +178,15 @@
         mode: "0755"
       tags:
         - antivirus
+
+    - name: Set group write permission on /var/lib/clamav recursively
+      become: true
+      file:
+        path: /var/lib/clamav
+        owner: clamav
+        group: clamav
+        recurse: true
+        mode: "g+w"
 
     - name: Ensure freshclam.log exists
       become: true
@@ -188,5 +206,17 @@
         month: "*"
         weekday: "*"
         job: "~/dotfiles/scripts/clamav-scan.sh"
+      tags:
+        - antivirus
+
+    - name: Set up a daily cron job for ClamAV DB update
+      cron:
+        name: "Daily ClamAV DB Update via freshclam"
+        minute: "0"
+        hour: "0"
+        day: "*"
+        month: "*"
+        weekday: "*"
+        job: "freshclam"
       tags:
         - antivirus
