@@ -49,8 +49,8 @@ return {
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		opts = {
-			provider = "copilot",
-			auto_suggestions_provider = "claude",
+			provider = os.getenv("ANTHROPIC_API_KEY") and "claude" or "copilot",
+			auto_suggestions_provider = os.getenv("ANTHROPIC_API_KEY") and "claude" or "copilot",
 			behaviour = {
 				auto_suggestions = false,
 			},
