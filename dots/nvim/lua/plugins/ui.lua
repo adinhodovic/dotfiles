@@ -174,6 +174,8 @@ return {
 				options = {},
 			})
 			vim.cmd.colorscheme("github_dark_default")
+			local visual_bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
+			vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = visual_bg, bold = true })
 		end,
 	},
 	{

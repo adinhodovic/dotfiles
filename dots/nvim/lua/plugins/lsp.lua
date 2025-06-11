@@ -7,10 +7,11 @@ local g = vim.g
 return {
 	{
 		"neovim/nvim-lspconfig",
+		lazy = false,
 		dependencies = {
-			"folke/neodev.nvim",
 			"b0o/schemastore.nvim",
 			"hrsh7th/nvim-cmp",
+			"saghen/blink.cmp",
 			"kevinhwang91/nvim-ufo",
 			{
 				"rmagatti/goto-preview",
@@ -23,7 +24,11 @@ return {
 					"SmiteshP/nvim-navic",
 					"MunifTanjim/nui.nvim",
 				},
-				opts = { lsp = { auto_attach = true } },
+				opts = {
+					lsp = {
+						auto_attach = true,
+					},
+				},
 				keys = {
 					{
 						"<leader>nb",
@@ -89,48 +94,21 @@ return {
 			},
 		},
 		config = function()
-			require("neodev").setup({})
+			vim.lsp.enable("ansiblels")
 
-			-- Set up lspconfig.
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			capabilities.textDocument.completion.completionItem.snippetSupport = true
-			-- nvim-ufo requirement
-			capabilities.textDocument.foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			}
+			vim.lsp.enable("bashls")
 
-			local lspconfig = require("lspconfig")
+			vim.lsp.enable("cssls")
 
-			lspconfig.ansiblels.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("dockerls")
 
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("docker_compose_language_service")
 
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("emmet_language_server")
 
-			lspconfig.dockerls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("gopls")
 
-			lspconfig.docker_compose_language_service.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.emmet_language_server.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.helm_ls.setup({
+			vim.lsp.config("helm_ls", {
 				settings = {
 					["helm-ls"] = {
 						yamlls = {
@@ -139,18 +117,16 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable("helm_ls")
 
-			lspconfig.html.setup({
-				capabilities = capabilities,
+			vim.lsp.config("html", {
 				filetypes = { "html", "htmldjango" },
 			})
+			vim.lsp.enable("html")
 
-			lspconfig.htmx.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("htmx")
 
-			lspconfig.jsonls.setup({
-				capabilities = capabilities,
+			vim.lsp.config("jsonls", {
 				settings = {
 					json = {
 						schemas = require("schemastore").json.schemas(),
@@ -159,20 +135,13 @@ return {
 				},
 			})
 
-			lspconfig.jsonnet_ls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.config("jsonnet_ls", {})
 
-			lspconfig.jqls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.config("jqls", {})
 
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("lua_ls")
 
-			lspconfig.ltex_plus.setup({
-				capabilities = capabilities,
+			vim.lsp.config("ltext_plus", {
 				on_attach = function(_, _)
 					-- rest of your on_attach process.
 					require("ltex_extra").setup({
@@ -187,58 +156,40 @@ return {
 				},
 			})
 
-			lspconfig.marksman.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("marksman")
 
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("ts_ls")
 
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
+			vim.lsp.config("pyright", {
 				settings = {
 					python = {
 						analysis = {
-							-- 'workspace' diagnostics is better but consumes more resources
-							diagnosticMode = "openFilesOnly",
+							diagnosticMode = "openFilesOnly", -- 'workspace' diagnostics is better but consumes more resources
 							typeCheckingMode = "off", -- Using mypy
 						},
 					},
 				},
 			})
+			vim.lsp.enable("pyright")
 
-			lspconfig.sqlls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("sqlls")
 
-			lspconfig.bzl.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("bzl")
 
-			lspconfig.taplo.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("taplo")
 
 			-- Managed by tailwind-tools
 			-- lspconfig.tailwindcss.setup({
 			-- 	capabilities = capabilities,
 			-- })
 
-			lspconfig.terraformls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("terraformls")
 
-			lspconfig.vale_ls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("vale_ls")
 
-			lspconfig.vimls.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("vimls")
 
-			lspconfig.yamlls.setup({
-				capabilities = capabilities,
+			vim.lsp.config("yamlls", {
 				yaml = {
 					schemaStore = {
 						-- You must disable built-in schemaStore support if you want to use
@@ -250,10 +201,9 @@ return {
 					schemas = require("schemastore").yaml.schemas(),
 				},
 			})
+			vim.lsp.enable("yamlls")
 
-			lspconfig.lemminx.setup({
-				capabilities = capabilities,
-			})
+			vim.lsp.enable("lemminx")
 		end,
 	},
 	{

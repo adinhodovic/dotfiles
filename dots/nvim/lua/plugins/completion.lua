@@ -2,218 +2,218 @@ local vim = vim
 
 return {
 	{
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"ray-x/lsp_signature.nvim",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-calc",
-			"petertriho/cmp-git",
-			"davidsierradz/cmp-conventionalcommits",
-			"f3fora/cmp-spell",
-			"saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-			"luckasRanarison/tailwind-tools.nvim",
-			"chrisgrieser/cmp_yanky",
-			"zbirenbaum/copilot-cmp",
+			"rafamadriz/friendly-snippets",
+			"fang2hou/blink-copilot",
+			"mikavilpas/blink-ripgrep.nvim",
+			"disrupted/blink-cmp-conventional-commits",
+			"folke/lazydev.nvim",
+			"Kaiser-Yang/blink-cmp-git",
+			"ribru17/blink-cmp-spell",
 			"onsails/lspkind.nvim",
-			"lukas-reineke/cmp-rg",
-			"barreiroleo/ltex_extra.nvim",
-			"windwp/nvim-autopairs",
-			-- "philosofonusus/ecolog.nvim",
+			"nvim-tree/nvim-web-devicons",
+			{
+				"xzbdmw/colorful-menu.nvim",
+				opts = {},
+			},
 		},
+		version = "1.*",
+
 		config = function()
-			require("cmp_git").setup()
+			local has_words_before = function()
+				local col = vim.api.nvim_win_get_cursor(0)[2]
+				if col == 0 then
+					return false
+				end
+				local line = vim.api.nvim_get_current_line()
+				return line:sub(col, col):match("%s") == nil
+			end
 
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local cmp = require("cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "BlinkCmpMenuOpen",
+				callback = function()
+					require("copilot.suggestion").dismiss()
+					vim.b.copilot_suggestion_hidden = true
+				end,
+			})
 
-			local cmp_lsp = { name = "nvim_lsp", group_index = 1 }
-			local cmp_copilot = { name = "copilot", max_item_count = 5, group_index = 1 }
-			local cmp_luasnip = { name = "luasnip", max_item_count = 10, group_index = 1 }
-			local cmp_yanky = { name = "cmp_yanky", max_item_count = 10, group_index = 1 }
-			local cmp_spell = {
-				name = "spell",
-				option = {
-					enable_in_context = function()
-						return require("cmp.config.context").in_treesitter_capture("spell")
-					end,
-				},
-				group_index = 1,
-			}
-			local cmp_path = { name = "path", max_item_count = 20, group_index = 1 }
-			local cmp_calc = { name = "calc", max_item_count = 5, group_index = 1 }
-			local cmp_git = { name = "git", max_item_count = 10, group_index = 1 }
-			-- local cmp_ecolog = { name = "ecolog", max_item_count = 10, group_index = 1 }
-			local cmp_conventional_commits = {
-				name = "conventionalcommits",
-				max_item_count = 20,
-				group_index = 1,
-			}
-			local cmp_ripgrep = { name = "rg", max_item_count = 10, keyword_length = 5, group_index = 1 }
-			local cmp_buffer = { name = "buffer", max_item_count = 10, group_index = 2 }
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "BlinkCmpMenuClose",
+				callback = function()
+					vim.b.copilot_suggestion_hidden = false
+				end,
+			})
 
-			local default_cmp_sources = {
-				cmp_lsp,
-				cmp_copilot,
-				cmp_luasnip,
-				cmp_yanky,
-				cmp_git,
-				-- cmp_ecolog,
-				cmp_spell,
-				cmp_path,
-				cmp_calc,
-				cmp_ripgrep,
-				cmp_buffer,
-			}
-
-			local luasnip = require("luasnip")
-			local utils = require("tailwind-tools.utils")
-
-			cmp.setup({
-				formatting = {
-					format = require("lspkind").cmp_format({
-						mode = "symbol_text",
-						symbol_map = { Copilot = "" },
-						maxwidth = 50,
-						ellipsis_char = "...",
-
-						before = function(entry, vim_item)
-							-- Custom icon for 'calc' source
-							if entry.source.name == "calc" then
-								vim_item.kind = ""
-								return vim_item
-							end
-
-							-- Custom icon for 'git' source
-							if entry.source.name == "git" then
-								vim_item.kind = ""
-								return vim_item
-							end
-
-							-- Custom icon for 'search' source
-							if entry.source.name == "rg" then
-								vim_item.kind = ""
-								return vim_item
-							end
-
-							-- Custom icon for 'spell' source
-							if entry.source.name == "spell" then
-								vim_item.kind = "󰓆"
-								return vim_item
-							end
-
-							-- Tailwind colors
-							local doc = entry.completion_item.documentation
-							if vim_item.kind == "Color" and type(doc) == "string" then
-								local _, _, r, g, b = doc:find("rgba?%((%d+), (%d+), (%d+)")
-								if r then
-									vim_item.kind_hl_group = utils.set_hl_from(r, g, b, "foreground")
-								end
-							end
-
-							return vim_item
+			require("blink.cmp").setup({
+				keymap = {
+					preset = "enter",
+					["<c-g>"] = {
+						function()
+							require("blink-cmp").show({ providers = { "ripgrep" } })
 						end,
-					}),
-				},
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
-				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-				}),
-				sources = cmp.config.sources(default_cmp_sources),
-			})
-
-			-- Set configuration for specific filetype.
-			cmp.setup.filetype("gitcommit", {
-				sources = cmp.config.sources(
-					vim.tbl_deep_extend("keep", { cmp_conventional_commits }, default_cmp_sources)
-				),
-			})
-
-			-- Set configuration for specific filetype.
-			cmp.setup.filetype("markdown", {
-				sources = cmp.config.sources({
-					vim.tbl_deep_extend("keep", { cmp_conventional_commits }, default_cmp_sources),
-				}),
-			})
-
-			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline({ "/", "?" }, {
-				-- Use default nvim history scrolling
-				mapping = cmp.mapping.preset.cmdline({
-					-- Use default nvim history scrolling
-					["<C-n>"] = {
-						c = false,
 					},
-					["<C-p>"] = {
-						c = false,
+					-- If completion hasn't been triggered yet, insert the first suggestion; if it has, cycle to the next suggestion.
+					["<Tab>"] = {
+						function(cmp)
+							if has_words_before() then
+								return cmp.insert_next()
+							end
+						end,
+						"fallback",
 					},
-				}),
+					-- Navigate to the previous suggestion or cancel completion if currently on the first one.
+					["<S-Tab>"] = { "insert_prev" },
+				},
+				cmdline = {
+					keymap = {},
+					completion = {
+						keymap = { preset = "inherit" },
+					},
+				},
+				completion = {
+					accept = {
+						auto_brackets = {
+							enabled = true,
+						},
+					},
+					menu = {
+						draw = {
+							columns = {
+								{
+									"label",
+									gap = 1,
+								},
+								{ "kind_icon", "kind", gap = 1 },
+							},
+							components = {
+								label = {
+									text = function(ctx)
+										return require("colorful-menu").blink_components_text(ctx)
+									end,
+									highlight = function(ctx)
+										return require("colorful-menu").blink_components_highlight(ctx)
+									end,
+								},
+								kind_icon = {
+									text = function(ctx)
+										local icon = ctx.kind_icon
+										if vim.tbl_contains({ "Path" }, ctx.source_name) then
+											local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+											if dev_icon then
+												icon = dev_icon
+											end
+										else
+											icon = require("lspkind").symbolic(ctx.kind, {
+												mode = "symbol",
+											})
+										end
+
+										return icon .. ctx.icon_gap
+									end,
+
+									-- Optionally, use the highlight groups from nvim-web-devicons
+									-- You can also add the same function for `kind.highlight` if you want to
+									-- keep the highlight groups in sync with the icons.
+									highlight = function(ctx)
+										local hl = ctx.kind_hl
+										if vim.tbl_contains({ "Path" }, ctx.source_name) then
+											local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+											if dev_icon then
+												hl = dev_hl
+											end
+										end
+										return hl
+									end,
+								},
+							},
+						},
+						border = "single",
+					},
+					documentation = {
+						auto_show = true,
+						auto_show_delay_ms = 500,
+						window = { border = "single" },
+					},
+				},
+				signature = {
+					enabled = true,
+					window = { border = "single" },
+				},
+
+				-- Default list of enabled providers defined so that you can extend it
+				-- elsewhere in your config, without redefining it, due to `opts_extend`
 				sources = {
-					{ cmp_buffer },
+					default = {
+						"conventional_commits",
+						"lsp",
+						"copilot",
+						"lazydev",
+						"snippets",
+						"ripgrep",
+						"path",
+						"git",
+						"spell",
+						"buffer",
+					},
+					providers = {
+						copilot = {
+							name = "copilot",
+							module = "blink-copilot",
+							score_offset = 100,
+							async = true,
+						},
+						ripgrep = {
+							module = "blink-ripgrep",
+							name = "Ripgrep",
+						},
+						conventional_commits = {
+							name = "Conventional Commits",
+							module = "blink-cmp-conventional-commits",
+							enabled = function()
+								return vim.bo.filetype == "gitcommit"
+							end,
+						},
+						lazydev = {
+							name = "LazyDev",
+							module = "lazydev.integrations.blink",
+							-- make lazydev completions top priority (see `:h blink.cmp`)
+							score_offset = 100,
+							enabled = function()
+								return vim.bo.filetype == "lua"
+							end,
+						},
+						git = {
+							module = "blink-cmp-git",
+							name = "Git",
+							enabled = function()
+								return vim.tbl_contains({ "octo", "gitcommit", "markdown" }, vim.bo.filetype)
+							end,
+						},
+						spell = {
+							name = "Spell",
+							module = "blink-cmp-spell",
+							opts = {
+								-- EXAMPLE: Only enable source in `@spell` captures, and disable it
+								-- in `@nospell` captures.
+								enable_in_context = function()
+									local curpos = vim.api.nvim_win_get_cursor(0)
+									local captures = vim.treesitter.get_captures_at_pos(0, curpos[1] - 1, curpos[2] - 1)
+									local in_spell_capture = false
+									for _, cap in ipairs(captures) do
+										if cap.capture == "spell" then
+											in_spell_capture = true
+										elseif cap.capture == "nospell" then
+											return false
+										end
+									end
+									return in_spell_capture
+								end,
+							},
+						},
+					},
 				},
 			})
-
-			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline({
-					-- Use default nvim history scrolling
-					["<C-n>"] = {
-						c = false,
-					},
-					["<C-p>"] = {
-						c = false,
-					},
-				}),
-				sources = cmp.config.sources({
-					cmp_path,
-					{ name = "cmdline", group_index = 2 },
-				}),
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		dependencies = {
-			"zbirenbaum/copilot.lua",
-		},
-		config = function()
-			local copilot_cmp = require("copilot_cmp")
-			copilot_cmp.setup({})
 		end,
 	},
 }
