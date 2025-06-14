@@ -163,29 +163,53 @@ return {
 							score_offset = 100,
 							async = true,
 						},
-						ripgrep = {
-							module = "blink-ripgrep",
-							name = "Ripgrep",
-						},
-						conventional_commits = {
-							name = "Conventional Commits",
-							module = "blink-cmp-conventional-commits",
-							enabled = function()
-								return vim.bo.filetype == "gitcommit"
-							end,
+						lsp = {
+							name = "lsp",
+							score_offset = 90,
 						},
 						lazydev = {
 							name = "LazyDev",
 							module = "lazydev.integrations.blink",
-							-- make lazydev completions top priority (see `:h blink.cmp`)
-							score_offset = 100,
+							score_offset = 110,
 							enabled = function()
 								return vim.bo.filetype == "lua"
+							end,
+						},
+						snippets = {
+							name = "Snippets",
+							score_offset = 70,
+						},
+						ripgrep = {
+							module = "blink-ripgrep",
+							name = "Ripgrep",
+							score_offset = 60,
+							max_items = 5,
+							transform_items = function(_, items)
+								for _, item in ipairs(items) do
+									-- append a description to easily distinguish rg results
+									item.labelDetails = {
+										description = "(rg)",
+									}
+								end
+								return items
+							end,
+						},
+						path = {
+							name = "Path",
+							score_offset = 110,
+						},
+						conventional_commits = {
+							name = "Conventional Commits",
+							module = "blink-cmp-conventional-commits",
+							score_offset = 110,
+							enabled = function()
+								return vim.bo.filetype == "gitcommit"
 							end,
 						},
 						git = {
 							module = "blink-cmp-git",
 							name = "Git",
+							score_offset = 105,
 							enabled = function()
 								return vim.tbl_contains({ "octo", "gitcommit", "markdown" }, vim.bo.filetype)
 							end,

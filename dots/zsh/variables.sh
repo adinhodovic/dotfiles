@@ -42,3 +42,7 @@ export MANPAGER='nvim +Man!'
 
 # TODO(adinhodovic): Set a theme
 # export BAT_THEME="GitHub"
+#
+# Use for delta diff
+export COLUMNS
+export FZF_PREVIEW_COLUMNS
