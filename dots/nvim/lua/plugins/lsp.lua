@@ -134,14 +134,19 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable("jsonls")
 
-			vim.lsp.config("jsonnet_ls", {})
+			vim.lsp.config("jsonnet_ls", {
+				cmd = { "jsonnet-language-server", "-t" },
+			})
+			vim.lsp.enable("jsonnet_ls")
 
 			vim.lsp.config("jqls", {})
+			vim.lsp.enable("jqls")
 
 			vim.lsp.enable("lua_ls")
 
-			vim.lsp.config("ltext_plus", {
+			vim.lsp.config("ltex_plus", {
 				on_attach = function(_, _)
 					-- rest of your on_attach process.
 					require("ltex_extra").setup({
@@ -155,6 +160,7 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable("ltex_plus")
 
 			vim.lsp.enable("marksman")
 

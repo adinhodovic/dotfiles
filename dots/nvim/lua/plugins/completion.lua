@@ -66,10 +66,7 @@ return {
 					["<S-Tab>"] = { "insert_prev" },
 				},
 				cmdline = {
-					keymap = {},
-					completion = {
-						keymap = { preset = "inherit" },
-					},
+					completion = {},
 				},
 				completion = {
 					accept = {
