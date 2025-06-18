@@ -13,6 +13,7 @@ return {
 			"hrsh7th/nvim-cmp",
 			"saghen/blink.cmp",
 			"kevinhwang91/nvim-ufo",
+			"barreiroleo/ltex_extra.nvim",
 			{
 				"rmagatti/goto-preview",
 				opts = {},
