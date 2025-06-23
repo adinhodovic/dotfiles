@@ -35,6 +35,7 @@ S.ui_ft_blocklist = {
 	"mason.nvim",
 	"toggleterm",
 	"text",
+	"grug-far",
 }
 
 package.loaded["custom_settings"] = S
