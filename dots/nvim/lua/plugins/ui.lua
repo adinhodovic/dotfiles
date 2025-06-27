@@ -395,6 +395,11 @@ return {
 		end,
 	},
 	{
+		"echasnovski/mini.cursorword",
+		version = false,
+		opts = {},
+	},
+	{
 		-- Smear cursor, shows cursor movement
 		"sphamba/smear-cursor.nvim",
 		enabled = true,
