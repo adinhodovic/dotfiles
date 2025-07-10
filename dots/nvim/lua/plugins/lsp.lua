@@ -302,7 +302,7 @@ return {
 		event = "LspAttach",
 		config = function()
 			require("tiny-code-action").setup({
-				backend = "difftastic",
+				backend = "delta",
 				picker = {
 					"select",
 				},
