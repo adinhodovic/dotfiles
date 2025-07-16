@@ -48,6 +48,9 @@ alias ld=lazydocker
 
 alias kl=~/go/bin/kl
 
+# https://github.com/theopfr/somo
+alias netstat=sumo
+
 gcp_reset() {
   # Path to the JSON file
   json_file="$HOME/.kube/gke_gcloud_auth_plugin_cache"

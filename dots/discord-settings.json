@@ -9,5 +9,6 @@
     "width": 940,
     "height": 914
   },
-  "BACKGROUND_COLOR": "#121214"
+  "BACKGROUND_COLOR": "#121214",
+  "offloadAdmControls": false
 }

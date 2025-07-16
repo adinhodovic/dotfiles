@@ -14,6 +14,8 @@ export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/.pulumi/bin"
 export PATH="$PATH:$HOME/.grit/bin"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 export EDITOR="nvim"
 
 export GOPATH="$HOME/go"
