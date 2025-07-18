@@ -538,4 +538,14 @@ return {
 			enabled = false,
 		},
 	},
+	{
+		"shahshlok/vim-coach.nvim",
+		dependencies = {},
+		config = function()
+			require("vim-coach").setup()
+		end,
+		keys = {
+			{ "<leader>vc", "<cmd>VimCoach<cr>", desc = "Vim Coach: Menu" },
+		},
+	},
 }
