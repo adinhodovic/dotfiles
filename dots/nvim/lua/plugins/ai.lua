@@ -31,16 +31,31 @@ return {
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
-		opts = {
-			provider = os.getenv("ANTHROPIC_API_KEY") and "claude" or "copilot",
-			auto_suggestions_provider = os.getenv("ANTHROPIC_API_KEY") and "claude" or "copilot",
-			behaviour = {
-				auto_suggestions = false,
-			},
-			file_selector = {
-				provider = "fzf",
-			},
-		},
+		config = function()
+			local provider = os.getenv("ANTHROPIC_API_KEY") and "claude" or "copilot"
+			local aiOpts = {
+				provider = provider, -- "claude" or "copilot"
+				auto_suggestions_provider = provider,
+				behaviour = {
+					auto_suggestions = false,
+				},
+				file_selector = {
+					provider = "fzf",
+				},
+			}
+			local function read_system_prompt(filepath)
+				local lines = vim.fn.readfile(filepath)
+				return table.concat(lines, "\n")
+			end
+			local system_prompt_path = vim.fn.expand("~/dotfiles/dots/nvim/assets/chatgpt-prompt.txt")
+			local system_prompt = read_system_prompt(system_prompt_path)
+
+			if provider == "copilot" then
+				aiOpts.system_prompt = system_prompt
+			end
+
+			require("avante").setup(aiOpts)
+		end,
 		build = "make",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
