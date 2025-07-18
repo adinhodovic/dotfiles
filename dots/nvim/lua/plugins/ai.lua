@@ -47,6 +47,7 @@ return {
 				local lines = vim.fn.readfile(filepath)
 				return table.concat(lines, "\n")
 			end
+			-- https://gist.github.com/burkeholland/88af0249c4b6aff3820bf37898c8bacf
 			local system_prompt_path = vim.fn.expand("~/dotfiles/dots/nvim/assets/chatgpt-prompt.txt")
 			local system_prompt = read_system_prompt(system_prompt_path)
 
