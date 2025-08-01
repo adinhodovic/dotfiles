@@ -86,7 +86,6 @@
         - syncthingtray # maybe qt6 with --mflags "--nocheck"
 
         # Secrets
-        - enpass-bin
         - 1password
         - gnome-keyring
         - seahorse
@@ -217,7 +216,6 @@
         - kubectl
         - kubectx
         - k9s
-        - openlens-bin
         - helm
         - minikube
 
