@@ -16,8 +16,6 @@ setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
 
-stty -ixon
-
 #############################################
 # Completion
 #############################################
