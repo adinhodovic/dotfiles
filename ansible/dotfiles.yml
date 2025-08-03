@@ -32,6 +32,7 @@
         - xdg-desktop-portal
         - harlequin
         - yazi
+        - tmux
 
     - name: Symlink dots
       ignore_errors: true
@@ -42,7 +43,7 @@
         force: true
       with_items:
         - src: "tmux.conf"
-          dest: "/home/adin/.tmux.conf"
+          dest: "/home/adin/.config/tmux/tmux.conf"
 
         - src: "nvim/init.lua"
           dest: "/home/adin/.config/nvim/init.lua"

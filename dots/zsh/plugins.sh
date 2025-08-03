@@ -45,6 +45,8 @@ function binary-download {
 # Plugins
 #############################################
 
+export FZF_GIT_PREFIX='^g'
+
 # Less oh my zsh updates
 zstyle ':omz:update' frequency 30
 

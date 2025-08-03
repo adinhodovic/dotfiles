@@ -27,6 +27,8 @@
           dest: /tmp/k9s
         - repo: https://github.com/adi1090x/rofi
           dest: /tmp/rofi-themes
+        - repo: https://github.com/tmux-plugins/tpm
+          dest: ~/.tmux/plugins/tpm
 
     - name: Move skins file
       shell: "{{ item }}"
