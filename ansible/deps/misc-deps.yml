@@ -18,12 +18,16 @@
         ./"${KREW}" install krew
 
     - name: Install Krew Plugins
-      shell: |
-        kubectl krew install cnpg
-        kubectl krew install explore
-        kubectl krew install node-resource
+      shell: "kubectl krew install {{ item }}"
+      loop:
+        - cnpg
+        - explore
+        - node-resource
+        - cert-manager
 
     - name: Install yazi Plugins
-      shell: |
-        ya pack -a yazi-rs/plugins:git
-        ya pack -a yazi-rs/plugins:vcs-files
+      shell: "ya pack -a {{ item }}"
+      loop:
+        - yazi-rs/plugins:git
+        - yazi-rs/plugins:vcs-files
+      ignore_errors: yes
