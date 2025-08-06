@@ -15,7 +15,7 @@ return {
 			"kevinhwang91/nvim-ufo",
 			"barreiroleo/ltex_extra.nvim",
 			{
-				"rmagatti/goto-preview",
+				"WilliamHsieh/overlook.nvim",
 				opts = {},
 			},
 			{
@@ -75,23 +75,23 @@ return {
 			{
 				"gpd",
 				function()
-					require("goto-preview").goto_preview_definition()
+					require("overlook.api").peek_definition()
 				end,
-				desc = "Goto Preview Definition",
+				desc = "Overlook: Peek Definition",
 			},
 			{
-				"gpy",
+				"<leader>gpu",
 				function()
-					require("goto-preview").goto_preview_type_definition()
+					require("overlook.api").restore_popup()
 				end,
-				desc = "Goto Preview Type Definition",
+				desc = "Overlook: Restore Peek Window",
 			},
 			{
-				"<leader>gp",
+				"<leader>gpc",
 				function()
-					require("goto-preview").close_all_win()
+					require("overlook.api").close_all()
 				end,
-				desc = "Goto Preview Definition",
+				desc = "Overlook: Close All Peek Windows",
 			},
 		},
 		config = function()

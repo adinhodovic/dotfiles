@@ -171,7 +171,9 @@ return {
 		priority = 100000,
 		config = function()
 			require("github-theme").setup({
-				options = {},
+				options = {
+					transparent = true,
+				},
 			})
 			vim.cmd.colorscheme("github_dark_default")
 			local visual_bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
@@ -284,7 +286,6 @@ return {
 		end,
 	},
 	{
-		-- TODO: maybe replace with neoscroll?
 		"echasnovski/mini.animate",
 		config = function()
 			local animate = require("mini.animate")
