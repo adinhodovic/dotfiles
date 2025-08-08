@@ -82,6 +82,7 @@ source ~/dotfiles/dots/zsh/alias.sh
 source ~/dotfiles/dots/zsh/key-bindings.sh
 source ~/dotfiles/dots/zsh/completions.sh
 source ~/dotfiles/dots/zsh/fzf.sh
+source ~/sync/env.sh
 
 #############################################
 # Prompt
