@@ -42,6 +42,9 @@ return {
 				file_selector = {
 					provider = "fzf",
 				},
+				web_search_engine = {
+					provider = "tavily",
+				},
 			}
 			local function read_system_prompt(filepath)
 				local lines = vim.fn.readfile(filepath)
