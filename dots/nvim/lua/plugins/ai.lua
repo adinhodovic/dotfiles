@@ -42,6 +42,21 @@ return {
 				file_selector = {
 					provider = "fzf",
 				},
+				providers = {
+					claude = {
+						model = "claude-sonnet-4-20250514",
+					},
+					copilot = {
+						-- model = "gpt-a5",
+					},
+				},
+				input = {
+					provider = "snacks",
+					provider_opts = {
+						-- Snacks input configuration
+						title = "Avante Input",
+					},
+				},
 				web_search_engine = {
 					provider = "tavily",
 				},
@@ -64,6 +79,7 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"stevearc/dressing.nvim",
+			"folke/snacks.nvim",
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 			--- The below dependencies are optional,
