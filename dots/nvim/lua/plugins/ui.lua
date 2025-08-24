@@ -75,6 +75,7 @@ return {
 	{
 		-- Icons
 		"nvim-tree/nvim-web-devicons",
+		opts = {},
 	},
 	{
 		-- Bottom bar
@@ -98,6 +99,14 @@ return {
 				return "󱉶 " .. table.concat(linters, ", ")
 			end
 
+			local dmode_enabled = false
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "DebugModeChanged",
+				callback = function(args)
+					dmode_enabled = args.data.enabled
+				end,
+			})
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -111,7 +120,17 @@ return {
 					},
 				},
 				sections = {
-					lualine_a = { "mode" },
+					lualine_a = {
+						{
+							"mode",
+							fmt = function(str)
+								return dmode_enabled and "DEBUG" or str
+							end,
+							color = function(tb)
+								return dmode_enabled and "dCursor" or tb
+							end,
+						},
+					},
 					lualine_b = { "branch", "diff" },
 					lualine_c = { "diagnostics" },
 					lualine_x = {
@@ -174,6 +193,14 @@ return {
 			vim.cmd.colorscheme("github_dark_default")
 			local visual_bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
 			vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = visual_bg, bold = true })
+
+			--    -- BufferLine
+			-- BufferLineIndicatorSelected = { fg = c.syntax.param },
+			-- BufferLineBackground = { fg = c.syntax.comment },
+
+			local c = require("github-theme.colors").setup()
+			vim.api.nvim_set_hl(0, "DartCurrent", { fg = c.syntax.param })
+			vim.api.nvim_set_hl(0, "DartVisible", { fg = c.syntax.comment })
 		end,
 	},
 	{
@@ -205,21 +232,6 @@ return {
 	{
 		-- Highlight yanks
 		"machakann/vim-highlightedyank",
-	},
-	{
-		-- Better bufferline
-		"akinsho/bufferline.nvim",
-		config = function()
-			require("bufferline").setup({
-				options = {
-					hover = {
-						enabled = true,
-						delay = 0,
-						reveal = { "close" },
-					},
-				},
-			})
-		end,
 	},
 	{
 		-- Better statuscol
@@ -406,15 +418,39 @@ return {
 	},
 	{
 		"iofq/dart.nvim",
-		enabled = true,
-		opts = {
-			mappings = {
-				mark = "", -- disable
-				jump = "-", -- Open Dart.pick
-				pick = "<c-t>p", -- Open Dart.pick
-				next = "<S-l>", -- Cycle right through the tabline
-				prev = "<S-h>", -- Cycle left through the tabline
-			},
+		enabled = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
 		},
+		config = function(_, opts)
+			require("dart").setup({
+				mappings = {
+					mark = "", -- disable
+					jump = "-", -- Open Dart.pick
+					pick = "<c-t>p", -- Open Dart.pick
+					next = "<S-l>", -- Cycle right through the tabline
+					prev = "<S-h>", -- Cycle left through the tabline
+				},
+				tabline = {
+					format_item = function(item)
+						local icon = require("nvim-web-devicons").get_icon(item.content)
+						local click = string.format("%%%s@SwitchBuffer@", item.bufnr)
+						return string.format(
+							"%%#%s#%s %s%%#%s#%s %s %%X",
+							item.hl_label,
+							click,
+							item.label,
+							item.hl,
+							icon,
+							item.content
+						)
+					end,
+				},
+			})
+		end,
+	},
+	{
+		"echasnovski/mini.tabline",
+		opts = {},
 	},
 }
