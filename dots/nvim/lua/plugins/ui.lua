@@ -97,6 +97,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"projekt0n/github-nvim-theme",
 			"f-person/git-blame.nvim",
+			"stevearc/overseer.nvim",
 		},
 		config = function()
 			-- We only use the statusline for the git blame
@@ -141,7 +142,16 @@ return {
 						},
 					},
 					lualine_y = { "filename", "progress", "location" },
-					lualine_z = { lint_progress, "searchcount", "selectioncount" },
+					lualine_z = {
+						lint_progress,
+						{
+							"overseer",
+							label = "",
+							colored = false,
+						},
+						"searchcount",
+						"selectioncount",
+					},
 				},
 				tabline = {},
 				winbar = {},
@@ -406,6 +416,19 @@ return {
 		enabled = true,
 		opts = {
 			distance_stop_animating = 0.5,
+		},
+	},
+	{
+		"iofq/dart.nvim",
+		enabled = true,
+		opts = {
+			mappings = {
+				mark = "", -- disable
+				jump = "-", -- Open Dart.pick
+				pick = "<c-t>p", -- Open Dart.pick
+				next = "<S-l>", -- Cycle right through the tabline
+				prev = "<S-h>", -- Cycle left through the tabline
+			},
 		},
 	},
 }

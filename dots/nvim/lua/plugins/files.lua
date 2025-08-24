@@ -5,14 +5,14 @@ return {
 		dependencies = { "folke/snacks.nvim", lazy = true },
 		keys = {
 			{
-				"<leader>-",
+				"<leader>ff",
 				mode = { "n", "v" },
 				"<cmd>Yazi<cr>",
 				desc = "Yazi: Open yazi at the current file",
 			},
 			{
 				-- Open in the current working directory
-				"<leader>cw",
+				"<leader>fw",
 				"<cmd>Yazi cwd<cr>",
 				desc = "Yazi: Open the file manager in nvim's working directory",
 			},

@@ -12,21 +12,7 @@ return {
 				desc = "Fzf-lua: Find files",
 			},
 			{
-				"<M-+>",
-				function()
-					require("fzf-lua").files({ cwd = require("fzf-lua").path.git_root() })
-				end,
-				desc = "Fzf-lua: Find files (Git Root)",
-			},
-			{
 				"<M-->",
-				function()
-					require("fzf-lua").git_files()
-				end,
-				desc = "Fzf-lua: Git files",
-			},
-			{
-				"-",
 				function()
 					require("fzf-lua").buffers({
 						sort_lastused = true,
@@ -34,6 +20,13 @@ return {
 					})
 				end,
 				desc = "Fzf-lua: Find buffers",
+			},
+			{
+				"<leader>-",
+				function()
+					require("fzf-lua").git_files()
+				end,
+				desc = "Fzf-lua: Git files",
 			},
 			{
 				"<leader>fg",

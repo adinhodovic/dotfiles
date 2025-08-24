@@ -548,4 +548,22 @@ return {
 			{ "<leader>vc", "<cmd>VimCoach<cr>", desc = "Vim Coach: Menu" },
 		},
 	},
+	{
+		"stevearc/overseer.nvim",
+		opts = {
+			strategy = "toggleterm",
+		},
+		keys = {
+			{
+				"<leader>ot",
+				"<cmd>OverseerToggle<cr>",
+				desc = "Overseer: Toggle task list",
+			},
+			{
+				"<leader>or",
+				"<cmd>OverseerRun<cr>",
+				desc = "Overseer: Run task",
+			},
+		},
+	},
 }
