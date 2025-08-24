@@ -8,7 +8,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-python",
-			"nvim-neotest/neotest-go",
+			"fredrikaverpil/neotest-golang",
 		},
 		config = function()
 			-- get neotest namespace (api call creates or returns namespace)
@@ -26,7 +26,7 @@ return {
 			require("neotest").setup({
 				adapters = {
 					require("neotest-python"),
-					require("neotest-go"),
+					require("neotest-golang")({}), -- Registration
 				},
 				output = {
 					enter = true,

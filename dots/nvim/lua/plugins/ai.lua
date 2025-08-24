@@ -78,7 +78,6 @@ return {
 		build = "make",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
-			"stevearc/dressing.nvim",
 			"folke/snacks.nvim",
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",

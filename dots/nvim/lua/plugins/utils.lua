@@ -302,6 +302,7 @@ return {
 				enabled = true,
 				timeout = 3000,
 			},
+			input = { enabled = true },
 			quickfile = { enabled = true },
 			dashboard = {
 				enabled = true,
