@@ -191,16 +191,41 @@ return {
 				},
 			})
 			vim.cmd.colorscheme("github_dark_default")
-			local visual_bg = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
-			vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = visual_bg, bold = true })
 
-			--    -- BufferLine
-			-- BufferLineIndicatorSelected = { fg = c.syntax.param },
-			-- BufferLineBackground = { fg = c.syntax.comment },
+			-- Helper to fetch colors from your current theme
+			local function get(name)
+				return vim.api.nvim_get_hl(0, { name = name })
+			end
 
-			local c = require("github-theme.colors").setup()
-			vim.api.nvim_set_hl(0, "DartCurrent", { fg = c.syntax.param })
-			vim.api.nvim_set_hl(0, "DartVisible", { fg = c.syntax.comment })
+			local normal = get("Normal")
+			local visual = get("Visual")
+			local tabline = get("TabLine")
+			local selected = get("TabLineSel")
+
+			vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = visual.bg, bold = true })
+
+			-- These should be really fixed upstream, the tabline is a ugly without these defaults
+			vim.api.nvim_set_hl(0, "MiniTablineCurrent", {
+				fg = "#58a6ff", -- GitHub blue
+				bg = "NONE", -- transparent background
+				bold = true,
+			})
+			vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", {
+				fg = "#58a6ff", -- GitHub blue
+				bg = "NONE", -- transparent background
+				bold = true,
+			})
+			vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", {
+				fg = "#58a6ff", -- GitHub blue
+				bg = "NONE", -- transparent background
+				bold = false,
+			})
+
+			vim.api.nvim_set_hl(0, "MiniTablineVisible", {
+				fg = "#58a6ff", -- GitHub blue
+				bg = "NONE", -- transparent background
+				bold = false,
+			})
 		end,
 	},
 	{
@@ -418,7 +443,7 @@ return {
 	},
 	{
 		"iofq/dart.nvim",
-		enabled = false,
+		enabled = true,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
@@ -433,7 +458,7 @@ return {
 				},
 				tabline = {
 					format_item = function(item)
-						local icon = require("nvim-web-devicons").get_icon(item.content)
+						local icon = require("nvim-web-devicons").get_icon(item.content) or ""
 						local click = string.format("%%%s@SwitchBuffer@", item.bufnr)
 						return string.format(
 							"%%#%s#%s %s%%#%s#%s %s %%X",
