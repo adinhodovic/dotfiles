@@ -16,8 +16,7 @@
       ignore_errors: true
       loop:
         - xdg-settings set default-web-browser google-chrome-stable.desktop
-        - git config --global core.editor "nvim"
-
+        - gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     - name: Add me to docker group
       become: true
       user:
