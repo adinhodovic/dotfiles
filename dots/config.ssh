@@ -1,7 +1,6 @@
 AddKeysToAgent yes
 ServerAliveInterval 300
 ServerAliveCountMax 2
-# ForwardAgent yes
 
 ControlMaster auto
 ControlPath /tmp/%r@%h-%p
