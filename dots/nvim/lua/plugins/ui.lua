@@ -449,6 +449,7 @@ return {
 		},
 		config = function(_, opts)
 			require("dart").setup({
+				buflist = { "z", "x", "c", "v", "b", "n", "m" },
 				mappings = {
 					mark = "", -- disable
 					jump = "-", -- Open Dart.pick
