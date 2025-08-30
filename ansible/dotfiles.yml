@@ -198,6 +198,9 @@
         - src: "yazi-init.lua"
           dest: "/home/adin/.config/yazi/init.lua"
 
+        - src: "npmrc"
+          dest: "/home/adin/.npmrc"
+
     - name: Create sudo config directories
       become: true
       tags: sudo-dots
