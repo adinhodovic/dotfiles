@@ -468,6 +468,13 @@ return {
 				end,
 				desc = "Snacks: Prev Reference",
 			},
+			{
+				"<leader>lg",
+				function()
+					Snacks.picker.keymaps()
+				end,
+				desc = "Snacks: List Keymaps",
+			},
 		},
 	},
 	-- {

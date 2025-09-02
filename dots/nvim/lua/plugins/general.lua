@@ -81,28 +81,6 @@ return {
 		},
 	},
 	{
-		"mrjones2014/legendary.nvim",
-		dependencies = {
-			"folke/which-key.nvim",
-		},
-		keys = {
-			{
-				"<leader>lg",
-				mode = { "n" },
-				"<cmd>Legendary<cr>",
-				desc = "Open Legendary",
-			},
-		},
-		priority = 10000,
-		lazy = false,
-		opts = {
-			extensions = {
-				lazy_nvim = { auto_register = true },
-				which_key = { auto_register = true },
-			},
-		},
-	},
-	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
