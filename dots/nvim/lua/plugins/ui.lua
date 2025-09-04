@@ -43,7 +43,6 @@ return {
 	},
 	{
 		"hiphish/rainbow-delimiters.nvim",
-		lazy = true,
 		config = function()
 			require("rainbow-delimiters.setup").setup({})
 		end,
@@ -444,6 +443,7 @@ return {
 	{
 		"iofq/dart.nvim",
 		enabled = true,
+		lazy = false,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
