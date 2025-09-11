@@ -72,7 +72,7 @@ return {
 					"emmet_language_server",
 					"gopls",
 					"html",
-					"htmx",
+					-- "htmx",
 					"helm_ls",
 					-- "ltex",
 					"lua_ls",

@@ -125,7 +125,10 @@ return {
 			})
 			vim.lsp.enable("html")
 
-			vim.lsp.enable("htmx")
+			-- vim.lsp.config("htmx", {
+			-- 	filetypes = { "html", "htmldjango" },
+			-- })
+			-- vim.lsp.enable("htmx")
 
 			vim.lsp.config("jsonls", {
 				settings = {

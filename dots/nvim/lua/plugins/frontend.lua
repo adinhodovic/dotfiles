@@ -39,6 +39,16 @@ return {
 				options = {
 					server = {
 						-- override = false,
+						root_dir = require("lspconfig").util.root_pattern(
+							"tailwind.config.js",
+							"tailwind.config.ts",
+							"tailwind.input.css",
+							"postcss.config.js",
+							"postcss.config.ts",
+							"package.json",
+							"node_modules",
+							"dj_tailwind_output"
+						),
 					},
 				},
 			})
