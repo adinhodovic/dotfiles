@@ -163,6 +163,9 @@ alias cat="bat"
 # Diff files
 alias bd="batdiff"
 
+# avante
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+
 # in your .bashrc/.zshrc/*rc
 alias bathelp='bat --plain --language=help'
 help() {

@@ -47,7 +47,7 @@ return {
 						model = "claude-sonnet-4-20250514",
 					},
 					copilot = {
-						-- model = "gpt-a5",
+						model = "gpt-5",
 					},
 				},
 				input = {
