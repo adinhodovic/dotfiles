@@ -45,6 +45,9 @@ return {
 				providers = {
 					claude = {
 						model = "claude-sonnet-4-20250514",
+						extra_request_body = {
+							max_tokens = 20480, -- Default is 20480
+						},
 					},
 					copilot = {
 						model = "gpt-5",
