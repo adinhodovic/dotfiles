@@ -17,6 +17,7 @@
       - github.com/monitoring-mixins/mixtool/cmd/mixtool
       - github.com/grafana/dashboard-linter
       # dev
+      - github.com/air-verse/air
       - github.com/kubernetes/minikube/cmd/minikube
       - github.com/bazelbuild/bazelisk
       - github.com/go-delve/delve/cmd/dlv
