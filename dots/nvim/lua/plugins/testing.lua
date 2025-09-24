@@ -26,7 +26,9 @@ return {
 			require("neotest").setup({
 				adapters = {
 					require("neotest-python"),
-					require("neotest-golang")({}), -- Registration
+					require("neotest-golang")({
+						runner = "gotestsum",
+					}),
 				},
 				output = {
 					enter = true,
