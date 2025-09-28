@@ -1,0 +1,29 @@
+---
+- name: Download latest GitHub release binaries with gh CLI
+  hosts: 127.0.0.1
+  gather_facts: no
+  vars:
+    github_repos:
+      - repo: "openai/codex"
+        binary_name: "codex"
+        asset_pattern: "codex-x86_64-unknown-linux-musl.tar.gz"
+
+    download_dir: "~/.local/bin"
+    tmp_dir: "/tmp/github_downloads"
+
+  tasks:
+    - name: Ensure temporary directory exists
+      file:
+        path: "{{ tmp_dir }}"
+        state: directory
+
+    - name: Install from GitHub releases
+      include_tasks: github-repo.yml
+      loop: "{{ github_repos }}"
+      loop_control:
+        loop_var: repo_info
+        label: "{{ repo_info.repo }}"
+      vars:
+        repo: "{{ repo_info.repo }}"
+        binary_name: "{{ repo_info.binary_name }}"
+        asset_pattern: "{{ repo_info.asset_pattern }}"

@@ -1,0 +1,25 @@
+- name: Download latest release asset
+  command: >
+    gh release download --repo {{ repo }}
+    --pattern "{{ asset_pattern }}"
+    --dir {{ tmp_dir }}
+    --clobber
+
+- name: Extract archive
+  unarchive:
+    src: "{{ tmp_dir }}/{{ asset_pattern }}"
+    dest: "{{ tmp_dir }}"
+    remote_src: yes
+
+- name: Find extracted binary
+  find:
+    paths: "{{ tmp_dir }}"
+    patterns: "{{ binary_name }}-*"
+    file_type: file
+  register: found_bin
+
+- name: Install and rename binary
+  copy:
+    src: "{{ found_bin.files[0].path }}"
+    dest: "{{ download_dir }}/{{ binary_name }}"
+    mode: "0755"
