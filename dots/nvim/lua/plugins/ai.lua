@@ -4,6 +4,13 @@ local g = vim.g
 return {
 	{
 		"zbirenbaum/copilot.lua",
+		enabled = true,
+		dependencies = {
+			"copilotlsp-nvim/copilot-lsp",
+			init = function()
+				vim.g.copilot_nes_debounce = 500
+			end,
+		},
 		config = function()
 			require("copilot").setup({
 				panel = {
@@ -18,6 +25,13 @@ return {
 						accept_line = false,
 						next = false,
 						prev = false,
+					},
+				},
+				nes = {
+					enabled = false,
+					auto_trigger = false,
+					keymap = {
+						-- accept_and_goto = "<c-c>",
 					},
 				},
 				filetypes = {

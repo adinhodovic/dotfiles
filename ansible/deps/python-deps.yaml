@@ -18,6 +18,7 @@
         - psutil
         - pip-tools
         - setup-tools
+        - ansible
       ignore_errors: yes
 
     - name: Ensure pipx path

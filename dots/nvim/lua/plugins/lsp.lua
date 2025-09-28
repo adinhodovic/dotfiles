@@ -94,126 +94,108 @@ return {
 				desc = "Overlook: Close All Peek Windows",
 			},
 		},
-		config = function()
-			vim.lsp.enable("ansiblels")
-
-			vim.lsp.enable("bashls")
-
-			vim.lsp.enable("cssls")
-
-			vim.lsp.enable("dockerls")
-
-			vim.lsp.enable("docker_compose_language_service")
-
-			vim.lsp.enable("emmet_language_server")
-
-			vim.lsp.enable("gopls")
-
-			vim.lsp.config("helm_ls", {
-				settings = {
-					["helm-ls"] = {
-						yamlls = {
-							path = "yaml-language-server",
+		config = function(_, opts)
+			local servers = {
+				ansiblels = {},
+				bashls = {},
+				bzl = {},
+				clangd = {},
+				-- copilotlsp = {},
+				cssls = {},
+				dockerls = {},
+				docker_compose_language_service = {},
+				eslint = {},
+				gopls = {},
+				helm_ls = {
+					settings = {
+						["helm-ls"] = {
+							yamlls = {
+								path = "yaml-language-server",
+							},
 						},
 					},
 				},
-			})
-			vim.lsp.enable("helm_ls")
-
-			vim.lsp.config("html", {
-				filetypes = { "html", "htmldjango" },
-			})
-			vim.lsp.enable("html")
-
-			-- vim.lsp.config("htmx", {
-			-- 	filetypes = { "html", "htmldjango" },
-			-- })
-			-- vim.lsp.enable("htmx")
-
-			vim.lsp.config("jsonls", {
-				settings = {
-					json = {
-						schemas = require("schemastore").json.schemas(),
-						validate = { enable = true },
-					},
+				html = {
+					filetypes = { "html", "htmldjango" },
 				},
-			})
-			vim.lsp.enable("jsonls")
-
-			vim.lsp.config("jsonnet_ls", {
-				cmd = { "jsonnet-language-server", "-t" },
-			})
-			vim.lsp.enable("jsonnet_ls")
-
-			vim.lsp.config("jqls", {})
-			vim.lsp.enable("jqls")
-
-			vim.lsp.enable("lua_ls")
-
-			vim.lsp.config("ltex_plus", {
-				on_attach = function(_, _)
-					-- rest of your on_attach process.
-					require("ltex_extra").setup({
-						path = "~/dotfiles/misc/spell",
-					})
-				end,
-				settings = {
-					ltex = {
-						language = "en-US",
-						checkFrequency = "save",
-					},
-				},
-			})
-			vim.lsp.enable("ltex_plus")
-
-			vim.lsp.enable("marksman")
-
-			vim.lsp.enable("ts_ls")
-
-			vim.lsp.config("pyright", {
-				settings = {
-					python = {
-						analysis = {
-							diagnosticMode = "openFilesOnly", -- 'workspace' diagnostics is better but consumes more resources
-							typeCheckingMode = "off", -- Using mypy
+				-- htmx = {
+				--   filetypes = { "html", "htmldjango" }
+				-- },
+				jsonls = {
+					settings = {
+						json = {
+							schemas = require("schemastore").json.schemas(),
+							validate = { enable = true },
 						},
 					},
 				},
-			})
-			vim.lsp.enable("pyright")
-
-			vim.lsp.enable("sqlls")
-
-			vim.lsp.enable("bzl")
-
-			vim.lsp.enable("taplo")
-
-			-- Managed by tailwind-tools
-			-- lspconfig.tailwindcss.setup({
-			-- 	capabilities = capabilities,
-			-- })
-
-			vim.lsp.enable("terraformls")
-
-			vim.lsp.enable("vale_ls")
-
-			vim.lsp.enable("vimls")
-
-			vim.lsp.config("yamlls", {
-				yaml = {
-					schemaStore = {
-						-- You must disable built-in schemaStore support if you want to use
-						-- this plugin and its advanced options like `ignore`.
-						enable = false,
-						-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-						url = "",
-					},
-					schemas = require("schemastore").yaml.schemas(),
+				jsonnet_ls = {
+					cmd = { "jsonnet-language-server", "-t" },
 				},
-			})
-			vim.lsp.enable("yamlls")
+				jqls = {},
+				lemminx = {},
+				ltex_plus = {
+					on_attach = function(_, _)
+						-- rest of your on_attach process.
+						require("ltex_extra").setup({
+							path = "~/dotfiles/misc/spell",
+						})
+					end,
+					settings = {
+						ltex = {
+							language = "en-US",
+							checkFrequency = "save",
+						},
+					},
+				},
+				lua_ls = {},
+				marksman = {},
+				pyright = {
+					settings = {
+						python = {
+							analysis = {
+								diagnosticMode = "openFilesOnly", -- 'workspace' diagnostics is better but consumes more resources
+								typeCheckingMode = "off", -- Using mypy
+							},
+						},
+					},
+				},
+				rust_analyzer = {
+					settings = {
+						["rust-analyzer"] = {
+							-- enable clippy on save
+							checkOnSave = {
+								command = "clippy",
+							},
+						},
+					},
+				},
+				sqlls = {},
+				-- Managed by tailwindtools
+				-- tailwindcss = {},
+				taplo = {},
+				terraformls = {},
+				ts_ls = {},
+				vale_ls = {},
+				vimls = {},
+				yamlls = {
+					yaml = {
+						schemaStore = {
+							-- You must disable built-in schemaStore support if you want to use
+							-- this plugin and its advanced options like `ignore`.
+							enable = false,
+							-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+							url = "",
+						},
+						schemas = require("schemastore").yaml.schemas(),
+					},
+				},
+			}
 
-			vim.lsp.enable("lemminx")
+			for _, server in ipairs(servers) do
+				opts.servers[server] = opts.servers[server] or {}
+				opts.servers[server].enabled = server
+			end
 		end,
 	},
 	{

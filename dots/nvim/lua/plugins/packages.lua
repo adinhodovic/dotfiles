@@ -31,6 +31,8 @@ return {
 					"goimports",
 					"golangci-lint",
 					"gopls",
+					--- AI
+					"copilot-language-server",
 					---
 					"prettier",
 					"pylint",
