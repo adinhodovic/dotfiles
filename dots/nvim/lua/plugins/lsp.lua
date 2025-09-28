@@ -303,14 +303,10 @@ return {
 			{ "nvim-telescope/telescope.nvim" },
 		},
 		event = "LspAttach",
-		config = function()
-			require("tiny-code-action").setup({
-				backend = "delta",
-				picker = {
-					"select",
-				},
-			})
-		end,
+		opts = {
+			backend = "difftastic",
+			picker = "fzf-lua",
+		},
 		keys = {
 			{
 				"<leader>ca",
