@@ -433,6 +433,11 @@ return {
 		opts = {},
 	},
 	{
+		"nvim-zh/colorful-winsep.nvim",
+		config = true,
+		event = { "WinLeave" },
+	},
+	{
 		-- Smear cursor, shows cursor movement
 		"sphamba/smear-cursor.nvim",
 		enabled = true,
