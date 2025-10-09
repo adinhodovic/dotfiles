@@ -12,7 +12,7 @@
       loop:
         - tzupdate
         - gping
-        - serpl
+        - scooter
         - du-dust
         - jnv
         - bottom

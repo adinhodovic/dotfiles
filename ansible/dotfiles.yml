@@ -21,6 +21,7 @@
         - yamllint
         - yamlfmt
         - pulse
+        - scooter
         - pudb
         - ptpython
         - alacritty
@@ -197,6 +198,9 @@
 
         - src: "yazi-init.lua"
           dest: "/home/adin/.config/yazi/init.lua"
+
+        - src: "scooter.toml"
+          dest: "/home/adin/.config/scooter/config.toml"
 
         - src: "npmrc"
           dest: "/home/adin/.npmrc"

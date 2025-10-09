@@ -65,9 +65,9 @@ return {
 			},
 			{
 				"<leader>tts",
-				"<cmd>lua _serpl_toggle()<cr>",
+				"<cmd>lua _scooter_toggle()<cr>",
 				mode = { "n", "t" },
-				desc = "Toggleterm: Toggle Serpl",
+				desc = "Toggleterm: Toggle Scooter",
 			},
 		},
 		opts = {},
@@ -132,8 +132,8 @@ return {
 				lazygit_log_file_terminal:toggle()
 			end
 
-			local serpl = Terminal:new({
-				cmd = "serpl",
+			local scooter = Terminal:new({
+				cmd = "scooter",
 				dir = "git_dir",
 				direction = "float",
 				-- function to run on opening the terminal
@@ -153,8 +153,8 @@ return {
 				end,
 			})
 
-			function _serpl_toggle() ---@diagnostic disable-line: lowercase-global
-				serpl:toggle()
+			function _scooter_toggle() ---@diagnostic disable-line: lowercase-global
+				scooter:toggle()
 			end
 		end,
 	},
