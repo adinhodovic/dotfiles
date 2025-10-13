@@ -1,0 +1,7 @@
+theme = "GitHub Dark Default"
+font-size = 11
+window-decoration = false
+confirm-close-surface = false
+command = "zsh -i"
+shell-integration = "zsh"
+font-family = "Noto Sans Mono"

@@ -80,7 +80,7 @@ return {
 					},
 					menu = {
 
-						winblend = 10,
+						winblend = 0,
 						draw = {
 							columns = {
 								{

@@ -204,6 +204,7 @@
         - ttf-font-awesome
         - ttf-dejavu
         - terminus-font
+        - noto-fonts
         - noto-fonts-emoji
 
         # Containers

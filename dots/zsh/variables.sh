@@ -20,7 +20,7 @@ export EDITOR="nvim"
 
 export GOPATH="$HOME/go"
 
-export TERMINAL=/usr/bin/alacritty
+export TERMINAL=/usr/bin/ghostty
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 

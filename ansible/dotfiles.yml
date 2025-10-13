@@ -25,6 +25,7 @@
         - pudb
         - ptpython
         - alacritty
+        - ghostty
         - fontconfig
         - navi
         - rofi
@@ -108,6 +109,9 @@
 
         - src: "alacritty.toml"
           dest: "/home/adin/.config/alacritty/alacritty.toml"
+
+        - src: "config.ghostty"
+          dest: "/home/adin/.config/ghostty/config.ghostty"
 
         - src: "yamllint.yml"
           dest: "/home/adin/.config/yamllint/config"
