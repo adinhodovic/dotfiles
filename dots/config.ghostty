@@ -5,3 +5,5 @@ confirm-close-surface = false
 command = "zsh -i"
 shell-integration = "zsh"
 font-family = "Noto Sans Mono"
+cursor-color = "cell-foreground"
+cursor-text = "cell-background"
