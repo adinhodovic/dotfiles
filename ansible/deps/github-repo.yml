@@ -1,25 +1,48 @@
+- name: Set repo-specific tmp dir
+  set_fact:
+    repo_tmp_dir: "{{ tmp_dir }}/{{ repo | regex_replace('/', '_') }}"
+
+- name: Ensure repo tmp dir exists
+  file:
+    path: "{{ repo_tmp_dir }}"
+    state: directory
+
 - name: Download latest release asset
   command: >
-    gh release download --repo {{ repo }}
+    gh release download
+    --repo {{ repo }}
     --pattern "{{ asset_pattern }}"
-    --dir {{ tmp_dir }}
+    --dir {{ repo_tmp_dir }}
     --clobber
+  register: gh_download
+  changed_when: "'Downloaded' in gh_download.stdout"
 
-- name: Extract archive
+- name: Find downloaded archive
+  find:
+    paths: "{{ repo_tmp_dir }}"
+    patterns: "*.tar.gz"
+  register: found_archive
+
+- name: Extract archive if present
+  when: found_archive.matched > 0
   unarchive:
-    src: "{{ tmp_dir }}/{{ asset_pattern }}"
-    dest: "{{ tmp_dir }}"
+    src: "{{ found_archive.files[0].path }}"
+    dest: "{{ repo_tmp_dir }}"
     remote_src: yes
 
+# 🔍 recursively search for the actual binary inside extracted folder
 - name: Find extracted binary
   find:
-    paths: "{{ tmp_dir }}"
-    patterns: "{{ binary_name }}-*"
+    paths: "{{ repo_tmp_dir }}"
+    recurse: yes
+    patterns: "{{ binary_name }}"
     file_type: file
   register: found_bin
+  when: found_archive.matched > 0
 
 - name: Install and rename binary
   copy:
     src: "{{ found_bin.files[0].path }}"
     dest: "{{ download_dir }}/{{ binary_name }}"
     mode: "0755"
+  when: found_bin is defined and found_bin.matched > 0

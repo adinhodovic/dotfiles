@@ -7,6 +7,9 @@
       - repo: "openai/codex"
         binary_name: "codex"
         asset_pattern: "codex-x86_64-unknown-linux-musl.tar.gz"
+      - repo: "thanos-io/thanos"
+        binary_name: "thanos"
+        asset_pattern: "thanos*linux-amd64"
 
     download_dir: "~/.local/bin"
     tmp_dir: "/tmp/github_downloads"
