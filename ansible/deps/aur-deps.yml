@@ -38,6 +38,9 @@
         - xfce4-power-manager
         - xorg-xinit
         - xautolock
+        # secure boot
+        - sbctl
+        - efitools
 
         # python
         - python-virtualenv
