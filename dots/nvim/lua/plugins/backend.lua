@@ -14,9 +14,10 @@ return {
 		},
 		config = function()
 			require("go").setup({
+				dap_debug = false,
 				dap_debug_keymap = false,
 				-- TODO: Reenable this when it doesn't break signs
-				diagnostic = false,
+				-- diagnostic = false,
 			})
 		end,
 		event = { "CmdlineEnter" },
