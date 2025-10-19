@@ -8,14 +8,6 @@ local autocmd = vim.api.nvim_create_autocmd
 -----------------------------------------
 return {
 	{
-		-- Debugging adapter protocol
-		"mfussenegger/nvim-dap",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		priority = 100,
-	},
-	{
 		"miroshQa/debugmaster.nvim",
 		lazy = false,
 		-- osv is needed if you want to debug neovim lua code
@@ -36,6 +28,7 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap",
+		priority = 100,
 		keys = {
 			{
 				"<leader>db",
@@ -97,13 +90,11 @@ return {
 		config = function() end,
 	},
 	{
-		-- DAP virtual text
-		"theHamsta/nvim-dap-virtual-text",
-		opts = {},
-	},
-	{
 		"leoluz/nvim-dap-go",
 		opts = {},
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
 		ft = "go",
 	},
 	{
@@ -111,6 +102,9 @@ return {
 		"mfussenegger/nvim-dap-python",
 		lazy = true,
 		ft = "python",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
 		config = function()
 			require("dap-python").setup("/usr/bin/python")
 		end,
