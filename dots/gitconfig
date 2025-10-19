@@ -37,6 +37,8 @@
   file-decoration-style = none
 [remote "origin"]
 	gh-resolved = base
+; [diff]
+  ; external = difft
 [credential]
 	helper = store
 [filter "lfs"]
