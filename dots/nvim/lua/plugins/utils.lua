@@ -400,7 +400,15 @@ return {
 					wo = { wrap = true }, -- Wrap notifications
 				},
 			},
-			words = { enabled = true },
+			image = {
+				enabled = true,
+			},
+			toggle = {
+				enabled = true,
+			},
+			words = {
+				enabled = true,
+			},
 		},
 		config = function(_, opts)
 			require("snacks").setup(opts)
@@ -438,6 +446,24 @@ return {
 					Snacks.bufdelete()
 				end,
 				desc = "Snacks: Delete Buffer",
+			},
+			{
+				"<leader>bf",
+				function()
+					-- check the current state
+					local disabled = vim.b.format_disabled or false
+
+					if disabled then
+						vim.cmd("FormatEnable")
+						vim.b.format_disabled = false
+						print("✅ Formatting enabled for this buffer")
+					else
+						vim.cmd("FormatDisable")
+						vim.b.format_disabled = true
+						print("🚫 Formatting disabled for this buffer")
+					end
+				end,
+				desc = "Toggle: Enable/Disable Formatting for Buffer",
 			},
 			{
 				"<leader>gb",
