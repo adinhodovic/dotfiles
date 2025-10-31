@@ -91,9 +91,11 @@
         - aws-vault
 
         # terminal/vim
-        - zsh
+        - ghostty
         - alacritty
         - gnome-terminal # extra terminal
+        - zsh
+        - fastfetch
         - tmux
         - zoxide
         - direnv
