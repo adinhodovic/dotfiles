@@ -49,7 +49,6 @@
         - python-pipx
         - uv
 
-        - tk
         - rofi
         - xorg
         - dnsutils
