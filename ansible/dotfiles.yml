@@ -29,7 +29,6 @@
         - fontconfig
         - navi
         - rofi
-        - neofetch
         - discord
         - xdg-desktop-portal
         - harlequin
@@ -142,9 +141,6 @@
 
         - src: "terraformrc"
           dest: "/home/adin/.terraformrc"
-
-        - src: "neofetch.conf"
-          dest: "/home/adin/.config/neofetch/config.conf"
 
         - src: "rofi.rasi"
           dest: "/home/adin/.config/rofi/config.rasi"
