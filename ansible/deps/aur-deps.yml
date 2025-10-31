@@ -13,7 +13,7 @@
         use: paru
         name: "{{ item }}"
       loop:
-        - thermald-git
+        - none
       tags:
         - laptop
       when: "'laptop' in ansible_run_tags"

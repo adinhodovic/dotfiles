@@ -151,13 +151,6 @@
       become: true
       shell: timedatectl set-ntp true
 
-    - name: Start thermald
-      become: true
-      shell: systemctl enable thermald.service && echo 'enable --ignore-cpuid-check if `journalctl -u thermald` is failing'
-      tags:
-        - laptop
-      when: "'laptop' in ansible_run_tags"
-
     - name: Add me to clamav group
       become: true
       user:
