@@ -125,8 +125,6 @@
               dest: "~/company/honeylogic/administration"
             - repo: "git@github.com:honeylogic-io/ops.git"
               dest: "~/company/honeylogic/ops"
-            - repo: "git@github.com:honeylogic-io/resources.git"
-              dest: "~/company/honeylogic/resources"
             - repo: "git@github.com:honeylogic-io/findwork-dev.git"
               dest: "~/company/honeylogic/findwork-dev"
 
