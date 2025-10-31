@@ -8,18 +8,20 @@
       shell: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
 
     - name: Install laptop dependencies
+      become: yes
       kewlfft.aur.aur:
-        use: yay
+        use: paru
         name: "{{ item }}"
       loop:
-        - thermald
+        - thermald-git
       tags:
         - laptop
       when: "'laptop' in ansible_run_tags"
 
     - name: Install desktop dependencies
+      become: yes
       kewlfft.aur.aur:
-        use: yay
+        use: paru
         name: "{{ item }}"
       loop:
         - nvidia
@@ -28,16 +30,15 @@
         - desktop
       when: "'desktop' in ansible_run_tags"
 
-    - name: Install AUR packages
-      ignore_errors: yes
+    - name: Install Pacman/Extra packages
+      become: yes
       kewlfft.aur.aur:
-        use: yay
+        use: paru
         name: "{{ item }}"
       loop:
         # system
         - xfce4-power-manager
         - xorg-xinit
-        - xautolock
         # secure boot
         - sbctl
         - efitools
@@ -57,13 +58,10 @@
         - task
         - taskwarrior-tui
         - bandwhich
-        - ruby
-        - nodejs
         - npm
         - httpie
         - openssh
         - rsync
-        - slack-desktop
         - glibc
         - unrar
         - acpi
@@ -86,10 +84,8 @@
 
         # Syncthing
         - syncthing
-        - syncthingtray # maybe qt6 with --mflags "--nocheck"
 
         # Secrets
-        - 1password
         - gnome-keyring
         - seahorse
         - aws-vault
@@ -99,7 +95,6 @@
         - alacritty
         - gnome-terminal # extra terminal
         - tmux
-        - neovim-git
         - zoxide
         - direnv
         - lua
@@ -112,12 +107,11 @@
         - go
         - python
         - ruby
-        - node
         - nvm
         - clang
+        - nodejs
 
         # utils
-        - downgrade
         - xsel
         - duf
         - wget
@@ -141,10 +135,8 @@
         - navi
         - flameshot
         - imagemagick
-        - simplescreenrecorder
         - feh
         - eza
-        - usbimager
         # Useful for command not found
         - pkgfile
         # A better diff
@@ -164,7 +156,6 @@
 
         # git
         - git-delta
-        - git-standup-git
         - lazygit
 
         # docs
@@ -174,8 +165,6 @@
         - aws-cli-v2
         - azure-cli
         - eksctl
-        - google-cloud-cli
-        - google-cloud-cli-gke-gcloud-auth-plugin
 
         # sound
         - pavucontrol
@@ -189,15 +178,12 @@
         - i3status
         - i3blocks
         - i3lock
-        - i3lock-fancy-git
 
         # browsers
-        - google-chrome
         - firefox
 
         # Ui
         - lightdm
-        - web-greeter
 
         - github-cli
 
@@ -228,6 +214,30 @@
 
         # notes
         - obsidian
+
+    - name: Install Aur packages
+      kewlfft.aur.aur:
+        use: paru
+        name: "{{ item }}"
+      loop:
+        - paru
+        - yay
+        - web-greeter
+        - usbimager
+        - zoom
+        - 1password
+        - debtap
+        - simplescreenrecorder
+        - neovim-git
+        - downgrade
+        - git-standup-git
+        - i3lock-fancy-git
+        - slack-desktop
+        - xautolock
+        - syncthingtray-qt6
+        - google-chrome
+        - google-cloud-cli
+        - google-cloud-cli-gke-gcloud-auth-plugin
 
     - name: Install GitHub extensions
       shell: |

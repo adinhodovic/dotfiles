@@ -14,9 +14,18 @@
 
     - name: makepackage
       shell: makepkg -si
-      ignore_errors: yes
       args:
         chdir: /home/adin/tempinstall/yay
+
+    - name: clone paru
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: /home/adin/tempinstall/paru
+
+    - name: makepackage
+      shell: makepkg -si
+      args:
+        chdir: /home/adin/tempinstall/paru
 
     - name: Install galaxy dependencies
       shell: "ansible-galaxy {{ item }}"
