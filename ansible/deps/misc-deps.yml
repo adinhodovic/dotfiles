@@ -26,7 +26,7 @@
         - cert-manager
 
     - name: Install yazi Plugins
-      shell: "ya pack -a {{ item }}"
+      shell: "ya pkg -a {{ item }}"
       loop:
         - yazi-rs/plugins:git
         - yazi-rs/plugins:vcs-files

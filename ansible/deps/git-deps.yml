@@ -12,7 +12,6 @@
         owner: adin
       loop:
         # Packages
-        - .config/alacritty/themes
         - .config/k9s/skins
 
     - name: Clone all repos I use
@@ -21,8 +20,6 @@
         dest: "{{ item.dest }}"
       with_items:
         # Alias repos
-        - repo: "https://github.com/alacritty/alacritty-theme"
-          dest: "~/.config/alacritty/themes"
         - repo: https://github.com/derailed/k9s
           dest: /tmp/k9s
         - repo: https://github.com/adi1090x/rofi

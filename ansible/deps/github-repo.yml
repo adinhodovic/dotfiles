@@ -17,6 +17,10 @@
   register: gh_download
   changed_when: "'Downloaded' in gh_download.stdout"
 
+- name: Debug download output
+  debug:
+    var: gh_download
+
 - name: Find downloaded archive
   find:
     paths: "{{ repo_tmp_dir }}"
