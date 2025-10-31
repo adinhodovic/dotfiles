@@ -33,15 +33,11 @@
     recurse: no
   register: found_files
 
-- name: Identify archive or binary
+- name: Identify archive file
   set_fact:
     archive_file: >-
       {{ found_files.files
          | selectattr('path', 'search', '.tar.gz$|.tgz$|.zip$|.tar.xz$')
-         | list | first | default(omit) }}
-    binary_file: >-
-      {{ found_files.files
-         | selectattr('path', 'search', binary_name)
          | list | first | default(omit) }}
 
 - name: Extract archive if present
@@ -51,6 +47,7 @@
     dest: "{{ repo_tmp_dir }}"
     remote_src: true
 
+# 🧩 Find actual binary only (exclude archives)
 - name: Find binary (inside archive or directly)
   find:
     paths: "{{ repo_tmp_dir }}"
@@ -59,12 +56,24 @@
     file_type: file
   register: found_bin
 
-- name: Install binary
+- name: Filter out any archives or checksum files
+  set_fact:
+    real_bin: >-
+      {{ found_bin.files
+         | rejectattr('path', 'search', '.tar.gz$|.zip$|.tgz$|.tar.xz$|.sha256$|.sha$')
+         | list | first | default(omit) }}
+
+- name: Debug (optional)
+  debug:
+    msg: "Found real binary: {{ real_bin.path | default('none') }}"
+
+- name: Install binary (renamed to short name)
   copy:
-    src: "{{ found_bin.files[0].path }}"
+    src: "{{ real_bin.path }}"
     dest: "{{ download_dir }}/{{ binary_name }}"
     mode: "0755"
-  when: found_bin.matched > 0
+    force: true
+  when: real_bin is defined
 
 - name: Confirm installation
   debug:
