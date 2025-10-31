@@ -1,4 +1,5 @@
-- name: Set repo-specific tmp dir
+---
+- name: Set up temporary repo dir
   set_fact:
     repo_tmp_dir: "{{ tmp_dir }}/{{ repo | regex_replace('/', '_') }}"
 
@@ -6,6 +7,15 @@
   file:
     path: "{{ repo_tmp_dir }}"
     state: directory
+
+- name: Get latest release tag
+  command: gh release view --repo {{ repo }} --json tagName --jq .tagName
+  register: release_tag
+  changed_when: false
+
+- name: Print release version
+  debug:
+    msg: "Installing {{ binary_name }} from {{ repo }} version {{ release_tag.stdout }}"
 
 - name: Download latest release asset
   command: >
@@ -15,38 +25,47 @@
     --dir {{ repo_tmp_dir }}
     --clobber
   register: gh_download
-  changed_when: "'Downloaded' in gh_download.stdout"
+  changed_when: false
 
-- name: Debug download output
-  debug:
-    var: gh_download
-
-- name: Find downloaded archive
+- name: Find downloaded files
   find:
     paths: "{{ repo_tmp_dir }}"
-    patterns: "*.tar.gz"
-  register: found_archive
+    recurse: no
+  register: found_files
+
+- name: Identify archive or binary
+  set_fact:
+    archive_file: >-
+      {{ found_files.files
+         | selectattr('path', 'search', '.tar.gz$|.tgz$|.zip$|.tar.xz$')
+         | list | first | default(omit) }}
+    binary_file: >-
+      {{ found_files.files
+         | selectattr('path', 'search', binary_name)
+         | list | first | default(omit) }}
 
 - name: Extract archive if present
-  when: found_archive.matched > 0
+  when: archive_file is defined
   unarchive:
-    src: "{{ found_archive.files[0].path }}"
+    src: "{{ archive_file.path }}"
     dest: "{{ repo_tmp_dir }}"
-    remote_src: yes
+    remote_src: true
 
-# 🔍 recursively search for the actual binary inside extracted folder
-- name: Find extracted binary
+- name: Find binary (inside archive or directly)
   find:
     paths: "{{ repo_tmp_dir }}"
     recurse: yes
-    patterns: "{{ binary_name }}"
+    patterns: "{{ binary_name }}*"
     file_type: file
   register: found_bin
-  when: found_archive.matched > 0
 
-- name: Install and rename binary
+- name: Install binary
   copy:
     src: "{{ found_bin.files[0].path }}"
     dest: "{{ download_dir }}/{{ binary_name }}"
     mode: "0755"
-  when: found_bin is defined and found_bin.matched > 0
+  when: found_bin.matched > 0
+
+- name: Confirm installation
+  debug:
+    msg: "✅ Installed {{ binary_name }} {{ release_tag.stdout }} to {{ download_dir }}"
