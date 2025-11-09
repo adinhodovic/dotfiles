@@ -370,11 +370,6 @@ return {
 		end,
 	},
 	{
-		"tzachar/highlight-undo.nvim",
-		enabled = true,
-		opts = {},
-	},
-	{
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup({
@@ -483,5 +478,38 @@ return {
 	{
 		"echasnovski/mini.tabline",
 		opts = {},
+	},
+	{
+		"rachartier/tiny-glimmer.nvim",
+		event = "VeryLazy",
+		priority = 10, -- Low priority to catch other plugins' keybindings
+		opts = {
+			overwrite = {
+				yank = {
+					enabled = true,
+				},
+				search = {
+					enabled = true,
+				},
+				paste = {
+					enabled = true,
+				},
+				undo = {
+					enabled = true,
+				},
+				redo = {
+					enabled = true,
+				},
+			},
+			presets = {
+				-- Pulsar-style cursor highlighting on specific events
+				pulsar = {
+					enabled = true,
+				},
+			},
+		},
+		config = function(_, opts)
+			require("tiny-glimmer").setup(opts)
+		end,
 	},
 }
