@@ -128,12 +128,12 @@
             - repo: "git@github.com:honeylogic-io/findwork-dev.git"
               dest: "~/company/honeylogic/findwork-dev"
 
-    - name: start lightdm
+    - name: Start core services
       become: true
       shell: systemctl enable --now {{ item }}
       loop:
         - systemd-resolved.service
-        - lightdm.service
+        - sddm.service
         - syncthing@adin.service
         - clamav-daemon.service
         - clamav-freshclam.service

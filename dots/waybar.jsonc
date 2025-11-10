@@ -1,0 +1,121 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+{
+  // -------------------------------------------------------------------------
+  // Global configuration
+  // -------------------------------------------------------------------------
+  "layer": "top",
+  "position": "top",
+  // If height property would be not present, it'd be calculated dynamically
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "custom/dunst",
+    "custom/github",
+    "memory",
+    "cpu",
+    "temperature",
+    "battery",
+    "pulseaudio",
+    "clock#date",
+    "clock#time",
+    "tray"
+  ],
+  // -------------------------------------------------------------------------
+  // Modules
+  // -------------------------------------------------------------------------
+  "battery": {},
+  "clock#time": {
+    "format": "{:%H:%M:%S}"
+  },
+  "clock#date": {
+    "interval": 10,
+    "format": "  {:%e %b %Y}", // Icon: calendar-alt
+    "tooltip-format": "{:%e %B %Y}"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "  {usage}% ({load})", // Icon: microchip
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "custom/dunst": {
+    "exec": "~/dotfiles/scripts/waybar/dunst.py",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 5,
+    "markup": "pango",
+    "tooltip": true,
+    "on-click": "dunstctl set-paused toggle"
+  },
+  "custom/github": {
+    "exec": "~/dotfiles/scripts/waybar/github.py",
+    "return-type": "json",
+    "interval": 30,
+    "signal": 5,
+    "markup": "pango",
+    "tooltip": true,
+    "on-click": "xdg-open https://github.com/notifications?query=is%3Aunread"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "{used:0.1f}G/{total:0.1f}G ",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 120
+  },
+  "hyprland/workspaces": {
+    "all-outputs": true,
+    "disable-scroll": true,
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "1": "  Browser", // Generic browser / web
+      "2": "  Terminal", // Terminal
+      "3": "  Docs", // Documents / Writing
+      "4": "  Docker", // Docker / Containers
+      "5": "  Messaging", // Chat / Messaging
+      "6": "󱃾  Kubernetes", // Kubernetes (Nerd Font v3 icon)
+      "7": "  Utils", // Utilities / Tools
+      "8": "  Utils", // Same as above
+      "9": "  Comms", // Communication / Discord
+      "10": "  Passwords" // Passwords / 1Password
+    }
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "temperature": {
+    "format": " {temperatureC}°C"
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  }
+}

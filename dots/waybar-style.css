@@ -1,0 +1,167 @@
+/* ──────────────────────────────
+   Base styling
+   ────────────────────────────── */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+}
+
+window#waybar {
+  background: #1a1a1a; /* dark gray background */
+  color: #dcdcdc; /* soft light gray text */
+  margin: 10px 0; /* top & bottom = 6px, left/right = 0 */
+}
+
+/* ──────────────────────────────
+   Workspaces
+   ────────────────────────────── */
+#workspaces button {
+  padding: 4px 10px;
+  margin: 0 2px;
+  background: transparent;
+  color: #a0a0a0;
+  border: none;
+  transition: all 0.2s ease;
+  border-right: 0.5px solid rgba(255, 255, 255, 0.4); /* same as modules */
+  border-left: 0.5px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Remove divider before first workspace */
+#workspaces button:first-child {
+  margin-left: 0;
+}
+
+/* ACTIVE workspace — make it pop with contrast + accent underline */
+#workspaces button.active {
+  background: #2e2e2e;
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 3px solid #62b36f; /* your signature green accent */
+  border-radius: 3px 3px 0 0;
+  box-shadow: inset 0 -2px 0 #62b36f;
+}
+
+/* HOVER — subtle lightening */
+#workspaces button:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+/* INACTIVE — clean, gray and quiet */
+#workspaces button:not(.active):not(.urgent) {
+  opacity: 0.8;
+}
+
+/* URGENT (notification) — replace red with a soft amber highlight */
+#workspaces button.urgent {
+  background: #3a2c00;
+  color: #f2c55c; /* warm amber text */
+  border-bottom: 3px solid #f2c55c;
+  box-shadow: inset 0 -2px 0 #f2c55c;
+  font-weight: 600;
+}
+
+/* OPTIONAL: subtle separation */
+#workspaces button + button {
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ──────────────────────────────
+   Modules
+   ────────────────────────────── */
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#pulseaudio,
+#temprature,
+#tray {
+  padding: 0 8px;
+  margin: 0 2px;
+}
+
+/* Safe alignment nudge for custom icons */
+#custom-dunst,
+#custom-github {
+  padding: 2px 12px 2px 8px; /* top right bottom left */
+  margin: 0 2px;
+}
+
+/* Icons and text colors */
+#cpu,
+#memory,
+#temperature,
+#battery {
+  color: #cfcfcf;
+}
+
+#battery.charging,
+#battery.full {
+  color: #62b36f; /* accent */
+}
+
+#battery.warning {
+  color: #ff9966;
+}
+
+#battery.critical {
+  color: #ff6666;
+}
+
+/* Dunst + GitHub custom modules */
+#custom-dunst.active {
+  color: #62b36f;
+}
+#custom-dunst.muted {
+  color: #888888;
+}
+
+#custom-github.unread {
+  color: #62b36f;
+}
+#custom-github.zero {
+  color: #aaaaaa;
+}
+#custom-github.error {
+  color: #ff6666;
+}
+
+.modules-right > * {
+  border-right: 0.5px solid rgba(255, 255, 255, 0.25); /* same as modules */
+  border-left: 0.5px solid rgba(255, 255, 255, 0.25);
+  padding-left: 8px;
+  margin-left: 6px;
+}
+
+/* Clock, tray, etc. */
+#clock,
+#tray {
+  color: #dcdcdc;
+}
+
+/* ──────────────────────────────
+   Optional separators or hover
+   ────────────────────────────── */
+#custom-dunst:hover,
+#custom-github:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#clock:hover {
+  background: #2a2a2a;
+}
+
+/* Each individual icon */
+#tray > * {
+  margin: 0 3px; /* small gap between icons */
+  padding: 4px; /* makes hover area bigger */
+  border-radius: 4px; /* optional, soft corners */
+}
+
+#tray > *:hover {
+  background: #2e2e2e; /* subtle gray highlight */
+}

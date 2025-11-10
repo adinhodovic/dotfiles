@@ -34,6 +34,9 @@
         - harlequin
         - yazi
         - tmux
+        - hypr
+        - waybar
+        - flameshot
 
     - name: Symlink dots
       ignore_errors: true
@@ -43,6 +46,24 @@
         state: link
         force: true
       with_items:
+        - src: "hyprland.conf"
+          dest: "/home/adin/.config/hypr/hyprland.conf"
+
+        - src: "hypr-paper.conf"
+          dest: "/home/adin/.config/hypr/hypr-paper.conf"
+
+        - src: "hyprlock.conf"
+          dest: "/home/adin/.config/hypr/hyprlock.conf"
+
+        - src: "waybar.jsonc"
+          dest: "/home/adin/.config/waybar/config.jsonc"
+
+        - src: "waybar-style.css"
+          dest: "/home/adin/.config/waybar/style.css"
+
+        - src: "flameshot.ini"
+          dest: "/home/adin/.config/flameshot/flameshot.ini"
+
         - src: "tmux.conf"
           dest: "/home/adin/.config/tmux/tmux.conf"
 
@@ -222,12 +243,6 @@
         dest: "{{ item.dest }}"
         force: true
       with_items:
-        - src: "lightdm.conf"
-          dest: "/etc/lightdm/lightdm.conf"
-
-        - src: "web-greeter.yml"
-          dest: "/etc/lightdm/web-greeter.yml"
-
         - src: "locale.conf"
           dest: "/etc/locale.conf"
 

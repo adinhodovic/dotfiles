@@ -3,7 +3,6 @@
 
 configuration {
 	/*---------- General setting ----------*/
-  dpi: 220;
 	modi: "drun,run,window";
 	terminal: "rofi-sensible-terminal";
 	font: "Roboto Mono 10";

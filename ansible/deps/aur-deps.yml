@@ -39,6 +39,7 @@
         # system
         - xfce4-power-manager
         - xorg-xinit
+
         # secure boot
         - sbctl
         - efitools
@@ -79,7 +80,20 @@
         - ntp
 
         # display
+        - sddm
         - redshift
+        - hyprland
+        - hyprlock
+        - hyprpaper
+        - hypridle
+        - waybar
+        - grim
+        # i3
+        - i3-wm
+        - i3-gaps
+        - i3status
+        - i3blocks
+        - i3lock
 
         # Syncthing
         - syncthing
@@ -112,8 +126,13 @@
         - clang
         - nodejs
 
-        # utils
+        # copy/paste
         - xsel
+        - xclip
+        - cliphist
+        - wl-clipboard
+
+        # utils
         - duf
         - wget
         - inetutils
@@ -127,7 +146,6 @@
         - jq
         - yq
         - dust
-        - xclip
         - sysstat
         - postgresql-libs
         - nnn
@@ -143,6 +161,9 @@
         # A better diff
         - difftastic
         - cronie
+        # Used for hyprland
+        - meson
+        - cpio
 
         # OS
         - dolphin
@@ -173,18 +194,8 @@
         - alsa-utils
         - pasystray
 
-        # i3
-        - i3-wm
-        - i3-gaps
-        - i3status
-        - i3blocks
-        - i3lock
-
         # browsers
         - firefox
-
-        # Ui
-        - lightdm
 
         - github-cli
 
@@ -223,7 +234,6 @@
       loop:
         - paru
         - yay
-        - web-greeter
         - usbimager
         - zoom
         - 1password
