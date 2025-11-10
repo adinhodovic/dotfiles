@@ -4,7 +4,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: "Noto Sans Mono", monospace;
   font-size: 14px;
 }
 
@@ -23,7 +23,6 @@ window#waybar {
   background: transparent;
   color: #a0a0a0;
   border: none;
-  transition: all 0.2s ease;
   border-right: 0.5px solid rgba(255, 255, 255, 0.4); /* same as modules */
   border-left: 0.5px solid rgba(255, 255, 255, 0.4);
 }
@@ -40,7 +39,6 @@ window#waybar {
   font-weight: 600;
   border-bottom: 3px solid #62b36f; /* your signature green accent */
   border-radius: 3px 3px 0 0;
-  box-shadow: inset 0 -2px 0 #62b36f;
 }
 
 /* HOVER — subtle lightening */
@@ -59,7 +57,6 @@ window#waybar {
   background: #3a2c00;
   color: #f2c55c; /* warm amber text */
   border-bottom: 3px solid #f2c55c;
-  box-shadow: inset 0 -2px 0 #f2c55c;
   font-weight: 600;
 }
 

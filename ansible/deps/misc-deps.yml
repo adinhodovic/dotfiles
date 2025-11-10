@@ -31,3 +31,10 @@
         - yazi-rs/plugins:git
         - yazi-rs/plugins:vcs-files
       ignore_errors: yes
+
+    - name: Install hyprland dependencies
+      sh: "{{ item }}"
+      loop:
+        - "hyprpm add https://github.com/outfoxxed/hy3"
+        - "hyprpm enable hy3"
+        - "hyprpm update"

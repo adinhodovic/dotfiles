@@ -88,12 +88,6 @@
         - hypridle
         - waybar
         - grim
-        # i3
-        - i3-wm
-        - i3-gaps
-        - i3status
-        - i3blocks
-        - i3lock
 
         # Syncthing
         - syncthing
@@ -192,7 +186,8 @@
         - pavucontrol
         - pulseaudio-alsa
         - alsa-utils
-        - pasystray
+        # TODO: replace this with pasystray when time is found
+        - pasystray-wayland
 
         # browsers
         - firefox
@@ -242,7 +237,6 @@
         - neovim-git
         - downgrade
         - git-standup-git
-        - i3lock-fancy-git
         - slack-desktop
         - xautolock
         - syncthingtray-qt6
