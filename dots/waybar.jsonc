@@ -76,8 +76,11 @@
     }
   },
   "hyprland/window": {
-    "format": "{}",
-    "max-length": 120
+    "format": "  {}",
+    "max-length": 40,
+    "ellipsis": "…",
+    "tooltip": true,
+    "tooltip-format": "{}"
   },
   "hyprland/workspaces": {
     "all-outputs": true,
