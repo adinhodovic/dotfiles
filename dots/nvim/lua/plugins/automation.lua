@@ -331,12 +331,6 @@ return {
 		end,
 	},
 	{
-		"sustech-data/wildfire.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		opts = {},
-	},
-	{
 		"kevinhwang91/nvim-hlslens",
 		keys = {
 			{
