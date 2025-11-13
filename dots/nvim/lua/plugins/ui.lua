@@ -19,27 +19,31 @@ local ui_ft_blocklist = require("custom_settings").ui_ft_blocklist
 -----------------------------------------
 return {
 	{
-		-- treesitter
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				-- A list of parser names, or "all"
-				ensure_installed = "all",
-				-- Install parsers synchronously (only applied to `ensure_installed`)
-				sync_install = false,
-				-- Automatically install missing parsers when entering buffer
-				auto_install = true,
-				-- List of parsers to ignore installing (for "all")
-				ignore_install = {},
-				highlight = {
-					enable = true,
-				},
-				indent = {
-					enable = true,
-				},
-			})
-		end,
+		opts = {},
+	},
+	{
+		"MeanderingProgrammer/treesitter-modules.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {
+			ensure_installed = { "jsonnet" },
+			auto_install = true,
+			fold = {
+				enable = true,
+			},
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = true,
+			},
+			indent = {
+				enable = true,
+			},
+			incremental_selection = {
+				enable = true,
+			},
+		},
 	},
 	{
 		"hiphish/rainbow-delimiters.nvim",
@@ -371,6 +375,7 @@ return {
 	},
 	{
 		"j-hui/fidget.nvim",
+		enabled = false,
 		config = function()
 			require("fidget").setup({
 				-- Nvim UI notifications
@@ -384,19 +389,46 @@ return {
 		end,
 	},
 	{
-		"mawkler/modicator.nvim",
-		opts = {},
-	},
-	{
-		"Sam-programs/cmdline-hl.nvim",
-		event = "VimEnter",
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		enabled = true,
 		opts = {
-			type_signs = {
-				[":"] = { " ", "Title" },
-				["/"] = { " ", "Title" },
-				["?"] = { " ", "Title" },
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+				},
 			},
-			ghost_text = false,
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = true, -- add a border to hover docs and signature help
+			},
+			cmdline = {
+				view = "cmdline",
+			},
+			notify = {
+				enabled = true,
+			},
+			messages = {
+				enabled = true,
+				view_search = false,
+			},
+			routes = {
+				-- Just a bunch of junk displaying modified lines etc
+				{
+					filter = { event = "msg_show", kind = "", find = "lines --" },
+					opts = { skip = true },
+				},
+			},
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
 		},
 	},
 	{

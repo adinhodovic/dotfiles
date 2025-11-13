@@ -300,7 +300,7 @@ return {
 			bigfile = { enabled = true },
 			notifier = {
 				enabled = true,
-				timeout = 3000,
+				timeout = 5000,
 			},
 			input = { enabled = true },
 			quickfile = { enabled = true },
