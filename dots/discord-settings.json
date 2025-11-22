@@ -6,8 +6,8 @@
   "WINDOW_BOUNDS": {
     "x": 2,
     "y": 37,
-    "width": 2556,
-    "height": 1401
+    "width": 2396,
+    "height": 1311
   },
   "BACKGROUND_COLOR": "#121214",
   "offloadAdmControls": true,

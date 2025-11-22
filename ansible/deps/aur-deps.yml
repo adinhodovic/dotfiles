@@ -26,6 +26,8 @@
       loop:
         - nvidia
         - nvidia-utils
+        - libva-nvidia-driver
+        - libva-utils
       tags:
         - desktop
       when: "'desktop' in ansible_run_tags"
@@ -162,8 +164,9 @@
         # OS
         - dolphin
         - xdg-desktop-portal
-        - xdg-desktop-portal-kde
+        - xdg-desktop-portal-hyprland
         # Fallback
+        - xdg-desktop-portal-kde
         - xdg-desktop-portal-gtk
 
         # configuration-management
