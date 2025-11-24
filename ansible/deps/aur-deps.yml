@@ -140,7 +140,6 @@
         - ripgrep
         - broot
         - jq
-        - yq
         - dust
         - sysstat
         - postgresql-libs
