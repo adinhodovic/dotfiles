@@ -86,9 +86,6 @@
         - src: "nvim/config.vim"
           dest: "/home/adin/.config/nvim/config.vim"
 
-        - src: "nvim/coc-settings.json"
-          dest: "/home/adin/.config/nvim/coc-settings.json"
-
         - src: "zsh/zshrc"
           dest: "/home/adin/.zshrc"
 
@@ -180,7 +177,7 @@
           dest: "/home/adin/.config/fontconfig/fonts.conf"
 
         - src: "obsidian.vimrc"
-          dest: "/home/adin/personal/notes/.obsidian.vimrc"
+          dest: "/home/adin/sync/notes/.obsidian.vimrc"
 
         - src: "k9s.yaml"
           dest: "/home/adin/.config/k9s/config.yaml"
