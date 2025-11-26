@@ -24,6 +24,7 @@
         - explore
         - node-resource
         - cert-manager
+        - node-shell
 
     - name: Install yazi Plugins
       shell: "ya pkg -a {{ item }}"
