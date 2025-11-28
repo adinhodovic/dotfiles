@@ -55,8 +55,8 @@ return {
 		},
 		config = function()
 			g.terraform_commentstring = "//%s"
-			g.terraform_align = 1
-			g.terraform_fmt_on_save = 1
+			g.terraform_align = 0
+			g.terraform_fmt_on_save = 0
 		end,
 	},
 	{

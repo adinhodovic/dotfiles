@@ -50,6 +50,7 @@ return {
 					yaml = { "prettier" },
 					html = { "djlint" },
 					htmldjango = { "djlint" },
+					terrraform = { "terraform_fmt" },
 				},
 			})
 
