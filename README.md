@@ -2,7 +2,7 @@
 
 ![background](images/background.png)
 
-![neofetch](images/neofetch.png)
+![neofetch](images/fetch.png)
 
 ## Neovim Config
 
@@ -11,11 +11,10 @@
 ## Setup
 
 - OS: [Arch Linux](https://archlinux.org/)
-- WM: [i3](https://i3wm.org/)
-- Launcher/Powermenu: [Rofi](https://github.com/davatorium/rofi)
-- Terminal: [Alacritty](https://github.com/alacritty/alacritty)
+- WM: [Hyprland](https://github.com/hyprwm/hyprland)
+- Terminal: [Ghostty](https://github.com/ghostty-org/ghostty)
 - Shell: [Zsh](https://www.zsh.org/)
 - Editor: [Neovim](https://neovim.io/)
-- Fetch: [Neofetch](https://github.com/dylanaraps/neofetch)
+- Launcher/Powermenu: [Rofi](https://github.com/davatorium/rofi)
 - Notification Daemon: [dunst](https://github.com/dunst-project/dunst)
-- Color scheme: [Gruvbox](https://github.com/morhetz/gruvbox)
+- Color scheme: [GitHub](https://github.com/projekt0n/github-nvim-theme)
