@@ -162,81 +162,44 @@ return {
 		config = true,
 	},
 	{
-		"sindrets/diffview.nvim",
+		"esmuellert/vscode-diff.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		opts = {},
 		cmd = {
-			"DiffviewOpen",
-			"DiffviewToggleFiles",
-			"DiffviewFocusFiles",
+			"CodeDiff",
 		},
 		keys = {
 			{
 				"<leader>gd",
-				"<cmd>DiffviewOpen<cr>",
-				desc = "DiffView: Open",
-			},
-			{
-				"<leader>gdc",
-				"<cmd>DiffviewClose<cr>",
-				desc = "DiffView: Close",
-			},
-			{
-				"<leader>gdlm",
-				function()
-					vim.cmd("DiffviewOpen " .. get_default_branch_name())
-				end,
-				desc = "DiffView: Open Diff Local Main",
-			},
-			{
-				"<leader>gdrm",
-				function()
-					vim.cmd("DiffviewOpen HEAD..origin/" .. get_default_branch_name())
-				end,
-				desc = "DiffView: Open Diff Local Main",
-			},
-			{
-				"<leader>gdr",
-				"<cmd>DiffviewFileHistory<cr>",
-				desc = "DiffView: Repo history",
-			},
-			{
-				"<leader>gdf",
-				"<cmd>DiffviewFileHistory --follow %<cr>",
-				desc = "DiffView: File history",
-			},
-			{
-				"<leader>gdv",
-				"<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>",
-				mode = { "v" },
-				desc = "DiffView: Visual History",
-			},
-			{
-				"<leader>gdl",
-				"<Cmd>.DiffviewFileHistory --follow<CR>",
-				desc = "DiffView: Line History",
+				"<cmd>CodeDiff<cr>",
+				desc = "VSCode Diff: Open",
 			},
 		},
-		opts = {},
 	},
 	{
 		"aaronhallaert/advanced-git-search.nvim",
-		config = function()
-			require("telescope").load_extension("advanced_git_search")
-		end,
 		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			-- to show diff splits and open commits in browser
-			"tpope/vim-fugitive",
-			-- to open commits in browser with fugitive
-			"tpope/vim-rhubarb",
+			"ibhagwan/fzf-lua",
 			"sindrets/diffview.nvim",
 		},
 		keys = {
 			{
 				"<leader>gas",
-				"<cmd>Telescope advanced_git_search show_custom_functions<cr>",
+				"<cmd>AdvancedGitSearch<cr>",
+				mode = { "n", "v" },
 				desc = "Advanced-git-search: Open",
 			},
 		},
+		config = function()
+			require("advanced_git_search.fzf").setup({
+				git_flags = { "-c", "delta.side-by-side=false" },
+				git_diff_flags = {},
+				git_log_flags = {},
+				show_builtin_git_pickers = true,
+				diff_plugin = "diffview",
+				entry_default_author_or_date = "author",
+			})
+		end,
 	},
 	{
 		"NeogitOrg/neogit",

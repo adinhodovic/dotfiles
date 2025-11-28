@@ -66,17 +66,21 @@ return {
 		},
 		config = function()
 			require("fzf-lua").setup({
-				"telescope",
+				{ "fzf-native", "hide" },
 				winopts = { preview = { default = "bat" } },
+				fzf_colors = true,
 				defaults = { formatter = "path.filename_first" },
 				fzf_opts = {
-					-- ["--layout"] = "reverse",
-				},
-				keymap = {
-					fzf = {
-						["tab"] = "up",
-						["shift-tab"] = "down",
-					},
+					-- options are sent as `<left>=<right>`
+					-- set to `false` to remove a flag
+					-- set to `true` for a no-value flag
+					-- for raw args use `fzf_args` instead
+					["--ansi"] = true,
+					["--info"] = "inline-right", -- fzf < v0.42 = "inline"
+					["--height"] = "100%",
+					["--layout"] = "reverse",
+					["--border"] = "none",
+					["--highlight-line"] = true, -- fzf >= v0.53
 				},
 			})
 		end,
