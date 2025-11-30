@@ -2,7 +2,7 @@
 
 ![background](images/background.png)
 
-![neofetch](images/fetch.png)
+![fetch](images/fetch.png)
 
 ## Neovim Config
 
