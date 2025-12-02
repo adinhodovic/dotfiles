@@ -55,6 +55,8 @@
         - rofi
         - xorg
         - dnsutils
+        - inetutils
+        - nmap
         - dunst
         - os-prober
         - task
