@@ -29,3 +29,8 @@
     foreground = "#ffffff"
     frame_color = "#ff5555"
     timeout = 10
+
+[ignore-empty]
+summary = ""
+skip_display = true
+history_ignore = true
