@@ -152,6 +152,7 @@ alias v=nvim
 alias du=dust
 
 alias diff=difft
+alias md-diff='/usr/bin/diff --unified'
 
 alias copy="xclip -sel clip < $1"
 
