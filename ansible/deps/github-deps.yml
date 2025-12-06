@@ -10,6 +10,9 @@
       - repo: "thanos-io/thanos"
         binary_name: "thanos"
         asset_pattern: "*linux-amd64*"
+      - repo: "tobi/try-cli"
+        binary_name: "try"
+        asset_pattern: "*linux-x86_64*"
 
     download_dir: "~/.local/bin"
     tmp_dir: "/tmp/github_downloads"
