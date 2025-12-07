@@ -99,5 +99,6 @@ plugin-load $repos
 binary-download $binaries
 
 eval "$(zoxide init --cmd cd zsh))"
+eval "$(zoxide init --cmd z zsh))"
 eval "$(try init ~/playground/tries)"
 ############################################
