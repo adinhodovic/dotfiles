@@ -95,6 +95,7 @@ return {
 			},
 		},
 		config = function(_, opts)
+			opts.servers = opts.servers or {}
 			local servers = {
 				ansiblels = {},
 				bashls = {},
@@ -148,7 +149,15 @@ return {
 						},
 					},
 				},
-				lua_ls = {},
+				lua_ls = {
+					settings = {
+						Lua = {
+							hint = {
+								enable = false,
+							},
+						},
+					},
+				},
 				marksman = {},
 				pyright = {
 					settings = {
@@ -192,9 +201,15 @@ return {
 				},
 			}
 
-			for _, server in ipairs(servers) do
-				opts.servers[server] = opts.servers[server] or {}
-				opts.servers[server].enabled = server
+			-- Ensure each server config is merged and enabled correctly
+			for name, conf in pairs(servers) do
+				-- Merge our local config with any existing ones
+				opts.servers[name] = vim.tbl_deep_extend("force", opts.servers[name] or {}, conf)
+				-- Enable this server config flag for plugin consumers
+				opts.servers[name].enabled = true
+				-- Configure and enable via native Neovim LSP API
+				pcall(vim.lsp.config, name, opts.servers[name])
+				pcall(vim.lsp.enable, name)
 			end
 		end,
 	},
