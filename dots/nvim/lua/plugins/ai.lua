@@ -42,11 +42,73 @@ return {
 			})
 		end,
 	},
+	-- We use avante for Claude features and integrated development.
+	-- Sidekick is used for Codex features and integrated development.
+	-- This is because ChatGPT pro includes Codex integration but does not allow one to create API keys.
+	-- Sidekick is also used for NES.
+	{
+		"folke/sidekick.nvim",
+		opts = {
+			cli = {
+				nes = {
+					enabled = true,
+				},
+				mux = {
+					backend = "tmux",
+					enabled = true,
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>sas",
+				function()
+					local provider = "codex"
+					require("sidekick.cli").toggle({ name = provider, focus = true })
+				end,
+				desc = "Sidekick: Toggle CLI",
+				mode = { "n", "t", "i", "x" },
+			},
+			{
+				"<leader>sav",
+				function()
+					-- Send only the highlighted text so Sidekick runs the prompt on that slice.
+					require("sidekick.cli").send({ msg = "{selection}" })
+				end,
+				mode = { "x" },
+				desc = "Sidekick: Send Visual Selection",
+			},
+			{
+				"<leader>sap",
+				function()
+					require("sidekick.cli").prompt()
+				end,
+				mode = { "n", "x" },
+				desc = "Sidekick: Select Prompt",
+			},
+			{
+				"<tab>",
+				function()
+					-- if there is a next edit, jump to it, otherwise apply it if any
+					if require("sidekick").nes_jump_or_apply() then
+						return -- jumped or applied
+					end
+
+					-- fall back to normal tab
+					return "<tab>"
+				end,
+				mode = { "i", "n" },
+				expr = true,
+				desc = "Sidekick: Goto/Apply Next Edit Suggestion",
+			},
+		},
+	},
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		config = function()
-			local provider = os.getenv("ANTHROPIC_API_KEY") and "claude" or "copilot"
+			local provider = os.getenv("AVANTE_ANTHROPIC_API_KEY") and "claude" or "copilot"
+
 			local aiOpts = {
 				provider = provider, -- "claude" or "copilot"
 				auto_suggestions_provider = provider,
