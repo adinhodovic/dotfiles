@@ -56,9 +56,9 @@ return {
 					},
 					["<Tab>"] = {
 						"snippet_forward",
-						function() -- sidekick next edit suggestion
-							return require("sidekick").nes_jump_or_apply()
-						end,
+						-- function() -- sidekick next edit suggestion
+						-- 	return require("sidekick").nes_jump_or_apply()
+						-- end,
 						function(cmp) -- if you are using Neovim's native inline completions
 							if has_words_before() then
 								return cmp.insert_next()
