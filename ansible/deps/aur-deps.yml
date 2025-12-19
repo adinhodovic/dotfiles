@@ -247,6 +247,9 @@
         - google-chrome
         - google-cloud-cli
         - google-cloud-cli-gke-gcloud-auth-plugin
+      tags:
+        - aur
+      when: "'aur' in ansible_run_tags"
 
     - name: Install GitHub extensions
       shell: |

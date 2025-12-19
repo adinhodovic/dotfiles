@@ -31,7 +31,6 @@
       # Requires pipx
       loop:
         - cookiecutter
-        - aws-mfa
         - pipreqs
         - pypyp
         - rebound-cli

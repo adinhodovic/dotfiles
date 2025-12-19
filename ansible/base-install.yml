@@ -7,16 +7,6 @@
         name: base-devel
         state: present
 
-    - name: clone yay
-      git:
-        repo: https://aur.archlinux.org/yay.git
-        dest: /home/adin/tempinstall/yay
-
-    - name: makepackage
-      shell: makepkg -si
-      args:
-        chdir: /home/adin/tempinstall/yay
-
     - name: clone paru
       git:
         repo: https://aur.archlinux.org/yay.git

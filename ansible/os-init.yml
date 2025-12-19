@@ -9,13 +9,12 @@
       shell: "{{ item }}"
       become: true
       loop:
-        - pkgfile -U
+        - pkgfile -u
 
     - name: Run Base Commands
       shell: "{{ item }}"
       ignore_errors: true
       loop:
-        - xdg-settings set default-web-browser google-chrome-stable.desktop
         - gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     - name: Add me to docker group
       become: true
