@@ -28,8 +28,8 @@ return {
 		"MeanderingProgrammer/treesitter-modules.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		opts = {
-			ensure_installed = { "jsonnet" },
 			auto_install = true,
+			sync_install = true,
 			fold = {
 				enable = true,
 			},
