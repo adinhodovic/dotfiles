@@ -48,7 +48,7 @@ return {
 	-- Sidekick is also used for NES.
 	{
 		"folke/sidekick.nvim",
-		enabled = false,
+		enabled = true,
 		opts = {
 			cli = {
 				nes = {

@@ -33,12 +33,47 @@
     recurse: no
   register: found_files
 
-- name: Identify archive file
+- name: Collect archive candidates
   set_fact:
-    archive_file: >-
+    archive_candidates: >-
       {{ found_files.files
          | selectattr('path', 'search', '.tar.gz$|.tgz$|.zip$|.tar.xz$')
-         | list | first | default(omit) }}
+         | list }}
+
+- name: Identify archive file
+  set_fact:
+    archive_file: "{{ archive_candidates | first }}"
+  when: archive_candidates | length > 0
+
+- name: Collect direct download candidates
+  set_fact:
+    direct_download_candidates: >-
+      {{ found_files.files
+         | rejectattr('path', 'search', '.tar.gz$|.zip$|.tgz$|.tar.xz$|.sha256$|.sha$')
+         | list }}
+
+- name: Identify direct download (non-archive)
+  set_fact:
+    direct_download: "{{ direct_download_candidates | first }}"
+  when: direct_download_candidates | length > 0
+
+- name: Stat direct download (detect mime)
+  stat:
+    path: "{{ direct_download.path }}"
+    get_mime: true
+  register: direct_download_stat
+  when: direct_download is defined
+
+- name: Fail if direct download is not a binary
+  fail:
+    msg: >-
+      Expected a binary for {{ binary_name }}, but got
+      {{ direct_download_stat.stat.mime_type | default('unknown') }} at {{ direct_download.path }}.
+  when:
+    - direct_download is defined
+    - direct_download_stat.stat.mime_type is defined
+    - direct_download_stat.stat.mime_type is match('^text/')
+    - archive_file is not defined
 
 - name: Extract archive if present
   when: archive_file is defined
@@ -66,6 +101,14 @@
 - name: Debug (optional)
   debug:
     msg: "Found real binary: {{ real_bin.path | default('none') }}"
+
+- name: Fail if neither archive nor binary is found
+  fail:
+    msg: >-
+      No usable archive or binary found for {{ binary_name }} in {{ repo_tmp_dir }}.
+  when:
+    - archive_file is not defined
+    - real_bin is not defined
 
 - name: Install binary (renamed to short name)
   copy:

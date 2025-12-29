@@ -12,7 +12,10 @@
         asset_pattern: "*linux-amd64*"
       - repo: "tobi/try-cli"
         binary_name: "try"
-        asset_pattern: "*linux-x86_64*"
+        asset_pattern: "*x86_64*"
+      - repo: pranshuparmar/witr
+        binary_name: "witr"
+        asset_pattern: "*linux-amd64*"
 
     download_dir: "~/.local/bin"
     tmp_dir: "/tmp/github_downloads"
