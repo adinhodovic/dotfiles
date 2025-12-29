@@ -31,7 +31,32 @@
   // -------------------------------------------------------------------------
   // Modules
   // -------------------------------------------------------------------------
-  "battery": {},
+  "battery": {
+    "interval": 30,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{icon} {capacity}% • {time}",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "tooltip": true
+  },
   "clock#time": {
     "interval": 1,
     "format": "{:%H:%M:%S}"
