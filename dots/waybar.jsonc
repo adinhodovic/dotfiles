@@ -141,7 +141,16 @@
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
   "temperature": {
-    "format": " {temperatureC}°C"
+    "interval": 5,
+    "critical-threshold": 85,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "tray": {
     "icon-size": 21,

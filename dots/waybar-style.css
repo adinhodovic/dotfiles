@@ -162,3 +162,15 @@ window#waybar {
 #tray > *:hover {
   background: #2e2e2e; /* subtle gray highlight */
 }
+
+#temperature {
+  color: #a6adc8;
+}
+
+#temperature.warning {
+  color: #f9e2af;
+}
+
+#temperature.critical {
+  color: #f38ba8;
+}
