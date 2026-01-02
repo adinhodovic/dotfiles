@@ -50,10 +50,10 @@ return {
 		"folke/sidekick.nvim",
 		enabled = true,
 		opts = {
+			nes = {
+				enabled = false,
+			},
 			cli = {
-				nes = {
-					enabled = false,
-				},
 				mux = {
 					backend = "tmux",
 					enabled = true,
