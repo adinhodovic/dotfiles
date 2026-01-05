@@ -68,7 +68,7 @@ return {
 					require("sidekick.cli").toggle({ name = provider, focus = true })
 				end,
 				desc = "Sidekick: Toggle CLI",
-				mode = { "n", "t", "i", "x" },
+				mode = { "n", "t", "x" },
 			},
 			{
 				"<leader>sav",
@@ -115,6 +115,7 @@ return {
 				auto_suggestions_provider = provider,
 				behaviour = {
 					auto_suggestions = false,
+					enable_token_counting = false,
 				},
 				file_selector = {
 					provider = "fzf",
