@@ -114,10 +114,10 @@
     "format-icons": {
       "1": "  Browser", // Generic browser / web
       "2": "  Terminal", // Terminal
-      "3": "  Docs", // Documents / Writing
-      "4": "  Docker", // Docker / Containers
-      "5": "  Messaging", // Chat / Messaging
-      "6": "󱃾  Kubernetes", // Kubernetes (Nerd Font v3 icon)
+      "3": "  AI/Docs", // Documents / Writing
+      "4": "  Dev", // Docker / Containers
+      "5": "  Chat", // Chat / Messaging
+      "6": "󱃾  K8s", // Kubernetes (Nerd Font v3 icon)
       "7": "  Utils", // Utilities / Tools
       "8": "  Utils", // Same as above
       "9": "  Comms", // Communication / Discord
