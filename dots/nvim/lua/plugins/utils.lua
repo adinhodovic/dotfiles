@@ -64,6 +64,12 @@ return {
 				desc = "Toggleterm: Toggle lazygit log current file",
 			},
 			{
+				"<leader>glw",
+				"<cmd>lua _lazygit_worktree_toggle()<cr>",
+				mode = { "n", "t" },
+				desc = "Toggleterm: Toggle Status/Worktree",
+			},
+			{
 				"<leader>tts",
 				"<cmd>lua _scooter_toggle()<cr>",
 				mode = { "n", "t" },
@@ -118,6 +124,8 @@ return {
 			local lazygit_log_terminal = lazygit("lazygit log")
 			local file = vim.trim(vim.api.nvim_buf_get_name(0))
 			local lazygit_log_file_terminal = lazygit("lazygit log -f " .. file)
+			-- Worktree filtering does not exist, so we use status as a workaround
+			local lazygit_worktree = lazygit("lazygit status")
 
 			-- Functions to toggle each terminal instance
 			function _lazygit_toggle() ---@diagnostic disable-line: lowercase-global
@@ -130,6 +138,10 @@ return {
 
 			function _lazygit_log_file_toggle() ---@diagnostic disable-line: lowercase-global
 				lazygit_log_file_terminal:toggle()
+			end
+
+			function _lazygit_worktree_toggle() ---@diagnostic disable-line: lowercase-global
+				lazygit_worktree:toggle()
 			end
 
 			local scooter = Terminal:new({
