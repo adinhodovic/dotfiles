@@ -47,9 +47,13 @@ lg() {
 
   lazygit "$@"
 
-  if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-    cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-    rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
+  if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
+    cd "$(cat "$LAZYGIT_NEW_DIR_FILE")" || return
+
+    # If running inside Neovim, keep the file for Neovim to read.
+    if [ -z "$NVIM" ]; then
+      rm -f "$LAZYGIT_NEW_DIR_FILE" >/dev/null 2>&1
+    fi
   fi
 }
 alias lg=lg

@@ -95,37 +95,39 @@ return {
 				default_term:toggle()
 			end
 
+			local newdir = vim.fn.expand("~/.lazygit/newdir")
+
 			local function lazygit(command)
-				-- Create a new terminal instance with the given command
 				return Terminal:new({
-					cmd = command,
-					dir = "git_dir", -- Replace with actual Git directory or leave it to open in the current directory
+					cmd = "zsh -ic " .. vim.fn.shellescape(command),
+
+					dir = "git_dir",
 					direction = "float",
-					-- function to run on opening the terminal
-					on_open = function(term)
-						vim.cmd("startinsert!")
-						vim.api.nvim_buf_set_keymap(
-							term.bufnr,
-							"n",
-							"q",
-							"<cmd>close<CR>",
-							{ noremap = true, silent = true }
-						)
-					end,
-					-- function to run on closing the terminal
-					on_close = function(term)
-						vim.cmd("startinsert!")
+					close_on_exit = true,
+
+					on_close = function()
+						-- follow whatever lg wrote
+						if vim.fn.filereadable(newdir) == 1 then
+							local dir = vim.fn.trim(vim.fn.readfile(newdir)[1])
+							if dir ~= "" then
+								vim.schedule(function()
+									local before = vim.fn.getcwd()
+									vim.api.nvim_set_current_dir(dir)
+								end)
+							end
+							vim.fn.delete(newdir)
+						end
 					end,
 				})
 			end
 
 			-- Create terminal instances for lazygit and lazygit log
-			local lazygit_terminal = lazygit("lazygit")
-			local lazygit_log_terminal = lazygit("lazygit log")
+			local lazygit_terminal = lazygit("lg")
+			local lazygit_log_terminal = lazygit("lg log")
 			local file = vim.trim(vim.api.nvim_buf_get_name(0))
-			local lazygit_log_file_terminal = lazygit("lazygit log -f " .. file)
+			local lazygit_log_file_terminal = lazygit("lg log -f " .. file)
 			-- Worktree filtering does not exist, so we use status as a workaround
-			local lazygit_worktree = lazygit("lazygit status")
+			local lazygit_worktree = lazygit("lg status")
 
 			-- Functions to toggle each terminal instance
 			function _lazygit_toggle() ---@diagnostic disable-line: lowercase-global

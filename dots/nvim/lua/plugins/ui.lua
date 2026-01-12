@@ -114,6 +114,29 @@ return {
 				end,
 			})
 
+			local function worktree_and_branch()
+				-- must be inside a git repo
+				if vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] ~= "true" then
+					return ""
+				end
+
+				-- branch (or detached)
+				local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1] or ""
+				if branch == "HEAD" then
+					branch = "@" .. (vim.fn.systemlist("git rev-parse --short HEAD")[1] or "")
+				end
+
+				-- detect worktree name
+				local common = vim.fn.systemlist("git rev-parse --git-common-dir")[1] or ""
+				local wt = common:match("/worktrees/([^/]+)$")
+
+				if wt then
+					return string.format("󰙅 %s  %s", wt, branch)
+				else
+					return " " .. branch
+				end
+			end
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -138,7 +161,7 @@ return {
 							end,
 						},
 					},
-					lualine_b = { "branch", "diff" },
+					lualine_b = { worktree_and_branch, "diff" },
 					lualine_c = { "diagnostics" },
 					lualine_x = {
 						{

@@ -60,7 +60,15 @@ customCommands:
     loadingText: "Creating conventional commit..."
   - key: w
     context: worktrees
-    description: "Create worktree from current branch"
+    description: "Create attached worktree and branch"
+    prompts:
+      - type: input
+        title: "Worktree/branch name"
+        key: name
+    command: "git worktree add -b {{.Form.name}} worktrees/{{.Form.name}} HEAD"
+  - key: W
+    context: worktrees
+    description: "Create detached worktree from current branch"
     prompts:
       - type: input
         title: "Worktree name"
