@@ -1,3 +1,4 @@
+---
 git:
   pagers:
     - externalDiffCommand: difft --color=always --display=inline --syntax-highlight=on --tab-width=2
@@ -57,3 +58,11 @@ customCommands:
         initialValue: ""
     command: "git commit --message '{{.Form.Type}}{{.Form.Scope}}: {{.Form.Message}}' --message '{{.Form.Body}}'"
     loadingText: "Creating conventional commit..."
+  - key: w
+    context: worktrees
+    description: "Create worktree from current branch"
+    prompts:
+      - type: input
+        title: "Worktree name"
+        key: name
+    command: "git worktree add --detach worktrees/{{.Form.name}} {{.SelectedLocalBranch.Name}}"

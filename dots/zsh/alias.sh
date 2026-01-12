@@ -42,7 +42,17 @@ alias cd....='cd ../../../..'
 
 alias ungron="gron --ungron"
 
-alias lg=lazygit
+lg() {
+  export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+  lazygit "$@"
+
+  if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+    cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+    rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
+  fi
+}
+alias lg=lg
 # Remove this if we need the native ld command
 alias ld=lazydocker
 
