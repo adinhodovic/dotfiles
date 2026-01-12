@@ -59,12 +59,18 @@ return {
 					enabled = true,
 				},
 			},
+			tools = {
+				claude = {
+					cmd = vim.env.CLAUDE_BYPASS_APPROVALS and { "claude", "--allow-dangerously-skip-permissions" }
+						or { "claude" },
+				},
+			},
 		},
 		keys = {
 			{
 				"<leader>sas",
 				function()
-					local provider = "codex"
+					local provider = os.getenv("AVANTE_ANTHROPIC_API_KEY") and "claude" or "copilot"
 					require("sidekick.cli").toggle({ name = provider, focus = true })
 				end,
 				desc = "Sidekick: Toggle CLI",
