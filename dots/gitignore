@@ -55,3 +55,4 @@ a.yaml
 b.yaml
 ./thumper
 worktrees
+.claude/settings.local.json
