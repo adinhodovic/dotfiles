@@ -2,10 +2,13 @@
   hosts: 127.0.0.1
 
   tasks:
-    - name: Create ssh directory
+    - name: Create directories
       file:
         state: directory
-        path: ~/.ssh
+        path: "{{ item }}"
+      loop:
+        - ~/.ssh
+        - ~/.claude
 
     - name: Create config directories
       file:
@@ -229,6 +232,9 @@
 
         - src: "chrome-flags.conf"
           dest: "/home/adin/.config/chrome-flags.conf"
+
+        - src: "claude.settings.json"
+          dest: "/home/adin/.claude/settings.json"
 
     - name: Create sudo config directories
       become: true

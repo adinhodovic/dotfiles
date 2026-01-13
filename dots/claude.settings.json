@@ -1,0 +1,13 @@
+{
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(go build:*)",
+      "Bash(go list:*)",
+      "Bash(go vet:*)",
+      "Bash(gofmt:*)"
+    ]
+  }
+}
