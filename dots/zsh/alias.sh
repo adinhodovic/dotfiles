@@ -178,6 +178,10 @@ alias cat="bat"
 # Diff files
 alias bd="batdiff"
 
+# Claude
+# https://github.com/anthropics/claude-code/issues/1872
+alias claude='SHELL=/bin/bash claude'
+
 # avante
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 
