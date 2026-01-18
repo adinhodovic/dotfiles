@@ -66,6 +66,7 @@ plugins=(
   poetry
   pyenv
   python
+  uv
 )
 
 repos=(

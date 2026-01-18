@@ -17,8 +17,9 @@
         - openshift
         - psutil
         - pip-tools
-        - setup-tools
+        - setuptools
         - ansible
+        - pipx
       ignore_errors: yes
 
     - name: Ensure pipx path
@@ -28,6 +29,7 @@
       community.general.pipx:
         name: "{{ item }}"
         force: true
+        state: latest
       # Requires pipx
       loop:
         - cookiecutter
@@ -38,11 +40,11 @@
         - pip-tools
         - poetry
         - toolong
-        - harlequin[postgres,s3]
 
     - name: Install uv packages
       tags: uv
       shell: |
-        uv tool install {{ item }}
+        uv tool install {{ item }} --force
       loop:
         - isd-tui
+        - harlequin

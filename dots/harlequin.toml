@@ -2,7 +2,7 @@ default_profile = "sqlite-local"
 [profiles]
 [profiles.postgres-local]
 adapter = "postgres"
-theme = "github-dark"
+theme = "textual-dark"
 limit = 100000
 keymap_name = ["vscode"]
 host = "localhost"
@@ -13,7 +13,7 @@ password = "postgres"
 
 [profiles.sqlite-local]
 adapter = "sqlite"
-theme = "github-dark"
+theme = "textual-dark"
 limit = 100000
 keymap_name = ["vscode"]
 conn_str = ["local.db"]

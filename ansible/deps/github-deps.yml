@@ -16,6 +16,9 @@
       - repo: pranshuparmar/witr
         binary_name: "witr"
         asset_pattern: "witr-linux-amd64"
+      - repo: "lance0/ttl"
+        binary_name: "ttl"
+        asset_pattern: "ttl-x86_64-unknown-linux-musl.tar.gz"
 
     download_dir: "~/.local/bin"
     tmp_dir: "/tmp/github_downloads"

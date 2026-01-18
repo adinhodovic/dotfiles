@@ -119,6 +119,7 @@
         - rust
         - go
         - python
+        - tk # pipx dep
         - ruby
         - nvm
         - clang

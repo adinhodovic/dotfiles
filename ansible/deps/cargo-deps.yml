@@ -9,7 +9,9 @@
       community.general.cargo:
         name: "{{ item }}"
         state: latest
+        locked: true
       loop:
+        - uv
         - tzupdate
         - gping
         - scooter
