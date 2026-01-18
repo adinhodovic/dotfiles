@@ -70,7 +70,7 @@ return {
 			{
 				"<leader>sas",
 				function()
-					local provider = os.getenv("AVANTE_ANTHROPIC_API_KEY") and "claude" or "copilot"
+					local provider = os.getenv("AVANTE_ANTHROPIC_API_KEY") and "claude" or "codex"
 					require("sidekick.cli").toggle({ name = provider, focus = true })
 				end,
 				desc = "Sidekick: Toggle CLI",
