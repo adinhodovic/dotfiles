@@ -15,7 +15,7 @@
         asset_pattern: "*x86_64*"
       - repo: pranshuparmar/witr
         binary_name: "witr"
-        asset_pattern: "*linux-amd64*"
+        asset_pattern: "witr-linux-amd64"
 
     download_dir: "~/.local/bin"
     tmp_dir: "/tmp/github_downloads"

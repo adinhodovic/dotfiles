@@ -33,6 +33,15 @@
     recurse: no
   register: found_files
 
+- name: Identify exact asset match (if pattern is exact filename)
+  set_fact:
+    asset_exact_match: >-
+      {{ found_files.files
+         | selectattr('path', 'search', '/' + (asset_pattern | regex_escape) + '$')
+         | list | first | default(omit) }}
+  when:
+    - asset_pattern is not match('.*[\\*\\?].*')
+
 - name: Collect archive candidates
   set_fact:
     archive_candidates: >-
@@ -75,6 +84,21 @@
     - direct_download_stat.stat.mime_type is match('^text/')
     - archive_file is not defined
 
+- name: Decompress gzip if needed
+  command: >
+    gzip -d -c {{ direct_download.path }} > {{ repo_tmp_dir }}/{{ binary_name }}
+  args:
+    creates: "{{ repo_tmp_dir }}/{{ binary_name }}"
+  when:
+    - direct_download is defined
+    - direct_download_stat.stat.mime_type is defined
+    - direct_download_stat.stat.mime_type is match('application/(x-)?gzip')
+
+- name: Check for decompressed binary
+  stat:
+    path: "{{ repo_tmp_dir }}/{{ binary_name }}"
+  register: decompressed_stat
+
 - name: Extract archive if present
   when: archive_file is defined
   unarchive:
@@ -97,6 +121,21 @@
       {{ found_bin.files
          | rejectattr('path', 'search', '.tar.gz$|.zip$|.tgz$|.tar.xz$|.sha256$|.sha$')
          | list | first | default(omit) }}
+
+- name: Prefer exact asset match when available
+  set_fact:
+    real_bin:
+      path: "{{ asset_exact_match.path }}"
+  when:
+    - asset_exact_match is defined
+    - archive_file is not defined
+
+- name: Override real binary with decompressed file
+  set_fact:
+    real_bin:
+      path: "{{ repo_tmp_dir }}/{{ binary_name }}"
+  when:
+    - decompressed_stat.stat.exists | default(false)
 
 - name: Debug (optional)
   debug:
