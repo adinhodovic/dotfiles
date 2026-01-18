@@ -576,9 +576,6 @@ return {
 				desc = "Neogen: Generate code snippets",
 			},
 		},
-		opts = {
-			snippet_engine = "luasnip",
-		},
 	},
 	{
 		"m4xshen/hardtime.nvim",

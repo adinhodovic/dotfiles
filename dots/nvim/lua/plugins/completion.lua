@@ -4,7 +4,6 @@ return {
 	{
 		"saghen/blink.cmp",
 		dependencies = {
-			"rafamadriz/friendly-snippets",
 			"fang2hou/blink-copilot",
 			"mikavilpas/blink-ripgrep.nvim",
 			"disrupted/blink-cmp-conventional-commits",
@@ -55,7 +54,6 @@ return {
 						end,
 					},
 					["<Tab>"] = {
-						"snippet_forward",
 						-- function() -- sidekick next edit suggestion
 						-- 	return require("sidekick").nes_jump_or_apply()
 						-- end,
@@ -140,7 +138,6 @@ return {
 						"lsp",
 						"copilot",
 						"lazydev",
-						"snippets",
 						"ripgrep",
 						"path",
 						"git",
@@ -165,10 +162,6 @@ return {
 							enabled = function()
 								return vim.bo.filetype == "lua"
 							end,
-						},
-						snippets = {
-							name = "Snippets",
-							score_offset = 70,
 						},
 						ripgrep = {
 							module = "blink-ripgrep",
